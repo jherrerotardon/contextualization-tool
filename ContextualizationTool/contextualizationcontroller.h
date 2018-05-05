@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QApplication>
+#include <QWindow>
 #include <QString>
 #include <QStringList>
 #include <QMessageBox>
@@ -24,12 +25,13 @@ private:
     ContextualizationModel model();
     StringsTableModel *tableModel;
     QString fpFile;
+    QString errorLog;
     QString username;
     QObject * view;
 
     int validateModel();
     int generatePackage(QString const &path);
-    FirmwareString * fragmentFpLine(QString &line);
+    FirmwareString * fragmentFpLine(QString &line, int lineNumber);
 
 public:
     explicit ContextualizationController(QObject *view = nullptr, QObject *parent = nullptr);
