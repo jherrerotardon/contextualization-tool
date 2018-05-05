@@ -2,18 +2,9 @@
 #include <QDebug>
 #include "log.h"
 
-StringsTableModel::StringsTableModel()
+StringsTableModel::StringsTableModel(QList<FirmwareString *> &newstrings) : strings(newstrings)
 {
-//    QString id("Creada");
-//    QString value("Value");
-//    QString des("DES");
-//    QString state("OK");
-//    FirmwareString *a  = new FirmwareString(id, value, des, 50, state, true);
-//    /*FirmwareString b ("SEGUNDO", "Adios", "AAA", 50, "OK", true);
-//    FirmwareString c ("ULTIMO", "Perro", "AAA", 50, "OK", true);*/
 
-//    strings << a << a;
-//    qDebug() << strings.at(0)->getId();
 }
 
 StringsTableModel::~StringsTableModel()
@@ -93,47 +84,24 @@ bool StringsTableModel::setData(const QModelIndex &index, const QVariant &value,
     }
 }
 
-bool StringsTableModel::insertRow(int row, FirmwareString *newString, const QModelIndex &parent)
+bool StringsTableModel::insertRows(int row, int count, const QModelIndex &parent)
 {
-    /*
-     * Deberia comprobar que la fila no es negativa, puntero a null, etc, etc
-     * igual en deleteRows()
-     */
-    beginInsertRows(parent, row, row);
-
-    strings.insert(row, newString);
+    beginInsertRows(parent, row, row + count - 1);
+    qDebug() << row << "   " << count;
+    int i = 1;
+    foreach (FirmwareString * a, this->strings) {
+        qDebug() << a->getValue().toStdString().c_str() << "   ******** " << strings.size();
+        i++;
+    }
 
     endInsertRows();
-
     return true;
 }
-/******************************************************************************/
-//bool StringsTableModel::insertRows(int row, int count, QList &list, const QModelIndex &parent)
-//{
-
-//    QString id("Insert");
-//    QString value("Insert");
-//    QString des("Insert 1");
-//    QString state("OK");
-//    FirmwareString *a  = new FirmwareString(id, value, des, 50, state, true);
-
-//    beginInsertRows(parent, row, row + count - 1);
-
-//    //for (int i = row; i < count; i++)
-//        strings.insert(0, a);
-//        //contacts.insert(position, { QString(), QString() });
-
-//    endInsertRows();
-//    return true;
-//}
 
 bool StringsTableModel::removeRows(int row, int count, const QModelIndex &parent)
 {
     beginRemoveRows(parent, row, row + count - 1);
-
-    for (int i = 0; i < count; i++)
-        strings.removeAt(row);
-
+    qDebug() << "Aaaaaaaaaaaaaaaaaaaaaaaa";
     endRemoveRows();
     return true;
 }

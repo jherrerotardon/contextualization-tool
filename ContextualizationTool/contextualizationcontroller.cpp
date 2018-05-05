@@ -8,14 +8,13 @@ ContextualizationController::ContextualizationController(QObject *view, QObject 
     QObject *stringsTable;
 
     this->fpFile = "/home/jorge/Downloads/english.fp";
-    this->errorLog = "/tmp/contextualization.err";
     this->username = qgetenv("USER");
     this->view = view;
 
     if (view != nullptr)
     {
         //Initialize TableView and his model.
-        this->tableModel = new StringsTableModel();
+        this->tableModel = new StringsTableModel(this->model.getStringsList());
         stringsTable = view->findChild<QObject *>("stringsTable");
         if (stringsTable)
             stringsTable->setProperty("model", QVariant::fromValue(this->tableModel));
@@ -55,7 +54,20 @@ void ContextualizationController::setTableModel(StringsTableModel *tableModel)
 
 int ContextualizationController::validateModel()
 {
+    QFile file(this->model.getImagePath());
+    if (!file.exists())
+    {
+        //Image not exists
+        return 1;
+    }
 
+    if (this->model.getStringsList().size() <= 0)
+    {
+        //Error, there isn't strings in the model.
+        return 2;
+    }
+
+    //All OK
     return 0;
 }
 
@@ -82,8 +94,8 @@ void ContextualizationController::captureArea()
     {
         image = view->findChild<QObject *>("captureImage");
         image->setProperty("source", "");
-        image->setProperty("source", "file:/tmp/capture.png");
-        model.setImagePath("/tmp/capture.png");
+        image->setProperty("source", "file:" + path);
+        this->model.setImagePath(path);
     }
     else
     {
@@ -118,7 +130,7 @@ void ContextualizationController::loadImage()
             image = view->findChild<QObject *>("captureImage");
             image->setProperty("source", "");
             image->setProperty("source", "file:" + fileNames.first());
-            model.setImagePath(fileNames.first());
+            this->model.setImagePath(fileNames.first());
         }
     }
 }
@@ -149,7 +161,8 @@ void ContextualizationController::addString(QString newString)
             {
                 if (newString == fwString->getValue())
                 {
-                    tableModel->insertRow(tableModel->rowCount(), fwString);
+                    this->model.addNewString(fwString);
+                    this->tableModel->insertRows(this->tableModel->rowCount()-1, 1);
                     stringFound = true;
                     break; //Stop to read file
                 }
@@ -174,20 +187,21 @@ void ContextualizationController::addString(QString newString)
             {
                 state = "TODO";
                 fwString = new FirmwareString(emptyString, newString, emptyString, newString.size(), state, false);
-                tableModel->insertRow(tableModel->rowCount(), fwString);
+                this->model.addNewString(fwString);
+                this->tableModel->insertRows(tableModel->rowCount()-1, 1);
             }
         }
     }
     else
     {
-        message = QDateTime::currentDateTime().toString("dd/MM/yyyy hh:mm:ss") + " "
-                + this->username + " Fail to open file: " + fpFile;
-        Utils::appendFile(this->errorLog, message);
+        message = " Fail to open file: " + fpFile;
+        Log::writeError(message);
     }
 }
 
 void ContextualizationController::deleteString(int row)
 {
+    this->model.deleteString(row);
     tableModel->removeRows(row, 1);
 }
 
@@ -203,12 +217,9 @@ void ContextualizationController::clearTable()
 
 void ContextualizationController::send()
 {
-    int i = 65;
-    QString message("LALALALALAL " + QString::number(i) + ".");
-    QString file = "/tmp/prueba.log";
-
-    Utils::appendFile(file, message);
-    qDebug() << QDateTime::currentDateTime().toString("dd/MM/yyyy hh:mm:ss");
+    //    foreach (FirmwareString * a, this->model.getStringsList()) {
+    //        qDebug() << a->getValue().toStdString().c_str() << "   ******** ";
+    //    }
 }
 
 void ContextualizationController::cancel()
@@ -219,16 +230,15 @@ void ContextualizationController::cancel()
     if (response == QMessageBox::Yes)
     {
         //Remove temporal image.
-        if (!model.getImagePath().isEmpty())
+        if (!this->model.getImagePath().isEmpty())
         {
-            QFile file(model.getImagePath());
+            QFile file(this->model.getImagePath());
             if (file.exists())
                 file.remove();
         }
 
         QApplication::quit();
     }
-
 }
 
 FirmwareString * ContextualizationController::fragmentFpLine(QString &line, int lineNumber)
@@ -279,56 +289,49 @@ FirmwareString * ContextualizationController::fragmentFpLine(QString &line, int 
                             }
                             else
                             {
-                                message = QDateTime::currentDateTime().toString("dd/MM/yyyy hh:mm:ss") + " " + this->username
-                                        + " englis.fp: String state not valid on line " + QString::number(lineNumber) + ".";
-                                Utils::appendFile(this->errorLog, message);
+                                message = " englis.fp: String state not valid on line " + QString::number(lineNumber) + ".";
+                                Log::writeError(message);
                                 return nullptr;
                             }
                         }
                         else
                         {
-                            message = QDateTime::currentDateTime().toString("dd/MM/yyyy hh:mm:ss") + " " + this->username
-                                    + " englis.fp: MaxWidth couldn't be converted to int on line " + QString::number(lineNumber) + ".";
-                            Utils::appendFile(this->errorLog, message);
+                            message = "englis.fp: MaxWidth couldn't be converted to int on line " + QString::number(lineNumber) + ".";
+                            Log::writeError(message);
                             return nullptr;
                         }
                     }
                     else
                     {
-                        message = QDateTime::currentDateTime().toString("dd/MM/yyyy hh:mm:ss") + " " + this->username
-                                + " englis.fp: Error format in LOCALIZATION column on line " + QString::number(lineNumber) + ".";
-                        Utils::appendFile(this->errorLog, message);
+                        message = "englis.fp: Error format in LOCALIZATION column on line " + QString::number(lineNumber) + ".";
+                        Log::writeError(message);
                         return nullptr;
                     }
                 }
                 else
                 {
-                    message = QDateTime::currentDateTime().toString("dd/MM/yyyy hh:mm:ss") + " " + this->username
-                            + " englis.fp: Error format in MAX_FIELD_WIDTH column on line " + QString::number(lineNumber) + ".";
-                    Utils::appendFile(this->errorLog, message);
+                    message = "englis.fp: Error format in MAX_FIELD_WIDTH column on line " + QString::number(lineNumber) + ".";
+                    Log::writeError(message);
                     return nullptr;
                 }
             }
             else
             {
-                message = QDateTime::currentDateTime().toString("dd/MM/yyyy hh:mm:ss") + " " + this->username
-                        + " englis.fp: Error format in TEXT_DESCRIPTION column on line " + QString::number(lineNumber) + ".";
-                Utils::appendFile(this->errorLog, message);
+                message = "englis.fp: Error format in TEXT_DESCRIPTION column on line " + QString::number(lineNumber) + ".";
+                Log::writeError(message);
                 return nullptr;
             }
         }
         else
         {
-            message = QDateTime::currentDateTime().toString("dd/MM/yyyy hh:mm:ss") + " " + this->username
-                    + " englis.fp: Error format in MESSAGE_ID column on line " + QString::number(lineNumber) + ".";
-            Utils::appendFile(this->errorLog, message);
+            message = "englis.fp: Error format in MESSAGE_ID column on line " + QString::number(lineNumber) + ".";
+            Log::writeError(message);
             return nullptr;
         }
     }
     else
-    {   message = QDateTime::currentDateTime().toString("dd/MM/yyyy hh:mm:ss") + " " + this->username
-                + " englis.fp: Error format by splitting the string in columns by the separator '||' on line " + QString::number(lineNumber) + ".";
-        Utils::appendFile(this->errorLog, message);
+    {   message = "englis.fp: Error format by splitting the string in columns by the separator '||' on line " + QString::number(lineNumber) + ".";
+        Log::writeError(message);
         return nullptr;
     }
 }

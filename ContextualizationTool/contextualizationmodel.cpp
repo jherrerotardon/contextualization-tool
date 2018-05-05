@@ -3,14 +3,12 @@
 ContextualizationModel::ContextualizationModel()
 {
     image = "";
-    stringsList = NULL;
 }
 
 ContextualizationModel::~ContextualizationModel(){
 
-    if (stringsList != NULL) {
-        /*Borrar todos no solo la primera*/
-        delete stringsList;
+    foreach (FirmwareString *fwString, this->stringsList) {
+        delete fwString;
     }
 }
 
@@ -19,12 +17,37 @@ int ContextualizationModel::addNewString(const QString &id, const QString &value
     return 0;
 }
 
-int ContextualizationModel::deleteString(QString &id){
-
-    return 0;
+void ContextualizationModel::addNewString(FirmwareString *newString)
+{
+    this->stringsList.append(newString);
 }
 
-FirmwareString * ContextualizationModel::getStringsList(){
+void ContextualizationModel::deleteString(QString &id)
+{
+    int i = 0;
+
+    foreach (FirmwareString *fwString, this->stringsList) {
+        if (fwString->getId() == id){
+            delete fwString;
+            this->stringsList.removeAt(i);
+            break;
+        }
+        i++;
+    }
+}
+
+void ContextualizationModel::deleteString(int pos){
+
+    delete this->stringsList.at(pos);
+    this->stringsList.removeAt(pos);
+}
+
+void ContextualizationModel::clearStringsList()
+{
+    this->stringsList.clear();
+}
+
+QList<FirmwareString *> & ContextualizationModel::getStringsList(){
     return stringsList;
 }
 

@@ -14,6 +14,7 @@
 #include "contextualizationmodel.h"
 #include "stringstablemodel.h"
 #include "utils.h"
+#include "log.h"
 
 class ContextualizationController : public QObject
 {
@@ -22,10 +23,9 @@ class ContextualizationController : public QObject
     Q_PROPERTY(StringsTableModel * tableModel MEMBER tableModel)
 
 private:
-    ContextualizationModel model();
+    ContextualizationModel model;
     StringsTableModel *tableModel;
     QString fpFile;
-    QString errorLog;
     QString username;
     QObject * view;
 

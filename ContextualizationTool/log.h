@@ -1,24 +1,23 @@
 #ifndef LOG_H
 #define LOG_H
 
-#include <iostream>
-#include <fstream>
 #include <QString>
 #include <QFile>
 #include <QTextStream>
-
-using namespace std;
-
+#include <QDate>
 
 class Log
 {
 public:
     Log();
-    static void writeDebug(string text);
-    static void writeLog(QString text);
+    static void writeDebug(QString &text);
+    static void writeLog(QString &text);
+    static void writeError(QString &text);
 
 private:
-    const static string debugFile;
+    const static QString debugFile;
+    const static QString errorFile;
+    const static QString logFile;
 };
 
 #endif // LOG_H

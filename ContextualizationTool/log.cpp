@@ -1,34 +1,43 @@
 #include "log.h"
 
-const string Log::debugFile = "/home/jorge/Downloads/debug.log";
+const QString Log::debugFile = "/tmp/contextualization.debug";
+const QString Log::errorFile = "/tmp/contextualization.err";
+const QString Log::logFile = "/tmp/contextualization.log";
 
 Log::Log()
 {
 
 }
 
-void Log::writeDebug(string text)
+void Log::writeDebug(QString &text)
 {
-    ofstream fichero;
-
-    fichero.open(debugFile.c_str(), ios::out | ios::app);
-
-    if (fichero.is_open()) {
-        fichero << text << '\n';
-
-        fichero.close();
-    }
-    else {
-        cout << "Error en apertura de: " << debugFile;
+    QFile file(debugFile);
+    if (!file.open(QIODevice::Append | QIODevice::Text))
+    {
+        QTextStream out(&file);
+        out << QDateTime::currentDateTime().toString("dd/MM/yyyy hh:mm:ss") + " " + qgetenv("USER") << " " << text << '\n';
+        file.close();
     }
 }
 
-void Log::writeLog(QString text)
+void Log::writeLog(QString &text)
 {
-    QFile file("out.txt");
-        if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
-            return;
-
+    QFile file(logFile);
+    if (!file.open(QIODevice::Append | QIODevice::Text))
+    {
         QTextStream out(&file);
-        out << text << "\n";
+        out << QDateTime::currentDateTime().toString("dd/MM/yyyy hh:mm:ss") + " " + qgetenv("USER") << " " << text << '\n';
+        file.close();
+    }
+}
+
+void Log::writeError(QString &text)
+{
+    QFile file(errorFile);
+    if (!file.open(QIODevice::Append | QIODevice::Text))
+    {
+        QTextStream out(&file);
+        out << QDateTime::currentDateTime().toString("dd/MM/yyyy hh:mm:ss") + " " + qgetenv("USER") << " " << text << '\n';
+        file.close();
+    }
 }
