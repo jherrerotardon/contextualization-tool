@@ -54,17 +54,23 @@ void ContextualizationController::setTableModel(StringsTableModel *tableModel)
 
 int ContextualizationController::validateModel()
 {
+    if (this->model.getImagePath().isEmpty())
+    {
+        //No image path
+        return 1;
+    }
+
     QFile file(this->model.getImagePath());
     if (!file.exists())
     {
         //Image not exists
-        return 1;
+        return 2;
     }
 
     if (this->model.getStringsList().size() <= 0)
     {
         //Error, there isn't strings in the model.
-        return 2;
+        return 3;
     }
 
     //All OK
@@ -186,7 +192,7 @@ void ContextualizationController::addString(QString newString)
             if (response == QMessageBox::Yes)
             {
                 state = "TODO";
-                fwString = new FirmwareString(emptyString, newString, emptyString, newString.size(), state, false);
+                fwString = new FirmwareString(emptyString, newString, emptyString, QString::number(newString.size()), state, false);
                 this->model.addNewString(fwString);
                 this->tableModel->insertRows(tableModel->rowCount()-1, 1);
             }
@@ -217,9 +223,34 @@ void ContextualizationController::clearTable()
 
 void ContextualizationController::send()
 {
-    //    foreach (FirmwareString * a, this->model.getStringsList()) {
-    //        qDebug() << a->getValue().toStdString().c_str() << "   ******** ";
-    //    }
+    int state = 0;
+    QDir tmpDir("/tmp/" + QDateTime::currentDateTime().toString("yyyy_MM_dd_hh_mm_ss-") + this->username);
+
+    //state = validateModel();
+    switch (state) {
+    case 0:
+        if(!tmpDir.exists())
+        {
+            tmpDir.mkpath(".");
+        }
+        else
+        {
+            Utils::warningMessage("Send process in progress.", "Wait until the current process end.");
+        }
+        break;
+    case 1:
+        Utils::errorMessage("Fail to send!!", "There isn't an image asociated.");
+        break;
+    case 2:
+        Utils::errorMessage("Fail to send!!", "The image associated doesn't exist. Please reload the image.");
+        break;
+    case 3:
+        Utils::errorMessage("Fail to send!!", "There aren't any string asociated.");
+        break;
+    default:
+        Utils::errorMessage("Fail to send!!", "Unknown error.");
+        break;
+    }
 }
 
 void ContextualizationController::cancel()
@@ -255,36 +286,39 @@ FirmwareString * ContextualizationController::fragmentFpLine(QString &line, int 
     bool ok;
 
     //Fragment fp line.
-    list = line.split("||");
+    list = line.split(" || ");
     if (list.size() == 4)
     {
-        subListIdText = list.at(0).split(' ', QString::SkipEmptyParts).mid(0, 2);
+        subListIdText = list.at(0).split("  ").mid(0, 2);
         subListIdText << list.at(0).section('\"', 1, 1);
         if (subListIdText.size() == 3)
         {
-            subListDescription = list.at(1).split(' ', QString::SkipEmptyParts).mid(0, 1);
+            //((QString &) subListIdText.at(2)).replace(QString("\""), QString("")); //Remove quotes on text value
+
+            subListDescription = list.at(1).split("  ").mid(0, 1);
             subListDescription << list.at(1).section('\"', 1, 1);
             if (subListDescription.size() == 2)
             {
                 //((QString &) subListDescription.at(1)).replace(QString("\""), QString("")); //Remove quotes on text description
 
-                subListMaxWidth = list.at(2).split(' ', QString::SkipEmptyParts);
+                subListMaxWidth = list.at(2).split("  ");
                 if (subListMaxWidth.size() == 2)
                 {
-                    subListLocalization = list.at(3).split(' ', QString::SkipEmptyParts);
+                    subListLocalization = list.at(3).split("  ");
                     if (subListLocalization.size() == 2)
                     {
-
-                        maxLenght = ((QString)subListMaxWidth.at(1)).toInt(&ok, 10);
-                        if (ok)
-                        {
-
+//                        maxLenght = ((QString)subListMaxWidth.at(1)).toInt(&ok, 10);
+//                        if (ok)
+//                        {
                             QString &state = (QString &)subListLocalization.at(1);
                             if (state == "TODO" || state == "DONE" || state == "VALIDATED")
                             {
                                 selected = (state == "TODO") ? true : false;
                                 fwString = new FirmwareString((QString &)subListIdText.at(1), (QString &)subListIdText.at(2), (QString &)subListDescription.at(1),
-                                                              maxLenght, (QString &)subListLocalization.at(1), selected);
+                                                              ((QString &)subListMaxWidth.at(1)), (QString &)subListLocalization.at(1), selected);
+//                                QString m = (QString &)subListIdText.at(1) + " "+(QString &)subListIdText.at(2) +" "+ (QString &)subListDescription.at(1)
+//                                        +" "+QString::number(maxLenght)+" "+(QString &)subListLocalization.at(1);
+//                                Log::writeDebug(m);
                                 return fwString;
                             }
                             else
@@ -293,13 +327,13 @@ FirmwareString * ContextualizationController::fragmentFpLine(QString &line, int 
                                 Log::writeError(message);
                                 return nullptr;
                             }
-                        }
-                        else
-                        {
-                            message = "englis.fp: MaxWidth couldn't be converted to int on line " + QString::number(lineNumber) + ".";
-                            Log::writeError(message);
-                            return nullptr;
-                        }
+//                        }
+//                        else
+//                        {
+//                            message = "englis.fp: MaxWidth couldn't be converted to int on line " + QString::number(lineNumber) + ".";
+//                            Log::writeError(message);
+//                            return nullptr;
+//                        }
                     }
                     else
                     {

@@ -4,5 +4,8 @@
         <file>images/pc.png</file>
         <file>images/trash.png</file>
         <file>images/wallpaper.jpg</file>
+        <file>images/exit.png</file>
+        <file>images/copy.png</file>
+        <file>images/paste.png</file>
     </qresource>
 </RCC>

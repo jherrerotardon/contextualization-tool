@@ -12,7 +12,7 @@ ContextualizationModel::~ContextualizationModel(){
     }
 }
 
-int ContextualizationModel::addNewString(const QString &id, const QString &value, const QString &description, int maxLength, const QString &state, bool selected){
+int ContextualizationModel::addNewString(const QString &id, const QString &value, const QString &description, QString maxLength, const QString &state, bool selected){
 
     return 0;
 }

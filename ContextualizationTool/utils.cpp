@@ -5,7 +5,7 @@ Utils::Utils()
 
 }
 
-void Utils::errorMessage(const QString &text, const QString &informativeText)
+void Utils::errorMessage(const QString text, const QString informativeText)
 {
     QMessageBox msgBox;
 

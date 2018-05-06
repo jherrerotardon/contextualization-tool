@@ -87,12 +87,6 @@ bool StringsTableModel::setData(const QModelIndex &index, const QVariant &value,
 bool StringsTableModel::insertRows(int row, int count, const QModelIndex &parent)
 {
     beginInsertRows(parent, row, row + count - 1);
-    qDebug() << row << "   " << count;
-    int i = 1;
-    foreach (FirmwareString * a, this->strings) {
-        qDebug() << a->getValue().toStdString().c_str() << "   ******** " << strings.size();
-        i++;
-    }
 
     endInsertRows();
     return true;
@@ -101,7 +95,7 @@ bool StringsTableModel::insertRows(int row, int count, const QModelIndex &parent
 bool StringsTableModel::removeRows(int row, int count, const QModelIndex &parent)
 {
     beginRemoveRows(parent, row, row + count - 1);
-    qDebug() << "Aaaaaaaaaaaaaaaaaaaaaaaa";
+
     endRemoveRows();
     return true;
 }

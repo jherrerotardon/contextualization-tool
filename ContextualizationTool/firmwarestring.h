@@ -6,14 +6,14 @@
 class FirmwareString
 {
 public:
-    FirmwareString(QString &id, QString &value, QString &description, int maxLength, QString &state, bool selected);
+    FirmwareString(QString &id, QString &value, QString &description, QString maxLength, QString &state, bool selected);
     /*********/
     FirmwareString(QString &value);
     /***********/
     QString getId() const;
     QString getValue() const;
     QString getDescription() const;
-    int getMaxLength() const;
+    QString getMaxLength() const;
     QString getState() const;
     void setValue(const QString &value);
     bool isSelected() const;
@@ -25,7 +25,7 @@ private:
     QString id;
     QString value;
     QString description;
-    int maxLength;
+    QString maxLength;
     QString state;
     bool selected;
 };

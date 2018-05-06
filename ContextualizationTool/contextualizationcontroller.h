@@ -11,6 +11,7 @@
 #include <QFileDialog>
 #include <QStandardPaths>
 #include <QDateTime>
+#include <QDir>
 #include "contextualizationmodel.h"
 #include "stringstablemodel.h"
 #include "utils.h"

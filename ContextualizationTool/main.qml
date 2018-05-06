@@ -33,9 +33,9 @@ ApplicationWindow {
         Menu {
             title: "File"
             MenuItem {
-                text : "Quit"
+                text : "Exit"
                 shortcut : "Ctrl+Q"
-                iconName: images/quit.png
+                iconSource: "qrc:/images/exit.png"
                 onTriggered: Qt.quit()
             }
         }
@@ -44,13 +44,13 @@ ApplicationWindow {
             MenuItem {
                 text: "Copy"
                 shortcut: "Ctrl+C"
-                iconSource: images/copy.png
+                iconSource: "qrc:/images/copy.png"
                 onTriggered: activeFocusItem.copy()
             }
             MenuItem {
                 text: "Paste"
                 shortcut: "Ctrl+V"
-                iconSource: images/paste.png
+                iconSource: "qrc:/images/paste.png"
                 onTriggered: activeFocusItem.paste()
             }
         }
@@ -91,7 +91,6 @@ ApplicationWindow {
             }
 
             ColumnLayout {
-                id: aa
                 Layout.fillWidth: true
                 Layout.topMargin: 18
                 Layout.bottomMargin: 10
@@ -113,7 +112,6 @@ ApplicationWindow {
                         anchors.fill: parent
                         anchors.margins: 1
                     }
-
                 }
 
                 CheckBox {
@@ -153,9 +151,7 @@ ApplicationWindow {
                     Item {
                         Layout.fillWidth: true
                     }
-
                 }
-
             }
             ColumnLayout {
                 id: bb
@@ -197,15 +193,20 @@ ApplicationWindow {
                         resizable: false
                         horizontalAlignment: Text.AlignHCenter
 
-                        delegate: CheckBox {
-                            enabled: true
+                        delegate: Item {
+                            anchors.fill: parent
+                            CheckBox {
+                                enabled: true
+                                anchors.verticalCenter: parent.verticalCenter
+                                anchors.horizontalCenter: parent.horizontalCenter
 
-                            onClicked: {
-                                //var srcIndex = prjCont.model.mapToSource(prjCont.model.index(styleData.row,0));
-                                //prjCont.model.getEntry(srcIndex.row).checked = !prjCont.model.getEntry(styleData.row).checked;
+                                onClicked: {
+                                    //var srcIndex = prjCont.model.mapToSource(prjCont.model.index(styleData.row,0));
+                                    //prjCont.model.getEntry(srcIndex.row).checked = !prjCont.model.getEntry(styleData.row).checked;
 
-                                console.debug("row in Table " + styleData.row);
-                                //console.debug("-got: " +  prjCont.model.getEntry(srcIndex.row).checked);
+                                    console.debug("row in Table " + styleData.row);
+                                    //console.debug("-got: " +  prjCont.model.getEntry(srcIndex.row).checked);
+                                }
                             }
                         }
                     }

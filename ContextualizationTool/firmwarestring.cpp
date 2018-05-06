@@ -1,6 +1,6 @@
 #include "firmwarestring.h"
 
-FirmwareString::FirmwareString(QString &id, QString &value, QString &description, int maxLength, QString &state, bool selected)
+FirmwareString::FirmwareString(QString &id, QString &value, QString &description, QString maxLength, QString &state, bool selected)
 {
     this->id = id;
     this->value = value;
@@ -14,7 +14,7 @@ FirmwareString::FirmwareString(QString &value){
     this->id = "prueba";
     this->value = value;
     this->description = "prueba";
-    this->maxLength = 20;
+    this->maxLength = "20";
     this->state = "prueba";
     this->selected = true;
 }
@@ -35,7 +35,7 @@ QString FirmwareString::getDescription() const
     return this->description;
 }
 
-int FirmwareString::getMaxLength() const
+QString FirmwareString::getMaxLength() const
 {
     return this->maxLength;
 }
