@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>main.qml</file>
+        <file>interface/main.qml</file>
         <file>images/pc.png</file>
         <file>images/trash.png</file>
         <file>images/wallpaper.jpg</file>

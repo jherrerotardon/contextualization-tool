@@ -6,10 +6,8 @@
 class FirmwareString
 {
 public:
-    FirmwareString(QString &id, QString &value, QString &description, QString maxLength, QString &state, bool selected);
-    /*********/
-    FirmwareString(QString &value);
-    /***********/
+    FirmwareString(const QString &id, const QString &value, const QString &description, const QString &maxLength, const QString &state, const bool selected);
+
     QString getId() const;
     QString getValue() const;
     QString getDescription() const;
@@ -21,7 +19,6 @@ public:
     void unselect();
 
 private:
-    //enum TraductionState {TODO, DONE, VALIDATED};
     QString id;
     QString value;
     QString description;

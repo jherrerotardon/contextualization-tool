@@ -11,8 +11,7 @@ ContextualizationController::ContextualizationController(QObject *view, QObject 
     this->username = qgetenv("USER");
     this->view = view;
 
-    if (view != nullptr)
-    {
+    if (view != nullptr) {
         //Initialize TableView and his model.
         this->tableModel = new StringsTableModel(this->model.getStringsList());
         stringsTable = view->findChild<QObject *>("stringsTable");
@@ -42,7 +41,7 @@ ContextualizationController::~ContextualizationController()
     delete tableModel;
 }
 
-StringsTableModel *ContextualizationController::getTableModel()
+StringsTableModel * ContextualizationController::getTableModel()
 {
     return tableModel;
 }
@@ -52,35 +51,70 @@ void ContextualizationController::setTableModel(StringsTableModel *tableModel)
     this->tableModel = tableModel;
 }
 
-int ContextualizationController::validateModel()
+void ContextualizationController::addString(QString newString)
 {
-    if (this->model.getImagePath().isEmpty())
-    {
-        //No image path
-        return 1;
-    }
+    int count = 0;
+    int response;
+    bool stringFound = false;
+    QString emptyString("");
+    QString state;
+    QString line;
+    QString message;
+    QFile file(fpFile);
+    FirmwareString *fwString;
 
-    QFile file(this->model.getImagePath());
-    if (!file.exists())
-    {
-        //Image not exists
-        return 2;
-    }
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QTextStream in(&file);
 
-    if (this->model.getStringsList().size() <= 0)
-    {
-        //Error, there isn't strings in the model.
-        return 3;
-    }
+        while (!file.atEnd()) {
+            line = in.readLine();
+            count ++;
 
-    //All OK
-    return 0;
+            fwString = this->fragmentFpLine(line, count);
+            if (fwString != nullptr) {
+                if (newString == fwString->getValue()) {
+                    this->model.addNewString(fwString);
+                    this->tableModel->insertRows(this->tableModel->rowCount()-1, 1);
+                    stringFound = true;
+                    break; //Stop to read file
+                }
+                else {
+                    delete fwString;
+                }
+            }
+            else {
+                //Mensaje en el log de error
+                //                Utils::errorMessage(QString(fpFile + " format is not correctly."),
+                //                                    QString("Format error on line " + QString(std::to_string(count).c_str())));
+            }
+        }
+        file.close();
+
+        if (stringFound == false) {
+            response = Utils::warningMessage("String isn't in english.fp file.", "Are you sure to add the string?");
+            if (response == QMessageBox::Yes) {
+                state = "TODO";
+                fwString = new FirmwareString(emptyString, newString, emptyString, QString::number(newString.size()), state, false);
+                this->model.addNewString(fwString);
+                this->tableModel->insertRows(tableModel->rowCount()-1, 1);
+            }
+        }
+    }
+    else {
+        message = " Fail to open file: " + fpFile;
+        Log::writeError(message);
+    }
 }
 
-int ContextualizationController::generatePackage(const QString &path)
+void ContextualizationController::deleteString(int row)
 {
+    this->model.deleteString(row);
+    tableModel->removeRows(row, 1);
+}
 
-    return 0;
+void ContextualizationController::clearTable()
+{
+    tableModel->removeRows(0, tableModel->rowCount());
 }
 
 void ContextualizationController::captureArea()
@@ -96,21 +130,19 @@ void ContextualizationController::captureArea()
 
     capture = new QProcess();
     capture->start("import", arguments);
-    if (capture->waitForFinished(30000))
-    {
+    if (capture->waitForFinished(30000)) {
         image = view->findChild<QObject *>("captureImage");
         image->setProperty("source", "");
         image->setProperty("source", "file:" + path);
         this->model.setImagePath(path);
     }
-    else
-    {
+    else {
         //Pasaron 30 segs si que usuario haga captura
     }
+
     delete capture;
 
     ((QWindow *)view)->setVisible(true);
-
 }
 
 void ContextualizationController::loadImage()
@@ -123,16 +155,15 @@ void ContextualizationController::loadImage()
 
     QStringList fileNames;
     QObject *image;
-    QFileDialog dialog(Q_NULLPTR,tr("Open Image"), QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first(),
+    QFileDialog dialog(Q_NULLPTR, tr("Open Image"), QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first(),
                        tr("Images (*.png *.xpm *.jpg)"));
 
     dialog.setViewMode(QFileDialog::Detail);
 
-    if (dialog.exec())
-    {
+    if (dialog.exec()) {
         fileNames = dialog.selectedFiles();
 
-        if (!fileNames.isEmpty()){
+        if (!fileNames.isEmpty()) {
             image = view->findChild<QObject *>("captureImage");
             image->setProperty("source", "");
             image->setProperty("source", "file:" + fileNames.first());
@@ -141,84 +172,9 @@ void ContextualizationController::loadImage()
     }
 }
 
-void ContextualizationController::addString(QString newString)
-{
-    int count = 0;
-    int response;
-    bool stringFound = false;
-    QString emptyString("");
-    QString state;
-    QString line;
-    QString message;
-    QFile file(fpFile);
-    FirmwareString *fwString;
-
-    if (file.open(QIODevice::ReadOnly | QIODevice::Text))
-    {
-        QTextStream in(&file);
-
-        while (!file.atEnd())
-        {
-            line = in.readLine();
-            count ++;
-
-            fwString = this->fragmentFpLine(line, count);
-            if (fwString != nullptr)
-            {
-                if (newString == fwString->getValue())
-                {
-                    this->model.addNewString(fwString);
-                    this->tableModel->insertRows(this->tableModel->rowCount()-1, 1);
-                    stringFound = true;
-                    break; //Stop to read file
-                }
-                else
-                {
-                    delete fwString;
-                }
-            }
-            else
-            {
-                //Mensaje en el log de error
-                //                Utils::errorMessage(QString(fpFile + " format is not correctly."),
-                //                                    QString("Format error on line " + QString(std::to_string(count).c_str())));
-            }
-        }
-        file.close();
-
-        if (stringFound == false)
-        {
-            response = Utils::warningMessage("String isn't in english.fp file.", "Are you sure to add the string?");
-            if (response == QMessageBox::Yes)
-            {
-                state = "TODO";
-                fwString = new FirmwareString(emptyString, newString, emptyString, QString::number(newString.size()), state, false);
-                this->model.addNewString(fwString);
-                this->tableModel->insertRows(tableModel->rowCount()-1, 1);
-            }
-        }
-    }
-    else
-    {
-        message = " Fail to open file: " + fpFile;
-        Log::writeError(message);
-    }
-}
-
-void ContextualizationController::deleteString(int row)
-{
-    this->model.deleteString(row);
-    tableModel->removeRows(row, 1);
-}
-
 void ContextualizationController::detectStringsOnImage()
 {
 
-}
-
-void ContextualizationController::clearTable()
-{
-    tableModel->removeRows(0, tableModel->rowCount());
 }
 
 void ContextualizationController::send()
@@ -229,12 +185,10 @@ void ContextualizationController::send()
     //state = validateModel();
     switch (state) {
     case 0:
-        if(!tmpDir.exists())
-        {
+        if(!tmpDir.exists()) {
             tmpDir.mkpath(".");
         }
-        else
-        {
+        else {
             Utils::warningMessage("Send process in progress.", "Wait until the current process end.");
         }
         break;
@@ -258,11 +212,9 @@ void ContextualizationController::cancel()
     int response;
 
     response = Utils::warningMessage("Are you sure?", "If you not save the proyect it will be deleted.");
-    if (response == QMessageBox::Yes)
-    {
+    if (response == QMessageBox::Yes) {
         //Remove temporal image.
-        if (!this->model.getImagePath().isEmpty())
-        {
+        if (!this->model.getImagePath().isEmpty()) {
             QFile file(this->model.getImagePath());
             if (file.exists())
                 file.remove();
@@ -270,6 +222,34 @@ void ContextualizationController::cancel()
 
         QApplication::quit();
     }
+}
+
+int ContextualizationController::validateModel()
+{
+    if (this->model.getImagePath().isEmpty()) {
+        //No image path
+        return 1;
+    }
+
+    QFile file(this->model.getImagePath());
+    if (!file.exists()) {
+        //Image not exists
+        return 2;
+    }
+
+    if (this->model.getStringsList().size() <= 0) {
+        //Error, there isn't strings in the model.
+        return 3;
+    }
+
+    //All OK
+    return 0;
+}
+
+int ContextualizationController::generatePackage(const QString &path)
+{
+
+    return 0;
 }
 
 FirmwareString * ContextualizationController::fragmentFpLine(QString &line, int lineNumber)
@@ -287,32 +267,26 @@ FirmwareString * ContextualizationController::fragmentFpLine(QString &line, int 
 
     //Fragment fp line.
     list = line.split(" || ");
-    if (list.size() == 4)
-    {
+    if (list.size() == 4) {
         subListIdText = list.at(0).split("  ").mid(0, 2);
         subListIdText << list.at(0).section('\"', 1, 1);
-        if (subListIdText.size() == 3)
-        {
+        if (subListIdText.size() == 3) {
             //((QString &) subListIdText.at(2)).replace(QString("\""), QString("")); //Remove quotes on text value
 
             subListDescription = list.at(1).split("  ").mid(0, 1);
             subListDescription << list.at(1).section('\"', 1, 1);
-            if (subListDescription.size() == 2)
-            {
+            if (subListDescription.size() == 2) {
                 //((QString &) subListDescription.at(1)).replace(QString("\""), QString("")); //Remove quotes on text description
 
                 subListMaxWidth = list.at(2).split("  ");
-                if (subListMaxWidth.size() == 2)
-                {
+                if (subListMaxWidth.size() == 2) {
                     subListLocalization = list.at(3).split("  ");
-                    if (subListLocalization.size() == 2)
-                    {
+                    if (subListLocalization.size() == 2) {
 //                        maxLenght = ((QString)subListMaxWidth.at(1)).toInt(&ok, 10);
 //                        if (ok)
 //                        {
                             QString &state = (QString &)subListLocalization.at(1);
-                            if (state == "TODO" || state == "DONE" || state == "VALIDATED")
-                            {
+                            if (state == "TODO" || state == "DONE" || state == "VALIDATED") {
                                 selected = (state == "TODO") ? true : false;
                                 fwString = new FirmwareString((QString &)subListIdText.at(1), (QString &)subListIdText.at(2), (QString &)subListDescription.at(1),
                                                               ((QString &)subListMaxWidth.at(1)), (QString &)subListLocalization.at(1), selected);
@@ -321,8 +295,7 @@ FirmwareString * ContextualizationController::fragmentFpLine(QString &line, int 
 //                                Log::writeDebug(m);
                                 return fwString;
                             }
-                            else
-                            {
+                            else {
                                 message = " englis.fp: String state not valid on line " + QString::number(lineNumber) + ".";
                                 Log::writeError(message);
                                 return nullptr;
@@ -335,36 +308,31 @@ FirmwareString * ContextualizationController::fragmentFpLine(QString &line, int 
 //                            return nullptr;
 //                        }
                     }
-                    else
-                    {
+                    else {
                         message = "englis.fp: Error format in LOCALIZATION column on line " + QString::number(lineNumber) + ".";
                         Log::writeError(message);
                         return nullptr;
                     }
                 }
-                else
-                {
+                else {
                     message = "englis.fp: Error format in MAX_FIELD_WIDTH column on line " + QString::number(lineNumber) + ".";
                     Log::writeError(message);
                     return nullptr;
                 }
             }
-            else
-            {
+            else {
                 message = "englis.fp: Error format in TEXT_DESCRIPTION column on line " + QString::number(lineNumber) + ".";
                 Log::writeError(message);
                 return nullptr;
             }
         }
-        else
-        {
+        else {
             message = "englis.fp: Error format in MESSAGE_ID column on line " + QString::number(lineNumber) + ".";
             Log::writeError(message);
             return nullptr;
         }
     }
-    else
-    {   message = "englis.fp: Error format by splitting the string in columns by the separator '||' on line " + QString::number(lineNumber) + ".";
+    else {   message = "englis.fp: Error format by splitting the string in columns by the separator '||' on line " + QString::number(lineNumber) + ".";
         Log::writeError(message);
         return nullptr;
     }

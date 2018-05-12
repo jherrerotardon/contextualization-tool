@@ -12,7 +12,7 @@ public:
     Utils();
 
     static void errorMessage(const QString text, const QString informativeText);
-    static int warningMessage(const QString &text, const QString &informativeText);
+    static int warningMessage(const QString text, const QString informativeText);
     static int appendFile(QString &path, QString &text);
 
 };

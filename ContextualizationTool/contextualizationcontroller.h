@@ -23,17 +23,6 @@ class ContextualizationController : public QObject
     //Q_PROPERTY(StringsTableModel * tableModel READ getTableModel WRITE setTableModel)
     Q_PROPERTY(StringsTableModel * tableModel MEMBER tableModel)
 
-private:
-    ContextualizationModel model;
-    StringsTableModel *tableModel;
-    QString fpFile;
-    QString username;
-    QObject * view;
-
-    int validateModel();
-    int generatePackage(QString const &path);
-    FirmwareString * fragmentFpLine(QString &line, int lineNumber);
-
 public:
     explicit ContextualizationController(QObject *view = nullptr, QObject *parent = nullptr);
     ~ContextualizationController();
@@ -41,18 +30,29 @@ public:
     StringsTableModel *getTableModel();
     void setTableModel(StringsTableModel *tableModel);
 
+public slots:
+    void addString(QString newString);
+    void deleteString(int row);
+    void clearTable();
+    void captureArea();
+    void loadImage();
+    void detectStringsOnImage();
+    void send();
+    void cancel();
+
+private:
+    ContextualizationModel model;
+    StringsTableModel *tableModel;
+    QString fpFile;
+    QString username;
+    QObject *view;
+
+    int validateModel();
+    int generatePackage(QString const &path);
+    FirmwareString * fragmentFpLine(QString &line, int lineNumber);
 
 signals:
 
-public slots:
-    void captureArea();
-    void loadImage();
-    void addString(QString newString);
-    void deleteString(int row);
-    void detectStringsOnImage();
-    void clearTable();
-    void cancel();
-    void send();
 };
 
 #endif // CONTEXTUALIZATIONCONTROLLER_H

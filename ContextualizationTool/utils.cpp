@@ -19,7 +19,7 @@ void Utils::errorMessage(const QString text, const QString informativeText)
     msgBox.exec();
 }
 
-int Utils::warningMessage(const QString &text, const QString &informativeText)
+int Utils::warningMessage(const QString text, const QString informativeText)
 {
     QMessageBox msgBox;
 

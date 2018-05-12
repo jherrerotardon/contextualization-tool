@@ -4,11 +4,11 @@ import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Styles 1.4
 
-ApplicationWindow {
+ApplicationWindow {    
     id : mainWindow
     visible: true
-    minimumWidth: 500
-    minimumHeight: 250
+    minimumWidth: Screen.width * 0.4
+    minimumHeight: Screen.height * 0.4
     //visibility: "Maximized"
     width: 800
     height: 480
@@ -72,20 +72,23 @@ ApplicationWindow {
         horizontalScrollBarPolicy: Qt.ScrollBarAsNeeded
 
         RowLayout {
+            property int minWidth: Screen.width * 0.5
+            property int minHeight: Screen.height * 0.5
+
             id: container
             width: calculateWidth()
             height: calculateHeight()
 
             function calculateWidth() {
-                if (mainWindow.width < Screen.width * 0.5)
-                    return Screen.width * 0.5;
+                if (mainWindow.width < minWidth)
+                    return minWidth;
                 else
                     return mainWindow.width - mainScroll.barWidth;
             }
 
             function calculateHeight() {
-                if (mainWindow.height < Screen.height * 0.5)
-                    return Screen.height * 0.5;
+                if (mainWindow.height < minHeight)
+                    return minHeight;
                 else
                     return mainWindow.height - mainScroll.barWidth - menuBar.height;
             }

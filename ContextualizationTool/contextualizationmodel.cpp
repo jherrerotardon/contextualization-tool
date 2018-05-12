@@ -7,14 +7,15 @@ ContextualizationModel::ContextualizationModel()
 
 ContextualizationModel::~ContextualizationModel(){
 
-    foreach (FirmwareString *fwString, this->stringsList) {
+    foreach (FirmwareString *fwString, this->stringsList)
         delete fwString;
-    }
 }
 
-int ContextualizationModel::addNewString(const QString &id, const QString &value, const QString &description, QString maxLength, const QString &state, bool selected){
+void ContextualizationModel::addNewString(const QString &id, const QString &value, const QString &description, const QString &maxLength, const QString &state, const bool selected)
+{
+    FirmwareString *newString = new FirmwareString(id, value, description, maxLength, state, selected);
 
-    return 0;
+    this->stringsList.append(newString);
 }
 
 void ContextualizationModel::addNewString(FirmwareString *newString)
@@ -24,22 +25,22 @@ void ContextualizationModel::addNewString(FirmwareString *newString)
 
 void ContextualizationModel::deleteString(QString &id)
 {
-    int i = 0;
-
     foreach (FirmwareString *fwString, this->stringsList) {
-        if (fwString->getId() == id){
+        if (fwString->getId() == id) {
+            this->stringsList.removeOne(fwString);
             delete fwString;
-            this->stringsList.removeAt(i);
             break;
         }
-        i++;
     }
 }
 
-void ContextualizationModel::deleteString(int pos){
+void ContextualizationModel::deleteString(int pos)
+{
+    FirmwareString *stringToRemove;
 
-    delete this->stringsList.at(pos);
+    stringToRemove = this->stringsList.at(pos);
     this->stringsList.removeAt(pos);
+    delete stringToRemove;
 }
 
 void ContextualizationModel::clearStringsList()
@@ -47,20 +48,23 @@ void ContextualizationModel::clearStringsList()
     this->stringsList.clear();
 }
 
-QList<FirmwareString *> & ContextualizationModel::getStringsList(){
+QList<FirmwareString *> & ContextualizationModel::getStringsList()
+{
     return stringsList;
 }
 
-void ContextualizationModel::setImagePath(QString &path){
-    //Esto elimina el objeto anterior o lo sobreescribe?
-    image = path;
+void ContextualizationModel::setImagePath(QString &path)
+{
+    this->image = path;
 }
 
-QString ContextualizationModel::getImagePath(){
+QString ContextualizationModel::getImagePath()
+{
     return this->image;
 }
 
-int ContextualizationModel::emptyModel(){
+int ContextualizationModel::emptyModel()
+{
 
     return 0;
 }
