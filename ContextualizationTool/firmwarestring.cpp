@@ -1,7 +1,13 @@
 #include "firmwarestring.h"
 
-FirmwareString::FirmwareString(const QString &id, const QString &value, const QString &description, const QString &maxLength, const QString &state, const bool selected)
-{
+FirmwareString::FirmwareString(
+    const QString &id,
+    const QString &value,
+    const QString &description,
+    const QString &maxLength,
+    const QString &state,
+    const bool selected
+) {
     this->id = id;
     this->value = value;
     this->description = description;

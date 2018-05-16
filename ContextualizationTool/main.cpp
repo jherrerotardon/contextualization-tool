@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
-    //    QGuiApplication app(argc, argv);
+    //QGuiApplication app(argc, argv);
     QApplication app(argc, argv); //QApplication para que se puedan ejecutar widgets (QMessageBox)
 
     QQmlApplicationEngine engine;

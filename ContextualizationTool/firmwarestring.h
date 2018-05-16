@@ -6,8 +6,14 @@
 class FirmwareString
 {
 public:
-    FirmwareString(const QString &id, const QString &value, const QString &description, const QString &maxLength, const QString &state, const bool selected);
-
+    FirmwareString(
+        const QString &id,
+        const QString &value,
+        const QString &description,
+        const QString &maxLength,
+        const QString &state,
+        const bool selected
+    );
     QString getId() const;
     QString getValue() const;
     QString getDescription() const;

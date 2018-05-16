@@ -42,7 +42,6 @@ int Utils::appendFile(QString &path, QString &text)
     QTextStream out(&file);
     out << text << '\n';
     file.close();
-
     return 0;
 }
 

@@ -107,7 +107,7 @@ ApplicationWindow {
                     border.color: "black"
                     clip: true
                     Image {
-                        objectName: "captureImage"
+                        objectName: "containerImage"
                         cache: false
                         source: "https://i.ytimg.com/vi/Qv1ffQL1-i8/maxresdefault.jpg"
                         fillMode: Image.PreserveAspectFit
@@ -246,7 +246,7 @@ ApplicationWindow {
                             Image {
                                 objectName: "captureImage"
                                 anchors.fill: parent
-                                source: "images/trash.png"
+                                source: "qrc:/images/trash.png"
                                 fillMode: Image.PreserveAspectFit
                             }
 

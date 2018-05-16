@@ -9,17 +9,17 @@ Log::Log()
 
 }
 
-void Log::writeDebug(QString &text)
+void Log::writeDebug(QString text)
 {
     write(debugFile, text);
 }
 
-void Log::writeLog(QString &text)
+void Log::writeLog(QString text)
 {
     write(logFile, text);
 }
 
-void Log::writeError(QString &text)
+void Log::writeError(QString text)
 {
     write(errorFile, text);
 }
@@ -30,7 +30,13 @@ inline void Log::write(const QString &path, QString &text)
 
     if (file.open(QIODevice::Append | QIODevice::Text)) {
         QTextStream out(&file);
-        out << QDateTime::currentDateTime().toString("dd/MM/yyyy hh:mm:ss") + " " + qgetenv("USER") << " " << text << '\n';
+        out << QDateTime::currentDateTime().toString("dd/MM/yyyy hh:mm:ss")
+            << " "
+            << qgetenv("USER")
+            << " "
+            << text
+            << '\n';
         file.close();
     }
+
 }

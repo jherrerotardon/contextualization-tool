@@ -11,10 +11,15 @@ ContextualizationModel::~ContextualizationModel(){
         delete fwString;
 }
 
-void ContextualizationModel::addNewString(const QString &id, const QString &value, const QString &description, const QString &maxLength, const QString &state, const bool selected)
-{
+void ContextualizationModel::addNewString(
+    const QString &id,
+    const QString &value,
+    const QString &description,
+    const QString &maxLength,
+    const QString &state,
+    const bool selected
+) {
     FirmwareString *newString = new FirmwareString(id, value, description, maxLength, state, selected);
-
     this->stringsList.append(newString);
 }
 
@@ -25,13 +30,13 @@ void ContextualizationModel::addNewString(FirmwareString *newString)
 
 void ContextualizationModel::deleteString(QString &id)
 {
-    foreach (FirmwareString *fwString, this->stringsList) {
+    foreach (FirmwareString *fwString, this->stringsList)
         if (fwString->getId() == id) {
             this->stringsList.removeOne(fwString);
             delete fwString;
             break;
         }
-    }
+
 }
 
 void ContextualizationModel::deleteString(int pos)
@@ -65,6 +70,6 @@ QString ContextualizationModel::getImagePath()
 
 int ContextualizationModel::emptyModel()
 {
-
+    //FALTA
     return 0;
 }

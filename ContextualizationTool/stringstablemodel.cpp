@@ -16,14 +16,12 @@ StringsTableModel::~StringsTableModel()
 int StringsTableModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-
     return strings.size();
 }
 
 int StringsTableModel::columnCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
-
     return 4;
 }
 
@@ -36,13 +34,14 @@ QVariant StringsTableModel::data(const QModelIndex &index, int role) const
         return QVariant();
 
     switch (role) {
-    case StringKey:
-        return strings.value(index.row())->getId();
-    case String:
-        return strings.value(index.row())->getValue();
-    default:
-        return QVariant();
+        case StringKey:
+            return strings.value(index.row())->getId();
+        case String:
+            return strings.value(index.row())->getValue();
+        default:
+            return QVariant();
     }
+
 }
 
 bool StringsTableModel::setData(const QModelIndex &index, const QVariant &value, int role)
@@ -53,13 +52,14 @@ bool StringsTableModel::setData(const QModelIndex &index, const QVariant &value,
     FirmwareString *string = strings.value(index.row());
 
     switch (role) {
-    case String:
-        string->setValue(value.toString());
-        emit(dataChanged(index, index));
-        return true;
-    default:
-        return false;;
+        case String:
+            string->setValue(value.toString());
+            emit(dataChanged(index, index));
+            return true;
+        default:
+            return false;
     }
+
 }
 
 Qt::ItemFlags StringsTableModel::flags(const QModelIndex &index) const
@@ -78,18 +78,14 @@ Qt::ItemFlags StringsTableModel::flags(const QModelIndex &index) const
 bool StringsTableModel::insertRows(int row, int count, const QModelIndex &parent)
 {
     beginInsertRows(parent, row, row + count - 1);
-
     endInsertRows();
-
     return true;
 }
 
 bool StringsTableModel::removeRows(int row, int count, const QModelIndex &parent)
 {
     beginRemoveRows(parent, row, row + count - 1);
-
     endRemoveRows();
-
     return true;
 }
 

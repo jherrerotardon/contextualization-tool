@@ -7,6 +7,7 @@ ContextualizationController::ContextualizationController(QObject *view, QObject 
 {
     QObject *stringsTable;
 
+    this->validStates << "TODO" << "DONE" << "VALIDATED";
     this->fpFile = "/home/jorge/Downloads/english.fp";
     this->username = qgetenv("USER");
     this->view = view;
@@ -19,21 +20,50 @@ ContextualizationController::ContextualizationController(QObject *view, QObject 
             stringsTable->setProperty("model", QVariant::fromValue(this->tableModel));
 
         //Connect signals and slots
-        QObject::connect(view->findChild<QObject *>("clearButton"), SIGNAL(clicked()),
-                         this, SLOT(clearTable()));
-        QObject::connect(view->findChild<QObject *>("addStringButton"), SIGNAL(customClicked(QString)),
-                         this, SLOT(addString(QString)));
-        QObject::connect(view->findChild<QObject *>("buttonsColumn"), SIGNAL(buttonClicked(int)),
-                         this, SLOT(deleteString(int)));
-        QObject::connect(view->findChild<QObject *>("cancelButton"), SIGNAL(clicked()),
-                         this, SLOT(cancel()));
-        QObject::connect(view->findChild<QObject *>("sendButton"), SIGNAL(clicked()),
-                         this, SLOT(send()));
-        QObject::connect(view->findChild<QObject *>("captureAreaButon"), SIGNAL(clicked()),
-                         this, SLOT(captureArea()));
-        QObject::connect(view->findChild<QObject *>("loadImageButton"), SIGNAL(clicked()),
-                         this, SLOT(loadImage()));
+        QObject::connect(
+            view->findChild<QObject *>("clearButton"),
+            SIGNAL(clicked()),
+            this,
+            SLOT(clearTable())
+        );
+        QObject::connect(
+            view->findChild<QObject *>("addStringButton"),
+            SIGNAL(customClicked(QString)),
+            this,
+            SLOT(addString(QString))
+        );
+        QObject::connect(
+            view->findChild<QObject *>("buttonsColumn"),
+            SIGNAL(buttonClicked(int)),
+            this,
+            SLOT(deleteString(int))
+        );
+        QObject::connect(
+            view->findChild<QObject *>("cancelButton"),
+            SIGNAL(clicked()),
+            this,
+            SLOT(cancel())
+        );
+        QObject::connect(
+            view->findChild<QObject *>("sendButton"),
+            SIGNAL(clicked()),
+            this,
+            SLOT(send())
+        );
+        QObject::connect(
+            view->findChild<QObject *>("captureAreaButon"),
+            SIGNAL(clicked()),
+            this,
+            SLOT(loadCaptureArea())
+        );
+        QObject::connect(
+            view->findChild<QObject *>("loadImageButton"),
+            SIGNAL(clicked()),
+            this,
+            SLOT(loadImage())
+        );
     }
+
 }
 
 ContextualizationController::~ContextualizationController()
@@ -53,57 +83,34 @@ void ContextualizationController::setTableModel(StringsTableModel *tableModel)
 
 void ContextualizationController::addString(QString newString)
 {
-    int count = 0;
     int response;
-    bool stringFound = false;
     QString emptyString("");
     QString state;
-    QString line;
-    QString message;
-    QFile file(fpFile);
     FirmwareString *fwString;
 
-    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        QTextStream in(&file);
-
-        while (!file.atEnd()) {
-            line = in.readLine();
-            count ++;
-
-            fwString = this->fragmentFpLine(line, count);
-            if (fwString != nullptr) {
-                if (newString == fwString->getValue()) {
-                    this->model.addNewString(fwString);
-                    this->tableModel->insertRows(this->tableModel->rowCount()-1, 1);
-                    stringFound = true;
-                    break; //Stop to read file
-                }
-                else {
-                    delete fwString;
-                }
-            }
-            else {
-                //Mensaje en el log de error
-                //                Utils::errorMessage(QString(fpFile + " format is not correctly."),
-                //                                    QString("Format error on line " + QString(std::to_string(count).c_str())));
-            }
-        }
-        file.close();
-
-        if (stringFound == false) {
-            response = Utils::warningMessage("String isn't in english.fp file.", "Are you sure to add the string?");
-            if (response == QMessageBox::Yes) {
-                state = "TODO";
-                fwString = new FirmwareString(emptyString, newString, emptyString, QString::number(newString.size()), state, false);
-                this->model.addNewString(fwString);
-                this->tableModel->insertRows(tableModel->rowCount()-1, 1);
-            }
-        }
-    }
+    fwString = this->findString(newString);
+    if (fwString)
+        this->addNewString(fwString);
     else {
-        message = " Fail to open file: " + fpFile;
-        Log::writeError(message);
+        response = Utils::warningMessage(
+            "Impossible to found the string in english.fp file.",
+            "Are you sure to add the string?"
+        );
+        if (response == QMessageBox::Yes) {
+            state = "TODO";
+            fwString = new FirmwareString(
+                emptyString,
+                newString,
+                emptyString,
+                QString::number(newString.size()),
+                state,
+                false
+            );
+            this->addNewString(fwString);
+        }
+
     }
+
 }
 
 void ContextualizationController::deleteString(int row)
@@ -117,31 +124,13 @@ void ContextualizationController::clearTable()
     tableModel->removeRows(0, tableModel->rowCount());
 }
 
-void ContextualizationController::captureArea()
+void ContextualizationController::loadCaptureArea()
 {
-    QProcess *capture;
-    QStringList arguments;
-    QObject *image;
-    QString path("/tmp/capture.png");
-
-    arguments << "-quality" << "9" << path;
+    QString path;
 
     ((QWindow *)view)->setVisible(false);
-
-    capture = new QProcess();
-    capture->start("import", arguments);
-    if (capture->waitForFinished(30000)) {
-        image = view->findChild<QObject *>("captureImage");
-        image->setProperty("source", "");
-        image->setProperty("source", "file:" + path);
-        this->model.setImagePath(path);
-    }
-    else {
-        //Pasaron 30 segs si que usuario haga captura
-    }
-
-    delete capture;
-
+    path = this->captureArea();
+    this->setImage(path);
     ((QWindow *)view)->setVisible(true);
 }
 
@@ -154,21 +143,19 @@ void ContextualizationController::loadImage()
      */
 
     QStringList fileNames;
-    QObject *image;
-    QFileDialog dialog(Q_NULLPTR, tr("Open Image"), QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first(),
-                       tr("Images (*.png *.xpm *.jpg)"));
+    QFileDialog dialog(
+        Q_NULLPTR,
+        tr("Open Image"),
+        QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first(),
+        tr("Images (*.png *.xpm *.jpg)")
+    );
 
     dialog.setViewMode(QFileDialog::Detail);
-
     if (dialog.exec()) {
         fileNames = dialog.selectedFiles();
+        if (!fileNames.isEmpty())
+            this->setImage(fileNames.first());
 
-        if (!fileNames.isEmpty()) {
-            image = view->findChild<QObject *>("captureImage");
-            image->setProperty("source", "");
-            image->setProperty("source", "file:" + fileNames.first());
-            this->model.setImagePath(fileNames.first());
-        }
     }
 }
 
@@ -184,27 +171,28 @@ void ContextualizationController::send()
 
     //state = validateModel();
     switch (state) {
-    case 0:
-        if(!tmpDir.exists()) {
-            tmpDir.mkpath(".");
-        }
-        else {
-            Utils::warningMessage("Send process in progress.", "Wait until the current process end.");
-        }
-        break;
-    case 1:
-        Utils::errorMessage("Fail to send!!", "There isn't an image asociated.");
-        break;
-    case 2:
-        Utils::errorMessage("Fail to send!!", "The image associated doesn't exist. Please reload the image.");
-        break;
-    case 3:
-        Utils::errorMessage("Fail to send!!", "There aren't any string asociated.");
-        break;
-    default:
-        Utils::errorMessage("Fail to send!!", "Unknown error.");
-        break;
+        case 0:
+            if(!tmpDir.exists()) {
+                tmpDir.mkpath(".");
+            }
+            else {
+                Utils::warningMessage("Send process in progress.", "Wait until the current process end.");
+            }
+            break;
+        case 1:
+            Utils::errorMessage("Fail to send!!", "There isn't an image asociated.");
+            break;
+        case 2:
+            Utils::errorMessage("Fail to send!!", "The image associated doesn't exist. Please reload the image.");
+            break;
+        case 3:
+            Utils::errorMessage("Fail to send!!", "There aren't any string asociated.");
+            break;
+        default:
+            Utils::errorMessage("Fail to send!!", "Unknown error.");
+            break;
     }
+
 }
 
 void ContextualizationController::cancel()
@@ -214,14 +202,13 @@ void ContextualizationController::cancel()
     response = Utils::warningMessage("Are you sure?", "If you not save the proyect it will be deleted.");
     if (response == QMessageBox::Yes) {
         //Remove temporal image.
-        if (!this->model.getImagePath().isEmpty()) {
-            QFile file(this->model.getImagePath());
-            if (file.exists())
-                file.remove();
-        }
+        QFile file(this->model.getImagePath());
+        if (file.exists())
+            file.remove();
 
         QApplication::quit();
     }
+
 }
 
 int ContextualizationController::validateModel()
@@ -252,6 +239,37 @@ int ContextualizationController::generatePackage(const QString &path)
     return 0;
 }
 
+FirmwareString * ContextualizationController::findString(const QString &text)
+{
+    int numberOfLine = 0;
+    QString line;
+    QString message;
+    QFile file(fpFile);
+    FirmwareString *fwString = nullptr;
+
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QTextStream in(&file);
+        while (!file.atEnd()) {
+            line = in.readLine();
+            numberOfLine ++;
+            fwString = this->fragmentFpLine(line, numberOfLine);
+            if (!fwString) {
+                if (text == fwString->getValue())
+                    break; //Stop to read file
+                else
+                    delete fwString;
+            }
+        }
+
+        file.close();
+    } else {
+        message = " Fail to open file: " + fpFile;
+        Log::writeError(message);
+    }
+
+    return fwString;
+}
+
 FirmwareString * ContextualizationController::fragmentFpLine(QString &line, int lineNumber)
 {
     QStringList list;
@@ -260,10 +278,7 @@ FirmwareString * ContextualizationController::fragmentFpLine(QString &line, int 
     QStringList subListMaxWidth;
     QStringList subListLocalization;
     QString message;
-    FirmwareString *fwString;
-    int maxLenght;
     bool selected;
-    bool ok;
 
     //Fragment fp line.
     list = line.split(" || ");
@@ -271,69 +286,116 @@ FirmwareString * ContextualizationController::fragmentFpLine(QString &line, int 
         subListIdText = list.at(0).split("  ").mid(0, 2);
         subListIdText << list.at(0).section('\"', 1, 1);
         if (subListIdText.size() == 3) {
-            //((QString &) subListIdText.at(2)).replace(QString("\""), QString("")); //Remove quotes on text value
-
             subListDescription = list.at(1).split("  ").mid(0, 1);
             subListDescription << list.at(1).section('\"', 1, 1);
             if (subListDescription.size() == 2) {
-                //((QString &) subListDescription.at(1)).replace(QString("\""), QString("")); //Remove quotes on text description
-
                 subListMaxWidth = list.at(2).split("  ");
                 if (subListMaxWidth.size() == 2) {
                     subListLocalization = list.at(3).split("  ");
                     if (subListLocalization.size() == 2) {
-//                        maxLenght = ((QString)subListMaxWidth.at(1)).toInt(&ok, 10);
-//                        if (ok)
-//                        {
                             QString &state = (QString &)subListLocalization.at(1);
-                            if (state == "TODO" || state == "DONE" || state == "VALIDATED") {
+                            if (this->isValidState(state)) {
                                 selected = (state == "TODO") ? true : false;
-                                fwString = new FirmwareString((QString &)subListIdText.at(1), (QString &)subListIdText.at(2), (QString &)subListDescription.at(1),
-                                                              ((QString &)subListMaxWidth.at(1)), (QString &)subListLocalization.at(1), selected);
-//                                QString m = (QString &)subListIdText.at(1) + " "+(QString &)subListIdText.at(2) +" "+ (QString &)subListDescription.at(1)
-//                                        +" "+QString::number(maxLenght)+" "+(QString &)subListLocalization.at(1);
-//                                Log::writeDebug(m);
-                                return fwString;
-                            }
-                            else {
-                                message = " englis.fp: String state not valid on line " + QString::number(lineNumber) + ".";
+                                return new FirmwareString(
+                                    (QString &)subListIdText.at(1),
+                                    (QString &)subListIdText.at(2),
+                                    (QString &)subListDescription.at(1),
+                                    ((QString &)subListMaxWidth.at(1)),
+                                    (QString &)subListLocalization.at(1),
+                                    selected
+                                );
+                            } else {
+                                message = " englis.fp: String state not valid on line "
+                                        + QString::number(lineNumber)
+                                        + ".";
                                 Log::writeError(message);
                                 return nullptr;
                             }
-//                        }
-//                        else
-//                        {
-//                            message = "englis.fp: MaxWidth couldn't be converted to int on line " + QString::number(lineNumber) + ".";
-//                            Log::writeError(message);
-//                            return nullptr;
-//                        }
-                    }
-                    else {
-                        message = "englis.fp: Error format in LOCALIZATION column on line " + QString::number(lineNumber) + ".";
+
+                    } else {
+                        message = "englis.fp: Error format in LOCALIZATION column on line "
+                                + QString::number(lineNumber)
+                                + ".";
                         Log::writeError(message);
                         return nullptr;
                     }
-                }
-                else {
-                    message = "englis.fp: Error format in MAX_FIELD_WIDTH column on line " + QString::number(lineNumber) + ".";
+
+                } else {
+                    message = "englis.fp: Error format in MAX_FIELD_WIDTH column on line "
+                            + QString::number(lineNumber)
+                            + ".";
                     Log::writeError(message);
                     return nullptr;
                 }
-            }
-            else {
-                message = "englis.fp: Error format in TEXT_DESCRIPTION column on line " + QString::number(lineNumber) + ".";
+
+            } else {
+                message = "englis.fp: Error format in TEXT_DESCRIPTION column on line "
+                        + QString::number(lineNumber)
+                        + ".";
                 Log::writeError(message);
                 return nullptr;
             }
-        }
-        else {
-            message = "englis.fp: Error format in MESSAGE_ID column on line " + QString::number(lineNumber) + ".";
+
+        } else {
+            message = "englis.fp: Error format in MESSAGE_ID column on line "
+                    + QString::number(lineNumber)
+                    + ".";
             Log::writeError(message);
             return nullptr;
         }
-    }
-    else {   message = "englis.fp: Error format by splitting the string in columns by the separator '||' on line " + QString::number(lineNumber) + ".";
+
+    } else {
+        message = "englis.fp: Error format by splitting the string in columns by the separator '||' on line "
+                + QString::number(lineNumber)
+                + ".";
         Log::writeError(message);
         return nullptr;
     }
+
+}
+
+bool ContextualizationController::isValidState(QString &state)
+{
+    if (this->validStates.contains(state))
+        return true;
+
+    return false;
+}
+
+void ContextualizationController::addNewString(FirmwareString *&fwString)
+{
+    this->model.addNewString(fwString);
+    this->tableModel->insertRows(tableModel->rowCount()-1, 1);
+}
+
+QString ContextualizationController::captureArea()
+{
+    QProcess *captureProcess;
+    QStringList arguments;
+    QString path;
+
+    captureProcess = new QProcess();
+    arguments << "-quality" << "9" << "/tmp/capture.png";
+    captureProcess->start("import", arguments);
+    path = captureProcess->waitForFinished(30000) ? "/tmp/capture.png" : "";
+    delete captureProcess;
+
+    return path;
+}
+
+void ContextualizationController::setImage(QString &imagePath)
+{
+    QObject *containerImage;
+    QFile image(imagePath);
+
+    if (image.exists()) {
+        containerImage = view->findChild<QObject *>("containerImage");
+        containerImage->setProperty("source", "");
+        containerImage->setProperty("source", "file:" + imagePath);
+        this->model.setImagePath(imagePath);
+    } else {
+        Log::writeError("Image to set not exists: " + imagePath);
+        Utils::errorMessage("Impossible to set image.", "Try it again.");
+    }
+
 }
