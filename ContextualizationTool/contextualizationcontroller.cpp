@@ -63,7 +63,6 @@ ContextualizationController::ContextualizationController(QObject *view, QObject 
             SLOT(loadImage())
         );
     }
-
 }
 
 ContextualizationController::~ContextualizationController()
@@ -108,9 +107,7 @@ void ContextualizationController::addString(QString newString)
             );
             this->addNewString(fwString);
         }
-
     }
-
 }
 
 void ContextualizationController::deleteString(int row)
@@ -155,7 +152,6 @@ void ContextualizationController::loadImage()
         fileNames = dialog.selectedFiles();
         if (!fileNames.isEmpty())
             this->setImage(fileNames.first());
-
     }
 }
 
@@ -192,7 +188,6 @@ void ContextualizationController::send()
             Utils::errorMessage("Fail to send!!", "Unknown error.");
             break;
     }
-
 }
 
 void ContextualizationController::cancel()
@@ -208,7 +203,6 @@ void ContextualizationController::cancel()
 
         QApplication::quit();
     }
-
 }
 
 int ContextualizationController::validateModel()
@@ -351,7 +345,6 @@ FirmwareString * ContextualizationController::fragmentFpLine(QString &line, int 
         Log::writeError(message);
         return nullptr;
     }
-
 }
 
 bool ContextualizationController::isValidState(QString &state)
@@ -397,5 +390,4 @@ void ContextualizationController::setImage(QString &imagePath)
         Log::writeError("Image to set not exists: " + imagePath);
         Utils::errorMessage("Impossible to set image.", "Try it again.");
     }
-
 }

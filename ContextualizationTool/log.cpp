@@ -38,5 +38,4 @@ inline void Log::write(const QString &path, QString &text)
             << '\n';
         file.close();
     }
-
 }

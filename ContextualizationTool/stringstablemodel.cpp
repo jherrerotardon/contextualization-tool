@@ -41,7 +41,6 @@ QVariant StringsTableModel::data(const QModelIndex &index, int role) const
         default:
             return QVariant();
     }
-
 }
 
 bool StringsTableModel::setData(const QModelIndex &index, const QVariant &value, int role)
@@ -59,7 +58,6 @@ bool StringsTableModel::setData(const QModelIndex &index, const QVariant &value,
         default:
             return false;
     }
-
 }
 
 Qt::ItemFlags StringsTableModel::flags(const QModelIndex &index) const

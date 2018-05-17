@@ -36,7 +36,6 @@ void ContextualizationModel::deleteString(QString &id)
             delete fwString;
             break;
         }
-
 }
 
 void ContextualizationModel::deleteString(int pos)
