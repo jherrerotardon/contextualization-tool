@@ -262,6 +262,7 @@ ApplicationWindow {
 
                     Button {
                         id: detectStringsButton
+                        objectName: "detectStringsButton"
                         text: "DETECT STRINGS ON IMAGE"
                         Layout.alignment: Qt.AlignRight
                     }

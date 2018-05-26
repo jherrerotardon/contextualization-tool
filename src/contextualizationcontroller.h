@@ -17,6 +17,7 @@
 #include "stringstablemodel.h"
 #include "utils.h"
 #include "log.h"
+#include "ocr.h"
 
 class ContextualizationController : public QObject
 {

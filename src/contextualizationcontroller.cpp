@@ -8,7 +8,7 @@ ContextualizationController::ContextualizationController(QObject *view, QObject 
     QObject *stringsTable;
 
     this->validStates << "TODO" << "DONE" << "VALIDATED";
-    this->fpFile = "/home/jorge/Downloads/english.fp";
+    this->fpFile = "/home/jorge/Descargas/english.fp";
     this->username = qgetenv("USER");
     this->view = view;
 
@@ -62,6 +62,12 @@ ContextualizationController::ContextualizationController(QObject *view, QObject 
             this,
             SLOT(loadImage())
         );
+        QObject::connect(
+            view->findChild<QObject *>("detectStringsButton"),
+            SIGNAL(clicked()),
+            this,
+            SLOT(detectStringsOnImage())
+        );
     }
 }
 
@@ -92,7 +98,7 @@ void ContextualizationController::addString(QString newString)
         this->addNewString(fwString);
     else {
         response = Utils::warningMessage(
-            "Impossible to found the string in english.fp file.",
+            "Impossible to find the string in english.fp file.",
             "Are you sure to add the string?"
         );
         if (response == QMessageBox::Yes) {
@@ -133,7 +139,7 @@ void ContextualizationController::loadCaptureArea()
 
 void ContextualizationController::loadImage()
 {
-    /*
+    /*TODO:
      * La segunda vez se abre la ventana detrás de la principal.
      * Cuando está abierto en FileDialog, deja seleccionar cosas de la ventana principal
      * y se ejecutan cuando se cierra el FileDialog.
@@ -157,7 +163,20 @@ void ContextualizationController::loadImage()
 
 void ContextualizationController::detectStringsOnImage()
 {
+    Ocr test;
+    //test.setDataPath("/home/jorge/Projects/contextualization-tool/tesseract/tessdata/");
+//    foreach (QString s, test.getAvailableLanguages()) {
+//        qDebug() << s;
+//    }
 
+    test.setImage("/home/jorge/Descargas/test.png");
+    QStringList *a = test.run();
+    qDebug() << "Numero resultados = " << a->size();
+    foreach (QString s, *a) {
+        qDebug() << s;
+    }
+
+    delete a;
 }
 
 void ContextualizationController::send()
@@ -247,7 +266,7 @@ FirmwareString * ContextualizationController::findString(const QString &text)
             line = in.readLine();
             numberOfLine ++;
             fwString = this->fragmentFpLine(line, numberOfLine);
-            if (!fwString) {
+            if (fwString) {
                 if (text == fwString->getValue())
                     break; //Stop to read file
                 else
