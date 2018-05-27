@@ -150,7 +150,7 @@ void ContextualizationController::loadImage()
         Q_NULLPTR,
         tr("Open Image"),
         QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first(),
-        tr("Images (*.png *.xpm *.jpg)")
+        tr("Images (*.png *.xpm *.jpg *.jpeg *.bmp)")
     );
 
     dialog.setViewMode(QFileDialog::Detail);
