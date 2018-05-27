@@ -8,7 +8,7 @@ ContextualizationController::ContextualizationController(QObject *view, QObject 
     QObject *stringsTable;
 
     this->validStates << "TODO" << "DONE" << "VALIDATED";
-    this->fpFile = "/home/jorge/Descargas/english.fp";
+    this->fpFile = "/home/jorge/Descargas/test.fp";
     this->username = qgetenv("USER");
     this->view = view;
 
@@ -93,10 +93,11 @@ void ContextualizationController::addString(QString newString)
     QString state;
     FirmwareString *fwString;
 
-    fwString = this->findString(newString);
-    if (fwString)
+    fwString = this->findString(newString);    
+    if (fwString) {
         this->addNewString(fwString);
-    else {
+
+    } else {
         response = Utils::warningMessage(
             "Impossible to find the string in english.fp file.",
             "Are you sure to add the string?"
@@ -118,13 +119,14 @@ void ContextualizationController::addString(QString newString)
 
 void ContextualizationController::deleteString(int row)
 {
-    this->model.deleteString(row);
     tableModel->removeRows(row, 1);
+    this->model.deleteString(row);
 }
 
 void ContextualizationController::clearTable()
 {
     tableModel->removeRows(0, tableModel->rowCount());
+    this->model.clearStringsList();
 }
 
 void ContextualizationController::loadCaptureArea()
@@ -267,10 +269,12 @@ FirmwareString * ContextualizationController::findString(const QString &text)
             numberOfLine ++;
             fwString = this->fragmentFpLine(line, numberOfLine);
             if (fwString) {
-                if (text == fwString->getValue())
-                    break; //Stop to read file
-                else
+                if (text == fwString->getValue()) {
+                    break; ///< Stop to read file
+                } else {
                     delete fwString;
+                    fwString = nullptr;
+                }
             }
         }
 
@@ -374,10 +378,22 @@ bool ContextualizationController::isValidState(QString &state)
     return false;
 }
 
-void ContextualizationController::addNewString(FirmwareString *&fwString)
+bool ContextualizationController::addNewString(FirmwareString *&fwString)
 {
-    this->model.addNewString(fwString);
-    this->tableModel->insertRows(tableModel->rowCount()-1, 1);
+    if (fwString == nullptr) {
+        return false;
+    }
+
+    if (this->isFpStringAlreadyExists(*fwString)) {
+        delete fwString;
+        fwString = nullptr;
+        Utils::errorMessage("Duplicate string.", "Alredy exists an equal string in the contextualization.");
+        return false;
+    } else {
+        this->model.addNewString(fwString);
+        this->tableModel->insertRows(tableModel->rowCount()-1, 1);
+        return true;
+    }
 }
 
 QString ContextualizationController::captureArea()
@@ -409,4 +425,25 @@ void ContextualizationController::setImage(QString &imagePath)
         Log::writeError("Image to set not exists: " + imagePath);
         Utils::errorMessage("Impossible to set image.", "Try it again.");
     }
+}
+
+bool ContextualizationController::isFpStringAlreadyExists(FirmwareString &fwString)
+{
+    if (fwString.getId().isEmpty()) {
+        //Check that there aren't strings with the same value.
+        foreach (FirmwareString *string, this->model.getStringsList()) {
+            if (string->getValue() == fwString.getValue()) {
+                return true;
+            }
+        }
+    } else {
+        //Check that there aren't strings with the same id.
+        foreach (FirmwareString *string, this->model.getStringsList()) {
+            if (string->getId() == fwString.getId()) {
+                return true;
+            }
+        }
+    }
+
+    return false;
 }

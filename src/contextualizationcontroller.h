@@ -79,9 +79,12 @@ private:
      *
      * The FirmwareString is added on the model of the tool. Also strings TableView model is notified because is
      * necessary to refresh the view of TableView.
+     * If the parameter fwString is null, nothing is done.
+     * Return true if FirmwareString is added successfully and false if not.
      * @param fwString FirmwareString * The string to add on the model.
+     * @return bool
      */
-    void addNewString(FirmwareString *&fwString);
+    bool addNewString(FirmwareString *&fwString);
 
     /**
      * @brief Start a process that allow user capture an area of the screen.
@@ -92,6 +95,16 @@ private:
      */
     QString captureArea();
     void setImage(QString &imagePath);
+
+    /**
+     * @brief Check that the FirmwareString is not already in the model.
+     *
+     * If the FirmwareString has no empty id, checks that there is not any FirmwareString with the same id. If the
+     * FirmwareString id is empty, then checks that there is not any FirmwareString with the same value.
+     * @param fwString
+     * @return bool
+     */
+    bool isFpStringAlreadyExists(FirmwareString &fwString);
 
 signals:
 
