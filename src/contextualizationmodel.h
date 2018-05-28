@@ -3,6 +3,8 @@
 
 #include <QString>
 #include <QList>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include "firmwarestring.h"
 
 class ContextualizationModel
@@ -26,7 +28,9 @@ public:
     QList<FirmwareString *> & getStringsList();
     void setImagePath(QString &path);
     QString getImagePath();
-    int emptyModel();
+    void clear();
+    QString toJson(QJsonDocument::JsonFormat format = QJsonDocument::Compact);
+    QJsonObject toJsonObject();
 
 private:
     QString image;

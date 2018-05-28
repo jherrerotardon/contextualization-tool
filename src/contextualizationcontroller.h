@@ -41,6 +41,9 @@ public slots:
     void detectStringsOnImage();
     void send();
     void cancel();
+    void save();
+    void exportProject();
+    void importProject();
 
 private:
     ContextualizationModel model;

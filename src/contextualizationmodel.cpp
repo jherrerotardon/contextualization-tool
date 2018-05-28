@@ -67,8 +67,33 @@ QString ContextualizationModel::getImagePath()
     return this->image;
 }
 
-int ContextualizationModel::emptyModel()
+void ContextualizationModel::clear()
 {
-    //FALTA
-    return 0;
+    this->image = "";
+    foreach (FirmwareString *fwString, this->stringsList) {
+        delete fwString;
+        fwString = nullptr;
+    }
+
+    this->stringsList.clear();
+}
+
+QString ContextualizationModel::toJson(QJsonDocument::JsonFormat format)
+{
+    return QString(QJsonDocument(this->toJsonObject()).toJson(format));
+}
+
+QJsonObject ContextualizationModel::toJsonObject()
+{
+    QJsonObject root;
+    QJsonObject stringsList;
+
+    for (int count = 0; count < this->stringsList.size(); ++count) {
+        stringsList.insert(QString::number(count),  this->stringsList.at(count)->toJsonObject());
+    }
+
+    root.insert("image", QJsonValue(this->image));
+    root.insert("strings", stringsList);
+
+    return root;
 }

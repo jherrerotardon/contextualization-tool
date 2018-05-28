@@ -2,6 +2,8 @@
 #define FIRMWARESTRING_H
 
 #include <QString>
+#include <QJsonDocument>
+#include <QJsonObject>
 
 class FirmwareString
 {
@@ -23,6 +25,8 @@ public:
     bool isSelected() const;
     void select();
     void unselect();
+    QString toJson(QJsonDocument::JsonFormat format = QJsonDocument::Compact);
+    QJsonObject toJsonObject();
 
 private:
     QString id;

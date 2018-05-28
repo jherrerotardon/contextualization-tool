@@ -8,7 +8,7 @@ ContextualizationController::ContextualizationController(QObject *view, QObject 
     QObject *stringsTable;
 
     this->validStates << "TODO" << "DONE" << "VALIDATED";
-    this->fpFile = "/home/jorge/Descargas/test.fp";
+    this->fpFile = "/home/jorge/Descargas/english.fp";
     this->username = qgetenv("USER");
     this->view = view;
 
@@ -99,7 +99,7 @@ void ContextualizationController::addString(QString newString)
 
     } else {
         response = Utils::warningMessage(
-            "Impossible to find the string in english.fp file.",
+            "Impossible to find the string in " + this->fpFile + " file.",
             "Are you sure to add the string?"
         );
         if (response == QMessageBox::Yes) {
@@ -226,6 +226,24 @@ void ContextualizationController::cancel()
     }
 }
 
+void ContextualizationController::save()
+{
+
+}
+
+void ContextualizationController::exportProject()
+{
+    QString file("/home/jorge/Descargas/prueba.json");
+    QString text(this->model.toJson());
+
+    Utils::appendFile(file, text);
+}
+
+void ContextualizationController::importProject()
+{
+
+}
+
 int ContextualizationController::validateModel()
 {
     if (this->model.getImagePath().isEmpty()) {
@@ -264,7 +282,7 @@ FirmwareString * ContextualizationController::findString(const QString &text)
 
     if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         QTextStream in(&file);
-        while (!file.atEnd()) {
+        while (!in.atEnd()) {
             line = in.readLine();
             numberOfLine ++;
             fwString = this->fragmentFpLine(line, numberOfLine);
