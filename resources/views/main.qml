@@ -32,6 +32,21 @@ ApplicationWindow {
 
         Menu {
             title: "File"
+
+            MenuItem {
+                objectName: "importButton"
+                text : "Import Project"
+                shortcut : "Ctrl+I"
+                iconSource: "qrc:/images/import.png"
+            }
+
+            MenuItem {
+                objectName: "exportButton"
+                text : "Export Project"
+                shortcut : "Ctrl+E"
+                iconSource: "qrc:/images/export.png"
+            }
+
             MenuItem {
                 text : "Exit"
                 shortcut : "Ctrl+Q"
@@ -39,6 +54,7 @@ ApplicationWindow {
                 onTriggered: Qt.quit()
             }
         }
+
         Menu {
             title: "Edit"
             MenuItem {
@@ -47,6 +63,7 @@ ApplicationWindow {
                 iconSource: "qrc:/images/copy.png"
                 onTriggered: activeFocusItem.copy()
             }
+
             MenuItem {
                 text: "Paste"
                 shortcut: "Ctrl+V"
@@ -106,6 +123,7 @@ ApplicationWindow {
                     border.width : 1
                     border.color: "black"
                     clip: true
+
                     Image {
                         objectName: "containerImage"
                         cache: false
@@ -122,6 +140,7 @@ ApplicationWindow {
                     text: "Auto detect new strings when load image"
                     Layout.alignment: Qt.AlignHCenter
                 }
+
                 RowLayout {
                     Layout.fillWidth: true
                     Layout.topMargin: 20
@@ -129,6 +148,7 @@ ApplicationWindow {
                     Item {
                         Layout.fillWidth: true
                     }
+
                     RowLayout {
                         Layout.preferredWidth: autoDetectCheckBox.width
                         Layout.maximumWidth: autoDetectCheckBox.width
@@ -140,9 +160,11 @@ ApplicationWindow {
                             text: "CAPTURE AREA"
                             Layout.preferredHeight: 45
                         }
+
                         Item {
                             Layout.fillWidth: true
                         }
+
                         Button {
                             id: loadImageButton
                             objectName: "loadImageButton"
@@ -151,13 +173,14 @@ ApplicationWindow {
                             Layout.preferredHeight: 45
                         }
                     }
+
                     Item {
                         Layout.fillWidth: true
                     }
                 }
             }
+
             ColumnLayout {
-                id: bb
                 Layout.preferredWidth: parent.width * 0.45
                 Layout.maximumWidth: parent.width * 0.45
                 Layout.alignment: Qt.AlignRight
@@ -172,8 +195,8 @@ ApplicationWindow {
                         placeholderText: qsTr("New string to add...")
                         Layout.fillWidth: true
                     }
-                    Button {
 
+                    Button {
                         signal customClicked(string newString)
 
                         id: addStringButton
@@ -183,6 +206,7 @@ ApplicationWindow {
                         onClicked: customClicked(newStringInput.text)
                     }
                 }
+
                 TableView {
                     id: stringsTable
                     objectName: "stringsTable"
@@ -198,6 +222,7 @@ ApplicationWindow {
 
                         delegate: Item {
                             anchors.fill: parent
+
                             CheckBox {
                                 enabled: true
                                 anchors.verticalCenter: parent.verticalCenter

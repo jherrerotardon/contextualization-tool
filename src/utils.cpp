@@ -45,4 +45,16 @@ int Utils::appendFile(QString &path, QString &text)
     return 0;
 }
 
+int Utils::writeFile(QString &path, QString &text)
+{
+    QFile file(path);
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+        return -1;
+
+    QTextStream out(&file);
+    out << text << '\n';
+    file.close();
+    return 0;
+}
+
 

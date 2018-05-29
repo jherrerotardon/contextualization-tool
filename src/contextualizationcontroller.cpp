@@ -68,6 +68,18 @@ ContextualizationController::ContextualizationController(QObject *view, QObject 
             this,
             SLOT(detectStringsOnImage())
         );
+        QObject::connect(
+            view->findChild<QObject *>("importButton"),
+            SIGNAL(triggered()),
+            this,
+            SLOT(importProject())
+        );
+        QObject::connect(
+            view->findChild<QObject *>("exportButton"),
+            SIGNAL(triggered()),
+            this,
+            SLOT(exportProject())
+        );
     }
 }
 
@@ -147,7 +159,6 @@ void ContextualizationController::loadImage()
      * y se ejecutan cuando se cierra el FileDialog.
      */
 
-    QStringList fileNames;
     QFileDialog dialog(
         Q_NULLPTR,
         tr("Open Image"),
@@ -155,11 +166,11 @@ void ContextualizationController::loadImage()
         tr("Images (*.png *.xpm *.jpg *.jpeg *.bmp)")
     );
 
+    dialog.setAcceptMode(QFileDialog::AcceptOpen);
+    dialog.setFileMode(QFileDialog::ExistingFile);
     dialog.setViewMode(QFileDialog::Detail);
     if (dialog.exec()) {
-        fileNames = dialog.selectedFiles();
-        if (!fileNames.isEmpty())
-            this->setImage(fileNames.first());
+        this->setImage(dialog.selectedFiles().first());
     }
 }
 
@@ -233,10 +244,23 @@ void ContextualizationController::save()
 
 void ContextualizationController::exportProject()
 {
-    QString file("/home/jorge/Descargas/prueba.json");
-    QString text(this->model.toJson());
+    QString text;
+    QString fileName;
+    QFileDialog dialog(
+        Q_NULLPTR,
+        tr("Save Project"),
+        QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first(),
+        tr("Contextualization File (*.json)")
+    );
 
-    Utils::appendFile(file, text);
+    dialog.setAcceptMode(QFileDialog::AcceptSave);
+    dialog.setFileMode(QFileDialog::ExistingFile);
+    dialog.setViewMode(QFileDialog::Detail);
+    if (dialog.exec()) {
+        fileName = dialog.selectedFiles().first();
+        text = this->model.toJson();
+        Utils::writeFile(fileName.endsWith(QString(".json")) ? filename filename + ".json", text);
+    }
 }
 
 void ContextualizationController::importProject()
