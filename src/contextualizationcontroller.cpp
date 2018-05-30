@@ -7,6 +7,7 @@ ContextualizationController::ContextualizationController(QObject *view, QObject 
 {
     QObject *stringsTable;
 
+    this->model = new ContextualizationModel();
     this->validStates << "TODO" << "DONE" << "VALIDATED";
     this->fpFile = "/home/jorge/Descargas/english.fp";
     this->username = qgetenv("USER");
@@ -14,7 +15,7 @@ ContextualizationController::ContextualizationController(QObject *view, QObject 
 
     if (view != nullptr) {
         //Initialize TableView and his model.
-        this->tableModel = new StringsTableModel(this->model.getStringsList());
+        this->tableModel = new StringsTableModel(this->model->getStringsList());
         stringsTable = view->findChild<QObject *>("stringsTable");
         if (stringsTable)
             stringsTable->setProperty("model", QVariant::fromValue(this->tableModel));
@@ -85,6 +86,8 @@ ContextualizationController::ContextualizationController(QObject *view, QObject 
 
 ContextualizationController::~ContextualizationController()
 {
+    //TODO: delete de null peta?
+    delete model;
     delete tableModel;
 }
 
@@ -131,14 +134,14 @@ void ContextualizationController::addString(QString newString)
 
 void ContextualizationController::deleteString(int row)
 {
-    tableModel->removeRows(row, 1);
-    this->model.deleteString(row);
+    this->tableModel->removeRows(row, 1);
+    this->model->deleteString(row);
 }
 
 void ContextualizationController::clearTable()
 {
-    tableModel->removeRows(0, tableModel->rowCount());
-    this->model.clearStringsList();
+    this->tableModel->removeRows(0, tableModel->rowCount());
+    this->model->clearStringsList();
 }
 
 void ContextualizationController::loadCaptureArea()
@@ -182,7 +185,7 @@ void ContextualizationController::detectStringsOnImage()
 //        qDebug() << s;
 //    }
 
-    test.setImage("/home/jorge/Descargas/test.png");
+    test.setImage(this->model->getImagePath());
     QStringList *a = test.run();
     qDebug() << "Numero resultados = " << a->size();
     foreach (QString s, *a) {
@@ -229,7 +232,7 @@ void ContextualizationController::cancel()
     response = Utils::warningMessage("Are you sure?", "If you not save the proyect it will be deleted.");
     if (response == QMessageBox::Yes) {
         //Remove temporal image.
-        QFile file(this->model.getImagePath());
+        QFile file(this->model->getImagePath());
         if (file.exists())
             file.remove();
 
@@ -244,8 +247,8 @@ void ContextualizationController::save()
 
 void ContextualizationController::exportProject()
 {
+    QString path;
     QString text;
-    QString fileName;
     QFileDialog dialog(
         Q_NULLPTR,
         tr("Save Project"),
@@ -257,31 +260,69 @@ void ContextualizationController::exportProject()
     dialog.setFileMode(QFileDialog::ExistingFile);
     dialog.setViewMode(QFileDialog::Detail);
     if (dialog.exec()) {
-        fileName = dialog.selectedFiles().first();
-        text = this->model.toJson();
-        Utils::writeFile(fileName.endsWith(QString(".json")) ? filename filename + ".json", text);
+        path = dialog.selectedFiles().first();
+        path = path.endsWith(QString(".json")) ? path : path + ".json";
+        text = this->model->toJson();
+        Utils::writeFile(path, text);
     }
 }
 
 void ContextualizationController::importProject()
 {
+    QFileDialog dialog(
+        Q_NULLPTR,
+        tr("Open Image"),
+        QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first(),
+        tr("Contextualization File (*.json)")
+    );
 
+    dialog.setAcceptMode(QFileDialog::AcceptOpen);
+    dialog.setFileMode(QFileDialog::ExistingFile);
+    dialog.setViewMode(QFileDialog::Detail);
+    if (dialog.exec()) {
+        this->tableModel->removeRows(0, this->tableModel->rowCount());
+        this->importProjectFromFile(dialog.selectedFiles().first());
+        this->tableModel->insertRows(0, this->tableModel->rowCount());
+    }
+}
+
+int ContextualizationController::importProjectFromFile(QString path)
+{
+    ContextualizationModel *modelTmp;
+    QByteArray projectData;
+
+    projectData = Utils::readAllFile(path);
+    modelTmp = ContextualizationModel::fromJson(projectData);
+
+    if (modelTmp->isEmpty()) {
+        Log::writeError("Fail to import project in file: " + path);
+        return 1;
+    }
+
+    //TODO: mirar a ver que pasa con el igual. No se mantiene la referencia del modelo de la tabla.
+    this->setImage(modelTmp->getImagePath());
+    this->clearTable();
+    this->model->addNewStrings(modelTmp->getStringsList());
+    //this->model = model;
+    delete modelTmp;
+
+    return 0;
 }
 
 int ContextualizationController::validateModel()
 {
-    if (this->model.getImagePath().isEmpty()) {
+    if (this->model->getImagePath().isEmpty()) {
         //No image path
         return 1;
     }
 
-    QFile file(this->model.getImagePath());
+    QFile file(this->model->getImagePath());
     if (!file.exists()) {
         //Image not exists
         return 2;
     }
 
-    if (this->model.getStringsList().size() <= 0) {
+    if (this->model->getStringsList().size() <= 0) {
         //Error, there isn't strings in the model.
         return 3;
     }
@@ -432,7 +473,7 @@ bool ContextualizationController::addNewString(FirmwareString *&fwString)
         Utils::errorMessage("Duplicate string.", "Alredy exists an equal string in the contextualization.");
         return false;
     } else {
-        this->model.addNewString(fwString);
+        this->model->addNewString(fwString);
         this->tableModel->insertRows(tableModel->rowCount()-1, 1);
         return true;
     }
@@ -462,7 +503,7 @@ void ContextualizationController::setImage(QString &imagePath)
         containerImage = view->findChild<QObject *>("containerImage");
         containerImage->setProperty("source", "");
         containerImage->setProperty("source", "file:" + imagePath);
-        this->model.setImagePath(imagePath);
+        this->model->setImagePath(imagePath);
     } else {
         Log::writeError("Image to set not exists: " + imagePath);
         Utils::errorMessage("Impossible to set image.", "Try it again.");
@@ -473,14 +514,14 @@ bool ContextualizationController::isFpStringAlreadyExists(FirmwareString &fwStri
 {
     if (fwString.getId().isEmpty()) {
         //Check that there aren't strings with the same value.
-        foreach (FirmwareString *string, this->model.getStringsList()) {
+        foreach (FirmwareString *string, this->model->getStringsList()) {
             if (string->getValue() == fwString.getValue()) {
                 return true;
             }
         }
     } else {
         //Check that there aren't strings with the same id.
-        foreach (FirmwareString *string, this->model.getStringsList()) {
+        foreach (FirmwareString *string, this->model->getStringsList()) {
             if (string->getId() == fwString.getId()) {
                 return true;
             }

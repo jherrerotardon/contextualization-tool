@@ -20,7 +20,7 @@ int main(int argc, char **argv)
         exit(1);
     }
 
-    Pix *image = pixRead("/home/jorge/Descargas/test.png");
+    Pix *image = pixRead(argv[1]);
 
     api->SetPageSegMode(tesseract::PSM_AUTO_OSD);
     api->SetImage(image);

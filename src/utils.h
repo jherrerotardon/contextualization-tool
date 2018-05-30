@@ -13,8 +13,9 @@ public:
 
     static void errorMessage(const QString text, const QString informativeText);
     static int warningMessage(const QString text, const QString informativeText);
-    static int appendFile(QString &path, QString &text);
-    static int writeFile(QString &path, QString &text);
+    static int appendFile(QString path, QString &text);
+    static int writeFile(QString path, QString &text);
+    static QByteArray readAllFile(QString path);
 
 };
 

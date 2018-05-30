@@ -65,6 +65,7 @@ QStringList * Ocr::run()
     QStringList arguments;
 
     ocrProcess = new QProcess();
+    arguments << image.fileName();
     ocrProcess->start("/home/jorge/Projects/contextualization-tool/build-OcrCustom-Desktop_Qt_5_10_0_GCC_64bit-Debug/OcrCustom", arguments);
     ocrProcess->waitForFinished(30000);
     QString output(ocrProcess->readAllStandardOutput());

@@ -9,8 +9,7 @@ StringsTableModel::StringsTableModel(QList<FirmwareString *> &newstrings) : stri
 
 StringsTableModel::~StringsTableModel()
 {
-    foreach (FirmwareString *s, strings)
-        delete s;
+
 }
 
 int StringsTableModel::rowCount(const QModelIndex &parent) const
@@ -77,6 +76,7 @@ bool StringsTableModel::insertRows(int row, int count, const QModelIndex &parent
 {
     beginInsertRows(parent, row, row + count - 1);
     endInsertRows();
+
     return true;
 }
 
@@ -84,6 +84,7 @@ bool StringsTableModel::removeRows(int row, int count, const QModelIndex &parent
 {
     beginRemoveRows(parent, row, row + count - 1);
     endRemoveRows();
+
     return true;
 }
 
@@ -96,4 +97,3 @@ QHash<int, QByteArray> StringsTableModel::roleNames() const
     roles[ButtonsColumn] = "ButtonsColumn";
     return roles;
 }
-

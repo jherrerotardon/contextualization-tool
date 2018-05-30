@@ -33,11 +33,12 @@ int Utils::warningMessage(const QString text, const QString informativeText)
     return msgBox.exec();
 }
 
-int Utils::appendFile(QString &path, QString &text)
+int Utils::appendFile(QString path, QString &text)
 {
     QFile file(path);
-    if (!file.open(QIODevice::Append | QIODevice::Text))
+    if (!file.open(QIODevice::Append | QIODevice::Text)) {
         return -1;
+    }
 
     QTextStream out(&file);
     out << text << '\n';
@@ -45,16 +46,32 @@ int Utils::appendFile(QString &path, QString &text)
     return 0;
 }
 
-int Utils::writeFile(QString &path, QString &text)
+int Utils::writeFile(QString path, QString &text)
 {
     QFile file(path);
-    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
         return -1;
+    }
 
     QTextStream out(&file);
     out << text << '\n';
     file.close();
     return 0;
+}
+
+QByteArray Utils::readAllFile(QString path)
+{
+    QFile file(path);
+    QByteArray out;
+
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        return QByteArray();
+    }
+
+    out = file.readAll();
+    file.close();
+
+    return out;
 }
 
 

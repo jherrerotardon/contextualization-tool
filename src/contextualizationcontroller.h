@@ -46,13 +46,14 @@ public slots:
     void importProject();
 
 private:
-    ContextualizationModel model;
+    ContextualizationModel *model;
     StringsTableModel *tableModel;
     QString fpFile;
     QString username;
     QStringList validStates;
     QObject *view;
 
+    int importProjectFromFile(QString path);
     int validateModel();
     int generatePackage(QString const &path);
     FirmwareString * findString(const QString &text);

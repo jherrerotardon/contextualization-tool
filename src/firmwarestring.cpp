@@ -16,6 +16,26 @@ FirmwareString::FirmwareString(
     this->selected = selected;
 }
 
+FirmwareString::FirmwareString()
+{
+    this->id = "";
+    this->value = "";
+    this->description = "";
+    this->maxLength = "";
+    this->state = "";
+    this->selected = false;
+}
+
+FirmwareString::FirmwareString(FirmwareString &other)
+{
+    this->id = other.id;
+    this->value = other.value;
+    this->description = other.description;
+    this->maxLength = other.maxLength;
+    this->state = other.state;
+    this->selected = other.selected;
+}
+
 QString FirmwareString::getId() const
 {
     return this->id;
@@ -44,6 +64,15 @@ QString FirmwareString::getState() const
 void FirmwareString::setValue(const QString &value)
 {
     this->value = value;
+}
+
+bool FirmwareString::isEmpty()
+{
+    if (this->value.isEmpty()) {
+        return true;
+    }
+
+    return false;
 }
 
 bool FirmwareString::isSelected() const
@@ -78,4 +107,57 @@ QJsonObject FirmwareString::toJsonObject()
     string.insert("selected", QJsonValue(this->selected));
 
     return string;
+}
+
+FirmwareString * FirmwareString::fromJson(QString &json)
+{
+    QByteArray jsonData = json.toUtf8();
+
+    return FirmwareString::fromJson(jsonData);
+}
+
+FirmwareString * FirmwareString::fromJson(QByteArray &json)
+{
+    QString value;
+    QJsonObject root;
+    QJsonParseError jsonError;
+    QJsonDocument document = QJsonDocument::fromJson(json, &jsonError);
+
+    if (jsonError.error != QJsonParseError::NoError) {
+        Log::writeError("Error decoding FirmwareString json: " + jsonError.errorString());
+        return nullptr;
+    }
+
+    root = document.object();
+    if (root.isEmpty()) {
+        Log::writeError("FirmwareString fromJson(): error format on root object.");
+        return nullptr;
+    }
+
+    value = root.value("value").toString();
+    if (value.isEmpty()) {
+        Log::writeError("FirmwareString fromJson(): key value is empty.");
+        return nullptr;
+    }
+
+    return new FirmwareString(
+        root.value("id").toString(),
+        value,
+        root.value("description").toString(),
+        root.value("maxLength").toString(),
+        root.value("state").toString(),
+        root.value("selected").toBool()
+    );
+}
+
+FirmwareString & FirmwareString::operator=(const FirmwareString &other)
+{
+    this->id = other.id;
+    this->value = other.value;
+    this->description = other.description;
+    this->maxLength = other.maxLength;
+    this->state = other.state;
+    this->selected = other.selected;
+
+    return *this;
 }
