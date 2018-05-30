@@ -1,5 +1,8 @@
 #include "contextualizationmodel.h"
 
+const QString ContextualizationModel::NO_IMAGE_URL = "qrc:/images/imageNotAvailable.jpg";
+const QString ContextualizationModel::NO_IMAGE_PATH = QFile(NO_IMAGE_URL).fileName();
+
 ContextualizationModel::ContextualizationModel(QString image, QList<FirmwareString *> list)
 {
     this->image = image;
@@ -178,7 +181,7 @@ ContextualizationModel * ContextualizationModel::fromJson(QByteArray &json)
         }
         return nullptr;
     }
-    ContextualizationModel *a = new ContextualizationModel(image, stringsList);
+
     return new ContextualizationModel(image, stringsList);
 }
 

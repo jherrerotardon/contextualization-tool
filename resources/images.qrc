@@ -8,5 +8,6 @@
         <file>images/paste.png</file>
         <file>images/export.png</file>
         <file>images/import.png</file>
+        <file>images/imageNotAvailable.jpg</file>
     </qresource>
 </RCC>

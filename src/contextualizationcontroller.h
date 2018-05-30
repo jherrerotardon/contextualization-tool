@@ -98,7 +98,7 @@ private:
      * @return QString
      */
     QString captureArea();
-    void setImage(QString &imagePath);
+    int setImage(QString imagePath);
 
     /**
      * @brief Check that the FirmwareString is not already in the model.

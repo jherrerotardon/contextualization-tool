@@ -127,7 +127,7 @@ ApplicationWindow {
                     Image {
                         objectName: "containerImage"
                         cache: false
-                        source: "https://i.ytimg.com/vi/Qv1ffQL1-i8/maxresdefault.jpg"
+                        source: "qrc:/images/imageNotAvailable.jpg"
                         fillMode: Image.PreserveAspectFit
                         asynchronous: true
                         anchors.fill: parent

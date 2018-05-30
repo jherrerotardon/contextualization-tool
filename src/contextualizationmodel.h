@@ -11,8 +11,11 @@
 class ContextualizationModel
 {
 public:
+    const static QString NO_IMAGE_URL;
+    const static QString NO_IMAGE_PATH;
+
     ContextualizationModel(
-        QString image = "./Resources/noImage.png",
+        QString image = NO_IMAGE_PATH,
         QList<FirmwareString *> list = QList<FirmwareString *>()
     );
     ~ContextualizationModel();

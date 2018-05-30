@@ -294,7 +294,7 @@ int ContextualizationController::importProjectFromFile(QString path)
     projectData = Utils::readAllFile(path);
     modelTmp = ContextualizationModel::fromJson(projectData);
 
-    if (modelTmp->isEmpty()) {
+    if (!modelTmp || modelTmp->isEmpty()) {
         Log::writeError("Fail to import project in file: " + path);
         return 1;
     }
@@ -494,20 +494,26 @@ QString ContextualizationController::captureArea()
     return path;
 }
 
-void ContextualizationController::setImage(QString &imagePath)
+int ContextualizationController::setImage(QString imagePath)
 {
     QObject *containerImage;
     QFile image(imagePath);
 
+    containerImage = view->findChild<QObject *>("containerImage");
+    containerImage->setProperty("source", "");
     if (image.exists()) {
-        containerImage = view->findChild<QObject *>("containerImage");
-        containerImage->setProperty("source", "");
         containerImage->setProperty("source", "file:" + imagePath);
         this->model->setImagePath(imagePath);
-    } else {
-        Log::writeError("Image to set not exists: " + imagePath);
-        Utils::errorMessage("Impossible to set image.", "Try it again.");
+
+        return 0;
     }
+
+    containerImage->setProperty("source", ContextualizationModel::NO_IMAGE_URL);
+    this->model->setImagePath(imagePath);
+    Log::writeError("Image to set not exists: " + imagePath);
+    Utils::errorMessage("Impossible to set image: " + image.fileName(), "Try it again.");
+
+    return 1;
 }
 
 bool ContextualizationController::isFpStringAlreadyExists(FirmwareString &fwString)
