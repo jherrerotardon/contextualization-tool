@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QList>
+#include <QDir>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include "firmwarestring.h"
@@ -15,7 +16,7 @@ public:
     const static QString NO_IMAGE_PATH;
 
     ContextualizationModel(
-        QString image = NO_IMAGE_PATH,
+        QString image = QString(),
         QList<FirmwareString *> list = QList<FirmwareString *>()
     );
     ~ContextualizationModel();

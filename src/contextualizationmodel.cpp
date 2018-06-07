@@ -1,7 +1,8 @@
 #include "contextualizationmodel.h"
 
-const QString ContextualizationModel::NO_IMAGE_URL = "qrc:/images/imageNotAvailable.jpg";
-const QString ContextualizationModel::NO_IMAGE_PATH = QFile(NO_IMAGE_URL).fileName();
+const QString ContextualizationModel::NO_IMAGE_URL = "qrc:/images/imageNotAvailable.png";
+const QString ContextualizationModel::NO_IMAGE_PATH =
+    QDir("../resources/images").absoluteFilePath("imageNotAvailable.png");
 
 ContextualizationModel::ContextualizationModel(QString image, QList<FirmwareString *> list)
 {

@@ -25,7 +25,9 @@ class ContextualizationController : public QObject
     //Q_PROPERTY(StringsTableModel * tableModel READ getTableModel WRITE setTableModel)
     Q_PROPERTY(StringsTableModel * tableModel MEMBER tableModel)
 
-public:
+public:    
+    enum ModelError { NoError = 0, NoImage, ImageNotExist, NoStrings };
+
     explicit ContextualizationController(QObject *view = nullptr, QObject *parent = nullptr);
     ~ContextualizationController();
 
@@ -52,10 +54,12 @@ private:
     QString username;
     QStringList validStates;
     QObject *view;
+    QString sendingHost;
 
     int importProjectFromFile(QString path);
     int validateModel();
-    int generatePackage(QString const &path);
+    QString generateContextualization();
+    int sendContextualization(QString const &path, QString user, QString password);
     FirmwareString * findString(const QString &text);
 
     /**
@@ -98,7 +102,7 @@ private:
      * @return QString
      */
     QString captureArea();
-    int setImage(QString imagePath);
+    bool setImage(const QString &image);
 
     /**
      * @brief Check that the FirmwareString is not already in the model.

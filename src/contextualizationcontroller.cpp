@@ -11,6 +11,7 @@ ContextualizationController::ContextualizationController(QObject *view, QObject 
     this->validStates << "TODO" << "DONE" << "VALIDATED";
     this->fpFile = "/home/jorge/Descargas/english.fp";
     this->username = qgetenv("USER");
+    this->sendingHost = "192.168.1.100";
     this->view = view;
 
     if (view != nullptr) {
@@ -156,12 +157,6 @@ void ContextualizationController::loadCaptureArea()
 
 void ContextualizationController::loadImage()
 {
-    /*TODO:
-     * La segunda vez se abre la ventana detrás de la principal.
-     * Cuando está abierto en FileDialog, deja seleccionar cosas de la ventana principal
-     * y se ejecutan cuando se cierra el FileDialog.
-     */
-
     QFileDialog dialog(
         Q_NULLPTR,
         tr("Open Image"),
@@ -185,6 +180,7 @@ void ContextualizationController::detectStringsOnImage()
 //        qDebug() << s;
 //    }
 
+    ///< Test version
     test.setImage(this->model->getImagePath());
     QStringList *a = test.run();
     qDebug() << "Numero resultados = " << a->size();
@@ -197,26 +193,35 @@ void ContextualizationController::detectStringsOnImage()
 
 void ContextualizationController::send()
 {
-    int state = 0;
-    QDir tmpDir("/tmp/" + QDateTime::currentDateTime().toString("yyyy_MM_dd_hh_mm_ss-") + this->username);
+    QString contextualizationPath;
+    int hasError;
 
-    //state = validateModel();
-    switch (state) {
-        case 0:
-            if(!tmpDir.exists()) {
-                tmpDir.mkpath(".");
+    switch (validateModel()) {
+        case ContextualizationController::NoError:
+            contextualizationPath = this->generateContextualization();
+            if (contextualizationPath.isEmpty()) {
+                Utils::errorMessage("Fail to send", "Failure to package contextualization.");
+
+                return;
             }
-            else {
-                Utils::warningMessage("Send process in progress.", "Wait until the current process end.");
+
+            //TODO: pedir login de alguna forma.
+            ///< Any errors are processed in the function.
+            hasError = this->sendContextualization(contextualizationPath, this->username, "1234");
+            if (hasError) {
+                //TODO: filtrar cada error.
+            } else {
+                Utils::informativeMessage("Finished.", "Send process has finished succesfully.");
             }
+
             break;
-        case 1:
+        case ContextualizationController::NoImage:
             Utils::errorMessage("Fail to send!!", "There isn't an image asociated.");
             break;
-        case 2:
+        case ContextualizationController::ImageNotExist:
             Utils::errorMessage("Fail to send!!", "The image associated doesn't exist. Please reload the image.");
             break;
-        case 3:
+        case ContextualizationController::NoStrings:
             Utils::errorMessage("Fail to send!!", "There aren't any string asociated.");
             break;
         default:
@@ -313,28 +318,79 @@ int ContextualizationController::validateModel()
 {
     if (this->model->getImagePath().isEmpty()) {
         //No image path
-        return 1;
+        return NoImage;
     }
 
     QFile file(this->model->getImagePath());
     if (!file.exists()) {
         //Image not exists
-        return 2;
+        return ImageNotExist;
     }
 
     if (this->model->getStringsList().size() <= 0) {
         //Error, there isn't strings in the model.
-        return 3;
+        return NoStrings;
     }
 
     //All OK
-    return 0;
+    return NoError;
 }
 
-int ContextualizationController::generatePackage(const QString &path)
+QString ContextualizationController::generateContextualization()
 {
+    QDir tmpDir("/tmp/" + QDateTime::currentDateTime().toString("yyyy_MM_dd_hh_mm_ss-") + this->username);
+    QFileInfo image(this->model->getImagePath());
+    QString text("");
+    QString contextualizationPackage("");
 
-    return 0;
+    if(tmpDir.exists()) {
+        Log::writeError("Send process in progress. The contextualization zip file already exists.");
+        return QString("");
+    }
+
+    if (tmpDir.mkpath(".")) { ///< Create temporal folder.
+        QFile::copy(image.absoluteFilePath(), tmpDir.absoluteFilePath(image.fileName()));
+
+        ///< Save strings
+        foreach (FirmwareString *fwString, this->model->getStringsList()) {
+            text += fwString->toFpFileFormat();
+        }
+
+        Utils::writeFile(tmpDir.absoluteFilePath("FirmwareStrings.fp"), text);
+        contextualizationPackage = Utils::zipCompressDirectoryContents(tmpDir.absolutePath(), "/tmp", tmpDir.dirName());
+
+        ///< Delete temporal folder with the contextualization.
+        tmpDir.removeRecursively();
+    } else {
+        Log::writeError("Contextualization could not be packaged. Error creating directory " + tmpDir.absolutePath());
+    }
+
+    return contextualizationPackage;
+}
+
+int ContextualizationController::sendContextualization(const QString &path, QString user, QString password)
+{
+    QStringList arguments;
+    QFile batch("/tmp/batch");
+    int errorCode = -1;
+
+    if (QFile(path).exists()) {
+        Utils::writeFile(batch.fileName(), "put " + path); ///< Create temporal batch file
+
+        arguments << "-p" << password;
+        arguments << "sftp" << "-oBatchMode=no" << "-b" << batch.fileName()
+            << user + '@' + this->sendingHost + ":Contextualizations";
+
+        //TODO: poner un QProgressDialog top para el progreso
+
+        errorCode = Utils::executeProgram("sshpass", arguments);
+
+        //TODO:Tratar error
+
+        batch.remove();
+    }
+
+    return errorCode;
 }
 
 FirmwareString * ContextualizationController::findString(const QString &text)
@@ -471,49 +527,60 @@ bool ContextualizationController::addNewString(FirmwareString *&fwString)
         delete fwString;
         fwString = nullptr;
         Utils::errorMessage("Duplicate string.", "Alredy exists an equal string in the contextualization.");
+
         return false;
     } else {
         this->model->addNewString(fwString);
         this->tableModel->insertRows(tableModel->rowCount()-1, 1);
+
         return true;
     }
 }
 
 QString ContextualizationController::captureArea()
 {
-    QProcess *captureProcess;
     QStringList arguments;
     QString path("/tmp/capture.png");
 
-    captureProcess = new QProcess();
     arguments << path;
-    captureProcess->start("import", arguments);
-    path = captureProcess->waitForFinished(30000) ? path : "";
-    delete captureProcess;
 
-    return path;
+    return Utils::executeProgram("import", arguments, QString(), 30000) ? QString("") : path;
 }
 
-int ContextualizationController::setImage(QString imagePath)
+bool ContextualizationController::setImage(const QString &image)
 {
     QObject *containerImage;
-    QFile image(imagePath);
+    QFileInfo imageInfo(image);
+    QString destination("/tmp/contextualizationCapture." + imageInfo.suffix());
+    bool exists = imageInfo.exists();
 
-    containerImage = view->findChild<QObject *>("containerImage");
-    containerImage->setProperty("source", "");
-    if (image.exists()) {
-        containerImage->setProperty("source", "file:" + imagePath);
-        this->model->setImagePath(imagePath);
+    if (exists) {
+        ///< If exists copy image in /tmp with "contextualizationCapture" name and the extension of the orginal file.
+        if (QFile::exists(destination)) {
+            QFile::remove(destination);
+        }
 
-        return 0;
+        QFile::copy(image, destination);
+    } else {
+        Log::writeError("Image to set not exists: " + image);
     }
 
-    containerImage->setProperty("source", ContextualizationModel::NO_IMAGE_URL);
-    this->model->setImagePath(imagePath);
-    Log::writeError("Image to set not exists: " + imagePath);
-    Utils::errorMessage("Impossible to set image: " + image.fileName(), "Try it again.");
+    this->model->setImagePath(exists ? destination : QString());
 
-    return 1;
+    containerImage = this->view->findChild<QObject *>("containerImage");
+    if (containerImage) {
+        containerImage->setProperty("source", "");
+        containerImage->setProperty(
+            "source",
+            "file:" + (exists ? destination : ContextualizationModel::NO_IMAGE_PATH)
+        );
+    }
+
+    if (!exists) {
+        Utils::errorMessage("Can't set image.", "Not exists the image: " + image);
+    }
+
+    return exists;
 }
 
 bool ContextualizationController::isFpStringAlreadyExists(FirmwareString &fwString)

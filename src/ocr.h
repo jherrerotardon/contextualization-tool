@@ -24,7 +24,9 @@ public:
     /**
      * @brief Extract strings contained in the image.
      *
-     * Return an only string
+     * Return a pointer to QStringsList containing the strings detected in the image.
+     * The memory must be released when QStringList is no longer in use.
+     *
      * @return QStringList
      */
     QStringList * run();

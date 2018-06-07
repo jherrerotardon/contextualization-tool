@@ -30,6 +30,7 @@ public:
     bool isSelected() const;
     void select();
     void unselect();
+    QString toFpFileFormat();
     QString toJson(QJsonDocument::JsonFormat format = QJsonDocument::Compact);
     QJsonObject toJsonObject();
     static FirmwareString * fromJson(QString &json);

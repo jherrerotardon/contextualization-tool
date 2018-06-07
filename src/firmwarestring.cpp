@@ -90,6 +90,21 @@ void FirmwareString::unselect()
     this->selected = false;
 }
 
+QString FirmwareString::toFpFileFormat()
+{
+    QString out;
+
+    out += "MESSAGE_ID  " + this->id + "  \"" + this->value + '"';
+    out += " || ";
+    out += "TEXT_DESCRIPTION  \"" + this->description + '"';
+    out += " || ";
+    out += "MAX_FIELD_WIDTH  " + this->maxLength;
+    out += " || ";
+    out += "LOCALIZATION  " + this->state;
+
+    return out;
+}
+
 QString FirmwareString::toJson(QJsonDocument::JsonFormat format)
 {
     return QString(QJsonDocument(this->toJsonObject()).toJson(format));
