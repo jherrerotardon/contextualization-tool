@@ -1,5 +1,3 @@
-//TODO: refactorizar la clase cuando tenga el visto bueno el Hector
-
 #include "ocr.h"
 
 Ocr::Ocr()

@@ -1,7 +1,7 @@
 #ifndef STRINGSTABLEMODEL_H
 #define STRINGSTABLEMODEL_H
 
-#include "firmwarestring.h"
+#include "base/firmwarestring.h"
 #include <QAbstractTableModel>
 #include <QList>
 
@@ -28,6 +28,7 @@ public:
     bool insertRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
     bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
     QHash<int, QByteArray> roleNames() const override;
+    void refreshView();
 
 private:
     QList<FirmwareString *> &strings;

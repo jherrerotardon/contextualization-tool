@@ -2,6 +2,8 @@ QT += quick
 QT += widgets
 CONFIG += c++11
 
+INCLUDEPATH += $$PWD/src
+
 #Include paths of source files of tesseract.
 INCLUDEPATH += $$PWD/tesseract/api
 INCLUDEPATH += $$PWD/tesseract/ccmain
@@ -23,14 +25,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    src/stringstablemodel.cpp \
+    src/gui/stringstablemodel.cpp \
     src/main.cpp \
-    src/log.cpp \
-    src/firmwarestring.cpp \
-    src/contextualizationmodel.cpp \
-    src/contextualizationcontroller.cpp \
-    src/utils.cpp \
-    src/ocr.cpp
+    src/tools/log.cpp \
+    src/base/firmwarestring.cpp \
+    src/base/contextualizationmodel.cpp \
+    src/tools/utils.cpp \
+    src/tools/ocr.cpp \
+    src/gui/guicontextualizationcontroller.cpp \
+    src/base/contextualizationcontrollerbase.cpp \
+    src/console/consolecontextualizationcontroller.cpp
 
 RESOURCES += \
     resources/views.qrc \
@@ -48,12 +52,15 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    src/stringstablemodel.h \
-    src/log.h \
-    src/firmwarestring.h \
-    src/contextualizationmodel.h \
-    src/contextualizationcontroller.h \
-    src/utils.h \
-    src/ocr.h
+    src/gui/stringstablemodel.h \
+    src/main.h \
+    src/tools/log.h \
+    src/base/firmwarestring.h \
+    src/base/contextualizationmodel.h \
+    src/tools/utils.h \
+    src/tools/ocr.h \
+    src/gui/guicontextualizationcontroller.h \
+    src/base/contextualizationcontrollerbase.h \
+    src/console/consolecontextualizationcontroller.h
 
 DISTFILES +=

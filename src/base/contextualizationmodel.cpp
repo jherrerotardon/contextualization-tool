@@ -18,7 +18,7 @@ ContextualizationModel::~ContextualizationModel(){
     }
 }
 
-void ContextualizationModel::addNewString(
+void ContextualizationModel::addString(
     const QString &id,
     const QString &value,
     const QString &description,
@@ -30,35 +30,45 @@ void ContextualizationModel::addNewString(
     this->stringsList.append(newString);
 }
 
-void ContextualizationModel::addNewString(FirmwareString *newString)
+void ContextualizationModel::addString(FirmwareString *newString)
 {
     this->stringsList.append(newString);
 }
 
-void ContextualizationModel::addNewStrings(QList<FirmwareString *> &list)
+void ContextualizationModel::addStrings(QList<FirmwareString *> &list)
 {
     foreach (FirmwareString *fwString, list) {
-        this->addNewString(new FirmwareString(*fwString));
+        this->addString(new FirmwareString(*fwString));
     }
 }
 
-void ContextualizationModel::deleteString(QString &id)
+bool ContextualizationModel::removeString(QString &id)
 {
-    foreach (FirmwareString *fwString, this->stringsList)
+    foreach (FirmwareString *fwString, this->stringsList) {
         if (fwString->getId() == id) {
             this->stringsList.removeOne(fwString);
             delete fwString;
-            break;
+
+            return true;
         }
+    }
+
+    return false;
 }
 
-void ContextualizationModel::deleteString(int pos)
+bool ContextualizationModel::removeString(int pos)
 {
     FirmwareString *stringToRemove;
 
-    stringToRemove = this->stringsList.at(pos);
-    this->stringsList.removeAt(pos);
-    delete stringToRemove;
+    if (pos < this->stringsList.size()) {
+        stringToRemove = this->stringsList.at(pos);
+        this->stringsList.removeAt(pos);
+        delete stringToRemove;
+
+        return true;
+    }
+
+    return false;
 }
 
 void ContextualizationModel::clearStringsList()
@@ -76,12 +86,12 @@ QList<FirmwareString *> &ContextualizationModel::getStringsList()
     return this->stringsList;
 }
 
-void ContextualizationModel::setImagePath(QString path)
+void ContextualizationModel::setImage(QString path)
 {
     this->image = path;
 }
 
-QString ContextualizationModel::getImagePath()
+QString ContextualizationModel::getImage()
 {
     return this->image;
 }
@@ -97,7 +107,7 @@ bool ContextualizationModel::isEmpty()
 
 void ContextualizationModel::clear()
 {
-    this->image = "./Resources/noImage.png";
+    this->image = "";
     this->clearStringsList();
 }
 
@@ -191,7 +201,7 @@ ContextualizationModel & ContextualizationModel::operator=(ContextualizationMode
     if (this != &other) {
         this->clear();
         this->image = other.image;
-        this->addNewStrings(other.getStringsList());
+        this->addStrings(other.getStringsList());
 //        foreach (FirmwareString *fwString, other.getStringsList()) {
 //            this->addNewString(fwString);
 //        }

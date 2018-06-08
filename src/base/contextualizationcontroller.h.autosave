@@ -14,10 +14,10 @@
 #include <QDateTime>
 #include <QDir>
 #include "contextualizationmodel.h"
-#include "stringstablemodel.h"
-#include "utils.h"
-#include "log.h"
-#include "ocr.h"
+#include "gui/stringstablemodel.h"
+#include "tools/utils.h"
+#include "tools/log.h"
+#include "tools/ocr.h"
 
 class ContextualizationController : public QObject
 {
@@ -28,7 +28,7 @@ class ContextualizationController : public QObject
 public:    
     enum ModelError { NoError = 0, NoImage, ImageNotExist, NoStrings };
 
-    explicit ContextualizationController(QObject *view = nullptr, QObject *parent = nullptr);
+    explicit ContextualizationController(QObject *parent = nullptr);
     ~ContextualizationController();
 
     StringsTableModel *getTableModel();
@@ -49,11 +49,9 @@ public slots:
 
 private:
     ContextualizationModel *model;
-    StringsTableModel *tableModel;
     QString fpFile;
     QString username;
     QStringList validStates;
-    QObject *view;
     QString sendingHost;
 
     int importProjectFromFile(QString path);

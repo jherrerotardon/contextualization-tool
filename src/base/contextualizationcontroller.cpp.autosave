@@ -3,86 +3,13 @@
 #include <QDebug>
 /***************/
 
-ContextualizationController::ContextualizationController(QObject *view, QObject *parent) : QObject(parent)
+ContextualizationController::ContextualizationController(QObject *parent) : QObject(parent)
 {
-    QObject *stringsTable;
-
     this->model = new ContextualizationModel();
     this->validStates << "TODO" << "DONE" << "VALIDATED";
     this->fpFile = "/home/jorge/Descargas/english.fp";
     this->username = qgetenv("USER");
     this->sendingHost = "192.168.1.100";
-    this->view = view;
-
-    if (view != nullptr) {
-        //Initialize TableView and his model.
-        this->tableModel = new StringsTableModel(this->model->getStringsList());
-        stringsTable = view->findChild<QObject *>("stringsTable");
-        if (stringsTable)
-            stringsTable->setProperty("model", QVariant::fromValue(this->tableModel));
-
-        //Connect signals and slots
-        QObject::connect(
-            view->findChild<QObject *>("clearButton"),
-            SIGNAL(clicked()),
-            this,
-            SLOT(clearTable())
-        );
-        QObject::connect(
-            view->findChild<QObject *>("addStringButton"),
-            SIGNAL(customClicked(QString)),
-            this,
-            SLOT(addString(QString))
-        );
-        QObject::connect(
-            view->findChild<QObject *>("buttonsColumn"),
-            SIGNAL(buttonClicked(int)),
-            this,
-            SLOT(deleteString(int))
-        );
-        QObject::connect(
-            view->findChild<QObject *>("cancelButton"),
-            SIGNAL(clicked()),
-            this,
-            SLOT(cancel())
-        );
-        QObject::connect(
-            view->findChild<QObject *>("sendButton"),
-            SIGNAL(clicked()),
-            this,
-            SLOT(send())
-        );
-        QObject::connect(
-            view->findChild<QObject *>("captureAreaButon"),
-            SIGNAL(clicked()),
-            this,
-            SLOT(loadCaptureArea())
-        );
-        QObject::connect(
-            view->findChild<QObject *>("loadImageButton"),
-            SIGNAL(clicked()),
-            this,
-            SLOT(loadImage())
-        );
-        QObject::connect(
-            view->findChild<QObject *>("detectStringsButton"),
-            SIGNAL(clicked()),
-            this,
-            SLOT(detectStringsOnImage())
-        );
-        QObject::connect(
-            view->findChild<QObject *>("importButton"),
-            SIGNAL(triggered()),
-            this,
-            SLOT(importProject())
-        );
-        QObject::connect(
-            view->findChild<QObject *>("exportButton"),
-            SIGNAL(triggered()),
-            this,
-            SLOT(exportProject())
-        );
-    }
 }
 
 ContextualizationController::~ContextualizationController()

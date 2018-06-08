@@ -1,6 +1,6 @@
 #include "stringstablemodel.h"
+// TODO: remove includes on bottom of this comment
 #include <QDebug>
-#include "log.h"
 
 StringsTableModel::StringsTableModel(QList<FirmwareString *> &newstrings) : strings(newstrings)
 {
@@ -96,4 +96,9 @@ QHash<int, QByteArray> StringsTableModel::roleNames() const
     roles[String] = "string";
     roles[ButtonsColumn] = "ButtonsColumn";
     return roles;
+}
+
+void StringsTableModel::refreshView()
+{
+
 }

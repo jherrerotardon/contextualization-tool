@@ -7,7 +7,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include "firmwarestring.h"
-#include "log.h"
+#include "src/tools/log.h"
 
 class ContextualizationModel
 {
@@ -21,7 +21,7 @@ public:
     );
     ~ContextualizationModel();
 
-    void addNewString(
+    void addString(
         const QString &id,
         const QString &value,
         const QString &description,
@@ -29,14 +29,14 @@ public:
         const QString &state,
         const bool selected
     );
-    void addNewString(FirmwareString * newString);
-    void addNewStrings(QList<FirmwareString *> &list);
-    void deleteString(QString &id);
-    void deleteString(int pos);
+    void addString(FirmwareString * newString);
+    void addStrings(QList<FirmwareString *> &list);
+    bool removeString(QString &id);
+    bool removeString(int pos);
     void clearStringsList();
     QList<FirmwareString *> & getStringsList();
-    void setImagePath(QString path);
-    QString getImagePath();
+    void setImage(QString path);
+    QString getImage();
     bool isEmpty();
     void clear();
     QString toJson(QJsonDocument::JsonFormat format = QJsonDocument::Compact);

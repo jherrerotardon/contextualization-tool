@@ -4,7 +4,7 @@
 #include <QString>
 #include <QJsonDocument>
 #include <QJsonObject>
-#include "log.h"
+#include "tools/log.h"
 
 class FirmwareString
 {
