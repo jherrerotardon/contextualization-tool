@@ -4,7 +4,7 @@ const QString ContextualizationModel::NO_IMAGE_URL = "qrc:/images/imageNotAvaila
 const QString ContextualizationModel::NO_IMAGE_PATH =
     QDir("../resources/images").absoluteFilePath("imageNotAvailable.png");
 
-ContextualizationModel::ContextualizationModel(QString image, QList<FirmwareString *> list)
+ContextualizationModel::ContextualizationModel(QString image, QList<FirmwareString *> list) : QObject()
 {
     this->image = image;
     this->stringsList = list;
@@ -27,17 +27,19 @@ void ContextualizationModel::addString(
     const bool selected
 ) {
     FirmwareString *newString = new FirmwareString(id, value, description, maxLength, state, selected);
-    this->stringsList.append(newString);
+    this->addString(newString);
 }
 
 void ContextualizationModel::addString(FirmwareString *newString)
 {
     this->stringsList.append(newString);
+
+    emit stringsListChanged();
 }
 
-void ContextualizationModel::addStrings(QList<FirmwareString *> &list)
+void ContextualizationModel::addStrings(QList<FirmwareString *> &strings)
 {
-    foreach (FirmwareString *fwString, list) {
+    foreach (FirmwareString *fwString, strings) {
         this->addString(new FirmwareString(*fwString));
     }
 }
@@ -48,6 +50,8 @@ bool ContextualizationModel::removeString(QString &id)
         if (fwString->getId() == id) {
             this->stringsList.removeOne(fwString);
             delete fwString;
+
+            emit stringsListChanged();
 
             return true;
         }
@@ -65,6 +69,8 @@ bool ContextualizationModel::removeString(int pos)
         this->stringsList.removeAt(pos);
         delete stringToRemove;
 
+        emit stringsListChanged();
+
         return true;
     }
 
@@ -79,6 +85,8 @@ void ContextualizationModel::clearStringsList()
     }
 
     this->stringsList.clear();
+
+    emit stringsListChanged();
 }
 
 QList<FirmwareString *> &ContextualizationModel::getStringsList()
@@ -89,6 +97,8 @@ QList<FirmwareString *> &ContextualizationModel::getStringsList()
 void ContextualizationModel::setImage(QString path)
 {
     this->image = path;
+
+    emit imageChanged();
 }
 
 QString ContextualizationModel::getImage()
@@ -109,6 +119,8 @@ void ContextualizationModel::clear()
 {
     this->image = "";
     this->clearStringsList();
+
+    emit modelChanged();
 }
 
 QString ContextualizationModel::toJson(QJsonDocument::JsonFormat format)
@@ -199,13 +211,14 @@ ContextualizationModel * ContextualizationModel::fromJson(QByteArray &json)
 ContextualizationModel & ContextualizationModel::operator=(ContextualizationModel &other)
 {
     if (this != &other) {
-        this->clear();
-        this->image = other.image;
-        this->addStrings(other.getStringsList());
-//        foreach (FirmwareString *fwString, other.getStringsList()) {
-//            this->addNewString(fwString);
-//        }
-        //this->stringsList.append(other.getStringsList());
+        if (!this->isEmpty()) {
+            this->clear();
+        }
+
+        this->setImage(other.image);
+        foreach (FirmwareString *fwString, other.getStringsList()) {
+            this->addString(new FirmwareString(*fwString));
+        }
     }
 
     return *this;

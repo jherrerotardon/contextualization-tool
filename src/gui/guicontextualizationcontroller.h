@@ -30,13 +30,24 @@ public slots:
     void saveAs();
     void open();
 
+    /**
+     * @brief Refresh completly the view with the most recently data in model.
+     */
+    void refreshView();
+
+    /**
+     * @brief Refresh only the image displayed in the view with the most recently data in model.
+     */
+    void refreshImageView();
+
+    /**
+     * @brief Refresh only the strings table in the view with the most recently data in model.
+     */
+    void refreshTableView();
+
 private:
     StringsTableModel *tableModel;
     QObject *view;
-
-    int addString(FirmwareString *&fwString) override;
-    bool setImage(const QString &image) override;
-
 };
 
 #endif // GUICONTEXTUALIZATIONCONTROLLER_H

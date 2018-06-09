@@ -1,6 +1,7 @@
 #ifndef CONTEXTUALIZATIONMODEL_H
 #define CONTEXTUALIZATIONMODEL_H
 
+#include <QObject>
 #include <QString>
 #include <QList>
 #include <QDir>
@@ -9,8 +10,10 @@
 #include "firmwarestring.h"
 #include "src/tools/log.h"
 
-class ContextualizationModel
+class ContextualizationModel : public QObject
 {
+    Q_OBJECT
+
 public:
     const static QString NO_IMAGE_URL;
     const static QString NO_IMAGE_PATH;
@@ -30,7 +33,7 @@ public:
         const bool selected
     );
     void addString(FirmwareString * newString);
-    void addStrings(QList<FirmwareString *> &list);
+    void addStrings(QList<FirmwareString *> &strings);
     bool removeString(QString &id);
     bool removeString(int pos);
     void clearStringsList();
@@ -48,6 +51,11 @@ public:
 private:
     QString image;
     QList<FirmwareString *> stringsList;
+
+signals:
+    void imageChanged();
+    void stringsListChanged();
+    void modelChanged();
 };
 
 #endif // CONTEXTUALIZATIONMODEL_H

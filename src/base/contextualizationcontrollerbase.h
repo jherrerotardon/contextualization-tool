@@ -1,9 +1,9 @@
 #ifndef CONTEXTUALIZATIONCONTROLLER_H
 #define CONTEXTUALIZATIONCONTROLLER_H
 
-#include <QObject>
 #include <QApplication>
 #include <QWindow>
+#include <QObject>
 #include <QString>
 #include <QStringList>
 #include <QMessageBox>
@@ -72,9 +72,11 @@ protected:
      */
     virtual int addString(FirmwareString *&fwString);
 
-    bool removeString(int row);
+    virtual int addStrings(const QList<FirmwareString *> &strings);
 
-    void removeAllStrings();
+    virtual bool removeString(int row);
+
+    virtual void removeAllStrings();
 
     /**
      * @brief Start a process that allow user capture an area of the screen.
@@ -96,9 +98,6 @@ protected:
      * @return bool
      */
     bool isFpStringAlreadyExists(FirmwareString &fwString);
-
-signals:
-
 };
 
 #endif // CONTEXTUALIZATIONCONTROLLER_H

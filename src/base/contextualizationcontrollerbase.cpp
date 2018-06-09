@@ -4,6 +4,8 @@
 
 ContextualizationControllerBase::ContextualizationControllerBase(QObject *parent)
 {
+    Q_UNUSED(parent);
+
     this->model = new ContextualizationModel();
     this->validStates << "TODO" << "DONE" << "VALIDATED";
     this->fpFile = "/home/jorge/Descargas/english.fp";
@@ -29,11 +31,11 @@ int ContextualizationControllerBase::importProjectFromJsonFile(QString path)
         return 1;
     }
 
-    this->model->clear();
     //TODO: mirar a ver que pasa con el igual. No se mantiene la referencia del modelo de la tabla.
-    this->setImage(modelTmp->getImage());
-    this->model->addStrings(modelTmp->getStringsList());
-    //this->model = model;
+    //this->setImage(modelTmp->getImage());
+    //this->addStrings(modelTmp->getStringsList());
+    *(this->model) = *modelTmp;
+
     delete modelTmp;
 
     return 0;
@@ -260,6 +262,19 @@ int ContextualizationControllerBase::addString(FirmwareString *&fwString)
     return NoError;
 }
 
+int ContextualizationControllerBase::addStrings(const QList<FirmwareString *> &strings)
+{
+    int error = NoError;
+
+    foreach (FirmwareString *fwString, strings) {
+        if (ContextualizationControllerBase::addString(fwString) == StringAlreadyExists) {
+            error = StringAlreadyExists;
+        }
+    }
+
+    return error;
+}
+
 bool ContextualizationControllerBase::removeString(int row)
 {
     return this->model->removeString(row);
@@ -298,6 +313,11 @@ bool ContextualizationControllerBase::setImage(const QString &image)
     }
 
     this->model->setImage(exists ? destination : QString());
+
+    //TODO: poner cuando se haga manejadora de errores.
+//    if (!exists) {
+//        Utils::errorMessage("Can't set image.", "Not exists the image: " + image);
+//    }
 
     return exists;
 }

@@ -10,13 +10,34 @@ GuiContextualizationController::GuiContextualizationController(QObject *view, QO
     this->view = view;
 
     if (view != nullptr) {
-        //Initialize TableView and his model.
+        ///< Connect signals on model to refresh the view.
+        QObject::connect(
+            this->model,
+            SIGNAL(imageChanged()),
+            this,
+            SLOT(refreshImageView())
+        );
+        QObject::connect(
+            this->model,
+            SIGNAL(stringsListChanged()),
+            this,
+            SLOT(refreshTableView())
+        );
+        QObject::connect(
+            this->model,
+            SIGNAL(modelChanged()),
+            this,
+            SLOT(refreshView())
+        );
+
+        ///< Initialize TableView and his model.
         this->tableModel = new StringsTableModel(this->model->getStringsList());
         stringsTable = view->findChild<QObject *>("stringsTable");
-        if (stringsTable)
+        if (stringsTable) {
             stringsTable->setProperty("model", QVariant::fromValue(this->tableModel));
+        }
 
-        //Connect signals and slots
+        //< Connect signals and slots
         QObject::connect(
             view->findChild<QObject *>("clearButton"),
             SIGNAL(clicked()),
@@ -132,12 +153,10 @@ void GuiContextualizationController::add(QString newString)
 void GuiContextualizationController::remove(int row)
 {
     this->removeString(row);
-    this->tableModel->removeRows(row, 1);
 }
 
 void GuiContextualizationController::clear()
 {
-    this->tableModel->removeRows(0, tableModel->rowCount());
     this->removeAllStrings();
 }
 
@@ -232,7 +251,7 @@ void GuiContextualizationController::cancel()
 
     response = Utils::warningMessage("Are you sure?", "If you not save the proyect it will be deleted.");
     if (response == QMessageBox::Yes) {
-        //Remove temporal image.
+        ///< Remove temporal image.
         QFile file(this->model->getImage());
         if (file.exists())
             file.remove();
@@ -281,48 +300,39 @@ void GuiContextualizationController::open()
     dialog.setFileMode(QFileDialog::ExistingFile);
     dialog.setViewMode(QFileDialog::Detail);
     if (dialog.exec()) {
-        this->tableModel->removeRows(0, this->tableModel->rowCount());
         this->importProjectFromJsonFile(dialog.selectedFiles().first());
-        this->tableModel->insertRows(0, this->tableModel->rowCount());
-        //TODO: descomentar cuando este implememtada la función
-        //this->tableModel->refreshView();
     }
 }
 
-int GuiContextualizationController::addString(FirmwareString *&fwString)
+void GuiContextualizationController::refreshView()
 {
-    int error;
-
-    error = ContextualizationControllerBase::addString(fwString);
-    if (!error) {
-        this->tableModel->insertRows(tableModel->rowCount()-1, 1);
-    }
-
-    return error;
+    this->refreshImageView();
+    this->refreshTableView();
 }
 
-bool GuiContextualizationController::setImage(const QString &image)
+void GuiContextualizationController::refreshImageView()
 {
     QObject *containerImage;
-    QFileInfo imageInfo(image);
-    QString destination("/tmp/contextualizationCapture." + imageInfo.suffix());
     bool exists;
-
-    exists = ContextualizationControllerBase::setImage(image);
 
     containerImage = this->view->findChild<QObject *>("containerImage");
     if (containerImage) {
+        exists = QFile(this->model->getImage()).exists();
+
         containerImage->setProperty("source", "");
         containerImage->setProperty(
             "source",
-            "file:" + (exists ? destination : ContextualizationModel::NO_IMAGE_PATH)
+            "file:" + (exists ? this->model->getImage() : ContextualizationModel::NO_IMAGE_PATH)
         );
     }
-
-    if (!exists) {
-        Utils::errorMessage("Can't set image.", "Not exists the image: " + image);
-    }
-
-    return exists;
 }
+
+void GuiContextualizationController::refreshTableView()
+{
+    if (this->tableModel) {
+        this->tableModel->refreshView();
+    }
+}
+
+
 

@@ -32,6 +32,7 @@ public:
 
 private:
     QList<FirmwareString *> &strings;
+    int numberOfRowsInView;
 
 };
 
