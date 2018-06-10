@@ -1,5 +1,8 @@
-#Ignore bin files
-/bin
+#Bin files
+bin/
 
-#Ignore user compile options.
+#User compile options.
 *.user
+
+#Tesseract repository.
+tesseract/
