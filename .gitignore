@@ -1,0 +1,5 @@
+#Ignore bin files
+/bin
+
+#Ignore user compile options.
+*.user
