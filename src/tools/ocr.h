@@ -12,14 +12,20 @@
 #include <QProcess>
 #include <leptonica/allheaders.h>
 #include "baseapi.h"
+#include "genericvector.h"
 #include "log.h"
 
 class Ocr
 {
 public:
     Ocr();
-    Ocr(QString image, QString language = QString("eng"), QString datapath = QString());
-    Ocr(QString image, QStringList languages, QString datapath = QString());
+    Ocr(
+        QString image,
+        QString datapath = QString(),
+        tesseract::OcrEngineMode engineMode = tesseract::OEM_TESSERACT_LSTM_COMBINED,
+        tesseract::PageSegMode pageSegMode = tesseract::PSM_AUTO
+    );
+    ~Ocr();
 
     /**
      * @brief Extract strings contained in the image.
@@ -56,13 +62,10 @@ public:
 private:
     tesseract::TessBaseAPI *api;
     QFile image;
-    QString languages; ///< Languagues used to detect.
+    QString language; ///< Languagues used to detect.
     QString datapath; ///< Path where are languages.
     tesseract::PageSegMode pageSegMode;
     tesseract::OcrEngineMode engineMode;
-    //TODO: que hacer con estas variables.
-    //GenericVector<STRING> vars_vec; ///< Location of user words file.
-    //GenericVector<STRING> vars_values; ///< Location of user patterns file.
 
     int initApi();
     QStringList * processExtration(QString &source);

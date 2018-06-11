@@ -5,10 +5,10 @@ CONFIG += c++11
 INCLUDEPATH += $$PWD/src
 
 #Include paths of source files of tesseract.
-INCLUDEPATH += $$PWD/tesseract/api
-INCLUDEPATH += $$PWD/tesseract/ccmain
-INCLUDEPATH += $$PWD/tesseract/ccutil
-INCLUDEPATH += $$PWD/tesseract/ccstruct
+INCLUDEPATH += $$PWD/tesseract/src/api
+INCLUDEPATH += $$PWD/tesseract/src/ccmain
+INCLUDEPATH += $$PWD/tesseract/src/ccutil
+INCLUDEPATH += $$PWD/tesseract/src/ccstruct
 
 #Include libs of leptonica and tesseract.
 LIBS += -llept -ltesseract

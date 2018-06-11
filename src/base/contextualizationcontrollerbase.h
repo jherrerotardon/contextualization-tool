@@ -38,10 +38,29 @@ protected:
     int validateModel();
     QString generateContextualization();
     int sendContextualization(QString const &path, QString user, QString password);
+
+    /**
+     * @brief Extracts the strings contained in the image set in the model.
+     *
+     * Returns a pointer to QListString that contains all of strings extracted. Each string on QStringList is a line
+     * found in the image.
+     * @return QStringList *
+     */
+    QStringList * detectStringsOnImage();
+
+    /**
+     * @brief Processes received strings.
+     *
+     * Tries to find the strings value in fp file and strings that are in the file are added in the model.
+     * Returns the number of strings added in the model.
+     * @param strings QList<FirmwareString *> to be processed.
+     * @return int
+     */
+    int processStrings(const QStringList &strings);
     FirmwareString * findString(const QString &text);
 
     /**
-     * @brief Convert a line of fp file in a FirmwareString if is possible.
+     * @brief Converts a line of fp file in a FirmwareString if is possible.
      *
      * Return null if there is a format error in the line.
      * @param line QString Contains string to fragment.
@@ -51,7 +70,7 @@ protected:
     FirmwareString * fragmentFpLine(QString &line, int lineNumber);
 
     /**
-     * @brief Check the parameter state is a valid state.
+     * @brief Checks the parameter state is a valid state.
      *
      * Valid states are stored in a private QStringList validStates.
      * Return true if the state is a valid state and return false if not.
@@ -61,7 +80,7 @@ protected:
     bool isValidState(QString &state);
 
     /**
-     * @brief Add new string on the model.
+     * @brief Adds a new string on the model.
      *
      * The FirmwareString is added on the model of the tool. Also strings TableView model is notified because is
      * necessary to refresh the view of TableView.
@@ -70,16 +89,16 @@ protected:
      * @param fwString FirmwareString * The string to add on the model.
      * @return bool
      */
-    virtual int addString(FirmwareString *&fwString);
+    int addString(FirmwareString *&fwString);
 
-    virtual int addStrings(const QList<FirmwareString *> &strings);
+    int addStrings(const QList<FirmwareString *> &strings);
 
-    virtual bool removeString(int row);
+    bool removeString(int row);
 
-    virtual void removeAllStrings();
+    void removeAllStrings();
 
     /**
-     * @brief Start a process that allow user capture an area of the screen.
+     * @brief Starts a process that allow user capture an area of the screen.
      *
      * The user have to select the area to capture with the mouse.
      * Return the path where the capture is stored or an empty QString if an error ocurred.
@@ -90,7 +109,7 @@ protected:
     virtual bool setImage(const QString &image);
 
     /**
-     * @brief Check that the FirmwareString is not already in the model.
+     * @brief Checks that the FirmwareString is not already in the model.
      *
      * If the FirmwareString has no empty id, checks that there is not any FirmwareString with the same id. If the
      * FirmwareString id is empty, then checks that there is not any FirmwareString with the same value.
