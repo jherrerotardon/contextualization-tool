@@ -31,9 +31,6 @@ int ContextualizationControllerBase::importProjectFromJsonFile(QString path)
         return 1;
     }
 
-    //TODO: mirar a ver que pasa con el igual. No se mantiene la referencia del modelo de la tabla.
-    //this->setImage(modelTmp->getImage());
-    //this->addStrings(modelTmp->getStringsList());
     *(this->model) = *modelTmp;
 
     delete modelTmp;
@@ -118,6 +115,30 @@ int ContextualizationControllerBase::sendContextualization(const QString &path, 
     }
 
     return errorCode;
+}
+
+QStringList * ContextualizationControllerBase::detectStringsOnImage()
+{
+    Ocr ocr(this->model->getImage());
+
+    ocr.setDataPath(QDir("../tesseract/tessdata").absolutePath());
+
+    return ocr.run();
+}
+
+int ContextualizationControllerBase::processStrings(const QStringList &strings)
+{
+    FirmwareString *fwString;
+    int count = 0;
+
+    foreach (QString string, strings) {
+        fwString = this->findString(string);
+        if (this->addString(fwString) == NoError) {
+            count++;
+        }
+    }
+
+    return count;
 }
 
 FirmwareString * ContextualizationControllerBase::findString(const QString &text)
@@ -264,15 +285,15 @@ int ContextualizationControllerBase::addString(FirmwareString *&fwString)
 
 int ContextualizationControllerBase::addStrings(const QList<FirmwareString *> &strings)
 {
-    int error = NoError;
+    int count = 0;
 
     foreach (FirmwareString *fwString, strings) {
-        if (ContextualizationControllerBase::addString(fwString) == StringAlreadyExists) {
-            error = StringAlreadyExists;
+        if (this->addString(fwString) == NoError) {
+            count++;
         }
     }
 
-    return error;
+    return count;
 }
 
 bool ContextualizationControllerBase::removeString(int row)
@@ -325,14 +346,14 @@ bool ContextualizationControllerBase::setImage(const QString &image)
 bool ContextualizationControllerBase::isFpStringAlreadyExists(FirmwareString &fwString)
 {
     if (fwString.getId().isEmpty()) {
-        //Check that there aren't strings with the same value.
+        ///< Check that there aren't strings with the same value.
         foreach (FirmwareString *string, this->model->getStringsList()) {
             if (string->getValue() == fwString.getValue()) {
                 return true;
             }
         }
     } else {
-        //Check that there aren't strings with the same id.
+        ///< Check that there aren't strings with the same id.
         foreach (FirmwareString *string, this->model->getStringsList()) {
             if (string->getId() == fwString.getId()) {
                 return true;

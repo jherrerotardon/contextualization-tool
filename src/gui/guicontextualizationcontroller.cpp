@@ -189,21 +189,12 @@ void GuiContextualizationController::load()
 
 void GuiContextualizationController::detect()
 {
-    Ocr test;
-    //test.setDataPath("/home/jorge/Projects/contextualization-tool/tesseract/tessdata/");
-//    foreach (QString s, test.getAvailableLanguages()) {
-//        qDebug() << s;
-//    }
+    QStringList *extractedStrings;
 
-    ///< Test version
-    test.setImage(this->model->getImage());
-    QStringList *a = test.run();
-    qDebug() << "Numero resultados = " << a->size();
-    foreach (QString s, *a) {
-        qDebug() << s;
-    }
+    extractedStrings = this->detectStringsOnImage();
+    this->processStrings(*extractedStrings);
 
-    delete a;
+    delete extractedStrings;
 }
 
 void GuiContextualizationController::send()
