@@ -7,7 +7,7 @@ const QString ContextualizationModel::NO_IMAGE_PATH =
 ContextualizationModel::ContextualizationModel(QString image, QList<FirmwareString *> list) : QObject()
 {
     this->image = image;
-    this->stringsList = list;
+    this->addStrings(list);
 }
 
 ContextualizationModel::~ContextualizationModel(){
@@ -40,7 +40,7 @@ void ContextualizationModel::addString(FirmwareString *newString)
 void ContextualizationModel::addStrings(QList<FirmwareString *> &strings)
 {
     foreach (FirmwareString *fwString, strings) {
-        this->addString(new FirmwareString(*fwString));
+        this->addString(fwString);
     }
 }
 

@@ -70,6 +70,7 @@ int Utils::writeFile(const QString &path, const QString &text)
     QTextStream out(&file);
     out << text << '\n';
     file.close();
+
     return 0;
 }
 

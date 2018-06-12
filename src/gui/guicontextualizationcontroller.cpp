@@ -198,7 +198,7 @@ void GuiContextualizationController::add(QString newString, int findType)
                     );
 
                     foreach (FirmwareString *fwString, stringsFound) {
-                        if (&ok && fwString->getId() == selected) {
+                        if (ok && fwString->getId() == selected) {
                             this->addString(fwString);
                         } else {
                             delete fwString;
@@ -319,7 +319,6 @@ void GuiContextualizationController::save()
 void GuiContextualizationController::saveAs()
 {
     QString path;
-    QString text;
     QFileDialog dialog(
         Q_NULLPTR,
         tr("Save Project"),
@@ -333,8 +332,7 @@ void GuiContextualizationController::saveAs()
     if (dialog.exec()) {
         path = dialog.selectedFiles().first();
         path = path.endsWith(QString(".json")) ? path : path + ".json";
-        text = this->model->toJson();
-        Utils::writeFile(path, text);
+        this->exportToJsonFile(path);
     }
 }
 
@@ -383,9 +381,4 @@ void GuiContextualizationController::refreshTableView()
     if (this->tableModel) {
         this->tableModel->refreshView();
     }
-}
-
-void GuiContextualizationController::addProcess()
-{
-
 }

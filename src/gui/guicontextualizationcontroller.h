@@ -53,8 +53,6 @@ public slots:
 private:
     StringsTableModel *tableModel;
     QObject *view;
-
-    void addProcess();
 };
 
 #endif // GUICONTEXTUALIZATIONCONTROLLER_H

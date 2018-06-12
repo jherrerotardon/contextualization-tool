@@ -1,21 +1,5 @@
 #include "firmwarestring.h"
 
-FirmwareString::FirmwareString(
-    const QString &id,
-    const QString &value,
-    const QString &description,
-    const QString &maxLength,
-    const QString &state,
-    const bool selected
-) {
-    this->id = id;
-    this->value = value;
-    this->description = description;
-    this->maxLength = maxLength;
-    this->state = state;
-    this->selected = selected;
-}
-
 FirmwareString::FirmwareString()
 {
     this->id = "";
@@ -36,9 +20,30 @@ FirmwareString::FirmwareString(FirmwareString &other)
     this->selected = other.selected;
 }
 
+FirmwareString::FirmwareString(
+    const QString &id,
+    const QString &value,
+    const QString &description,
+    const QString &maxLength,
+    const QString &state,
+    const bool selected
+) {
+    this->id = id;
+    this->value = value;
+    this->description = description;
+    this->maxLength = maxLength;
+    this->state = state;
+    this->selected = selected;
+}
+
 QString FirmwareString::getId() const
 {
     return this->id;
+}
+
+void FirmwareString::setId(const QString &id)
+{
+    this->id = id;
 }
 
 QString FirmwareString::getValue() const
@@ -46,9 +51,19 @@ QString FirmwareString::getValue() const
     return this->value;
 }
 
+void FirmwareString::setValue(const QString &value)
+{
+    this->value = value;
+}
+
 QString FirmwareString::getDescription() const
 {
     return this->description;
+}
+
+void FirmwareString::setDescription(const QString &description)
+{
+    this->description = description;
 }
 
 QString FirmwareString::getMaxLength() const
@@ -56,14 +71,19 @@ QString FirmwareString::getMaxLength() const
     return this->maxLength;
 }
 
+void FirmwareString::setMaxLength(const QString &maxLength)
+{
+    this->maxLength = maxLength;
+}
+
 QString FirmwareString::getState() const
 {
     return this->state;
 }
 
-void FirmwareString::setValue(const QString &value)
+void FirmwareString::setState(const QString &state)
 {
-    this->value = value;
+    this->state = state;
 }
 
 bool FirmwareString::isEmpty()
