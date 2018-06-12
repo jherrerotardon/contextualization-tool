@@ -4,7 +4,18 @@ import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Styles 1.4
 
-ApplicationWindow {    
+ApplicationWindow {
+    signal clearRequested()
+    signal addRequested(string newString, int findType)
+    signal stringRemoved(int row)
+    signal cancelRequested()
+    signal sendRequested()
+    signal captureRequested()
+    signal loadImageRequested()
+    signal detectStringsRequested()
+    signal openRequested()
+    signal saveAsRequested()
+
     id : mainWindow
     visible: true
     minimumWidth: Screen.width * 0.4
@@ -34,17 +45,21 @@ ApplicationWindow {
             title: "File"
 
             MenuItem {
-                objectName: "importButton"
+                objectName: "openButton"
                 text : "Open Project..."
                 shortcut : "Ctrl+I"
                 iconSource: "qrc:/images/import.png"
+
+                onTriggered: openRequested()
             }
 
             MenuItem {
-                objectName: "exportButton"
+                objectName: "saveAsButton"
                 text : "Save As..."
                 shortcut : "Ctrl+E"
                 iconSource: "qrc:/images/export.png"
+
+                onTriggered: saveAsRequested()
             }
 
             MenuItem {
@@ -159,6 +174,8 @@ ApplicationWindow {
                             objectName: "captureAreaButon"
                             text: "CAPTURE AREA"
                             Layout.preferredHeight: 45
+
+                            onClicked: captureRequested()
                         }
 
                         Item {
@@ -171,6 +188,8 @@ ApplicationWindow {
                             text: "LOAD IMAGE"
                             Layout.preferredWidth: captureAreaButon.width
                             Layout.preferredHeight: 45
+
+                            onClicked: loadImageRequested()
                         }
                     }
 
@@ -208,13 +227,11 @@ ApplicationWindow {
                     }
 
                     Button {
-                        signal customClicked(string newString, int findType)
-
                         id: addStringButton
                         objectName: "addStringButton"
                         text : "ADD"
 
-                        onClicked: customClicked(newStringInput.text, findTypeComboBox.currentIndex)
+                        onClicked: addRequested(newStringInput.text, findTypeComboBox.currentIndex)
                     }
                 }
 
@@ -265,8 +282,6 @@ ApplicationWindow {
                     }
 
                     TableViewColumn {
-                        signal buttonClicked (int row)
-
                         id: buttonsColumn
                         objectName: "buttonsColumn"
                         role: "buttonsColumn"
@@ -274,8 +289,6 @@ ApplicationWindow {
                         resizable: false
 
                         delegate: Button {
-                            signal buttonClicked (int row)
-
                             objectName: "deleteStringButton"
                             enabled: true
 
@@ -286,7 +299,7 @@ ApplicationWindow {
                                 fillMode: Image.PreserveAspectFit
                             }
 
-                            onClicked: buttonsColumn.buttonClicked(styleData.row)
+                            onClicked: stringRemoved(styleData.row)
                         }
                     }
                     //model: customModel
@@ -301,6 +314,8 @@ ApplicationWindow {
                         objectName: "detectStringsButton"
                         text: "DETECT STRINGS ON IMAGE"
                         Layout.alignment: Qt.AlignRight
+
+                        onClicked: detectStringsRequested()
                     }
 
                     Item {
@@ -312,6 +327,8 @@ ApplicationWindow {
                         objectName: "clearButton"
                         text: "CLEAR"
                         Layout.alignment: Qt.AlignLeft
+
+                        onClicked: clearRequested()
                     }
                 }
 
@@ -331,6 +348,7 @@ ApplicationWindow {
                         Layout.preferredHeight: 45
                         text: "CANCEL"
 
+                        onClicked: cancelRequested()
                     }
 
                     Button {
@@ -338,6 +356,8 @@ ApplicationWindow {
                         objectName: "sendButton"
                         Layout.preferredHeight: 45
                         text: "SEND"
+
+                        onClicked: sendRequested()
                     }
                 }
             }

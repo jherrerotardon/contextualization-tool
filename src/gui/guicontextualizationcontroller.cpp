@@ -10,7 +10,7 @@ GuiContextualizationController::GuiContextualizationController(QObject *view, QO
     this->view = view;
 
     if (view != Q_NULLPTR) {
-        ///< Connect signals on model to refresh the view.
+        // Connect signals on model to refresh the view.
         QObject::connect(
             this->model,
             SIGNAL(imageChanged()),
@@ -30,71 +30,71 @@ GuiContextualizationController::GuiContextualizationController(QObject *view, QO
             SLOT(refreshView())
         );
 
-        ///< Initialize TableView and his model.
+        // Initialize TableView and his model.
         this->tableModel = new StringsTableModel(this->model->getStringsList());
         stringsTable = view->findChild<QObject *>("stringsTable");
         if (stringsTable) {
             stringsTable->setProperty("model", QVariant::fromValue(this->tableModel));
         }
 
-        //< Connect signals and slots
+        // Connect signals and slots
         QObject::connect(
-            view->findChild<QObject *>("clearButton"),
-            SIGNAL(clicked()),
+            view,
+            SIGNAL(clearRequested()),
             this,
             SLOT(clear())
         );
         QObject::connect(
-            view->findChild<QObject *>("addStringButton"),
-            SIGNAL(customClicked(QString, int)),
+            view,
+            SIGNAL(addRequested(QString, int)),
             this,
             SLOT(add(QString, int))
         );
         QObject::connect(
-            view->findChild<QObject *>("buttonsColumn"),
-            SIGNAL(buttonClicked(int)),
+            view,
+            SIGNAL(stringRemoved(int)),
             this,
             SLOT(remove(int))
         );
         QObject::connect(
-            view->findChild<QObject *>("cancelButton"),
-            SIGNAL(clicked()),
+            view,
+            SIGNAL(cancelRequested()),
             this,
             SLOT(cancel())
         );
         QObject::connect(
-            view->findChild<QObject *>("sendButton"),
-            SIGNAL(clicked()),
+            view,
+            SIGNAL(sendRequested()),
             this,
             SLOT(send())
         );
         QObject::connect(
-            view->findChild<QObject *>("captureAreaButon"),
-            SIGNAL(clicked()),
+            view,
+            SIGNAL(captureRequested()),
             this,
             SLOT(capture())
         );
         QObject::connect(
-            view->findChild<QObject *>("loadImageButton"),
-            SIGNAL(clicked()),
+            view,
+            SIGNAL(loadImageRequested()),
             this,
             SLOT(load())
         );
         QObject::connect(
-            view->findChild<QObject *>("detectStringsButton"),
-            SIGNAL(clicked()),
+            view,
+            SIGNAL(detectStringsRequested()),
             this,
             SLOT(detect())
         );
         QObject::connect(
-            view->findChild<QObject *>("importButton"),
-            SIGNAL(triggered()),
+            view,
+            SIGNAL(openRequested()),
             this,
             SLOT(open())
         );
         QObject::connect(
-            view->findChild<QObject *>("exportButton"),
-            SIGNAL(triggered()),
+            view,
+            SIGNAL(saveAsRequested()),
             this,
             SLOT(saveAs())
         );

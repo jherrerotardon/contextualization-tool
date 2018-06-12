@@ -354,15 +354,16 @@ int ContextualizationControllerBase::eraseExistStrings(QList<FirmwareString *> *
 {
     int count = 0;
     QList<FirmwareString *>::Iterator iterator = strings->begin();
+    QList<FirmwareString *>::Iterator end = strings->end();
 
-    while (iterator != strings->end()) {
+    while (iterator != end) {
         if(isFwStringAlreadyExists(**iterator)) {
             delete *iterator;
             strings->erase(iterator);
             count++;
-        } else {
-            ++iterator;
         }
+
+        ++iterator;
     }
 
     return count;
