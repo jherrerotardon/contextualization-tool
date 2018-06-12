@@ -9,7 +9,7 @@ GuiContextualizationController::GuiContextualizationController(QObject *view, QO
 
     this->view = view;
 
-    if (view != nullptr) {
+    if (view != Q_NULLPTR) {
         ///< Connect signals on model to refresh the view.
         QObject::connect(
             this->model,
@@ -46,9 +46,9 @@ GuiContextualizationController::GuiContextualizationController(QObject *view, QO
         );
         QObject::connect(
             view->findChild<QObject *>("addStringButton"),
-            SIGNAL(customClicked(QString)),
+            SIGNAL(customClicked(QString, int)),
             this,
-            SLOT(add(QString))
+            SLOT(add(QString, int))
         );
         QObject::connect(
             view->findChild<QObject *>("buttonsColumn"),
@@ -117,36 +117,96 @@ void GuiContextualizationController::setTableModel(StringsTableModel *tableModel
     this->tableModel = tableModel;
 }
 
-void GuiContextualizationController::add(QString newString)
+void GuiContextualizationController::add(QString newString, int findType)
 {
     int response;
-    QString emptyString("");
-    QString state;
-    FirmwareString *fwString;
+    bool ok;
+    QString selected;
+    QStringList comboBoxOptions;
+    QList <FirmwareString *> stringsFound;
 
-    fwString = this->findString(newString);
-    if (fwString) {
-        this->addString(fwString);
-        //TODO: Utils::errorMessage("Duplicate string.", "Alredy exists an equal string in the contextualization.");
-
-    } else {
-        response = Utils::warningMessage(
-            "Impossible to find the string in " + this->fpFile + " file.",
-            "Are you sure to add the string?"
-        );
-        if (response == QMessageBox::Yes) {
-            state = "TODO";
-            fwString = new FirmwareString(
-                emptyString,
-                newString,
-                emptyString,
-                QString::number(newString.size()),
-                state,
-                false
-            );
-            this->addString(fwString);
+    stringsFound = this->findString(newString, (FindType)findType);
+    switch (stringsFound.size()) {
+        case 0:
+            if (findType == ByValue) {
+                response = Utils::warningMessage(
+                    "Impossible to find the string in " + this->fpFile + " file.",
+                    "Are you sure to add the string?"
+                );
+                if (response == QMessageBox::Yes) {
+                    this->addString(
+                        new FirmwareString(
+                            QString(""),
+                            newString,
+                            QString(""),
+                            QString::number(newString.size()),
+                            "TODO",
+                            false
+                        )
+                    );
+                }
+            } else if (findType == ByID) {
+                Utils::informativeMessage("Not found.", "No string was be found with this ID.");
+            }
             //TODO: Utils::errorMessage("Duplicate string.", "Alredy exists an equal string in the contextualization.");
-        }
+        break;
+
+        case 1:
+            this->addString(stringsFound.first());
+            break;
+
+        default:
+            this->eraseExistStrings(&stringsFound);
+            switch (stringsFound.size()) {
+                case 0:
+                    Utils::informativeMessage("Not found.", "All strings found already are in the table.");
+                    response = Utils::warningMessage(
+                        "All strings found already are in the table.",
+                        "Do you add a new string with this value?"
+                    );
+                    if (response == QMessageBox::Yes) {
+                        this->addString(
+                            new FirmwareString(
+                                QString(""),
+                                newString,
+                                QString(""),
+                                QString::number(newString.size()),
+                                "TODO",
+                                false
+                            )
+                        );
+                    }
+                    break;
+
+                case 1:
+                    this->addString(stringsFound.first());
+                    break;
+
+                default:
+                    foreach (FirmwareString *fwString, stringsFound) {
+                        comboBoxOptions << fwString->getId();
+                    }
+
+                    selected = QInputDialog::getItem(
+                        Q_NULLPTR,
+                        tr("Warning!!"),
+                        tr("More than one string found with this value. Select the ID of the string you want."),
+                        comboBoxOptions,
+                        0,
+                        false,
+                        &ok
+                    );
+
+                    foreach (FirmwareString *fwString, stringsFound) {
+                        if (&ok && fwString->getId() == selected) {
+                            this->addString(fwString);
+                        } else {
+                            delete fwString;
+                        }
+                    }
+
+                    break;
+            }
     }
 }
 
@@ -325,5 +385,7 @@ void GuiContextualizationController::refreshTableView()
     }
 }
 
+void GuiContextualizationController::addProcess()
+{
 
-
+}

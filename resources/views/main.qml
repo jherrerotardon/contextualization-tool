@@ -35,14 +35,14 @@ ApplicationWindow {
 
             MenuItem {
                 objectName: "importButton"
-                text : "Import Project"
+                text : "Open Project..."
                 shortcut : "Ctrl+I"
                 iconSource: "qrc:/images/import.png"
             }
 
             MenuItem {
                 objectName: "exportButton"
-                text : "Export Project"
+                text : "Save As..."
                 shortcut : "Ctrl+E"
                 iconSource: "qrc:/images/export.png"
             }
@@ -196,14 +196,25 @@ ApplicationWindow {
                         Layout.fillWidth: true
                     }
 
+                    ComboBox {
+                        id: findTypeComboBox
+                        Layout.preferredWidth: 93
+                        currentIndex: 0
+                        model: ListModel {
+                            id: findTypeItems
+                            ListElement { text: "by ID" }
+                            ListElement { text: "by Value" }
+                        }
+                    }
+
                     Button {
-                        signal customClicked(string newString)
+                        signal customClicked(string newString, int findType)
 
                         id: addStringButton
                         objectName: "addStringButton"
                         text : "ADD"
 
-                        onClicked: customClicked(newStringInput.text)
+                        onClicked: customClicked(newStringInput.text, findTypeComboBox.currentIndex)
                     }
                 }
 

@@ -32,18 +32,18 @@ QStringList * Ocr::run()
     if (!image.exists()) {
         Log::writeError(this->image.fileName() + " does not exist when ocr process was going run.");
 
-        return nullptr;
+        return Q_NULLPTR;
     }
 
     imagePix = pixRead(this->image.fileName().toStdString().c_str());
     if (!imagePix) {
         Log::writeError(this->image.fileName() + " can't be converted into Pix object.");
 
-        return nullptr;
+        return Q_NULLPTR;
     }
 
     if (this->initApi()) {
-        return nullptr;
+        return Q_NULLPTR;
     }
 
     this->api->SetPageSegMode(this->pageSegMode);

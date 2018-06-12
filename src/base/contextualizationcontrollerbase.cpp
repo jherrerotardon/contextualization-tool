@@ -128,50 +128,25 @@ QStringList * ContextualizationControllerBase::detectStringsOnImage()
 
 int ContextualizationControllerBase::processStrings(const QStringList &strings)
 {
-    FirmwareString *fwString;
     int count = 0;
 
     foreach (QString string, strings) {
-        fwString = this->findString(string);
-        if (this->addString(fwString) == NoError) {
-            count++;
-        }
+        count += this->addStrings(this->findString(string, ByValue));
     }
 
     return count;
 }
 
-FirmwareString * ContextualizationControllerBase::findString(const QString &text)
+QList<FirmwareString *> ContextualizationControllerBase::findString(const QString &text, const FindType findType)
 {
-    int numberOfLine = 0;
-    QString line;
-    QString message;
-    QFile file(fpFile);
-    FirmwareString *fwString = nullptr;
-
-    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        QTextStream in(&file);
-        while (!in.atEnd()) {
-            line = in.readLine();
-            numberOfLine ++;
-            fwString = this->fragmentFpLine(line, numberOfLine);
-            if (fwString) {
-                if (text == fwString->getValue()) {
-                    break; ///< Stop to read file
-                } else {
-                    delete fwString;
-                    fwString = nullptr;
-                }
-            }
-        }
-
-        file.close();
-    } else {
-        message = " Fail to open file: " + fpFile;
-        Log::writeError(message);
+    switch (findType) {
+        case ByID:
+            return this->findStringById(text);
+        case ByValue:
+            return this->findStringByValue(text);
+        default:
+            return QList<FirmwareString *>();
     }
-
-    return fwString;
 }
 
 FirmwareString * ContextualizationControllerBase::fragmentFpLine(QString &line, int lineNumber)
@@ -213,7 +188,7 @@ FirmwareString * ContextualizationControllerBase::fragmentFpLine(QString &line, 
                                         + QString::number(lineNumber)
                                         + ".";
                                 Log::writeError(message);
-                                return nullptr;
+                                return Q_NULLPTR;
                             }
 
                     } else {
@@ -221,7 +196,7 @@ FirmwareString * ContextualizationControllerBase::fragmentFpLine(QString &line, 
                                 + QString::number(lineNumber)
                                 + ".";
                         Log::writeError(message);
-                        return nullptr;
+                        return Q_NULLPTR;
                     }
 
                 } else {
@@ -229,7 +204,7 @@ FirmwareString * ContextualizationControllerBase::fragmentFpLine(QString &line, 
                             + QString::number(lineNumber)
                             + ".";
                     Log::writeError(message);
-                    return nullptr;
+                    return Q_NULLPTR;
                 }
 
             } else {
@@ -237,7 +212,7 @@ FirmwareString * ContextualizationControllerBase::fragmentFpLine(QString &line, 
                         + QString::number(lineNumber)
                         + ".";
                 Log::writeError(message);
-                return nullptr;
+                return Q_NULLPTR;
             }
 
         } else {
@@ -245,7 +220,7 @@ FirmwareString * ContextualizationControllerBase::fragmentFpLine(QString &line, 
                     + QString::number(lineNumber)
                     + ".";
             Log::writeError(message);
-            return nullptr;
+            return Q_NULLPTR;
         }
 
     } else {
@@ -253,7 +228,7 @@ FirmwareString * ContextualizationControllerBase::fragmentFpLine(QString &line, 
                 + QString::number(lineNumber)
                 + ".";
         Log::writeError(message);
-        return nullptr;
+        return Q_NULLPTR;
     }
 }
 
@@ -265,15 +240,15 @@ bool ContextualizationControllerBase::isValidState(QString &state)
     return false;
 }
 
-int ContextualizationControllerBase::addString(FirmwareString *&fwString)
+int ContextualizationControllerBase::addString(FirmwareString *fwString)
 {
-    if (fwString == nullptr) {
+    if (fwString == Q_NULLPTR) {
         return NullPointer;
     }
 
-    if (this->isFpStringAlreadyExists(*fwString)) {
+    if (this->isFwStringAlreadyExists(*fwString)) {
         delete fwString;
-        fwString = nullptr;
+        fwString = Q_NULLPTR;
 
         return StringAlreadyExists;
     }
@@ -343,7 +318,7 @@ bool ContextualizationControllerBase::setImage(const QString &image)
     return exists;
 }
 
-bool ContextualizationControllerBase::isFpStringAlreadyExists(FirmwareString &fwString)
+bool ContextualizationControllerBase::isFwStringAlreadyExists(FirmwareString &fwString)
 {
     if (fwString.getId().isEmpty()) {
         ///< Check that there aren't strings with the same value.
@@ -362,4 +337,85 @@ bool ContextualizationControllerBase::isFpStringAlreadyExists(FirmwareString &fw
     }
 
     return false;
+}
+
+QList<FirmwareString *> ContextualizationControllerBase::findStringById(const QString &id)
+{
+    int numberOfLine = 0;
+    QString line;
+    QFile file(this->fpFile);
+    QList<FirmwareString *> stringsFound;
+    FirmwareString *fwString = Q_NULLPTR;
+
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QTextStream in(&file);
+        while (!in.atEnd()) {
+            line = in.readLine();
+            numberOfLine ++;
+            fwString = this->fragmentFpLine(line, numberOfLine);
+            if (fwString) {
+                if (id == fwString->getId()) {
+                    stringsFound << fwString;
+                    break; ///< Stop to read file
+                }
+
+                delete fwString;
+            }
+        }
+
+        file.close();
+    } else {
+        Log::writeError(" Fail to open file: " + this->fpFile);
+    }
+
+    return stringsFound;
+}
+
+QList<FirmwareString *> ContextualizationControllerBase::findStringByValue(const QString &value)
+{
+    int numberOfLine = 0;
+    QString line;
+    QFile file(this->fpFile);
+    QList<FirmwareString *> stringsFound;
+    FirmwareString *fwString = Q_NULLPTR;
+
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QTextStream in(&file);
+        while (!in.atEnd()) {
+            line = in.readLine();
+            numberOfLine ++;
+            fwString = this->fragmentFpLine(line, numberOfLine);
+            if (fwString) {
+                if (value == fwString->getValue()) {
+                    stringsFound << fwString;
+                } else {
+                    delete fwString;
+                }
+            }
+        }
+
+        file.close();
+    } else {
+        Log::writeError(" Fail to open file: " + this->fpFile);
+    }
+
+    return stringsFound;
+}
+
+int ContextualizationControllerBase::eraseExistStrings(QList<FirmwareString *> *strings)
+{
+    int count = 0;
+    QList<FirmwareString *>::Iterator iterator = strings->begin();
+
+    while (iterator != strings->end()) {
+        if(isFwStringAlreadyExists(**iterator)) {
+            delete *iterator;
+            strings->erase(iterator);
+            count++;
+        } else {
+            ++iterator;
+        }
+    }
+
+    return count;
 }

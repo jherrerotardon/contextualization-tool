@@ -6,7 +6,7 @@
 class ConsoleContextualizationController : public ContextualizationControllerBase
 {
 public:
-    ConsoleContextualizationController(int argc, char *argv[], QObject *parent = nullptr);
+    ConsoleContextualizationController(int argc, char *argv[], QObject *parent = Q_NULLPTR);
 
     void exec();
     int decodeArguments();

@@ -1,6 +1,11 @@
 #ifndef GUICONTEXTUALIZATIONCONTROLLER_H
 #define GUICONTEXTUALIZATIONCONTROLLER_H
 
+#include <QInputDialog>
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QApplication>
+
 #include "base/contextualizationcontrollerbase.h"
 #include "stringstablemodel.h"
 
@@ -11,14 +16,14 @@ class GuiContextualizationController : public QObject, public ContextualizationC
     Q_PROPERTY(StringsTableModel * tableModel MEMBER tableModel)
 
 public:
-    GuiContextualizationController(QObject *view = nullptr, QObject *parent = nullptr);
+    GuiContextualizationController(QObject *view = Q_NULLPTR, QObject *parent = Q_NULLPTR);
     ~GuiContextualizationController();
 
     StringsTableModel *getTableModel();
     void setTableModel(StringsTableModel *tableModel);
 
 public slots:
-    void add(QString newString);
+    void add(QString newString, int findType);
     void remove(int row);
     void clear();
     void capture();
@@ -48,6 +53,8 @@ public slots:
 private:
     StringsTableModel *tableModel;
     QObject *view;
+
+    void addProcess();
 };
 
 #endif // GUICONTEXTUALIZATIONCONTROLLER_H

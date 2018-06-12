@@ -1,15 +1,12 @@
 #ifndef CONTEXTUALIZATIONCONTROLLER_H
 #define CONTEXTUALIZATIONCONTROLLER_H
 
-#include <QApplication>
 #include <QWindow>
 #include <QObject>
 #include <QString>
 #include <QStringList>
-#include <QMessageBox>
 #include <QProcess>
 #include <QFile>
-#include <QFileDialog>
 #include <QStandardPaths>
 #include <QDateTime>
 #include <QDir>
@@ -23,8 +20,9 @@ class ContextualizationControllerBase
 public:    
     enum ModelError { OkModel = 0, NoImage, ImageNotExist, NoStrings };
     enum Error { NoError = 0, NullPointer, StringAlreadyExists };
+    enum FindType { ByID = 0, ByValue };
 
-    explicit ContextualizationControllerBase(QObject *parent = nullptr);
+    explicit ContextualizationControllerBase(QObject *parent = Q_NULLPTR);
     ~ContextualizationControllerBase();
 
 protected:
@@ -57,7 +55,7 @@ protected:
      * @return int
      */
     int processStrings(const QStringList &strings);
-    FirmwareString * findString(const QString &text);
+    QList<FirmwareString *> findString(const QString &text, const FindType findType = ByID);
 
     /**
      * @brief Converts a line of fp file in a FirmwareString if is possible.
@@ -89,7 +87,7 @@ protected:
      * @param fwString FirmwareString * The string to add on the model.
      * @return bool
      */
-    int addString(FirmwareString *&fwString);
+    int addString(FirmwareString *fwString);
 
     int addStrings(const QList<FirmwareString *> &strings);
 
@@ -116,7 +114,13 @@ protected:
      * @param fwString
      * @return bool
      */
-    bool isFpStringAlreadyExists(FirmwareString &fwString);
+    bool isFwStringAlreadyExists(FirmwareString &fwString);
+
+    int eraseExistStrings(QList<FirmwareString *> *strings);
+
+private:
+    QList<FirmwareString *> findStringById(const QString &id);
+    QList<FirmwareString *> findStringByValue(const QString &value);
 };
 
 #endif // CONTEXTUALIZATIONCONTROLLER_H

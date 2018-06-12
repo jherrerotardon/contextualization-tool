@@ -14,7 +14,7 @@ ContextualizationModel::~ContextualizationModel(){
 
     foreach (FirmwareString *fwString, this->stringsList) {
         delete fwString;
-        fwString = nullptr;
+        fwString = Q_NULLPTR;
     }
 }
 
@@ -81,7 +81,7 @@ void ContextualizationModel::clearStringsList()
 {
     foreach (FirmwareString *fwString, this->stringsList) {
         delete fwString;
-        fwString = nullptr;
+        fwString = Q_NULLPTR;
     }
 
     this->stringsList.clear();
@@ -162,17 +162,17 @@ ContextualizationModel * ContextualizationModel::fromJson(QByteArray &json)
 
     if (jsonError.error != QJsonParseError::NoError) {
         Log::writeError(jsonError.errorString());
-        return nullptr;
+        return Q_NULLPTR;
     }
 
     root = document.object();
     if (root.isEmpty()) {
-        return nullptr;
+        return Q_NULLPTR;
     }
 
     image = root.value("image").toString();
     if (image.isEmpty()) {
-        return nullptr;
+        return Q_NULLPTR;
     }
 
     stringsListJsonObject = root.value("strings").toObject();
@@ -189,7 +189,7 @@ ContextualizationModel * ContextualizationModel::fromJson(QByteArray &json)
 
         data = QJsonDocument(stringJsonObject).toJson();
         fwString = FirmwareString::fromJson(data);
-        if (fwString == nullptr) {
+        if (fwString == Q_NULLPTR) {
             hasError = true;
             break;
         }
@@ -200,9 +200,9 @@ ContextualizationModel * ContextualizationModel::fromJson(QByteArray &json)
     if (hasError) {
         foreach (FirmwareString *string, stringsList) {
             delete string; ///< Release memory because of an error on json decode process.
-            string = nullptr;
+            string = Q_NULLPTR;
         }
-        return nullptr;
+        return Q_NULLPTR;
     }
 
     return new ContextualizationModel(image, stringsList);
