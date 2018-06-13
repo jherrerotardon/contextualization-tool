@@ -168,12 +168,12 @@ public:
     FirmwareString & operator=(const FirmwareString &other);
 
 private:
-    QString id;             //< Identifier of the firmware string.
-    QString value;          //< Value of the firmware string.
-    QString description;    //< Description of the firmware string.
-    QString maxLength;      //< Max length of the firmware string.
-    QString state;          //< State of the firmware string.
-    bool selected;          //< Indicates if the string is selected by user.
+    QString id_;            //< Identifier of the firmware string.
+    QString value_;         //< Value of the firmware string.
+    QString description_;   //< Description of the firmware string.
+    QString maxLength_;     //< Max length of the firmware string.
+    QString state_;         //< State of the firmware string.
+    bool selected_;         //< Indicates if the string is selected by user.
 };
 
 #endif // FIRMWARESTRING_H

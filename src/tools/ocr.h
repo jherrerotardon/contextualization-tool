@@ -60,12 +60,12 @@ public:
     void setEngineMode(tesseract::OcrEngineMode engineMode);
 
 private:
-    tesseract::TessBaseAPI *api;
-    QFile image;
-    QString language; ///< Languagues used to detect.
-    QString datapath; ///< Path where are languages.
-    tesseract::PageSegMode pageSegMode;
-    tesseract::OcrEngineMode engineMode;
+    tesseract::TessBaseAPI *api_;
+    QFile image_;
+    QString language_; ///< Languagues used to detect.
+    QString datapath_; ///< Path where are languages.
+    tesseract::PageSegMode pageSegMode_;
+    tesseract::OcrEngineMode engineMode_;
 
     int initApi();
     QStringList * processExtration(QString &source);

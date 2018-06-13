@@ -13,7 +13,7 @@ class GuiContextualizationController : public QObject, public ContextualizationC
 {
     Q_OBJECT
     //Q_PROPERTY(StringsTableModel * tableModel READ getTableModel WRITE setTableModel)
-    Q_PROPERTY(StringsTableModel * tableModel MEMBER tableModel)
+    //Q_PROPERTY(StringsTableModel * tableModel MEMBER tableModel)
 
 public:
     GuiContextualizationController(QObject *view = Q_NULLPTR, QObject *parent = Q_NULLPTR);
@@ -51,8 +51,8 @@ public slots:
     void refreshTableView();
 
 private:
-    StringsTableModel *tableModel;
-    QObject *view;
+    StringsTableModel *tableModel_;
+    QObject *view_;
 };
 
 #endif // GUICONTEXTUALIZATIONCONTROLLER_H

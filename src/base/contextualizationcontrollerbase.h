@@ -71,11 +71,11 @@ public:
     ~ContextualizationControllerBase();
 
 protected:
-    ContextualizationModel *model;  ///< Pointer to the contextualization model.
-    QString fpFile;                 ///< File path where find the firmware strings.
-    QString username;               ///< Username who run the app.
-    QStringList validStates;        ///< Valid states of firmware strings.
-    QString sendingHost;            ///< Host where the contextualization will be sent.
+    ContextualizationModel *model_; ///< Pointer to the contextualization model.
+    QString fpFile_;                ///< File path where find the firmware strings.
+    QString username_;              ///< Username who run the app.
+    QStringList validStates_;       ///< Valid states of firmware strings.
+    QString sendingHost_;           ///< Host where the contextualization will be sent.
 
     /**
      * @brief Exports projet to json file.

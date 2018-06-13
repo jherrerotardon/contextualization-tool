@@ -165,8 +165,8 @@ public:
     ContextualizationModel & operator=(ContextualizationModel &other);
 
 private:
-    QString image;                          ///< Image associated with the model.
-    QList<FirmwareString *> stringsList;    ///< List with the strings associated with the model.
+    QString image_;                         ///< Image associated with the model.
+    QList<FirmwareString *> stringsList_;   ///< List with the strings associated with the model.
 
 signals:
 

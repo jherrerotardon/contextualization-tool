@@ -6,13 +6,13 @@ const QString ContextualizationModel::NO_IMAGE_PATH =
 
 ContextualizationModel::ContextualizationModel(QString image, QList<FirmwareString *> list) : QObject()
 {
-    this->image = image;
+    image_ = image;
     this->addStrings(list);
 }
 
 ContextualizationModel::~ContextualizationModel(){
 
-    foreach (FirmwareString *fwString, this->stringsList) {
+    foreach (FirmwareString *fwString, stringsList_) {
         delete fwString;
         fwString = Q_NULLPTR;
     }
@@ -32,7 +32,7 @@ void ContextualizationModel::addString(
 
 void ContextualizationModel::addString(FirmwareString *newString)
 {
-    this->stringsList.append(newString);
+    stringsList_.append(newString);
 
     emit stringsListChanged();
 }
@@ -46,9 +46,9 @@ void ContextualizationModel::addStrings(QList<FirmwareString *> &strings)
 
 bool ContextualizationModel::removeString(QString &id)
 {
-    foreach (FirmwareString *fwString, this->stringsList) {
+    foreach (FirmwareString *fwString, stringsList_) {
         if (fwString->getId() == id) {
-            this->stringsList.removeOne(fwString);
+            stringsList_.removeOne(fwString);
             delete fwString;
 
             emit stringsListChanged();
@@ -64,9 +64,9 @@ bool ContextualizationModel::removeString(int pos)
 {
     FirmwareString *stringToRemove;
 
-    if (pos < this->stringsList.size()) {
-        stringToRemove = this->stringsList.at(pos);
-        this->stringsList.removeAt(pos);
+    if (pos < stringsList_.size()) {
+        stringToRemove = stringsList_.at(pos);
+        stringsList_.removeAt(pos);
         delete stringToRemove;
 
         emit stringsListChanged();
@@ -79,36 +79,36 @@ bool ContextualizationModel::removeString(int pos)
 
 void ContextualizationModel::clearStringsList()
 {
-    foreach (FirmwareString *fwString, this->stringsList) {
+    foreach (FirmwareString *fwString, stringsList_) {
         delete fwString;
         fwString = Q_NULLPTR;
     }
 
-    this->stringsList.clear();
+    stringsList_.clear();
 
     emit stringsListChanged();
 }
 
 QList<FirmwareString *> &ContextualizationModel::getStringsList()
 {
-    return this->stringsList;
+    return stringsList_;
 }
 
 void ContextualizationModel::setImage(QString path)
 {
-    this->image = path;
+    image_ = path;
 
     emit imageChanged();
 }
 
 QString ContextualizationModel::getImage()
 {
-    return this->image;
+    return image_;
 }
 
 bool ContextualizationModel::isEmpty()
 {
-    if (this->image.isEmpty() && this->stringsList.isEmpty()) {
+    if (image_.isEmpty() && stringsList_.isEmpty()) {
         return true;
     }
 
@@ -117,7 +117,7 @@ bool ContextualizationModel::isEmpty()
 
 void ContextualizationModel::clear()
 {
-    this->image = "";
+    image_ = "";
     this->clearStringsList();
 
     emit modelChanged();
@@ -133,11 +133,11 @@ QJsonObject ContextualizationModel::toJsonObject()
     QJsonObject root;
     QJsonObject stringsList;
 
-    for (int count = 0; count < this->stringsList.size(); ++count) {
-        stringsList.insert(QString::number(count),  this->stringsList.at(count)->toJsonObject());
+    for (int count = 0; count < stringsList_.size(); ++count) {
+        stringsList.insert(QString::number(count),  stringsList_.at(count)->toJsonObject());
     }
 
-    root.insert("image", QJsonValue(this->image));
+    root.insert("image", QJsonValue(image_));
     root.insert("strings", stringsList);
 
     return root;
@@ -215,7 +215,7 @@ ContextualizationModel & ContextualizationModel::operator=(ContextualizationMode
             this->clear();
         }
 
-        this->setImage(other.image);
+        this->setImage(other.getImage());
         foreach (FirmwareString *fwString, other.getStringsList()) {
             this->addString(new FirmwareString(*fwString));
         }

@@ -7,34 +7,34 @@ GuiContextualizationController::GuiContextualizationController(QObject *view, QO
 {
     QObject *stringsTable;
 
-    this->view = view;
+    view_ = view;
 
     if (view != Q_NULLPTR) {
         // Connect signals on model to refresh the view.
         QObject::connect(
-            this->model,
+            model_,
             SIGNAL(imageChanged()),
             this,
             SLOT(refreshImageView())
         );
         QObject::connect(
-            this->model,
+            model_,
             SIGNAL(stringsListChanged()),
             this,
             SLOT(refreshTableView())
         );
         QObject::connect(
-            this->model,
+            model_,
             SIGNAL(modelChanged()),
             this,
             SLOT(refreshView())
         );
 
         // Initialize TableView and his model.
-        this->tableModel = new StringsTableModel(this->model->getStringsList());
+        tableModel_ = new StringsTableModel(model_->getStringsList());
         stringsTable = view->findChild<QObject *>("stringsTable");
         if (stringsTable) {
-            stringsTable->setProperty("model", QVariant::fromValue(this->tableModel));
+            stringsTable->setProperty("model", QVariant::fromValue(tableModel_));
         }
 
         // Connect signals and slots
@@ -103,18 +103,18 @@ GuiContextualizationController::GuiContextualizationController(QObject *view, QO
 
 GuiContextualizationController::~GuiContextualizationController()
 {
-    delete this->model;
-    delete this->tableModel;
+    delete model_;
+    delete tableModel_;
 }
 
 StringsTableModel * GuiContextualizationController::getTableModel()
 {
-    return tableModel;
+    return tableModel_;
 }
 
 void GuiContextualizationController::setTableModel(StringsTableModel *tableModel)
 {
-    this->tableModel = tableModel;
+    tableModel_ = tableModel;
 }
 
 void GuiContextualizationController::add(QString newString, int findType)
@@ -130,7 +130,7 @@ void GuiContextualizationController::add(QString newString, int findType)
         case 0:
             if (findType == ByValue) {
                 response = Utils::warningMessage(
-                    "Impossible to find the string in " + this->fpFile + " file.",
+                    "Impossible to find the string in " + fpFile_ + " file.",
                     "Are you sure to add the string?"
                 );
                 if (response == QMessageBox::Yes) {
@@ -224,10 +224,10 @@ void GuiContextualizationController::capture()
 {
     QString path;
 
-    ((QWindow *)view)->setVisible(false);
+    ((QWindow *)view_)->setVisible(false);
     path = this->takeCaptureArea();
     this->setImage(path);
-    ((QWindow *)view)->setVisible(true);
+    ((QWindow *)view_)->setVisible(true);
 }
 
 void GuiContextualizationController::load()
@@ -273,7 +273,7 @@ void GuiContextualizationController::send()
 
             //TODO: pedir login de alguna forma.
             ///< Any errors are processed in the function.
-            hasError = this->sendContextualization(contextualizationPath, this->username, "1234");
+            hasError = this->sendContextualization(contextualizationPath, username_, "1234");
             if (hasError) {
                 //TODO: filtrar cada error.
             } else {
@@ -303,7 +303,7 @@ void GuiContextualizationController::cancel()
     response = Utils::warningMessage("Are you sure?", "If you not save the proyect it will be deleted.");
     if (response == QMessageBox::Yes) {
         ///< Remove temporal image.
-        QFile file(this->model->getImage());
+        QFile file(model_->getImage());
         if (file.exists())
             file.remove();
 
@@ -364,21 +364,21 @@ void GuiContextualizationController::refreshImageView()
     QObject *containerImage;
     bool exists;
 
-    containerImage = this->view->findChild<QObject *>("containerImage");
+    containerImage = view_->findChild<QObject *>("containerImage");
     if (containerImage) {
-        exists = QFile(this->model->getImage()).exists();
+        exists = QFile(model_->getImage()).exists();
 
         containerImage->setProperty("source", "");
         containerImage->setProperty(
             "source",
-            "file:" + (exists ? this->model->getImage() : ContextualizationModel::NO_IMAGE_PATH)
+            "file:" + (exists ? model_->getImage() : ContextualizationModel::NO_IMAGE_PATH)
         );
     }
 }
 
 void GuiContextualizationController::refreshTableView()
 {
-    if (this->tableModel) {
-        this->tableModel->refreshView();
+    if (tableModel_) {
+        tableModel_->refreshView();
     }
 }

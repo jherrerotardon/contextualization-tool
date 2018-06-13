@@ -1,8 +1,8 @@
 #include "log.h"
 
-const QString Log::debugFile = "/tmp/contextualization.debug";
-const QString Log::logFile = "/tmp/contextualization.log";
-const QString Log::errorFile = "/tmp/contextualization.err";
+const QString Log::debugFile_ = "/tmp/contextualization.debug";
+const QString Log::logFile_ = "/tmp/contextualization.log";
+const QString Log::errorFile_ = "/tmp/contextualization.err";
 
 Log::Log()
 {
@@ -11,17 +11,17 @@ Log::Log()
 
 void Log::writeDebug(QString text)
 {
-    write(debugFile, text);
+    write(debugFile_, text);
 }
 
 void Log::writeLog(QString text)
 {
-    write(logFile, text);
+    write(logFile_, text);
 }
 
 void Log::writeError(QString text)
 {
-    write(errorFile, text);
+    write(errorFile_, text);
 }
 
 inline void Log::write(const QString &path, QString &text)
