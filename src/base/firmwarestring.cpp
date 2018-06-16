@@ -148,7 +148,7 @@ QString FirmwareString::toFpFileFormat()
 
 QString FirmwareString::toJson(QJsonDocument::JsonFormat format)
 {
-    return QString(QJsonDocument(this->toJsonObject()).toJson(format));
+    return QString(QJsonDocument(toJsonObject()).toJson(format));
 }
 
 QJsonObject FirmwareString::toJsonObject()

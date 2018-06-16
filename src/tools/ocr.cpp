@@ -29,7 +29,7 @@ QStringList * Ocr::run()
     QString source;
     Pix *imagePix;
 
-    if (this->getAvailableLanguages().size() == 0)
+    if (getAvailableLanguages().size() == 0)
     {
         Log::writeError("Not languages available when ocr process was going run.");
         Log::writeError("Selected languages:" + language_);
@@ -51,7 +51,7 @@ QStringList * Ocr::run()
         return Q_NULLPTR;
     }
 
-    if (this->initApi()) {
+    if (initApi()) {
         Log::writeError("Ocr Tesseract can't be initializated.");
 
         return Q_NULLPTR;
@@ -68,7 +68,7 @@ QStringList * Ocr::run()
     api_->End();
     pixDestroy(&imagePix);
 
-    return this->processExtration(source);;
+    return processExtration(source);;
 }
 
 QStringList Ocr::getAvailableLanguages()
@@ -76,7 +76,7 @@ QStringList Ocr::getAvailableLanguages()
     GenericVector<STRING> languages;
     QStringList availableLanguages;
 
-    if (this->initApi()) {
+    if (initApi()) {
         return availableLanguages;
     }
 
@@ -97,7 +97,7 @@ QStringList Ocr::getLanguages()
 
 bool Ocr::addLanguage(QString language)
 {
-    if(!this->isAvailableLanguage(language) || language_.split(QString("+")).contains(language)) {
+    if(!isAvailableLanguage(language) || language_.split(QString("+")).contains(language)) {
         return false;
     }
 
@@ -196,5 +196,5 @@ QStringList * Ocr::processExtration(QString &source)
 
 bool Ocr::isAvailableLanguage(QString &language)
 {
-    return this->getAvailableLanguages().contains(language);
+    return getAvailableLanguages().contains(language);
 }

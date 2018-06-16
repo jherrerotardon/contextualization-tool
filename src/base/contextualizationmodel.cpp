@@ -7,7 +7,7 @@ ContextualizationModel::ContextualizationModel(QString image, QList<FirmwareStri
     image_ = image;
 
     if (!list.isEmpty()) {
-        this->addStrings(list);
+        addStrings(list);
     }
 }
 
@@ -28,7 +28,7 @@ void ContextualizationModel::addString(
     const bool selected
 ) {
     FirmwareString *newString = new FirmwareString(id, value, description, maxLength, state, selected);
-    this->addString(newString);
+    addString(newString);
 }
 
 void ContextualizationModel::addString(FirmwareString *newString)
@@ -39,7 +39,7 @@ void ContextualizationModel::addString(FirmwareString *newString)
 void ContextualizationModel::addStrings(QList<FirmwareString *> &strings)
 {
     foreach (QObject *fwString, strings) {
-        this->addString(static_cast<FirmwareString *>(fwString));
+        addString(static_cast<FirmwareString *>(fwString));
     }
 }
 
@@ -122,12 +122,12 @@ bool ContextualizationModel::hasStrings()
 void ContextualizationModel::clear()
 {
     image_ = "";
-    this->removeAllStrings();
+    removeAllStrings();
 }
 
 QString ContextualizationModel::toJson(QJsonDocument::JsonFormat format)
 {
-    return QString(QJsonDocument(this->toJsonObject()).toJson(format));
+    return QString(QJsonDocument(toJsonObject()).toJson(format));
 }
 
 QJsonObject ContextualizationModel::toJsonObject()
@@ -217,14 +217,14 @@ ContextualizationModel & ContextualizationModel::operator=(ContextualizationMode
     FirmwareString *newString;;
 
     if (this != &other) {
-        if (!this->isEmpty()) {
-            this->clear();
+        if (!isEmpty()) {
+            clear();
         }
 
-        this->setImage(other.getImage());
+        setImage(other.getImage());
         foreach (QObject *fwString, other.getStringsList()) {
             newString = static_cast<FirmwareString *>(fwString);
-            this->addString(new FirmwareString(*newString));
+            addString(new FirmwareString(*newString));
         }
     }
 

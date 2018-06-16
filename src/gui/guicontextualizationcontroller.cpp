@@ -19,7 +19,7 @@ void GuiContextualizationController::add(QString newString, int findType)
     QStringList comboBoxOptions;
     QList <FirmwareString *> stringsFound;
 
-    stringsFound = this->findString(newString, (FindType)findType);
+    stringsFound = findString(newString, (FindType)findType);
     switch (stringsFound.size()) {
         case 0:
             if (findType == ByValue) {
@@ -28,7 +28,7 @@ void GuiContextualizationController::add(QString newString, int findType)
                     "Are you sure to add the string?"
                 );
                 if (response == QMessageBox::Yes) {
-                    this->addString(
+                    addString(
                         new FirmwareString(
                             QString(""),
                             newString,
@@ -46,11 +46,11 @@ void GuiContextualizationController::add(QString newString, int findType)
         break;
 
         case 1:
-            this->addString(stringsFound.first());
+            addString(stringsFound.first());
             break;
 
         default:
-            this->eraseExistStrings(&stringsFound);
+            eraseExistStrings(&stringsFound);
             switch (stringsFound.size()) {
                 case 0:
                     Utils::informativeMessage("Not found.", "All strings found already are in the table.");
@@ -59,7 +59,7 @@ void GuiContextualizationController::add(QString newString, int findType)
                         "Do you add a new string with this value?"
                     );
                     if (response == QMessageBox::Yes) {
-                        this->addString(
+                        addString(
                             new FirmwareString(
                                 QString(""),
                                 newString,
@@ -73,7 +73,7 @@ void GuiContextualizationController::add(QString newString, int findType)
                     break;
 
                 case 1:
-                    this->addString(stringsFound.first());
+                    addString(stringsFound.first());
                     break;
 
                 default:
@@ -93,7 +93,7 @@ void GuiContextualizationController::add(QString newString, int findType)
 
                     foreach (FirmwareString *fwString, stringsFound) {
                         if (ok && fwString->getId() == selected) {
-                            this->addString(fwString);
+                            addString(fwString);
                         } else {
                             delete fwString;
                         }
@@ -106,12 +106,12 @@ void GuiContextualizationController::add(QString newString, int findType)
 
 void GuiContextualizationController::remove(QString stringId)
 {
-    this->removeString(stringId);
+    removeString(stringId);
 }
 
 void GuiContextualizationController::clear()
 {
-    this->removeAllStrings();
+    removeAllStrings();
 }
 
 void GuiContextualizationController::capture()
@@ -119,8 +119,8 @@ void GuiContextualizationController::capture()
     QString path;
 
     view_->setVisible(false);
-    path = this->takeCaptureArea();
-    this->setImage(path);
+    path = takeCaptureArea();
+    setImage(path);
     view_->setVisible(true);
 }
 
@@ -137,7 +137,7 @@ void GuiContextualizationController::load()
     dialog.setFileMode(QFileDialog::ExistingFile);
     dialog.setViewMode(QFileDialog::Detail);
     if (dialog.exec()) {
-        this->setImage(dialog.selectedFiles().first());
+        setImage(dialog.selectedFiles().first());
     }
 }
 
@@ -145,9 +145,9 @@ void GuiContextualizationController::detect()
 {
     QStringList *extractedStrings;
 
-    extractedStrings = this->detectStringsOnImage();
+    extractedStrings = detectStringsOnImage();
     if (extractedStrings) {
-        this->processStrings(*extractedStrings);
+        processStrings(*extractedStrings);
     } else {
         Utils::errorMessage("It's not possible to detect texts in the image.", "See the log for more details.");
     }
@@ -163,7 +163,7 @@ void GuiContextualizationController::send()
 
     switch (validateModel()) {
         case OkModel:
-            contextualizationPath = this->generateContextualization();
+            contextualizationPath = generateContextualization();
             if (contextualizationPath.isEmpty()) {
                 Utils::errorMessage("Fail to send", "Failure to package contextualization.");
 
@@ -172,7 +172,7 @@ void GuiContextualizationController::send()
 
             //TODO: pedir login de alguna forma.
             ///< Any errors are processed in the function.
-            hasError = this->sendContextualization(contextualizationPath, username_, "1234");
+            hasError = sendContextualization(contextualizationPath, username_, "1234");
             if (hasError) {
                 //TODO: filtrar cada error.
             } else {
@@ -206,7 +206,7 @@ void GuiContextualizationController::cancel()
         if (file.exists())
             file.remove();
 
-        this->cleanTrashCaptures();
+        cleanTrashCaptures();
 
         QApplication::quit();
     }
@@ -233,7 +233,7 @@ void GuiContextualizationController::saveAs()
     if (dialog.exec()) {
         path = dialog.selectedFiles().first();
         path = path.endsWith(QString(".json")) ? path : path + ".json";
-        this->exportToJsonFile(path);
+        exportToJsonFile(path);
     }
 }
 
@@ -250,7 +250,7 @@ void GuiContextualizationController::open()
     dialog.setFileMode(QFileDialog::ExistingFile);
     dialog.setViewMode(QFileDialog::Detail);
     if (dialog.exec()) {
-        this->importProjectFromJsonFile(dialog.selectedFiles().first());
+        importProjectFromJsonFile(dialog.selectedFiles().first());
     }
 }
 

@@ -4,7 +4,7 @@
 
 StringsTableModel::StringsTableModel(QList<FirmwareString *> &newstrings) : strings(newstrings)
 {
-    this->numberOfRowsInView = 0;
+    numberOfRowsInView = 0;
 }
 
 StringsTableModel::~StringsTableModel()
@@ -16,7 +16,7 @@ int StringsTableModel::rowCount(const QModelIndex &parent) const
 {
     Q_UNUSED(parent);
 
-    return this->strings.size();
+    return strings.size();
 }
 
 int StringsTableModel::columnCount(const QModelIndex &parent) const
@@ -31,14 +31,14 @@ QVariant StringsTableModel::data(const QModelIndex &index, int role) const
     if (!index.isValid())
         return QVariant();
 
-    if (index.row() >= this->strings.size() || index.row() < 0)
+    if (index.row() >= strings.size() || index.row() < 0)
         return QVariant();
 
     switch (role) {
         case StringKey:
-            return this->strings.value(index.row())->getId();
+            return strings.value(index.row())->getId();
         case String:
-            return this->strings.value(index.row())->getValue();
+            return strings.value(index.row())->getValue();
         default:
             return QVariant();
     }
@@ -46,10 +46,10 @@ QVariant StringsTableModel::data(const QModelIndex &index, int role) const
 
 bool StringsTableModel::setData(const QModelIndex &index, const QVariant &value, int role)
 {
-    if (!index.isValid() || index.row() >= this->strings.size())
+    if (!index.isValid() || index.row() >= strings.size())
         return false;
 
-    FirmwareString *string = this->strings.value(index.row());
+    FirmwareString *string = strings.value(index.row());
 
     switch (role) {
         case String:
@@ -102,7 +102,7 @@ QHash<int, QByteArray> StringsTableModel::roleNames() const
 
 void StringsTableModel::refreshView()
 {
-    this->removeRows(0, this->numberOfRowsInView);
-    this->insertRows(0, this->rowCount());
-    this->numberOfRowsInView = this->rowCount();
+    removeRows(0, numberOfRowsInView);
+    insertRows(0, rowCount());
+    numberOfRowsInView = rowCount();
 }

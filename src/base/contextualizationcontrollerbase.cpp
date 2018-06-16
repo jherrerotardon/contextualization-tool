@@ -6,20 +6,20 @@ ContextualizationControllerBase::ContextualizationControllerBase(QObject *parent
 
     model_ = new ContextualizationModel();
     username_ = qgetenv("USER");
-    this->loadConfig();
+    loadConfig();
 
     //Set default values for class members that could not be loaded from the configuration file.
-    if (this->validStates_.isEmpty()) {
-         this->validStates_ << "TODO" << "DONE" << "VALIDATED";
+    if (validStates_.isEmpty()) {
+         validStates_ << "TODO" << "DONE" << "VALIDATED";
     }
 
-    if (this->fpFile_.isEmpty()) {
+    if (fpFile_.isEmpty()) {
         //By default, english.fp should be in home of user.
-         this->fpFile_ = QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first() + "/english.fp";
+         fpFile_ = QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first() + "/english.fp";
     }
 
-    if (this->sendingHost_.isEmpty()) {
-          this->sendingHost_ = "";
+    if (sendingHost_.isEmpty()) {
+          sendingHost_ = "";
     }
 }
 
@@ -152,7 +152,7 @@ int ContextualizationControllerBase::processStrings(const QStringList &strings)
     int count = 0;
 
     foreach (QString string, strings) {
-        count += this->addStrings(this->findString(string, ByValue));
+        count += addStrings(findString(string, ByValue));
     }
 
     return count;
@@ -162,9 +162,9 @@ QList<FirmwareString *> ContextualizationControllerBase::findString(const QStrin
 {
     switch (findType) {
         case ByID:
-            return this->findStringById(text);
+            return findStringById(text);
         case ByValue:
-            return this->findStringByValue(text);
+            return findStringByValue(text);
         default:
             return QList<FirmwareString *>();
     }
@@ -194,7 +194,7 @@ FirmwareString * ContextualizationControllerBase::fragmentFpLine(QString &line, 
                     subListLocalization = list.at(3).split("  ");
                     if (subListLocalization.size() == 2) {
                             QString &state = (QString &)subListLocalization.at(1);
-                            if (this->isValidState(state)) {
+                            if (isValidState(state)) {
                                 selected = (state == "TODO") ? true : false;
                                 return new FirmwareString(
                                     (QString &)subListIdText.at(1),
@@ -267,7 +267,7 @@ int ContextualizationControllerBase::addString(FirmwareString *fwString)
         return NullPointer;
     }
 
-    if (this->isFwStringAlreadyExists(*fwString)) {
+    if (isFwStringAlreadyExists(*fwString)) {
         delete fwString;
         fwString = Q_NULLPTR;
 
@@ -286,7 +286,7 @@ int ContextualizationControllerBase::addStrings(const QList<FirmwareString *> &s
     int count = 0;
 
     foreach (FirmwareString *fwString, strings) {
-        if (this->addString(fwString) == NoError) {
+        if (addString(fwString) == NoError) {
             count++;
         }
     }
@@ -465,15 +465,15 @@ void ContextualizationControllerBase::loadConfig()
         }
 
         //Sets class member.
-        this->fpFile_ = root.value("english.fp").toString();
+        fpFile_ = root.value("english.fp").toString();
         if (fpFile_.startsWith("~")) {
             //Replace '~' by user home path.
             fpFile_.replace(0, 1, QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first());
         }
 
-        this->sendingHost_ = root.value("remoteHost").toString();
+        sendingHost_ = root.value("remoteHost").toString();
         foreach (QJsonValue value, root.value("validStates").toArray()) {
-            this->validStates_ << value.toString();
+            validStates_ << value.toString();
         }
     }
 }
@@ -491,7 +491,7 @@ QList<FirmwareString *> ContextualizationControllerBase::findStringById(const QS
         while (!in.atEnd()) {
             line = in.readLine();
             numberOfLine ++;
-            fwString = this->fragmentFpLine(line, numberOfLine);
+            fwString = fragmentFpLine(line, numberOfLine);
             if (fwString) {
                 if (id == fwString->getId()) {
                     stringsFound << fwString;
@@ -523,7 +523,7 @@ QList<FirmwareString *> ContextualizationControllerBase::findStringByValue(const
         while (!in.atEnd()) {
             line = in.readLine();
             numberOfLine ++;
-            fwString = this->fragmentFpLine(line, numberOfLine);
+            fwString = fragmentFpLine(line, numberOfLine);
             if (fwString) {
                 if (value == fwString->getValue()) {
                     stringsFound << fwString;
