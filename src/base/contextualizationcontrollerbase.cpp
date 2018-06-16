@@ -73,7 +73,7 @@ ContextualizationControllerBase::ModelError ContextualizationControllerBase::val
 
 QString ContextualizationControllerBase::generateContextualization()
 {
-    QDir tmpDir("/tmp/" + QDateTime::currentDateTime().toString("yyyy_MM_dd_hh_mm_ss-") + username_);
+    QDir tmpDir("/tmp/" + getDateTime() + '-' + username_);
     QFileInfo image(model_->getImage());
     QString text("");
     QString contextualizationPackage("");
@@ -336,7 +336,7 @@ QString ContextualizationControllerBase::takeCaptureArea()
 bool ContextualizationControllerBase::setImage(const QString &image)
 {
     QFileInfo imageInfo(image);
-    QString destination("/tmp/contextualizationCapture." + imageInfo.suffix());
+    QString destination("/tmp/contextualizationCapture" + getDateTime() + imageInfo.suffix());
     bool exists = imageInfo.exists();
 
     if (exists) {
@@ -410,6 +410,23 @@ QString ContextualizationControllerBase::getImageOfModel()
 QList<QObject *> ContextualizationControllerBase::getTableModel()
 {
     return model_->getStringsList();
+}
+
+QString ContextualizationControllerBase::getDateTime(QString format)
+{
+    return QDateTime::currentDateTime().toString(format);
+}
+
+void ContextualizationControllerBase::cleanTrashCaptures()
+{
+    QDir dir("/tmp");
+
+    dir.setNameFilters(QStringList() << "contextualizationCapture*");
+    dir.setFilter(QDir::Files);
+    foreach(QString file, dir.entryList())
+    {
+        dir.remove(file);
+    }
 }
 
 QList<FirmwareString *> ContextualizationControllerBase::findStringById(const QString &id)

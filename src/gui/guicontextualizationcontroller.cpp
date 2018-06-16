@@ -146,7 +146,12 @@ void GuiContextualizationController::detect()
     QStringList *extractedStrings;
 
     extractedStrings = this->detectStringsOnImage();
-    this->processStrings(*extractedStrings);
+    if (extractedStrings) {
+        this->processStrings(*extractedStrings);
+    } else {
+        Utils::errorMessage("It's not possible to detect texts in the image.", "See the log for more details.");
+    }
+
 
     delete extractedStrings;
 }
@@ -200,6 +205,8 @@ void GuiContextualizationController::cancel()
         QFile file(model_->getImage());
         if (file.exists())
             file.remove();
+
+        this->cleanTrashCaptures();
 
         QApplication::quit();
     }

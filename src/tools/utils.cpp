@@ -124,4 +124,3 @@ QString Utils::zipCompressDirectoryContents(
     arguments << "-r" << zipFile << ".";
     return Utils::executeProgram("zip", arguments, directory, 10000) ? QString("") : zipFile;
 }
-

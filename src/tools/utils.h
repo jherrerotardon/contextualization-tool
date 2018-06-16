@@ -30,7 +30,6 @@ public:
         const QString &zipDestination,
         const QString &zipName = "compressed"
     );
-
 };
 
 #endif // UTILS_H

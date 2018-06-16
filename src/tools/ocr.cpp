@@ -29,6 +29,15 @@ QStringList * Ocr::run()
     QString source;
     Pix *imagePix;
 
+    if (this->getAvailableLanguages().size() == 0)
+    {
+        Log::writeError("Not languages available when ocr process was going run.");
+        Log::writeError("Selected languages:" + language_);
+        Log::writeError("Make sure you have at least one .traineddata file for any of the selected languages.");
+
+        return Q_NULLPTR;
+    }
+
     if (!image_.exists()) {
         Log::writeError(image_.fileName() + " does not exist when ocr process was going run.");
 
@@ -43,6 +52,8 @@ QStringList * Ocr::run()
     }
 
     if (this->initApi()) {
+        Log::writeError("Ocr Tesseract can't be initializated.");
+
         return Q_NULLPTR;
     }
 

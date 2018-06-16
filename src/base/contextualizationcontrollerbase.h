@@ -271,6 +271,18 @@ protected:
      */
     QList<QObject *> getTableModel();
 
+    /**
+     * @brief Returns a current date time with the format received by parameter.
+     * @param format Format to returns the date time.
+     * @return Date time.
+     */
+    QString getDateTime(QString format = "yyyy_MM_dd_hh_mm_ss");
+
+    /**
+     * @brief Removes all temporal captures generated.
+     */
+    void cleanTrashCaptures();
+
 signals:
 
     /**
