@@ -2,7 +2,7 @@
 // TODO: remove includes on bottom of this comment
 #include <QDebug>
 
-ContextualizationControllerBase::ContextualizationControllerBase(QObject *parent)
+ContextualizationControllerBase::ContextualizationControllerBase(QObject *parent) : QObject(parent)
 {
     Q_UNUSED(parent);
 
@@ -87,8 +87,8 @@ QString ContextualizationControllerBase::generateContextualization()
         QFile::copy(image.absoluteFilePath(), tmpDir.absoluteFilePath(image.fileName()));
 
         // Save strings
-        foreach (FirmwareString *fwString, model_->getStringsList()) {
-            text += fwString->toFpFileFormat();
+        foreach (QObject *fwString, model_->getStringsList()) {
+            text += static_cast<FirmwareString *>(fwString)->toFpFileFormat();
         }
 
         Utils::writeFile(tmpDir.absoluteFilePath("FirmwareStrings.fp"), text);
@@ -266,6 +266,8 @@ int ContextualizationControllerBase::addString(FirmwareString *fwString)
 
     model_->addString(fwString);
 
+    emit stringsListChanged();
+
     return NoError;
 }
 
@@ -279,17 +281,46 @@ int ContextualizationControllerBase::addStrings(const QList<FirmwareString *> &s
         }
     }
 
+    if (count < 0) { // Only emit signal if strings have been added.
+        emit stringsListChanged();
+    }
+
     return count;
+}
+
+bool ContextualizationControllerBase::removeString(QString stringId)
+{
+    if(model_->removeString(stringId)) { // Only emit signal if string has been added.
+        emit stringsListChanged();
+
+        return true;
+    }
+
+    return false;
 }
 
 bool ContextualizationControllerBase::removeString(int row)
 {
-    return model_->removeString(row);
+    if(model_->removeString(row)) { // Only emit signal if string has been added.
+        emit stringsListChanged();
+
+        return true;
+    }
+
+    return false;
 }
 
-void ContextualizationControllerBase::removeAllStrings()
+bool ContextualizationControllerBase::removeAllStrings()
 {
-    model_->clearStringsList();
+    if (!model_->getStringsList().isEmpty()) {
+        model_->removeAllStrings();
+
+        emit stringsListChanged();
+
+        return true;
+    }
+
+    return false;
 }
 
 QString ContextualizationControllerBase::takeCaptureArea()
@@ -319,7 +350,9 @@ bool ContextualizationControllerBase::setImage(const QString &image)
         Log::writeError("Image to set not exists: " + image);
     }
 
-    model_->setImage(exists ? destination : QString());
+    model_->setImage(exists ? destination : ContextualizationModel::NO_IMAGE_PATH);
+
+    emit imageChanged();
 
     //TODO: poner cuando se haga manejadora de errores.
 //    if (!exists) {
@@ -333,15 +366,15 @@ bool ContextualizationControllerBase::isFwStringAlreadyExists(FirmwareString &fw
 {
     if (fwString.getId().isEmpty()) {
         // Check that there aren't strings with the same value.
-        foreach (FirmwareString *string, model_->getStringsList()) {
-            if (string->getValue() == fwString.getValue()) {
+        foreach (QObject *string, model_->getStringsList()) {
+            if (static_cast<FirmwareString *>(string)->getValue() == fwString.getValue()) {
                 return true;
             }
         }
     } else {
         // Check that there aren't strings with the same id.
-        foreach (FirmwareString *string, model_->getStringsList()) {
-            if (string->getId() == fwString.getId()) {
+        foreach (QObject *string, model_->getStringsList()) {
+            if (static_cast<FirmwareString *>(string)->getId() == fwString.getId()) {
                 return true;
             }
         }
@@ -367,6 +400,16 @@ int ContextualizationControllerBase::eraseExistStrings(QList<FirmwareString *> *
     }
 
     return count;
+}
+
+QString ContextualizationControllerBase::getImageOfModel()
+{
+    return model_->getImage();
+}
+
+QList<QObject *> ContextualizationControllerBase::getTableModel()
+{
+    return model_->getStringsList();
 }
 
 QList<FirmwareString *> ContextualizationControllerBase::findStringById(const QString &id)

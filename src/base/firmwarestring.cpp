@@ -1,6 +1,6 @@
 #include "firmwarestring.h"
 
-FirmwareString::FirmwareString()
+FirmwareString::FirmwareString() : QObject()
 {
     id_ = "";
     value_ = "";
@@ -10,7 +10,7 @@ FirmwareString::FirmwareString()
     selected_ = false;
 }
 
-FirmwareString::FirmwareString(FirmwareString &other)
+FirmwareString::FirmwareString(FirmwareString &other) : QObject()
 {
     id_ = other.getId();
     value_ = other.getValue();
@@ -27,7 +27,7 @@ FirmwareString::FirmwareString(
     const QString &maxLength,
     const QString &state,
     const bool selected
-) {
+) : QObject() {
     id_ = id;
     value_ = value;
     description_ = description;
@@ -44,6 +44,8 @@ QString FirmwareString::getId() const
 void FirmwareString::setId(const QString &id)
 {
     id_ = id;
+
+    emit idChanged();
 }
 
 QString FirmwareString::getValue() const
@@ -54,6 +56,8 @@ QString FirmwareString::getValue() const
 void FirmwareString::setValue(const QString &value)
 {
     value_ = value;
+
+    emit valueChanged();
 }
 
 QString FirmwareString::getDescription() const
@@ -64,6 +68,8 @@ QString FirmwareString::getDescription() const
 void FirmwareString::setDescription(const QString &description)
 {
     description_ = description;
+
+    emit descriptionChanged();
 }
 
 QString FirmwareString::getMaxLength() const
@@ -74,6 +80,8 @@ QString FirmwareString::getMaxLength() const
 void FirmwareString::setMaxLength(const QString &maxLength)
 {
     maxLength_ = maxLength;
+
+    emit maxLengthChanged();
 }
 
 QString FirmwareString::getState() const
@@ -84,6 +92,8 @@ QString FirmwareString::getState() const
 void FirmwareString::setState(const QString &state)
 {
     state_ = state;
+
+    emit stateChanged();
 }
 
 bool FirmwareString::isEmpty()
@@ -103,11 +113,22 @@ bool FirmwareString::isSelected() const
 void FirmwareString::select()
 {
     selected_ = true;
+
+    emit selectedChanged();
 }
 
 void FirmwareString::unselect()
 {
     selected_ = false;
+
+    emit selectedChanged();
+}
+
+void FirmwareString::setSelected(bool selected)
+{
+    selected_ = selected;
+
+    emit selectedChanged();
 }
 
 QString FirmwareString::toFpFileFormat()

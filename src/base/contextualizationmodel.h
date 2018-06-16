@@ -15,7 +15,6 @@ class ContextualizationModel : public QObject
     Q_OBJECT
 
 public:
-    const static QString NO_IMAGE_URL;  ///< Local URL of no available image representation.
     const static QString NO_IMAGE_PATH; ///< Local path of no available image representation.
 
     /**
@@ -28,7 +27,7 @@ public:
      * @param list List of strings to add on the model.
      */
     ContextualizationModel(
-        QString image = QString(),
+        QString image = NO_IMAGE_PATH,
         QList<FirmwareString *> list = QList<FirmwareString *>()
     );
 
@@ -90,13 +89,13 @@ public:
     /**
      * @brief Removes all items from the firmware strings list.
      */
-    void clearStringsList();
+    void removeAllStrings();
 
     /**
      * @brief Returns the firmware strings list.
      * @return QList<FirmwareString *> &
      */
-    QList<FirmwareString *> & getStringsList();
+    QList<QObject *> &getStringsList();
 
     /**
      * @brief Sets the image of the model.
@@ -113,11 +112,25 @@ public:
     /**
      * @brief Checks if the model is empty.
      *
-     * The model is empty when there aren't any image in the model or the firmware strings list is empty.
+     * The model is empty when there aren't any image in the model and the firmware strings list is empty.
      * Return true if model is empty.
      * @return
      */
     bool isEmpty();
+
+    /**
+     * @brief Returns true if the model has a valid image associated.
+     *
+     * #NO_IMAGE_PATH is not a valid image.
+     * @return bool
+     */
+    bool hasImage();
+
+    /**
+     * @brief Returns true if the model has any string.
+     * @return bool.
+     */
+    bool hasStrings();
 
     /**
      * @brief Empty the model.
@@ -166,24 +179,7 @@ public:
 
 private:
     QString image_;                         ///< Image associated with the model.
-    QList<FirmwareString *> stringsList_;   ///< List with the strings associated with the model.
-
-signals:
-
-    /**
-     * @brief The signal is emited when the image is changed.
-     */
-    void imageChanged();
-
-    /**
-     * @brief The signal is emited when a string is added or removed from the list.
-     */
-    void stringsListChanged();
-
-    /**
-     * @brief The signal is emited when the image is changed and a string is added or removed from the list.
-     */
-    void modelChanged();
+    QList<QObject *> stringsList_;   ///< List with the strings associated with the model.
 };
 
 #endif // CONTEXTUALIZATIONMODEL_H

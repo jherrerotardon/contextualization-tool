@@ -5,26 +5,26 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QApplication>
+#include <QQuickWindow>
 
 #include "base/contextualizationcontrollerbase.h"
 #include "stringstablemodel.h"
 
-class GuiContextualizationController : public QObject, public ContextualizationControllerBase
+class GuiContextualizationController : public ContextualizationControllerBase
 {
     Q_OBJECT
-    //Q_PROPERTY(StringsTableModel * tableModel READ getTableModel WRITE setTableModel)
-    //Q_PROPERTY(StringsTableModel * tableModel MEMBER tableModel)
+
+    Q_PROPERTY(QString image READ getImageOfModel NOTIFY imageChanged)
+    Q_PROPERTY(QList<QObject *> tableModel READ getTableModel NOTIFY stringsListChanged)
+    Q_PROPERTY(QQuickWindow *view READ getView WRITE setView NOTIFY viewChanged)
 
 public:
-    GuiContextualizationController(QObject *view = Q_NULLPTR, QObject *parent = Q_NULLPTR);
+    GuiContextualizationController(QQuickWindow *view = Q_NULLPTR, QObject *parent = Q_NULLPTR);
     ~GuiContextualizationController();
-
-    StringsTableModel *getTableModel();
-    void setTableModel(StringsTableModel *tableModel);
 
 public slots:
     void add(QString newString, int findType);
-    void remove(int row);
+    void remove(QString stringId);
     void clear();
     void capture();
     void load();
@@ -35,24 +35,15 @@ public slots:
     void saveAs();
     void open();
 
-    /**
-     * @brief Refresh completly the view with the most recently data in model.
-     */
-    void refreshView();
-
-    /**
-     * @brief Refresh only the image displayed in the view with the most recently data in model.
-     */
-    void refreshImageView();
-
-    /**
-     * @brief Refresh only the strings table in the view with the most recently data in model.
-     */
-    void refreshTableView();
-
 private:
-    StringsTableModel *tableModel_;
-    QObject *view_;
+    QQuickWindow *view_;
+
+    void connectSignalsAndSlots();
+    QQuickWindow *getView();
+    void setView(QQuickWindow *view);
+
+signals:
+    void viewChanged();
 };
 
 #endif // GUICONTEXTUALIZATIONCONTROLLER_H

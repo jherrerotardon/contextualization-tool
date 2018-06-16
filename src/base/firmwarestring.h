@@ -6,8 +6,17 @@
 #include <QJsonObject>
 #include "tools/log.h"
 
-class FirmwareString
+class FirmwareString : public QObject
 {
+    Q_OBJECT
+
+    Q_PROPERTY(QString id READ getId WRITE setId NOTIFY idChanged)
+    Q_PROPERTY(QString value READ getValue WRITE setId NOTIFY valueChanged)
+    Q_PROPERTY(QString description READ getDescription WRITE setDescription NOTIFY descriptionChanged)
+    Q_PROPERTY(QString maxLength READ getId WRITE setMaxLength NOTIFY maxLengthChanged)
+    Q_PROPERTY(QString state READ getState WRITE setState NOTIFY stateChanged)
+    Q_PROPERTY(bool selected READ isSelected WRITE setSelected NOTIFY idChanged)
+
 public:
 
     /**
@@ -124,6 +133,12 @@ public:
     void unselect();
 
     /**
+     * @brief Changes the firmware string to selected or unselected depending on the value received by parameter.
+     * @param selected New selection state of the firmware string..
+     */
+    void setSelected(bool selected);
+
+    /**
      * @brief Returns the model converted to a string with the format in file fp.
      * @return A string.
      */
@@ -174,6 +189,38 @@ private:
     QString maxLength_;     //< Max length of the firmware string.
     QString state_;         //< State of the firmware string.
     bool selected_;         //< Indicates if the string is selected by user.
+
+signals:
+
+    /**
+     * @brief The signal is emitted when the identifier of the firmware string has changed.
+     */
+    void idChanged();
+
+    /**
+     * @brief The signal is emitted when the value of the firmware string has changed.
+     */
+    void valueChanged();
+
+    /**
+     * @brief The signal is emitted when the description of the firmware string has changed.
+     */
+    void descriptionChanged();
+
+    /**
+     * @brief The signal is emitted when the max length of the firmware string has changed.
+     */
+    void maxLengthChanged();
+
+    /**
+     * @brief The signal is emitted when the state of the firmware string has changed.
+     */
+    void stateChanged();
+
+    /**
+     * @brief The signal is emitted the firmware string is selected or unselected.
+     */
+    void selectedChanged();
 };
 
 #endif // FIRMWARESTRING_H

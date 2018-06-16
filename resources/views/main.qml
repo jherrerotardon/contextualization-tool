@@ -3,11 +3,12 @@ import QtQuick.Window 2.2
 import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Styles 1.4
+import io.controllers.guicontroller 1.0
 
 ApplicationWindow {
     signal clearRequested()
     signal addRequested(string newString, int findType)
-    signal stringRemoved(int row)
+    signal stringRemoved(string row)
     signal cancelRequested()
     signal sendRequested()
     signal captureRequested()
@@ -20,7 +21,7 @@ ApplicationWindow {
     visible: true
     minimumWidth: Screen.width * 0.4
     minimumHeight: Screen.height * 0.4
-    //visibility: "Maximized"
+    visibility: "Maximized"
     width: 800
     height: 480
     title: qsTr("Contextualization tool")
@@ -88,11 +89,10 @@ ApplicationWindow {
         }
     }
 
-    //    ContextualizationController {
-    //        id: controller
-    //        objectName: "controller"
-    //        tableModel: customModel
-    //    }
+    Controller {
+        id: controller
+        view: mainWindow
+    }
 
     ScrollView {
 
@@ -142,7 +142,7 @@ ApplicationWindow {
                     Image {
                         objectName: "containerImage"
                         cache: false
-                        source: "qrc:/images/imageNotAvailable.png"
+                        source: "file:" + controller.image
                         fillMode: Image.PreserveAspectFit
                         asynchronous: true
                         anchors.fill: parent
@@ -241,55 +241,70 @@ ApplicationWindow {
                     Layout.fillHeight: true
                     Layout.fillWidth: true
 
+                    model: controller.tableModel
+
                     TableViewColumn {
                         id: checkboxsColumn
-                        role: "checkboxsColumn"
+                        role: "selected"
+                        horizontalAlignment: Text.AlignHCenter
                         width: 20
                         resizable: false
-                        horizontalAlignment: Text.AlignHCenter
 
                         delegate: Item {
                             anchors.fill: parent
-
                             CheckBox {
                                 enabled: true
                                 anchors.verticalCenter: parent.verticalCenter
                                 anchors.horizontalCenter: parent.horizontalCenter
+                                checked: styleData.value
 
-                                onClicked: {
-                                    //var srcIndex = prjCont.model.mapToSource(prjCont.model.index(styleData.row,0));
-                                    //prjCont.model.getEntry(srcIndex.row).checked = !prjCont.model.getEntry(styleData.row).checked;
+                                onClicked: modelData.selected = checked
+                            }
+                        }
 
-                                    console.debug("row in Table " + styleData.row);
-                                    //console.debug("-got: " +  prjCont.model.getEntry(srcIndex.row).checked);
-                                }
+                    }
+
+                    TableViewColumn {
+                        id: idColumn
+                        title: "String Key"
+                        role: "id"
+                        horizontalAlignment: Text.AlignHCenter
+                        width: (stringsTable.width - checkboxsColumn.width - buttonsColumn.width) * 0.35
+
+                        delegate: Text {
+                            anchors.fill: parent
+                            horizontalAlignment: Text.AlignHCenter
+                            text: styleData.value
+                        }
+
+                    }
+
+                    TableViewColumn {
+                        id: valueColumn
+                        title: "String"
+                        role: "value"
+                        horizontalAlignment: Text.AlignHCenter
+                        width: (stringsTable.width - checkboxsColumn.width - buttonsColumn.width) * 0.65
+
+                        delegate: Item {
+                            anchors.fill: parent
+
+                            Text {
+                                anchors.fill: parent
+                                horizontalAlignment: Text.AlignHCenter
+                                text: "\"" + styleData.value + "\""
                             }
                         }
                     }
 
                     TableViewColumn {
-                        role: "stringkey"
-                        title: "String Key"
-                        horizontalAlignment: Text.AlignHCenter
-                        width: (stringsTable.width - checkboxsColumn.width - buttonsColumn.width) * 0.35
-                    }
-
-                    TableViewColumn {
-                        role: "string"
-                        title: "String"
-                        horizontalAlignment: Text.AlignHCenter
-                        width: (stringsTable.width - checkboxsColumn.width - buttonsColumn.width) * 0.65
-                    }
-
-                    TableViewColumn {
                         id: buttonsColumn
+                        role: "id"
                         objectName: "buttonsColumn"
-                        role: "buttonsColumn"
                         width: 25
                         resizable: false
 
                         delegate: Button {
-                            objectName: "deleteStringButton"
                             enabled: true
 
                             Image {
@@ -299,10 +314,9 @@ ApplicationWindow {
                                 fillMode: Image.PreserveAspectFit
                             }
 
-                            onClicked: stringRemoved(styleData.row)
+                            onClicked: stringRemoved(styleData.value)
                         }
                     }
-                    //model: customModel
                 }
 
                 RowLayout {
