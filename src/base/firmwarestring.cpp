@@ -1,23 +1,23 @@
 #include "firmwarestring.h"
 
-FirmwareString::FirmwareString()
+FirmwareString::FirmwareString() : QObject()
 {
-    this->id = "";
-    this->value = "";
-    this->description = "";
-    this->maxLength = "";
-    this->state = "";
-    this->selected = false;
+    id_ = "";
+    value_ = "";
+    description_ = "";
+    maxLength_ = "";
+    state_ = "";
+    selected_ = false;
 }
 
-FirmwareString::FirmwareString(FirmwareString &other)
+FirmwareString::FirmwareString(FirmwareString &other) : QObject()
 {
-    this->id = other.id;
-    this->value = other.value;
-    this->description = other.description;
-    this->maxLength = other.maxLength;
-    this->state = other.state;
-    this->selected = other.selected;
+    id_ = other.getId();
+    value_ = other.getValue();
+    description_ = other.getDescription();
+    maxLength_ = other.getMaxLength();
+    state_ = other.getState();
+    selected_ = other.isSelected();
 }
 
 FirmwareString::FirmwareString(
@@ -27,68 +27,78 @@ FirmwareString::FirmwareString(
     const QString &maxLength,
     const QString &state,
     const bool selected
-) {
-    this->id = id;
-    this->value = value;
-    this->description = description;
-    this->maxLength = maxLength;
-    this->state = state;
-    this->selected = selected;
+) : QObject() {
+    id_ = id;
+    value_ = value;
+    description_ = description;
+    maxLength_ = maxLength;
+    state_ = state;
+    selected_ = selected;
 }
 
 QString FirmwareString::getId() const
 {
-    return this->id;
+    return id_;
 }
 
 void FirmwareString::setId(const QString &id)
 {
-    this->id = id;
+    id_ = id;
+
+    emit idChanged();
 }
 
 QString FirmwareString::getValue() const
 {
-    return this->value;
+    return value_;
 }
 
 void FirmwareString::setValue(const QString &value)
 {
-    this->value = value;
+    value_ = value;
+
+    emit valueChanged();
 }
 
 QString FirmwareString::getDescription() const
 {
-    return this->description;
+    return description_;
 }
 
 void FirmwareString::setDescription(const QString &description)
 {
-    this->description = description;
+    description_ = description;
+
+    emit descriptionChanged();
 }
 
 QString FirmwareString::getMaxLength() const
 {
-    return this->maxLength;
+    return maxLength_;
 }
 
 void FirmwareString::setMaxLength(const QString &maxLength)
 {
-    this->maxLength = maxLength;
+    maxLength_ = maxLength;
+
+    emit maxLengthChanged();
 }
 
 QString FirmwareString::getState() const
 {
-    return this->state;
+    return state_;
 }
 
 void FirmwareString::setState(const QString &state)
 {
-    this->state = state;
+    state_ = state;
+
+    emit stateChanged();
 }
 
 bool FirmwareString::isEmpty()
 {
-    if (this->value.isEmpty()) {
+    if (value_.isEmpty()) {
         return true;
     }
 
@@ -97,30 +107,41 @@ bool FirmwareString::isEmpty()
 
 bool FirmwareString::isSelected() const
 {
-    return this->selected;
+    return selected_;
 }
 
 void FirmwareString::select()
 {
-    this->selected = true;
+    selected_ = true;
+
+    emit selectedChanged();
 }
 
 void FirmwareString::unselect()
 {
-    this->selected = false;
+    selected_ = false;
+
+    emit selectedChanged();
+}
+
+void FirmwareString::setSelected(bool selected)
+{
+    selected_ = selected;
+
+    emit selectedChanged();
 }
 
 QString FirmwareString::toFpFileFormat()
 {
     QString out;
 
-    out += "MESSAGE_ID  " + this->id + "  \"" + this->value + '"';
+    out += "MESSAGE_ID  " + id_ + "  \"" + value_ + '"';
     out += " || ";
-    out += "TEXT_DESCRIPTION  \"" + this->description + '"';
+    out += "TEXT_DESCRIPTION  \"" + description_ + '"';
     out += " || ";
-    out += "MAX_FIELD_WIDTH  " + this->maxLength;
+    out += "MAX_FIELD_WIDTH  " + maxLength_;
     out += " || ";
-    out += "LOCALIZATION  " + this->state;
+    out += "LOCALIZATION  " + state_;
 
     return out;
 }
@@ -134,12 +155,12 @@ QJsonObject FirmwareString::toJsonObject()
 {
     QJsonObject string;
 
-    string.insert("id", QJsonValue(this->id));
-    string.insert("value", QJsonValue(this->value));
-    string.insert("description", QJsonValue(this->description));
-    string.insert("maxLength", QJsonValue(this->maxLength));
-    string.insert("state", QJsonValue(this->state));
-    string.insert("selected", QJsonValue(this->selected));
+    string.insert("id", QJsonValue(id_));
+    string.insert("value", QJsonValue(value_));
+    string.insert("description", QJsonValue(description_));
+    string.insert("maxLength", QJsonValue(maxLength_));
+    string.insert("state", QJsonValue(state_));
+    string.insert("selected", QJsonValue(selected_));
 
     return string;
 }
@@ -187,12 +208,12 @@ FirmwareString * FirmwareString::fromJson(QByteArray &json)
 
 FirmwareString & FirmwareString::operator=(const FirmwareString &other)
 {
-    this->id = other.id;
-    this->value = other.value;
-    this->description = other.description;
-    this->maxLength = other.maxLength;
-    this->state = other.state;
-    this->selected = other.selected;
+    id_ = other.getId();
+    value_ = other.getValue();
+    description_ = other.getDescription();
+    maxLength_ = other.getMaxLength();
+    state_ = other.getState();
+    selected_ = other.isSelected();
 
     return *this;
 }

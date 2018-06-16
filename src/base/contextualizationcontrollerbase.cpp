@@ -2,20 +2,20 @@
 // TODO: remove includes on bottom of this comment
 #include <QDebug>
 
-ContextualizationControllerBase::ContextualizationControllerBase(QObject *parent)
+ContextualizationControllerBase::ContextualizationControllerBase(QObject *parent) : QObject(parent)
 {
     Q_UNUSED(parent);
 
-    this->model = new ContextualizationModel();
-    this->validStates << "TODO" << "DONE" << "VALIDATED" << "NO";
-    this->fpFile = "/home/jorge/Descargas/english.fp";
-    this->username = qgetenv("USER");
-    this->sendingHost = "192.168.1.100";
+    model_ = new ContextualizationModel();
+    validStates_ << "TODO" << "DONE" << "VALIDATED" << "NO";
+    fpFile_ = "/home/jorge/Descargas/english.fp";
+    username_ = qgetenv("USER");
+    sendingHost_ = "192.168.1.100";
 }
 
 ContextualizationControllerBase::~ContextualizationControllerBase()
 {
-    delete this->model;
+    delete model_;
 }
 
 int ContextualizationControllerBase::importProjectFromJsonFile(const QString &path)
@@ -37,7 +37,7 @@ int ContextualizationControllerBase::importProjectFromJsonFile(const QString &pa
         return ImportFileFormat;
     }
 
-    *(this->model) = *modelTmp;
+    *(model_) = *modelTmp;
 
     delete modelTmp;
 
@@ -46,23 +46,23 @@ int ContextualizationControllerBase::importProjectFromJsonFile(const QString &pa
 
 int ContextualizationControllerBase::exportToJsonFile(const QString &path)
 {
-    return Utils::writeFile(path, this->model->toJson());
+    return Utils::writeFile(path, model_->toJson());
 }
 
 ContextualizationControllerBase::ModelError ContextualizationControllerBase::validateModel()
 {
-    if (this->model->getImage().isEmpty()) {
+    if (model_->getImage().isEmpty()) {
         //No image path
         return NoImage;
     }
 
-    QFile file(this->model->getImage());
+    QFile file(model_->getImage());
     if (!file.exists()) {
         //Image not exists
         return ImageNotExist;
     }
 
-    if (this->model->getStringsList().size() <= 0) {
+    if (model_->getStringsList().size() <= 0) {
         //Error, there isn't strings in the model.
         return NoStrings;
     }
@@ -73,8 +73,8 @@ ContextualizationControllerBase::ModelError ContextualizationControllerBase::val
 
 QString ContextualizationControllerBase::generateContextualization()
 {
-    QDir tmpDir("/tmp/" + QDateTime::currentDateTime().toString("yyyy_MM_dd_hh_mm_ss-") + this->username);
-    QFileInfo image(this->model->getImage());
+    QDir tmpDir("/tmp/" + QDateTime::currentDateTime().toString("yyyy_MM_dd_hh_mm_ss-") + username_);
+    QFileInfo image(model_->getImage());
     QString text("");
     QString contextualizationPackage("");
 
@@ -87,8 +87,8 @@ QString ContextualizationControllerBase::generateContextualization()
         QFile::copy(image.absoluteFilePath(), tmpDir.absoluteFilePath(image.fileName()));
 
         // Save strings
-        foreach (FirmwareString *fwString, this->model->getStringsList()) {
-            text += fwString->toFpFileFormat();
+        foreach (QObject *fwString, model_->getStringsList()) {
+            text += static_cast<FirmwareString *>(fwString)->toFpFileFormat();
         }
 
         Utils::writeFile(tmpDir.absoluteFilePath("FirmwareStrings.fp"), text);
@@ -114,7 +114,7 @@ int ContextualizationControllerBase::sendContextualization(const QString &path, 
 
         arguments << "-p" << password;
         arguments << "sftp" << "-oBatchMode=no" << "-b" << batch.fileName()
-            << user + '@' + this->sendingHost + ":Contextualizations";
+            << user + '@' + sendingHost_ + ":Contextualizations";
 
         //TODO: poner un QProgressDialog top para el progreso
 
@@ -130,7 +130,7 @@ int ContextualizationControllerBase::sendContextualization(const QString &path, 
 
 QStringList * ContextualizationControllerBase::detectStringsOnImage()
 {
-    Ocr ocr(this->model->getImage());
+    Ocr ocr(model_->getImage());
 
     ocr.setDataPath(QDir("../tesseract/tessdata").absolutePath());
 
@@ -245,7 +245,7 @@ FirmwareString * ContextualizationControllerBase::fragmentFpLine(QString &line, 
 
 bool ContextualizationControllerBase::isValidState(QString &state)
 {
-    if (this->validStates.contains(state))
+    if (validStates_.contains(state))
         return true;
 
     return false;
@@ -264,7 +264,9 @@ int ContextualizationControllerBase::addString(FirmwareString *fwString)
         return StringAlreadyExists;
     }
 
-    this->model->addString(fwString);
+    model_->addString(fwString);
+
+    emit stringsListChanged();
 
     return NoError;
 }
@@ -279,17 +281,46 @@ int ContextualizationControllerBase::addStrings(const QList<FirmwareString *> &s
         }
     }
 
+    if (count < 0) { // Only emit signal if strings have been added.
+        emit stringsListChanged();
+    }
+
     return count;
+}
+
+bool ContextualizationControllerBase::removeString(QString stringId)
+{
+    if(model_->removeString(stringId)) { // Only emit signal if string has been added.
+        emit stringsListChanged();
+
+        return true;
+    }
+
+    return false;
 }
 
 bool ContextualizationControllerBase::removeString(int row)
 {
-    return this->model->removeString(row);
+    if(model_->removeString(row)) { // Only emit signal if string has been added.
+        emit stringsListChanged();
+
+        return true;
+    }
+
+    return false;
 }
 
-void ContextualizationControllerBase::removeAllStrings()
+bool ContextualizationControllerBase::removeAllStrings()
 {
-    this->model->clearStringsList();
+    if (!model_->getStringsList().isEmpty()) {
+        model_->removeAllStrings();
+
+        emit stringsListChanged();
+
+        return true;
+    }
+
+    return false;
 }
 
 QString ContextualizationControllerBase::takeCaptureArea()
@@ -319,7 +350,9 @@ bool ContextualizationControllerBase::setImage(const QString &image)
         Log::writeError("Image to set not exists: " + image);
     }
 
-    this->model->setImage(exists ? destination : QString());
+    model_->setImage(exists ? destination : ContextualizationModel::NO_IMAGE_PATH);
+
+    emit imageChanged();
 
     //TODO: poner cuando se haga manejadora de errores.
 //    if (!exists) {
@@ -333,15 +366,15 @@ bool ContextualizationControllerBase::isFwStringAlreadyExists(FirmwareString &fw
 {
     if (fwString.getId().isEmpty()) {
         // Check that there aren't strings with the same value.
-        foreach (FirmwareString *string, this->model->getStringsList()) {
-            if (string->getValue() == fwString.getValue()) {
+        foreach (QObject *string, model_->getStringsList()) {
+            if (static_cast<FirmwareString *>(string)->getValue() == fwString.getValue()) {
                 return true;
             }
         }
     } else {
         // Check that there aren't strings with the same id.
-        foreach (FirmwareString *string, this->model->getStringsList()) {
-            if (string->getId() == fwString.getId()) {
+        foreach (QObject *string, model_->getStringsList()) {
+            if (static_cast<FirmwareString *>(string)->getId() == fwString.getId()) {
                 return true;
             }
         }
@@ -354,25 +387,36 @@ int ContextualizationControllerBase::eraseExistStrings(QList<FirmwareString *> *
 {
     int count = 0;
     QList<FirmwareString *>::Iterator iterator = strings->begin();
+    QList<FirmwareString *>::Iterator end = strings->end();
 
-    while (iterator != strings->end()) {
+    while (iterator != end) {
         if(isFwStringAlreadyExists(**iterator)) {
             delete *iterator;
             strings->erase(iterator);
             count++;
-        } else {
-            ++iterator;
         }
+
+        ++iterator;
     }
 
     return count;
+}
+
+QString ContextualizationControllerBase::getImageOfModel()
+{
+    return model_->getImage();
+}
+
+QList<QObject *> ContextualizationControllerBase::getTableModel()
+{
+    return model_->getStringsList();
 }
 
 QList<FirmwareString *> ContextualizationControllerBase::findStringById(const QString &id)
 {
     int numberOfLine = 0;
     QString line;
-    QFile file(this->fpFile);
+    QFile file(fpFile_);
     QList<FirmwareString *> stringsFound;
     FirmwareString *fwString = Q_NULLPTR;
 
@@ -394,7 +438,7 @@ QList<FirmwareString *> ContextualizationControllerBase::findStringById(const QS
 
         file.close();
     } else {
-        Log::writeError(" Fail to open file: " + this->fpFile);
+        Log::writeError(" Fail to open file: " + fpFile_);
     }
 
     return stringsFound;
@@ -404,7 +448,7 @@ QList<FirmwareString *> ContextualizationControllerBase::findStringByValue(const
 {
     int numberOfLine = 0;
     QString line;
-    QFile file(this->fpFile);
+    QFile file(fpFile_);
     QList<FirmwareString *> stringsFound;
     FirmwareString *fwString = Q_NULLPTR;
 
@@ -425,7 +469,7 @@ QList<FirmwareString *> ContextualizationControllerBase::findStringByValue(const
 
         file.close();
     } else {
-        Log::writeError(" Fail to open file: " + this->fpFile);
+        Log::writeError(" Fail to open file: " + fpFile_);
     }
 
     return stringsFound;

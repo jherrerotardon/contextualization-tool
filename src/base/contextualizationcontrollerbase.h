@@ -1,7 +1,6 @@
 #ifndef CONTEXTUALIZATIONCONTROLLER_H
 #define CONTEXTUALIZATIONCONTROLLER_H
 
-#include <QWindow>
 #include <QObject>
 #include <QString>
 #include <QStringList>
@@ -15,8 +14,10 @@
 #include "tools/log.h"
 #include "tools/ocr.h"
 
-class ContextualizationControllerBase
+class ContextualizationControllerBase : public QObject
 {
+    Q_OBJECT
+
 public:
 
     /**
@@ -71,11 +72,11 @@ public:
     ~ContextualizationControllerBase();
 
 protected:
-    ContextualizationModel *model;  ///< Pointer to the contextualization model.
-    QString fpFile;                 ///< File path where find the firmware strings.
-    QString username;               ///< Username who run the app.
-    QStringList validStates;        ///< Valid states of firmware strings.
-    QString sendingHost;            ///< Host where the contextualization will be sent.
+    ContextualizationModel *model_; ///< Pointer to the contextualization model.
+    QString fpFile_;                ///< File path where find the firmware strings.
+    QString username_;              ///< Username who run the app.
+    QStringList validStates_;       ///< Valid states of firmware strings.
+    QString sendingHost_;           ///< Host where the contextualization will be sent.
 
     /**
      * @brief Exports projet to json file.
@@ -200,7 +201,16 @@ protected:
     int addStrings(const QList<FirmwareString *> &strings);
 
     /**
-     * @brief Remove the string in the model row number received by parameter.
+     * @brief Removes the string in the model with the id received by parameter.
+     *
+     * Returns true if the string was removed succesfully or false if the string is not in the model.
+     * @param row Row number of the string to be removed.
+     * @return bool
+     */
+    bool removeString(QString stringId);
+
+    /**
+     * @brief Removes the string in the model row number received by parameter.
      *
      * Returns true if the string was removed succesfully or false if the string is not in the model.
      * @param row Row number of the string to be removed.
@@ -211,7 +221,7 @@ protected:
     /**
      * @brief Remove all strings in the model.
      */
-    void removeAllStrings();
+    bool removeAllStrings();
 
     /**
      * @brief Starts a process that allow user capture an area of the screen.
@@ -248,6 +258,30 @@ protected:
      * @return int
      */
     int eraseExistStrings(QList<FirmwareString *> *strings);
+
+    /**
+     * @brief Returns the actual image of the model.
+     * @return Absolute image path.
+     */
+    QString getImageOfModel();
+
+    /**
+     * @brief Returns the model to be used by ListView, TableView or similar QML object.
+     * @return A model.
+     */
+    QList<QObject *> getTableModel();
+
+signals:
+
+    /**
+     * @brief The signal is emitted when a new string is added to the model or a string is removed from the model.
+     */
+    void stringsListChanged();
+
+    /**
+     * @brief The signal is emitted when a image is setted on the model.
+     */
+    void imageChanged();
 
 private:
 

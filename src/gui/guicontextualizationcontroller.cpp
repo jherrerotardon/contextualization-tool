@@ -1,120 +1,14 @@
 #include "guicontextualizationcontroller.h"
-// TODO: remove includes on bottom of this comment
-#include <QDebug>
 
-GuiContextualizationController::GuiContextualizationController(QObject *view, QObject *parent)
-    : QObject(parent), ContextualizationControllerBase(parent)
+GuiContextualizationController::GuiContextualizationController(QQuickWindow *view, QObject *parent)
+    : ContextualizationControllerBase(parent)
 {
-    QObject *stringsTable;
-
-    this->view = view;
-
-    if (view != Q_NULLPTR) {
-        ///< Connect signals on model to refresh the view.
-        QObject::connect(
-            this->model,
-            SIGNAL(imageChanged()),
-            this,
-            SLOT(refreshImageView())
-        );
-        QObject::connect(
-            this->model,
-            SIGNAL(stringsListChanged()),
-            this,
-            SLOT(refreshTableView())
-        );
-        QObject::connect(
-            this->model,
-            SIGNAL(modelChanged()),
-            this,
-            SLOT(refreshView())
-        );
-
-        ///< Initialize TableView and his model.
-        this->tableModel = new StringsTableModel(this->model->getStringsList());
-        stringsTable = view->findChild<QObject *>("stringsTable");
-        if (stringsTable) {
-            stringsTable->setProperty("model", QVariant::fromValue(this->tableModel));
-        }
-
-        //< Connect signals and slots
-        QObject::connect(
-            view->findChild<QObject *>("clearButton"),
-            SIGNAL(clicked()),
-            this,
-            SLOT(clear())
-        );
-        QObject::connect(
-            view->findChild<QObject *>("addStringButton"),
-            SIGNAL(customClicked(QString, int)),
-            this,
-            SLOT(add(QString, int))
-        );
-        QObject::connect(
-            view->findChild<QObject *>("buttonsColumn"),
-            SIGNAL(buttonClicked(int)),
-            this,
-            SLOT(remove(int))
-        );
-        QObject::connect(
-            view->findChild<QObject *>("cancelButton"),
-            SIGNAL(clicked()),
-            this,
-            SLOT(cancel())
-        );
-        QObject::connect(
-            view->findChild<QObject *>("sendButton"),
-            SIGNAL(clicked()),
-            this,
-            SLOT(send())
-        );
-        QObject::connect(
-            view->findChild<QObject *>("captureAreaButon"),
-            SIGNAL(clicked()),
-            this,
-            SLOT(capture())
-        );
-        QObject::connect(
-            view->findChild<QObject *>("loadImageButton"),
-            SIGNAL(clicked()),
-            this,
-            SLOT(load())
-        );
-        QObject::connect(
-            view->findChild<QObject *>("detectStringsButton"),
-            SIGNAL(clicked()),
-            this,
-            SLOT(detect())
-        );
-        QObject::connect(
-            view->findChild<QObject *>("importButton"),
-            SIGNAL(triggered()),
-            this,
-            SLOT(open())
-        );
-        QObject::connect(
-            view->findChild<QObject *>("exportButton"),
-            SIGNAL(triggered()),
-            this,
-            SLOT(saveAs())
-        );
-    }
+    view_ = view;
 }
 
 GuiContextualizationController::~GuiContextualizationController()
 {
-    delete this->model;
-    delete this->tableModel;
-}
-
-StringsTableModel * GuiContextualizationController::getTableModel()
-{
-    return tableModel;
-}
-
-void GuiContextualizationController::setTableModel(StringsTableModel *tableModel)
-{
-    this->tableModel = tableModel;
+    delete model_;
 }
 
 void GuiContextualizationController::add(QString newString, int findType)
@@ -130,7 +24,7 @@ void GuiContextualizationController::add(QString newString, int findType)
         case 0:
             if (findType == ByValue) {
                 response = Utils::warningMessage(
-                    "Impossible to find the string in " + this->fpFile + " file.",
+                    "Impossible to find the string in " + fpFile_ + " file.",
                     "Are you sure to add the string?"
                 );
                 if (response == QMessageBox::Yes) {
@@ -210,9 +104,9 @@ void GuiContextualizationController::add(QString newString, int findType)
     }
 }
 
-void GuiContextualizationController::remove(int row)
+void GuiContextualizationController::remove(QString stringId)
 {
-    this->removeString(row);
+    this->removeString(stringId);
 }
 
 void GuiContextualizationController::clear()
@@ -224,10 +118,10 @@ void GuiContextualizationController::capture()
 {
     QString path;
 
-    ((QWindow *)view)->setVisible(false);
+    view_->setVisible(false);
     path = this->takeCaptureArea();
     this->setImage(path);
-    ((QWindow *)view)->setVisible(true);
+    view_->setVisible(true);
 }
 
 void GuiContextualizationController::load()
@@ -273,7 +167,7 @@ void GuiContextualizationController::send()
 
             //TODO: pedir login de alguna forma.
             ///< Any errors are processed in the function.
-            hasError = this->sendContextualization(contextualizationPath, this->username, "1234");
+            hasError = this->sendContextualization(contextualizationPath, username_, "1234");
             if (hasError) {
                 //TODO: filtrar cada error.
             } else {
@@ -303,7 +197,7 @@ void GuiContextualizationController::cancel()
     response = Utils::warningMessage("Are you sure?", "If you not save the proyect it will be deleted.");
     if (response == QMessageBox::Yes) {
         ///< Remove temporal image.
-        QFile file(this->model->getImage());
+        QFile file(model_->getImage());
         if (file.exists())
             file.remove();
 
@@ -353,32 +247,82 @@ void GuiContextualizationController::open()
     }
 }
 
-void GuiContextualizationController::refreshView()
+QQuickWindow *GuiContextualizationController::getView()
 {
-    this->refreshImageView();
-    this->refreshTableView();
+    return view_;
 }
 
-void GuiContextualizationController::refreshImageView()
+void GuiContextualizationController::setView(QQuickWindow *view)
 {
-    QObject *containerImage;
-    bool exists;
+    view_ = view;
+    connectSignalsAndSlots();
 
-    containerImage = this->view->findChild<QObject *>("containerImage");
-    if (containerImage) {
-        exists = QFile(this->model->getImage()).exists();
+    emit viewChanged();
+}
 
-        containerImage->setProperty("source", "");
-        containerImage->setProperty(
-            "source",
-            "file:" + (exists ? this->model->getImage() : ContextualizationModel::NO_IMAGE_PATH)
+void GuiContextualizationController::connectSignalsAndSlots()
+{
+    if (view_) {
+        // Connect signals with slots
+        QObject::connect(
+            view_,
+            SIGNAL(clearRequested()),
+            this,
+            SLOT(clear())
         );
-    }
-}
-
-void GuiContextualizationController::refreshTableView()
-{
-    if (this->tableModel) {
-        this->tableModel->refreshView();
+        QObject::connect(
+            view_,
+            SIGNAL(addRequested(QString, int)),
+            this,
+            SLOT(add(QString, int))
+        );
+        QObject::connect(
+            view_,
+            SIGNAL(stringRemoved(QString)),
+            this,
+            SLOT(remove(QString))
+        );
+        QObject::connect(
+            view_,
+            SIGNAL(cancelRequested()),
+            this,
+            SLOT(cancel())
+        );
+        QObject::connect(
+           view_,
+            SIGNAL(sendRequested()),
+            this,
+            SLOT(send())
+        );
+        QObject::connect(
+            view_,
+            SIGNAL(captureRequested()),
+            this,
+            SLOT(capture())
+        );
+        QObject::connect(
+            view_,
+            SIGNAL(loadImageRequested()),
+            this,
+            SLOT(load())
+        );
+        QObject::connect(
+            view_,
+            SIGNAL(detectStringsRequested()),
+            this,
+            SLOT(detect())
+        );
+        QObject::connect(
+            view_,
+            SIGNAL(openRequested()),
+            this,
+            SLOT(open())
+        );
+        QObject::connect(
+            view_,
+            SIGNAL(saveAsRequested()),
+            this,
+            SLOT(saveAs())
+        );
     }
 }

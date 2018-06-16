@@ -7,19 +7,19 @@ Ocr::Ocr()
 
 Ocr::Ocr(QString image, QString datapath, tesseract::OcrEngineMode engineMode, tesseract::PageSegMode pageSegMode)
 {
-    this->image.setFileName(image);
-    this->datapath = datapath;
-    this->engineMode = engineMode;
-    this->pageSegMode = pageSegMode;
-    this->language = "eng"; ///< Default language always "eng".
+    image_.setFileName(image);
+    datapath_ = datapath;
+    engineMode_ = engineMode;
+    pageSegMode_ = pageSegMode;
+    language_ = "eng"; ///< Default language always "eng".
 
     setlocale (LC_NUMERIC, "C"); ///< Necessary for the api to work.
-    this->api = new tesseract::TessBaseAPI();
+    api_ = new tesseract::TessBaseAPI();
 }
 
 Ocr::~Ocr()
 {
-    delete this->api;
+    delete api_;
     setlocale (LC_NUMERIC, "");
 }
 
@@ -29,15 +29,15 @@ QStringList * Ocr::run()
     QString source;
     Pix *imagePix;
 
-    if (!image.exists()) {
-        Log::writeError(this->image.fileName() + " does not exist when ocr process was going run.");
+    if (!image_.exists()) {
+        Log::writeError(image_.fileName() + " does not exist when ocr process was going run.");
 
         return Q_NULLPTR;
     }
 
-    imagePix = pixRead(this->image.fileName().toStdString().c_str());
+    imagePix = pixRead(image_.fileName().toStdString().c_str());
     if (!imagePix) {
-        Log::writeError(this->image.fileName() + " can't be converted into Pix object.");
+        Log::writeError(image_.fileName() + " can't be converted into Pix object.");
 
         return Q_NULLPTR;
     }
@@ -46,15 +46,15 @@ QStringList * Ocr::run()
         return Q_NULLPTR;
     }
 
-    this->api->SetPageSegMode(this->pageSegMode);
-    this->api->SetImage(imagePix);
+    api_->SetPageSegMode(pageSegMode_);
+    api_->SetImage(imagePix);
 
-    text = this->api->GetUTF8Text(); ///< OCR result.
+    text = api_->GetUTF8Text(); ///< OCR result.
     source = QString(text);
 
     ///< Destroy used objects and release memory
     delete []text;
-    this->api->End();
+    api_->End();
     pixDestroy(&imagePix);
 
     return this->processExtration(source);;
@@ -69,31 +69,31 @@ QStringList Ocr::getAvailableLanguages()
         return availableLanguages;
     }
 
-    api->GetAvailableLanguagesAsVector(&languages);
+    api_->GetAvailableLanguagesAsVector(&languages);
     for (int index = 0; index < languages.size(); ++index) {
         availableLanguages << languages[index].string();
     }
 
-    this->api->End();
+    api_->End();
 
     return availableLanguages;
 }
 
 QStringList Ocr::getLanguages()
 {
-    return this->language.split('+');
+    return language_.split('+');
 }
 
 bool Ocr::addLanguage(QString language)
 {
-    if(!this->isAvailableLanguage(language) || this->language.split(QString("+")).contains(language)) {
+    if(!this->isAvailableLanguage(language) || language_.split(QString("+")).contains(language)) {
         return false;
     }
 
-    if (this->language.isEmpty()) {
-        this->language = language;
+    if (language_.isEmpty()) {
+        language_ = language;
     } else {
-        this->language.append("+" + language);
+        language_.append("+" + language);
     }
 
     return true;
@@ -103,9 +103,9 @@ bool Ocr::removeLanguage(QString language)
 {
     int position;
 
-    position = this->language.indexOf(language);
+    position = language_.indexOf(language);
     if (position != -1) {
-        this->language.remove(position, language.length()+1);
+        language_.remove(position, language.length()+1);
 
         return true;
     }
@@ -115,52 +115,52 @@ bool Ocr::removeLanguage(QString language)
 
 QString Ocr::getImage()
 {
-    return this->image.fileName();
+    return image_.fileName();
 }
 
 void Ocr::setImage(QString image)
 {
-    this->image.setFileName(image);
+    image_.setFileName(image);
 }
 
 QString Ocr::getDataPath()
 {
-    return this->datapath;
+    return datapath_;
 }
 
 void Ocr::setDataPath(QString datapath)
 {
-    this->datapath = datapath.endsWith('/') ? datapath : datapath + '/';
+    datapath_ = datapath.endsWith('/') ? datapath : datapath + '/';
 }
 
 tesseract::PageSegMode Ocr::getPageSegMode()
 {
-    return this->pageSegMode;
+    return pageSegMode_;
 }
 
 void Ocr::setPageSegMode(tesseract::PageSegMode pageSegMode)
 {
-    this->pageSegMode = pageSegMode;
+    pageSegMode_ = pageSegMode;
 }
 
 tesseract::OcrEngineMode Ocr::getEngineMode()
 {
-    return this->engineMode;
+    return engineMode_;
 }
 
 void Ocr::setEngineMode(tesseract::OcrEngineMode engineMode)
 {
-    this->engineMode = engineMode;
+    engineMode_ = engineMode;
 }
 
 int Ocr::initApi()
 {
     int hasError;
 
-    hasError = api->Init(
-        this->datapath.toStdString().c_str(),
-        this->language.toStdString().c_str(),
-        this->engineMode
+    hasError = api_->Init(
+        datapath_.toStdString().c_str(),
+        language_.toStdString().c_str(),
+        engineMode_
     );
 
     if (hasError) {

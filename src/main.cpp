@@ -19,13 +19,20 @@ int main(int argc, char *argv[])
 
     QApplication app(argc, argv); ///< QApplication to use QWidgets like QMessageBox.
 
+    /**
+     * The GuiContextualizationController class is registered as a type, which is accessible from QML by importing
+     * the URL, "io.controllers.guicontroller 1.0".
+     */
+    qmlRegisterType<GuiContextualizationController>("io.controllers.guicontroller", 1, 0, "Controller");
+    //qRegisterMetaType<QList<FirmwareString *>>("StringsList");
+
     QQmlApplicationEngine engine;
 
     engine.load(QUrl(QStringLiteral("qrc:/views/main.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;
 
-    GuiContextualizationController controller(engine.rootObjects().first());
+    //GuiContextualizationController controller(engine.rootObjects().first());
 
     return app.exec();
 }

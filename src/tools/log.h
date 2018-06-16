@@ -34,9 +34,9 @@ public:
     static void writeError(QString text);
 
 private:
-    const static QString debugFile; ///< Path of file for debug messages.
-    const static QString logFile;   ///< Path of file for log messages.
-    const static QString errorFile; ///< Path of file for errors messages.
+    const static QString debugFile_; ///< Path of file for debug messages.
+    const static QString logFile_;   ///< Path of file for log messages.
+    const static QString errorFile_; ///< Path of file for errors messages.
 
     /**
      * @brief Appends a text in a file.
