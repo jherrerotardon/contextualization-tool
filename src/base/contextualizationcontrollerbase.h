@@ -9,6 +9,7 @@
 #include <QStandardPaths>
 #include <QDateTime>
 #include <QDir>
+#include <QJsonArray>
 #include "contextualizationmodel.h"
 #include "tools/utils.h"
 #include "tools/log.h"
@@ -282,6 +283,11 @@ protected:
      * @brief Removes all temporal captures generated.
      */
     void cleanTrashCaptures();
+
+    /**
+     * @brief Reads the configuration file, if it exists, and sets the class members to the values in the file.
+     */
+    void loadConfig();
 
 signals:
 

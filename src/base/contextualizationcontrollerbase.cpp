@@ -1,16 +1,26 @@
 #include "contextualizationcontrollerbase.h"
-// TODO: remove includes on bottom of this comment
-#include <QDebug>
 
 ContextualizationControllerBase::ContextualizationControllerBase(QObject *parent) : QObject(parent)
 {
     Q_UNUSED(parent);
 
     model_ = new ContextualizationModel();
-    validStates_ << "TODO" << "DONE" << "VALIDATED" << "NO";
-    fpFile_ = "/home/jorge/Descargas/english.fp";
     username_ = qgetenv("USER");
-    sendingHost_ = "192.168.1.100";
+    this->loadConfig();
+
+    //Set default values for class members that could not be loaded from the configuration file.
+    if (this->validStates_.isEmpty()) {
+         this->validStates_ << "TODO" << "DONE" << "VALIDATED";
+    }
+
+    if (this->fpFile_.isEmpty()) {
+        //By default, english.fp should be in home of user.
+         this->fpFile_ = QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first() + "/english.fp";
+    }
+
+    if (this->sendingHost_.isEmpty()) {
+          this->sendingHost_ = "";
+    }
 }
 
 ContextualizationControllerBase::~ContextualizationControllerBase()
@@ -429,6 +439,45 @@ void ContextualizationControllerBase::cleanTrashCaptures()
     }
 }
 
+void ContextualizationControllerBase::loadConfig()
+{
+    QJsonObject root;
+    QJsonParseError jsonError;
+    QJsonDocument document;
+    QFile configurationFile("../configs/general.conf");
+
+    if (configurationFile.exists())
+    {
+        document = QJsonDocument::fromJson(Utils::readAllFile(configurationFile.fileName()), &jsonError);
+
+        if (jsonError.error != QJsonParseError::NoError) {
+            Log::writeError("Error decoding configuration file: " + jsonError.errorString());
+
+            return;
+        }
+
+        //Get object with the configuration.
+        root = document.object();
+        if (root.isEmpty()) {
+            Log::writeError("Error format on configuration file. " + configurationFile.fileName());
+
+            return;
+        }
+
+        //Sets class member.
+        this->fpFile_ = root.value("english.fp").toString();
+        if (fpFile_.startsWith("~")) {
+            //Replace '~' by user home path.
+            fpFile_.replace(0, 1, QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first());
+        }
+
+        this->sendingHost_ = root.value("remoteHost").toString();
+        foreach (QJsonValue value, root.value("validStates").toArray()) {
+            this->validStates_ << value.toString();
+        }
+    }
+}
+
 QList<FirmwareString *> ContextualizationControllerBase::findStringById(const QString &id)
 {
     int numberOfLine = 0;
@@ -455,7 +504,7 @@ QList<FirmwareString *> ContextualizationControllerBase::findStringById(const QS
 
         file.close();
     } else {
-        Log::writeError(" Fail to open file: " + fpFile_);
+        Log::writeError(" Fail to open file: " + file.fileName());
     }
 
     return stringsFound;
@@ -486,7 +535,7 @@ QList<FirmwareString *> ContextualizationControllerBase::findStringByValue(const
 
         file.close();
     } else {
-        Log::writeError(" Fail to open file: " + fpFile_);
+        Log::writeError(" Fail to open file: " + file.fileName());
     }
 
     return stringsFound;

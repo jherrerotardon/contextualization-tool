@@ -181,18 +181,21 @@ FirmwareString * FirmwareString::fromJson(QByteArray &json)
 
     if (jsonError.error != QJsonParseError::NoError) {
         Log::writeError("Error decoding FirmwareString json: " + jsonError.errorString());
+
         return Q_NULLPTR;
     }
 
     root = document.object();
     if (root.isEmpty()) {
         Log::writeError("FirmwareString fromJson(): error format on root object.");
+
         return Q_NULLPTR;
     }
 
     value = root.value("value").toString();
     if (value.isEmpty()) {
         Log::writeError("FirmwareString fromJson(): key value is empty.");
+
         return Q_NULLPTR;
     }
 
