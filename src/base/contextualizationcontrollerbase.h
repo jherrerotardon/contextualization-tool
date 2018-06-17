@@ -45,6 +45,7 @@ public:
         NoImportFile,       ///< Indicates that file to import can't ber readed.
         ImportFileFormat,   ///< Indicates that the file to import has not a correct format.
         FileNotExists,      ///< Indicates that the file to read doesn't exist.
+        NoRemoteHost,       ///< Indicates that there is no host to send the file.
         WriteFile = -1,     ///< Indicates that the last try to write in disk wrong.
     };
 
@@ -73,11 +74,13 @@ public:
     ~ContextualizationControllerBase();
 
 protected:
-    ContextualizationModel *model_; ///< Pointer to the contextualization model.
-    QString fpFile_;                ///< File path where find the firmware strings.
-    QString username_;              ///< Username who run the app.
-    QStringList validStates_;       ///< Valid states of firmware strings.
-    QString sendingHost_;           ///< Host where the contextualization will be sent.
+    const static QString IMAGES_FOLDER;     ///< Directory where will save project images.
+    const static QString PROJECTS_FOLDER;   ///< Directory where will save projects.
+    ContextualizationModel *model_;         ///< Pointer to the contextualization model.
+    QString fpFile_;                        ///< File path where find the firmware strings.
+    QString username_;                      ///< Username who run the app.
+    QStringList validStates_;               ///< Valid states of firmware strings.
+    QString remoteHost_;                    ///< Host where the contextualization will be sent.
 
     /**
      * @brief Exports projet to json file.
@@ -278,11 +281,6 @@ protected:
      * @return Date time.
      */
     QString getDateTime(QString format = "yyyy_MM_dd_hh_mm_ss");
-
-    /**
-     * @brief Removes all temporal captures generated.
-     */
-    void cleanTrashCaptures();
 
     /**
      * @brief Reads the configuration file, if it exists, and sets the class members to the values in the file.

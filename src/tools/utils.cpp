@@ -28,7 +28,7 @@ int Utils::warningMessage(const QString &text, const QString &informativeText)
     msgBox.setInformativeText(informativeText);
     msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
     msgBox.setDefaultButton(QMessageBox::No);
-    msgBox.setIcon(QMessageBox::Critical);
+    msgBox.setIcon(QMessageBox::Warning);
     //msgBox.setStyleSheet("QLabel{min-width: 450px;}");
     return msgBox.exec();
 }
@@ -47,31 +47,31 @@ void Utils::informativeMessage(const QString &text, const QString &informativeTe
     msgBox.exec();
 }
 
-int Utils::appendFile(const QString &path, const QString &text)
+bool Utils::appendFile(const QString &path, const QString &text)
 {
     QFile file(path);
     if (!file.open(QIODevice::Append | QIODevice::Text)) {
-        return -1;
+        return false;
     }
 
     QTextStream out(&file);
     out << text << '\n';
     file.close();
-    return 0;
+    return true;
 }
 
-int Utils::writeFile(const QString &path, const QString &text)
+bool Utils::writeFile(const QString &path, const QString &text)
 {
     QFile file(path);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        return -1;
+        return false;
     }
 
     QTextStream out(&file);
     out << text << '\n';
     file.close();
 
-    return 0;
+    return true;
 }
 
 QByteArray Utils::readAllFile(const QString &path)

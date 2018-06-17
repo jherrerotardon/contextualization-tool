@@ -26,6 +26,11 @@ ApplicationWindow {
     height: 480
     title: qsTr("Contextualization tool")
 
+    onClosing: {
+        close.accepted = false
+        cancelRequested()
+    }
+
     //        style: ApplicationWindowStyle {
     //                background: BorderImage {
     //                    source: "images/wallpaper.jpg"
@@ -67,7 +72,7 @@ ApplicationWindow {
                 text : "Exit"
                 shortcut : "Ctrl+Q"
                 iconSource: "qrc:/images/exit.png"
-                onTriggered: Qt.quit()
+                onTriggered: close()
             }
         }
 

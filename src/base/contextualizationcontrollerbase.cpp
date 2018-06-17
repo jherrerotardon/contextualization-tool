@@ -1,10 +1,14 @@
-#include "contextualizationcontrollerbase.h"
+﻿#include "contextualizationcontrollerbase.h"
+
+const QString ContextualizationControllerBase::IMAGES_FOLDER = QDir("../storage/images").absolutePath() + '/';
+const QString ContextualizationControllerBase::PROJECTS_FOLDER = QDir("../storage/projects").absolutePath() + '/';
 
 ContextualizationControllerBase::ContextualizationControllerBase(QObject *parent) : QObject(parent)
 {
     Q_UNUSED(parent);
 
     model_ = new ContextualizationModel();
+
     username_ = qgetenv("USER");
     loadConfig();
 
@@ -18,9 +22,9 @@ ContextualizationControllerBase::ContextualizationControllerBase(QObject *parent
          fpFile_ = QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first() + "/english.fp";
     }
 
-    if (sendingHost_.isEmpty()) {
-          sendingHost_ = "";
-    }
+    //Make storage directory if not exists
+    QDir(IMAGES_FOLDER).mkpath(".");
+    QDir(PROJECTS_FOLDER).mkpath(".");
 }
 
 ContextualizationControllerBase::~ContextualizationControllerBase()
@@ -55,24 +59,25 @@ int ContextualizationControllerBase::importProjectFromJsonFile(const QString &pa
 }
 
 int ContextualizationControllerBase::exportToJsonFile(const QString &path)
-{
+{    
     return Utils::writeFile(path, model_->toJson());
 }
 
 ContextualizationControllerBase::ModelError ContextualizationControllerBase::validateModel()
 {
-    if (model_->getImage().isEmpty()) {
+    QFile image(model_->getImage());
+
+    if (!model_->hasImage()) {
         //No image path
         return NoImage;
     }
 
-    QFile file(model_->getImage());
-    if (!file.exists()) {
+    if (!image.exists()) {
         //Image not exists
         return ImageNotExist;
     }
 
-    if (model_->getStringsList().size() <= 0) {
+    if (!model_->hasStrings()) {
         //Error, there isn't strings in the model.
         return NoStrings;
     }
@@ -96,9 +101,12 @@ QString ContextualizationControllerBase::generateContextualization()
     if (tmpDir.mkpath(".")) { // Create temporal folder.
         QFile::copy(image.absoluteFilePath(), tmpDir.absoluteFilePath(image.fileName()));
 
-        // Save strings
+        // Save only selected strings
         foreach (QObject *fwString, model_->getStringsList()) {
-            text += static_cast<FirmwareString *>(fwString)->toFpFileFormat();
+            if (static_cast<FirmwareString *>(fwString)->isSelected()) {
+                text += static_cast<FirmwareString *>(fwString)->toFpFileFormat();
+                text += '\n';
+            }
         }
 
         Utils::writeFile(tmpDir.absoluteFilePath("FirmwareStrings.fp"), text);
@@ -117,23 +125,29 @@ int ContextualizationControllerBase::sendContextualization(const QString &path, 
 {
     QStringList arguments;
     QFile batch("/tmp/batch");
-    int errorCode = FileNotExists;
+    int errorCode;;
 
-    if (QFile(path).exists()) {
-        Utils::writeFile(batch.fileName(), "put " + path); // Create temporal batch file
-
-        arguments << "-p" << password;
-        arguments << "sftp" << "-oBatchMode=no" << "-b" << batch.fileName()
-            << user + '@' + sendingHost_ + ":Contextualizations";
-
-        //TODO: poner un QProgressDialog top para el progreso
-
-        errorCode = Utils::executeProgram("sshpass", arguments);
-
-        //TODO:Tratar error
-
-        batch.remove();
+    if (remoteHost_.isEmpty()) {
+        return NoRemoteHost;
     }
+
+    if (!QFile::exists(path)) {
+        return FileNotExists;
+    }
+
+    Utils::writeFile(batch.fileName(), "put " + path); // Create temporal batch file
+
+    arguments << "-p" << password;
+    arguments << "sftp" << "-oBatchMode=no" << "-b" << batch.fileName()
+              << user + '@' + remoteHost_ + ":Contextualizations";
+
+    //TODO: poner un QProgressDialog top para el progreso
+
+    errorCode = Utils::executeProgram("sshpass", arguments);
+
+    //TODO:Tratar error
+
+    batch.remove();
 
     return errorCode;
 }
@@ -346,21 +360,22 @@ QString ContextualizationControllerBase::takeCaptureArea()
 bool ContextualizationControllerBase::setImage(const QString &image)
 {
     QFileInfo imageInfo(image);
-    QString destination("/tmp/contextualizationCapture" + getDateTime() + imageInfo.suffix());
+    QString imageName("capture-" + getDateTime() + '-' + username_ + '.' + imageInfo.suffix());
     bool exists = imageInfo.exists();
 
     if (exists) {
-        // If exists copy image in /tmp with "contextualizationCapture" name and the extension of the orginal file.
-        if (QFile::exists(destination)) {
-            QFile::remove(destination);
-        }
-
-        QFile::copy(image, destination);
+        //Save image in non volatil folder.
+        QFile::copy(image, IMAGES_FOLDER + imageName);
     } else {
         Log::writeError("Image to set not exists: " + image);
     }
 
-    model_->setImage(exists ? destination : ContextualizationModel::NO_IMAGE_PATH);
+    //Remove old image in the model (only if has it) before set the new image.
+    if (model_->hasImage()) {
+        QFile::remove(model_->getImage());
+    }
+
+    model_->setImage(exists ? IMAGES_FOLDER + imageName : ContextualizationModel::NO_IMAGE_PATH);
 
     emit imageChanged();
 
@@ -427,18 +442,6 @@ QString ContextualizationControllerBase::getDateTime(QString format)
     return QDateTime::currentDateTime().toString(format);
 }
 
-void ContextualizationControllerBase::cleanTrashCaptures()
-{
-    QDir dir("/tmp");
-
-    dir.setNameFilters(QStringList() << "contextualizationCapture*");
-    dir.setFilter(QDir::Files);
-    foreach(QString file, dir.entryList())
-    {
-        dir.remove(file);
-    }
-}
-
 void ContextualizationControllerBase::loadConfig()
 {
     QJsonObject root;
@@ -471,7 +474,7 @@ void ContextualizationControllerBase::loadConfig()
             fpFile_.replace(0, 1, QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first());
         }
 
-        sendingHost_ = root.value("remoteHost").toString();
+        remoteHost_ = root.value("remoteHost").toString();
         foreach (QJsonValue value, root.value("validStates").toArray()) {
             validStates_ << value.toString();
         }

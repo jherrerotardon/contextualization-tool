@@ -1,6 +1,7 @@
 #include "contextualizationmodel.h"
 
-const QString ContextualizationModel::NO_IMAGE_PATH = QDir("../resources/images").absoluteFilePath("imageNotAvailable.png");
+const QString ContextualizationModel::NO_IMAGE_PATH =
+        QDir("../resources/images").absoluteFilePath("imageNotAvailable.png");
 
 ContextualizationModel::ContextualizationModel(QString image, QList<FirmwareString *> list) : QObject()
 {
@@ -141,7 +142,8 @@ QJsonObject ContextualizationModel::toJsonObject()
         stringsList.insert(QString::number(count),  fwString->toJsonObject());
     }
 
-    root.insert("image", QJsonValue(image_));
+    //If image_ is NO_IMAGE_PATH, image path saves empty.
+    root.insert("image", QJsonValue(image_ == NO_IMAGE_PATH ? "" : image_));
     root.insert("strings", stringsList);
 
     return root;

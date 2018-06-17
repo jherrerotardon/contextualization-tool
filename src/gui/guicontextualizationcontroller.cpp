@@ -171,8 +171,11 @@ void GuiContextualizationController::send()
             }
 
             //TODO: pedir login de alguna forma.
-            ///< Any errors are processed in the function.
             hasError = sendContextualization(contextualizationPath, username_, "1234");
+
+            //Delete contextualization file.
+            QFile::remove(contextualizationPath);
+
             if (hasError) {
                 //TODO: filtrar cada error.
             } else {
@@ -201,13 +204,6 @@ void GuiContextualizationController::cancel()
 
     response = Utils::warningMessage("Are you sure?", "If you not save the proyect it will be deleted.");
     if (response == QMessageBox::Yes) {
-        ///< Remove temporal image.
-        QFile file(model_->getImage());
-        if (file.exists())
-            file.remove();
-
-        cleanTrashCaptures();
-
         QApplication::quit();
     }
 }
@@ -226,6 +222,13 @@ void GuiContextualizationController::saveAs()
         QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first(),
         tr("Contextualization File (*.json)")
     );
+
+    //If the proyect if empty nothing will be saved.
+    if (model_->isEmpty()) {
+        Utils::warningMessage("Empty contextualization.", "Nothing to be save.");
+
+        return;
+    }
 
     dialog.setAcceptMode(QFileDialog::AcceptSave);
     dialog.setFileMode(QFileDialog::ExistingFile);
