@@ -10,6 +10,8 @@
 #include <QDateTime>
 #include <QDir>
 #include <QJsonArray>
+#include <QRegularExpression>
+#include <QRegularExpressionMatch>
 #include "contextualizationmodel.h"
 #include "tools/utils.h"
 #include "tools/log.h"
@@ -77,7 +79,8 @@ protected:
     const static QString IMAGES_FOLDER;     ///< Directory where will save project images.
     const static QString PROJECTS_FOLDER;   ///< Directory where will save projects.
     ContextualizationModel *model_;         ///< Pointer to the contextualization model.
-    QString fpFile_;                        ///< File path where find the firmware strings.
+    QString englishFpFile;                  ///< Original file where be all firmware strings.
+    QString todoFpFile_;                    ///< File path where the firmware strings will be found.
     QString username_;                      ///< Username who run the app.
     QStringList validStates_;               ///< Valid states of firmware strings.
     QString remoteHost_;                    ///< Host where the contextualization will be sent.
@@ -171,14 +174,14 @@ protected:
      * @param lineNumber Contains the number of line on the file.
      * @return FirmwareString *|null
      */
-    FirmwareString * fragmentFpLine(QString &line, int lineNumber);
+    FirmwareString * fragmentFpLine(QString &fpLine);
 
     /**
      * @brief Checks the parameter state is a valid state.
      *
-     * Valid states are stored in a private QStringList validStates.
+     * Valid states are stored in a private QStringList validstates.
      * Return true if the state is a valid state and return false if not.
-     * @param state QString State to check.
+     * @param state QString state to check.
      * @return bool
      */
     bool isValidState(QString &state);

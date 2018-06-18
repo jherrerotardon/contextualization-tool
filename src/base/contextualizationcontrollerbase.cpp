@@ -17,9 +17,9 @@ ContextualizationControllerBase::ContextualizationControllerBase(QObject *parent
          validStates_ << "TODO" << "DONE" << "VALIDATED";
     }
 
-    if (fpFile_.isEmpty()) {
+    if (todoFpFile_.isEmpty()) {
         //By default, english.fp should be in home of user.
-         fpFile_ = QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first() + "/english.fp";
+         todoFpFile_ = QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first() + "/english.fp";
     }
 
     //Make storage directory if not exists
@@ -184,87 +184,66 @@ QList<FirmwareString *> ContextualizationControllerBase::findString(const QStrin
     }
 }
 
-FirmwareString * ContextualizationControllerBase::fragmentFpLine(QString &line, int lineNumber)
+FirmwareString * ContextualizationControllerBase::fragmentFpLine(QString &fpLine)
 {
-    QStringList list;
-    QStringList subListIdText;
-    QStringList subListDescription;
-    QStringList subListMaxWidth;
-    QStringList subListLocalization;
-    QString message;
+    QString id;
+    QString value;
+    QString description;
+    QString maxLength;
+    QString state;
     bool selected;
+    bool hasError = false;
 
-    // Fragment fp line.
-    list = line.split(" || ");
-    if (list.size() == 4) {
-        subListIdText = list.at(0).split("  ").mid(0, 2);
-        subListIdText << list.at(0).section('\"', 1, 1);
-        if (subListIdText.size() == 3) {
-            subListDescription = list.at(1).split("  ").mid(0, 1);
-            subListDescription << list.at(1).section('\"', 1, 1);
-            if (subListDescription.size() == 2) {
-                subListMaxWidth = list.at(2).split("  ");
-                if (subListMaxWidth.size() == 2) {
-                    subListLocalization = list.at(3).split("  ");
-                    if (subListLocalization.size() == 2) {
-                            QString &state = (QString &)subListLocalization.at(1);
-                            if (isValidState(state)) {
-                                selected = (state == "TODO") ? true : false;
-                                return new FirmwareString(
-                                    (QString &)subListIdText.at(1),
-                                    (QString &)subListIdText.at(2),
-                                    (QString &)subListDescription.at(1),
-                                    ((QString &)subListMaxWidth.at(1)),
-                                    (QString &)subListLocalization.at(1),
-                                    selected
-                                );
-                            } else {
-                                message = " englis.fp: String state not valid on line "
-                                        + QString::number(lineNumber)
-                                        + ".";
-                                Log::writeError(message);
-                                return Q_NULLPTR;
-                            }
+    //Amazing regular expresion to fragment fp line.
+    QRegularExpression regex("MESSAGE_ID  (?<id>\\w+)  \"(?<value>.+)\" \\|\\| TEXT_DESCRIPTION  \"(?<description>.+)\" \\|\\| MAX_FIELD_WIDTH  (?<maxLength>\\d+) \\|\\| LOCALIZATION  (?<state>\\w+)");
+    QRegularExpressionMatch match = regex.match(fpLine);
 
-                    } else {
-                        message = "englis.fp: Error format in LOCALIZATION column on line "
-                                + QString::number(lineNumber)
-                                + ".";
-                        Log::writeError(message);
-                        return Q_NULLPTR;
-                    }
+    if (match.hasMatch()) {
+        id = match.captured("id");
+        value = match.captured("value");
+        description = match.captured("description");
+        maxLength = match.captured("maxLength");
+        state = match.captured("state");
+    }
 
-                } else {
-                    message = "englis.fp: Error format in MAX_FIELD_WIDTH column on line "
-                            + QString::number(lineNumber)
-                            + ".";
-                    Log::writeError(message);
-                    return Q_NULLPTR;
-                }
+    //If any attribute was not taken, an error is indicated.
+    if (id.isNull()) {
+        hasError = true;
 
-            } else {
-                message = "englis.fp: Error format in TEXT_DESCRIPTION column on line "
-                        + QString::number(lineNumber)
-                        + ".";
-                Log::writeError(message);
-                return Q_NULLPTR;
-            }
+        Log::writeError("Error format in MESSAGE_ID column. Cannot extract the id: " + fpLine);
+    }
 
-        } else {
-            message = "englis.fp: Error format in MESSAGE_ID column on line "
-                    + QString::number(lineNumber)
-                    + ".";
-            Log::writeError(message);
-            return Q_NULLPTR;
-        }
+    if (value.isNull()) {
+        hasError = true;
 
-    } else {
-        message = "englis.fp: Error format by splitting the string in columns by the separator '||' on line "
-                + QString::number(lineNumber)
-                + ".";
-        Log::writeError(message);
+        Log::writeError("Error format in MESSAGE_ID column. Cannot extract the value: " + fpLine);
+    }
+
+    if (description.isNull()) {
+        hasError = true;
+
+        Log::writeError("Error format in TEXT_DESCRIPTION column. Cannot extract the description: " + fpLine);
+    }
+
+    if (maxLength.isNull()) {
+        hasError = true;
+
+        Log::writeError("Error format in MAX_FIELD_WIDTH column. Cannot extract the max width: " + fpLine);
+    }
+
+    if (!isValidState(state)) {
+        hasError = true;
+
+        Log::writeError("Error format in LOCALIZATION column. Cannot extract state or isn't a valid state: "+ fpLine);
+    }
+
+    if (hasError) {
         return Q_NULLPTR;
     }
+
+    selected = state == "TODO" ? true : false;
+
+    return new FirmwareString(id, value, description, maxLength, state, selected);
 }
 
 bool ContextualizationControllerBase::isValidState(QString &state)
@@ -447,7 +426,7 @@ void ContextualizationControllerBase::loadConfig()
     QJsonObject root;
     QJsonParseError jsonError;
     QJsonDocument document;
-    QFile configurationFile("../configs/general.conf");
+    QFile configurationFile("../conf/general.conf");
 
     if (configurationFile.exists())
     {
@@ -468,14 +447,14 @@ void ContextualizationControllerBase::loadConfig()
         }
 
         //Sets class member.
-        fpFile_ = root.value("english.fp").toString();
-        if (fpFile_.startsWith("~")) {
+        todoFpFile_ = root.value("english.fp").toString();
+        if (todoFpFile_.startsWith("~")) {
             //Replace '~' by user home path.
-            fpFile_.replace(0, 1, QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first());
+            todoFpFile_.replace(0, 1, QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first());
         }
 
         remoteHost_ = root.value("remoteHost").toString();
-        foreach (QJsonValue value, root.value("validStates").toArray()) {
+        foreach (QJsonValue value, root.value("validstates").toArray()) {
             validStates_ << value.toString();
         }
     }
@@ -483,9 +462,8 @@ void ContextualizationControllerBase::loadConfig()
 
 QList<FirmwareString *> ContextualizationControllerBase::findStringById(const QString &id)
 {
-    int numberOfLine = 0;
     QString line;
-    QFile file(fpFile_);
+    QFile file(todoFpFile_);
     QList<FirmwareString *> stringsFound;
     FirmwareString *fwString = Q_NULLPTR;
 
@@ -493,8 +471,7 @@ QList<FirmwareString *> ContextualizationControllerBase::findStringById(const QS
         QTextStream in(&file);
         while (!in.atEnd()) {
             line = in.readLine();
-            numberOfLine ++;
-            fwString = fragmentFpLine(line, numberOfLine);
+            fwString = fragmentFpLine(line);
             if (fwString) {
                 if (id == fwString->getId()) {
                     stringsFound << fwString;
@@ -517,7 +494,7 @@ QList<FirmwareString *> ContextualizationControllerBase::findStringByValue(const
 {
     int numberOfLine = 0;
     QString line;
-    QFile file(fpFile_);
+    QFile file(todoFpFile_);
     QList<FirmwareString *> stringsFound;
     FirmwareString *fwString = Q_NULLPTR;
 
@@ -526,7 +503,7 @@ QList<FirmwareString *> ContextualizationControllerBase::findStringByValue(const
         while (!in.atEnd()) {
             line = in.readLine();
             numberOfLine ++;
-            fwString = fragmentFpLine(line, numberOfLine);
+            fwString = fragmentFpLine(line);
             if (fwString) {
                 if (value == fwString->getValue()) {
                     stringsFound << fwString;

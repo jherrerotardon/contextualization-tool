@@ -19,12 +19,18 @@ void GuiContextualizationController::add(QString newString, int findType)
     QStringList comboBoxOptions;
     QList <FirmwareString *> stringsFound;
 
+    if (newString.isEmpty()){
+        Utils::errorMessage("You must introduce some string.", "An empty string cannot be added.");
+
+        return;
+    }
+
     stringsFound = findString(newString, (FindType)findType);
     switch (stringsFound.size()) {
         case 0:
             if (findType == ByValue) {
                 response = Utils::warningMessage(
-                    "Impossible to find the string in " + fpFile_ + " file.",
+                    "Impossible to find the string in " + todoFpFile_ + " file.",
                     "Are you sure to add the string?"
                 );
                 if (response == QMessageBox::Yes) {

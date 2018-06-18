@@ -9,3 +9,6 @@ tesseract/
 
 #Data folder.
 storage/
+
+#Configuration folder.
+conf/
