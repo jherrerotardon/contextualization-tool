@@ -178,8 +178,8 @@ public:
     ContextualizationModel & operator=(ContextualizationModel &other);
 
 private:
-    QString image_;                         ///< Image associated with the model.
-    QList<QObject *> stringsList_;   ///< List with the strings associated with the model.
+    QString image_;                 ///< Image associated with the model.
+    QList<QObject *> stringsList_;  ///< List with the strings associated with the model.
 };
 
 #endif // CONTEXTUALIZATIONMODEL_H

@@ -2,6 +2,7 @@
 
 const QString ContextualizationControllerBase::IMAGES_FOLDER = QDir("../storage/images").absolutePath() + '/';
 const QString ContextualizationControllerBase::PROJECTS_FOLDER = QDir("../storage/projects").absolutePath() + '/';
+const int ContextualizationControllerBase::MIN_LENGTH_FOR_APPROXIMATE = 6;
 
 ContextualizationControllerBase::ContextualizationControllerBase(QObject *parent) : QObject(parent)
 {
@@ -52,6 +53,9 @@ int ContextualizationControllerBase::importProjectFromJsonFile(const QString &pa
     }
 
     *(model_) = *modelTmp;
+
+    emit imageChanged();
+    emit stringsListChanged();
 
     delete modelTmp;
 
@@ -166,7 +170,7 @@ int ContextualizationControllerBase::processStrings(const QStringList &strings)
     int count = 0;
 
     foreach (QString string, strings) {
-        count += addStrings(findString(string, ByValue));
+        count += addStrings(findString(string, ByApproximateValue));
     }
 
     return count;
@@ -174,14 +178,35 @@ int ContextualizationControllerBase::processStrings(const QStringList &strings)
 
 QList<FirmwareString *> ContextualizationControllerBase::findString(const QString &text, const FindType findType)
 {
-    switch (findType) {
-        case ByID:
-            return findStringById(text);
-        case ByValue:
-            return findStringByValue(text);
-        default:
-            return QList<FirmwareString *>();
+    QString line;
+    QFile file(todoFpFile_);
+    QList<FirmwareString *> stringsFound;
+    FirmwareString *fwString = Q_NULLPTR;
+
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        Log::writeError(" Fail to open file: " + file.fileName());
+
+        return stringsFound;
     }
+
+    QTextStream in(&file);
+    while (!in.atEnd()) {
+        line = in.readLine();
+        fwString = fragmentFpLine(line);
+        if (fwString) {
+            //If the text belongs to a string the fwString is saved, otherwise relsease memory of fwString.
+            if (isOnFwString(*fwString, text, findType))
+            {
+                stringsFound << fwString;
+            } else {
+                delete fwString;
+            }
+        }
+    }
+
+    file.close();
+
+    return stringsFound;
 }
 
 FirmwareString * ContextualizationControllerBase::fragmentFpLine(QString &fpLine)
@@ -194,8 +219,12 @@ FirmwareString * ContextualizationControllerBase::fragmentFpLine(QString &fpLine
     bool selected;
     bool hasError = false;
 
-    //Amazing regular expresion to fragment fp line.
-    QRegularExpression regex("MESSAGE_ID  (?<id>\\w+)  \"(?<value>.+)\" \\|\\| TEXT_DESCRIPTION  \"(?<description>.+)\" \\|\\| MAX_FIELD_WIDTH  (?<maxLength>\\d+) \\|\\| LOCALIZATION  (?<state>\\w+)");
+    if (fpLine.isEmpty()) {
+        return Q_NULLPTR;
+    }
+
+    // Amazing regular expresion to fragment fp line.
+    QRegularExpression regex("MESSAGE_ID  (?<id>\\w+)  \"(?<value>.+)\" \\|\\| TEXT_DESCRIPTION  \"(?<description>.*)\" \\|\\| MAX_FIELD_WIDTH  (?<maxLength>\\d+( \\+ \\d+)*) \\|\\| LOCALIZATION  (?<state>\\w+)");
     QRegularExpressionMatch match = regex.match(fpLine);
 
     if (match.hasMatch()) {
@@ -206,7 +235,7 @@ FirmwareString * ContextualizationControllerBase::fragmentFpLine(QString &fpLine
         state = match.captured("state");
     }
 
-    //If any attribute was not taken, an error is indicated.
+    // If any attribute was not taken, an error is indicated.
     if (id.isNull()) {
         hasError = true;
 
@@ -217,12 +246,6 @@ FirmwareString * ContextualizationControllerBase::fragmentFpLine(QString &fpLine
         hasError = true;
 
         Log::writeError("Error format in MESSAGE_ID column. Cannot extract the value: " + fpLine);
-    }
-
-    if (description.isNull()) {
-        hasError = true;
-
-        Log::writeError("Error format in TEXT_DESCRIPTION column. Cannot extract the description: " + fpLine);
     }
 
     if (maxLength.isNull()) {
@@ -343,13 +366,13 @@ bool ContextualizationControllerBase::setImage(const QString &image)
     bool exists = imageInfo.exists();
 
     if (exists) {
-        //Save image in non volatil folder.
+        // Save image in non volatil folder.
         QFile::copy(image, IMAGES_FOLDER + imageName);
     } else {
         Log::writeError("Image to set not exists: " + image);
     }
 
-    //Remove old image in the model (only if has it) before set the new image.
+    // Remove old image in the model (only if has it) before set the new image.
     if (model_->hasImage()) {
         QFile::remove(model_->getImage());
     }
@@ -358,7 +381,7 @@ bool ContextualizationControllerBase::setImage(const QString &image)
 
     emit imageChanged();
 
-    //TODO: poner cuando se haga manejadora de errores.
+    // TODO: poner cuando se haga manejadora de errores.
 //    if (!exists) {
 //        Utils::errorMessage("Can't set image.", "Not exists the image: " + image);
 //    }
@@ -438,7 +461,7 @@ void ContextualizationControllerBase::loadConfig()
             return;
         }
 
-        //Get object with the configuration.
+        // Get object with the configuration.
         root = document.object();
         if (root.isEmpty()) {
             Log::writeError("Error format on configuration file. " + configurationFile.fileName());
@@ -446,7 +469,7 @@ void ContextualizationControllerBase::loadConfig()
             return;
         }
 
-        //Sets class member.
+        // Sets class member.
         todoFpFile_ = root.value("english.fp").toString();
         if (todoFpFile_.startsWith("~")) {
             //Replace '~' by user home path.
@@ -454,69 +477,59 @@ void ContextualizationControllerBase::loadConfig()
         }
 
         remoteHost_ = root.value("remoteHost").toString();
-        foreach (QJsonValue value, root.value("validstates").toArray()) {
+
+        foreach (QJsonValue value, root.value("validStates").toArray()) {
             validStates_ << value.toString();
         }
     }
 }
 
-QList<FirmwareString *> ContextualizationControllerBase::findStringById(const QString &id)
+void ContextualizationControllerBase::saveConfig()
 {
-    QString line;
-    QFile file(todoFpFile_);
-    QList<FirmwareString *> stringsFound;
-    FirmwareString *fwString = Q_NULLPTR;
+    QJsonObject root;
+    QJsonArray validStates;
+    QString configurationFile("../conf/general.conf");
 
-    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        QTextStream in(&file);
-        while (!in.atEnd()) {
-            line = in.readLine();
-            fwString = fragmentFpLine(line);
-            if (fwString) {
-                if (id == fwString->getId()) {
-                    stringsFound << fwString;
-                    break; // Stop to read file
-                }
-
-                delete fwString;
-            }
-        }
-
-        file.close();
-    } else {
-        Log::writeError(" Fail to open file: " + file.fileName());
+    foreach (QString state, validStates_) {
+        validStates << QJsonValue(state);
     }
 
-    return stringsFound;
+    root.insert("englisg.fp", englishFpFile);
+    root.insert("remoteHost", remoteHost_);
+    root.insert("validStates", validStates);
+
+    // Write configuration in disk.
+    Utils::writeFile(configurationFile, QString(QJsonDocument(root).toJson(QJsonDocument::Indented)));
 }
 
-QList<FirmwareString *> ContextualizationControllerBase::findStringByValue(const QString &value)
-{
-    int numberOfLine = 0;
-    QString line;
-    QFile file(todoFpFile_);
-    QList<FirmwareString *> stringsFound;
-    FirmwareString *fwString = Q_NULLPTR;
+bool ContextualizationControllerBase::isOnFwString(
+        const FirmwareString &fwString,
+        const QString &text,
+        const FindType &findType
+) {
+    switch (findType) {
+    case ByID:
+        // A identifier is considered valid only if it is equals than the identifier of fwString.
+        return text == fwString.getId();
 
-    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        QTextStream in(&file);
-        while (!in.atEnd()) {
-            line = in.readLine();
-            numberOfLine ++;
-            fwString = fragmentFpLine(line);
-            if (fwString) {
-                if (value == fwString->getValue()) {
-                    stringsFound << fwString;
-                } else {
-                    delete fwString;
-                }
-            }
+    case ByValue:
+        // A value is considered valid only if it is equals than the value of fwString.
+        return text == fwString.getValue();
+
+    case ByApproximateValue:
+        /**
+         * If size of both strings is longer than MIN_LENGTH_FOR_APPROXIMATE, a value is considered valid if
+         * it is contained within the fwString value or vice versa.
+         * If size of any strings is not longer than MIN_LENGTH_FOR_APPROXIMATE, a value is considered valid only if it
+         * is equals than the value of fwString.
+         **/
+        if (text.size() > MIN_LENGTH_FOR_APPROXIMATE && fwString.getValue().size() > MIN_LENGTH_FOR_APPROXIMATE) {
+            return text.contains(fwString.getValue()) || fwString.getValue().contains(text);
+        } else {
+            return text == fwString.getValue();
         }
 
-        file.close();
-    } else {
-        Log::writeError(" Fail to open file: " + file.fileName());
+    default:
+        return false;
     }
-
-    return stringsFound;
 }

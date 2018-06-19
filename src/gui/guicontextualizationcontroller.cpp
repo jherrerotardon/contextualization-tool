@@ -210,6 +210,8 @@ void GuiContextualizationController::cancel()
 
     response = Utils::warningMessage("Are you sure?", "If you not save the proyect it will be deleted.");
     if (response == QMessageBox::Yes) {
+        saveConfig();
+
         QApplication::quit();
     }
 }
@@ -231,7 +233,7 @@ void GuiContextualizationController::saveAs()
 
     //If the proyect if empty nothing will be saved.
     if (model_->isEmpty()) {
-        Utils::warningMessage("Empty contextualization.", "Nothing to be save.");
+        Utils::informativeMessage("Empty contextualization.", "Nothing to be save.");
 
         return;
     }

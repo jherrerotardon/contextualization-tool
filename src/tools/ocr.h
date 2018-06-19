@@ -8,8 +8,11 @@
 #define OCR_H
 
 #include <QString>
+#include <QStringList>
 #include <QFile>
-#include <QProcess>
+#include <QFileInfo>
+#include <QImage>
+#include <QRegularExpression>
 #include <leptonica/allheaders.h>
 #include "baseapi.h"
 #include "genericvector.h"

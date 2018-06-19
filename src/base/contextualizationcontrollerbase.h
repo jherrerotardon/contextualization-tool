@@ -9,6 +9,8 @@
 #include <QStandardPaths>
 #include <QDateTime>
 #include <QDir>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QJsonArray>
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
@@ -57,8 +59,9 @@ public:
      * Contains all find types by which you can search a string.
      */
     enum FindType {
-        ByID = 0,       ///< Indicates that the find will be by string identifier.
-        ByValue,        ///< Indicates that the find will be by string value.
+        ByID = 0,           ///< The find will be done taking strings with the same idetifier.
+        ByValue,            ///< The find will be done taking strings with the same value.
+        ByApproximateValue, ///< The find will be done taking strings with similar value to the one you are looking for.
     };
 
     /**
@@ -290,6 +293,11 @@ protected:
      */
     void loadConfig();
 
+    /**
+     * @brief Saves config in configuration file to can be recuperated in the next run of contetualization tool.
+     */
+    void saveConfig();
+
 signals:
 
     /**
@@ -303,24 +311,16 @@ signals:
     void imageChanged();
 
 private:
+    const static int MIN_LENGTH_FOR_APPROXIMATE;       ///< Minimun length for string to do an approximate find.
 
     /**
-     * @brief Finds in fp file the first string with the same ID.
-     *
-     * Returns a list with the #FirmwareString object found in fp file.
-     * @param id ID to compare with the string ID from fp file.
-     * @return QList<FirmwareString *>
+     * @brief Checks if the text belongs to a firmware string.
+     * @param fwString Firmware string used to do checks.
+     * @param text Text which will be checked if it belongs to the firmware string.
+     * @param findType Type of find will do.
+     * @return bool
      */
-    QList<FirmwareString *> findStringById(const QString &id);
-
-    /**
-     * @brief Finds in fp file the strings with the same value.
-     *
-     * Returns a list with the #FirmwareString objects found in fp file.
-     * @param value Value to compare with the string value from fp file.
-     * @return QList<FirmwareString *>
-     */
-    QList<FirmwareString *> findStringByValue(const QString &value);
+    bool isOnFwString(const FirmwareString &fwString, const QString &text, const FindType &findType = ByID);
 };
 
 #endif // CONTEXTUALIZATIONCONTROLLER_H

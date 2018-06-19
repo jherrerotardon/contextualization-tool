@@ -21,7 +21,7 @@ ApplicationWindow {
     visible: true
     minimumWidth: Screen.width * 0.4
     minimumHeight: Screen.height * 0.4
-    visibility: "Maximized"
+    //visibility: "Maximized"
     width: 800
     height: 480
     title: qsTr("Contextualization tool")
@@ -205,8 +205,8 @@ ApplicationWindow {
             }
 
             ColumnLayout {
-                Layout.preferredWidth: parent.width * 0.45
-                Layout.maximumWidth: parent.width * 0.45
+                Layout.preferredWidth: parent.width * 0.5
+                Layout.maximumWidth: parent.width * 0.5
                 Layout.alignment: Qt.AlignRight
                 Layout.topMargin: 18
                 Layout.bottomMargin: 10
@@ -274,14 +274,24 @@ ApplicationWindow {
                         title: "String Key"
                         role: "id"
                         horizontalAlignment: Text.AlignHCenter
-                        width: (stringsTable.width - checkboxsColumn.width - buttonsColumn.width) * 0.35
+                        width: (stringsTable.width - checkboxsColumn.width - buttonsColumn.width) * 0.45
 
-                        delegate: Text {
+                        delegate: TextField {
                             anchors.fill: parent
-                            horizontalAlignment: Text.AlignHCenter
+                            height: 25
+                            verticalAlignment: Text.AlignVCenter
                             text: styleData.value
-                        }
 
+                            style: TextFieldStyle
+                            {
+                                padding.bottom: -1
+                                background: Rectangle {
+                                    opacity: 0
+                                }
+
+
+                            }
+                        }
                     }
 
                     TableViewColumn {
@@ -289,15 +299,25 @@ ApplicationWindow {
                         title: "String"
                         role: "value"
                         horizontalAlignment: Text.AlignHCenter
-                        width: (stringsTable.width - checkboxsColumn.width - buttonsColumn.width) * 0.65
+                        width: (stringsTable.width - checkboxsColumn.width - buttonsColumn.width) * 0.55
 
                         delegate: Item {
                             anchors.fill: parent
 
-                            Text {
+                            TextField {
                                 anchors.fill: parent
-                                horizontalAlignment: Text.AlignHCenter
+                                verticalAlignment: Text.AlignVCenter
                                 text: "\"" + styleData.value + "\""
+
+                                style: TextFieldStyle
+                                {
+                                    padding.bottom: -1
+                                    background: Rectangle {
+                                        opacity: 0
+                                    }
+
+
+                                }
                             }
                         }
                     }

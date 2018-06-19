@@ -2,7 +2,7 @@
 
 Ocr::Ocr()
 {
-    Ocr(QString(""));
+    Ocr(QString());
 }
 
 Ocr::Ocr(QString image, QString datapath, tesseract::OcrEngineMode engineMode, tesseract::PageSegMode pageSegMode)
@@ -25,9 +25,13 @@ Ocr::~Ocr()
 
 QStringList * Ocr::run()
 {
-    char *text;
+    QFileInfo imageInfo(image_);
     QString source;
     Pix *imagePix;
+    QImage image(image_.fileName());
+    QString imageCopyPath;
+    char *text;
+    bool workWithCopy;
 
     if (getAvailableLanguages().size() == 0)
     {
@@ -44,7 +48,20 @@ QStringList * Ocr::run()
         return Q_NULLPTR;
     }
 
-    imagePix = pixRead(image_.fileName().toStdString().c_str());
+    // Improves quality of image to get better results in strings extraction.
+    image = image.convertToFormat(QImage::Format_Grayscale8);
+
+    // Saves a copy in disk to work with her.
+    imageCopyPath = "/tmp/ocr_image." + imageInfo.suffix();
+    workWithCopy = image.save(imageCopyPath, Q_NULLPTR, 100);
+
+    //If the improvement is succesfull, set imagePix with the copy.
+    if (workWithCopy) {
+        imagePix = pixRead(imageCopyPath.toStdString().c_str());
+    } else {
+        imagePix = pixRead(image_.fileName().toStdString().c_str());
+    }
+
     if (!imagePix) {
         Log::writeError(image_.fileName() + " can't be converted into Pix object.");
 
@@ -60,13 +77,18 @@ QStringList * Ocr::run()
     api_->SetPageSegMode(pageSegMode_);
     api_->SetImage(imagePix);
 
-    text = api_->GetUTF8Text(); ///< OCR result.
+    text = api_->GetUTF8Text(); // OCR result.
     source = QString(text);
 
-    ///< Destroy used objects and release memory
+    // Destroy used objects and release memory
     delete []text;
     api_->End();
     pixDestroy(&imagePix);
+
+    // If have worked with the copy, the copy is deleted.
+    if (workWithCopy) {
+        QFile::remove(imageCopyPath);
+    }
 
     return processExtration(source);;
 }
@@ -190,6 +212,9 @@ QStringList * Ocr::processExtration(QString &source)
     }
 
     *result << source.split('\n',QString::SkipEmptyParts);
+
+    //Returns only those strings that have at least any character of a word.
+    *result = result->filter(QRegularExpression("\\w+"));
 
     return result;
 }
