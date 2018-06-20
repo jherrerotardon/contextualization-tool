@@ -211,6 +211,8 @@ void GuiContextualizationController::cancel()
     response = Utils::warningMessage("Are you sure?", "If you not save the proyect it will be deleted.");
     if (response == QMessageBox::Yes) {
         saveConfig();
+        
+        QFile::remove(TODO_FP_FILE);
 
         QApplication::quit();
     }

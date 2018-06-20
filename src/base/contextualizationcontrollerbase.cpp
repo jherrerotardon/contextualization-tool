@@ -1,5 +1,6 @@
 ﻿#include "contextualizationcontrollerbase.h"
 
+const QString ContextualizationControllerBase::TODO_FP_FILE = "/tmp/todoFpFile.fp";
 const QString ContextualizationControllerBase::IMAGES_FOLDER = QDir("../storage/images").absolutePath() + '/';
 const QString ContextualizationControllerBase::PROJECTS_FOLDER = QDir("../storage/projects").absolutePath() + '/';
 const int ContextualizationControllerBase::MIN_LENGTH_FOR_APPROXIMATE = 6;
@@ -18,9 +19,9 @@ ContextualizationControllerBase::ContextualizationControllerBase(QObject *parent
          validStates_ << "TODO" << "DONE" << "VALIDATED";
     }
 
-    if (todoFpFile_.isEmpty()) {
+    if (englishFpFile.isEmpty()) {
         //By default, english.fp should be in home of user.
-         todoFpFile_ = QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first() + "/english.fp";
+         englishFpFile = QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first() + "/english.fp";
     }
 
     //Make storage directory if not exists
@@ -179,10 +180,24 @@ int ContextualizationControllerBase::processStrings(const QStringList &strings)
 QList<FirmwareString *> ContextualizationControllerBase::findString(const QString &text, const FindType findType)
 {
     QString line;
-    QFile file(todoFpFile_);
+    QFile file(TODO_FP_FILE);
     QList<FirmwareString *> stringsFound;
     FirmwareString *fwString = Q_NULLPTR;
 
+    /**
+     * If exists todoFpFile, the search will be done in him. Otherwise, tries generate todoFpFile.
+     * If todoFpFile is generate succesfully, the search will be done in him, otherwise, the search will be done with
+     * englishFpFile.
+     *
+     * This is to try do searches faster. If is possible, always try to search in todoFpFile.
+     */
+    if (QFile::exists(TODO_FP_FILE)) {
+        file.setFileName(TODO_FP_FILE);
+    } else {
+        file.setFileName(generateTodoFpFile() ? englishFpFile : TODO_FP_FILE);
+    }
+
+    // Begin read file.
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         Log::writeError(" Fail to open file: " + file.fileName());
 
@@ -351,12 +366,14 @@ bool ContextualizationControllerBase::removeAllStrings()
 
 QString ContextualizationControllerBase::takeCaptureArea()
 {
+    int hasError;
     QStringList arguments;
     QString path("/tmp/capture.png");
 
     arguments << path;
+    hasError = Utils::executeProgram("import", arguments, QProcess::nullDevice(), QString(), 30000);
 
-    return Utils::executeProgram("import", arguments, QString(), 30000) ? QString("") : path;
+    return hasError ? QString() : path;
 }
 
 bool ContextualizationControllerBase::setImage(const QString &image)
@@ -470,10 +487,10 @@ void ContextualizationControllerBase::loadConfig()
         }
 
         // Sets class member.
-        todoFpFile_ = root.value("english.fp").toString();
-        if (todoFpFile_.startsWith("~")) {
+        englishFpFile = root.value("english.fp").toString();
+        if (englishFpFile.startsWith("~")) {
             //Replace '~' by user home path.
-            todoFpFile_.replace(0, 1, QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first());
+            englishFpFile.replace(0, 1, QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first());
         }
 
         remoteHost_ = root.value("remoteHost").toString();
@@ -532,4 +549,13 @@ bool ContextualizationControllerBase::isOnFwString(
     default:
         return false;
     }
+}
+
+int ContextualizationControllerBase::generateTodoFpFile()
+{
+    QStringList grepArguments;
+
+    grepArguments << "DONE$" << englishFpFile;
+
+    return Utils::executeProgram("grep", grepArguments, TODO_FP_FILE);
 }

@@ -4,7 +4,6 @@
 #include <QObject>
 #include <QString>
 #include <QStringList>
-#include <QProcess>
 #include <QFile>
 #include <QStandardPaths>
 #include <QDateTime>
@@ -83,7 +82,7 @@ protected:
     const static QString PROJECTS_FOLDER;   ///< Directory where will save projects.
     ContextualizationModel *model_;         ///< Pointer to the contextualization model.
     QString englishFpFile;                  ///< Original file where be all firmware strings.
-    QString todoFpFile_;                    ///< File path where the firmware strings will be found.
+    const static QString TODO_FP_FILE;      ///< File path where the firmware strings will be found.
     QString username_;                      ///< Username who run the app.
     QStringList validStates_;               ///< Valid states of firmware strings.
     QString remoteHost_;                    ///< Host where the contextualization will be sent.
@@ -321,6 +320,14 @@ private:
      * @return bool
      */
     bool isOnFwString(const FirmwareString &fwString, const QString &text, const FindType &findType = ByID);
+
+    /**
+     * @brief Creates a copy of englishFp file in /tmp with only firmware strings with TODO status.
+     *
+     * If copy was created succesfully returns 0, otherwise returns the code error.
+     * @return Code error
+     */
+    int generateTodoFpFile();
 };
 
 #endif // CONTEXTUALIZATIONCONTROLLER_H

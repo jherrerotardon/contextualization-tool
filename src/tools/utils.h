@@ -90,19 +90,27 @@ public:
      * @brief Executes binary program.
      *
      * Returns the code error returned by the execution.
+     *
+     * If an empty standard output file is received, standard output is not saved.
+     *
+     * If an empty working directory is received, the process is executed in current directory.
+     *
+     * A timeout equals to -1 indicates that process has not limit time.
+     *
      * Some known code errors:
      * -> 255: binary file not found or can't be executed.
      * -> -1: binary file crashed during the execution.
      * @param program Name of binary file.
      * @param arguments Arguments of the program.
+     * @param standardOutput File path where process standard output will be saved.
      * @param workDirectory Directory where the program must work.
      * @param timeout Execution timeout of the program.
      * @return Code error of the execution
      */
-    static int executeProgram(
-        const QString &program,
+    static int executeProgram(const QString &program,
         const QStringList &arguments = QStringList(),
-        const QString &workDirectory = QString(),
+        const QString &standardOutput = QProcess::nullDevice(),
+        const QString &workingDirectory = QString(),
         const int timeout = -1
     );
 

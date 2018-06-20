@@ -89,18 +89,19 @@ QByteArray Utils::readAllFile(const QString &path)
     return out;
 }
 
-int Utils::executeProgram(
-        const QString &program,
+int Utils::executeProgram(const QString &program,
         const QStringList &arguments,
-        const QString &workDirectory,
+        const QString &standardOutput,
+        const QString &workingDirectory,
         const int timeout
 ) {
     QProcess *process;
     int codeError;
 
     process = new QProcess();
-    if (!workDirectory.isEmpty()) {
-        process->setWorkingDirectory(workDirectory);
+    process->setStandardOutputFile(standardOutput.isEmpty() ? QProcess::nullDevice() : standardOutput);
+    if (!workingDirectory.isEmpty()) {
+        process->setWorkingDirectory(workingDirectory);
     }
 
     process->start(program, arguments);
@@ -118,9 +119,11 @@ QString Utils::zipCompressDirectoryContents(
     const QString &zipDestination,
     const QString &zipName
 ) {
+    int hasError;
     QStringList arguments;
     QString zipFile(QDir(zipDestination).absoluteFilePath(zipName + ".zip"));
 
     arguments << "-r" << zipFile << ".";
-    return Utils::executeProgram("zip", arguments, directory, 10000) ? QString("") : zipFile;
+    hasError = Utils::executeProgram("zip", arguments, QProcess::nullDevice(), directory, 10000);
+    return hasError ? QString() : zipFile;
 }

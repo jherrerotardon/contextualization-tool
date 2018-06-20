@@ -31,15 +31,13 @@ ApplicationWindow {
         cancelRequested()
     }
 
-    //        style: ApplicationWindowStyle {
-    //                background: BorderImage {
-    //                    source: "images/wallpaper.jpg"
-    //                      width: 180; height: 180
-    //                    border { left: 20; top: 20; right: 20; bottom: 20 }
-    //                    horizontalTileMode: BorderImage.Repeat
-    //                    verticalTileMode: BorderImage.Repeat
-    //                }
-    //            }
+    style: ApplicationWindowStyle {
+        background: BorderImage {
+            source: "qrc:/images/background.png"
+            horizontalTileMode: BorderImage.Stretch
+            verticalTileMode: BorderImage.Stretch
+        }
+    }
 
 
     menuBar:  MenuBar {
@@ -142,6 +140,8 @@ ApplicationWindow {
                     Layout.fillHeight: true
                     border.width : 1
                     border.color: "black"
+                    radius: 6
+                    color: "#eee"
                     clip: true
 
                     Image {
@@ -179,6 +179,7 @@ ApplicationWindow {
                             objectName: "captureAreaButon"
                             text: "CAPTURE AREA"
                             Layout.preferredHeight: 45
+                            style: generalButtonStyle
 
                             onClicked: captureRequested()
                         }
@@ -193,6 +194,7 @@ ApplicationWindow {
                             text: "LOAD IMAGE"
                             Layout.preferredWidth: captureAreaButon.width
                             Layout.preferredHeight: 45
+                            style: generalButtonStyle
 
                             onClicked: loadImageRequested()
                         }
@@ -235,6 +237,7 @@ ApplicationWindow {
                         id: addStringButton
                         objectName: "addStringButton"
                         text : "ADD"
+                        style: generalButtonStyle
 
                         onClicked: addRequested(newStringInput.text, findTypeComboBox.currentIndex)
                     }
@@ -353,6 +356,7 @@ ApplicationWindow {
                         objectName: "detectStringsButton"
                         text: "DETECT STRINGS ON IMAGE"
                         Layout.alignment: Qt.AlignRight
+                        style: generalButtonStyle
 
                         onClicked: detectStringsRequested()
                     }
@@ -365,7 +369,9 @@ ApplicationWindow {
                         id: clearButton
                         objectName: "clearButton"
                         text: "CLEAR"
+                        Layout.preferredWidth: 85
                         Layout.alignment: Qt.AlignLeft
+                        style: generalButtonStyle
 
                         onClicked: clearRequested()
                     }
@@ -384,8 +390,10 @@ ApplicationWindow {
                     Button {
                         id: cancelButton
                         objectName: "cancelButton"
+                        Layout.preferredWidth: 85
                         Layout.preferredHeight: 45
                         text: "CANCEL"
+                        style: redButtonStyle
 
                         onClicked: cancelRequested()
                     }
@@ -393,11 +401,64 @@ ApplicationWindow {
                     Button {
                         id: sendButton
                         objectName: "sendButton"
+                        Layout.preferredWidth: 85
                         Layout.preferredHeight: 45
                         text: "SEND"
+                        style: greenButtonStyle
 
                         onClicked: sendRequested()
                     }
+                }
+            }
+        }
+    }
+
+    Component {
+        id: generalButtonStyle
+
+        ButtonStyle {
+            background: Rectangle {
+                //implicitWidth: 100
+                border.width: control.activeFocus ? 2 : 1
+                border.color: "#888"
+                radius: 4
+                gradient: Gradient {
+                    GradientStop { position: 0 ; color: control.pressed ? "#ccc" : "#eee" }
+                    GradientStop { position: 1 ; color: control.pressed ? "#aaa" : "#ccc" }
+                }
+            }
+        }
+    }
+
+    Component {
+        id: redButtonStyle
+
+        ButtonStyle {
+            background: Rectangle {
+                //implicitWidth: 100
+                border.width: control.activeFocus ? 2 : 1
+                border.color: "#888"
+                radius: 4
+                gradient: Gradient {
+                    GradientStop { position: 0 ; color: control.pressed ? "#ccc" : "#eee" }
+                    GradientStop { position: 1 ; color: control.pressed ? "#aaa" : "#dccccc" }
+                }
+            }
+        }
+    }
+
+    Component {
+        id: greenButtonStyle
+
+        ButtonStyle {
+            background: Rectangle {
+                //implicitWidth: 100
+                border.width: control.activeFocus ? 2 : 1
+                border.color: "#888"
+                radius: 4
+                gradient: Gradient {
+                    GradientStop { position: 0 ; color: control.pressed ? "#ccc" : "#eee" }
+                    GradientStop { position: 1 ; color: control.pressed ? "#aaa" : "#ccdccc" }
                 }
             }
         }
