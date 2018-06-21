@@ -81,11 +81,12 @@ protected:
     const static QString IMAGES_FOLDER;     ///< Directory where will save project images.
     const static QString PROJECTS_FOLDER;   ///< Directory where will save projects.
     ContextualizationModel *model_;         ///< Pointer to the contextualization model.
-    QString englishFpFile;                  ///< Original file where be all firmware strings.
+    QString englishFpFile_;                 ///< Original file where be all firmware strings.
     const static QString TODO_FP_FILE;      ///< File path where the firmware strings will be found.
     QString username_;                      ///< Username who run the app.
     QStringList validStates_;               ///< Valid states of firmware strings.
     QString remoteHost_;                    ///< Host where the contextualization will be sent.
+    bool onlyTodoStrings;                   ///< If is true, only string with state TODO will be found.
 
     /**
      * @brief Exports projet to json file.
@@ -297,6 +298,25 @@ protected:
      */
     void saveConfig();
 
+    /**
+     * @brief Creates a copy of englishFp file in /tmp with only firmware strings with TODO status.
+     *
+     * If copy was created succesfully returns 0, otherwise returns the code error.
+     * @return Code error
+     */
+    int generateTodoFpFile();
+
+    /**
+     * @brief Filters a list of firmware strings. Remove from the list all strings that have not the same state as the
+     * one received by parameter.
+     *
+     * Returns number of strings removed.
+     * @param list Firmware strings list to be filtered.
+     * @param state State that will be filtered.
+     * @return Number of removed strings.
+     */
+    int filterStringsByState(QList<FirmwareString *> *list, const QString &state);
+
 signals:
 
     /**
@@ -320,14 +340,6 @@ private:
      * @return bool
      */
     bool isOnFwString(const FirmwareString &fwString, const QString &text, const FindType &findType = ByID);
-
-    /**
-     * @brief Creates a copy of englishFp file in /tmp with only firmware strings with TODO status.
-     *
-     * If copy was created succesfully returns 0, otherwise returns the code error.
-     * @return Code error
-     */
-    int generateTodoFpFile();
 };
 
 #endif // CONTEXTUALIZATIONCONTROLLER_H

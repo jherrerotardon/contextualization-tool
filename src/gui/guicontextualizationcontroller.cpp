@@ -133,17 +133,21 @@ void GuiContextualizationController::clear()
     removeAllStrings();
 }
 
-void GuiContextualizationController::capture()
+void GuiContextualizationController::capture(bool detectStringsOnLoad)
 {
     QString path;
 
     view_->setVisible(false);
     path = takeCaptureArea();
-    setImage(path);
     view_->setVisible(true);
+
+    if (!path.isEmpty()) {
+        setImage(path);
+        detect();
+    }
 }
 
-void GuiContextualizationController::load()
+void GuiContextualizationController::load(bool detectStringsOnLoad)
 {
     QString selectedImage;
 
@@ -160,7 +164,10 @@ void GuiContextualizationController::load()
     if (dialog.exec()) {
         selectedImage = dialog.selectedFiles().first();
 
-        if (setImage(selectedImage) == false) {
+        // If setImage is succesfully and have to detect strings, call function to detect strings.
+        if (setImage(selectedImage) && detectStringsOnLoad) {
+            detect();
+        } else {
             Utils::errorMessage("Can't set image.", "Not exists the image: " + selectedImage);
         }
     }
@@ -303,6 +310,70 @@ void GuiContextualizationController::open()
     }
 }
 
+void GuiContextualizationController::configFpFile()
+{
+    bool ok;
+    QString englishFpFile;
+
+    do {
+        englishFpFile = QInputDialog::getText(
+            Q_NULLPTR,
+            tr("Configuration"),
+            tr("English fp path:"),
+            QLineEdit::Normal,
+            englishFpFile_,
+            &ok
+        );
+    } while(ok && englishFpFile.isEmpty());
+
+    // Only change value of path if user doesn't press cancel. After todo fp file is generated.
+    if (ok) {
+        englishFpFile_ = englishFpFile;
+
+        generateTodoFpFile();
+    }
+}
+
+void GuiContextualizationController::configRemoteHost()
+{
+    bool ok;
+    QString remoteHost;
+
+    do {
+        remoteHost = QInputDialog::getText(
+            Q_NULLPTR,
+            tr("Configuration"),
+            tr("English fp path:"),
+            QLineEdit::Normal,
+            remoteHost_,
+            &ok
+        );
+    } while(ok && remoteHost.isEmpty());
+
+    // Only change value of remote host if user doesn't press cancel.
+    remoteHost_ = ok ? remoteHost : remoteHost_;
+}
+
+void GuiContextualizationController::configValidStates()
+{
+    bool ok;
+    QString validStates;
+
+    do {
+        validStates = QInputDialog::getText(
+            Q_NULLPTR,
+            tr("Configuration"),
+            tr("English fp path:"),
+            QLineEdit::Normal,
+            validStates_.join(','),
+            &ok
+        );
+    } while(ok && validStates.isEmpty());
+
+    // Only change value of remote host if user doesn't press cancel.
+    validStates_ = ok ? validStates.split(',', QString::SkipEmptyParts) : validStates_;
+}
+
 QQuickWindow *GuiContextualizationController::getView()
 {
     return view_;
@@ -328,7 +399,7 @@ QString GuiContextualizationController::requestUsername()
             tr("Login"),
             tr("User Name:"),
             QLineEdit::Normal,
-            username,
+            username_,
             &ok
         );
     } while(ok && username.isEmpty());
@@ -392,15 +463,15 @@ void GuiContextualizationController::connectSignalsAndSlots()
         );
         QObject::connect(
             view_,
-            SIGNAL(captureRequested()),
+            SIGNAL(captureRequested(bool)),
             this,
-            SLOT(capture())
+            SLOT(capture(bool))
         );
         QObject::connect(
             view_,
-            SIGNAL(loadImageRequested()),
+            SIGNAL(loadImageRequested(bool)),
             this,
-            SLOT(load())
+            SLOT(load(bool))
         );
         QObject::connect(
             view_,
@@ -419,6 +490,24 @@ void GuiContextualizationController::connectSignalsAndSlots()
             SIGNAL(saveAsRequested()),
             this,
             SLOT(saveAs())
+        );
+        QObject::connect(
+            view_,
+            SIGNAL(fpFileConfigRequested()),
+            this,
+            SLOT(configFpFile())
+        );
+        QObject::connect(
+            view_,
+            SIGNAL(remoteHostConfigRequested()),
+            this,
+            SLOT(configRemoteHost())
+        );
+        QObject::connect(
+            view_,
+            SIGNAL(validStatesConfigRequested()),
+            this,
+            SLOT(configValidStates())
         );
     }
 }

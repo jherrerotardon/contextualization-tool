@@ -8,20 +8,22 @@ import io.controllers.guicontroller 1.0
 ApplicationWindow {
     signal clearRequested()
     signal addRequested(string newString, int findType)
-    signal stringRemoved(string row)
+    signal stringRemoved(string idString)
     signal cancelRequested()
     signal sendRequested()
-    signal captureRequested()
-    signal loadImageRequested()
+    signal captureRequested(bool detectStringsOnLoad)
+    signal loadImageRequested(bool detectStringsOnLoad)
     signal detectStringsRequested()
     signal openRequested()
     signal saveAsRequested()
+    signal fpFileConfigRequested()
+    signal remoteHostConfigRequested()
+    signal validStatesConfigRequested()
 
     id : mainWindow
     visible: true
     minimumWidth: Screen.width * 0.4
     minimumHeight: Screen.height * 0.4
-    //visibility: "Maximized"
     width: 800
     height: 480
     title: qsTr("Contextualization tool")
@@ -34,7 +36,7 @@ ApplicationWindow {
     style: ApplicationWindowStyle {
         background: BorderImage {
             source: "qrc:/images/background.png"
-            horizontalTileMode: BorderImage.Stretch
+            horizontalTileMode: BorderImage.Repeat
             verticalTileMode: BorderImage.Stretch
         }
     }
@@ -76,6 +78,7 @@ ApplicationWindow {
 
         Menu {
             title: "Edit"
+
             MenuItem {
                 text: "Copy"
                 shortcut: "Ctrl+C"
@@ -88,6 +91,25 @@ ApplicationWindow {
                 shortcut: "Ctrl+V"
                 iconSource: "qrc:/images/paste.png"
                 onTriggered: activeFocusItem.paste()
+            }
+        }
+
+        Menu {
+            title: "Configuration"
+
+            MenuItem {
+                text: "Fp File"
+                onTriggered: fpFileConfigRequested()
+            }
+
+            MenuItem {
+                text: "Remote Host"
+                onTriggered: remoteHostConfigRequested()
+            }
+
+            MenuItem {
+                text: "Valid States"
+                onTriggered: validStatesConfigRequested()
             }
         }
     }
@@ -141,7 +163,7 @@ ApplicationWindow {
                     border.width : 1
                     border.color: "black"
                     radius: 6
-                    color: "#eee"
+                    color: "#FAFAFA"
                     clip: true
 
                     Image {
@@ -157,7 +179,7 @@ ApplicationWindow {
 
                 CheckBox {
                     id : autoDetectCheckBox
-                    text: "Auto detect new strings when load image"
+                    text: "Detect strings when image is loaded"
                     Layout.alignment: Qt.AlignHCenter
                 }
 
@@ -181,7 +203,7 @@ ApplicationWindow {
                             Layout.preferredHeight: 45
                             style: generalButtonStyle
 
-                            onClicked: captureRequested()
+                            onClicked: captureRequested(autoDetectCheckBox.checked)
                         }
 
                         Item {
@@ -196,7 +218,7 @@ ApplicationWindow {
                             Layout.preferredHeight: 45
                             style: generalButtonStyle
 
-                            onClicked: loadImageRequested()
+                            onClicked: loadImageRequested(autoDetectCheckBox.checked)
                         }
                     }
 
@@ -240,6 +262,20 @@ ApplicationWindow {
                         style: generalButtonStyle
 
                         onClicked: addRequested(newStringInput.text, findTypeComboBox.currentIndex)
+                    }
+                }
+
+                Rectangle {
+                    implicitHeight: 22
+                    radius: 5
+                    Layout.fillWidth: true
+                    color: "white"
+
+                    CheckBox {
+                        text: qsTr("Only TODO strings")
+                        checked: controller.onlyTodoStrings
+
+                        onClicked: controller.onlyTodoStrings = checked
                     }
                 }
 
@@ -423,8 +459,8 @@ ApplicationWindow {
                 border.color: "#888"
                 radius: 4
                 gradient: Gradient {
-                    GradientStop { position: 0 ; color: control.pressed ? "#ccc" : "#eee" }
-                    GradientStop { position: 1 ; color: control.pressed ? "#aaa" : "#ccc" }
+                    GradientStop { position: 0 ; color: control.pressed ? "#ccc" : "#fff" }
+                    GradientStop { position: 1 ; color: control.pressed ? "#aaa" : "#ddd" }
                 }
             }
         }
@@ -435,13 +471,12 @@ ApplicationWindow {
 
         ButtonStyle {
             background: Rectangle {
-                //implicitWidth: 100
                 border.width: control.activeFocus ? 2 : 1
                 border.color: "#888"
                 radius: 4
                 gradient: Gradient {
-                    GradientStop { position: 0 ; color: control.pressed ? "#ccc" : "#eee" }
-                    GradientStop { position: 1 ; color: control.pressed ? "#aaa" : "#dccccc" }
+                    GradientStop { position: 0 ; color: control.pressed ? "#ccc" : "#A31C1C" }
+                    GradientStop { position: 2 ; color: control.pressed ? "#aaa" : "#eee" }
                 }
             }
         }
@@ -452,13 +487,12 @@ ApplicationWindow {
 
         ButtonStyle {
             background: Rectangle {
-                //implicitWidth: 100
                 border.width: control.activeFocus ? 2 : 1
                 border.color: "#888"
                 radius: 4
                 gradient: Gradient {
-                    GradientStop { position: 0 ; color: control.pressed ? "#ccc" : "#eee" }
-                    GradientStop { position: 1 ; color: control.pressed ? "#aaa" : "#ccdccc" }
+                    GradientStop { position: 0 ; color: control.pressed ? "#ccc" : "#287100" }
+                    GradientStop { position: 2 ; color: control.pressed ? "#aaa" : "#eee" }
                 }
             }
         }

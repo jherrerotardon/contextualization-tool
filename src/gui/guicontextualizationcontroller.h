@@ -6,9 +6,7 @@
 #include <QMessageBox>
 #include <QApplication>
 #include <QQuickWindow>
-
 #include "base/contextualizationcontrollerbase.h"
-#include "stringstablemodel.h"
 
 class GuiContextualizationController : public ContextualizationControllerBase
 {
@@ -17,23 +15,27 @@ class GuiContextualizationController : public ContextualizationControllerBase
     Q_PROPERTY(QString image READ getImageOfModel NOTIFY imageChanged)
     Q_PROPERTY(QList<QObject *> tableModel READ getTableModel NOTIFY stringsListChanged)
     Q_PROPERTY(QQuickWindow *view READ getView WRITE setView NOTIFY viewChanged)
+    Q_PROPERTY(bool onlyTodoStrings MEMBER onlyTodoStrings)
 
 public:
     GuiContextualizationController(QQuickWindow *view = Q_NULLPTR, QObject *parent = Q_NULLPTR);
     ~GuiContextualizationController();
 
-public slots:
+private slots:
     void add(QString newString, int findType);
     void remove(QString stringId);
     void clear();
-    void capture();
-    void load();
+    void capture(bool detectStringsOnLoad);
+    void load(bool detectStringsOnLoad);
     void detect();
     void send();
     void cancel();
     void save();
     void saveAs();
     void open();
+    void configFpFile();
+    void configRemoteHost();
+    void configValidStates();
 
 private:
     QQuickWindow *view_;

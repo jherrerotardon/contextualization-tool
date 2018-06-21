@@ -9,6 +9,8 @@ ContextualizationControllerBase::ContextualizationControllerBase(QObject *parent
 {
     Q_UNUSED(parent);
 
+    onlyTodoStrings = false;
+
     model_ = new ContextualizationModel();
 
     username_ = QDir::home().dirName();
@@ -20,9 +22,9 @@ ContextualizationControllerBase::ContextualizationControllerBase(QObject *parent
          validStates_ << "TODO" << "DONE" << "VALIDATED";
     }
 
-    if (englishFpFile.isEmpty()) {
+    if (englishFpFile_.isEmpty()) {
         // By default, english.fp should be in home of user.
-         englishFpFile = QDir::homePath() + "/english.fp";
+         englishFpFile_ = QDir::homePath() + "/english.fp";
     }
 
     // Make storage directory if not exists
@@ -181,21 +183,24 @@ int ContextualizationControllerBase::processStrings(const QStringList &strings)
 QList<FirmwareString *> ContextualizationControllerBase::findString(const QString &text, const FindType findType)
 {
     QString line;
-    QFile file(TODO_FP_FILE);
+    QFile file;
     QList<FirmwareString *> stringsFound;
     FirmwareString *fwString = Q_NULLPTR;
 
     /**
-     * If exists todoFpFile, the search will be done in him. Otherwise, tries generate todoFpFile.
-     * If todoFpFile is generate succesfully, the search will be done in him, otherwise, the search will be done with
-     * englishFpFile.
+     * If only have to find strings with TODO state, tries to do search in TODO_FP_FIlE, else use englishFpFile_.
      *
-     * This is to try do searches faster. If is possible, always try to search in todoFpFile.
+     * Tries to use TODO_FP_FILE if is possible to do searches faster.
      */
-    if (QFile::exists(TODO_FP_FILE)) {
-        file.setFileName(TODO_FP_FILE);
+    if (onlyTodoStrings) {
+        // If TODO_FP_FILE exists, uses it. Else, tries make it. Otherwise uses englishFpFile_.
+        if (QFile::exists(TODO_FP_FILE)) {
+            file.setFileName(TODO_FP_FILE);
+        } else {
+            file.setFileName(generateTodoFpFile() ? englishFpFile_ : TODO_FP_FILE);
+        }
     } else {
-        file.setFileName(generateTodoFpFile() ? englishFpFile : TODO_FP_FILE);
+        file.setFileName(englishFpFile_);
     }
 
     // Begin read file.
@@ -221,6 +226,11 @@ QList<FirmwareString *> ContextualizationControllerBase::findString(const QStrin
     }
 
     file.close();
+
+    // If only have to get TODO strings and find was not in TODO_FP_FILE is necessary filer strings.
+    if (onlyTodoStrings && file.fileName() != TODO_FP_FILE) {
+        filterStringsByState(&stringsFound, "TODO");
+    }
 
     return stringsFound;
 }
@@ -382,6 +392,10 @@ QString ContextualizationControllerBase::takeCaptureArea()
     arguments << path;
     hasError = Utils::executeProgram("import", arguments, QProcess::nullDevice(), QString(), 30000);
 
+    if (hasError) {
+        Log::writeError("Error taking capture. Code exit of import process: " + hasError);
+    }
+
     return hasError ? QString() : path;
 }
 
@@ -491,10 +505,10 @@ void ContextualizationControllerBase::loadConfig()
         }
 
         // Sets class member.
-        englishFpFile = root.value("english.fp").toString();
-        if (englishFpFile.startsWith("~")) {
+        englishFpFile_ = root.value("english.fp").toString();
+        if (englishFpFile_.startsWith("~")) {
             //Replace '~' by user home path.
-            englishFpFile.replace(0, 1, QDir::homePath());
+            englishFpFile_.replace(0, 1, QDir::homePath());
         }
 
         remoteHost_ = root.value("remoteHost").toString();
@@ -515,12 +529,40 @@ void ContextualizationControllerBase::saveConfig()
         validStates << QJsonValue(state);
     }
 
-    root.insert("englisg.fp", englishFpFile);
+    root.insert("english.fp", englishFpFile_);
     root.insert("remoteHost", remoteHost_);
     root.insert("validStates", validStates);
 
     // Write configuration in disk.
     Utils::writeFile(configurationFile, QString(QJsonDocument(root).toJson(QJsonDocument::Indented)));
+}
+
+int ContextualizationControllerBase::generateTodoFpFile()
+{
+    QStringList grepArguments;
+
+    grepArguments << "DONE$" << englishFpFile_;
+
+    return Utils::executeProgram("grep", grepArguments, TODO_FP_FILE);
+}
+
+int ContextualizationControllerBase::filterStringsByState(QList<FirmwareString *> *list, const QString &state)
+{
+    int count = 0;
+    QList<FirmwareString *>::Iterator iterator = list->begin();
+    QList<FirmwareString *>::Iterator end = list->end();
+
+    while (iterator != end) {
+        if((*iterator)->getState() != state) {
+            delete *iterator;
+            list->erase(iterator);
+            count++;
+        }
+
+        ++iterator;
+    }
+
+    return count;
 }
 
 bool ContextualizationControllerBase::isOnFwString(
@@ -553,13 +595,4 @@ bool ContextualizationControllerBase::isOnFwString(
     default:
         return false;
     }
-}
-
-int ContextualizationControllerBase::generateTodoFpFile()
-{
-    QStringList grepArguments;
-
-    grepArguments << "DONE$" << englishFpFile;
-
-    return Utils::executeProgram("grep", grepArguments, TODO_FP_FILE);
 }
