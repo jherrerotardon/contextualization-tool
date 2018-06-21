@@ -40,6 +40,8 @@ private:
 
     void connectSignalsAndSlots();
     QQuickWindow *getView();
+    QString requestUsername();
+    QString requestPassword();
     void setView(QQuickWindow *view);
 
 signals:

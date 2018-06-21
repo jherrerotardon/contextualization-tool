@@ -11,20 +11,21 @@ ContextualizationControllerBase::ContextualizationControllerBase(QObject *parent
 
     model_ = new ContextualizationModel();
 
-    username_ = qgetenv("USER");
+    username_ = QDir::home().dirName();
+
     loadConfig();
 
-    //Set default values for class members that could not be loaded from the configuration file.
+    // Set default values for class members that could not be loaded from the configuration file.
     if (validStates_.isEmpty()) {
          validStates_ << "TODO" << "DONE" << "VALIDATED";
     }
 
     if (englishFpFile.isEmpty()) {
-        //By default, english.fp should be in home of user.
-         englishFpFile = QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first() + "/english.fp";
+        // By default, english.fp should be in home of user.
+         englishFpFile = QDir::homePath() + "/english.fp";
     }
 
-    //Make storage directory if not exists
+    // Make storage directory if not exists
     QDir(IMAGES_FOLDER).mkpath(".");
     QDir(PROJECTS_FOLDER).mkpath(".");
 }
@@ -73,21 +74,21 @@ ContextualizationControllerBase::ModelError ContextualizationControllerBase::val
     QFile image(model_->getImage());
 
     if (!model_->hasImage()) {
-        //No image path
+        // No image path
         return NoImage;
     }
 
     if (!image.exists()) {
-        //Image not exists
+        // Image not exists
         return ImageNotExist;
     }
 
     if (!model_->hasStrings()) {
-        //Error, there isn't strings in the model.
+        // Error, there isn't strings in the model.
         return NoStrings;
     }
 
-    //All OK
+    // All ok
     return OkModel;
 }
 
@@ -239,7 +240,15 @@ FirmwareString * ContextualizationControllerBase::fragmentFpLine(QString &fpLine
     }
 
     // Amazing regular expresion to fragment fp line.
-    QRegularExpression regex("MESSAGE_ID  (?<id>\\w+)  \"(?<value>.+)\" \\|\\| TEXT_DESCRIPTION  \"(?<description>.*)\" \\|\\| MAX_FIELD_WIDTH  (?<maxLength>\\d+( \\+ \\d+)*) \\|\\| LOCALIZATION  (?<state>\\w+)");
+    QRegularExpression regex(
+        QString("MESSAGE_ID  (?<id>\\w+)  \"(?<value>.+)\"") +
+        QString(" \\|\\| ") +
+        QString("TEXT_DESCRIPTION  \"(?<description>.*)\"") +
+        QString(" \\|\\| ") +
+        QString("MAX_FIELD_WIDTH  (?<maxLength>\\d+( \\+ \\d+)*)") +
+        QString(" \\|\\| ") +
+        QString("LOCALIZATION  (?<state>\\w+)")
+    );
     QRegularExpressionMatch match = regex.match(fpLine);
 
     if (match.hasMatch()) {
@@ -398,11 +407,6 @@ bool ContextualizationControllerBase::setImage(const QString &image)
 
     emit imageChanged();
 
-    // TODO: poner cuando se haga manejadora de errores.
-//    if (!exists) {
-//        Utils::errorMessage("Can't set image.", "Not exists the image: " + image);
-//    }
-
     return exists;
 }
 
@@ -490,7 +494,7 @@ void ContextualizationControllerBase::loadConfig()
         englishFpFile = root.value("english.fp").toString();
         if (englishFpFile.startsWith("~")) {
             //Replace '~' by user home path.
-            englishFpFile.replace(0, 1, QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first());
+            englishFpFile.replace(0, 1, QDir::homePath());
         }
 
         remoteHost_ = root.value("remoteHost").toString();

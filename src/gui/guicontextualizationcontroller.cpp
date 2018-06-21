@@ -14,6 +14,7 @@ GuiContextualizationController::~GuiContextualizationController()
 void GuiContextualizationController::add(QString newString, int findType)
 {
     int response;
+    int error;
     bool ok;
     QString selected;
     QStringList comboBoxOptions;
@@ -27,86 +28,98 @@ void GuiContextualizationController::add(QString newString, int findType)
 
     stringsFound = findString(newString, (FindType)findType);
     switch (stringsFound.size()) {
-        case 0:
-            if (findType == ByValue) {
-                response = Utils::warningMessage(
-                    "Impossible to find the string in " + TODO_FP_FILE + " file.",
-                    "Are you sure to add the string?"
+    // Case where string not found in fp file.
+    case 0:
+        if (findType == ByValue) {
+            response = Utils::warningMessage(
+                "Impossible to find the string in " + TODO_FP_FILE + " file.",
+                "Are you sure to add the string?"
+            );
+            if (response == QMessageBox::Yes) {
+                error = addString(
+                    new FirmwareString(
+                        QString(""),
+                        newString,
+                        QString(""),
+                        QString::number(newString.size()),
+                        "TODO",
+                        false
+                    )
                 );
-                if (response == QMessageBox::Yes) {
-                    addString(
-                        new FirmwareString(
-                            QString(""),
-                            newString,
-                            QString(""),
-                            QString::number(newString.size()),
-                            "TODO",
-                            false
-                        )
-                    );
-                }
-            } else if (findType == ByID) {
-                Utils::informativeMessage("Not found.", "No string was be found with this ID.");
-            }
-            //TODO: Utils::errorMessage("Duplicate string.", "Alredy exists an equal string in the contextualization.");
-        break;
 
+                if (error == StringAlreadyExists) {
+                    Utils::errorMessage("Duplicate string.", "Alredy exists an equal string in the contextualization.");
+                }
+            }
+        } else if (findType == ByID) {
+            Utils::informativeMessage("Not found.", "No string was be found with this ID.");
+        }
+
+    break;
+
+    // Case where more than one string was found in fp file.
+    default:
+        // Remove found strings that already be in the model.
+        eraseExistStrings(&stringsFound);
+
+        switch (stringsFound.size()) {
+        // Case where all strings found alraedy be in the model.
+        case 0:
+            response = Utils::warningMessage(
+                "All strings found already are in the table.",
+                "Do you want to add a new string with this value?"
+            );
+            if (response == QMessageBox::Yes) {
+                error = addString(
+                    new FirmwareString(
+                        QString(""),
+                        newString,
+                        QString(""),
+                        QString::number(newString.size()),
+                        "TODO",
+                        false
+                    )
+                );
+
+                if (error == StringAlreadyExists) {
+                    Utils::errorMessage("Duplicate string.", "Alredy exists an equal string in the contextualization.");
+                }
+            }
+            break;
+
+        // Case where of all the strings found int fp file only one is not already in the model
         case 1:
             addString(stringsFound.first());
             break;
 
+        // Case where more than one string was found in fp file and are not in the model yet.
         default:
-            eraseExistStrings(&stringsFound);
-            switch (stringsFound.size()) {
-                case 0:
-                    Utils::informativeMessage("Not found.", "All strings found already are in the table.");
-                    response = Utils::warningMessage(
-                        "All strings found already are in the table.",
-                        "Do you add a new string with this value?"
-                    );
-                    if (response == QMessageBox::Yes) {
-                        addString(
-                            new FirmwareString(
-                                QString(""),
-                                newString,
-                                QString(""),
-                                QString::number(newString.size()),
-                                "TODO",
-                                false
-                            )
-                        );
-                    }
-                    break;
-
-                case 1:
-                    addString(stringsFound.first());
-                    break;
-
-                default:
-                    foreach (FirmwareString *fwString, stringsFound) {
-                        comboBoxOptions << fwString->getId();
-                    }
-
-                    selected = QInputDialog::getItem(
-                        Q_NULLPTR,
-                        tr("Warning!!"),
-                        tr("More than one string found with this value. Select the ID of the string you want."),
-                        comboBoxOptions,
-                        0,
-                        false,
-                        &ok
-                    );
-
-                    foreach (FirmwareString *fwString, stringsFound) {
-                        if (ok && fwString->getId() == selected) {
-                            addString(fwString);
-                        } else {
-                            delete fwString;
-                        }
-                    }
-
-                    break;
+            // Load strings found in combo box to ask user which one he was looking for
+            foreach (FirmwareString *fwString, stringsFound) {
+                comboBoxOptions << fwString->getId() + " - " + fwString->getState();
             }
+
+            selected = QInputDialog::getItem(
+                Q_NULLPTR,
+                tr("Warning!!"),
+                tr("More than one string found with this value. Select the ID of the string you want."),
+                comboBoxOptions,
+                0,
+                false,
+                &ok
+            );
+
+            // Add string selected by user and delete all others.
+            foreach (FirmwareString *fwString, stringsFound) {
+                if (ok && fwString->getId() == selected) {
+                    addString(fwString);
+                } else {
+                    delete fwString;
+                }
+            }
+
+            break;
+        }
     }
 }
 
@@ -132,10 +145,12 @@ void GuiContextualizationController::capture()
 
 void GuiContextualizationController::load()
 {
+    QString selectedImage;
+
     QFileDialog dialog(
         Q_NULLPTR,
         tr("Open Image"),
-        QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first(),
+        QDir::homePath(),
         tr("Images (*.png *.xpm *.jpg *.jpeg *.bmp)")
     );
 
@@ -143,7 +158,11 @@ void GuiContextualizationController::load()
     dialog.setFileMode(QFileDialog::ExistingFile);
     dialog.setViewMode(QFileDialog::Detail);
     if (dialog.exec()) {
-        setImage(dialog.selectedFiles().first());
+        selectedImage = dialog.selectedFiles().first();
+
+        if (setImage(selectedImage) == false) {
+            Utils::errorMessage("Can't set image.", "Not exists the image: " + selectedImage);
+        }
     }
 }
 
@@ -165,6 +184,8 @@ void GuiContextualizationController::detect()
 void GuiContextualizationController::send()
 {
     QString contextualizationPath;
+    QString username;
+    QString password;
     int hasError;
 
     switch (validateModel()) {
@@ -176,10 +197,25 @@ void GuiContextualizationController::send()
                 return;
             }
 
-            //TODO: pedir login de alguna forma.
-            hasError = sendContextualization(contextualizationPath, username_, "1234");
+            username = requestUsername();
+            // If user press cancel, remove contextualization file and cancel process.
+            if (username.isEmpty()) {
+                QFile::remove(contextualizationPath);
 
-            //Delete contextualization file.
+                return;
+            }
+
+            password = requestPassword();
+            // If user press cancel, remove contextualization file and cancel process.
+            if (password.isEmpty()) {
+                QFile::remove(contextualizationPath);
+
+                return;
+            }
+
+            hasError = sendContextualization(contextualizationPath, username, password);
+
+            // Remove contextualization file.
             QFile::remove(contextualizationPath);
 
             if (hasError) {
@@ -212,6 +248,8 @@ void GuiContextualizationController::cancel()
     if (response == QMessageBox::Yes) {
         saveConfig();
 
+        QFile::remove(TODO_FP_FILE);
+
         QApplication::quit();
     }
 }
@@ -227,11 +265,11 @@ void GuiContextualizationController::saveAs()
     QFileDialog dialog(
         Q_NULLPTR,
         tr("Save Project"),
-        QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first(),
+        QDir::homePath(),
         tr("Contextualization File (*.json)")
     );
 
-    //If the proyect if empty nothing will be saved.
+    // If the proyect if empty nothing will be saved.
     if (model_->isEmpty()) {
         Utils::informativeMessage("Empty contextualization.", "Nothing to be save.");
 
@@ -253,7 +291,7 @@ void GuiContextualizationController::open()
     QFileDialog dialog(
         Q_NULLPTR,
         tr("Open Image"),
-        QStandardPaths::standardLocations(QStandardPaths::HomeLocation).first(),
+        QDir::homePath(),
         tr("Contextualization File (*.json)")
     );
 
@@ -276,6 +314,46 @@ void GuiContextualizationController::setView(QQuickWindow *view)
     connectSignalsAndSlots();
 
     emit viewChanged();
+}
+
+QString GuiContextualizationController::requestUsername()
+{
+    QString username;
+    bool ok;
+
+    // Request username to user.
+    do {
+        username = QInputDialog::getText(
+            Q_NULLPTR,
+            tr("Login"),
+            tr("User Name:"),
+            QLineEdit::Normal,
+            username,
+            &ok
+        );
+    } while(ok && username.isEmpty());
+
+    return ok ? username : QString();
+}
+
+QString GuiContextualizationController::requestPassword()
+{
+    QString password;
+    bool ok;
+
+    // Request username to user.
+    do {
+        password = QInputDialog::getText(
+            Q_NULLPTR,
+            tr("Login"),
+            tr("Password:"),
+            QLineEdit::Password,
+            QString(),
+            &ok
+        );
+    } while(ok && password.isEmpty());
+
+    return ok ? password : QString();
 }
 
 void GuiContextualizationController::connectSignalsAndSlots()
