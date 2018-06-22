@@ -333,9 +333,9 @@ ApplicationWindow {
 
                         delegate: TextField {
                             anchors.fill: parent
-                            height: 25
                             verticalAlignment: Text.AlignVCenter
                             text: styleData.value
+                            readOnly: true
 
                             style: TextFieldStyle
                             {
@@ -363,6 +363,7 @@ ApplicationWindow {
                                 anchors.fill: parent
                                 verticalAlignment: Text.AlignVCenter
                                 text: "\"" + styleData.value + "\""
+                                readOnly: true
 
                                 style: TextFieldStyle
                                 {

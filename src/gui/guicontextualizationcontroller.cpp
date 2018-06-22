@@ -142,8 +142,14 @@ void GuiContextualizationController::capture(bool detectStringsOnLoad)
     view_->setVisible(true);
 
     if (!path.isEmpty()) {
-        setImage(path);
-        detect();
+        // If setImage is succesfully and have to detect strings, call function to detect strings.
+        if (setImage(path)) {
+            if (detectStringsOnLoad) {
+                detect();
+            }
+        } else {
+            Utils::errorMessage("Can't set image.", "Had a problem with the capture.");
+        }
     }
 }
 
