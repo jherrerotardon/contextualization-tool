@@ -51,7 +51,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    src/main.h \
     src/tools/log.h \
     src/base/firmwarestring.h \
     src/base/contextualizationmodel.h \

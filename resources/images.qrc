@@ -8,5 +8,7 @@
         <file>images/import.png</file>
         <file>images/imageNotAvailable.png</file>
         <file>images/background.png</file>
+        <file>images/newProject.png</file>
+        <file>images/refresh.png</file>
     </qresource>
 </RCC>

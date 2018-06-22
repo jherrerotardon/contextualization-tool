@@ -32,7 +32,7 @@ void GuiContextualizationController::add(QString newString, int findType)
     case 0:
         if (findType == ByValue) {
             response = Utils::warningMessage(
-                "Impossible to find the string in " + TODO_FP_FILE + " file.",
+                "Impossible to find the string in " + DONE_FP_FILE + " file.",
                 "Are you sure to add the string?"
             );
             if (response == QMessageBox::Yes) {
@@ -42,7 +42,7 @@ void GuiContextualizationController::add(QString newString, int findType)
                         newString,
                         QString(""),
                         QString::number(newString.size()),
-                        "TODO",
+                        "DONE",
                         false
                     )
                 );
@@ -76,7 +76,7 @@ void GuiContextualizationController::add(QString newString, int findType)
                         newString,
                         QString(""),
                         QString::number(newString.size()),
-                        "TODO",
+                        "DONE",
                         false
                     )
                 );
@@ -165,8 +165,10 @@ void GuiContextualizationController::load(bool detectStringsOnLoad)
         selectedImage = dialog.selectedFiles().first();
 
         // If setImage is succesfully and have to detect strings, call function to detect strings.
-        if (setImage(selectedImage) && detectStringsOnLoad) {
-            detect();
+        if (setImage(selectedImage)) {
+            if (detectStringsOnLoad) {
+                    detect();
+            }
         } else {
             Utils::errorMessage("Can't set image.", "Not exists the image: " + selectedImage);
         }
@@ -255,7 +257,7 @@ void GuiContextualizationController::cancel()
     if (response == QMessageBox::Yes) {
         saveConfig();
 
-        QFile::remove(TODO_FP_FILE);
+        QFile::remove(DONE_FP_FILE);
 
         QApplication::quit();
     }
@@ -326,11 +328,11 @@ void GuiContextualizationController::configFpFile()
         );
     } while(ok && englishFpFile.isEmpty());
 
-    // Only change value of path if user doesn't press cancel. After todo fp file is generated.
+    // Only change value of path if user doesn't press cancel. After done fp file is generated.
     if (ok) {
         englishFpFile_ = englishFpFile;
 
-        generateTodoFpFile();
+        generateDoneFpFile();
     }
 }
 
@@ -372,6 +374,14 @@ void GuiContextualizationController::configValidStates()
 
     // Only change value of remote host if user doesn't press cancel.
     validStates_ = ok ? validStates.split(',', QString::SkipEmptyParts) : validStates_;
+}
+
+void GuiContextualizationController::refresh()
+{
+    emit imageChanged();
+    emit stringsListChanged();
+
+    generateDoneFpFile();
 }
 
 QQuickWindow *GuiContextualizationController::getView()
@@ -508,6 +518,12 @@ void GuiContextualizationController::connectSignalsAndSlots()
             SIGNAL(validStatesConfigRequested()),
             this,
             SLOT(configValidStates())
+        );
+        QObject::connect(
+            view_,
+            SIGNAL(refreshRequested()),
+            this,
+            SLOT(refresh())
         );
     }
 }

@@ -6,6 +6,7 @@ import QtQuick.Controls.Styles 1.4
 import io.controllers.guicontroller 1.0
 
 ApplicationWindow {
+    signal newProjectRequested();
     signal clearRequested()
     signal addRequested(string newString, int findType)
     signal stringRemoved(string idString)
@@ -19,6 +20,7 @@ ApplicationWindow {
     signal fpFileConfigRequested()
     signal remoteHostConfigRequested()
     signal validStatesConfigRequested()
+    signal refreshRequested()
 
     id : mainWindow
     visible: true
@@ -51,22 +53,36 @@ ApplicationWindow {
             title: "File"
 
             MenuItem {
-                objectName: "openButton"
+                text : "New Project..."
+                shortcut : "Ctrl+N"
+                iconSource: "qrc:/images/newProject.png"
+
+                onTriggered: newProjectRequested()
+            }
+
+            MenuItem {
                 text : "Open Project..."
-                shortcut : "Ctrl+I"
+                shortcut : "Ctrl+O"
                 iconSource: "qrc:/images/import.png"
 
                 onTriggered: openRequested()
             }
 
             MenuItem {
-                objectName: "saveAsButton"
                 text : "Save As..."
-                shortcut : "Ctrl+E"
+                shortcut : "Ctrl+S"
                 iconSource: "qrc:/images/export.png"
 
                 onTriggered: saveAsRequested()
             }
+
+            MenuItem {
+                text : "Refresh"
+                shortcut : "Ctrl+R"
+                iconSource: "qrc:/images/refresh.png"
+                onTriggered: refreshRequested()
+            }
+
 
             MenuItem {
                 text : "Exit"
@@ -272,10 +288,10 @@ ApplicationWindow {
                     color: "white"
 
                     CheckBox {
-                        text: qsTr("Only TODO strings")
-                        checked: controller.onlyTodoStrings
+                        text: qsTr("Only DONE strings")
+                        checked: controller.onlyDoneStrings
 
-                        onClicked: controller.onlyTodoStrings = checked
+                        onClicked: controller.onlyDoneStrings = checked
                     }
                 }
 

@@ -82,11 +82,11 @@ protected:
     const static QString PROJECTS_FOLDER;   ///< Directory where will save projects.
     ContextualizationModel *model_;         ///< Pointer to the contextualization model.
     QString englishFpFile_;                 ///< Original file where be all firmware strings.
-    const static QString TODO_FP_FILE;      ///< File path where the firmware strings will be found.
+    const static QString DONE_FP_FILE;      ///< File path where the firmware strings will be found.
     QString username_;                      ///< Username who run the app.
     QStringList validStates_;               ///< Valid states of firmware strings.
     QString remoteHost_;                    ///< Host where the contextualization will be sent.
-    bool onlyTodoStrings;                   ///< If is true, only string with state TODO will be found.
+    bool onlyDoneStrings;                   ///< If is true, only string with state DONE will be found.
 
     /**
      * @brief Exports projet to json file.
@@ -299,12 +299,12 @@ protected:
     void saveConfig();
 
     /**
-     * @brief Creates a copy of englishFp file in /tmp with only firmware strings with TODO status.
+     * @brief Creates a copy of englishFp file in /tmp with only firmware strings with DONE status.
      *
      * If copy was created succesfully returns 0, otherwise returns the code error.
      * @return Code error
      */
-    int generateTodoFpFile();
+    int generateDoneFpFile();
 
     /**
      * @brief Filters a list of firmware strings. Remove from the list all strings that have not the same state as the

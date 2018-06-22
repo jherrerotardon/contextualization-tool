@@ -15,7 +15,7 @@ class GuiContextualizationController : public ContextualizationControllerBase
     Q_PROPERTY(QString image READ getImageOfModel NOTIFY imageChanged)
     Q_PROPERTY(QList<QObject *> tableModel READ getTableModel NOTIFY stringsListChanged)
     Q_PROPERTY(QQuickWindow *view READ getView WRITE setView NOTIFY viewChanged)
-    Q_PROPERTY(bool onlyTodoStrings MEMBER onlyTodoStrings)
+    Q_PROPERTY(bool onlyDoneStrings MEMBER onlyDoneStrings)
 
 public:
     GuiContextualizationController(QQuickWindow *view = Q_NULLPTR, QObject *parent = Q_NULLPTR);
@@ -36,6 +36,7 @@ private slots:
     void configFpFile();
     void configRemoteHost();
     void configValidStates();
+    void refresh();
 
 private:
     QQuickWindow *view_;

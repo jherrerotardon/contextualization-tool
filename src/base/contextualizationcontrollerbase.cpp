@@ -1,6 +1,6 @@
 ﻿#include "contextualizationcontrollerbase.h"
 
-const QString ContextualizationControllerBase::TODO_FP_FILE = "/tmp/todoFpFile.fp";
+const QString ContextualizationControllerBase::DONE_FP_FILE = "/tmp/doneFpFile.fp";
 const QString ContextualizationControllerBase::IMAGES_FOLDER = QDir("../storage/images").absolutePath() + '/';
 const QString ContextualizationControllerBase::PROJECTS_FOLDER = QDir("../storage/projects").absolutePath() + '/';
 const int ContextualizationControllerBase::MIN_LENGTH_FOR_APPROXIMATE = 6;
@@ -9,7 +9,7 @@ ContextualizationControllerBase::ContextualizationControllerBase(QObject *parent
 {
     Q_UNUSED(parent);
 
-    onlyTodoStrings = false;
+    onlyDoneStrings = false;
 
     model_ = new ContextualizationModel();
 
@@ -188,16 +188,16 @@ QList<FirmwareString *> ContextualizationControllerBase::findString(const QStrin
     FirmwareString *fwString = Q_NULLPTR;
 
     /**
-     * If only have to find strings with TODO state, tries to do search in TODO_FP_FIlE, else use englishFpFile_.
+     * If only have to find strings with DONE state, tries to do search in DONE_FP_FIlE, else use englishFpFile_.
      *
-     * Tries to use TODO_FP_FILE if is possible to do searches faster.
+     * Tries to use DONE_FP_FILE if is possible to do searches faster.
      */
-    if (onlyTodoStrings) {
-        // If TODO_FP_FILE exists, uses it. Else, tries make it. Otherwise uses englishFpFile_.
-        if (QFile::exists(TODO_FP_FILE)) {
-            file.setFileName(TODO_FP_FILE);
+    if (onlyDoneStrings) {
+        // If DONE_FP_FILE exists, uses it. Else, tries make it. Otherwise uses englishFpFile_.
+        if (QFile::exists(DONE_FP_FILE)) {
+            file.setFileName(DONE_FP_FILE);
         } else {
-            file.setFileName(generateTodoFpFile() ? englishFpFile_ : TODO_FP_FILE);
+            file.setFileName(generateDoneFpFile() ? englishFpFile_ : DONE_FP_FILE);
         }
     } else {
         file.setFileName(englishFpFile_);
@@ -227,9 +227,9 @@ QList<FirmwareString *> ContextualizationControllerBase::findString(const QStrin
 
     file.close();
 
-    // If only have to get TODO strings and find was not in TODO_FP_FILE is necessary filer strings.
-    if (onlyTodoStrings && file.fileName() != TODO_FP_FILE) {
-        filterStringsByState(&stringsFound, "TODO");
+    // If only have to get DONE strings and find was not in DONE_FP_FILE is necessary filer strings.
+    if (onlyDoneStrings && file.fileName() != DONE_FP_FILE) {
+        filterStringsByState(&stringsFound, "DONE");
     }
 
     return stringsFound;
@@ -298,7 +298,7 @@ FirmwareString * ContextualizationControllerBase::fragmentFpLine(QString &fpLine
         return Q_NULLPTR;
     }
 
-    selected = state == "TODO" ? true : false;
+    selected = state == "DONE" ? true : false;
 
     return new FirmwareString(id, value, description, maxLength, state, selected);
 }
@@ -537,13 +537,13 @@ void ContextualizationControllerBase::saveConfig()
     Utils::writeFile(configurationFile, QString(QJsonDocument(root).toJson(QJsonDocument::Indented)));
 }
 
-int ContextualizationControllerBase::generateTodoFpFile()
+int ContextualizationControllerBase::generateDoneFpFile()
 {
     QStringList grepArguments;
 
     grepArguments << "DONE$" << englishFpFile_;
 
-    return Utils::executeProgram("grep", grepArguments, TODO_FP_FILE);
+    return Utils::executeProgram("grep", grepArguments, DONE_FP_FILE);
 }
 
 int ContextualizationControllerBase::filterStringsByState(QList<FirmwareString *> *list, const QString &state)
