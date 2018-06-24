@@ -15,7 +15,8 @@ class GuiContextualizationController : public ContextualizationControllerBase
     Q_PROPERTY(QString image READ getImageOfModel NOTIFY imageChanged)
     Q_PROPERTY(QList<QObject *> tableModel READ getTableModel NOTIFY stringsListChanged)
     Q_PROPERTY(QQuickWindow *view READ getView WRITE setView NOTIFY viewChanged)
-    Q_PROPERTY(bool onlyDoneStrings MEMBER onlyDoneStrings)
+    Q_PROPERTY(bool onlyDoneStrings MEMBER onlyDoneStrings_)
+    Q_PROPERTY(bool caseSensitive MEMBER caseSensitive_)
 
 public:
     GuiContextualizationController(QQuickWindow *view = Q_NULLPTR, QObject *parent = Q_NULLPTR);

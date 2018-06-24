@@ -287,11 +287,22 @@ ApplicationWindow {
                     Layout.fillWidth: true
                     color: "white"
 
-                    CheckBox {
-                        text: qsTr("Only DONE strings")
-                        checked: controller.onlyDoneStrings
+                    Row {
+                        spacing: 10
 
-                        onClicked: controller.onlyDoneStrings = checked
+                        CheckBox {
+                            text: qsTr("Only DONE strings")
+                            checked: controller.onlyDoneStrings
+
+                            onClicked: controller.onlyDoneStrings = checked
+                        }
+
+                        CheckBox {
+                            text: qsTr("Case sensitive")
+                            checked: controller.caseSensitive
+
+                            onClicked: controller.caseSensitive = checked
+                        }
                     }
                 }
 

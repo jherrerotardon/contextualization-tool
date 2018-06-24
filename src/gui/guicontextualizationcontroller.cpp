@@ -183,17 +183,18 @@ void GuiContextualizationController::load(bool detectStringsOnLoad)
 
 void GuiContextualizationController::detect()
 {
-    QStringList *extractedStrings;
+    QList<FirmwareString *> extractedStrings = detectStringsOnImage();
+    QList<FirmwareString *> copy;
 
-    extractedStrings = detectStringsOnImage();
-    if (extractedStrings) {
-        processStrings(*extractedStrings);
-    } else {
-        Utils::errorMessage("It's not possible to detect texts in the image.", "See the log for more details.");
+    // A copy if creates because extracted strings are in a different thread and this is in conflict with Q_PROPERTYs.
+    foreach (FirmwareString *fwString, extractedStrings) {
+        copy << new FirmwareString(*fwString);
+
+        delete fwString;
+        fwString = Q_NULLPTR;
     }
 
-
-    delete extractedStrings;
+    addStrings(copy);
 }
 
 void GuiContextualizationController::send()

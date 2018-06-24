@@ -211,12 +211,14 @@ FirmwareString * FirmwareString::fromJson(QByteArray &json)
 
 FirmwareString & FirmwareString::operator=(const FirmwareString &other)
 {
-    id_ = other.getId();
-    value_ = other.getValue();
-    description_ = other.getDescription();
-    maxLength_ = other.getMaxLength();
-    state_ = other.getState();
-    selected_ = other.isSelected();
+    if (this != &other) {
+        id_ = other.getId();
+        value_ = other.getValue();
+        description_ = other.getDescription();
+        maxLength_ = other.getMaxLength();
+        state_ = other.getState();
+        selected_ = other.isSelected();
+    }
 
     return *this;
 }

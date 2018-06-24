@@ -13,6 +13,9 @@
 #include <QJsonArray>
 #include <QRegularExpression>
 #include <QRegularExpressionMatch>
+#include <QImage>
+#include <QFuture>
+#include <QtConcurrent/QtConcurrent>
 #include "contextualizationmodel.h"
 #include "tools/utils.h"
 #include "tools/log.h"
@@ -78,6 +81,8 @@ public:
     ~ContextualizationControllerBase();
 
 protected:
+    const static int CHUNK_WIDTH;           ///< Width of each chunk when a image is splitted.
+    const static int CHUNK_HEIGHT;          ///< Height of each chunk when a image is splitted.
     const static QString IMAGES_FOLDER;     ///< Directory where will save project images.
     const static QString PROJECTS_FOLDER;   ///< Directory where will save projects.
     ContextualizationModel *model_;         ///< Pointer to the contextualization model.
@@ -86,7 +91,8 @@ protected:
     QString username_;                      ///< Username who run the app.
     QStringList validStates_;               ///< Valid states of firmware strings.
     QString remoteHost_;                    ///< Host where the contextualization will be sent.
-    bool onlyDoneStrings;                   ///< If is true, only string with state DONE will be found.
+    bool onlyDoneStrings_;                  ///< If is true, only string with state DONE will be found.
+    bool caseSensitive_;                    ///< Indicates if searches will be case sensitive or not.
 
     /**
      * @brief Exports projet to json file.
@@ -141,21 +147,22 @@ protected:
     /**
      * @brief Extracts the strings contained in the image set in the model.
      *
-     * Returns a pointer to QListString that contains all of strings extracted. Each string on QStringList is a line
-     * found in the image. Returns null if there was any errors.
-     * @return QStringList *
+     * Returns a QList of FirmwareString containing all of strings extracted converted in FirmwareString objects if are
+     * in the fp file. Each firmware string on QList is a FirmwareString Object extracted from the image.
+     * @return List of FirmwareString found on image.
      */
-    QStringList * detectStringsOnImage();
+    QList<FirmwareString *> detectStringsOnImage();
 
     /**
      * @brief Processes received strings.
      *
-     * Tries to find the strings value in fp file and strings that are in the file are added in the model.
-     * Returns the number of strings added in the model.
-     * @param strings Firmware strings to be processed.
-     * @return int
+     * Tries to find the strings value in fp file and strings that are in the file are returned converted in
+     * FirmwareString object.
+     * Returns QList of FirmwareString containing strings found in fp file..
+     * @param strings String value to be processed.
+     * @return List of FirmwareStirng found in fp file.
      */
-    int processStrings(const QStringList &strings);
+    QList<FirmwareString *> processStrings(QStringList strings);
 
     /**
      * @brief Find the text received by parameter in fp file.
@@ -317,6 +324,23 @@ protected:
      */
     int filterStringsByState(QList<FirmwareString *> *list, const QString &state);
 
+    /**
+     * @brief Splits an image in one or more chunks depending of chunk size received by argument.
+     *
+     * If the width of the image is not divisible by the chunkWidth respectively, the last chunk of the row will
+     * narrower than all the others. Works the same way for height of image and chunkHeight.
+     * Chunks are saved on disk.
+     *
+     * Returns a list with path of image chunks. Only returns chunks that have been saved on disk succesfully.
+     *
+     * If ok is nonnull pointer, ok will be set to true if all chunks are saved on disk succesfully.
+     * @param image Image to split.
+     * @param chunkWidth Width of each part of image.
+     * @param chunkHeight Height of each part of image.
+     * @return QStringList with chunks of image.
+     */
+    QStringList splitImage(const QString &image, int chunkWidth, int chunkHeight, bool *someError = Q_NULLPTR);
+
 signals:
 
     /**
@@ -331,6 +355,7 @@ signals:
 
 private:
     const static int MIN_LENGTH_FOR_APPROXIMATE;       ///< Minimun length for string to do an approximate find.
+    const static QStringList COMMON_WORDS;             ///< Dicctionary with the most common words in firmware string.
 
     /**
      * @brief Checks if the text belongs to a firmware string.
@@ -339,7 +364,16 @@ private:
      * @param findType Type of find will do.
      * @return bool
      */
-    bool isOnFwString(const FirmwareString &fwString, const QString &text, const FindType &findType = ByID);
+    bool isOnFwString(const FirmwareString &fwString, const QString &text, FindType findType = ByID);
+
+    /**
+     * @brief Checks if the word is a common word used in firmare strings.
+     *
+     * The common words are saved in a dictionary.
+     * @param word Word to be checked.
+     * @return bool
+     */
+    bool isCommonWord(const QString &word);
 };
 
 #endif // CONTEXTUALIZATIONCONTROLLER_H

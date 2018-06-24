@@ -1,5 +1,7 @@
 ﻿#include "contextualizationcontrollerbase.h"
 
+const int ContextualizationControllerBase::CHUNK_WIDTH = 300;
+const int ContextualizationControllerBase::CHUNK_HEIGHT = 150;
 const QString ContextualizationControllerBase::DONE_FP_FILE = "/tmp/doneFpFile.fp";
 const QString ContextualizationControllerBase::IMAGES_FOLDER = QDir("../storage/images").absolutePath() + '/';
 const QString ContextualizationControllerBase::PROJECTS_FOLDER = QDir("../storage/projects").absolutePath() + '/';
@@ -9,7 +11,8 @@ ContextualizationControllerBase::ContextualizationControllerBase(QObject *parent
 {
     Q_UNUSED(parent);
 
-    onlyDoneStrings = false;
+    onlyDoneStrings_ = true;
+    caseSensitive_ = true;
 
     model_ = new ContextualizationModel();
 
@@ -160,24 +163,76 @@ int ContextualizationControllerBase::sendContextualization(const QString &path, 
     return errorCode;
 }
 
-QStringList * ContextualizationControllerBase::detectStringsOnImage()
+QList<FirmwareString *> ContextualizationControllerBase::detectStringsOnImage()
 {
-    Ocr ocr(model_->getImage());
+    Ocr *worker;
+    QList<Ocr *> workers; // Used to save workers because after must be released.
+    QList<QFuture<QList<FirmwareString *>>> futures;
+    QList<FirmwareString *> fwStrings;
+    QStringList imageChunks;
+    QString rootCopy;
+    QSemaphore threadFinished(0);
 
-    ocr.setDataPath(QDir("../tesseract/tessdata").absolutePath());
-
-    return ocr.run();
-}
-
-int ContextualizationControllerBase::processStrings(const QStringList &strings)
-{
-    int count = 0;
-
-    foreach (QString string, strings) {
-        count += addStrings(findString(string, ByApproximateValue));
+    // Added root image copy to work it too.
+    rootCopy = "/tmp/rootCopy." + QFileInfo(model_->getImage()).suffix();
+    if (QFile::copy(model_->getImage(), "/tmp/rootCopy." + QFileInfo(model_->getImage()).suffix())) {
+        imageChunks << rootCopy;
     }
 
-    return count;
+    // Split image.
+    imageChunks << splitImage(model_->getImage(), CHUNK_WIDTH, CHUNK_HEIGHT);
+
+    // Create and start workers.
+    foreach (QString image, imageChunks) {
+        worker = new Ocr(image);
+        workers << worker;
+
+       futures <<  QtConcurrent::run(
+            [this, worker, &threadFinished]() {
+                QList<FirmwareString *> out;
+
+                out = this->processStrings(worker->extract());
+                threadFinished.release();
+
+                return out;
+            }
+        );
+    }
+
+    // Wait for all workers to finish and retrieve results of extraction
+    foreach (QFuture<QList<FirmwareString *>> future, futures) {
+        future.waitForFinished();
+        fwStrings << future.result();
+    }
+
+    // Release memory of workers.
+    foreach (Ocr *worker, workers) {
+        delete worker;
+        worker = Q_NULLPTR;
+    }
+
+    //Delete image chunks from disk.
+    foreach (QString path, imageChunks) {
+        QFile::remove(path);
+    }
+
+
+    return fwStrings;
+}
+
+QList<FirmwareString *> ContextualizationControllerBase::processStrings(QStringList strings)
+{
+    QList<FirmwareString *> stringsFound;
+    QList<FirmwareString *> out;
+
+    foreach (QString string, strings) {
+        stringsFound = findString(string, ByApproximateValue);
+        if (!stringsFound.isEmpty()) {
+            out << stringsFound;
+        }
+    }
+
+    return out;
 }
 
 QList<FirmwareString *> ContextualizationControllerBase::findString(const QString &text, const FindType findType)
@@ -192,7 +247,7 @@ QList<FirmwareString *> ContextualizationControllerBase::findString(const QStrin
      *
      * Tries to use DONE_FP_FILE if is possible to do searches faster.
      */
-    if (onlyDoneStrings) {
+    if (onlyDoneStrings_) {
         // If DONE_FP_FILE exists, uses it. Else, tries make it. Otherwise uses englishFpFile_.
         if (QFile::exists(DONE_FP_FILE)) {
             file.setFileName(DONE_FP_FILE);
@@ -228,7 +283,7 @@ QList<FirmwareString *> ContextualizationControllerBase::findString(const QStrin
     file.close();
 
     // If only have to get DONE strings and find was not in DONE_FP_FILE is necessary filer strings.
-    if (onlyDoneStrings && file.fileName() != DONE_FP_FILE) {
+    if (onlyDoneStrings_ && file.fileName() != DONE_FP_FILE) {
         filterStringsByState(&stringsFound, "DONE");
     }
 
@@ -507,7 +562,7 @@ void ContextualizationControllerBase::loadConfig()
         // Sets class member.
         englishFpFile_ = root.value("english.fp").toString();
         if (englishFpFile_.startsWith("~")) {
-            //Replace '~' by user home path.
+            // Replace '~' by user home path.
             englishFpFile_.replace(0, 1, QDir::homePath());
         }
 
@@ -565,19 +620,66 @@ int ContextualizationControllerBase::filterStringsByState(QList<FirmwareString *
     return count;
 }
 
-bool ContextualizationControllerBase::isOnFwString(
-        const FirmwareString &fwString,
-        const QString &text,
-        const FindType &findType
+QStringList ContextualizationControllerBase::splitImage(
+    const QString &imagePath,
+    int chunkWidth,
+    int chunkHeight,
+    bool *ok
 ) {
+    int width;
+    int height;
+    QImage image(imagePath);
+    QFileInfo rootImage(imagePath);
+    QList<QImage> imageChunks;
+    QStringList chunks;
+    QString fileName;
+
+    // Create chunks of image.
+    for (int xOffset = 0; xOffset < image.width(); xOffset += chunkWidth) {
+        width = xOffset + chunkWidth > image.width() ? image.width() - xOffset : chunkWidth;
+
+        for (int yOffset = 0; yOffset <= image.height(); yOffset += chunkHeight) {
+            height = yOffset + chunkHeight > image.height() ? image.height() - yOffset : chunkHeight;
+
+            imageChunks << image.copy(xOffset, yOffset, width, height);
+        }
+    }
+
+    // Save on disk images.
+    for (int i = 0; i < imageChunks.size(); ++i) {
+        fileName = "/tmp/" + rootImage.baseName() + "_chunk_" + QString::number(i+1) + '.' + rootImage.suffix();
+
+        // Only returns chunks saved succesfully.
+        if (imageChunks.at(i).save(fileName, Q_NULLPTR, 100)) {
+            chunks << fileName;
+        } else {
+            if (ok) {
+                *ok = false;
+            }
+        }
+    }
+
+    return chunks;
+}
+
+bool ContextualizationControllerBase::isOnFwString(const FirmwareString &fwString,
+        const QString &value,
+        FindType findType
+) {
+    Qt::CaseSensitivity caseSensitive = caseSensitive_ ? Qt::CaseSensitive : Qt::CaseInsensitive;
+    QString text = value.simplified();  // Remove extra whitespaces.
+
+    // If is a common word, always filter by ID.
+    findType = isCommonWord(text) ? ByValue : findType;
+
     switch (findType) {
     case ByID:
         // A identifier is considered valid only if it is equals than the identifier of fwString.
-        return text == fwString.getId();
+        return text.compare(fwString.getId(), caseSensitive) == 0 ? true : false;
 
     case ByValue:
         // A value is considered valid only if it is equals than the value of fwString.
-        return text == fwString.getValue();
+        return text.compare(fwString.getValue(), caseSensitive) == 0 ? true : false;
 
     case ByApproximateValue:
         /**
@@ -587,12 +689,32 @@ bool ContextualizationControllerBase::isOnFwString(
          * is equals than the value of fwString.
          **/
         if (text.size() > MIN_LENGTH_FOR_APPROXIMATE && fwString.getValue().size() > MIN_LENGTH_FOR_APPROXIMATE) {
-            return text.contains(fwString.getValue()) || fwString.getValue().contains(text);
+            return text.contains(fwString.getValue(), caseSensitive) || fwString.getValue().contains(text, caseSensitive);
         } else {
-            return text == fwString.getValue();
+            return text.compare(fwString.getValue(), caseSensitive) == 0 ? true : false;
         }
 
     default:
         return false;
     }
+}
+
+bool ContextualizationControllerBase::isCommonWord(const QString &word)
+{
+    QStringList dictionary;
+
+    dictionary << "Blueprints"
+               << "Quickset"
+               << "paper type"
+               << "Modify quickset"
+               << "Copy"
+               << "Cancel";
+
+    foreach (QString text, dictionary) {
+        if (text.contains(word, Qt::CaseInsensitive)) {
+            return true;
+        }
+    }
+
+    return false;
 }
