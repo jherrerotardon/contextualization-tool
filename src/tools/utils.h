@@ -1,12 +1,15 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-#include <QString>
-#include <QMessageBox>
-#include <QFile>
 #include <QDir>
-#include <QTextStream>
+#include <QFile>
+#include <QMessageBox>
 #include <QProcess>
+#include <QProgressDialog>
+#include <QString>
+#include <QThread>
+#include <QFuture>
+#include <QtConcurrent/QtConcurrent>
 
 class Utils
 {
@@ -128,6 +131,22 @@ public:
         const QString &zipDestination,
         const QString &zipName = "compressed"
     );
+
+    /**
+     * @brief Simulates a progress on a QProgressDialog.
+     *
+     * Counter only finish when hasFinished is true, otherwise progress count stop in 99%.
+     * As the counter is created in other thread, out of function you have to make sure that thread finished calling
+     * function QFuture::waitForFinished(). If you don't make sure of it, your program probably will finish unexpectedly
+     * with an error.
+     *
+     * Returns a QFuture object for control the end of the thread.
+     * @param dialog Dialog where exec the counter.
+     * @param hasFinished Flag to finish the counter.
+     * @param timeout Time between each increase in the percentage of progress.
+     * @return QFuture object to know when the thread has finished.
+     */
+    static QFuture<void> startProgressDialogCounter(QProgressDialog *dialog, bool *hasFinished, int timeout = 40);
 };
 
 #endif // UTILS_H

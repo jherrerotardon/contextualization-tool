@@ -127,3 +127,27 @@ QString Utils::zipCompressDirectoryContents(
     hasError = Utils::executeProgram("zip", arguments, QProcess::nullDevice(), directory, 10000);
     return hasError ? QString() : zipFile;
 }
+
+QFuture<void> Utils::startProgressDialogCounter(QProgressDialog *dialog, bool *hasFinished, int timeout)
+{
+    for (int i = 0; i < 5; i++) {
+        dialog->setValue(i);
+        QThread::msleep(100);
+    }
+
+    // Run progress increment thread.
+    QFuture<void> future = QtConcurrent::run(
+        [dialog, hasFinished, timeout]() {
+            for (int i = 5; i < 100; i++) {
+                dialog->setValue(i);
+                if (*hasFinished) {
+                    break;
+                }
+
+                QThread::msleep(timeout);
+            }
+        }
+    );
+
+    return future;
+}

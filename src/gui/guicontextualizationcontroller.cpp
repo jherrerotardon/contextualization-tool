@@ -94,7 +94,7 @@ void GuiContextualizationController::add(QString newString, int findType)
 
         // Case where more than one string was found in fp file and are not in the model yet.
         default:
-            // Load strings found in combo box to ask user which one he was looking for
+            // Load strings found in combo box to ask user which one he was looking for.
             foreach (FirmwareString *fwString, stringsFound) {
                 comboBoxOptions << fwString->getId() + " - " + fwString->getState();
             }
@@ -108,6 +108,9 @@ void GuiContextualizationController::add(QString newString, int findType)
                 false,
                 &ok
             );
+
+            // Quit state of string selected.
+            selected = selected.split(" - ").at(0);
 
             // Add string selected by user and delete all others.
             foreach (FirmwareString *fwString, stringsFound) {
@@ -157,18 +160,21 @@ void GuiContextualizationController::load(bool detectStringsOnLoad)
 {
     QString selectedImage;
 
-    QFileDialog dialog(
+    QFileDialog *dialog = new QFileDialog(
         Q_NULLPTR,
         tr("Open Image"),
         QDir::homePath(),
         tr("Images (*.png *.xpm *.jpg *.jpeg *.bmp)")
     );
 
-    dialog.setAcceptMode(QFileDialog::AcceptOpen);
-    dialog.setFileMode(QFileDialog::ExistingFile);
-    dialog.setViewMode(QFileDialog::Detail);
-    if (dialog.exec()) {
-        selectedImage = dialog.selectedFiles().first();
+    dialog->setAcceptMode(QFileDialog::AcceptOpen);
+    dialog->setFileMode(QFileDialog::ExistingFile);
+    dialog->setViewMode(QFileDialog::Detail);
+    if (dialog->exec()) {
+        selectedImage = dialog->selectedFiles().first();
+
+        // Close FileDialog.
+        delete dialog;
 
         // If setImage is succesfully and have to detect strings, call function to detect strings.
         if (setImage(selectedImage)) {
@@ -183,8 +189,18 @@ void GuiContextualizationController::load(bool detectStringsOnLoad)
 
 void GuiContextualizationController::detect()
 {
-    QList<FirmwareString *> extractedStrings = detectStringsOnImage();
+    QList<FirmwareString *> extractedStrings;
     QList<FirmwareString *> copy;
+    QProgressDialog progress("Detecting strings...", "Abort", 0, 100);
+    QFuture<void> future;   // Control when a thread has finished.
+    bool hasFinished = false;
+
+    // Start increment progess.
+    progress.setWindowModality(Qt::WindowModal);
+    future = Utils::startProgressDialogCounter(&progress, &hasFinished);
+
+    // Extract strings on image.
+    extractedStrings = detectStringsOnImage();
 
     // A copy if creates because extracted strings are in a different thread and this is in conflict with Q_PROPERTYs.
     foreach (FirmwareString *fwString, extractedStrings) {
@@ -195,6 +211,11 @@ void GuiContextualizationController::detect()
     }
 
     addStrings(copy);
+
+    // When extracted has finished, stop increment thread and close ProgressDialog.
+    hasFinished = true;
+    future.waitForFinished();
+    progress.setValue(100);
 }
 
 void GuiContextualizationController::send()
@@ -202,10 +223,13 @@ void GuiContextualizationController::send()
     QString contextualizationPath;
     QString username;
     QString password;
+    QProgressDialog progress("Sending...", "Abort", 0, 100);
+    QFuture<void> future;   // Control when a thread has finished.
+    bool hasFinished = false;
     int hasError;
 
     switch (validateModel()) {
-        case OkModel:
+        case OkModel:        
             contextualizationPath = generateContextualization();
             if (contextualizationPath.isEmpty()) {
                 Utils::errorMessage("Fail to send", "Failure to package contextualization.");
@@ -229,7 +253,17 @@ void GuiContextualizationController::send()
                 return;
             }
 
+            // Start increment progess.
+            progress.setWindowModality(Qt::WindowModal);
+            future = Utils::startProgressDialogCounter(&progress, &hasFinished);
+
+            // Send contextualization
             hasError = sendContextualization(contextualizationPath, username, password);
+
+            // When send process has finished, stop increment thread and close ProgressDialog.
+            hasFinished = true;
+            future.waitForFinished();
+            progress.setValue(100);
 
             // Remove contextualization file.
             QFile::remove(contextualizationPath);

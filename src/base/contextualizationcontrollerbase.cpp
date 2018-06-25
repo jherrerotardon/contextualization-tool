@@ -171,7 +171,6 @@ QList<FirmwareString *> ContextualizationControllerBase::detectStringsOnImage()
     QList<FirmwareString *> fwStrings;
     QStringList imageChunks;
     QString rootCopy;
-    QSemaphore threadFinished(0);
 
     // Added root image copy to work it too.
     rootCopy = "/tmp/rootCopy." + QFileInfo(model_->getImage()).suffix();
@@ -188,11 +187,10 @@ QList<FirmwareString *> ContextualizationControllerBase::detectStringsOnImage()
         workers << worker;
 
        futures <<  QtConcurrent::run(
-            [this, worker, &threadFinished]() {
+            [this, worker]() {
                 QList<FirmwareString *> out;
 
                 out = this->processStrings(worker->extract());
-                threadFinished.release();
 
                 return out;
             }
@@ -708,7 +706,9 @@ bool ContextualizationControllerBase::isCommonWord(const QString &word)
                << "paper type"
                << "Modify quickset"
                << "Copy"
-               << "Cancel";
+               << "Cancel"
+               << "Output"
+               << "Destination";
 
     foreach (QString text, dictionary) {
         if (text.contains(word, Qt::CaseInsensitive)) {

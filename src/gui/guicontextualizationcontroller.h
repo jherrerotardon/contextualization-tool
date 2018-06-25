@@ -3,7 +3,6 @@
 
 #include <QInputDialog>
 #include <QFileDialog>
-#include <QMessageBox>
 #include <QApplication>
 #include <QQuickWindow>
 #include "base/contextualizationcontrollerbase.h"

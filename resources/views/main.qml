@@ -197,6 +197,7 @@ ApplicationWindow {
                     id : autoDetectCheckBox
                     text: "Detect strings when image is loaded"
                     Layout.alignment: Qt.AlignHCenter
+                    style: generalCheckboxStyle
                 }
 
                 RowLayout {
@@ -287,19 +288,29 @@ ApplicationWindow {
                     Layout.fillWidth: true
                     color: "white"
 
-                    Row {
+                    RowLayout {
                         spacing: 10
+                        anchors.leftMargin: 10
+                        anchors.rightMargin: 10
+                        anchors.fill: parent
 
                         CheckBox {
                             text: qsTr("Only DONE strings")
                             checked: controller.onlyDoneStrings
+                            style: generalCheckboxStyle
 
                             onClicked: controller.onlyDoneStrings = checked
+
+                        }
+
+                        Item {
+                            Layout.fillWidth: true
                         }
 
                         CheckBox {
                             text: qsTr("Case sensitive")
                             checked: controller.caseSensitive
+                            style: generalCheckboxStyle
 
                             onClicked: controller.caseSensitive = checked
                         }
@@ -521,6 +532,28 @@ ApplicationWindow {
                 gradient: Gradient {
                     GradientStop { position: 0 ; color: control.pressed ? "#ccc" : "#287100" }
                     GradientStop { position: 2 ; color: control.pressed ? "#aaa" : "#eee" }
+                }
+            }
+        }
+    }
+
+    Component {
+        id: generalCheckboxStyle
+
+        CheckBoxStyle {
+            indicator: Rectangle {
+                implicitWidth: 16
+                implicitHeight: 16
+                radius: 3
+                border.color: control.activeFocus ? "darkgreen" : "gray"
+                border.width: 1
+                Rectangle {
+                    visible: control.checked
+                    color: "#555"
+                    border.color: "#333"
+                    radius: 2
+                    anchors.margins: 4
+                    anchors.fill: parent
                 }
             }
         }
