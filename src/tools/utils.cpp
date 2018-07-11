@@ -100,6 +100,7 @@ int Utils::executeProgram(const QString &program,
 
     process = new QProcess();
     process->setStandardOutputFile(standardOutput.isEmpty() ? QProcess::nullDevice() : standardOutput);
+    process->setStandardErrorFile(standardOutput.isEmpty() ? QProcess::nullDevice() : standardOutput);
     if (!workingDirectory.isEmpty()) {
         process->setWorkingDirectory(workingDirectory);
     }
@@ -150,4 +151,12 @@ QFuture<void> Utils::startProgressDialogCounter(QProgressDialog *dialog, bool *h
     );
 
     return future;
+}
+
+bool Utils::isValidIp(const QString &ip)
+{
+    QRegularExpression regex("^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$");
+    QRegularExpressionMatch match = regex.match(ip);
+
+    return match.hasMatch();
 }

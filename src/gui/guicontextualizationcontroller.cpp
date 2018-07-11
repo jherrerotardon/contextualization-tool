@@ -195,6 +195,12 @@ void GuiContextualizationController::detect()
     QFuture<void> future;   // Control when a thread has finished.
     bool hasFinished = false;
 
+    if (!model_->hasImage()) {
+        Utils::informativeMessage("Not image.", "You have to set an image to can detect strings in it.");
+
+        return;
+    }
+
     // Start increment progess.
     progress.setWindowModality(Qt::WindowModal);
     future = Utils::startProgressDialogCounter(&progress, &hasFinished);
@@ -269,7 +275,10 @@ void GuiContextualizationController::send()
             QFile::remove(contextualizationPath);
 
             if (hasError) {
-                //TODO: filtrar cada error.
+                Utils::informativeMessage(
+                    "Finished.",
+                    "Send process has finished with some errors. See log for more information."
+                );
             } else {
                 Utils::informativeMessage("Finished.", "Send process has finished succesfully.");
             }
@@ -372,7 +381,6 @@ void GuiContextualizationController::configFpFile()
     // Only change value of path if user doesn't press cancel. After done fp file is generated.
     if (ok) {
         englishFpFile_ = englishFpFile;
-
         generateDoneFpFile();
     }
 }
@@ -391,7 +399,7 @@ void GuiContextualizationController::configRemoteHost()
             remoteHost_,
             &ok
         );
-    } while(ok && remoteHost.isEmpty());
+    } while(ok && (remoteHost.isEmpty() || !Utils::isValidIp(remoteHost)));
 
     // Only change value of remote host if user doesn't press cancel.
     remoteHost_ = ok ? remoteHost : remoteHost_;
