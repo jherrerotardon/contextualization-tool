@@ -1,6 +1,6 @@
-#include "firmwarestring.h"
+#include "string.h"
 
-FirmwareString::FirmwareString() : QObject()
+String::String() : QObject()
 {
     id_ = "";
     value_ = "";
@@ -10,7 +10,7 @@ FirmwareString::FirmwareString() : QObject()
     selected_ = false;
 }
 
-FirmwareString::FirmwareString(FirmwareString &other) : QObject()
+String::String(String &other) : QObject()
 {
     id_ = other.getId();
     value_ = other.getValue();
@@ -20,7 +20,7 @@ FirmwareString::FirmwareString(FirmwareString &other) : QObject()
     selected_ = other.isSelected();
 }
 
-FirmwareString::FirmwareString(
+String::String(
     const QString &id,
     const QString &value,
     const QString &description,
@@ -36,67 +36,67 @@ FirmwareString::FirmwareString(
     selected_ = selected;
 }
 
-QString FirmwareString::getId() const
+QString String::getId() const
 {
     return id_;
 }
 
-void FirmwareString::setId(const QString &id)
+void String::setId(const QString &id)
 {
     id_ = id;
 
     emit idChanged();
 }
 
-QString FirmwareString::getValue() const
+QString String::getValue() const
 {
     return value_;
 }
 
-void FirmwareString::setValue(const QString &value)
+void String::setValue(const QString &value)
 {
     value_ = value;
 
     emit valueChanged();
 }
 
-QString FirmwareString::getDescription() const
+QString String::getDescription() const
 {
     return description_;
 }
 
-void FirmwareString::setDescription(const QString &description)
+void String::setDescription(const QString &description)
 {
     description_ = description;
 
     emit descriptionChanged();
 }
 
-QString FirmwareString::getMaxLength() const
+QString String::getMaxLength() const
 {
     return maxLength_;
 }
 
-void FirmwareString::setMaxLength(const QString &maxLength)
+void String::setMaxLength(const QString &maxLength)
 {
     maxLength_ = maxLength;
 
     emit maxLengthChanged();
 }
 
-QString FirmwareString::getState() const
+QString String::getState() const
 {
     return state_;
 }
 
-void FirmwareString::setState(const QString &state)
+void String::setState(const QString &state)
 {
     state_ = state;
 
     emit stateChanged();
 }
 
-bool FirmwareString::isEmpty()
+bool String::isEmpty()
 {
     if (value_.isEmpty()) {
         return true;
@@ -105,33 +105,33 @@ bool FirmwareString::isEmpty()
     return false;
 }
 
-bool FirmwareString::isSelected() const
+bool String::isSelected() const
 {
     return selected_;
 }
 
-void FirmwareString::select()
+void String::select()
 {
     selected_ = true;
 
     emit selectedChanged();
 }
 
-void FirmwareString::unselect()
+void String::unselect()
 {
     selected_ = false;
 
     emit selectedChanged();
 }
 
-void FirmwareString::setSelected(bool selected)
+void String::setSelected(bool selected)
 {
     selected_ = selected;
 
     emit selectedChanged();
 }
 
-QString FirmwareString::toFpFileFormat()
+QString String::toFpFileFormat()
 {
     QString out;
 
@@ -146,12 +146,12 @@ QString FirmwareString::toFpFileFormat()
     return out;
 }
 
-QString FirmwareString::toJson(QJsonDocument::JsonFormat format)
+QString String::toJson(QJsonDocument::JsonFormat format)
 {
     return QString(QJsonDocument(toJsonObject()).toJson(format));
 }
 
-QJsonObject FirmwareString::toJsonObject()
+QJsonObject String::toJsonObject()
 {
     QJsonObject string;
 
@@ -165,14 +165,14 @@ QJsonObject FirmwareString::toJsonObject()
     return string;
 }
 
-FirmwareString * FirmwareString::fromJson(QString &json)
+String * String::fromJson(QString &json)
 {
     QByteArray jsonData = json.toUtf8();
 
-    return FirmwareString::fromJson(jsonData);
+    return String::fromJson(jsonData);
 }
 
-FirmwareString * FirmwareString::fromJson(QByteArray &json)
+String * String::fromJson(QByteArray &json)
 {
     QString value;
     QJsonObject root;
@@ -180,26 +180,26 @@ FirmwareString * FirmwareString::fromJson(QByteArray &json)
     QJsonDocument document = QJsonDocument::fromJson(json, &jsonError);
 
     if (jsonError.error != QJsonParseError::NoError) {
-        Log::writeError("Error decoding FirmwareString json: " + jsonError.errorString());
+        Log::writeError("Error decoding String json: " + jsonError.errorString());
 
         return Q_NULLPTR;
     }
 
     root = document.object();
     if (root.isEmpty()) {
-        Log::writeError("FirmwareString fromJson(): error format on root object.");
+        Log::writeError("String fromJson(): error format on root object.");
 
         return Q_NULLPTR;
     }
 
     value = root.value("value").toString();
     if (value.isEmpty()) {
-        Log::writeError("FirmwareString fromJson(): key value is empty.");
+        Log::writeError("String fromJson(): key value is empty.");
 
         return Q_NULLPTR;
     }
 
-    return new FirmwareString(
+    return new String(
         root.value("id").toString(),
         value,
         root.value("description").toString(),
@@ -209,7 +209,7 @@ FirmwareString * FirmwareString::fromJson(QByteArray &json)
     );
 }
 
-FirmwareString & FirmwareString::operator=(const FirmwareString &other)
+String & String::operator=(const String &other)
 {
     if (this != &other) {
         id_ = other.getId();

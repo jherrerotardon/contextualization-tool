@@ -18,7 +18,7 @@
 #include <leptonica/allheaders.h>
 #include "baseapi.h"
 #include "genericvector.h"
-#include "log.h"
+#include "tools/log.h"
 
 class Ocr : public QThread
 {

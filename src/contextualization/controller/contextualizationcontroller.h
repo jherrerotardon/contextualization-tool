@@ -16,12 +16,12 @@
 #include <QImage>
 #include <QFuture>
 #include <QtConcurrent/QtConcurrent>
-#include "contextualizationmodel.h"
+#include "contextualization/model/contextualizationmodel.h"
 #include "tools/utils.h"
 #include "tools/log.h"
-#include "tools/ocr.h"
+#include "optical_character_recognition/ocr.h"
 
-class ContextualizationControllerBase : public QObject
+class ContextualizationController : public QObject
 {
     Q_OBJECT
 
@@ -78,12 +78,12 @@ public:
      * a correct formart, controller sets a default values on member vaiables.
      * @param parent
      */
-    ContextualizationControllerBase(QObject *parent = Q_NULLPTR);
+    ContextualizationController(QObject *parent = Q_NULLPTR);
 
     /**
      * @brief Destroys the controller.
      */
-    ~ContextualizationControllerBase();
+    ~ContextualizationController();
 
 protected:
     const static int CHUNK_WIDTH;           ///< Width of each chunk when a image is splitted.
@@ -125,7 +125,7 @@ protected:
      * Returns the error code of the actual state of the model.
      * @return #ModelError
      */
-    ContextualizationControllerBase::ModelError validateModel();
+    ContextualizationController::ModelError validateModel();
 
     /**
      * @brief Generates a packet with the contextualization data.

@@ -1,12 +1,11 @@
-#ifndef FIRMWARESTRING_H
-#define FIRMWARESTRING_H
-
+#ifndef STRING_H
+#define STRING_H
 #include <QString>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include "tools/log.h"
 
-class FirmwareString : public QObject
+class String : public QObject
 {
     Q_OBJECT
 
@@ -22,13 +21,13 @@ public:
     /**
      * @brief Constructs an empty firmware string.
      */
-    FirmwareString();
+    String();
 
     /**
      * @brief Constructs a firmware string replic from another received by parameter.
      * @param other Firmware string to be duplicated.
      */
-    FirmwareString(FirmwareString &other);
+    String(String &other);
 
     /**
      * @brief Constructs a firmware string with diferents value members received by parameter.
@@ -39,7 +38,7 @@ public:
      * @param state Firmware string state.
      * @param selected Firmware string selected.
      */
-    FirmwareString(
+    String(
         const QString &id,
         const QString &value,
         const QString &description,
@@ -158,31 +157,31 @@ public:
     QJsonObject toJsonObject();
 
     /**
-     * @brief Returns a #FirmwareString initializated with the JSON string json.
+     * @brief Returns a #String initializated with the JSON string json.
      *
      * If the JSON data received is not valid, return an empty model.
      * @param json String in JSON format to be converted.
      * @return ContextualizationModel
      */
-    static FirmwareString * fromJson(QString &json);
+    static String * fromJson(QString &json);
 
     /**
-     * @brief Returns a #FirmwareString initializated with the #QByteArray data json.
+     * @brief Returns a #String initializated with the #QByteArray data json.
      *
      * If the JSON data received is not valid, return an empty model.
      * @param json QByteArray in JSON format to be converted.
-     * @return FirmwareString
+     * @return String
      */
-    static FirmwareString * fromJson(QByteArray &json);
+    static String * fromJson(QByteArray &json);
 
     /**
      * @brief Assigns other to firmware string and returns a reference to this firmware string.
      * @param other Model to be copied.
      * @return Reference to this firmware string.
      */
-    FirmwareString & operator=(const FirmwareString &other);
+    String & operator=(const String &other);
 
-private:
+protected:
     QString id_;            //< Identifier of the firmware string.
     QString value_;         //< Value of the firmware string.
     QString description_;   //< Description of the firmware string.
@@ -190,6 +189,7 @@ private:
     QString state_;         //< State of the firmware string.
     bool selected_;         //< Indicates if the string is selected by user.
 
+private:
 signals:
 
     /**
@@ -223,4 +223,4 @@ signals:
     void selectedChanged();
 };
 
-#endif // FIRMWARESTRING_H
+#endif // STRING_H

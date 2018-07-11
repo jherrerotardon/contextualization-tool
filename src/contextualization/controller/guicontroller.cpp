@@ -1,17 +1,17 @@
-#include "guicontextualizationcontroller.h"
+#include "guicontroller.h"
 
-GuiContextualizationController::GuiContextualizationController(QQuickWindow *view, QObject *parent)
-    : ContextualizationControllerBase(parent)
+GuiController::GuiController(QQuickWindow *view, QObject *parent)
+    : ContextualizationController(parent)
 {
     view_ = view;
 }
 
-GuiContextualizationController::~GuiContextualizationController()
+GuiController::~GuiController()
 {
     delete model_;
 }
 
-void GuiContextualizationController::add(QString newString, int findType)
+void GuiController::add(QString newString, int findType)
 {
     int response;
     int error;
@@ -126,17 +126,17 @@ void GuiContextualizationController::add(QString newString, int findType)
     }
 }
 
-void GuiContextualizationController::remove(QString stringId)
+void GuiController::remove(QString stringId)
 {
     removeString(stringId);
 }
 
-void GuiContextualizationController::clear()
+void GuiController::clear()
 {
     removeAllStrings();
 }
 
-void GuiContextualizationController::capture(bool detectStringsOnLoad)
+void GuiController::capture(bool detectStringsOnLoad)
 {
     QString path;
 
@@ -156,7 +156,7 @@ void GuiContextualizationController::capture(bool detectStringsOnLoad)
     }
 }
 
-void GuiContextualizationController::load(bool detectStringsOnLoad)
+void GuiController::load(bool detectStringsOnLoad)
 {
     QString selectedImage;
 
@@ -187,7 +187,7 @@ void GuiContextualizationController::load(bool detectStringsOnLoad)
     }
 }
 
-void GuiContextualizationController::detect()
+void GuiController::detect()
 {
     QList<FirmwareString *> extractedStrings;
     QList<FirmwareString *> copy;
@@ -224,7 +224,7 @@ void GuiContextualizationController::detect()
     progress.setValue(100);
 }
 
-void GuiContextualizationController::send()
+void GuiController::send()
 {
     QString contextualizationPath;
     QString username;
@@ -299,7 +299,7 @@ void GuiContextualizationController::send()
     }
 }
 
-void GuiContextualizationController::cancel()
+void GuiController::cancel()
 {
     int response;
 
@@ -313,12 +313,12 @@ void GuiContextualizationController::cancel()
     }
 }
 
-void GuiContextualizationController::save()
+void GuiController::save()
 {
 
 }
 
-void GuiContextualizationController::saveAs()
+void GuiController::saveAs()
 {
     QString path;
     QFileDialog dialog(
@@ -345,7 +345,7 @@ void GuiContextualizationController::saveAs()
     }
 }
 
-void GuiContextualizationController::open()
+void GuiController::open()
 {
     QFileDialog dialog(
         Q_NULLPTR,
@@ -362,7 +362,7 @@ void GuiContextualizationController::open()
     }
 }
 
-void GuiContextualizationController::configFpFile()
+void GuiController::configFpFile()
 {
     bool ok;
     QString englishFpFile;
@@ -385,7 +385,7 @@ void GuiContextualizationController::configFpFile()
     }
 }
 
-void GuiContextualizationController::configRemoteHost()
+void GuiController::configRemoteHost()
 {
     bool ok;
     QString remoteHost;
@@ -405,7 +405,7 @@ void GuiContextualizationController::configRemoteHost()
     remoteHost_ = ok ? remoteHost : remoteHost_;
 }
 
-void GuiContextualizationController::configValidStates()
+void GuiController::configValidStates()
 {
     bool ok;
     QString validStates;
@@ -425,7 +425,7 @@ void GuiContextualizationController::configValidStates()
     validStates_ = ok ? validStates.split(',', QString::SkipEmptyParts) : validStates_;
 }
 
-void GuiContextualizationController::refresh()
+void GuiController::refresh()
 {
     emit imageChanged();
     emit stringsListChanged();
@@ -433,12 +433,12 @@ void GuiContextualizationController::refresh()
     generateDoneFpFile();
 }
 
-QQuickWindow *GuiContextualizationController::getView()
+QQuickWindow *GuiController::getView()
 {
     return view_;
 }
 
-void GuiContextualizationController::setView(QQuickWindow *view)
+void GuiController::setView(QQuickWindow *view)
 {
     view_ = view;
     connectSignalsAndSlots();
@@ -446,7 +446,7 @@ void GuiContextualizationController::setView(QQuickWindow *view)
     emit viewChanged();
 }
 
-QString GuiContextualizationController::requestUsername()
+QString GuiController::requestUsername()
 {
     QString username;
     bool ok;
@@ -466,7 +466,7 @@ QString GuiContextualizationController::requestUsername()
     return ok ? username : QString();
 }
 
-QString GuiContextualizationController::requestPassword()
+QString GuiController::requestPassword()
 {
     QString password;
     bool ok;
@@ -486,7 +486,7 @@ QString GuiContextualizationController::requestPassword()
     return ok ? password : QString();
 }
 
-void GuiContextualizationController::connectSignalsAndSlots()
+void GuiController::connectSignalsAndSlots()
 {
     if (view_) {
         // Connect signals with slots

@@ -1,13 +1,13 @@
-#ifndef GUICONTEXTUALIZATIONCONTROLLER_H
-#define GUICONTEXTUALIZATIONCONTROLLER_H
+#ifndef GUICONTROLLER_H
+#define GUICONTROLLER_H
 
 #include <QInputDialog>
 #include <QFileDialog>
 #include <QApplication>
 #include <QQuickWindow>
-#include "base/contextualizationcontrollerbase.h"
+#include "contextualization/controller/contextualizationcontroller.h"
 
-class GuiContextualizationController : public ContextualizationControllerBase
+class GuiController : public ContextualizationController
 {
     Q_OBJECT
 
@@ -18,8 +18,8 @@ class GuiContextualizationController : public ContextualizationControllerBase
     Q_PROPERTY(bool caseSensitive MEMBER caseSensitive_)
 
 public:
-    GuiContextualizationController(QQuickWindow *view = Q_NULLPTR, QObject *parent = Q_NULLPTR);
-    ~GuiContextualizationController();
+    GuiController(QQuickWindow *view = Q_NULLPTR, QObject *parent = Q_NULLPTR);
+    ~GuiController();
 
 private slots:
     void add(QString newString, int findType);
@@ -51,4 +51,4 @@ signals:
     void viewChanged();
 };
 
-#endif // GUICONTEXTUALIZATIONCONTROLLER_H
+#endif // GUICONTROLLER_H

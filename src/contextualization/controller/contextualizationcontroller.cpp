@@ -1,13 +1,13 @@
-﻿#include "contextualizationcontrollerbase.h"
+﻿#include "contextualizationcontroller.h"
 
-const int ContextualizationControllerBase::CHUNK_WIDTH = 300;
-const int ContextualizationControllerBase::CHUNK_HEIGHT = 150;
-const QString ContextualizationControllerBase::DONE_FP_FILE = "/tmp/doneFpFile.fp";
-const QString ContextualizationControllerBase::IMAGES_FOLDER = QDir("../storage/images").absolutePath() + '/';
-const QString ContextualizationControllerBase::PROJECTS_FOLDER = QDir("../storage/projects").absolutePath() + '/';
-const int ContextualizationControllerBase::MIN_LENGTH_FOR_APPROXIMATE = 6;
+const int ContextualizationController::CHUNK_WIDTH = 300;
+const int ContextualizationController::CHUNK_HEIGHT = 150;
+const QString ContextualizationController::DONE_FP_FILE = "/tmp/doneFpFile.fp";
+const QString ContextualizationController::IMAGES_FOLDER = QDir("../storage/images").absolutePath() + '/';
+const QString ContextualizationController::PROJECTS_FOLDER = QDir("../storage/projects").absolutePath() + '/';
+const int ContextualizationController::MIN_LENGTH_FOR_APPROXIMATE = 6;
 
-ContextualizationControllerBase::ContextualizationControllerBase(QObject *parent) : QObject(parent)
+ContextualizationController::ContextualizationController(QObject *parent) : QObject(parent)
 {
     Q_UNUSED(parent);
 
@@ -35,12 +35,12 @@ ContextualizationControllerBase::ContextualizationControllerBase(QObject *parent
     QDir(PROJECTS_FOLDER).mkpath(".");
 }
 
-ContextualizationControllerBase::~ContextualizationControllerBase()
+ContextualizationController::~ContextualizationController()
 {
     delete model_;
 }
 
-int ContextualizationControllerBase::importProjectFromJsonFile(const QString &path)
+int ContextualizationController::importProjectFromJsonFile(const QString &path)
 {
     ContextualizationModel *modelTmp;
     QByteArray projectData;
@@ -69,12 +69,12 @@ int ContextualizationControllerBase::importProjectFromJsonFile(const QString &pa
     return NoError;
 }
 
-int ContextualizationControllerBase::exportToJsonFile(const QString &path)
+int ContextualizationController::exportToJsonFile(const QString &path)
 {    
     return Utils::writeFile(path, model_->toJson());
 }
 
-ContextualizationControllerBase::ModelError ContextualizationControllerBase::validateModel()
+ContextualizationController::ModelError ContextualizationController::validateModel()
 {
     QFile image(model_->getImage());
 
@@ -97,7 +97,7 @@ ContextualizationControllerBase::ModelError ContextualizationControllerBase::val
     return OkModel;
 }
 
-QString ContextualizationControllerBase::generateContextualization()
+QString ContextualizationController::generateContextualization()
 {
     QDir tmpDir("/tmp/" + getDateTime() + '-' + username_);
     QFileInfo image(model_->getImage());
@@ -132,7 +132,7 @@ QString ContextualizationControllerBase::generateContextualization()
     return contextualizationPackage;
 }
 
-int ContextualizationControllerBase::sendContextualization(const QString &path, QString user, QString password)
+int ContextualizationController::sendContextualization(const QString &path, QString user, QString password)
 {
     QStringList arguments;
     QString batch("/tmp/batch");
@@ -179,7 +179,7 @@ int ContextualizationControllerBase::sendContextualization(const QString &path, 
     return errorCode;
 }
 
-QList<FirmwareString *> ContextualizationControllerBase::detectStringsOnImage()
+QList<FirmwareString *> ContextualizationController::detectStringsOnImage()
 {
     Ocr *worker;
     QList<Ocr *> workers; // Used to save workers because after must be released.
@@ -234,7 +234,7 @@ QList<FirmwareString *> ContextualizationControllerBase::detectStringsOnImage()
     return fwStrings;
 }
 
-QList<FirmwareString *> ContextualizationControllerBase::processStrings(QStringList strings)
+QList<FirmwareString *> ContextualizationController::processStrings(QStringList strings)
 {
     QList<FirmwareString *> stringsFound;
     QList<FirmwareString *> out;
@@ -249,7 +249,7 @@ QList<FirmwareString *> ContextualizationControllerBase::processStrings(QStringL
     return out;
 }
 
-QList<FirmwareString *> ContextualizationControllerBase::findString(const QString &text, const FindType findType)
+QList<FirmwareString *> ContextualizationController::findString(const QString &text, const FindType findType)
 {
     QString line;
     QFile file;
@@ -304,7 +304,7 @@ QList<FirmwareString *> ContextualizationControllerBase::findString(const QStrin
     return stringsFound;
 }
 
-FirmwareString * ContextualizationControllerBase::fragmentFpLine(QString &fpLine)
+FirmwareString * ContextualizationController::fragmentFpLine(QString &fpLine)
 {
     QString id;
     QString value;
@@ -372,7 +372,7 @@ FirmwareString * ContextualizationControllerBase::fragmentFpLine(QString &fpLine
     return new FirmwareString(id, value, description, maxLength, state, selected);
 }
 
-bool ContextualizationControllerBase::isValidState(QString &state)
+bool ContextualizationController::isValidState(QString &state)
 {
     if (validStates_.contains(state))
         return true;
@@ -380,7 +380,7 @@ bool ContextualizationControllerBase::isValidState(QString &state)
     return false;
 }
 
-int ContextualizationControllerBase::addString(FirmwareString *fwString)
+int ContextualizationController::addString(FirmwareString *fwString)
 {
     if (fwString == Q_NULLPTR) {
         return NullPointer;
@@ -400,7 +400,7 @@ int ContextualizationControllerBase::addString(FirmwareString *fwString)
     return NoError;
 }
 
-int ContextualizationControllerBase::addStrings(const QList<FirmwareString *> &strings)
+int ContextualizationController::addStrings(const QList<FirmwareString *> &strings)
 {
     int count = 0;
 
@@ -417,7 +417,7 @@ int ContextualizationControllerBase::addStrings(const QList<FirmwareString *> &s
     return count;
 }
 
-bool ContextualizationControllerBase::removeString(QString stringId)
+bool ContextualizationController::removeString(QString stringId)
 {
     if(model_->removeString(stringId)) { // Only emit signal if string has been added.
         emit stringsListChanged();
@@ -428,7 +428,7 @@ bool ContextualizationControllerBase::removeString(QString stringId)
     return false;
 }
 
-bool ContextualizationControllerBase::removeString(int row)
+bool ContextualizationController::removeString(int row)
 {
     if(model_->removeString(row)) { // Only emit signal if string has been added.
         emit stringsListChanged();
@@ -439,7 +439,7 @@ bool ContextualizationControllerBase::removeString(int row)
     return false;
 }
 
-bool ContextualizationControllerBase::removeAllStrings()
+bool ContextualizationController::removeAllStrings()
 {
     if (!model_->getStringsList().isEmpty()) {
         model_->removeAllStrings();
@@ -452,7 +452,7 @@ bool ContextualizationControllerBase::removeAllStrings()
     return false;
 }
 
-QString ContextualizationControllerBase::takeCaptureArea()
+QString ContextualizationController::takeCaptureArea()
 {
     int hasError;
     QStringList arguments;
@@ -468,7 +468,7 @@ QString ContextualizationControllerBase::takeCaptureArea()
     return hasError ? QString() : path;
 }
 
-bool ContextualizationControllerBase::setImage(const QString &image)
+bool ContextualizationController::setImage(const QString &image)
 {
     QFileInfo imageInfo(image);
     QString imageName("capture-" + getDateTime() + '-' + username_ + '.' + imageInfo.suffix());
@@ -493,7 +493,7 @@ bool ContextualizationControllerBase::setImage(const QString &image)
     return exists;
 }
 
-bool ContextualizationControllerBase::isFwStringAlreadyExists(FirmwareString &fwString)
+bool ContextualizationController::isFwStringAlreadyExists(FirmwareString &fwString)
 {
     if (fwString.getId().isEmpty()) {
         // Check that there aren't strings with the same value.
@@ -514,7 +514,7 @@ bool ContextualizationControllerBase::isFwStringAlreadyExists(FirmwareString &fw
     return false;
 }
 
-int ContextualizationControllerBase::eraseExistStrings(QList<FirmwareString *> *strings)
+int ContextualizationController::eraseExistStrings(QList<FirmwareString *> *strings)
 {
     int count = 0;
     QList<FirmwareString *>::Iterator iterator = strings->begin();
@@ -533,22 +533,22 @@ int ContextualizationControllerBase::eraseExistStrings(QList<FirmwareString *> *
     return count;
 }
 
-QString ContextualizationControllerBase::getImageOfModel()
+QString ContextualizationController::getImageOfModel()
 {
     return model_->getImage();
 }
 
-QList<QObject *> ContextualizationControllerBase::getTableModel()
+QList<QObject *> ContextualizationController::getTableModel()
 {
     return model_->getStringsList();
 }
 
-QString ContextualizationControllerBase::getDateTime(QString format)
+QString ContextualizationController::getDateTime(QString format)
 {
     return QDateTime::currentDateTime().toString(format);
 }
 
-void ContextualizationControllerBase::loadConfig()
+void ContextualizationController::loadConfig()
 {
     QJsonObject root;
     QJsonParseError jsonError;
@@ -588,7 +588,7 @@ void ContextualizationControllerBase::loadConfig()
     }
 }
 
-void ContextualizationControllerBase::saveConfig()
+void ContextualizationController::saveConfig()
 {
     QJsonObject root;
     QJsonArray validStates;
@@ -606,7 +606,7 @@ void ContextualizationControllerBase::saveConfig()
     Utils::writeFile(configurationFile, QString(QJsonDocument(root).toJson(QJsonDocument::Indented)));
 }
 
-int ContextualizationControllerBase::generateDoneFpFile()
+int ContextualizationController::generateDoneFpFile()
 {
     QStringList grepArguments;
 
@@ -615,7 +615,7 @@ int ContextualizationControllerBase::generateDoneFpFile()
     return Utils::executeProgram("grep", grepArguments, DONE_FP_FILE);
 }
 
-int ContextualizationControllerBase::filterStringsByState(QList<FirmwareString *> *list, const QString &state)
+int ContextualizationController::filterStringsByState(QList<FirmwareString *> *list, const QString &state)
 {
     int count = 0;
     QList<FirmwareString *>::Iterator iterator = list->begin();
@@ -634,7 +634,7 @@ int ContextualizationControllerBase::filterStringsByState(QList<FirmwareString *
     return count;
 }
 
-QStringList ContextualizationControllerBase::splitImage(
+QStringList ContextualizationController::splitImage(
     const QString &imagePath,
     int chunkWidth,
     int chunkHeight,
@@ -676,7 +676,7 @@ QStringList ContextualizationControllerBase::splitImage(
     return chunks;
 }
 
-bool ContextualizationControllerBase::isOnFwString(const FirmwareString &fwString,
+bool ContextualizationController::isOnFwString(const FirmwareString &fwString,
         const QString &value,
         FindType findType
 ) {
@@ -713,7 +713,7 @@ bool ContextualizationControllerBase::isOnFwString(const FirmwareString &fwStrin
     }
 }
 
-bool ContextualizationControllerBase::isCommonWord(const QString &word)
+bool ContextualizationController::isCommonWord(const QString &word)
 {
     /**
      * Dictionary with the most used words that are longer than MIN_LENGTH_FOR_APPROXIMATE.

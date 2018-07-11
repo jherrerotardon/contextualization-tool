@@ -1,12 +1,12 @@
-#include "consolecontextualizationcontroller.h"
+#include "consolecontroller.h"
 
-ConsoleContextualizationController::ConsoleContextualizationController()
+ConsoleController::ConsoleController()
 {
-    ConsoleContextualizationController(0, Q_NULLPTR);
+    ConsoleController(0, Q_NULLPTR);
 }
 
-ConsoleContextualizationController::ConsoleContextualizationController(int argc, char **argv)
-    : ContextualizationControllerBase()
+ConsoleController::ConsoleController(int argc, char **argv)
+    : ContextualizationController()
 {
     // Set default values.
     appName_ = QString(argv[0]);
@@ -17,7 +17,7 @@ ConsoleContextualizationController::ConsoleContextualizationController(int argc,
     decodeArguments(argc, argv);
 }
 
-void ConsoleContextualizationController::exec()
+void ConsoleController::exec()
 {
     switch (action_) {
     case PrintHelp:
@@ -29,7 +29,7 @@ void ConsoleContextualizationController::exec()
     }
 }
 
-bool ConsoleContextualizationController::decodeArguments(int argc, char **argv)
+bool ConsoleController::decodeArguments(int argc, char **argv)
 {    
     if (argc == 0 || argv == Q_NULLPTR) {
         return false;
@@ -150,13 +150,13 @@ bool ConsoleContextualizationController::decodeArguments(int argc, char **argv)
     return true;
 }
 
-void ConsoleContextualizationController::setAction(ActionType action, QVariant parameter)
+void ConsoleController::setAction(ActionType action, QVariant parameter)
 {
     action_ = action;
     parameter_ = parameter;
 }
 
-void ConsoleContextualizationController::printUsage()
+void ConsoleController::printUsage()
 {
     const QString help =
         "Usage:\n"
@@ -179,7 +179,7 @@ void ConsoleContextualizationController::printUsage()
     std::cout << help.toStdString() << std::endl;
 }
 
-void ConsoleContextualizationController::printClearDetails()
+void ConsoleController::printClearDetails()
 {
     const QString help =
         appName_ + " clear <option>\n\n"
@@ -192,7 +192,7 @@ void ConsoleContextualizationController::printClearDetails()
     std::cout << help.toStdString() << std::endl;
 }
 
-void ConsoleContextualizationController::printAddDetails()
+void ConsoleController::printAddDetails()
 {
     const QString help =
         appName_ + " add <option>\n\n"
@@ -209,7 +209,7 @@ void ConsoleContextualizationController::printAddDetails()
     std::cout << help.toStdString() << std::endl;
 }
 
-void ConsoleContextualizationController::printImageDetails()
+void ConsoleController::printImageDetails()
 {
     const QString help =
         appName_ + " image <option>\n\n"
@@ -221,7 +221,7 @@ void ConsoleContextualizationController::printImageDetails()
     std::cout << help.toStdString() << std::endl;
 }
 
-void ConsoleContextualizationController::printDetectOptions()
+void ConsoleController::printDetectOptions()
 {
     const QString help =
         appName_ + " add <option>\n\n"

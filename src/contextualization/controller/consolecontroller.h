@@ -1,15 +1,15 @@
-#ifndef CONSOLECONTEXTUALIZATIONCONTROLLER_H
-#define CONSOLECONTEXTUALIZATIONCONTROLLER_H
+#ifndef CONSOLECONTROLLER_H
+#define CONSOLECONTROLLER_H
 
 #include <iostream>
 #include <QVariant>
-#include "base/contextualizationcontrollerbase.h"
+#include "contextualization/controller/contextualizationcontroller.h"
 
 /**
  * @brief The ConsoleContextualizationController class is responsible for controll the Contextualization Tool
  * application when is executed from a terminal (CLI).
  */
-class ConsoleContextualizationController : public ContextualizationControllerBase
+class ConsoleController : public ContextualizationController
 {
 public:
 
@@ -43,14 +43,14 @@ public:
     /**
      * @brief Creates an empty controller.
      */
-    ConsoleContextualizationController();
+    ConsoleController();
 
     /**
      * @brief Creates a controller decoding arguments received by argument.
      * @param argc Number of argv elements.
      * @param argv Arguments entered by the user when executed the app.
      */
-    ConsoleContextualizationController(int argc, char **argv);
+    ConsoleController(int argc, char **argv);
 
     /**
      * @brief Executes the logic of controller.
@@ -110,4 +110,4 @@ private:
     FindType findType_;     ///< Indicates the type of find that will be done.
 };
 
-#endif // CONSOLECONTEXTUALIZATIONCONTROLLER_H
+#endif // CONSOLECONTROLLER_H
