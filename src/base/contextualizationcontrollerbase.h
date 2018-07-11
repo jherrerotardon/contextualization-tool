@@ -43,16 +43,21 @@ public:
      * @brief The CodeError enum
      *
      * Contains all general error that can happen during any process of the controller.
+     *
+     * WARNING!! Don't change the default values of enum. Binary program returns this number values.
      */
     enum CodeError {
-        NoError = 0,        ///< Indicates that there aren't any error during the process.
-        NullPointer,        ///< Indicates that a null pointer has been received.
-        StringAlreadyExists,///< Indicates that the string to process already exists in the model.
-        NoImportFile,       ///< Indicates that file to import can't ber readed.
-        ImportFileFormat,   ///< Indicates that the file to import has not a correct format.
-        FileNotExists,      ///< Indicates that the file to read doesn't exist.
-        NoRemoteHost,       ///< Indicates that there is no host to send the file.
-        WriteFile = -1,     ///< Indicates that the last try to write in disk wrong.
+        NoError = 0,                ///< Indicates that there aren't any error during the process.
+        NullPointer,                ///< Indicates that a null pointer has been received.
+        StringAlreadyExists,        ///< Indicates that the string to process already exists in the model.
+        NoImportFile,               ///< Indicates that file to import can't ber readed.
+        ImportFileFormat,           ///< Indicates that the file to import has not a correct format.
+        FileNotExists,              ///< Indicates that the file to read doesn't exist.
+        NoRemoteHost,               ///< Indicates that there is no host to send the file.
+        NoValidIp,                  ///< Indicates that the IP to use is not valid.
+        SshpassError = 254,         ///< Indicates that an error ocurred in sshpass process.
+        SshError = 255,             ///< Indicates that an error ocurred in ssh process.
+        WriteFile = -1,             ///< Indicates that the last try to write in disk wrong.
     };
 
     /**

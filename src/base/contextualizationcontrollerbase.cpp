@@ -135,30 +135,46 @@ QString ContextualizationControllerBase::generateContextualization()
 int ContextualizationControllerBase::sendContextualization(const QString &path, QString user, QString password)
 {
     QStringList arguments;
-    QFile batch("/tmp/batch");
+    QString batch("/tmp/batch");
+    QString sshpassEvidences("/tmp/sshpassEvidenceError_" + getDateTime() + ".txt");
     int errorCode;;
 
     if (remoteHost_.isEmpty()) {
+        Log::writeError("No remote host (IP or hostname) received when the contextualizacion was going to be sent.");
+
         return NoRemoteHost;
     }
 
+    if (!Utils::isValidIp(remoteHost_)) {
+        Log::writeError("No valid IP received when the contextualizacion was going to be sent. IP: " + remoteHost_);
+
+        return NoValidIp;
+    }
+
     if (!QFile::exists(path)) {
+        Log::writeError("Contextualization file to be sent not exists. Contextualization path: " + path);
+
         return FileNotExists;
     }
 
-    Utils::writeFile(batch.fileName(), "put " + path); // Create temporal batch file
+    Utils::writeFile(batch, "put " + path); // Create temporal batch file
 
     arguments << "-p" << password;
-    arguments << "sftp" << "-oBatchMode=no" << "-b" << batch.fileName()
+    arguments << "sftp" << "-oBatchMode=no" << "-b" << batch
               << user + '@' + remoteHost_ + ":Contextualizations";
 
-    //TODO: poner un QProgressDialog top para el progreso
+    errorCode = Utils::executeProgram("sshpass", arguments, sshpassEvidences);
 
-    errorCode = Utils::executeProgram("sshpass", arguments);
+    // If there are some error, write ouput process in error log.
+    if (errorCode != NoError) {
+        Log::writeError(QString(Utils::readAllFile(sshpassEvidences)).replace("\n", ". "));
 
-    //TODO:Tratar error
+        errorCode = errorCode == SshError ? SshError : SshpassError;
+    }
 
-    batch.remove();
+    // Remove temporal files.
+    QFile::remove(sshpassEvidences);
+    QFile::remove(batch);
 
     return errorCode;
 }
@@ -643,7 +659,7 @@ QStringList ContextualizationControllerBase::splitImage(
         }
     }
 
-    // Save on disk images.
+    // Save images on disk.
     for (int i = 0; i < imageChunks.size(); ++i) {
         fileName = "/tmp/" + rootImage.baseName() + "_chunk_" + QString::number(i+1) + '.' + rootImage.suffix();
 
@@ -699,6 +715,9 @@ bool ContextualizationControllerBase::isOnFwString(const FirmwareString &fwStrin
 
 bool ContextualizationControllerBase::isCommonWord(const QString &word)
 {
+    /**
+     * Dictionary with the most used words that are longer than MIN_LENGTH_FOR_APPROXIMATE.
+     */
     QStringList dictionary;
 
     dictionary << "Blueprints"

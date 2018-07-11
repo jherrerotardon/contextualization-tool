@@ -147,6 +147,13 @@ public:
      * @return QFuture object to know when the thread has finished.
      */
     static QFuture<void> startProgressDialogCounter(QProgressDialog *dialog, bool *hasFinished, int timeout = 40);
+
+    /**
+     * @brief Returns true if is a valid ip, otherwise returns false.
+     * @param ip Ip to be checked.
+     * @return bool
+     */
+    static bool isValidIp(const QString &ip);
 };
 
 #endif // UTILS_H
