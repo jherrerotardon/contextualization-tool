@@ -9,8 +9,6 @@ const int ContextualizationController::MIN_LENGTH_FOR_APPROXIMATE = 6;
 
 ContextualizationController::ContextualizationController(QObject *parent) : QObject(parent)
 {
-    Q_UNUSED(parent);
-
     onlyDoneStrings_ = true;
     caseSensitive_ = true;
 

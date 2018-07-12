@@ -1,16 +1,18 @@
 #include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include "contextualization/controller/guicontroller.h"
-#include "contextualization/controller/consolecontroller.h"
+#include "tools/hpcontextualizationfactory.h"
 
 int main(int argc, char *argv[])
 {
     // Console mode.
+    // WARNING!! To debug in Qt creator, argc is greater than 2.
     //if (argc > 1) { ///< Console Mode. //TODO: decomenar en un futuro. El 2 para que entre con el debbuger
     if (argc > 2) {
-        ConsoleController consoleController(argc, argv);
-        consoleController.exec();
+        ContextualizationController *controller = HpContextualizationFactory().createController(argv, argc);
+        static_cast<ConsoleController *>(controller)->exec();
+
+        delete controller;
 
         return 0;
     }

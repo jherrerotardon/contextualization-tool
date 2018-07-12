@@ -10,8 +10,22 @@
 class HpContextualizationFactory : public ContextualizationFactoryAbstract
 {
 public:
+
+    /**
+     * @brief Creates an empty HpContextualizationFactory.
+     */
     HpContextualizationFactory();
-    ContextualizationController createController(char **params, int count) override;
+
+    /**
+     * @brief Creates a new ContextualizationController
+     *
+     * Creates one type of ContextualizationController depending of received params and the operate system where de
+     * application is running.
+     * @param params Array params.
+     * @param count Number of elements of params array.
+     * @return Contextualization pointer.
+     */
+    ContextualizationController * createController(char **params, int count) override;
 };
 
 #endif // HPCONTEXTUALIZATIONFACTORY_H
