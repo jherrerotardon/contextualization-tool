@@ -31,7 +31,7 @@ public:
     /**
      * @brief Instantiates a new controller for a contextualization.
      *
-     * This is a pure vistuar function that must to be implemented in inherits classes.
+     * This is a pure vistual function that must to be implemented in inherits classes.
      * @param params Array params.
      * @param count Number of elements of params.
      * @return A new controller.

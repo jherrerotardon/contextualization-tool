@@ -5,10 +5,19 @@
 
 class LinuxGuiController : public GuiController
 {
-    Q_OBJECT
-
 public:
+
+    /**
+     * @brief LinuxGuiController
+     * @param view
+     * @param parent
+     */
     LinuxGuiController(QQuickWindow *view = Q_NULLPTR, QObject *parent = Q_NULLPTR);
+
+    /**
+     * @copydoc ContextualizationController::takeCaptureArea()
+     */
+    QString takeCaptureArea() override;
 };
 
 #endif // LINUXGUICONTROLLER_H

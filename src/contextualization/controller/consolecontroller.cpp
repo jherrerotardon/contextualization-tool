@@ -2,14 +2,17 @@
 
 ConsoleController::ConsoleController()
 {
-    ConsoleController(0, Q_NULLPTR);
+    // Set default values.
+    appName_ = QString();
+    action_ = NoAction;
+    findType_ = ByID;
 }
 
 ConsoleController::ConsoleController(int argc, char **argv)
     : ContextualizationController()
 {
     // Set default values.
-    appName_ = QString(argv[0]);
+    appName_ = argc > 1 && argv != Q_NULLPTR ? QString(argv[0]) : QString();
     action_ = NoAction;
     findType_ = ByID;
 
@@ -234,5 +237,60 @@ void ConsoleController::printDetectOptions()
         ;
 
     std::cout << help.toStdString() << std::endl;
+}
+
+void ConsoleController::add(QString newString, int findType)
+{
+
+}
+
+void ConsoleController::remove(QString stringId)
+{
+
+}
+
+void ConsoleController::clear()
+{
+
+}
+
+void ConsoleController::capture(bool detectStringsOnLoad)
+{
+
+}
+
+void ConsoleController::load(bool detectStringsOnLoad)
+{
+
+}
+
+void ConsoleController::detect()
+{
+
+}
+
+void ConsoleController::send()
+{
+
+}
+
+void ConsoleController::cancel()
+{
+
+}
+
+void ConsoleController::save()
+{
+
+}
+
+void ConsoleController::saveAs()
+{
+
+}
+
+void ConsoleController::open()
+{
+
 }
 

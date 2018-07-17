@@ -1,3 +1,7 @@
+/////////////////////////////////////////////////////
+//  NOT IMPLEMENTED CLASS YET.                  ////
+////////////////////////////////////////////////////
+
 #ifndef WINDOWSCONSOLECONTROLLER_H
 #define WINDOWSCONSOLECONTROLLER_H
 
@@ -6,8 +10,23 @@
 class WindowsConsoleController : public ConsoleController
 {
 public:
+
+    /**
+     * @brief Creates an empty WindowsConsoleController
+     */
     WindowsConsoleController();
+
+    /**
+     * @brief Creates a WindowsConsoleController initialited with the parameter received in argv.
+     * @param argc Number of elements of argv.
+     * @param argv Parameters
+     */
     WindowsConsoleController(int argc, char **argv);
+
+    /**
+     * @copydoc ContextualizationController::takeCaptureArea()
+     */
+    QString takeCaptureArea() override;
 };
 
 #endif // WINDOWSCONSOLECONTROLLER_H

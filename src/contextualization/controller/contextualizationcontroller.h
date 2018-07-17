@@ -19,7 +19,7 @@
 #include "contextualization/model/contextualizationmodel.h"
 #include "tools/utils.h"
 #include "tools/log.h"
-#include "optical_character_recognition/ocr.h"
+#include "optical_character_recognition/tesseractocr.h"
 
 class ContextualizationController : public QObject
 {
@@ -182,16 +182,6 @@ protected:
     QList<FirmwareString *> findString(const QString &text, const FindType findType = ByID);
 
     /**
-     * @brief Converts a line of fp file in a FirmwareString if is possible.
-     *
-     * Return null if there is a format error in the line.
-     * @param line Contains string to fragment.
-     * @param lineNumber Contains the number of line on the file.
-     * @return FirmwareString *|null
-     */
-    FirmwareString * fragmentFpLine(QString &fpLine);
-
-    /**
      * @brief Checks the parameter state is a valid state.
      *
      * Valid states are stored in a private QStringList validstates.
@@ -252,7 +242,7 @@ protected:
      * Return the path where the capture is stored or an empty QString if an error ocurred.
      * @return QString
      */
-    QString takeCaptureArea();
+    virtual QString takeCaptureArea() = 0;
 
     /**
      * @brief setImage
@@ -345,6 +335,75 @@ protected:
      * @return QStringList with chunks of image.
      */
     QStringList splitImage(const QString &image, int chunkWidth, int chunkHeight, bool *someError = Q_NULLPTR);
+
+protected slots:
+
+    /**
+     * @brief Tries to add a new string into the model
+     *
+     * This slot interacts with the user through the screen showing messages.
+     * @param newString New strign to add.
+     * @param findType Mode in which the string is to be searched for
+     */
+    virtual void add(QString newString, int findType) = 0;
+
+    /**
+     * @brief Tries to remove the string in the model with the identifier receiven by parameter.
+     * @param stringId Idetifier for string to remove.
+     */
+    virtual void remove(QString stringId) = 0;
+
+    /**
+     * @brief Removes all strings in the model.
+     */
+    virtual void clear() = 0;
+
+    /**
+     * @brief Make a screen capture.
+     * @param detectStringsOnLoad Flag to know if is neccesary detect strings on capture.
+     */
+    virtual void capture(bool detectStringsOnLoad) = 0;
+
+    /**
+     * @brief Loads an image in the model.
+     * @param detectStringsOnLoad Flag to know if is neccesary detect strings on capture.
+     */
+    virtual void load(bool detectStringsOnLoad) = 0;
+
+    /**
+     * @brief Detects strings in the current image of the model and tries to add them into.
+     */
+    virtual void detect() = 0;
+
+    /**
+     * @brief Tries to send the active contextualization to a remote host.
+     */
+    virtual void send() = 0;
+
+    /**
+     * @brief Ensures that the user wants to cancel the project and closes the application in an orderly manner.
+     */
+    virtual void cancel() = 0;
+
+    /**
+     * @brief Saves current project.
+     */
+    virtual void save() = 0;
+
+    /**
+     * @brief Opens a dialog and saves current project in the path specied for the user.
+     */
+    virtual void saveAs() = 0;
+
+    /**
+     * @brief Opens a project saves on disk.
+     */
+    virtual void open() = 0;
+
+    /**
+     * @brief Refreshes all components on current contextualization (DoneFpFile, Image, Strings...).
+     */
+    virtual void refresh();
 
 signals:
 

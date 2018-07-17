@@ -2,7 +2,7 @@
  * @class Ocr
  * @brief Optical Character Recognition.
  *
- * Interface class to use tesseract api.
+ * Interface class to use ocr tools.
  */
 #ifndef OCR_H
 #define OCR_H
@@ -13,37 +13,39 @@
 #include <QFile>
 #include <QFileInfo>
 #include <QImage>
-#include <QThread>
 #include <QRegularExpression>
-#include <leptonica/allheaders.h>
-#include "baseapi.h"
-#include "genericvector.h"
 #include "tools/log.h"
 
-class Ocr : public QThread
+class Ocr
 {
-    Q_OBJECT
-
 public:
+
+    /**
+     * @brief Creates an empty Ocr object.
+     *
+     * Sets default values.
+     */
     Ocr();
-    Ocr(
-        QString image,
-        QString datapath = QDir("../tesseract/tessdata").absolutePath() + '/',
-        tesseract::OcrEngineMode engineMode = tesseract::OEM_TESSERACT_LSTM_COMBINED,
-        tesseract::PageSegMode pageSegMode = tesseract::PSM_AUTO
-    );
-    Ocr(const Ocr &other);
-    ~Ocr();
 
     /**
      * @brief Extracts strings contained in the image.
      *
-     * Return a QStringsList containing the strings detected in the image.
-     * @return Strings list with strins extracted.
+     * Returns a QStringsList containing the strings detected in the image.
+     * @return Strings list with strings extracted.
      */
-    QStringList extract();
-    QStringList getAvailableLanguages() const;
-    QStringList getLanguages() const;
+    virtual QStringList extract() = 0;
+
+    /**
+     * @brief Returns all available languages that can be used to extract strings from image.
+     * @return List with all available languages.
+     */
+    virtual QStringList getAvailableLanguages() const = 0;
+
+    /**
+     * @brief Returns set languages to extract strings from image.
+     * @return List with set languages.
+     */
+    virtual QStringList getLanguages() const;
 
     /**
      * @brief Add a language to try recognize characters in the image.
@@ -54,50 +56,62 @@ public:
      * @param lang QString that contains the language to add.
      * @return true|false
      */
-    bool addLanguage(const QString &language);
-    bool removeLanguage(const QString &language);
+    virtual bool addLanguage(const QString &language);
+
+    /**
+     * @brief Remove a language to try recognize characters in the image.
+     *
+     * Returns true if the language was removed succesfully, otherwise, returns false.
+     * @param language String language to be removed.
+     * @return bool
+     */
+    virtual bool removeLanguage(const QString &language);
+
+    /**
+     * @brief Returns true if the language received by parameter is available to be used in the recognition, otherwise,
+     * returns false.
+     * @param language String language to check.
+     * @return bool
+     */
+    virtual bool isAvailableLanguage(const QString &language);
+
+    /**
+     * @brief Returns the path of image configured to recognize characters in.
+     * @return Image path.
+     */
     QString getImage() const;
+
+    /**
+     * @brief Sets the image path where try to recognize characters.
+     * @param image Path of image.
+     */
     void setImage(const QString &image);
+
+    /**
+     * @brief Returns folder path where are languages files.
+     * @return Folder path.
+     */
     QString getDataPath() const;
+
+    /**
+     * @brief Sets folder path where are languages files.
+     * @param datapath Folder path.
+     */
     void setDataPath(const QString &datapath);
-    tesseract::PageSegMode getPageSegMode() const;
-    void setPageSegMode(tesseract::PageSegMode pageSegMode);
-    tesseract::OcrEngineMode getEngineMode() const;
-    void setEngineMode(tesseract::OcrEngineMode engineMode);
+
+protected:
+    QFile image_;                           ///< Image where will try to detect strings.
+    QString language_;                      ///< Languagues used to detect.
+    QString datapath_;                      ///< Path where are languages files.
 
     /**
-     * @brief Assigns other to Ocr and returns a reference to this Ocr object.
-     * @param other Ocr object to be copied.
-     * @return Reference to this Ocr object.
-     */
-    Ocr & operator=(const Ocr &other);
-
-signals:
-    void stringsExtracted(QStringList stringsList);
-
-private:
-    tesseract::TessBaseAPI *api_;
-    QFile image_;
-    QString language_; ///< Languagues used to detect.
-    QString datapath_; ///< Path where are languages.
-    tesseract::PageSegMode pageSegMode_;
-    tesseract::OcrEngineMode engineMode_;
-
-    int initApi() const;
-    QStringList processExtration(const QString &source);
-    bool isAvailableLanguage(const QString &language);
-
-    /**
-     * @brief Extracts strings contained in the image.
+     * @brief Processes the text received by parameted.
      *
-     * When extraction has finished, stringnsDetected signal is emited giving the QStringList with extracted strigns.
-     *
-     * This is an overwritten function that is the starting point for the thread. It is not recommended to call this
-     * function directly or it will not work as a separate thread.
+     * Split the string in phrases and returns a list with phrases contained in source.
+     * @param source
+     * @return
      */
-    void run() override;
-
-
+    virtual QStringList processExtration(const QString &source) = 0;
 };
 
 #endif // OCR_H

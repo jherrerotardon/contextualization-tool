@@ -197,7 +197,7 @@ QList<FirmwareString *> ContextualizationController::detectStringsOnImage()
 
     // Create and start workers.
     foreach (QString image, imageChunks) {
-        worker = new Ocr(image);
+        worker = new TesseractOcr(image);
         workers << worker;
 
        futures <<  QtConcurrent::run(
@@ -280,7 +280,7 @@ QList<FirmwareString *> ContextualizationController::findString(const QString &t
     QTextStream in(&file);
     while (!in.atEnd()) {
         line = in.readLine();
-        fwString = fragmentFpLine(line);
+        fwString = FirmwareString::fromFpLine(line);
         if (fwString) {
             //If the text belongs to a string the fwString is saved, otherwise relsease memory of fwString.
             if (isOnFwString(*fwString, text, findType))
@@ -300,74 +300,6 @@ QList<FirmwareString *> ContextualizationController::findString(const QString &t
     }
 
     return stringsFound;
-}
-
-FirmwareString * ContextualizationController::fragmentFpLine(QString &fpLine)
-{
-    QString id;
-    QString value;
-    QString description;
-    QString maxLength;
-    QString state;
-    bool selected;
-    bool hasError = false;
-
-    if (fpLine.isEmpty()) {
-        return Q_NULLPTR;
-    }
-
-    // Amazing regular expresion to fragment fp line.
-    QRegularExpression regex(
-        QString("MESSAGE_ID  (?<id>\\w+)  \"(?<value>.+)\"") +
-        QString(" \\|\\| ") +
-        QString("TEXT_DESCRIPTION  \"(?<description>.*)\"") +
-        QString(" \\|\\| ") +
-        QString("MAX_FIELD_WIDTH  (?<maxLength>\\d+( \\+ \\d+)*)") +
-        QString(" \\|\\| ") +
-        QString("LOCALIZATION  (?<state>\\w+)")
-    );
-    QRegularExpressionMatch match = regex.match(fpLine);
-
-    if (match.hasMatch()) {
-        id = match.captured("id");
-        value = match.captured("value");
-        description = match.captured("description");
-        maxLength = match.captured("maxLength");
-        state = match.captured("state");
-    }
-
-    // If any attribute was not taken, an error is indicated.
-    if (id.isNull()) {
-        hasError = true;
-
-        Log::writeError("Error format in MESSAGE_ID column. Cannot extract the id: " + fpLine);
-    }
-
-    if (value.isNull()) {
-        hasError = true;
-
-        Log::writeError("Error format in MESSAGE_ID column. Cannot extract the value: " + fpLine);
-    }
-
-    if (maxLength.isNull()) {
-        hasError = true;
-
-        Log::writeError("Error format in MAX_FIELD_WIDTH column. Cannot extract the max width: " + fpLine);
-    }
-
-    if (!isValidState(state)) {
-        hasError = true;
-
-        Log::writeError("Error format in LOCALIZATION column. Cannot extract state or isn't a valid state: "+ fpLine);
-    }
-
-    if (hasError) {
-        return Q_NULLPTR;
-    }
-
-    selected = state == "DONE" ? true : false;
-
-    return new FirmwareString(id, value, description, maxLength, state, selected);
 }
 
 bool ContextualizationController::isValidState(QString &state)
@@ -448,22 +380,6 @@ bool ContextualizationController::removeAllStrings()
     }
 
     return false;
-}
-
-QString ContextualizationController::takeCaptureArea()
-{
-    int hasError;
-    QStringList arguments;
-    QString path("/tmp/capture.png");
-
-    arguments << path;
-    hasError = Utils::executeProgram("import", arguments, QProcess::nullDevice(), QString(), 30000);
-
-    if (hasError) {
-        Log::writeError("Error taking capture. Code exit of import process: " + hasError);
-    }
-
-    return hasError ? QString() : path;
 }
 
 bool ContextualizationController::setImage(const QString &image)
@@ -673,6 +589,15 @@ QStringList ContextualizationController::splitImage(
 
     return chunks;
 }
+
+void ContextualizationController::refresh()
+{
+    generateDoneFpFile();
+
+    emit imageChanged();
+    emit stringsListChanged();
+}
+
 
 bool ContextualizationController::isOnFwString(const FirmwareString &fwString,
         const QString &value,

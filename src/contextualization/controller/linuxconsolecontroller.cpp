@@ -9,3 +9,8 @@ LinuxConsoleController::LinuxConsoleController(int argc, char **argv) : ConsoleC
 {
 
 }
+
+QString LinuxConsoleController::takeCaptureArea()
+{
+
+}

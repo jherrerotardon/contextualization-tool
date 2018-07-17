@@ -108,6 +108,63 @@ private:
     QVariant parameter_;    ///< Value of parameter that will be used by exec depending the behavior.
     ActionType action_;     ///< Behavior of exec() function.
     FindType findType_;     ///< Indicates the type of find that will be done.
+
+private slots:
+
+    /**
+     * @copydoc ContextualizationController::add(QString newString, int findType);
+     */
+    void add(QString newString, int findType) override;
+
+    /**
+     * @copydoc ContextualizationController::remove(QString stringId);
+     */
+    void remove(QString stringId) override;
+
+    /**
+     * @copydoc ContextualizationController::clear();
+     */
+    void clear() override;
+
+    /**
+     * @copydoc ContextualizationController::capture();
+     */
+    void capture(bool detectStringsOnLoad) override;
+
+    /**
+     * @copydoc ContextualizationController::load();
+     */
+    void load(bool detectStringsOnLoad) override;
+
+    /**
+     * @copydoc ContextualizationController::detect();
+     */
+    void detect() override;
+
+    /**
+     * @copydoc ContextualizationController::send();
+     */
+    void send() override;
+
+    /**
+     * @copydoc ContextualizationController::cancel();
+     */
+    void cancel() override;
+
+    /**
+     * @copydoc ContextualizationController::save();
+     */
+    void save() override;
+
+    /**
+     * @copydoc ContextualizationController::saveAs();
+     */
+    void saveAs() override;
+
+    /**
+     * @copydoc ContextualizationController::open();
+     */
+    void open() override;
 };
 
 #endif // CONSOLECONTROLLER_H

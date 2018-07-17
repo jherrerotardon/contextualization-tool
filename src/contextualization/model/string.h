@@ -3,6 +3,7 @@
 #include <QString>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QRegularExpression>
 #include "tools/log.h"
 
 class String : public QObject

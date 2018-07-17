@@ -425,14 +425,6 @@ void GuiController::configValidStates()
     validStates_ = ok ? validStates.split(',', QString::SkipEmptyParts) : validStates_;
 }
 
-void GuiController::refresh()
-{
-    emit imageChanged();
-    emit stringsListChanged();
-
-    generateDoneFpFile();
-}
-
 QQuickWindow *GuiController::getView()
 {
     return view_;

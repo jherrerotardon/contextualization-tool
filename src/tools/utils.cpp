@@ -133,7 +133,7 @@ QFuture<void> Utils::startProgressDialogCounter(QProgressDialog *dialog, bool *h
 {
     for (int i = 0; i < 5; i++) {
         dialog->setValue(i);
-        QThread::msleep(100);
+        QThread::msleep(60);
     }
 
     // Run progress increment thread.

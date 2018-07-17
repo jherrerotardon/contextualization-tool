@@ -9,3 +9,8 @@ WindowsConsoleController::WindowsConsoleController(int argc, char **argv) : Cons
 {
 
 }
+
+QString WindowsConsoleController::takeCaptureArea()
+{
+
+}

@@ -5,15 +5,6 @@
 
 class FirmwareString : public String
 {
-    Q_OBJECT
-
-    Q_PROPERTY(QString id READ getId WRITE setId NOTIFY idChanged)
-    Q_PROPERTY(QString value READ getValue WRITE setId NOTIFY valueChanged)
-    Q_PROPERTY(QString description READ getDescription WRITE setDescription NOTIFY descriptionChanged)
-    Q_PROPERTY(QString maxLength READ getId WRITE setMaxLength NOTIFY maxLengthChanged)
-    Q_PROPERTY(QString state READ getState WRITE setState NOTIFY stateChanged)
-    Q_PROPERTY(bool selected READ isSelected WRITE setSelected NOTIFY idChanged)
-
 public:
 
     /**
@@ -53,6 +44,16 @@ public:
      * @copydoc String::fromJson(QByteArray &json)
      */
     static FirmwareString * fromJson(QByteArray &json);
+
+    /**
+     * @brief Converts a line of fp file in a FirmwareString if is possible.
+     *
+     * Return null if there is a format error in the line.
+     * @param line Contains string to fragment.
+     * @param lineNumber Contains the number of line on the file.
+     * @return FirmwareString *|null
+     */
+    static FirmwareString * fromFpLine(QString &fpLine);
 
     /**
      * @brief Assigns other to firmware string and returns a reference to this firmware string.

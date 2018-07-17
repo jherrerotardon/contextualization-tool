@@ -7,11 +7,17 @@ HpContextualizationFactory::HpContextualizationFactory() : ContextualizationFact
 
 ContextualizationController * HpContextualizationFactory::createController(char **params, int count)
 {
-    bool cliMode = count == 1 ? true : false;
+    bool cliMode;
 
     // Check required parameters.
     if (params == Q_NULLPTR || count < 1) {
         return Q_NULLPTR;
+    }
+
+    if (count > 1) { // Consider parameters from debugger.
+        cliMode = QString(params[1]).contains("-qmljsdebugger") ? false : true;
+    } else {
+        cliMode = false;
     }
 
     switch (getCurrentKernelType()) {

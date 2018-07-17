@@ -1,3 +1,7 @@
+/////////////////////////////////////////////////////
+//  NOT IMPLEMENTED CLASS YET.                  ////
+////////////////////////////////////////////////////
+
 #ifndef WINDOWSGUICONTROLLER_H
 #define WINDOWSGUICONTROLLER_H
 
@@ -5,10 +9,13 @@
 
 class WindowsGuiController : public GuiController
 {
-    Q_OBJECT
-
 public:
     WindowsGuiController(QQuickWindow *view = Q_NULLPTR, QObject *parent = Q_NULLPTR);
+
+    /**
+     * @copydoc ContextualizationController::takeCaptureArea()
+     */
+    QString takeCaptureArea() override;
 };
 
 #endif // WINDOWSGUICONTROLLER_H
