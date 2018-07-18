@@ -183,7 +183,10 @@ QStringList TesseractOcr::processExtration(const QString &source)
     text = text.replace(QRegularExpression("[^a-zA-Z0-9 -,\.]"), "\n");
 
     // Force the beginning of the string to be a one-word character.
-    text = text.replace(QRegularExpression("^\\W\\s*"), "");
+    text = text.replace(QRegularExpression("^\\W+\\s*", QRegularExpression::MultilineOption), "");
+
+    // If the first letter of a sentence is lowercase, it is assumed that it belongs to the previous word.
+    text = text.replace(QRegularExpression("\n([a-z])"), " \\1");
 
     result << text.split('\n',QString::SkipEmptyParts);
 

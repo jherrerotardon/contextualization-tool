@@ -6,7 +6,6 @@
 #include <QStringList>
 #include <QFile>
 #include <QStandardPaths>
-#include <QDateTime>
 #include <QDir>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -429,17 +428,7 @@ signals:
     void imageChanged();
 
 private:
-    const static int MIN_LENGTH_FOR_APPROXIMATE;       ///< Minimun length for string to do an approximate find.
     const static QStringList COMMON_WORDS;             ///< Dicctionary with the most common words in firmware string.
-
-    /**
-     * @brief Checks if the text belongs to a firmware string.
-     * @param fwString Firmware string used to do checks.
-     * @param text Text which will be checked if it belongs to the firmware string.
-     * @param matchType Type of find will do.
-     * @return bool
-     */
-    bool matchFwString(const FirmwareString &fwString, const QString &text, MatchType matchType = ByID);
 
     /**
      * @brief Checks if the word is a common word used in firmare strings.

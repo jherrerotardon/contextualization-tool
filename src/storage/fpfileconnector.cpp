@@ -53,10 +53,11 @@ QList<String *> FpFileConnector::getAllStrings()
     return out;
 }
 
-QList<String *> FpFileConnector::getStringsWithValue(const QString &value)
+QList<String *> FpFileConnector::getStringsWithValue(const QString &value, bool caseSensitive)
 {
     QList<String *> out;
     FirmwareString *fwString;
+    Qt::CaseSensitivity isCaseSensitive = caseSensitive ? Qt::CaseSensitive : Qt::CaseInsensitive;
 
     // Begin read file.
     if (!file_.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -70,8 +71,8 @@ QList<String *> FpFileConnector::getStringsWithValue(const QString &value)
     while (!in.atEnd()) {
         fwString = FirmwareString::fromFpLine(in.readLine());
         if (fwString) {
-            //If the text belongs to a string the fwString is saved, otherwise relsease memory of fwString.
-            if (value == fwString->getValue()) {
+            //If the text belongs to a string, the fwString is saved, otherwise relsease memory of fwString.
+            if (value.compare(fwString->getValue(), isCaseSensitive) == 0) {
                 out << fwString;
             } else {
                 delete fwString;
@@ -84,10 +85,10 @@ QList<String *> FpFileConnector::getStringsWithValue(const QString &value)
     return out;
 }
 
-QList<String *> FpFileConnector::getStringWithId(const QString &id)
-{
+QList<String *> FpFileConnector::getStringsWithAproximateValue(const QString &value, bool caseSensitive) {
     QList<String *> out;
     FirmwareString *fwString;
+    Qt::CaseSensitivity isCaseSensitive = caseSensitive ? Qt::CaseSensitive : Qt::CaseInsensitive;
 
     // Begin read file.
     if (!file_.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -101,8 +102,57 @@ QList<String *> FpFileConnector::getStringWithId(const QString &id)
     while (!in.atEnd()) {
         fwString = FirmwareString::fromFpLine(in.readLine());
         if (fwString) {
-            //If the text belongs to a string the fwString is saved, otherwise relsease memory of fwString.
-            if (id == fwString->getId()) {
+            /**
+             * If the value belongs to a string, the fwString is saved, otherwise relsease memory of fwString.
+             * If size of both strings is longer than MIN_LENGTH_FOR_APPROXIMATE, a value is considered valid if
+             * it is contained within the fwString value or vice versa.
+             * If size of any strings is not longer than MIN_LENGTH_FOR_APPROXIMATE, a value is considered valid only if it
+             * is equals than the value of fwString.
+             */
+            if (value.size() > MIN_LENGTH_FOR_APPROXIMATE && fwString->getValue().size() > MIN_LENGTH_FOR_APPROXIMATE) {
+                if (value.contains(fwString->getValue(), isCaseSensitive) || fwString->getValue().contains(value, isCaseSensitive)) {
+                    out << fwString;
+                } else {
+                    delete fwString;
+                }
+            } else {
+                if (value.compare(fwString->getValue(), isCaseSensitive) == 0) {
+                    out << fwString;
+                } else {
+                    delete fwString;
+                }
+            }
+        }
+    }
+
+    file_.close();
+
+    return out;
+}
+
+QList<String *> FpFileConnector::getStringWithId(const QString &id, bool caseSensitive)
+{
+    QList<String *> out;
+    FirmwareString *fwString;
+    Qt::CaseSensitivity isCaseSensitive = caseSensitive ? Qt::CaseSensitive : Qt::CaseInsensitive;
+
+    // Begin read file.
+    if (!file_.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        Log::writeError(" Fail to open file: " + file_.fileName());
+
+        return out;
+    }
+
+    QTextStream in(&file_);
+
+    while (!in.atEnd()) {
+        fwString = FirmwareString::fromFpLine(in.readLine());
+        if (fwString) {
+            /**
+             * If the id belongs to a string, the fwString is saved, otherwise relsease memory of fwString.
+             * An identifier is considered valid only if it is equals than the identifier of fwString.
+             */
+            if (id.compare(fwString->getId(), isCaseSensitive) == 0) {
                 out << fwString;
             } else {
                 delete fwString;
@@ -125,12 +175,12 @@ bool FpFileConnector::insertStrings(const QList<String *> &strings)
 
 }
 
-int FpFileConnector::removeStringsWithValue(const QString &value)
+int FpFileConnector::removeStringsWithValue(const QString &value, bool caseSensitive)
 {
 
 }
 
-bool FpFileConnector::removeStringWithId(const QString &id)
+bool FpFileConnector::removeStringsWithId(const QString &id, bool caseSensitive)
 {
 
 }

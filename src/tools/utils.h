@@ -10,6 +10,7 @@
 #include <QThread>
 #include <QFuture>
 #include <QtConcurrent/QtConcurrent>
+#include <QDateTime>
 
 class Utils
 {
@@ -154,6 +155,13 @@ public:
      * @return bool
      */
     static bool isValidIp(const QString &ip);
+
+    /**
+     * @brief Returns a current date time with the format received by parameter.
+     * @param format Format to returns the date time.
+     * @return Date time.
+     */
+    static QString getDateTime(QString format = "yyyy_MM_dd_hh_mm_ss");
 };
 
 #endif // UTILS_H

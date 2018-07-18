@@ -160,3 +160,8 @@ bool Utils::isValidIp(const QString &ip)
 
     return match.hasMatch();
 }
+
+QString Utils::getDateTime(QString format)
+{
+    return QDateTime::currentDateTime().toString(format);
+}

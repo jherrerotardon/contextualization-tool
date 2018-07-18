@@ -5,7 +5,6 @@ const int ContextualizationController::CHUNK_HEIGHT = 150;
 const QString ContextualizationController::DONE_FP_FILE = "/tmp/doneFpFile.fp";
 const QString ContextualizationController::IMAGES_FOLDER = QDir("../storage/images").absolutePath() + '/';
 const QString ContextualizationController::PROJECTS_FOLDER = QDir("../storage/projects").absolutePath() + '/';
-const int ContextualizationController::MIN_LENGTH_FOR_APPROXIMATE = 6;
 
 ContextualizationController::ContextualizationController(QObject *parent) : QObject(parent)
 {
@@ -97,7 +96,7 @@ ContextualizationController::ModelError ContextualizationController::validateMod
 
 QString ContextualizationController::generateContextualization()
 {
-    QDir tmpDir("/tmp/" + getDateTime() + '-' + username_);
+    QDir tmpDir("/tmp/" + Utils::getDateTime() + '-' + username_);
     QFileInfo image(model_->getImage());
     QString text("");
     QString contextualizationPackage("");
@@ -134,7 +133,7 @@ int ContextualizationController::sendContextualization(const QString &path, QStr
 {
     QStringList arguments;
     QString batch("/tmp/batch");
-    QString sshpassEvidences("/tmp/sshpassEvidenceError_" + getDateTime() + ".txt");
+    QString sshpassEvidences("/tmp/sshpassEvidenceError_" + Utils::getDateTime() + ".txt");
     int errorCode;;
 
     if (remoteHost_.isEmpty()) {
@@ -187,8 +186,8 @@ QList<FirmwareString *> ContextualizationController::detectStringsOnImage()
     QString rootCopy;
 
     // Added root image copy to work it too.
-    rootCopy = "/tmp/rootCopy." + QFileInfo(model_->getImage()).suffix();
-    if (QFile::copy(model_->getImage(), "/tmp/rootCopy." + QFileInfo(model_->getImage()).suffix())) {
+    rootCopy = "/tmp/rootCopy_" + Utils::getDateTime() + "." + QFileInfo(model_->getImage()).suffix();
+    if (QFile::copy(model_->getImage(), rootCopy)) {
         imageChunks << rootCopy;
     }
 
@@ -238,7 +237,7 @@ QList<FirmwareString *> ContextualizationController::processStrings(QStringList 
     QList<FirmwareString *> out;
 
     foreach (QString string, strings) {
-        stringsFound = findString(string, ByApproximateValue);
+        stringsFound = findString(string.simplified(), ByApproximateValue);
         if (!stringsFound.isEmpty()) {
             out << stringsFound;
         }
@@ -276,21 +275,21 @@ QList<FirmwareString *> ContextualizationController::findString(const QString &t
     // Get strings from database.
     switch (matchType) {
         case ByID:
-            stringsFound = database.getStringWithId(text);
+            stringsFound = database.getStringWithId(text, caseSensitive_);
             break;
+
         case ByValue:
+            stringsFound = database.getStringsWithValue(text, caseSensitive_);
+            break;
+
         case ByApproximateValue:
-            stringsFound = database.getStringsWithValue(text);
+            stringsFound = database.getStringsWithAproximateValue(text, caseSensitive_);
             break;
     }
 
-    // Filter strings that match with the search. No match strings are released.
+    // Convert String * in FirmwareString *.
     foreach (String *string, stringsFound) {
-        if (matchFwString(*static_cast<FirmwareString *>(string), text, matchType)) {
-            out << static_cast<FirmwareString *>(string);
-        } else {
-            delete string;
-        }
+        out << static_cast<FirmwareString *>(string);
     }
 
     // If only have to get DONE strings and find was not in DONE_FP_FILE is necessary filer strings.
@@ -391,7 +390,7 @@ void ContextualizationController::clearImage()
 bool ContextualizationController::setImage(const QString &image)
 {
     QFileInfo imageInfo(image);
-    QString imageName("capture-" + getDateTime() + '-' + username_ + '.' + imageInfo.suffix());
+    QString imageName("capture-" + Utils::getDateTime() + '-' + username_ + '.' + imageInfo.suffix());
     bool exists = imageInfo.exists();
 
     if (exists) {
@@ -461,11 +460,6 @@ QString ContextualizationController::getImageOfModel()
 QList<QObject *> ContextualizationController::getTableModel()
 {
     return model_->getStringsList();
-}
-
-QString ContextualizationController::getDateTime(QString format)
-{
-    return QDateTime::currentDateTime().toString(format);
 }
 
 void ContextualizationController::loadConfig()
@@ -602,45 +596,6 @@ void ContextualizationController::refresh()
 
     emit imageChanged();
     emit stringsListChanged();
-}
-
-
-bool ContextualizationController::matchFwString(
-    const FirmwareString &fwString,
-    const QString &value,
-    MatchType matchType
-) {
-    Qt::CaseSensitivity caseSensitive = caseSensitive_ ? Qt::CaseSensitive : Qt::CaseInsensitive;
-    QString text = value.simplified();  // Remove extra whitespaces.
-
-    // If is a common word, always filter by ID.
-    matchType = isCommonWord(text) ? ByValue : matchType;
-
-    switch (matchType) {
-    case ByID:
-        // A identifier is considered valid only if it is equals than the identifier of fwString.
-        return text.compare(fwString.getId(), caseSensitive) == 0 ? true : false;
-
-    case ByValue:
-        // A value is considered valid only if it is equals than the value of fwString.
-        return text.compare(fwString.getValue(), caseSensitive) == 0 ? true : false;
-
-    case ByApproximateValue:
-        /**
-         * If size of both strings is longer than MIN_LENGTH_FOR_APPROXIMATE, a value is considered valid if
-         * it is contained within the fwString value or vice versa.
-         * If size of any strings is not longer than MIN_LENGTH_FOR_APPROXIMATE, a value is considered valid only if it
-         * is equals than the value of fwString.
-         **/
-        if (text.size() > MIN_LENGTH_FOR_APPROXIMATE && fwString.getValue().size() > MIN_LENGTH_FOR_APPROXIMATE) {
-            return text.contains(fwString.getValue(), caseSensitive) || fwString.getValue().contains(text, caseSensitive);
-        } else {
-            return text.compare(fwString.getValue(), caseSensitive) == 0 ? true : false;
-        }
-
-    default:
-        return false;
-    }
 }
 
 bool ContextualizationController::isCommonWord(const QString &word)

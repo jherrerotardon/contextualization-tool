@@ -9,11 +9,15 @@ QList<String *> MySqlConnector::getAllStrings()  {
 
 }
 
-QList<String *> MySqlConnector::getStringsWithValue(const QString &value)  {
+QList<String *> MySqlConnector::getStringsWithValue(const QString &value, bool caseSensitive)  {
 
 }
 
-QList<String *> MySqlConnector::getStringWithId(const QString &id)  {
+QList<String *> MySqlConnector::getStringsWithAproximateValue(const QString &value, bool caseSensitive) {
+
+}
+
+QList<String *> MySqlConnector::getStringWithId(const QString &id, bool caseSensitive)  {
 
 }
 
@@ -25,10 +29,10 @@ bool MySqlConnector::insertStrings(const QList<String *> &strings)  {
 
 }
 
-int MySqlConnector::removeStringsWithValue(const QString &value)  {
+int MySqlConnector::removeStringsWithValue(const QString &value, bool caseSensitive)  {
 
 }
 
-bool MySqlConnector::removeStringWithId(const QString &id)  {
+bool MySqlConnector::removeStringsWithId(const QString &id, bool caseSensitive)  {
 
 }

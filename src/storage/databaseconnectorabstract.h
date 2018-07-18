@@ -24,14 +24,21 @@ public:
      * @param value String value.
      * @return List with strings.
      */
-    virtual QList<String *> getStringsWithValue(const QString &value) = 0;
+    virtual QList<String *> getStringsWithValue(const QString &value, bool caseSensitive = true) = 0;
+
+    /**
+     * @brief Returns all strigns in database with a similar value received by argument.
+     * @param value String value.
+     * @return List with strings.
+     */
+    virtual QList<String *> getStringsWithAproximateValue(const QString &value, bool caseSensitive = true) = 0;
 
     /**
      * @brief Returns all strigns in database with the identifier received by argument.
      * @param value String identifier.
      * @return List with strings.
      */
-    virtual QList<String *> getStringWithId(const QString &id) = 0;
+    virtual QList<String *> getStringWithId(const QString &id, bool caseSensitive = true) = 0;
 
     /**
      * @brief Inserts a new string in database.
@@ -58,14 +65,17 @@ public:
      * @param value String value.
      * @return Number of removed strings
      */
-    virtual int removeStringsWithValue(const QString &value) = 0;
+    virtual int removeStringsWithValue(const QString &value, bool caseSensitive = true) = 0;
 
     /**
      * @brief Removes from databse the strign with the identifier received by argument.
      * @param value String identifier.
      * @return bool
      */
-    virtual bool removeStringWithId(const QString &id) = 0;
+    virtual bool removeStringsWithId(const QString &id, bool caseSensitive = true) = 0;
+
+protected:
+    const int MIN_LENGTH_FOR_APPROXIMATE;       ///< Minimun length for string to do an approximate find.
 };
 
 #endif // DATABASEABSTRACT_H

@@ -335,7 +335,7 @@ ApplicationWindow {
                     model: controller.tableModel
 
                     rowDelegate: Rectangle {
-                        height: 20
+                        height: 25
                         SystemPalette {
                             id: customPalette;
                             colorGroup: SystemPalette.Active

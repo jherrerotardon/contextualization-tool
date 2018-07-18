@@ -40,14 +40,19 @@ public:
     QList<String *> getAllStrings() override;
 
     /**
-     * @copydoc DatabaseConnectorAbstract::getStringsWithValue()
+     * @copydoc DatabaseConnectorAbstract::getStringsWithValue(const QString &value, bool caseSensitive)
      */
-    QList<String *> getStringsWithValue(const QString &value) override;
+    QList<String *> getStringsWithValue(const QString &value, bool caseSensitive = true) override;
 
     /**
-     * @copydoc DatabaseConnectorAbstract::getStringWithId(const QString &id)
+     * @copydoc DatabaseConnectorAbstract::getStringsWithAproximateValue(const QString &value, bool caseSensitive)
      */
-    QList<String *> getStringWithId(const QString &id) override;
+    QList<String *> getStringsWithAproximateValue(const QString &value, bool caseSensitive = true) override;
+
+    /**
+     * @copydoc DatabaseConnectorAbstract::getStringWithId(const QString &id, bool caseSensitive)
+     */
+    QList<String *> getStringWithId(const QString &id, bool caseSensitive = true) override;
 
     /**
      * @copydoc DatabaseConnectorAbstract::insertString(const String &string)
@@ -60,14 +65,14 @@ public:
     bool insertStrings(const QList<String *> &strings) override;
 
     /**
-     * @copydoc DatabaseConnectorAbstract::removeStringsWithValue(const QString &value)
+     * @copydoc DatabaseConnectorAbstract::removeStringsWithValue(const QString &value, bool caseSensitive)
      */
-    int removeStringsWithValue(const QString &value) override;
+    int removeStringsWithValue(const QString &value, bool caseSensitive = true) override;
 
     /**
-     * @copydoc DatabaseConnectorAbstract::removeStringWithId(const QString &id)
+     * @copydoc DatabaseConnectorAbstract::removeStringsWithId(const QString &id, bool caseSensitive)
      */
-    bool removeStringWithId(const QString &id) override;
+    bool removeStringsWithId(const QString &id, bool caseSensitive = true) override;
 
 private:
     QFile file_;          ///< File where strings is stored.

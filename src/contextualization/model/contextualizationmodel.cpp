@@ -117,7 +117,7 @@ QString ContextualizationModel::getImage()
 
 bool ContextualizationModel::isEmpty()
 {
-    if (hasImage() && hasStrings()) {
+    if (hasImage() || hasStrings()) {
         return false;
     }
 
