@@ -14,9 +14,9 @@ This application was developed in **C++** language using **Qt Framework**. It ha
 ### Build from source code
 
 Pre-Requisites:
-* A compiler for C and C++: GCC
-* [Qt 5.10](https://www.qt.io/download) or above
-* [Leptonica](http://www.leptonica.org/)
+- A compiler for C and C++: GCC
+- [Qt 5.10](https://www.qt.io/download) or above
+- [Leptonica](http://www.leptonica.org/)
 
 #### Leptonica
 
@@ -27,13 +27,13 @@ Tesseract versions and the minimum version of Leptonica required:
 **Tesseract** | **Leptonica** | **Ubuntu**
 :-------------------: | :---------------------------------------: | :---------
 4.00 | 1.74.2 | [Ubuntu 18.04](https://packages.ubuntu.com/bionic/tesseract-ocr)
-3.05 | 1.74.0 | Must build from source 
+3.05 | 1.74.0 | Must build from source
 3.04 | 1.71 | [Ubuntu 16.04](http://packages.ubuntu.com/xenial/tesseract-ocr)
 3.03 | 1.70 | [Ubuntu 14.04](http://packages.ubuntu.com/trusty/tesseract-ocr)
 3.02 | 1.69 | Ubuntu 12.04
 3.01 | 1.67 |
 
-One option is to install the distro's Leptonica package: 
+One option is to install the distro's Leptonica package:
 
 ```
 sudo apt-get install libleptonica-dev
@@ -49,7 +49,7 @@ Note that if building Leptonica from source, you may need to ensure that /usr/lo
 
 To compile source code is neccesary install:
 ```
-sudo apt install libtesseract-dev 
+sudo apt install libtesseract-dev
 sudo apt-get install libgl1-mesa-dev
 ```
 
@@ -61,6 +61,9 @@ cd Contextualization-Tool
 ./install
 ```
 
+The executable file will be in:
+`./bin/ContextualizationTool`
+
 ## Windows
 
 **Comming soon...**
@@ -68,12 +71,9 @@ cd Contextualization-Tool
 ## Running CLI Contextualization Tool
 
 Basic command line help:
-	`contextualization --help`
+	`ContextualizationTool --help`
 
 ## Running GUI Contextualization Tool
 
 Execute command without any arguments:
-	`contextualization`
-
-
-
+	`ContextualizationTool`
