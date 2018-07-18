@@ -3,26 +3,46 @@ import QtQuick.Window 2.2
 import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.3
 import QtQuick.Controls.Styles 1.4
+import io.controllers.guicontroller 1.0
 
-ApplicationWindow {    
+ApplicationWindow {
+    signal newProjectRequested();
+    signal clearRequested()
+    signal addRequested(string newString, int findType)
+    signal stringRemoved(string idString)
+    signal cancelRequested()
+    signal sendRequested()
+    signal captureRequested(bool detectStringsOnLoad)
+    signal loadImageRequested(bool detectStringsOnLoad)
+    signal detectStringsRequested()
+    signal openRequested()
+    signal saveRequested()
+    signal saveAsRequested()
+    signal fpFileConfigRequested()
+    signal remoteHostConfigRequested()
+    signal validStatesConfigRequested()
+    signal refreshRequested()
+
     id : mainWindow
     visible: true
     minimumWidth: Screen.width * 0.4
     minimumHeight: Screen.height * 0.4
-    //visibility: "Maximized"
     width: 800
     height: 480
     title: qsTr("Contextualization tool")
 
-    //        style: ApplicationWindowStyle {
-    //                background: BorderImage {
-    //                    source: "images/wallpaper.jpg"
-    //                      width: 180; height: 180
-    //                    border { left: 20; top: 20; right: 20; bottom: 20 }
-    //                    horizontalTileMode: BorderImage.Repeat
-    //                    verticalTileMode: BorderImage.Repeat
-    //                }
-    //            }
+    onClosing: {
+        close.accepted = false
+        cancelRequested()
+    }
+
+    style: ApplicationWindowStyle {
+        background: BorderImage {
+            source: "qrc:/images/background.png"
+            horizontalTileMode: BorderImage.Repeat
+            verticalTileMode: BorderImage.Stretch
+        }
+    }
 
 
     menuBar:  MenuBar {
@@ -34,29 +54,56 @@ ApplicationWindow {
             title: "File"
 
             MenuItem {
-                objectName: "importButton"
-                text : "Import Project"
-                shortcut : "Ctrl+I"
-                iconSource: "qrc:/images/import.png"
+                text : "New Project..."
+                shortcut : "Ctrl+N"
+                iconSource: "qrc:/images/newProject.png"
+
+                onTriggered: newProjectRequested()
             }
 
             MenuItem {
-                objectName: "exportButton"
-                text : "Export Project"
-                shortcut : "Ctrl+E"
-                iconSource: "qrc:/images/export.png"
+                text : "Open Project..."
+                shortcut : "Ctrl+O"
+                iconSource: "qrc:/images/open.png"
+
+                onTriggered: openRequested()
             }
+
+            MenuItem {
+                text : "Save"
+                shortcut : "Ctrl+S"
+                iconSource: "qrc:/images/save.png"
+
+                onTriggered: saveRequested()
+            }
+
+            MenuItem {
+                text : "Save As..."
+                shortcut : "Ctrl+Shift+S"
+                iconSource: "qrc:/images/saveAs.png"
+
+                onTriggered: saveAsRequested()
+            }
+
+            MenuItem {
+                text : "Refresh"
+                shortcut : "Ctrl+R"
+                iconSource: "qrc:/images/refresh.png"
+                onTriggered: refreshRequested()
+            }
+
 
             MenuItem {
                 text : "Exit"
                 shortcut : "Ctrl+Q"
                 iconSource: "qrc:/images/exit.png"
-                onTriggered: Qt.quit()
+                onTriggered: close()
             }
         }
 
         Menu {
             title: "Edit"
+
             MenuItem {
                 text: "Copy"
                 shortcut: "Ctrl+C"
@@ -71,13 +118,31 @@ ApplicationWindow {
                 onTriggered: activeFocusItem.paste()
             }
         }
+
+        Menu {
+            title: "Configuration"
+
+            MenuItem {
+                text: "Fp File"
+                onTriggered: fpFileConfigRequested()
+            }
+
+            MenuItem {
+                text: "Remote Host"
+                onTriggered: remoteHostConfigRequested()
+            }
+
+            MenuItem {
+                text: "Valid States"
+                onTriggered: validStatesConfigRequested()
+            }
+        }
     }
 
-    //    ContextualizationController {
-    //        id: controller
-    //        objectName: "controller"
-    //        tableModel: customModel
-    //    }
+    Controller {
+        id: controller
+        view: mainWindow
+    }
 
     ScrollView {
 
@@ -122,12 +187,14 @@ ApplicationWindow {
                     Layout.fillHeight: true
                     border.width : 1
                     border.color: "black"
+                    radius: 6
+                    color: "#FAFAFA"
                     clip: true
 
                     Image {
                         objectName: "containerImage"
                         cache: false
-                        source: "qrc:/images/imageNotAvailable.png"
+                        source: "file:" + controller.image
                         fillMode: Image.PreserveAspectFit
                         asynchronous: true
                         anchors.fill: parent
@@ -137,8 +204,9 @@ ApplicationWindow {
 
                 CheckBox {
                     id : autoDetectCheckBox
-                    text: "Auto detect new strings when load image"
+                    text: "Detect strings when image is loaded"
                     Layout.alignment: Qt.AlignHCenter
+                    style: generalCheckboxStyle
                 }
 
                 RowLayout {
@@ -159,6 +227,9 @@ ApplicationWindow {
                             objectName: "captureAreaButon"
                             text: "CAPTURE AREA"
                             Layout.preferredHeight: 45
+                            style: generalButtonStyle
+
+                            onClicked: captureRequested(autoDetectCheckBox.checked)
                         }
 
                         Item {
@@ -171,6 +242,9 @@ ApplicationWindow {
                             text: "LOAD IMAGE"
                             Layout.preferredWidth: captureAreaButon.width
                             Layout.preferredHeight: 45
+                            style: generalButtonStyle
+
+                            onClicked: loadImageRequested(autoDetectCheckBox.checked)
                         }
                     }
 
@@ -181,8 +255,8 @@ ApplicationWindow {
             }
 
             ColumnLayout {
-                Layout.preferredWidth: parent.width * 0.45
-                Layout.maximumWidth: parent.width * 0.45
+                Layout.preferredWidth: parent.width * 0.5
+                Layout.maximumWidth: parent.width * 0.5
                 Layout.alignment: Qt.AlignRight
                 Layout.topMargin: 18
                 Layout.bottomMargin: 10
@@ -196,14 +270,59 @@ ApplicationWindow {
                         Layout.fillWidth: true
                     }
 
-                    Button {
-                        signal customClicked(string newString)
+                    ComboBox {
+                        id: findTypeComboBox
+                        Layout.preferredWidth: 93
+                        currentIndex: 0
+                        model: ListModel {
+                            id: findTypeItems
+                            ListElement { text: "by ID" }
+                            ListElement { text: "by Value" }
+                        }
+                    }
 
+                    Button {
                         id: addStringButton
                         objectName: "addStringButton"
                         text : "ADD"
+                        style: generalButtonStyle
 
-                        onClicked: customClicked(newStringInput.text)
+                        onClicked: addRequested(newStringInput.text, findTypeComboBox.currentIndex)
+                    }
+                }
+
+                Rectangle {
+                    implicitHeight: 22
+                    radius: 5
+                    Layout.fillWidth: true
+                    color: "white"
+
+                    RowLayout {
+                        spacing: 10
+                        anchors.leftMargin: 10
+                        anchors.rightMargin: 10
+                        anchors.fill: parent
+
+                        CheckBox {
+                            text: qsTr("Only DONE strings")
+                            checked: controller.onlyDoneStrings
+                            style: generalCheckboxStyle
+
+                            onClicked: controller.onlyDoneStrings = checked
+
+                        }
+
+                        Item {
+                            Layout.fillWidth: true
+                        }
+
+                        CheckBox {
+                            text: qsTr("Case sensitive")
+                            checked: controller.caseSensitive
+                            style: generalCheckboxStyle
+
+                            onClicked: controller.caseSensitive = checked
+                        }
                     }
                 }
 
@@ -213,59 +332,101 @@ ApplicationWindow {
                     Layout.fillHeight: true
                     Layout.fillWidth: true
 
+                    model: controller.tableModel
+
+                    rowDelegate: Rectangle {
+                        height: 25
+                        SystemPalette {
+                            id: customPalette;
+                            colorGroup: SystemPalette.Active
+                        }
+                        color: {
+                            var baseColor = styleData.alternate?customPalette.alternateBase:customPalette.base
+                            return styleData.selected ? customPalette.highlight : baseColor
+                        }
+                    }
+
                     TableViewColumn {
                         id: checkboxsColumn
-                        role: "checkboxsColumn"
+                        role: "selected"
+                        horizontalAlignment: Text.AlignHCenter
                         width: 20
                         resizable: false
-                        horizontalAlignment: Text.AlignHCenter
 
                         delegate: Item {
                             anchors.fill: parent
-
                             CheckBox {
                                 enabled: true
                                 anchors.verticalCenter: parent.verticalCenter
                                 anchors.horizontalCenter: parent.horizontalCenter
+                                checked: styleData.value
 
-                                onClicked: {
-                                    //var srcIndex = prjCont.model.mapToSource(prjCont.model.index(styleData.row,0));
-                                    //prjCont.model.getEntry(srcIndex.row).checked = !prjCont.model.getEntry(styleData.row).checked;
+                                onClicked: modelData.selected = checked
+                            }
+                        }
 
-                                    console.debug("row in Table " + styleData.row);
-                                    //console.debug("-got: " +  prjCont.model.getEntry(srcIndex.row).checked);
+                    }
+
+                    TableViewColumn {
+                        id: idColumn
+                        title: "String Key"
+                        role: "id"
+                        horizontalAlignment: Text.AlignHCenter
+                        width: (stringsTable.width - checkboxsColumn.width - buttonsColumn.width) * 0.45
+
+                        delegate: TextField {
+                            anchors.fill: parent
+                            verticalAlignment: Text.AlignVCenter
+                            text: styleData.value
+                            readOnly: true
+
+                            style: TextFieldStyle
+                            {
+                                background: Rectangle {
+                                    opacity: 0
+                                }
+
+
+                            }
+                        }
+                    }
+
+                    TableViewColumn {
+                        id: valueColumn
+                        title: "String"
+                        role: "value"
+                        horizontalAlignment: Text.AlignHCenter
+                        width: (stringsTable.width - checkboxsColumn.width - buttonsColumn.width) * 0.55
+
+                        delegate: Item {
+                            anchors.fill: parent
+
+                            TextField {
+                                anchors.fill: parent
+                                verticalAlignment: Text.AlignVCenter
+                                text: "\"" + styleData.value + "\""
+                                readOnly: true
+
+                                style: TextFieldStyle
+                                {
+                                    background: Rectangle {
+                                        opacity: 0
+                                    }
+
+
                                 }
                             }
                         }
                     }
 
                     TableViewColumn {
-                        role: "stringkey"
-                        title: "String Key"
-                        horizontalAlignment: Text.AlignHCenter
-                        width: (stringsTable.width - checkboxsColumn.width - buttonsColumn.width) * 0.35
-                    }
-
-                    TableViewColumn {
-                        role: "string"
-                        title: "String"
-                        horizontalAlignment: Text.AlignHCenter
-                        width: (stringsTable.width - checkboxsColumn.width - buttonsColumn.width) * 0.65
-                    }
-
-                    TableViewColumn {
-                        signal buttonClicked (int row)
-
                         id: buttonsColumn
+                        role: "id"
                         objectName: "buttonsColumn"
-                        role: "buttonsColumn"
                         width: 25
                         resizable: false
 
                         delegate: Button {
-                            signal buttonClicked (int row)
-
-                            objectName: "deleteStringButton"
                             enabled: true
 
                             Image {
@@ -275,10 +436,9 @@ ApplicationWindow {
                                 fillMode: Image.PreserveAspectFit
                             }
 
-                            onClicked: buttonsColumn.buttonClicked(styleData.row)
+                            onClicked: stringRemoved(styleData.value)
                         }
                     }
-                    //model: customModel
                 }
 
                 RowLayout {
@@ -290,6 +450,9 @@ ApplicationWindow {
                         objectName: "detectStringsButton"
                         text: "DETECT STRINGS ON IMAGE"
                         Layout.alignment: Qt.AlignRight
+                        style: generalButtonStyle
+
+                        onClicked: detectStringsRequested()
                     }
 
                     Item {
@@ -300,7 +463,11 @@ ApplicationWindow {
                         id: clearButton
                         objectName: "clearButton"
                         text: "CLEAR"
+                        Layout.preferredWidth: 85
                         Layout.alignment: Qt.AlignLeft
+                        style: generalButtonStyle
+
+                        onClicked: clearRequested()
                     }
                 }
 
@@ -317,17 +484,95 @@ ApplicationWindow {
                     Button {
                         id: cancelButton
                         objectName: "cancelButton"
+                        Layout.preferredWidth: 85
                         Layout.preferredHeight: 45
                         text: "CANCEL"
+                        style: redButtonStyle
 
+                        onClicked: cancelRequested()
                     }
 
                     Button {
                         id: sendButton
                         objectName: "sendButton"
+                        Layout.preferredWidth: 85
                         Layout.preferredHeight: 45
                         text: "SEND"
+                        style: greenButtonStyle
+
+                        onClicked: sendRequested()
                     }
+                }
+            }
+        }
+    }
+
+    Component {
+        id: generalButtonStyle
+
+        ButtonStyle {
+            background: Rectangle {
+                //implicitWidth: 100
+                border.width: control.activeFocus ? 2 : 1
+                border.color: "#888"
+                radius: 4
+                gradient: Gradient {
+                    GradientStop { position: 0 ; color: control.pressed ? "#ccc" : "#fff" }
+                    GradientStop { position: 1 ; color: control.pressed ? "#aaa" : "#ddd" }
+                }
+            }
+        }
+    }
+
+    Component {
+        id: redButtonStyle
+
+        ButtonStyle {
+            background: Rectangle {
+                border.width: control.activeFocus ? 2 : 1
+                border.color: "#888"
+                radius: 4
+                gradient: Gradient {
+                    GradientStop { position: 0 ; color: control.pressed ? "#ccc" : "#A31C1C" }
+                    GradientStop { position: 2 ; color: control.pressed ? "#aaa" : "#eee" }
+                }
+            }
+        }
+    }
+
+    Component {
+        id: greenButtonStyle
+
+        ButtonStyle {
+            background: Rectangle {
+                border.width: control.activeFocus ? 2 : 1
+                border.color: "#888"
+                radius: 4
+                gradient: Gradient {
+                    GradientStop { position: 0 ; color: control.pressed ? "#ccc" : "#287100" }
+                    GradientStop { position: 2 ; color: control.pressed ? "#aaa" : "#eee" }
+                }
+            }
+        }
+    }
+
+    Component {
+        id: generalCheckboxStyle
+
+        CheckBoxStyle {
+            indicator: Rectangle {
+                implicitWidth: 16
+                implicitHeight: 16
+                radius: 3
+                border.color: control.activeFocus ? "darkgreen" : "gray"
+                border.width: 1
+                Rectangle {
+                    visible: control.checked
+                    color: "#555"
+                    border.color: "#333"
+                    radius: 2
+                    anchors.margins: 4
+                    anchors.fill: parent
                 }
             }
         }

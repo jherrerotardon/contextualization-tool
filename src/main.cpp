@@ -1,48 +1,40 @@
 #include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include "gui/guicontextualizationcontroller.h"
-#include "console/consolecontextualizationcontroller.h"
+#include "tools/hpcontextualizationfactory.h"
+#include <QDebug>
 
 int main(int argc, char *argv[])
 {
-    //if (argc > 1) { ///< Console Mode. //TODO: decomenar en un futuro. El 2 para que entre con el debbuger
-    if (argc > 2) {
-        ConsoleContextualizationController consoleController(argc, argv);
-        consoleController.exec();
+    ContextualizationController *controller = HpContextualizationFactory().createController(argv, argc);
+
+    // Console mode.
+    if (dynamic_cast<ConsoleController *>(controller)) {
+        dynamic_cast<ConsoleController *>(controller)->exec();
+
+        delete controller;
 
         return 0;
     }
 
-    ///< GUI Mode.
+    // GUI Mode.
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-
-    QApplication app(argc, argv); ///< QApplication to use QWidgets like QMessageBox.
-
+    QApplication app(argc, argv); // QApplication to use QWidgets like QMessageBox.
     QQmlApplicationEngine engine;
+
+    /**
+     * The GuiContextualizationController class is registered as a type, which is accessible from QML by importing
+     * the URL, "io.controllers.guicontroller 1.0".
+     */
+    if (dynamic_cast<LinuxGuiController *>(controller)) {
+        qmlRegisterType<LinuxGuiController>("io.controllers.guicontroller", 1, 0, "Controller");
+    } else if (dynamic_cast<WindowsGuiController *>(controller)) {
+        qmlRegisterType<WindowsGuiController>("io.controllers.guicontroller", 1, 0, "Controller");
+    }
 
     engine.load(QUrl(QStringLiteral("qrc:/views/main.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;
 
-    GuiContextualizationController controller(engine.rootObjects().first());
-
     return app.exec();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

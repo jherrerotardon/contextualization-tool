@@ -1,8 +1,14 @@
 #Bin files
-bin/
+/bin/
 
 #User compile options.
 *.user
 
 #Tesseract repository.
-tesseract/
+/tesseract/
+
+#Data folder.
+/storage/
+
+#Configuration folder.
+/conf/

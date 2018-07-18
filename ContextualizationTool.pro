@@ -2,6 +2,7 @@ QT += quick
 QT += widgets
 CONFIG += c++11
 
+#Include root path of personal classes.
 INCLUDEPATH += $$PWD/src
 
 #Include paths of source files of tesseract.
@@ -25,16 +26,26 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    src/gui/stringstablemodel.cpp \
     src/main.cpp \
+    src/contextualization/model/contextualizationmodel.cpp \
+    src/contextualization/model/firmwarestring.cpp \
+    src/optical_character_recognition/ocr.cpp \
     src/tools/log.cpp \
-    src/base/firmwarestring.cpp \
-    src/base/contextualizationmodel.cpp \
     src/tools/utils.cpp \
-    src/tools/ocr.cpp \
-    src/gui/guicontextualizationcontroller.cpp \
-    src/base/contextualizationcontrollerbase.cpp \
-    src/console/consolecontextualizationcontroller.cpp
+    src/contextualization/controller/consolecontroller.cpp \
+    src/contextualization/controller/contextualizationcontroller.cpp \
+    src/contextualization/controller/guicontroller.cpp \
+    src/contextualization/controller/linuxguicontroller.cpp \
+    src/contextualization/controller/windowsguicontroller.cpp \
+    src/contextualization/controller/linuxconsolecontroller.cpp \
+    src/contextualization/controller/windowsconsolecontroller.cpp \
+    src/optical_character_recognition/tesseractocr.cpp \
+    src/tools/contextualizationfactoryabstract.cpp \
+    src/tools/hpcontextualizationfactory.cpp \
+    src/contextualization/model/string.cpp \
+    src/storage/mysqlconnector.cpp \
+    src/storage/databaseconnectorabstract.cpp \
+    src/storage/fpfileconnector.cpp
 
 RESOURCES += \
     resources/views.qrc \
@@ -52,15 +63,24 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    src/gui/stringstablemodel.h \
-    src/main.h \
+    src/contextualization/model/contextualizationmodel.h \
+    src/contextualization/model/firmwarestring.h \
+    src/optical_character_recognition/ocr.h \
     src/tools/log.h \
-    src/base/firmwarestring.h \
-    src/base/contextualizationmodel.h \
     src/tools/utils.h \
-    src/tools/ocr.h \
-    src/gui/guicontextualizationcontroller.h \
-    src/base/contextualizationcontrollerbase.h \
-    src/console/consolecontextualizationcontroller.h
+    src/contextualization/controller/consolecontroller.h \
+    src/contextualization/controller/contextualizationcontroller.h \
+    src/contextualization/controller/guicontroller.h \
+    src/contextualization/controller/linuxguicontroller.h \
+    src/contextualization/controller/windowsguicontroller.h \
+    src/contextualization/controller/linuxconsolecontroller.h \
+    src/contextualization/controller/windowsconsolecontroller.h \
+    src/optical_character_recognition/tesseractocr.h \
+    src/tools/contextualizationfactoryabstract.h \
+    src/tools/hpcontextualizationfactory.h \
+    src/contextualization/model/string.h \
+    src/storage/mysqlconnector.h \
+    src/storage/databaseconnectorabstract.h \
+    src/storage/fpfileconnector.h
 
 DISTFILES +=

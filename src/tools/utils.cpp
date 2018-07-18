@@ -28,7 +28,7 @@ int Utils::warningMessage(const QString &text, const QString &informativeText)
     msgBox.setInformativeText(informativeText);
     msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
     msgBox.setDefaultButton(QMessageBox::No);
-    msgBox.setIcon(QMessageBox::Critical);
+    msgBox.setIcon(QMessageBox::Warning);
     //msgBox.setStyleSheet("QLabel{min-width: 450px;}");
     return msgBox.exec();
 }
@@ -47,30 +47,31 @@ void Utils::informativeMessage(const QString &text, const QString &informativeTe
     msgBox.exec();
 }
 
-int Utils::appendFile(const QString &path, const QString &text)
+bool Utils::appendFile(const QString &path, const QString &text)
 {
     QFile file(path);
     if (!file.open(QIODevice::Append | QIODevice::Text)) {
-        return -1;
+        return false;
     }
 
     QTextStream out(&file);
     out << text << '\n';
     file.close();
-    return 0;
+    return true;
 }
 
-int Utils::writeFile(const QString &path, const QString &text)
+bool Utils::writeFile(const QString &path, const QString &text)
 {
     QFile file(path);
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        return -1;
+        return false;
     }
 
     QTextStream out(&file);
     out << text << '\n';
     file.close();
-    return 0;
+
+    return true;
 }
 
 QByteArray Utils::readAllFile(const QString &path)
@@ -88,18 +89,20 @@ QByteArray Utils::readAllFile(const QString &path)
     return out;
 }
 
-int Utils::executeProgram(
-        const QString &program,
+int Utils::executeProgram(const QString &program,
         const QStringList &arguments,
-        const QString &workDirectory,
+        const QString &standardOutput,
+        const QString &workingDirectory,
         const int timeout
 ) {
     QProcess *process;
     int codeError;
 
     process = new QProcess();
-    if (!workDirectory.isEmpty()) {
-        process->setWorkingDirectory(workDirectory);
+    process->setStandardOutputFile(standardOutput.isEmpty() ? QProcess::nullDevice() : standardOutput);
+    process->setStandardErrorFile(standardOutput.isEmpty() ? QProcess::nullDevice() : standardOutput);
+    if (!workingDirectory.isEmpty()) {
+        process->setWorkingDirectory(workingDirectory);
     }
 
     process->start(program, arguments);
@@ -117,10 +120,48 @@ QString Utils::zipCompressDirectoryContents(
     const QString &zipDestination,
     const QString &zipName
 ) {
+    int hasError;
     QStringList arguments;
     QString zipFile(QDir(zipDestination).absoluteFilePath(zipName + ".zip"));
 
     arguments << "-r" << zipFile << ".";
-    return Utils::executeProgram("zip", arguments, directory, 10000) ? QString("") : zipFile;
+    hasError = Utils::executeProgram("zip", arguments, QProcess::nullDevice(), directory, 10000);
+    return hasError ? QString() : zipFile;
 }
 
+QFuture<void> Utils::startProgressDialogCounter(QProgressDialog *dialog, bool *hasFinished, int timeout)
+{
+    for (int i = 0; i < 5; i++) {
+        dialog->setValue(i);
+        QThread::msleep(60);
+    }
+
+    // Run progress increment thread.
+    QFuture<void> future = QtConcurrent::run(
+        [dialog, hasFinished, timeout]() {
+            for (int i = 5; i < 100; i++) {
+                dialog->setValue(i);
+                if (*hasFinished) {
+                    break;
+                }
+
+                QThread::msleep(timeout);
+            }
+        }
+    );
+
+    return future;
+}
+
+bool Utils::isValidIp(const QString &ip)
+{
+    QRegularExpression regex("^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$");
+    QRegularExpressionMatch match = regex.match(ip);
+
+    return match.hasMatch();
+}
+
+QString Utils::getDateTime(QString format)
+{
+    return QDateTime::currentDateTime().toString(format);
+}
