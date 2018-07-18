@@ -294,3 +294,8 @@ void ConsoleController::open()
 
 }
 
+void ConsoleController::newProject()
+{
+
+}
+

@@ -5,6 +5,11 @@ Ocr::Ocr()
     language_ = "eng"; ///< Default language always "eng".
 }
 
+Ocr::~Ocr()
+{
+
+}
+
 QStringList Ocr::getLanguages() const
 {
     return language_.split('+');

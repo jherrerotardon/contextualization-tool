@@ -36,7 +36,7 @@ FirmwareString * FirmwareString::fromJson(QByteArray &json)
     return static_cast<FirmwareString *>(String::fromJson(json));
 }
 
-FirmwareString * FirmwareString::fromFpLine(QString &fpLine)
+FirmwareString * FirmwareString::fromFpLine(const QString &fpLine)
 {
     QString id;
     QString value;

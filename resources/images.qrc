@@ -4,11 +4,12 @@
         <file>images/exit.png</file>
         <file>images/copy.png</file>
         <file>images/paste.png</file>
-        <file>images/export.png</file>
-        <file>images/import.png</file>
+        <file>images/saveAs.png</file>
+        <file>images/open.png</file>
         <file>images/imageNotAvailable.png</file>
         <file>images/background.png</file>
         <file>images/newProject.png</file>
         <file>images/refresh.png</file>
+        <file>images/save.png</file>
     </qresource>
 </RCC>

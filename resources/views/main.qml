@@ -16,6 +16,7 @@ ApplicationWindow {
     signal loadImageRequested(bool detectStringsOnLoad)
     signal detectStringsRequested()
     signal openRequested()
+    signal saveRequested()
     signal saveAsRequested()
     signal fpFileConfigRequested()
     signal remoteHostConfigRequested()
@@ -63,15 +64,23 @@ ApplicationWindow {
             MenuItem {
                 text : "Open Project..."
                 shortcut : "Ctrl+O"
-                iconSource: "qrc:/images/import.png"
+                iconSource: "qrc:/images/open.png"
 
                 onTriggered: openRequested()
             }
 
             MenuItem {
-                text : "Save As..."
+                text : "Save"
                 shortcut : "Ctrl+S"
-                iconSource: "qrc:/images/export.png"
+                iconSource: "qrc:/images/save.png"
+
+                onTriggered: saveRequested()
+            }
+
+            MenuItem {
+                text : "Save As..."
+                shortcut : "Ctrl+Shift+S"
+                iconSource: "qrc:/images/saveAs.png"
 
                 onTriggered: saveAsRequested()
             }
@@ -325,6 +334,18 @@ ApplicationWindow {
 
                     model: controller.tableModel
 
+                    rowDelegate: Rectangle {
+                        height: 20
+                        SystemPalette {
+                            id: customPalette;
+                            colorGroup: SystemPalette.Active
+                        }
+                        color: {
+                            var baseColor = styleData.alternate?customPalette.alternateBase:customPalette.base
+                            return styleData.selected ? customPalette.highlight : baseColor
+                        }
+                    }
+
                     TableViewColumn {
                         id: checkboxsColumn
                         role: "selected"
@@ -361,7 +382,6 @@ ApplicationWindow {
 
                             style: TextFieldStyle
                             {
-                                padding.bottom: -1
                                 background: Rectangle {
                                     opacity: 0
                                 }
@@ -389,7 +409,6 @@ ApplicationWindow {
 
                                 style: TextFieldStyle
                                 {
-                                    padding.bottom: -1
                                     background: Rectangle {
                                         opacity: 0
                                     }

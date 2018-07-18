@@ -6,8 +6,6 @@
 
 int main(int argc, char *argv[])
 {
-    qDebug() << argc << "    ***********";
-
     ContextualizationController *controller = HpContextualizationFactory().createController(argv, argc);
 
     // Console mode.

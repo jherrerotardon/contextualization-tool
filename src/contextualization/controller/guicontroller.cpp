@@ -3,7 +3,12 @@
 GuiController::GuiController(QQuickWindow *view, QObject *parent)
     : ContextualizationController(parent)
 {
-    view_ = view;
+    if (view != Q_NULLPTR) {
+        setView(view);
+    }
+
+    projectHasChanges_ = false;
+    connectModelSignalsAndSlots();
 }
 
 GuiController::~GuiController()
@@ -26,7 +31,7 @@ void GuiController::add(QString newString, int findType)
         return;
     }
 
-    stringsFound = findString(newString, (FindType)findType);
+    stringsFound = findString(newString, (MatchType)findType);
     switch (stringsFound.size()) {
     // Case where string not found in fp file.
     case 0:
@@ -203,7 +208,7 @@ void GuiController::detect()
 
     // Start increment progess.
     progress.setWindowModality(Qt::WindowModal);
-    future = Utils::startProgressDialogCounter(&progress, &hasFinished);
+    future = Utils::startProgressDialogCounter(&progress, &hasFinished, 70);
 
     // Extract strings on image.
     extractedStrings = detectStringsOnImage();
@@ -303,19 +308,30 @@ void GuiController::cancel()
 {
     int response;
 
-    response = Utils::warningMessage("Are you sure?", "If you not save the proyect it will be deleted.");
-    if (response == QMessageBox::Yes) {
-        saveConfig();
-
-        QFile::remove(DONE_FP_FILE);
-
-        QApplication::quit();
+    if (projectHasChanges_) {
+        response = Utils::warningMessage("Project has unsaved changes.", "Do you want to save changes?");
+        if (response == QMessageBox::Yes) {
+            save();
+        }
     }
+
+    saveConfig();
+
+    QFile::remove(DONE_FP_FILE);
+
+    QApplication::quit();
 }
 
 void GuiController::save()
 {
+    // If current project already save on disk overwrite it, else creates new file.
+    if (currentProjectPath_.isEmpty()) {
+        saveAs();
+    } else {
+        exportToJsonFile(currentProjectPath_);
+    }
 
+    projectHasChanges_ = false;
 }
 
 void GuiController::saveAs()
@@ -342,11 +358,14 @@ void GuiController::saveAs()
         path = dialog.selectedFiles().first();
         path = path.endsWith(QString(".json")) ? path : path + ".json";
         exportToJsonFile(path);
+        projectHasChanges_ = false;
     }
 }
 
 void GuiController::open()
 {
+    QString projectPath;
+
     QFileDialog dialog(
         Q_NULLPTR,
         tr("Open Image"),
@@ -358,8 +377,38 @@ void GuiController::open()
     dialog.setFileMode(QFileDialog::ExistingFile);
     dialog.setViewMode(QFileDialog::Detail);
     if (dialog.exec()) {
-        importProjectFromJsonFile(dialog.selectedFiles().first());
+        projectPath = dialog.selectedFiles().first();
+        importProjectFromJsonFile(projectPath);
+
+        // Load flags for correct save and detect changes.
+        projectHasChanges_ = false;
+        currentProjectPath_ = projectPath;
     }
+}
+
+void GuiController::newProject()
+{
+    int response;
+
+    if (projectHasChanges_) {
+        response = Utils::warningMessage("Project has unsaved changes.", "Do you save?");
+        if (response == QMessageBox::Yes) {
+            save();
+        }
+    }
+
+    // Clear all model.
+    removeAllStrings();
+    clearImage();
+
+    // Load flags for correct save and detect changes.
+    projectHasChanges_ = false;
+    currentProjectPath_ = QString();
+}
+
+void GuiController::changeModel()
+{
+    projectHasChanges_ = true;
 }
 
 void GuiController::configFpFile()
@@ -433,7 +482,7 @@ QQuickWindow *GuiController::getView()
 void GuiController::setView(QQuickWindow *view)
 {
     view_ = view;
-    connectSignalsAndSlots();
+    connectGuiSignalsAndSlots();
 
     emit viewChanged();
 }
@@ -478,7 +527,7 @@ QString GuiController::requestPassword()
     return ok ? password : QString();
 }
 
-void GuiController::connectSignalsAndSlots()
+void GuiController::connectGuiSignalsAndSlots()
 {
     if (view_) {
         // Connect signals with slots
@@ -538,6 +587,12 @@ void GuiController::connectSignalsAndSlots()
         );
         QObject::connect(
             view_,
+            SIGNAL(saveRequested()),
+            this,
+            SLOT(save())
+        );
+        QObject::connect(
+            view_,
             SIGNAL(saveAsRequested()),
             this,
             SLOT(saveAs())
@@ -566,5 +621,30 @@ void GuiController::connectSignalsAndSlots()
             this,
             SLOT(refresh())
         );
+        QObject::connect(
+            view_,
+            SIGNAL(newProjectRequested()),
+            this,
+            SLOT(newProject())
+        );
     }
+}
+
+void GuiController::connectModelSignalsAndSlots()
+{
+    if (model_ != Q_NULLPTR) {
+        QObject::connect(
+            model_,
+            SIGNAL(imageChanged()),
+            this,
+            SLOT(changeModel())
+        );
+        QObject::connect(
+            model_,
+            SIGNAL(stringListChanged()),
+            this,
+            SLOT(changeModel())
+        );
+    }
+
 }

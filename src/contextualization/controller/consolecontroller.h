@@ -107,7 +107,7 @@ private:
     QString appName_;       ///< Application name.
     QVariant parameter_;    ///< Value of parameter that will be used by exec depending the behavior.
     ActionType action_;     ///< Behavior of exec() function.
-    FindType findType_;     ///< Indicates the type of find that will be done.
+    MatchType findType_;     ///< Indicates the type of find that will be done.
 
 private slots:
 
@@ -165,6 +165,11 @@ private slots:
      * @copydoc ContextualizationController::open();
      */
     void open() override;
+
+    /**
+     * @copydoc ContextualizationController::newProject();
+     */
+    void newProject() override;
 };
 
 #endif // CONSOLECONTROLLER_H

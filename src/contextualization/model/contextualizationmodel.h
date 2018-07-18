@@ -177,6 +177,18 @@ public:
      */
     ContextualizationModel & operator=(ContextualizationModel &other);
 
+signals:
+
+    /**
+     * @brief This signal is emited when a string is modified on model.
+     */
+    void stringListChanged();
+
+    /**
+     * @brief This signal is emited when the image of model is changed.
+     */
+    void imageChanged();
+
 private:
     QString image_;                 ///< Image associated with the model.
     QList<QObject *> stringsList_;  ///< List with the strings associated with the model.

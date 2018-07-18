@@ -28,6 +28,11 @@ public:
     Ocr();
 
     /**
+     * @brief Destroys the ocr instance.
+     */
+    ~Ocr();
+
+    /**
      * @brief Extracts strings contained in the image.
      *
      * Returns a QStringsList containing the strings detected in the image.

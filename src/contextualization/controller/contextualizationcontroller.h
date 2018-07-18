@@ -20,6 +20,7 @@
 #include "tools/utils.h"
 #include "tools/log.h"
 #include "optical_character_recognition/tesseractocr.h"
+#include "storage/fpfileconnector.h"
 
 class ContextualizationController : public QObject
 {
@@ -61,14 +62,14 @@ public:
     };
 
     /**
-     * @brief The FindType enum
+     * @brief The MatchType enum
      *
-     * Contains all find types by which you can search a string.
+     * Contains all match types by which you can search a string.
      */
-    enum FindType {
-        ByID = 0,           ///< The find will be done taking strings with the same idetifier.
-        ByValue,            ///< The find will be done taking strings with the same value.
-        ByApproximateValue, ///< The find will be done taking strings with similar value to the one you are looking for.
+    enum MatchType {
+        ByID = 0,           ///< The match will be done taking strings with the same idetifier.
+        ByValue,            ///< The match will be done taking strings with the same value.
+        ByApproximateValue, ///< The match will be done taking strings with similar value to the one you are looking for.
     };
 
     /**
@@ -176,10 +177,10 @@ protected:
      * received by parameter have to be compared.
      * Returns a firmware string list containing all strings that be found.
      * @param text Text to be found.
-     * @param findType Type of find to be done.
+     * @param matchType Type of find to be done.
      * @return
      */
-    QList<FirmwareString *> findString(const QString &text, const FindType findType = ByID);
+    QList<FirmwareString *> findString(const QString &text, const MatchType matchType = ByID);
 
     /**
      * @brief Checks the parameter state is a valid state.
@@ -234,6 +235,11 @@ protected:
      * @brief Remove all strings in the model.
      */
     bool removeAllStrings();
+
+    /**
+     * @brief Sets a no image in the model.
+     */
+    void clearImage();
 
     /**
      * @brief Starts a process that allow user capture an area of the screen.
@@ -343,9 +349,9 @@ protected slots:
      *
      * This slot interacts with the user through the screen showing messages.
      * @param newString New strign to add.
-     * @param findType Mode in which the string is to be searched for
+     * @param matchType Mode in which the string is to be searched for
      */
-    virtual void add(QString newString, int findType) = 0;
+    virtual void add(QString newString, int matchType) = 0;
 
     /**
      * @brief Tries to remove the string in the model with the identifier receiven by parameter.
@@ -405,6 +411,11 @@ protected slots:
      */
     virtual void refresh();
 
+    /**
+     * @brief Creates a new empty project.
+     */
+    virtual void newProject() = 0;
+
 signals:
 
     /**
@@ -425,10 +436,10 @@ private:
      * @brief Checks if the text belongs to a firmware string.
      * @param fwString Firmware string used to do checks.
      * @param text Text which will be checked if it belongs to the firmware string.
-     * @param findType Type of find will do.
+     * @param matchType Type of find will do.
      * @return bool
      */
-    bool isOnFwString(const FirmwareString &fwString, const QString &text, FindType findType = ByID);
+    bool matchFwString(const FirmwareString &fwString, const QString &text, MatchType matchType = ByID);
 
     /**
      * @brief Checks if the word is a common word used in firmare strings.

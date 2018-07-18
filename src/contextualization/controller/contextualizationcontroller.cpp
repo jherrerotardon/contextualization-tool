@@ -179,8 +179,8 @@ int ContextualizationController::sendContextualization(const QString &path, QStr
 
 QList<FirmwareString *> ContextualizationController::detectStringsOnImage()
 {
-    Ocr *worker;
-    QList<Ocr *> workers; // Used to save workers because after must be released.
+    TesseractOcr *worker;
+    QList<TesseractOcr *> workers; // Used to save workers because after must be released.
     QList<QFuture<QList<FirmwareString *>>> futures;
     QList<FirmwareString *> fwStrings;
     QStringList imageChunks;
@@ -218,7 +218,7 @@ QList<FirmwareString *> ContextualizationController::detectStringsOnImage()
     }
 
     // Release memory of workers.
-    foreach (Ocr *worker, workers) {
+    foreach (TesseractOcr *worker, workers) {
         delete worker;
         worker = Q_NULLPTR;
     }
@@ -247,12 +247,12 @@ QList<FirmwareString *> ContextualizationController::processStrings(QStringList 
     return out;
 }
 
-QList<FirmwareString *> ContextualizationController::findString(const QString &text, const FindType findType)
+QList<FirmwareString *> ContextualizationController::findString(const QString &text, const MatchType matchType)
 {
-    QString line;
     QFile file;
-    QList<FirmwareString *> stringsFound;
-    FirmwareString *fwString = Q_NULLPTR;
+    QList<String *> stringsFound;
+    QList<FirmwareString *> out;
+    FpFileConnector database;
 
     /**
      * If only have to find strings with DONE state, tries to do search in DONE_FP_FIlE, else use englishFpFile_.
@@ -270,36 +270,35 @@ QList<FirmwareString *> ContextualizationController::findString(const QString &t
         file.setFileName(englishFpFile_);
     }
 
-    // Begin read file.
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        Log::writeError(" Fail to open file: " + file.fileName());
+    // Set file where strings will be searched.
+    database.setPath(file.fileName());
 
-        return stringsFound;
+    // Get strings from database.
+    switch (matchType) {
+        case ByID:
+            stringsFound = database.getStringWithId(text);
+            break;
+        case ByValue:
+        case ByApproximateValue:
+            stringsFound = database.getStringsWithValue(text);
+            break;
     }
 
-    QTextStream in(&file);
-    while (!in.atEnd()) {
-        line = in.readLine();
-        fwString = FirmwareString::fromFpLine(line);
-        if (fwString) {
-            //If the text belongs to a string the fwString is saved, otherwise relsease memory of fwString.
-            if (isOnFwString(*fwString, text, findType))
-            {
-                stringsFound << fwString;
-            } else {
-                delete fwString;
-            }
+    // Filter strings that match with the search. No match strings are released.
+    foreach (String *string, stringsFound) {
+        if (matchFwString(*static_cast<FirmwareString *>(string), text, matchType)) {
+            out << static_cast<FirmwareString *>(string);
+        } else {
+            delete string;
         }
     }
 
-    file.close();
-
     // If only have to get DONE strings and find was not in DONE_FP_FILE is necessary filer strings.
     if (onlyDoneStrings_ && file.fileName() != DONE_FP_FILE) {
-        filterStringsByState(&stringsFound, "DONE");
+        //filterStringsByState(&out, "DONE");
     }
 
-    return stringsFound;
+    return out;
 }
 
 bool ContextualizationController::isValidState(QString &state)
@@ -380,6 +379,13 @@ bool ContextualizationController::removeAllStrings()
     }
 
     return false;
+}
+
+void ContextualizationController::clearImage()
+{
+    model_->setImage(ContextualizationModel::NO_IMAGE_PATH);
+
+    emit imageChanged();
 }
 
 bool ContextualizationController::setImage(const QString &image)
@@ -599,17 +605,18 @@ void ContextualizationController::refresh()
 }
 
 
-bool ContextualizationController::isOnFwString(const FirmwareString &fwString,
-        const QString &value,
-        FindType findType
+bool ContextualizationController::matchFwString(
+    const FirmwareString &fwString,
+    const QString &value,
+    MatchType matchType
 ) {
     Qt::CaseSensitivity caseSensitive = caseSensitive_ ? Qt::CaseSensitive : Qt::CaseInsensitive;
     QString text = value.simplified();  // Remove extra whitespaces.
 
     // If is a common word, always filter by ID.
-    findType = isCommonWord(text) ? ByValue : findType;
+    matchType = isCommonWord(text) ? ByValue : matchType;
 
-    switch (findType) {
+    switch (matchType) {
     case ByID:
         // A identifier is considered valid only if it is equals than the identifier of fwString.
         return text.compare(fwString.getId(), caseSensitive) == 0 ? true : false;

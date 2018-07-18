@@ -35,6 +35,8 @@ void ContextualizationModel::addString(
 void ContextualizationModel::addString(FirmwareString *newString)
 {
     stringsList_.append(newString);
+
+    emit stringListChanged();
 }
 
 void ContextualizationModel::addStrings(QList<FirmwareString *> &strings)
@@ -54,6 +56,8 @@ bool ContextualizationModel::removeString(QString &id)
             stringsList_.removeOne(string);
             delete string;
 
+            emit stringListChanged();
+
             return true;
         }
     }
@@ -70,6 +74,8 @@ bool ContextualizationModel::removeString(int pos)
         stringsList_.removeAt(pos);
         delete stringToRemove;
 
+        emit stringListChanged();
+
         return true;
     }
 
@@ -78,12 +84,16 @@ bool ContextualizationModel::removeString(int pos)
 
 void ContextualizationModel::removeAllStrings()
 {
-    foreach (QObject *fwString, stringsList_) {
-        delete fwString;
-        fwString = Q_NULLPTR;
-    }
+    if (!stringsList_.isEmpty()) {
+        foreach (QObject *fwString, stringsList_) {
+            delete fwString;
+            fwString = Q_NULLPTR;
+        }
 
-    stringsList_.clear();
+        stringsList_.clear();
+
+        emit stringListChanged();
+    }
 }
 
 QList<QObject *> &ContextualizationModel::getStringsList()
@@ -93,7 +103,11 @@ QList<QObject *> &ContextualizationModel::getStringsList()
 
 void ContextualizationModel::setImage(QString path)
 {
-    image_ = path;
+    if (image_ != path) {
+        image_ = path;
+
+        emit imageChanged();
+    }
 }
 
 QString ContextualizationModel::getImage()

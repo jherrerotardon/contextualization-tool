@@ -89,6 +89,16 @@ private slots:
     void open() override;
 
     /**
+     * @copydoc ContextualizationController::newProject();
+     */
+    void newProject() override;
+
+    /**
+     * @brief Change a flag to indicate that the model has changed.
+     */
+    void changeModel();
+
+    /**
      * @brief Opens a dialog where the user can configure the path of fp file.
      */
     void configFpFile();
@@ -105,11 +115,18 @@ private slots:
 
 private:
     QQuickWindow *view_;            ///< Pointer to view part of the MVC.
+    QString currentProjectPath_;    ///< Path of the active project in disk.
+    bool projectHasChanges_;        ///< Flag to know if current project has changes.
 
     /**
-     * @brief Connects signal in the view with the slots in the controller.
+     * @brief Connects signals emited in the view with the slots in the controller.
      */
-    void connectSignalsAndSlots();
+    void connectGuiSignalsAndSlots();
+
+    /**
+     * @brief Connects signals emited in the model with the slots in the controller.
+     */
+    void connectModelSignalsAndSlots();
 
     /**
      * @brief Returns a pointer to the view object.

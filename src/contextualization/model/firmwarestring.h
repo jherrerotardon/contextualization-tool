@@ -53,7 +53,7 @@ public:
      * @param lineNumber Contains the number of line on the file.
      * @return FirmwareString *|null
      */
-    static FirmwareString * fromFpLine(QString &fpLine);
+    static FirmwareString * fromFpLine(const QString &fpLine);
 
     /**
      * @brief Assigns other to firmware string and returns a reference to this firmware string.
