@@ -2,7 +2,7 @@
 
 ## About
 
-This project was developed by **Jorge Herrero TardÃ³n** as **
+This project was developed by **Jorge Herrero Tardón** as **
 Final Degree Project** in 2018.
 
 It's a tool designed to contextualize strings with a capture to be sent to the translators. It also has an internal tool to recognize strings on a image using Optical Character Recognition (**OCR**) technology.
@@ -14,6 +14,7 @@ This application was developed in **C++** language using **Qt Framework**. It ha
 ### Build from source code
 
 Pre-Requisites:
+
 - A compiler for C and C++: GCC
 - [Qt 5.10](https://www.qt.io/download) or above
 - [Leptonica](http://www.leptonica.org/)
