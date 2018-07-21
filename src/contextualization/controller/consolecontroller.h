@@ -76,7 +76,7 @@ public:
      * @param action Actions to be executed by exec() function.
      * @param parameter Required parameter to execute the action.
      */
-    void setAction(ActionType action, QVariant parameter);
+    inline void setAction(ActionType action, QVariant parameter = QVariant());
 
     /**
      * @brief Print in screen the general usage of application.

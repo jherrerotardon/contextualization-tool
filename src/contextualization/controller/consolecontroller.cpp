@@ -41,14 +41,13 @@ bool ConsoleController::decodeArguments(int argc, char **argv)
     // Cases with dynamic number of arguments.
     if (argc >= 3) {
         if (QString::compare(argv[1], "delete") == 0 && QString::compare(argv[2], "project") == 0) {
-            parameter_ = argc == 4 ? QVariant(argv[4]) : QVariant();
-            action_ = DeleteProject;
+           setAction(DeleteProject, argc == 4 ? QVariant(argv[4]) : QVariant());
         } else if (QString::compare(argv[1], "add") == 0) {
             for (int i = 2; i < argc; ++i) {
                 if (i == argc-1 && QString::compare(argv[i], "--help") == 0) {
-                    action_ = PrintAddHelp;
+                    setAction(PrintAddHelp);
                 } else if (i == argc-1) { // The last parameter must be the string to search.
-                    parameter_ = QVariant(argv[i]);
+                   setAction(AddString, QVariant(argv[i]));
                 } else if (QString::compare(argv[i], "--id") == 0) {
                     findType_ = ByID;
                 } else if (QString::compare(argv[i], "--value") == 0) {
@@ -63,16 +62,14 @@ bool ConsoleController::decodeArguments(int argc, char **argv)
                     onlyDoneStrings_ = false;
                 }
             }
-
-            action_ = AddString;
         }
     } else if (argc >= 2) {
         if (QString::compare(argv[1], "detect") == 0) {
             for (int i = 2; i < argc; ++i) {
                 if (i == argc-1 && QString::compare(argv[i], "--help") == 0) {
-                    action_ = PrintAddHelp;
+                    setAction(PrintAddHelp);
                 } else if (i == argc-1) { // The last parameter must be the string to search.
-                    parameter_ = QVariant(argv[i]);
+                    setAction(DetectStrings, parameter_ = QVariant(argv[i]));
                 } else if (QString::compare(argv[i], "--case-sensitive") == 0) {
                     caseSensitive_ = true;
                 } else if (QString::compare(argv[i], "--case-insensitive") == 0) {
@@ -83,8 +80,6 @@ bool ConsoleController::decodeArguments(int argc, char **argv)
                     onlyDoneStrings_ = false;
                 }
             }
-
-            action_ = DetectStrings;
         }
     }
 
@@ -92,61 +87,54 @@ bool ConsoleController::decodeArguments(int argc, char **argv)
     switch (argc) {
     case 2:
         if (QString::compare(argv[1], "-h") == 0 || QString::compare(argv[1], "--help") == 0) {
-            action_ = PrintHelp;
+            setAction(PrintHelp);
         } else if (QString::compare(argv[1], "list") == 0) {
-            action_ = ListProjects;
+            setAction(ListProjects);
         } else if (QString::compare(argv[1], "detail") == 0) {
-            action_ = DetailProject;
+            setAction(DetailProject);
         } else if (QString::compare(argv[1], "add") == 0) {
-            action_ = PrintAddHelp;
+            setAction(PrintAddHelp);
         }
 
         break;
 
     case 3:
         if (QString::compare(argv[1], "select") == 0) {
-            parameter_ = QVariant(argv[2]);
-            action_ = SelectProject;
+            setAction(SelectProject, QVariant(argv[2]));
         } else if (QString::compare(argv[1], "clear") == 0) {
             if (QString::compare(argv[2], "strings") == 0) {
-                action_ = ClearStrings;
+                setAction(ClearStrings);
             } else if (QString::compare(argv[2], "image") == 0) {
-                action_ = ClearImage;
+                setAction(ClearImage);
             } else if (QString::compare(argv[2], "all") == 0) {
-                action_ = ClearAll;
+                setAction(ClearAll);
             } else {
-                action_ = PrintClearHelp;
+                setAction(PrintClearHelp);
             }
         } else if (QString::compare(argv[1], "new") == 0) {
-            parameter_ = QVariant(argv[2]);
-            action_ = NewProject;
+            setAction(NewProject, QVariant(argv[2]));
         } else if (QString::compare(argv[1], "remove") == 0) {
-            parameter_ = QVariant(argv[2]);
-            action_ = RemoveString;
+            setAction(RemoveString, QVariant(argv[2]));
         } else if (QString::compare(argv[1], "image") == 0) {
             if (QString::compare(argv[1], "-c") == 0 || QString::compare(argv[1], "--capture") == 0) {
-                action_ = CaptureArea;
+                setAction(CaptureArea);
             } else if (QString::compare(argv[1], "--help") == 0) {
-                action_ = PrintImageHelp;
+                setAction(PrintImageHelp);
             } else {
-                parameter_ = QVariant(argv[2]);
-                action_ = SetImage;
+                setAction(SetImage, QVariant(argv[2]));
             }
         } else if (QString::compare(argv[1], "export") == 0) {
-            parameter_ = QVariant(argv[2]);
-            action_ = ExportProject;
+            setAction(ExportProject, QVariant(argv[2]));
         } else if (QString::compare(argv[1], "import") == 0) {
-            parameter_ = QVariant(argv[2]);
-            action_ = ImportPorject;
+            setAction(ImportPorject, QVariant(argv[2]));
         } else if (QString::compare(argv[1], "send") == 0) {
-            parameter_ = QVariant(argv[2]);
-            action_ = Send;
+            setAction(Send, QVariant(argv[2]));
         }
 
         break;
 
     default:
-        action_ = PrintHelp;
+        setAction(PrintHelp);
         break;
     }
 
