@@ -283,7 +283,7 @@ QList<FirmwareString *> ContextualizationController::findString(const QString &t
             break;
 
         case ByApproximateValue:
-            stringsFound = database.getStringsWithAproximateValue(text, caseSensitive_);
+            stringsFound = database.getStringsWithApproximateValue(text, caseSensitive_);
             break;
     }
 

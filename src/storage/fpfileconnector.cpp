@@ -85,7 +85,7 @@ QList<String *> FpFileConnector::getStringsWithValue(const QString &value, bool 
     return out;
 }
 
-QList<String *> FpFileConnector::getStringsWithAproximateValue(const QString &value, bool caseSensitive) {
+QList<String *> FpFileConnector::getStringsWithApproximateValue(const QString &value, bool caseSensitive) {
     QList<String *> out;
     FirmwareString *fwString;
     Qt::CaseSensitivity isCaseSensitive = caseSensitive ? Qt::CaseSensitive : Qt::CaseInsensitive;
@@ -170,7 +170,7 @@ bool FpFileConnector::insertString(const String &string)
 
 }
 
-bool FpFileConnector::insertStrings(const QList<String *> &strings)
+int FpFileConnector::insertStrings(const QList<String *> &strings)
 {
 
 }
@@ -180,7 +180,7 @@ int FpFileConnector::removeStringsWithValue(const QString &value, bool caseSensi
 
 }
 
-bool FpFileConnector::removeStringsWithId(const QString &id, bool caseSensitive)
+int FpFileConnector::removeStringsWithId(const QString &id, bool caseSensitive)
 {
 
 }

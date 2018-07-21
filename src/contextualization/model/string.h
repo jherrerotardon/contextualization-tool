@@ -177,6 +177,8 @@ public:
 
     /**
      * @brief Assigns other to firmware string and returns a reference to this firmware string.
+     *
+     * Overloads fromString(QString &json) function.
      * @param other Model to be copied.
      * @return Reference to this firmware string.
      */

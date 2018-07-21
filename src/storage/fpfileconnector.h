@@ -45,9 +45,9 @@ public:
     QList<String *> getStringsWithValue(const QString &value, bool caseSensitive = true) override;
 
     /**
-     * @copydoc DatabaseConnectorAbstract::getStringsWithAproximateValue(const QString &value, bool caseSensitive)
+     * @copydoc DatabaseConnectorAbstract::getStringsWithApproximateValue(const QString &value, bool caseSensitive)
      */
-    QList<String *> getStringsWithAproximateValue(const QString &value, bool caseSensitive = true) override;
+    QList<String *> getStringsWithApproximateValue(const QString &value, bool caseSensitive = true) override;
 
     /**
      * @copydoc DatabaseConnectorAbstract::getStringWithId(const QString &id, bool caseSensitive)
@@ -62,7 +62,7 @@ public:
     /**
      * @copydoc DatabaseConnectorAbstract::insertStrings(const QList<String *> &strings)
      */
-    bool insertStrings(const QList<String *> &strings) override;
+    int insertStrings(const QList<String *> &strings) override;
 
     /**
      * @copydoc DatabaseConnectorAbstract::removeStringsWithValue(const QString &value, bool caseSensitive)
@@ -72,7 +72,7 @@ public:
     /**
      * @copydoc DatabaseConnectorAbstract::removeStringsWithId(const QString &id, bool caseSensitive)
      */
-    bool removeStringsWithId(const QString &id, bool caseSensitive = true) override;
+    int removeStringsWithId(const QString &id, bool caseSensitive = true) override;
 
 private:
     QFile file_;          ///< File where strings is stored.

@@ -1,8 +1,11 @@
 #include "log.h"
 
-const QString Log::debugFile_ = "/tmp/contextualization.debug";
-const QString Log::logFile_ = "/tmp/contextualization.log";
-const QString Log::errorFile_ = "/tmp/contextualization.err";
+const QString Log::debugFile_ = QStandardPaths::standardLocations(QStandardPaths::TempLocation).first()
+    + "/contextualization.debug";
+const QString Log::logFile_ = QStandardPaths::standardLocations(QStandardPaths::TempLocation).first()
+    + "/contextualization.log";
+const QString Log::errorFile_ = QStandardPaths::standardLocations(QStandardPaths::TempLocation).first()
+    + "/contextualization.err";
 
 Log::Log()
 {

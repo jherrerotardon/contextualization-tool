@@ -5,6 +5,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QDate>
+#include <QStandardPaths>
 
 class Log
 {

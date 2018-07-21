@@ -23,12 +23,6 @@ public:
     ContextualizationFactoryAbstract();
 
     /**
-     * @brief Returns the kernel type where the app is running.
-     * @return Kernel type of the current system.
-     */
-    KernelType getCurrentKernelType();
-
-    /**
      * @brief Instantiates a new controller for a contextualization.
      *
      * This is a pure vistual function that must to be implemented in inherits classes.
@@ -37,6 +31,14 @@ public:
      * @return A new controller.
      */
     virtual ContextualizationController * createController(char **params, int count) = 0;
+
+protected:
+
+    /**
+     * @brief Returns the kernel type where the app is running.
+     * @return Kernel type of the current system.
+     */
+    KernelType getCurrentKernelType();
 };
 
 #endif // CONTEXTUALIZATIONFACTORYABSTRACT_H

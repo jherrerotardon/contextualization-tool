@@ -31,7 +31,7 @@ public:
      * @param value String value.
      * @return List with strings.
      */
-    virtual QList<String *> getStringsWithAproximateValue(const QString &value, bool caseSensitive = true) = 0;
+    virtual QList<String *> getStringsWithApproximateValue(const QString &value, bool caseSensitive = true) = 0;
 
     /**
      * @brief Returns all strigns in database with the identifier received by argument.
@@ -52,11 +52,11 @@ public:
     /**
      * @brief Inserts a set of strings into the database.
      *
-     * Returns true if the insertion was succesfull, otherwise, returns false.
+     * Returns the number of inserted stirngs.
      * @param strings List with strings to be added into databse.
      * @return bool
      */
-    virtual bool insertStrings(const QList<String *> &strings) = 0;
+    virtual int insertStrings(const QList<String *> &strings) = 0;
 
     /**
      * @brief Removes from databse all strigns with the value received by argument.
@@ -69,10 +69,12 @@ public:
 
     /**
      * @brief Removes from databse the strign with the identifier received by argument.
+     *
+     * Returns the number of removed stirngs.
      * @param value String identifier.
      * @return bool
      */
-    virtual bool removeStringsWithId(const QString &id, bool caseSensitive = true) = 0;
+    virtual int removeStringsWithId(const QString &id, bool caseSensitive = true) = 0;
 
 protected:
     const int MIN_LENGTH_FOR_APPROXIMATE;       ///< Minimun length for string to do an approximate find.

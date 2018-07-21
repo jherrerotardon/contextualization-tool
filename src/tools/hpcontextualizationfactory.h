@@ -6,6 +6,7 @@
 #include "contextualization/controller/linuxguicontroller.h"
 #include "contextualization/controller/windowsconsolecontroller.h"
 #include "contextualization/controller/windowsguicontroller.h"
+#include "tools/utils.h"
 
 class HpContextualizationFactory : public ContextualizationFactoryAbstract
 {
