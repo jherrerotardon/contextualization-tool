@@ -364,14 +364,22 @@ void GuiController::saveAs()
 
 void GuiController::open()
 {
+    int response;
     QString projectPath;
-
     QFileDialog dialog(
         Q_NULLPTR,
         tr("Open Image"),
         QDir::homePath(),
         tr("Contextualization File (*.json)")
     );
+
+    // Save current project if has changes and the user want it.
+    if (projectHasChanges_) {
+        response = Utils::warningMessage("Project has unsaved changes.", "Do you save?");
+        if (response == QMessageBox::Yes) {
+            save();
+        }
+    }
 
     dialog.setAcceptMode(QFileDialog::AcceptOpen);
     dialog.setFileMode(QFileDialog::ExistingFile);
@@ -390,6 +398,7 @@ void GuiController::newProject()
 {
     int response;
 
+    // Save current project if has changes and the user want it.
     if (projectHasChanges_) {
         response = Utils::warningMessage("Project has unsaved changes.", "Do you save?");
         if (response == QMessageBox::Yes) {
