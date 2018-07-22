@@ -1,4 +1,0 @@
--Pass para tranferir para seguridad
-
--El tema modificar ID o textos desde la tabla: Aclarar qué pasa cuando se mete ID
-    repetido. Si se checkea, preguntar dónde (en fichero fp o solo en los de DONE)-

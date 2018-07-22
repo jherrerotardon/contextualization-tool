@@ -57,7 +57,7 @@ sudo apt-get install libgl1-mesa-dev
 ### Installing Contextualization Tool from Git
 
 ```
-git clone git@bitbucket.org:jherrerotardon/contextualization-tool.git Contextualization-Tool
+git clone https://jherrerotardon@bitbucket.org/jherrerotardon/contextualization-tool.git Contextualization-Tool
 cd Contextualization-Tool
 ./install
 ```
