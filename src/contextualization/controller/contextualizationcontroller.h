@@ -107,7 +107,7 @@ protected:
      * @param path File path where be readed data project.
      * @return int
      */
-    int importProjectFromJsonFile(const QString &path);
+    CodeError importProjectFromJsonFile(const QString &path);
 
     /**
      * @brief Imports projet from json file.
@@ -147,7 +147,7 @@ protected:
      * @param password Password credential.
      * @return
      */
-    int sendContextualization(QString const &path, QString user, QString password);
+    CodeError sendContextualization(QString const &path, QString user, QString password);
 
     /**
      * @brief Extracts the strings contained in the image set in the model.
@@ -198,9 +198,9 @@ protected:
      * If the parameter fwString is null, nothing is done.
      * Return true if FirmwareString is added successfully and false if not.
      * @param fwString The string to add on the model.
-     * @return bool
+     * @return Error code.
      */
-    int addString(FirmwareString *fwString);
+    CodeError addString(FirmwareString *fwString);
 
     /**
      * @brief Adds new strings on the model.
@@ -311,7 +311,7 @@ protected:
      * If copy was created succesfully returns 0, otherwise returns the code error.
      * @return Code error
      */
-    int generateDoneFpFile();
+    virtual int generateDoneFpFile();
 
     /**
      * @brief Filters a list of firmware strings. Remove from the list all strings that have not the same state as the
@@ -393,12 +393,12 @@ protected slots:
     /**
      * @brief Saves current project.
      */
-    virtual void save() = 0;
+    virtual bool save() = 0;
 
     /**
      * @brief Opens a dialog and saves current project in the path specied for the user.
      */
-    virtual void saveAs() = 0;
+    virtual bool saveAs() = 0;
 
     /**
      * @brief Opens a project saves on disk.

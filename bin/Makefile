@@ -69,7 +69,8 @@ SOURCES       = ../src/main.cpp \
 		../src/contextualization/model/string.cpp \
 		../src/storage/mysqlconnector.cpp \
 		../src/storage/databaseconnectorabstract.cpp \
-		../src/storage/fpfileconnector.cpp qrc_views.cpp \
+		../src/storage/fpfileconnector.cpp \
+		../src/translation/traductor.cpp qrc_views.cpp \
 		qrc_images.cpp \
 		moc_contextualizationmodel.cpp \
 		moc_contextualizationcontroller.cpp \
@@ -95,6 +96,7 @@ OBJECTS       = main.o \
 		mysqlconnector.o \
 		databaseconnectorabstract.o \
 		fpfileconnector.o \
+		traductor.o \
 		qrc_views.o \
 		qrc_images.o \
 		moc_contextualizationmodel.o \
@@ -308,7 +310,8 @@ DIST          = ../../../../Qt/5.11.0/gcc_64/mkspecs/features/spec_pre.prf \
 		../src/contextualization/model/string.h \
 		../src/storage/mysqlconnector.h \
 		../src/storage/databaseconnectorabstract.h \
-		../src/storage/fpfileconnector.h ../src/main.cpp \
+		../src/storage/fpfileconnector.h \
+		../src/translation/traductor.h ../src/main.cpp \
 		../src/contextualization/model/contextualizationmodel.cpp \
 		../src/contextualization/model/firmwarestring.cpp \
 		../src/optical_character_recognition/ocr.cpp \
@@ -327,7 +330,8 @@ DIST          = ../../../../Qt/5.11.0/gcc_64/mkspecs/features/spec_pre.prf \
 		../src/contextualization/model/string.cpp \
 		../src/storage/mysqlconnector.cpp \
 		../src/storage/databaseconnectorabstract.cpp \
-		../src/storage/fpfileconnector.cpp
+		../src/storage/fpfileconnector.cpp \
+		../src/translation/traductor.cpp
 QMAKE_TARGET  = ContextualizationTool
 DESTDIR       = 
 TARGET        = ContextualizationTool
@@ -752,8 +756,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../resources/views.qrc ../resources/images.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../Qt/5.11.0/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../src/contextualization/model/contextualizationmodel.h ../src/contextualization/model/firmwarestring.h ../src/optical_character_recognition/ocr.h ../src/tools/log.h ../src/tools/utils.h ../src/contextualization/controller/consolecontroller.h ../src/contextualization/controller/contextualizationcontroller.h ../src/contextualization/controller/guicontroller.h ../src/contextualization/controller/linuxguicontroller.h ../src/contextualization/controller/windowsguicontroller.h ../src/contextualization/controller/linuxconsolecontroller.h ../src/contextualization/controller/windowsconsolecontroller.h ../src/optical_character_recognition/tesseractocr.h ../src/tools/contextualizationfactoryabstract.h ../src/tools/hpcontextualizationfactory.h ../src/contextualization/model/string.h ../src/storage/mysqlconnector.h ../src/storage/databaseconnectorabstract.h ../src/storage/fpfileconnector.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../src/main.cpp ../src/contextualization/model/contextualizationmodel.cpp ../src/contextualization/model/firmwarestring.cpp ../src/optical_character_recognition/ocr.cpp ../src/tools/log.cpp ../src/tools/utils.cpp ../src/contextualization/controller/consolecontroller.cpp ../src/contextualization/controller/contextualizationcontroller.cpp ../src/contextualization/controller/guicontroller.cpp ../src/contextualization/controller/linuxguicontroller.cpp ../src/contextualization/controller/windowsguicontroller.cpp ../src/contextualization/controller/linuxconsolecontroller.cpp ../src/contextualization/controller/windowsconsolecontroller.cpp ../src/optical_character_recognition/tesseractocr.cpp ../src/tools/contextualizationfactoryabstract.cpp ../src/tools/hpcontextualizationfactory.cpp ../src/contextualization/model/string.cpp ../src/storage/mysqlconnector.cpp ../src/storage/databaseconnectorabstract.cpp ../src/storage/fpfileconnector.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../src/contextualization/model/contextualizationmodel.h ../src/contextualization/model/firmwarestring.h ../src/optical_character_recognition/ocr.h ../src/tools/log.h ../src/tools/utils.h ../src/contextualization/controller/consolecontroller.h ../src/contextualization/controller/contextualizationcontroller.h ../src/contextualization/controller/guicontroller.h ../src/contextualization/controller/linuxguicontroller.h ../src/contextualization/controller/windowsguicontroller.h ../src/contextualization/controller/linuxconsolecontroller.h ../src/contextualization/controller/windowsconsolecontroller.h ../src/optical_character_recognition/tesseractocr.h ../src/tools/contextualizationfactoryabstract.h ../src/tools/hpcontextualizationfactory.h ../src/contextualization/model/string.h ../src/storage/mysqlconnector.h ../src/storage/databaseconnectorabstract.h ../src/storage/fpfileconnector.h ../src/translation/traductor.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../src/main.cpp ../src/contextualization/model/contextualizationmodel.cpp ../src/contextualization/model/firmwarestring.cpp ../src/optical_character_recognition/ocr.cpp ../src/tools/log.cpp ../src/tools/utils.cpp ../src/contextualization/controller/consolecontroller.cpp ../src/contextualization/controller/contextualizationcontroller.cpp ../src/contextualization/controller/guicontroller.cpp ../src/contextualization/controller/linuxguicontroller.cpp ../src/contextualization/controller/windowsguicontroller.cpp ../src/contextualization/controller/linuxconsolecontroller.cpp ../src/contextualization/controller/windowsconsolecontroller.cpp ../src/optical_character_recognition/tesseractocr.cpp ../src/tools/contextualizationfactoryabstract.cpp ../src/tools/hpcontextualizationfactory.cpp ../src/contextualization/model/string.cpp ../src/storage/mysqlconnector.cpp ../src/storage/databaseconnectorabstract.cpp ../src/storage/fpfileconnector.cpp ../src/translation/traductor.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -782,7 +786,7 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_views.cpp qrc_images.cpp
 qrc_views.cpp: ../resources/views.qrc \
 		../../../Qt/5.11.0/gcc_64/bin/rcc \
-		../resources/views/main.qml
+		../resources/views/ContextualizationGUI.qml
 	/home/jorge/Qt/5.11.0/gcc_64/bin/rcc -name views ../resources/views.qrc -o qrc_views.cpp
 
 qrc_images.cpp: ../resources/images.qrc \
@@ -908,6 +912,8 @@ moc_contextualizationmodel.cpp: ../../../Qt/5.11.0/gcc_64/include/QtCore/QObject
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QTextStream \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QDate \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/QStandardPaths \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qstandardpaths.h \
 		../src/contextualization/model/contextualizationmodel.h \
 		moc_predefs.h \
 		../../../Qt/5.11.0/gcc_64/bin/moc
@@ -970,13 +976,11 @@ moc_contextualizationcontroller.cpp: ../../../Qt/5.11.0/gcc_64/include/QtCore/QO
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qiodevice.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QStandardPaths \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qstandardpaths.h \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/QDateTime \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qshareddata.h \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qhash.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QDir \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdir.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qfileinfo.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qshareddata.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qhash.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QJsonDocument \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qjsondocument.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qjsonvalue.h \
@@ -1050,6 +1054,7 @@ moc_contextualizationcontroller.cpp: ../../../Qt/5.11.0/gcc_64/include/QtCore/QO
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcommandlineparser.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcoreapplication.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdeadlinetimer.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qelapsedtimer.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdiriterator.h \
@@ -1173,6 +1178,7 @@ moc_contextualizationcontroller.cpp: ../../../Qt/5.11.0/gcc_64/include/QtCore/QO
 		../../../Qt/5.11.0/gcc_64/include/QtWidgets/QProgressDialog \
 		../../../Qt/5.11.0/gcc_64/include/QtWidgets/qprogressdialog.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QThread \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/QDateTime \
 		../src/optical_character_recognition/tesseractocr.h \
 		../tesseract/src/api/baseapi.h \
 		../tesseract/src/api/tess_version.h \
@@ -1363,8 +1369,6 @@ moc_guicontroller.cpp: ../../../Qt/5.11.0/gcc_64/include/QtWidgets/QInputDialog 
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QFile \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QStandardPaths \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qstandardpaths.h \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/QDateTime \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QDir \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QJsonDocument \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qjsondocument.h \
@@ -1406,6 +1410,7 @@ moc_guicontroller.cpp: ../../../Qt/5.11.0/gcc_64/include/QtWidgets/QInputDialog 
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcommandlineoption.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcommandlineparser.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdeadlinetimer.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qelapsedtimer.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdiriterator.h \
@@ -1510,6 +1515,7 @@ moc_guicontroller.cpp: ../../../Qt/5.11.0/gcc_64/include/QtWidgets/QInputDialog 
 		../../../Qt/5.11.0/gcc_64/include/QtWidgets/QProgressDialog \
 		../../../Qt/5.11.0/gcc_64/include/QtWidgets/qprogressdialog.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QThread \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/QDateTime \
 		../src/optical_character_recognition/tesseractocr.h \
 		../tesseract/src/api/baseapi.h \
 		../tesseract/src/api/tess_version.h \
@@ -1613,6 +1619,8 @@ moc_string.cpp: ../../../Qt/5.11.0/gcc_64/include/QtCore/QString \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QTextStream \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QDate \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/QStandardPaths \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qstandardpaths.h \
 		../src/contextualization/model/string.h \
 		moc_predefs.h \
 		../../../Qt/5.11.0/gcc_64/bin/moc
@@ -1771,8 +1779,6 @@ main.o: ../src/main.cpp ../../../Qt/5.11.0/gcc_64/include/QtWidgets/QApplication
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QFile \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QStandardPaths \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qstandardpaths.h \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/QDateTime \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QDir \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdir.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qfileinfo.h \
@@ -1816,6 +1822,7 @@ main.o: ../src/main.cpp ../../../Qt/5.11.0/gcc_64/include/QtWidgets/QApplication
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcommandlineoption.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcommandlineparser.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdeadlinetimer.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qelapsedtimer.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdiriterator.h \
@@ -1921,6 +1928,7 @@ main.o: ../src/main.cpp ../../../Qt/5.11.0/gcc_64/include/QtWidgets/QApplication
 		../../../Qt/5.11.0/gcc_64/include/QtWidgets/QProgressDialog \
 		../../../Qt/5.11.0/gcc_64/include/QtWidgets/qprogressdialog.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QThread \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/QDateTime \
 		../src/optical_character_recognition/tesseractocr.h \
 		../tesseract/src/api/baseapi.h \
 		../tesseract/src/api/tess_version.h \
@@ -2086,7 +2094,9 @@ contextualizationmodel.o: ../src/contextualization/model/contextualizationmodel.
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QFile \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QTextStream \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QDate \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/QStandardPaths \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qstandardpaths.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o contextualizationmodel.o ../src/contextualization/model/contextualizationmodel.cpp
 
 firmwarestring.o: ../src/contextualization/model/firmwarestring.cpp ../src/contextualization/model/firmwarestring.h \
@@ -2167,7 +2177,9 @@ firmwarestring.o: ../src/contextualization/model/firmwarestring.cpp ../src/conte
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QTextStream \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QDate \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/QStandardPaths \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qstandardpaths.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o firmwarestring.o ../src/contextualization/model/firmwarestring.cpp
 
 ocr.o: ../src/optical_character_recognition/ocr.cpp ../src/optical_character_recognition/ocr.h \
@@ -2268,7 +2280,9 @@ ocr.o: ../src/optical_character_recognition/ocr.cpp ../src/optical_character_rec
 		../src/tools/log.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QTextStream \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QDate \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/QStandardPaths \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qstandardpaths.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o ocr.o ../src/optical_character_recognition/ocr.cpp
 
 log.o: ../src/tools/log.cpp ../src/tools/log.h \
@@ -2340,7 +2354,9 @@ log.o: ../src/tools/log.cpp ../src/tools/log.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qshareddata.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qsharedpointer_impl.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QDate \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/QStandardPaths \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qstandardpaths.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o log.o ../src/tools/log.cpp
 
 utils.o: ../src/tools/utils.cpp ../src/tools/utils.h \
@@ -2587,7 +2603,8 @@ utils.o: ../src/tools/utils.cpp ../src/tools/utils.h \
 		../../../Qt/5.11.0/gcc_64/include/QtConcurrent/qtconcurrentrun.h \
 		../../../Qt/5.11.0/gcc_64/include/QtConcurrent/qtconcurrentrunbase.h \
 		../../../Qt/5.11.0/gcc_64/include/QtConcurrent/qtconcurrentstoredfunctioncall.h \
-		../../../Qt/5.11.0/gcc_64/include/QtConcurrent/qtconcurrentversion.h
+		../../../Qt/5.11.0/gcc_64/include/QtConcurrent/qtconcurrentversion.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/QDateTime
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o utils.o ../src/tools/utils.cpp
 
 consolecontroller.o: ../src/contextualization/controller/consolecontroller.cpp ../src/contextualization/controller/consolecontroller.h \
@@ -2663,8 +2680,6 @@ consolecontroller.o: ../src/contextualization/controller/consolecontroller.cpp .
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QStandardPaths \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qstandardpaths.h \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/QDateTime \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QDir \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdir.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qfileinfo.h \
@@ -2730,6 +2745,7 @@ consolecontroller.o: ../src/contextualization/controller/consolecontroller.cpp .
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcommandlineparser.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcoreapplication.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdeadlinetimer.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qelapsedtimer.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdiriterator.h \
@@ -2853,6 +2869,7 @@ consolecontroller.o: ../src/contextualization/controller/consolecontroller.cpp .
 		../../../Qt/5.11.0/gcc_64/include/QtWidgets/QProgressDialog \
 		../../../Qt/5.11.0/gcc_64/include/QtWidgets/qprogressdialog.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QThread \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/QDateTime \
 		../src/optical_character_recognition/tesseractocr.h \
 		../tesseract/src/api/baseapi.h \
 		../tesseract/src/api/tess_version.h \
@@ -2934,13 +2951,11 @@ contextualizationcontroller.o: ../src/contextualization/controller/contextualiza
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qiodevice.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QStandardPaths \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qstandardpaths.h \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/QDateTime \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qshareddata.h \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qhash.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QDir \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdir.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qfileinfo.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qshareddata.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qhash.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QJsonDocument \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qjsondocument.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qjsonvalue.h \
@@ -3014,6 +3029,7 @@ contextualizationcontroller.o: ../src/contextualization/controller/contextualiza
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcommandlineparser.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcoreapplication.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdeadlinetimer.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qelapsedtimer.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdiriterator.h \
@@ -3137,6 +3153,7 @@ contextualizationcontroller.o: ../src/contextualization/controller/contextualiza
 		../../../Qt/5.11.0/gcc_64/include/QtWidgets/QProgressDialog \
 		../../../Qt/5.11.0/gcc_64/include/QtWidgets/qprogressdialog.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QThread \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/QDateTime \
 		../src/optical_character_recognition/tesseractocr.h \
 		../tesseract/src/api/baseapi.h \
 		../tesseract/src/api/tess_version.h \
@@ -3325,8 +3342,6 @@ guicontroller.o: ../src/contextualization/controller/guicontroller.cpp ../src/co
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QFile \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QStandardPaths \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qstandardpaths.h \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/QDateTime \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QDir \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QJsonDocument \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qjsondocument.h \
@@ -3368,6 +3383,7 @@ guicontroller.o: ../src/contextualization/controller/guicontroller.cpp ../src/co
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcommandlineoption.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcommandlineparser.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdeadlinetimer.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qelapsedtimer.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdiriterator.h \
@@ -3472,6 +3488,7 @@ guicontroller.o: ../src/contextualization/controller/guicontroller.cpp ../src/co
 		../../../Qt/5.11.0/gcc_64/include/QtWidgets/QProgressDialog \
 		../../../Qt/5.11.0/gcc_64/include/QtWidgets/qprogressdialog.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QThread \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/QDateTime \
 		../src/optical_character_recognition/tesseractocr.h \
 		../tesseract/src/api/baseapi.h \
 		../tesseract/src/api/tess_version.h \
@@ -3661,8 +3678,6 @@ linuxguicontroller.o: ../src/contextualization/controller/linuxguicontroller.cpp
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QFile \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QStandardPaths \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qstandardpaths.h \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/QDateTime \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QDir \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QJsonDocument \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qjsondocument.h \
@@ -3704,6 +3719,7 @@ linuxguicontroller.o: ../src/contextualization/controller/linuxguicontroller.cpp
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcommandlineoption.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcommandlineparser.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdeadlinetimer.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qelapsedtimer.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdiriterator.h \
@@ -3808,6 +3824,7 @@ linuxguicontroller.o: ../src/contextualization/controller/linuxguicontroller.cpp
 		../../../Qt/5.11.0/gcc_64/include/QtWidgets/QProgressDialog \
 		../../../Qt/5.11.0/gcc_64/include/QtWidgets/qprogressdialog.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QThread \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/QDateTime \
 		../src/optical_character_recognition/tesseractocr.h \
 		../tesseract/src/api/baseapi.h \
 		../tesseract/src/api/tess_version.h \
@@ -3997,8 +4014,6 @@ windowsguicontroller.o: ../src/contextualization/controller/windowsguicontroller
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QFile \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QStandardPaths \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qstandardpaths.h \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/QDateTime \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QDir \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QJsonDocument \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qjsondocument.h \
@@ -4040,6 +4055,7 @@ windowsguicontroller.o: ../src/contextualization/controller/windowsguicontroller
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcommandlineoption.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcommandlineparser.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdeadlinetimer.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qelapsedtimer.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdiriterator.h \
@@ -4144,6 +4160,7 @@ windowsguicontroller.o: ../src/contextualization/controller/windowsguicontroller
 		../../../Qt/5.11.0/gcc_64/include/QtWidgets/QProgressDialog \
 		../../../Qt/5.11.0/gcc_64/include/QtWidgets/qprogressdialog.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QThread \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/QDateTime \
 		../src/optical_character_recognition/tesseractocr.h \
 		../tesseract/src/api/baseapi.h \
 		../tesseract/src/api/tess_version.h \
@@ -4241,8 +4258,6 @@ linuxconsolecontroller.o: ../src/contextualization/controller/linuxconsolecontro
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QStandardPaths \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qstandardpaths.h \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/QDateTime \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QDir \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdir.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qfileinfo.h \
@@ -4308,6 +4323,7 @@ linuxconsolecontroller.o: ../src/contextualization/controller/linuxconsolecontro
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcommandlineparser.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcoreapplication.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdeadlinetimer.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qelapsedtimer.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdiriterator.h \
@@ -4431,6 +4447,7 @@ linuxconsolecontroller.o: ../src/contextualization/controller/linuxconsolecontro
 		../../../Qt/5.11.0/gcc_64/include/QtWidgets/QProgressDialog \
 		../../../Qt/5.11.0/gcc_64/include/QtWidgets/qprogressdialog.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QThread \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/QDateTime \
 		../src/optical_character_recognition/tesseractocr.h \
 		../tesseract/src/api/baseapi.h \
 		../tesseract/src/api/tess_version.h \
@@ -4528,8 +4545,6 @@ windowsconsolecontroller.o: ../src/contextualization/controller/windowsconsoleco
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QStandardPaths \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qstandardpaths.h \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/QDateTime \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QDir \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdir.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qfileinfo.h \
@@ -4595,6 +4610,7 @@ windowsconsolecontroller.o: ../src/contextualization/controller/windowsconsoleco
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcommandlineparser.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcoreapplication.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdeadlinetimer.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qelapsedtimer.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdiriterator.h \
@@ -4718,6 +4734,7 @@ windowsconsolecontroller.o: ../src/contextualization/controller/windowsconsoleco
 		../../../Qt/5.11.0/gcc_64/include/QtWidgets/QProgressDialog \
 		../../../Qt/5.11.0/gcc_64/include/QtWidgets/qprogressdialog.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QThread \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/QDateTime \
 		../src/optical_character_recognition/tesseractocr.h \
 		../tesseract/src/api/baseapi.h \
 		../tesseract/src/api/tess_version.h \
@@ -4856,7 +4873,9 @@ tesseractocr.o: ../src/optical_character_recognition/tesseractocr.cpp ../src/opt
 		../src/tools/log.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QTextStream \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QDate \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/QStandardPaths \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qstandardpaths.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tesseractocr.o ../src/optical_character_recognition/tesseractocr.cpp
 
 contextualizationfactoryabstract.o: ../src/tools/contextualizationfactoryabstract.cpp ../src/tools/contextualizationfactoryabstract.h \
@@ -4919,13 +4938,11 @@ contextualizationfactoryabstract.o: ../src/tools/contextualizationfactoryabstrac
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qiodevice.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QStandardPaths \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qstandardpaths.h \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/QDateTime \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qshareddata.h \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qhash.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QDir \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdir.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qfileinfo.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qshareddata.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qhash.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QJsonDocument \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qjsondocument.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qjsonvalue.h \
@@ -4999,6 +5016,7 @@ contextualizationfactoryabstract.o: ../src/tools/contextualizationfactoryabstrac
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcommandlineparser.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcoreapplication.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdeadlinetimer.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qelapsedtimer.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdiriterator.h \
@@ -5122,6 +5140,7 @@ contextualizationfactoryabstract.o: ../src/tools/contextualizationfactoryabstrac
 		../../../Qt/5.11.0/gcc_64/include/QtWidgets/QProgressDialog \
 		../../../Qt/5.11.0/gcc_64/include/QtWidgets/qprogressdialog.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QThread \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/QDateTime \
 		../src/optical_character_recognition/tesseractocr.h \
 		../tesseract/src/api/baseapi.h \
 		../tesseract/src/api/tess_version.h \
@@ -5206,13 +5225,11 @@ hpcontextualizationfactory.o: ../src/tools/hpcontextualizationfactory.cpp ../src
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qiodevice.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QStandardPaths \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qstandardpaths.h \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/QDateTime \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qshareddata.h \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qhash.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QDir \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdir.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qfileinfo.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qshareddata.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qhash.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QJsonDocument \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qjsondocument.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qjsonvalue.h \
@@ -5286,6 +5303,7 @@ hpcontextualizationfactory.o: ../src/tools/hpcontextualizationfactory.cpp ../src
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcommandlineparser.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcoreapplication.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdeadlinetimer.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qelapsedtimer.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdiriterator.h \
@@ -5409,6 +5427,7 @@ hpcontextualizationfactory.o: ../src/tools/hpcontextualizationfactory.cpp ../src
 		../../../Qt/5.11.0/gcc_64/include/QtWidgets/QProgressDialog \
 		../../../Qt/5.11.0/gcc_64/include/QtWidgets/qprogressdialog.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QThread \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/QDateTime \
 		../src/optical_character_recognition/tesseractocr.h \
 		../tesseract/src/api/baseapi.h \
 		../tesseract/src/api/tess_version.h \
@@ -5566,7 +5585,9 @@ string.o: ../src/contextualization/model/string.cpp ../src/contextualization/mod
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QTextStream \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QDate \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/QStandardPaths \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qstandardpaths.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o string.o ../src/contextualization/model/string.cpp
 
 mysqlconnector.o: ../src/storage/mysqlconnector.cpp ../src/storage/mysqlconnector.h \
@@ -5648,7 +5669,9 @@ mysqlconnector.o: ../src/storage/mysqlconnector.cpp ../src/storage/mysqlconnecto
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QTextStream \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QDate \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/QStandardPaths \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qstandardpaths.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mysqlconnector.o ../src/storage/mysqlconnector.cpp
 
 databaseconnectorabstract.o: ../src/storage/databaseconnectorabstract.cpp ../src/storage/databaseconnectorabstract.h \
@@ -5729,7 +5752,9 @@ databaseconnectorabstract.o: ../src/storage/databaseconnectorabstract.cpp ../src
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qfiledevice.h \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QTextStream \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QDate \
-		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/QStandardPaths \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qstandardpaths.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o databaseconnectorabstract.o ../src/storage/databaseconnectorabstract.cpp
 
 fpfileconnector.o: ../src/storage/fpfileconnector.cpp ../src/storage/fpfileconnector.h \
@@ -5812,8 +5837,13 @@ fpfileconnector.o: ../src/storage/fpfileconnector.cpp ../src/storage/fpfileconne
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QTextStream \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/QDate \
 		../../../Qt/5.11.0/gcc_64/include/QtCore/qdatetime.h \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/QStandardPaths \
+		../../../Qt/5.11.0/gcc_64/include/QtCore/qstandardpaths.h \
 		../src/contextualization/model/firmwarestring.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o fpfileconnector.o ../src/storage/fpfileconnector.cpp
+
+traductor.o: ../src/translation/traductor.cpp ../src/translation/traductor.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o traductor.o ../src/translation/traductor.cpp
 
 qrc_views.o: qrc_views.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_views.o qrc_views.cpp

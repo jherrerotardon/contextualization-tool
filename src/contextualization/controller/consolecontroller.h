@@ -154,12 +154,12 @@ private slots:
     /**
      * @copydoc ContextualizationController::save();
      */
-    void save() override;
+    bool save() override;
 
     /**
      * @copydoc ContextualizationController::saveAs();
      */
-    void saveAs() override;
+    bool saveAs() override;
 
     /**
      * @copydoc ContextualizationController::open();

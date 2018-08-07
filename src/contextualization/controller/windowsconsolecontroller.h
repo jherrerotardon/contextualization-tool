@@ -27,6 +27,11 @@ public:
      * @copydoc ContextualizationController::takeCaptureArea()
      */
     QString takeCaptureArea() override;
+
+    /**
+     * @copydoc ContextualizationController::generateDoneFpFile()
+     */
+    int generateDoneFpFile() override;
 };
 
 #endif // WINDOWSCONSOLECONTROLLER_H

@@ -7,7 +7,8 @@ tesseractDir=$selfDirectory/tesseract
 if [ "$(ls -A $tesseractDir)" ]; then
      echo "$tesseractDir is not Empty"
 else
-    ./$selfDirectory/loadTesseractFolder.sh
+	cd $selfDirectory
+    ./loadTesseractFolder.sh
 	make -C $selfDirectory/bin
 
 	echo "Finished!!"

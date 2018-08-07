@@ -55,6 +55,7 @@ QList<String *> FpFileConnector::getAllStrings()
 
 QList<String *> FpFileConnector::getStringsWithValue(const QString &value, bool caseSensitive)
 {
+    QString line;
     QList<String *> out;
     FirmwareString *fwString;
     Qt::CaseSensitivity isCaseSensitive = caseSensitive ? Qt::CaseSensitive : Qt::CaseInsensitive;
@@ -69,7 +70,12 @@ QList<String *> FpFileConnector::getStringsWithValue(const QString &value, bool 
     QTextStream in(&file_);
 
     while (!in.atEnd()) {
-        fwString = FirmwareString::fromFpLine(in.readLine());
+        line = in.readLine();
+        if (line.startsWith('#')) { // It is a comment line.
+            continue;
+        }
+
+        fwString = FirmwareString::fromFpLine(line);
         if (fwString) {
             //If the text belongs to a string, the fwString is saved, otherwise relsease memory of fwString.
             if (value.compare(fwString->getValue(), isCaseSensitive) == 0) {
@@ -85,7 +91,9 @@ QList<String *> FpFileConnector::getStringsWithValue(const QString &value, bool 
     return out;
 }
 
-QList<String *> FpFileConnector::getStringsWithApproximateValue(const QString &value, bool caseSensitive) {
+QList<String *> FpFileConnector::getStringsWithApproximateValue(const QString &value, bool caseSensitive)
+{
+    QString line;
     QList<String *> out;
     FirmwareString *fwString;
     Qt::CaseSensitivity isCaseSensitive = caseSensitive ? Qt::CaseSensitive : Qt::CaseInsensitive;
@@ -100,7 +108,12 @@ QList<String *> FpFileConnector::getStringsWithApproximateValue(const QString &v
     QTextStream in(&file_);
 
     while (!in.atEnd()) {
-        fwString = FirmwareString::fromFpLine(in.readLine());
+        line = in.readLine();
+        if (line.startsWith('#')) { // It is a comment line.
+            continue;
+        }
+
+        fwString = FirmwareString::fromFpLine(line);
         if (fwString) {
             /**
              * If the value belongs to a string, the fwString is saved, otherwise relsease memory of fwString.
@@ -132,6 +145,7 @@ QList<String *> FpFileConnector::getStringsWithApproximateValue(const QString &v
 
 QList<String *> FpFileConnector::getStringWithId(const QString &id, bool caseSensitive)
 {
+    QString line;
     QList<String *> out;
     FirmwareString *fwString;
     Qt::CaseSensitivity isCaseSensitive = caseSensitive ? Qt::CaseSensitive : Qt::CaseInsensitive;
@@ -146,7 +160,12 @@ QList<String *> FpFileConnector::getStringWithId(const QString &id, bool caseSen
     QTextStream in(&file_);
 
     while (!in.atEnd()) {
-        fwString = FirmwareString::fromFpLine(in.readLine());
+        line = in.readLine();
+        if (line.startsWith('#')) { // It is a comment line.
+            continue;
+        }
+
+        fwString = FirmwareString::fromFpLine(line);
         if (fwString) {
             /**
              * If the id belongs to a string, the fwString is saved, otherwise relsease memory of fwString.

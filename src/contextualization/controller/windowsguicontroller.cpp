@@ -1,5 +1,11 @@
 #include "windowsguicontroller.h"
 
+/***********************************************
+ *
+ * COMMING SOON !!
+ *
+ **********************************************/
+
 WindowsGuiController::WindowsGuiController(QQuickWindow *view, QObject *parent) : GuiController(view, parent)
 {
 
@@ -7,16 +13,10 @@ WindowsGuiController::WindowsGuiController(QQuickWindow *view, QObject *parent) 
 
 QString WindowsGuiController::takeCaptureArea()
 {
-    int hasError;
-    QStringList arguments;
-    QString path("/tmp/capture.png");
+    return QString();
+}
 
-    arguments << path;
-    hasError = Utils::executeProgram("import", arguments, QProcess::nullDevice(), QString(), 30000);
-
-    if (hasError) {
-        Log::writeError("Error taking capture. Code exit of import process: " + hasError);
-    }
-
-    return hasError ? QString() : path;
+int WindowsGuiController::generateDoneFpFile()
+{
+    return 0;
 }

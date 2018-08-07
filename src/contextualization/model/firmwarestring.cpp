@@ -21,8 +21,9 @@ FirmwareString::FirmwareString(
     const QString &description,
     const QString &maxLength,
     const QString &state,
-    const bool selected
-) : String(id, value, description, maxLength, state, selected) {
+    const bool selected,
+    const bool editable
+) : String(id, value, description, maxLength, state, selected, editable) {
 
 }
 

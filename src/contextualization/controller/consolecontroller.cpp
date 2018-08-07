@@ -267,12 +267,12 @@ void ConsoleController::cancel()
 
 }
 
-void ConsoleController::save()
+bool ConsoleController::save()
 {
 
 }
 
-void ConsoleController::saveAs()
+bool ConsoleController::saveAs()
 {
 
 }

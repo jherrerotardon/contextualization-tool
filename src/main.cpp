@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
         qmlRegisterType<WindowsGuiController>("io.controllers.guicontroller", 1, 0, "Controller");
     }
 
-    engine.load(QUrl(QStringLiteral("qrc:/views/main.qml")));
+    engine.load(QUrl(QStringLiteral("qrc:/views/ContextualizationGUI.qml")));
     if (engine.rootObjects().isEmpty())
         return -1;
 

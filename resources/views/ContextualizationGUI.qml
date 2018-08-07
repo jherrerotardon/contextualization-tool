@@ -20,7 +20,6 @@ ApplicationWindow {
     signal saveAsRequested()
     signal fpFileConfigRequested()
     signal remoteHostConfigRequested()
-    signal validStatesConfigRequested()
     signal refreshRequested()
 
     id : mainWindow
@@ -131,10 +130,19 @@ ApplicationWindow {
                 text: "Remote Host"
                 onTriggered: remoteHostConfigRequested()
             }
+        }
+
+        Menu {
+            title: "Process"
 
             MenuItem {
-                text: "Valid States"
-                onTriggered: validStatesConfigRequested()
+                text: "Process and storage"
+                //onTriggered: fpFileConfigRequested()
+            }
+
+            MenuItem {
+                text: "Trasnlate"
+                //onTriggered: remoteHostConfigRequested()
             }
         }
     }
@@ -255,8 +263,8 @@ ApplicationWindow {
             }
 
             ColumnLayout {
-                Layout.preferredWidth: parent.width * 0.5
-                Layout.maximumWidth: parent.width * 0.5
+                Layout.preferredWidth: parent.width * 0.55
+                Layout.maximumWidth: parent.width * 0.55
                 Layout.alignment: Qt.AlignRight
                 Layout.topMargin: 18
                 Layout.bottomMargin: 10
@@ -372,22 +380,17 @@ ApplicationWindow {
                         title: "String Key"
                         role: "id"
                         horizontalAlignment: Text.AlignHCenter
-                        width: (stringsTable.width - checkboxsColumn.width - buttonsColumn.width) * 0.45
+                        width: (stringsTable.width - checkboxsColumn.width - buttonsColumn.width - statesColumn.width) * 0.45
 
                         delegate: TextField {
+                            width: parent.width
                             anchors.fill: parent
                             verticalAlignment: Text.AlignVCenter
                             text: styleData.value
-                            readOnly: true
+                            readOnly: !modelData.editable
+                            onTextChanged: modelData.id = text
 
-                            style: TextFieldStyle
-                            {
-                                background: Rectangle {
-                                    opacity: 0
-                                }
-
-
-                            }
+                            style: modelData.editable ? editableTextField : noEditableTextField
                         }
                     }
 
@@ -396,7 +399,30 @@ ApplicationWindow {
                         title: "String"
                         role: "value"
                         horizontalAlignment: Text.AlignHCenter
-                        width: (stringsTable.width - checkboxsColumn.width - buttonsColumn.width) * 0.55
+                        width: (stringsTable.width - checkboxsColumn.width - buttonsColumn.width - statesColumn.width) * 0.55
+
+                        delegate: Item {
+                            anchors.fill: parent
+
+                            TextField {
+                                width: parent.width
+                                anchors.fill: parent
+                                verticalAlignment: Text.AlignVCenter
+                                text: styleData.value
+                                readOnly: !modelData.editable
+                                onTextChanged: modelData.value = text
+
+                                style: modelData.editable ? editableTextField : noEditableTextField
+                            }
+                        }
+                    }
+
+                    TableViewColumn {
+                        id: statesColumn
+                        title: "State"
+                        role: "state"
+                        horizontalAlignment: Text.AlignHCenter
+                        width: 90
 
                         delegate: Item {
                             anchors.fill: parent
@@ -404,17 +430,10 @@ ApplicationWindow {
                             TextField {
                                 anchors.fill: parent
                                 verticalAlignment: Text.AlignVCenter
-                                text: "\"" + styleData.value + "\""
-                                readOnly: true
+                                text: styleData.value
+                                readOnly: !modelData.editable
 
-                                style: TextFieldStyle
-                                {
-                                    background: Rectangle {
-                                        opacity: 0
-                                    }
-
-
-                                }
+                                style: modelData.editable ? editableTextField : noEditableTextField
                             }
                         }
                     }
@@ -574,6 +593,35 @@ ApplicationWindow {
                     anchors.margins: 4
                     anchors.fill: parent
                 }
+            }
+        }
+    }
+
+    Component {
+        id: editableTextField
+
+        TextFieldStyle
+        {
+            textColor: "black"
+            background: Rectangle {
+                radius: 2
+                implicitWidth: 100
+                implicitHeight: 24
+                border.color: "#333"
+                border.width: 1
+            }
+
+
+        }
+    }
+
+    Component {
+        id: noEditableTextField
+
+        TextFieldStyle
+        {
+            background: Rectangle {
+                opacity: 0
             }
         }
     }

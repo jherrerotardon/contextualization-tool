@@ -15,6 +15,7 @@ void Utils::errorMessage(const QString &text, const QString &informativeText)
     msgBox.setStandardButtons(QMessageBox::Ok);
     msgBox.setDefaultButton(QMessageBox::Ok);
     msgBox.setIcon(QMessageBox::Critical);
+    msgBox.setWindowModality(Qt::WindowModal);
     //msgBox.setStyleSheet("QLabel{min-width: 450px;}");
     msgBox.exec();
 }
@@ -29,6 +30,7 @@ int Utils::warningMessage(const QString &text, const QString &informativeText)
     msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
     msgBox.setDefaultButton(QMessageBox::No);
     msgBox.setIcon(QMessageBox::Warning);
+    msgBox.setWindowModality(Qt::WindowModal);
     //msgBox.setStyleSheet("QLabel{min-width: 450px;}");
     return msgBox.exec();
 }
@@ -43,6 +45,7 @@ void Utils::informativeMessage(const QString &text, const QString &informativeTe
     msgBox.setStandardButtons(QMessageBox::Ok);
     msgBox.setDefaultButton(QMessageBox::Ok);
     msgBox.setIcon(QMessageBox::Information);
+    msgBox.setWindowModality(Qt::WindowModal);
     //msgBox.setStyleSheet("QLabel{min-width: 450px;}");
     msgBox.exec();
 }

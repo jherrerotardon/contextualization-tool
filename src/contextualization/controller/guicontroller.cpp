@@ -35,31 +35,27 @@ void GuiController::add(QString newString, int findType)
     switch (stringsFound.size()) {
     // Case where string not found in fp file.
     case 0:
-        if (findType == ByValue) {
-            response = Utils::warningMessage(
-                "Impossible to find the string in " + DONE_FP_FILE + " file.",
-                "Are you sure to add the string?"
+        response = Utils::warningMessage(
+            QString("Impossible to find the ") + (findType == ByID ? "identifier" : "string") + ".",
+            "Are you sure to add the string?"
+        );
+        if (response == QMessageBox::Yes) {
+            error = addString(
+                new FirmwareString(
+                    findType == ByID ? newString : QString(),
+                    findType == ByValue ? newString : QString(),
+                    QString(),
+                    QString::number(newString.size()),
+                    "DONE",
+                    false,
+                    true
+                )
             );
-            if (response == QMessageBox::Yes) {
-                error = addString(
-                    new FirmwareString(
-                        QString(""),
-                        newString,
-                        QString(""),
-                        QString::number(newString.size()),
-                        "DONE",
-                        false
-                    )
-                );
 
-                if (error == StringAlreadyExists) {
-                    Utils::errorMessage("Duplicate string.", "Alredy exists an equal string in the contextualization.");
-                }
+            if (error == StringAlreadyExists) {
+                Utils::errorMessage("Duplicate string.", "Alredy exists an equal string in the contextualization.");
             }
-        } else if (findType == ByID) {
-            Utils::informativeMessage("Not found.", "No string was be found with this ID.");
         }
-
     break;
 
     // Case where more than one string was found in fp file.
@@ -196,9 +192,7 @@ void GuiController::detect()
 {
     QList<FirmwareString *> extractedStrings;
     QList<FirmwareString *> copy;
-    QProgressDialog progress("Detecting strings...", "Abort", 0, 100);
-    QFuture<void> future;   // Control when a thread has finished.
-    bool hasFinished = false;
+    QMessageBox message;
 
     if (!model_->hasImage()) {
         Utils::informativeMessage("Not image.", "You have to set an image to can detect strings in it.");
@@ -206,9 +200,10 @@ void GuiController::detect()
         return;
     }
 
-    // Start increment progess.
-    progress.setWindowModality(Qt::WindowModal);
-    future = Utils::startProgressDialogCounter(&progress, &hasFinished, 70);
+    // Show informative message.
+    message.setStandardButtons(0);
+    message.setWindowTitle("Detecting...");
+    message.open();
 
     // Extract strings on image.
     extractedStrings = detectStringsOnImage();
@@ -223,10 +218,8 @@ void GuiController::detect()
 
     addStrings(copy);
 
-    // When extracted has finished, stop increment thread and close ProgressDialog.
-    hasFinished = true;
-    future.waitForFinished();
-    progress.setValue(100);
+    // Close progress message.
+    message.close();
 }
 
 void GuiController::send()
@@ -234,9 +227,7 @@ void GuiController::send()
     QString contextualizationPath;
     QString username;
     QString password;
-    QProgressDialog progress("Sending...", "Abort", 0, 100);
-    QFuture<void> future;   // Control when a thread has finished.
-    bool hasFinished = false;
+    QMessageBox message;
     int hasError;
 
     switch (validateModel()) {
@@ -264,17 +255,16 @@ void GuiController::send()
                 return;
             }
 
-            // Start increment progess.
-            progress.setWindowModality(Qt::WindowModal);
-            future = Utils::startProgressDialogCounter(&progress, &hasFinished);
+            // Show informative message.
+            message.setStandardButtons(0);
+            message.setWindowTitle("Sending...");
+            message.open();
 
             // Send contextualization
             hasError = sendContextualization(contextualizationPath, username, password);
 
-            // When send process has finished, stop increment thread and close ProgressDialog.
-            hasFinished = true;
-            future.waitForFinished();
-            progress.setValue(100);
+            // Close progress message.
+            message.hide();
 
             // Remove contextualization file.
             QFile::remove(contextualizationPath);
@@ -307,34 +297,42 @@ void GuiController::send()
 void GuiController::cancel()
 {
     int response;
+    bool haveToCancel = false;
 
     if (projectHasChanges_) {
         response = Utils::warningMessage("Project has unsaved changes.", "Do you want to save changes?");
         if (response == QMessageBox::Yes) {
-            save();
+            haveToCancel = !save();
         }
     }
 
-    saveConfig();
+    if (!haveToCancel) {
+        saveConfig();
 
-    QFile::remove(DONE_FP_FILE);
+        QFile::remove(DONE_FP_FILE);
 
-    QApplication::quit();
+        QApplication::quit();
+    }
 }
 
-void GuiController::save()
+bool GuiController::save()
 {
+    bool saved;
+
     // If current project already save on disk overwrite it, else creates new file.
     if (currentProjectPath_.isEmpty()) {
-        saveAs();
+       saved = saveAs();
     } else {
         exportToJsonFile(currentProjectPath_);
+        saved = true;
     }
 
-    projectHasChanges_ = false;
+    projectHasChanges_ = !saved;
+
+    return saved;
 }
 
-void GuiController::saveAs()
+bool GuiController::saveAs()
 {
     QString path;
     QFileDialog dialog(
@@ -348,7 +346,7 @@ void GuiController::saveAs()
     if (model_->isEmpty()) {
         Utils::informativeMessage("Empty contextualization.", "Nothing to be save.");
 
-        return;
+        return true;
     }
 
     dialog.setAcceptMode(QFileDialog::AcceptSave);
@@ -359,7 +357,11 @@ void GuiController::saveAs()
         path = path.endsWith(QString(".json")) ? path : path + ".json";
         exportToJsonFile(path);
         projectHasChanges_ = false;
+
+        return true;
     }
+
+    return false;
 }
 
 void GuiController::open()
@@ -617,12 +619,6 @@ void GuiController::connectGuiSignalsAndSlots()
             SIGNAL(remoteHostConfigRequested()),
             this,
             SLOT(configRemoteHost())
-        );
-        QObject::connect(
-            view_,
-            SIGNAL(validStatesConfigRequested()),
-            this,
-            SLOT(configValidStates())
         );
         QObject::connect(
             view_,

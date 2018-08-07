@@ -37,7 +37,7 @@ ContextualizationController::~ContextualizationController()
     delete model_;
 }
 
-int ContextualizationController::importProjectFromJsonFile(const QString &path)
+ContextualizationController::CodeError ContextualizationController::importProjectFromJsonFile(const QString &path)
 {
     ContextualizationModel *modelTmp;
     QByteArray projectData;
@@ -112,7 +112,7 @@ QString ContextualizationController::generateContextualization()
         // Save only selected strings
         foreach (QObject *fwString, model_->getStringsList()) {
             if (static_cast<FirmwareString *>(fwString)->isSelected()) {
-                text += static_cast<FirmwareString *>(fwString)->toFpFileFormat();
+                text += static_cast<FirmwareString *>(fwString)->getId();
                 text += '\n';
             }
         }
@@ -129,12 +129,16 @@ QString ContextualizationController::generateContextualization()
     return contextualizationPackage;
 }
 
-int ContextualizationController::sendContextualization(const QString &path, QString user, QString password)
-{
+ContextualizationController::CodeError ContextualizationController::sendContextualization(
+    const QString &path,
+    QString user,
+    QString password
+) {
     QStringList arguments;
     QString batch("/tmp/batch");
     QString sshpassEvidences("/tmp/sshpassEvidenceError_" + Utils::getDateTime() + ".txt");
-    int errorCode;;
+    CodeError errorCode = NoError;
+    int out;
 
     if (remoteHost_.isEmpty()) {
         Log::writeError("No remote host (IP or hostname) received when the contextualizacion was going to be sent.");
@@ -160,13 +164,13 @@ int ContextualizationController::sendContextualization(const QString &path, QStr
     arguments << "sftp" << "-oBatchMode=no" << "-b" << batch
               << user + '@' + remoteHost_ + ":Contextualizations";
 
-    errorCode = Utils::executeProgram("sshpass", arguments, sshpassEvidences);
+    out = Utils::executeProgram("sshpass", arguments, sshpassEvidences);
 
     // If there are some error, write ouput process in error log.
-    if (errorCode != NoError) {
+    if (out != NoError) {
         Log::writeError(QString(Utils::readAllFile(sshpassEvidences)).replace("\n", ". "));
 
-        errorCode = errorCode == SshError ? SshError : SshpassError;
+        errorCode = out == SshError ? SshError : SshpassError;
     }
 
     // Remove temporal files.
@@ -294,7 +298,7 @@ QList<FirmwareString *> ContextualizationController::findString(const QString &t
 
     // If only have to get DONE strings and find was not in DONE_FP_FILE is necessary filer strings.
     if (onlyDoneStrings_ && file.fileName() != DONE_FP_FILE) {
-        //filterStringsByState(&out, "DONE");
+        filterStringsByState(&out, "DONE");
     }
 
     return out;
@@ -308,7 +312,7 @@ bool ContextualizationController::isValidState(QString &state)
     return false;
 }
 
-int ContextualizationController::addString(FirmwareString *fwString)
+ContextualizationController::CodeError ContextualizationController::addString(FirmwareString *fwString)
 {
     if (fwString == Q_NULLPTR) {
         return NullPointer;

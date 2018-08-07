@@ -45,7 +45,8 @@ SOURCES += \
     src/contextualization/model/string.cpp \
     src/storage/mysqlconnector.cpp \
     src/storage/databaseconnectorabstract.cpp \
-    src/storage/fpfileconnector.cpp
+    src/storage/fpfileconnector.cpp \
+    src/translation/traductor.cpp
 
 RESOURCES += \
     resources/views.qrc \
@@ -81,6 +82,7 @@ HEADERS += \
     src/contextualization/model/string.h \
     src/storage/mysqlconnector.h \
     src/storage/databaseconnectorabstract.h \
-    src/storage/fpfileconnector.h
+    src/storage/fpfileconnector.h \
+    src/translation/traductor.h
 
 DISTFILES +=

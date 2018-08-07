@@ -32,7 +32,8 @@ public:
         const QString &description,
         const QString &maxLength,
         const QString &state,
-        const bool selected
+        const bool selected = false,
+        const bool editable = false
     );
 
     /**
