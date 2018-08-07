@@ -113,11 +113,11 @@ protected:
      * @brief Imports projet from json file.
      *
      * Codes the actual model to JSON format and sabe data in the file received by parameter.
-     * Returns a #Error code.
+     * Returns true if project was exported succesfully, otherwise, returns false.
      * @param path File path where be saved data project.
-     * @return int
+     * @return bool
      */
-    int exportToJsonFile(const QString &path);
+    bool exportToJsonFile(const QString &path);
 
     /**
      * @brief Checks the actual state of the model.
@@ -167,7 +167,7 @@ protected:
      * @param strings String value to be processed.
      * @return List of FirmwareStirng found in fp file.
      */
-    QList<FirmwareString *> processStrings(QStringList strings);
+    QList<FirmwareString *> processExtractedStrings(QStringList strings);
 
     /**
      * @brief Find the text received by parameter in fp file.

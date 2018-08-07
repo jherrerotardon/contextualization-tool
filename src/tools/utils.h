@@ -162,6 +162,12 @@ public:
      * @return Date time.
      */
     static QString getDateTime(QString format = "yyyy_MM_dd_hh_mm_ss");
+
+    /**
+     * @brief Returns a temporal directory of system.
+     * @return
+     */
+    static QString getTmpDirectory();
 };
 
 #endif // UTILS_H

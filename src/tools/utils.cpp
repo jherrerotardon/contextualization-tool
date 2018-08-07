@@ -168,3 +168,8 @@ QString Utils::getDateTime(QString format)
 {
     return QDateTime::currentDateTime().toString(format);
 }
+
+QString Utils::getTmpDirectory()
+{
+    return QStandardPaths::standardLocations(QStandardPaths::TempLocation).first();
+}

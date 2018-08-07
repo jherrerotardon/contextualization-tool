@@ -203,6 +203,7 @@ void GuiController::detect()
     // Show informative message.
     message.setStandardButtons(0);
     message.setWindowTitle("Detecting...");
+    message.setWindowModality(Qt::WindowModal);
     message.open();
 
     // Extract strings on image.
@@ -258,6 +259,7 @@ void GuiController::send()
             // Show informative message.
             message.setStandardButtons(0);
             message.setWindowTitle("Sending...");
+            message.setWindowModality(Qt::WindowModal);
             message.open();
 
             // Send contextualization
