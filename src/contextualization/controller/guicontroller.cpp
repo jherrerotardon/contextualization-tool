@@ -207,7 +207,7 @@ void GuiController::detect()
     message.open();
 
     // Extract strings on image.
-    extractedStrings = detectStringsOnImage();
+    extractedStrings = detectStringsOnImage(model_->getImage());
 
     // A copy if creates because extracted strings are in a different thread and this is in conflict with Q_PROPERTYs.
     foreach (FirmwareString *fwString, extractedStrings) {
@@ -419,6 +419,27 @@ void GuiController::newProject()
     currentProjectPath_ = QString();
 }
 
+void GuiController::interestingArea()
+{
+    /**
+     * WORK SO BAD. I WILL CHANGE ALGORITHM.
+     */
+
+    QString path;
+
+    if (!model_->hasImage()) {
+        Utils::informativeMessage("Not image.", "You have to set an image to can detect strings in it.");
+
+        return;
+    }
+
+    path = takeCaptureArea();
+
+    if (!path.isEmpty()) {
+        detectStringsOnImage(path);
+    }
+}
+
 void GuiController::changeModel()
 {
     projectHasChanges_ = true;
@@ -612,6 +633,12 @@ void GuiController::connectGuiSignalsAndSlots()
         );
         QObject::connect(
             view_,
+            SIGNAL(interestingAreaRequested()),
+            this,
+            SLOT(interestingArea())
+        );
+        QObject::connect(
+            view_,
             SIGNAL(fpFileConfigRequested()),
             this,
             SLOT(configFpFile())
@@ -648,10 +675,21 @@ void GuiController::connectModelSignalsAndSlots()
         );
         QObject::connect(
             model_,
+            SIGNAL(imageChanged()),
+            this,
+            SIGNAL(imageChanged())
+        );
+        QObject::connect(
+            model_,
             SIGNAL(stringListChanged()),
             this,
             SLOT(changeModel())
         );
+        QObject::connect(
+            model_,
+            SIGNAL(stringListChanged()),
+            this,
+            SIGNAL(stringsListChanged())
+        );
     }
-
 }

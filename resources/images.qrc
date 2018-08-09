@@ -11,5 +11,6 @@
         <file>images/newProject.png</file>
         <file>images/refresh.png</file>
         <file>images/save.png</file>
+        <file>images/interestingArea.png</file>
     </qresource>
 </RCC>

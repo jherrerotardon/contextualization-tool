@@ -154,9 +154,10 @@ protected:
      *
      * Returns a QList of FirmwareString containing all of strings extracted converted in FirmwareString objects if are
      * in the fp file. Each firmware string on QList is a FirmwareString Object extracted from the image.
+     * @param image Path of image where strings will be detected.
      * @return List of FirmwareString found on image.
      */
-    QList<FirmwareString *> detectStringsOnImage();
+    QList<FirmwareString *> detectStringsOnImage(QString image);
 
     /**
      * @brief Processes received strings.

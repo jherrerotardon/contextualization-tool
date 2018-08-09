@@ -21,6 +21,7 @@ ApplicationWindow {
     signal fpFileConfigRequested()
     signal remoteHostConfigRequested()
     signal refreshRequested()
+    signal interestingAreaRequested()
 
     id : mainWindow
     visible: true
@@ -210,11 +211,31 @@ ApplicationWindow {
                     }
                 }
 
-                CheckBox {
-                    id : autoDetectCheckBox
-                    text: "Detect strings when image is loaded"
-                    Layout.alignment: Qt.AlignHCenter
-                    style: generalCheckboxStyle
+                RowLayout {
+                    Layout.fillWidth: true
+
+                    Button {
+                        id: interestingAreaButton
+                        Layout.preferredWidth: 30
+                        iconSource: "qrc:/images/interestingArea.png"
+
+                        onClicked: interestingAreaRequested()
+                    }
+
+                    Item {
+                        Layout.fillWidth: true
+                    }
+
+                    CheckBox {
+                        id : autoDetectCheckBox
+                        text: "Detect strings on load image"
+                        Layout.leftMargin: -interestingAreaButton.width
+                        style: generalCheckboxStyle
+                    }
+
+                    Item {
+                        Layout.fillWidth: true
+                    }
                 }
 
                 RowLayout {

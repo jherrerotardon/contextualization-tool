@@ -94,6 +94,11 @@ private slots:
     void newProject() override;
 
     /**
+     * @brief Allows user select an area of image loaded where strings will be detected.
+     */
+    void interestingArea();
+
+    /**
      * @brief Change a flag to indicate that the model has changed.
      */
     void changeModel();

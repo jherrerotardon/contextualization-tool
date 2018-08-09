@@ -800,6 +800,7 @@ qrc_images.cpp: ../resources/images.qrc \
 		../resources/images/newProject.png \
 		../resources/images/exit.png \
 		../resources/images/copy.png \
+		../resources/images/interestingArea.png \
 		../resources/images/paste.png \
 		../resources/images/refresh.png
 	/home/jorge/Qt/5.11.0/gcc_64/bin/rcc -name images ../resources/images.qrc -o qrc_images.cpp
