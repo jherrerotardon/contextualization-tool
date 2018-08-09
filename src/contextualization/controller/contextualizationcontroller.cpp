@@ -314,9 +314,6 @@ QList<FirmwareString *> ContextualizationController::findString(const QString &t
     // Convert String * in FirmwareString *.
     foreach (String *string, stringsFound) {
         out << static_cast<FirmwareString *>(string);
-        if (string->getId() == "STRING_ROLL1") {
-            int i = 0;
-        }
     }
 
     // If only have to get DONE strings and find was not in DONE_FP_FILE is necessary filer strings.
