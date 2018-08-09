@@ -5,6 +5,8 @@
 #include "baseapi.h"
 #include "genericvector.h"
 #include "ocr.h"
+#include "tools/utils.h"
+#include "tools/log.h"
 
 class TesseractOcr : public Ocr
 {

@@ -13,6 +13,7 @@ FirmwareString::FirmwareString(FirmwareString &other) : String()
     maxLength_ = other.getMaxLength();
     state_ = other.getState();
     selected_ = other.isSelected();
+    editable_ = other.isEditable();
 }
 
 FirmwareString::FirmwareString(
@@ -102,7 +103,7 @@ FirmwareString * FirmwareString::fromFpLine(const QString &fpLine)
 
     selected = state == "DONE" ? true : false;
 
-    return new FirmwareString(id, value, description, maxLength, state, selected);
+    return new FirmwareString(id, value, description, maxLength, state, selected, false);
 }
 
 FirmwareString & FirmwareString::operator=(const FirmwareString &other)

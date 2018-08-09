@@ -68,7 +68,7 @@ QStringList TesseractOcr::extract()
     image = image.convertToFormat(QImage::Format_Grayscale8);
 
     // Saves a copy in disk to work with her.
-    imageCopyPath = "/tmp/" + imageInfo.baseName() + "_copy." + imageInfo.suffix();
+    imageCopyPath = Utils::getTmpDirectory() + "/" + imageInfo.baseName() + "_copy." + imageInfo.suffix();
     workWithCopy = image.save(imageCopyPath, Q_NULLPTR, 100);
 
     //If the improvement is succesfull, set imagePix with the copy.
@@ -76,6 +76,8 @@ QStringList TesseractOcr::extract()
         imagePix = pixRead(imageCopyPath.toStdString().c_str());
     } else {
         imagePix = pixRead(image_.fileName().toStdString().c_str());
+
+        Log::writeError("Could not create image copy in " + imageCopyPath);
     }
 
     if (!imagePix) {

@@ -68,9 +68,6 @@ ContextualizationController::CodeError ContextualizationController::importProjec
     *(model_) = *modelTmp;
     Log::writeLog("Imported project from: " + path);
 
-    emit imageChanged();
-    emit stringsListChanged();
-
     delete modelTmp;
 
     return NoError;
@@ -203,7 +200,7 @@ ContextualizationController::CodeError ContextualizationController::sendContextu
     return errorCode;
 }
 
-QList<FirmwareString *> ContextualizationController::detectStringsOnImage()
+QList<FirmwareString *> ContextualizationController::detectStringsOnImage(QString image)
 {
     TesseractOcr *worker;
     QList<TesseractOcr *> workers; // Used to save workers because after must be released.
@@ -213,13 +210,13 @@ QList<FirmwareString *> ContextualizationController::detectStringsOnImage()
     QString rootCopy;
 
     // Added root image copy to work it too.
-    rootCopy = Utils::getTmpDirectory() + "/rootCopy_" + Utils::getDateTime() + "." + QFileInfo(model_->getImage()).suffix();
-    if (QFile::copy(model_->getImage(), rootCopy)) {
+    rootCopy = Utils::getTmpDirectory() + "/rootCopy_" + Utils::getDateTime() + "." + QFileInfo(image).suffix();
+    if (QFile::copy(image, rootCopy)) {
         imageChunks << rootCopy;
     }
 
     // Split image.
-    imageChunks << splitImage(model_->getImage(), CHUNK_WIDTH, CHUNK_HEIGHT);
+    imageChunks << splitImage(image, CHUNK_WIDTH, CHUNK_HEIGHT);
 
     // Create and start workers.
     foreach (QString image, imageChunks) {
@@ -350,8 +347,6 @@ ContextualizationController::CodeError ContextualizationController::addString(Fi
 
     model_->addString(fwString);
 
-    emit stringsListChanged();
-
     return NoError;
 }
 
@@ -365,41 +360,23 @@ int ContextualizationController::addStrings(const QList<FirmwareString *> &strin
         }
     }
 
-    if (count < 0) { // Only emit signal if strings have been added.
-        emit stringsListChanged();
-    }
-
     return count;
 }
 
 bool ContextualizationController::removeString(QString stringId)
 {
-    if(model_->removeString(stringId)) { // Only emit signal if string has been added.
-        emit stringsListChanged();
-
-        return true;
-    }
-
-    return false;
+    return model_->removeString(stringId);
 }
 
 bool ContextualizationController::removeString(int row)
 {
-    if(model_->removeString(row)) { // Only emit signal if string has been added.
-        emit stringsListChanged();
-
-        return true;
-    }
-
-    return false;
+    return model_->removeString(row);
 }
 
 bool ContextualizationController::removeAllStrings()
 {
     if (!model_->getStringsList().isEmpty()) {
         model_->removeAllStrings();
-
-        emit stringsListChanged();
 
         return true;
     }
@@ -410,8 +387,6 @@ bool ContextualizationController::removeAllStrings()
 void ContextualizationController::clearImage()
 {
     model_->setImage(ContextualizationModel::NO_IMAGE_PATH);
-
-    emit imageChanged();
 }
 
 bool ContextualizationController::setImage(const QString &image)
@@ -437,8 +412,6 @@ bool ContextualizationController::setImage(const QString &image)
     }
 
     model_->setImage(exists ? IMAGES_FOLDER + imageName : ContextualizationModel::NO_IMAGE_PATH);
-
-    emit imageChanged();
 
     return exists;
 }

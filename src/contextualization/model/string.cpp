@@ -18,6 +18,7 @@ String::String(String &other) : QObject()
     maxLength_ = other.getMaxLength();
     state_ = other.getState();
     selected_ = other.isSelected();
+    editable_ = other.isEditable();
 }
 
 String::String(
