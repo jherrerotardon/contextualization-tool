@@ -117,12 +117,14 @@ QList<String *> FpFileConnector::getStringsWithApproximateValue(const QString &v
         if (fwString) {
             /**
              * If the value belongs to a string, the fwString is saved, otherwise relsease memory of fwString.
-             * If size of both strings is longer than MIN_LENGTH_FOR_APPROXIMATE, a value is considered valid if
-             * it is contained within the fwString value or vice versa.
-             * If size of any strings is not longer than MIN_LENGTH_FOR_APPROXIMATE, a value is considered valid only if it
+             * If size of both strings is longer than MIN_LENGTH_FOR_APPROXIMATE and their size difference is less than
+             * MAX_LENGTH_DIFFERENCE, a value is considered valid if it is contained within the fwString value or
+             * vice versa.
+             * If size of any strings is less than MIN_LENGTH_FOR_APPROXIMATE, a value is considered valid only if it
              * is equals than the value of fwString.
              */
-            if (value.size() > MIN_LENGTH_FOR_APPROXIMATE && fwString->getValue().size() > MIN_LENGTH_FOR_APPROXIMATE) {
+            if (value.size() > MIN_LENGTH_FOR_APPROXIMATE && fwString->getValue().size() > MIN_LENGTH_FOR_APPROXIMATE &&
+                qAbs(value.size() - fwString->getValue().size()) < MAX_LENGTH_DIFFERENCE) {
                 if (value.contains(fwString->getValue(), isCaseSensitive) || fwString->getValue().contains(value, isCaseSensitive)) {
                     out << fwString;
                 } else {

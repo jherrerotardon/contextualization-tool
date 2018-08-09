@@ -78,6 +78,7 @@ public:
 
 protected:
     const int MIN_LENGTH_FOR_APPROXIMATE;       ///< Minimun length for string to do an approximate find.
+    const int MAX_LENGTH_DIFFERENCE;            ///< Greatest difference between value and string values found.
 };
 
 #endif // DATABASEABSTRACT_H
