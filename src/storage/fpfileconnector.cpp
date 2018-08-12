@@ -1,3 +1,13 @@
+/**
+ * @file fpfileconnector.cpp
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class FpFileConnector
+ *
+ * @brief This is a class to access a database saved as fp file by HP company.
+ */
+
 #include "fpfileconnector.h"
 
 FpFileConnector::FpFileConnector() : DatabaseConnectorAbstract()
@@ -34,7 +44,7 @@ QList<String *> FpFileConnector::getAllStrings()
     // Begin read file.
     if (!file_.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        Log::writeError(" Fail to open file: " + file_.fileName());
+        Log::writeError(QString(Q_FUNC_INFO) + " Fail to open file: " + file_.fileName());
 
         return out;
     }
@@ -62,7 +72,7 @@ QList<String *> FpFileConnector::getStringsWithValue(const QString &value, bool 
 
     // Begin read file.
     if (!file_.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        Log::writeError(" Fail to open file: " + file_.fileName());
+        Log::writeError(QString(Q_FUNC_INFO) + " Fail to open file: " + file_.fileName());
 
         return out;
     }
@@ -100,7 +110,7 @@ QList<String *> FpFileConnector::getStringsWithApproximateValue(const QString &v
 
     // Begin read file.
     if (!file_.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        Log::writeError(" Fail to open file: " + file_.fileName());
+        Log::writeError(QString(Q_FUNC_INFO) + " Fail to open file: " + file_.fileName());
 
         return out;
     }
@@ -154,7 +164,7 @@ QList<String *> FpFileConnector::getStringWithId(const QString &id, bool caseSen
 
     // Begin read file.
     if (!file_.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        Log::writeError(" Fail to open file: " + file_.fileName());
+        Log::writeError(QString(Q_FUNC_INFO) + " Fail to open file: " + file_.fileName());
 
         return out;
     }

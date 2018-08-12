@@ -1,3 +1,13 @@
+/**
+ * @file guicontroller.h
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class GuiController
+ *
+ * @brief This is the controller class that works a GUI environment.
+ */
+
 #ifndef GUICONTROLLER_H
 #define GUICONTROLLER_H
 
@@ -101,7 +111,12 @@ private slots:
     /**
      * @brief Change a flag to indicate that the model has changed.
      */
-    void changeModel();
+    void indicateProjectChanges();
+
+    /**
+     * @brief Change a flag to indicate that the model has not changes.
+     */
+    void indicateProjectSaved();
 
     /**
      * @brief Opens a dialog where the user can configure the path of fp file.
@@ -163,6 +178,11 @@ signals:
      * @brief The singal is emitted when the pointer to the view changed.
      */
     void viewChanged();
+
+    /**
+     * @brief The signal is emitted when a current project is saved.
+     */
+    void unchangedProject();
 };
 
 #endif // GUICONTROLLER_H

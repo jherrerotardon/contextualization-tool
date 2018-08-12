@@ -1,3 +1,13 @@
+/**
+ * @file hpcontextualizationfactory.h
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class HpContextualizationFactory
+ *
+ * @brief This is a factory to create a concrete class of ContextualizationController specific for HP company.
+ */
+
 #ifndef HPCONTEXTUALIZATIONFACTORY_H
 #define HPCONTEXTUALIZATIONFACTORY_H
 

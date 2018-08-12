@@ -1,3 +1,14 @@
+/**
+ * @file tesseractocr.cpp
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class TesseractOcr
+ *
+ * @brief This is a tool to detect string on images using tesseract api (https://github.com/tesseract-ocr/tesseract).
+ */
+
+
 #include "tesseractocr.h"
 
 TesseractOcr::TesseractOcr()
@@ -51,15 +62,15 @@ QStringList TesseractOcr::extract()
 
     if (getAvailableLanguages().size() == 0)
     {
-        Log::writeError("Not languages available when ocr process was going run.");
-        Log::writeError("Selected languages:" + language_);
-        Log::writeError("Make sure you have at least one .traineddata file for any of the selected languages.");
+        Log::writeError(QString(Q_FUNC_INFO) + "Not languages available when ocr process was going run.");
+        Log::writeError(QString(Q_FUNC_INFO) + "Selected languages:" + language_);
+        Log::writeError(QString(Q_FUNC_INFO) + "Make sure you have at least one .traineddata file for any of the selected languages.");
 
         return QStringList();
     }
 
     if (!image_.exists()) {
-        Log::writeError(image_.fileName() + " does not exist when ocr process was going run.");
+        Log::writeError(QString(Q_FUNC_INFO) + image_.fileName() + " does not exist when ocr process was going run.");
 
         return QStringList();
     }
@@ -77,17 +88,17 @@ QStringList TesseractOcr::extract()
     } else {
         imagePix = pixRead(image_.fileName().toStdString().c_str());
 
-        Log::writeError("Could not create image copy in " + imageCopyPath);
+        Log::writeError(QString(Q_FUNC_INFO) + "Could not create image copy in " + imageCopyPath);
     }
 
     if (!imagePix) {
-        Log::writeError(image_.fileName() + " can't be converted into Pix object.");
+        Log::writeError(QString(Q_FUNC_INFO) + image_.fileName() + " can't be converted into Pix object.");
 
         return QStringList();
     }
 
     if (initApi()) {
-        Log::writeError("Ocr Tesseract can't be initializated.");
+        Log::writeError(QString(Q_FUNC_INFO) + "Ocr Tesseract can't be initializated.");
 
         return QStringList();
     }
@@ -166,7 +177,7 @@ int TesseractOcr::initApi() const
     );
 
     if (hasError) {
-        Log::writeError("Could not initialize tesseract.");
+        Log::writeError(QString(Q_FUNC_INFO) + "Could not initialize tesseract.");
     }
 
     return hasError;

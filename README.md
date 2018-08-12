@@ -78,3 +78,6 @@ Basic command line help:
 
 Execute command without any arguments:
 	`ContextualizationTool`
+
+# References
+***[Stackoverflow](https://github.com/tesseract-ocr/tesseract)***

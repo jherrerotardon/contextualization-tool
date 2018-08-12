@@ -1,3 +1,13 @@
+/**
+ * @file tesseractocr.h
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class TesseractOcr
+ *
+ * @brief This is a tool to detect string on images using tesseract api (https://github.com/tesseract-ocr/tesseract).
+ */
+
 #ifndef TESSERACTOCR_H
 #define TESSERACTOCR_H
 

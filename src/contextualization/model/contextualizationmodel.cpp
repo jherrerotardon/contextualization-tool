@@ -1,7 +1,14 @@
-#include "contextualizationmodel.h"
+/**
+ * @file contextualizationmodel.cpp
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class ContextualizationModel
+ *
+ * @brief This is the model class of a MVC architecture on Contextualization Tool app.
+ */
 
-const QString ContextualizationModel::NO_IMAGE_PATH =
-        QDir("../resources/images").absoluteFilePath("imageNotAvailable.png");
+#include "contextualizationmodel.h"
 
 ContextualizationModel::ContextualizationModel(QString image, QList<FirmwareString *> list) : QObject()
 {
@@ -36,7 +43,7 @@ void ContextualizationModel::addString(FirmwareString *newString)
 {
     stringsList_.append(newString);
 
-    emit stringListChanged();
+    emit stringsListChanged();
 }
 
 void ContextualizationModel::addStrings(QList<FirmwareString *> &strings)
@@ -56,7 +63,7 @@ bool ContextualizationModel::removeString(QString &id)
             stringsList_.removeOne(string);
             delete string;
 
-            emit stringListChanged();
+            emit stringsListChanged();
 
             return true;
         }
@@ -74,7 +81,7 @@ bool ContextualizationModel::removeString(int pos)
         stringsList_.removeAt(pos);
         delete stringToRemove;
 
-        emit stringListChanged();
+        emit stringsListChanged();
 
         return true;
     }
@@ -87,12 +94,11 @@ void ContextualizationModel::removeAllStrings()
     if (!stringsList_.isEmpty()) {
         foreach (QObject *fwString, stringsList_) {
             delete fwString;
-            fwString = Q_NULLPTR;
         }
 
         stringsList_.clear();
 
-        emit stringListChanged();
+        emit stringsListChanged();
     }
 }
 
@@ -126,7 +132,7 @@ bool ContextualizationModel::isEmpty()
 
 bool ContextualizationModel::hasImage()
 {
-    return !image_.isEmpty() && image_ != NO_IMAGE_PATH;
+    return !image_.isEmpty();
 }
 
 bool ContextualizationModel::hasStrings()
@@ -156,8 +162,7 @@ QJsonObject ContextualizationModel::toJsonObject()
         stringsList.insert(QString::number(count),  fwString->toJsonObject());
     }
 
-    //If image_ is NO_IMAGE_PATH, image path saves empty.
-    root.insert("image", QJsonValue(image_ == NO_IMAGE_PATH ? "" : image_));
+    root.insert("image", QJsonValue(image_));
     root.insert("strings", stringsList);
 
     return root;
@@ -181,7 +186,7 @@ ContextualizationModel * ContextualizationModel::fromJson(QByteArray &json)
     QJsonDocument document = QJsonDocument::fromJson(json, &jsonError);
 
     if (jsonError.error != QJsonParseError::NoError) {
-        Log::writeError(jsonError.errorString());
+        Log::writeError(QString(Q_FUNC_INFO) + jsonError.errorString());
         return Q_NULLPTR;
     }
 

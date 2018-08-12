@@ -1,3 +1,13 @@
+/**
+ * @file mysqlconnector.cpp
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class MySqlConnector
+ *
+ * @brief This is a class to access a MySQL database.
+ */
+
 #include "mysqlconnector.h"
 
 MySqlConnector::MySqlConnector() : DatabaseConnectorAbstract()

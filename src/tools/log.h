@@ -1,11 +1,28 @@
+/**
+ * @file log.h
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class Log
+ *
+ * @brief This is a static class to write logs in different channels.
+ */
+
 #ifndef LOG_H
 #define LOG_H
+
+// Comment this define when when the application will be ran in a production environment.
+#ifndef DEVELOP
+#define DEVELOP
+#endif
+
 
 #include <QString>
 #include <QFile>
 #include <QTextStream>
 #include <QDate>
 #include <QStandardPaths>
+#include <QDebug>
 
 class Log
 {

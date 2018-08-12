@@ -1,3 +1,13 @@
+/**
+ * @file guicontroller.cpp
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class GuiController
+ *
+ * @brief This is the controller class that works a GUI environment.
+ */
+
 #include "guicontroller.h"
 
 GuiController::GuiController(QQuickWindow *view, QObject *parent)
@@ -201,7 +211,7 @@ void GuiController::detect()
     }
 
     // Show informative message.
-    message.setStandardButtons(0);
+    message.setStandardButtons(Q_NULLPTR);
     message.setWindowTitle("Detecting...");
     message.setWindowModality(Qt::WindowModal);
     message.open();
@@ -327,9 +337,9 @@ bool GuiController::save()
     } else {
         exportToJsonFile(currentProjectPath_);
         saved = true;
-    }
 
-    projectHasChanges_ = !saved;
+        emit unchangedProject();
+    }
 
     return saved;
 }
@@ -359,6 +369,8 @@ bool GuiController::saveAs()
         path = path.endsWith(QString(".json")) ? path : path + ".json";
         exportToJsonFile(path);
         projectHasChanges_ = false;
+
+        emit unchangedProject();
 
         return true;
     }
@@ -390,11 +402,11 @@ void GuiController::open()
     dialog.setViewMode(QFileDialog::Detail);
     if (dialog.exec()) {
         projectPath = dialog.selectedFiles().first();
-        importProjectFromJsonFile(projectPath);
+        if (importProjectFromJsonFile(projectPath) == NoError) {
+            currentProjectPath_ = projectPath;
 
-        // Load flags for correct save and detect changes.
-        projectHasChanges_ = false;
-        currentProjectPath_ = projectPath;
+            emit unchangedProject();
+        }
     }
 }
 
@@ -413,10 +425,9 @@ void GuiController::newProject()
     // Clear all model.
     removeAllStrings();
     clearImage();
-
-    // Load flags for correct save and detect changes.
-    projectHasChanges_ = false;
     currentProjectPath_ = QString();
+
+    emit unchangedProject();
 }
 
 void GuiController::interestingArea()
@@ -440,30 +451,24 @@ void GuiController::interestingArea()
     }
 }
 
-void GuiController::changeModel()
+void GuiController::indicateProjectChanges()
 {
     projectHasChanges_ = true;
 }
 
+void GuiController::indicateProjectSaved()
+{
+    projectHasChanges_ = false;
+}
+
 void GuiController::configFpFile()
 {
-    bool ok;
-    QString englishFpFile;
-
-    do {
-        englishFpFile = QInputDialog::getText(
-            Q_NULLPTR,
-            tr("Configuration"),
-            tr("English fp path:"),
-            QLineEdit::Normal,
-            englishFpFile_,
-            &ok
-        );
-    } while(ok && englishFpFile.isEmpty());
-
-    // Only change value of path if user doesn't press cancel. After done fp file is generated.
-    if (ok) {
-        englishFpFile_ = englishFpFile;
+    QFileDialog dialog(Q_NULLPTR, tr("Open Image"), QDir::homePath(), tr("Contextualization (*.json)"));
+    dialog.setAcceptMode(QFileDialog::AcceptOpen);
+    dialog.setFileMode(QFileDialog::ExistingFile);
+    dialog.setViewMode(QFileDialog::Detail);
+    if (dialog.exec()) {
+        englishFpFile_ = dialog.selectedFiles().first();
         generateDoneFpFile();
     }
 }
@@ -569,97 +574,113 @@ void GuiController::connectGuiSignalsAndSlots()
             view_,
             SIGNAL(clearRequested()),
             this,
-            SLOT(clear())
+            SLOT(clear()),
+            Qt::UniqueConnection
         );
         QObject::connect(
             view_,
             SIGNAL(addRequested(QString, int)),
             this,
-            SLOT(add(QString, int))
+            SLOT(add(QString, int)),
+            Qt::UniqueConnection
         );
         QObject::connect(
             view_,
             SIGNAL(stringRemoved(QString)),
             this,
-            SLOT(remove(QString))
+            SLOT(remove(QString)),
+            Qt::UniqueConnection
         );
         QObject::connect(
             view_,
             SIGNAL(cancelRequested()),
             this,
-            SLOT(cancel())
+            SLOT(cancel()),
+            Qt::UniqueConnection
         );
         QObject::connect(
            view_,
             SIGNAL(sendRequested()),
             this,
-            SLOT(send())
+            SLOT(send()),
+            Qt::UniqueConnection
         );
         QObject::connect(
             view_,
             SIGNAL(captureRequested(bool)),
             this,
-            SLOT(capture(bool))
+            SLOT(capture(bool)),
+            Qt::UniqueConnection
         );
         QObject::connect(
             view_,
             SIGNAL(loadImageRequested(bool)),
             this,
-            SLOT(load(bool))
+            SLOT(load(bool)),
+            Qt::UniqueConnection
         );
         QObject::connect(
             view_,
             SIGNAL(detectStringsRequested()),
             this,
-            SLOT(detect())
+            SLOT(detect()),
+            Qt::UniqueConnection
         );
         QObject::connect(
             view_,
             SIGNAL(openRequested()),
             this,
-            SLOT(open())
+            SLOT(open()),
+            Qt::UniqueConnection
         );
         QObject::connect(
             view_,
             SIGNAL(saveRequested()),
             this,
-            SLOT(save())
+            SLOT(save()),
+            Qt::UniqueConnection
         );
         QObject::connect(
             view_,
             SIGNAL(saveAsRequested()),
             this,
-            SLOT(saveAs())
+            SLOT(saveAs()),
+            Qt::UniqueConnection
         );
         QObject::connect(
             view_,
             SIGNAL(interestingAreaRequested()),
             this,
-            SLOT(interestingArea())
+            SLOT(interestingArea()),
+            Qt::UniqueConnection
         );
         QObject::connect(
             view_,
             SIGNAL(fpFileConfigRequested()),
             this,
-            SLOT(configFpFile())
+            SLOT(configFpFile()),
+            Qt::UniqueConnection
         );
         QObject::connect(
             view_,
             SIGNAL(remoteHostConfigRequested()),
             this,
-            SLOT(configRemoteHost())
+            SLOT(configRemoteHost()),
+            Qt::UniqueConnection
         );
         QObject::connect(
             view_,
             SIGNAL(refreshRequested()),
             this,
-            SLOT(refresh())
+            SLOT(refresh()),
+            Qt::UniqueConnection
         );
         QObject::connect(
             view_,
             SIGNAL(newProjectRequested()),
             this,
-            SLOT(newProject())
+            SLOT(newProject()),
+            Qt::UniqueConnection
         );
     }
 }
@@ -671,25 +692,36 @@ void GuiController::connectModelSignalsAndSlots()
             model_,
             SIGNAL(imageChanged()),
             this,
-            SLOT(changeModel())
+            SIGNAL(imageChanged()),
+            Qt::UniqueConnection
         );
         QObject::connect(
             model_,
+            SIGNAL(stringsListChanged()),
+            this,
+            SIGNAL(stringsListChanged()),
+            Qt::UniqueConnection
+        );
+        QObject::connect(
+            this,
+            SIGNAL(stringsListChanged()),
+            this,
+            SLOT(indicateProjectChanges()),
+            Qt::UniqueConnection
+        );
+        QObject::connect(
+            this,
             SIGNAL(imageChanged()),
             this,
-            SIGNAL(imageChanged())
+            SLOT(indicateProjectChanges()),
+            Qt::UniqueConnection
         );
         QObject::connect(
-            model_,
-            SIGNAL(stringListChanged()),
             this,
-            SLOT(changeModel())
-        );
-        QObject::connect(
-            model_,
-            SIGNAL(stringListChanged()),
+            SIGNAL(unchangedProject()),
             this,
-            SIGNAL(stringsListChanged())
+            SLOT(indicateProjectSaved()),
+            Qt::UniqueConnection
         );
     }
 }

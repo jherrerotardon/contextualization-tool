@@ -1,3 +1,13 @@
+/**
+ * @file contextualizationfactoryabstract.h
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class ContextualizationFactoryAbstract
+ *
+ * @brief This is a interface factory to create a concrete class of ContextualizationController.
+ */
+
 #ifndef CONTEXTUALIZATIONFACTORYABSTRACT_H
 #define CONTEXTUALIZATIONFACTORYABSTRACT_H
 

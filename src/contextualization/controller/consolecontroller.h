@@ -1,3 +1,13 @@
+/**
+ * @file consolecontroller.h
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class ConsoleController
+ *
+ * @brief This is the controller class that works a CLI environment.
+ */
+
 #ifndef CONSOLECONTROLLER_H
 #define CONSOLECONTROLLER_H
 

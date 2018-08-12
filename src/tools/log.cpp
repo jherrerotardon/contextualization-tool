@@ -1,3 +1,13 @@
+/**
+ * @file log.cpp
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class Log
+ *
+ * @brief This is a static class to write logs in different channels.
+ */
+
 #include "log.h"
 
 const QString Log::debugFile_ = QStandardPaths::standardLocations(QStandardPaths::TempLocation).first()
@@ -15,15 +25,25 @@ Log::Log()
 void Log::writeDebug(QString text)
 {
     write(debugFile_, text);
+
+    #ifdef DEVELOP
+    qDebug() << text;
+    #endif
 }
 
 void Log::writeLog(QString text)
 {
+    #ifdef DEVELOP
+    qDebug() << text;
+    #endif
     write(logFile_, text);
 }
 
 void Log::writeError(QString text)
 {
+    #ifdef DEVELOP
+    qCritical() << text;
+    #endif
     write(errorFile_, text);
 }
 

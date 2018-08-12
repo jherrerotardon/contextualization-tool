@@ -1,3 +1,13 @@
+/**
+ * @file string.h
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class String
+ *
+ * @brief This is the representation of a string with their properties.
+ */
+
 #ifndef STRING_H
 #define STRING_H
 #include <QString>
@@ -161,7 +171,7 @@ public:
      * @brief Sets the editable parameter of the string.
      * @param state New editable state of the string.
      */
-    bool setEditable(bool editable);
+    void setEditable(bool editable);
 
     /**
      * @brief Returns the model converted to a string with the format in file fp.

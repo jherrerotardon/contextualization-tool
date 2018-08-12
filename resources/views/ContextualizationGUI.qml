@@ -1,4 +1,4 @@
-import QtQuick 2.10
+import QtQuick 2.6
 import QtQuick.Window 2.2
 import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.3
@@ -49,6 +49,7 @@ ApplicationWindow {
         property int height: 21
 
         id: menuBar
+
 
         Menu {
             title: "File"
@@ -201,9 +202,11 @@ ApplicationWindow {
                     clip: true
 
                     Image {
+                        property string defaultPath: "qrc:/images/imageNotAvailable.png"
+
                         objectName: "containerImage"
                         cache: false
-                        source: "file:" + controller.image
+                        source: controller.image ? "file:" + controller.image : defaultPath
                         fillMode: Image.PreserveAspectFit
                         asynchronous: true
                         anchors.fill: parent

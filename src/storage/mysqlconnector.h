@@ -1,3 +1,13 @@
+/**
+ * @file mysqlconnector.h
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class MySqlConnector
+ *
+ * @brief This is a class to access a MySQL database.
+ */
+
 #ifndef MYSQLCONNECTOR_H
 #define MYSQLCONNECTOR_H
 

@@ -1,3 +1,13 @@
+/**
+ * @file linuxguicontroller.h
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class LinuxGuiController
+ *
+ * @brief This is the controller class that works a linux GUI environment.
+ */
+
 #ifndef LINUXGUICONTROLLER_H
 #define LINUXGUICONTROLLER_H
 

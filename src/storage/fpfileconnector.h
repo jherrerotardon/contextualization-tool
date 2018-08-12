@@ -1,3 +1,13 @@
+/**
+ * @file fpfileconnector.h
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class FpFileConnector
+ *
+ * @brief This is a class to access a database saved as fp file by HP company.
+ */
+
 #ifndef FPFILECONNECTOR_H
 #define FPFILECONNECTOR_H
 

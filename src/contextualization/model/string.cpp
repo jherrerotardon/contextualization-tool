@@ -1,3 +1,13 @@
+/**
+ * @file string.cpp
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class String
+ *
+ * @brief This is the representation of a string with their properties.
+ */
+
 #include "string.h"
 
 String::String() : QObject()
@@ -164,7 +174,7 @@ bool String::isEditable() const
     return editable_;
 }
 
-bool String::setEditable(const bool editable)
+void String::setEditable(const bool editable)
 {
     editable_ = editable;
 
@@ -220,21 +230,21 @@ String * String::fromJson(QByteArray &json)
     QJsonDocument document = QJsonDocument::fromJson(json, &jsonError);
 
     if (jsonError.error != QJsonParseError::NoError) {
-        Log::writeError("Error decoding String json: " + jsonError.errorString());
+        Log::writeError(QString(Q_FUNC_INFO) + "Error decoding String json: " + jsonError.errorString());
 
         return Q_NULLPTR;
     }
 
     root = document.object();
     if (root.isEmpty()) {
-        Log::writeError("String fromJson(): error format on root object.");
+        Log::writeError(QString(Q_FUNC_INFO) + "String fromJson(): error format on root object.");
 
         return Q_NULLPTR;
     }
 
     value = root.value("value").toString();
     if (value.isEmpty()) {
-        Log::writeError("String fromJson(): key value is empty.");
+        Log::writeError(QString(Q_FUNC_INFO) + "String fromJson(): key value is empty.");
 
         return Q_NULLPTR;
     }
