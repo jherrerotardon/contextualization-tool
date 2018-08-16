@@ -12,8 +12,11 @@
 #define FPFILECONNECTOR_H
 
 #include <QFile>
+#include <QFileInfo>
+#include <QDir>
 #include "databaseconnectorabstract.h"
 #include "contextualization/model/firmwarestring.h"
+#include "tools/utils.h"
 
 class FpFileConnector : public DatabaseConnectorAbstract
 {
@@ -83,6 +86,16 @@ public:
      * @copydoc DatabaseConnectorAbstract::removeStringsWithId(const QString &id, bool caseSensitive)
      */
     int removeStringsWithId(const QString &id, bool caseSensitive = true) override;
+
+    /**
+     * @copydoc DatabaseConnectorAbstract::getLanguages()
+     */
+    QStringList getLanguages() override;
+
+    /**
+     * @copydoc DatabaseConnectorAbstract::getLanguageIds()
+     */
+    QStringList getLanguageIds() override;
 
 private:
     QFile file_;          ///< File where strings is stored.

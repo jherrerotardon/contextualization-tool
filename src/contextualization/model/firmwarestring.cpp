@@ -86,25 +86,25 @@ FirmwareString * FirmwareString::fromFpLine(const QString &fpLine)
     if (id.isNull()) {
         hasError = true;
 
-        Log::writeError(QString(Q_FUNC_INFO) + "Error format in MESSAGE_ID column. Cannot extract the id: " + fpLine);
+        Log::writeError(QString(Q_FUNC_INFO) + " Error format in MESSAGE_ID column. Cannot extract the id: " + fpLine);
     }
 
     if (value.isNull()) {
         hasError = true;
 
-        Log::writeError(QString(Q_FUNC_INFO) + "Error format in MESSAGE_ID column. Cannot extract the value: " + fpLine);
+        Log::writeError(QString(Q_FUNC_INFO) + " Error format in MESSAGE_ID column. Cannot extract the value: " + fpLine);
     }
 
     if (maxLength.isNull()) {
         hasError = true;
 
-        Log::writeError(QString(Q_FUNC_INFO) + "Error format in MAX_FIELD_WIDTH column. Cannot extract the max width: " + fpLine);
+        Log::writeError(QString(Q_FUNC_INFO) + " Error format in MAX_FIELD_WIDTH column. Cannot extract the max width: " + fpLine);
     }
 
     if (state.isNull()) {
         hasError = true;
 
-        Log::writeError(QString(Q_FUNC_INFO) + "Error format in LOCALIZATION column. Cannot extract state or isn't a valid state: "+ fpLine);
+        Log::writeError(QString(Q_FUNC_INFO) + " Error format in LOCALIZATION column. Cannot extract state or isn't a valid state: "+ fpLine);
     }
 
     if (hasError) {

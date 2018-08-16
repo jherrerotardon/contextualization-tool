@@ -181,5 +181,5 @@ QString Utils::getDateTime(QString format)
 
 QString Utils::getTmpDirectory()
 {
-    return QStandardPaths::standardLocations(QStandardPaths::TempLocation).first();
+    return QStandardPaths::standardLocations(QStandardPaths::TempLocation).first() + "/";
 }

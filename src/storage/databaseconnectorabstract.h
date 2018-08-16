@@ -13,6 +13,7 @@
 
 #include "contextualization/model/string.h"
 #include "tools/log.h"
+#include "tools/utils.h"
 
 class DatabaseConnectorAbstract
 {
@@ -85,6 +86,18 @@ public:
      * @return bool
      */
     virtual int removeStringsWithId(const QString &id, bool caseSensitive = true) = 0;
+
+    /**
+     * @brief Returns all languages stored in database.
+     * @return Languages used.
+     */
+    virtual QStringList getLanguages() = 0;
+
+    /**
+     * @brief Returns all language identifiers stored in database.
+     * @return Languages used.
+     */
+    virtual QStringList getLanguageIds() = 0;
 
 protected:
     const int MIN_LENGTH_FOR_APPROXIMATE;       ///< Minimun length for string to do an approximate find.

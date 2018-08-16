@@ -19,13 +19,13 @@ QString LinuxGuiController::takeCaptureArea()
 {
     int hasError;
     QStringList arguments;
-    QString path("/tmp/capture.png");
+    QString path(Utils::getTmpDirectory() + "capture_" + Utils::getDateTime() + ".png");
 
     arguments << path;
     hasError = Utils::executeProgram("import", arguments, QProcess::nullDevice(), QString(), 30000);
 
     if (hasError) {
-        Log::writeError(QString(Q_FUNC_INFO) + "Error taking capture. Code exit of import process: " +
+        Log::writeError(QString(Q_FUNC_INFO) + " Error taking capture. Code exit of import process: " +
             QString::number(hasError));
     }
 

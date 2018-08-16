@@ -11,6 +11,10 @@
 #ifndef MYSQLCONNECTOR_H
 #define MYSQLCONNECTOR_H
 
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlQuery>
+#include <QtSql/QSqlError>
+#include "contextualization/model/firmwarestring.h"
 #include "databaseconnectorabstract.h"
 
 class MySqlConnector : public DatabaseConnectorAbstract
@@ -30,6 +34,7 @@ public:
      * @param table Table name.
      */
     MySqlConnector(
+        const QString host,
         const QString user,
         const QString password,
         const QString database = QString(),
@@ -118,7 +123,18 @@ public:
      */
     int removeStringsWithId(const QString &id, bool caseSensitive = true) override;
 
+    /**
+     * @copydoc DatabaseConnectorAbstract::getLanguages()
+     */
+    QStringList getLanguages() override;
+
+    /**
+     * @copydoc DatabaseConnectorAbstract::getLanguageIds()
+     */
+    QStringList getLanguageIds() override;
+
 private:
+    QString host_;
     QString user_;
     QString password_;
     QString dataBase_;

@@ -44,7 +44,7 @@ QList<String *> FpFileConnector::getAllStrings()
     // Begin read file.
     if (!file_.open(QIODevice::ReadOnly | QIODevice::Text))
     {
-        Log::writeError(QString(Q_FUNC_INFO) + " Fail to open file: " + file_.fileName());
+        Log::writeError(QString(Q_FUNC_INFO) + "  Fail to open file: " + file_.fileName());
 
         return out;
     }
@@ -72,7 +72,7 @@ QList<String *> FpFileConnector::getStringsWithValue(const QString &value, bool 
 
     // Begin read file.
     if (!file_.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        Log::writeError(QString(Q_FUNC_INFO) + " Fail to open file: " + file_.fileName());
+        Log::writeError(QString(Q_FUNC_INFO) + "  Fail to open file: " + file_.fileName());
 
         return out;
     }
@@ -110,7 +110,7 @@ QList<String *> FpFileConnector::getStringsWithApproximateValue(const QString &v
 
     // Begin read file.
     if (!file_.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        Log::writeError(QString(Q_FUNC_INFO) + " Fail to open file: " + file_.fileName());
+        Log::writeError(QString(Q_FUNC_INFO) + "  Fail to open file: " + file_.fileName());
 
         return out;
     }
@@ -164,7 +164,7 @@ QList<String *> FpFileConnector::getStringWithId(const QString &id, bool caseSen
 
     // Begin read file.
     if (!file_.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        Log::writeError(QString(Q_FUNC_INFO) + " Fail to open file: " + file_.fileName());
+        Log::writeError(QString(Q_FUNC_INFO) + "  Fail to open file: " + file_.fileName());
 
         return out;
     }
@@ -198,20 +198,142 @@ QList<String *> FpFileConnector::getStringWithId(const QString &id, bool caseSen
 
 bool FpFileConnector::insertString(const String &string)
 {
+    if (getStringWithId(string.getId(), true).size() > 0) {
+        Log::writeError(QString(Q_FUNC_INFO) + " Try to add string in " + file_.fileName() +
+                        " but ID already exists: " + string.toFpFileFormat());
 
+        return false;
+    }
+
+    if (Utils::appendFile(file_.fileName(), string.toFpFileFormat()) == false) {
+        Log::writeError(QString(Q_FUNC_INFO) + " Can't append new String " + string.getId() + " in file " + file_.fileName());
+
+        return true;
+    }
+
+    return false;
 }
 
 int FpFileConnector::insertStrings(const QList<String *> &strings)
 {
+    int count = 0;
 
+    foreach (String *string, strings) {
+        count = insertString(*string) ? count+1 : count;
+    }
+
+    return count;
 }
 
 int FpFileConnector::removeStringsWithValue(const QString &value, bool caseSensitive)
 {
+    Qt::CaseSensitivity isCaseSensitive = caseSensitive ? Qt::CaseSensitive : Qt::CaseInsensitive;
+    FirmwareString *fwString;
+    int count = 0;
+    QString tmpFileName = "tmp_fp_" + Utils::getDateTime();
+    QFile tmpFile(tmpFileName);
 
+    if (file_.rename(tmpFileName) == false) {
+        Log::writeError(QString(Q_FUNC_INFO) + "  Could not copy " + file_.fileName() + " to remove strings.");
+
+        return count;
+    }
+
+    if (!file_.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        Log::writeError(QString(Q_FUNC_INFO) + "  Could not write in " + file_.fileName() + " to remove strings.");
+
+        return count;
+    }
+
+    if (!file_.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        Log::writeError(QString(Q_FUNC_INFO) + "  Could not open " + file_.fileName() + " to read strings.");
+
+        return count;
+    }
+
+    // Read temporal file and only copy strings that will not be removed.
+    QTextStream out(&file_);
+    QTextStream in(&tmpFile);
+
+    while (!in.atEnd()) {
+        fwString = FirmwareString::fromFpLine(in.readLine());
+        if (fwString) {
+            if (value.compare(fwString->getValue(), isCaseSensitive) == 0) {
+                out << fwString->toFpFileFormat() << '\n';
+            } else {
+                count++; // One more removed string
+            }
+
+            delete fwString;
+        }
+    }
+
+    file_.close();
+    tmpFile.close();
+
+    return count;
 }
 
 int FpFileConnector::removeStringsWithId(const QString &id, bool caseSensitive)
 {
+    Qt::CaseSensitivity isCaseSensitive = caseSensitive ? Qt::CaseSensitive : Qt::CaseInsensitive;
+    FirmwareString *fwString;
+    int count = 0;
+    QString tmpFileName = "tmp_fp_" + Utils::getDateTime();
+    QFile tmpFile(tmpFileName);
 
+    if (file_.rename(tmpFileName) == false) {
+        Log::writeError(QString(Q_FUNC_INFO) + "  Could not copy " + file_.fileName() + " to remove strings.");
+
+        return count;
+    }
+
+    if (!file_.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        Log::writeError(QString(Q_FUNC_INFO) + "  Could not write in " + file_.fileName() + " to remove strings.");
+
+        return count;
+    }
+
+    if (!file_.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        Log::writeError(QString(Q_FUNC_INFO) + "  Could not open " + file_.fileName() + " to read strings.");
+
+        return count;
+    }
+
+    // Read temporal file and only copy strings that will not be removed.
+    QTextStream out(&file_);
+    QTextStream in(&tmpFile);
+
+    while (!in.atEnd()) {
+        fwString = FirmwareString::fromFpLine(in.readLine());
+        if (fwString) {
+            if (id.compare(fwString->getId(), isCaseSensitive) == 0) {
+                out << fwString->toFpFileFormat() << '\n';
+            } else {
+                count++; // One more removed string
+            }
+
+            delete fwString;
+        }
+    }
+
+    file_.close();
+    tmpFile.close();
+
+    return count;
+}
+
+QStringList FpFileConnector::getLanguages()
+{
+    QFileInfo file(file_);
+
+    // Return file names without extensions.
+    return file.absoluteDir().entryList(QStringList() << "*.fp").replaceInStrings(QRegularExpression("\\.fp$"), "");
+
+}
+
+QStringList FpFileConnector::getLanguageIds()
+{
+    // Actually not lenguage keys in fp files.
+    return getLanguages();
 }

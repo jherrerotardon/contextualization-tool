@@ -106,7 +106,7 @@ private slots:
     /**
      * @brief Allows user select an area of image loaded where strings will be detected.
      */
-    void interestingArea();
+    void detectsStringOnInterestingArea(int startX, int startY, int endX, int endY);
 
     /**
      * @brief Change a flag to indicate that the model has changed.

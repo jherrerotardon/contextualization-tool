@@ -177,7 +177,7 @@ public:
      * @brief Returns the model converted to a string with the format in file fp.
      * @return A string.
      */
-    QString toFpFileFormat();
+    QString toFpFileFormat() const;
 
     /**
      * @brief Returns the string converted to a JSON QString.

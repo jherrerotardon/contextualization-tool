@@ -41,7 +41,7 @@ void GuiController::add(QString newString, int findType)
         return;
     }
 
-    stringsFound = findString(newString, (MatchType)findType);
+    stringsFound = findString(newString, static_cast<MatchType>(findType));
     switch (stringsFound.size()) {
     // Case where string not found in fp file.
     case 0:
@@ -430,13 +430,14 @@ void GuiController::newProject()
     emit unchangedProject();
 }
 
-void GuiController::interestingArea()
+void GuiController::detectsStringOnInterestingArea(int startX, int startY, int endX, int endY)
 {
-    /**
-     * WORK SO BAD. I WILL CHANGE ALGORITHM.
-     */
-
     QString path;
+    QImage captureArea(model_->getImage());
+    QList<FirmwareString *> extractedStrings;
+    QList<FirmwareString *> copy;
+    QString captureAreaPath = Utils::getTmpDirectory() + "capture_area_" + Utils::getDateTime() + ".png";
+    QMessageBox message;
 
     if (!model_->hasImage()) {
         Utils::informativeMessage("Not image.", "You have to set an image to can detect strings in it.");
@@ -444,11 +445,38 @@ void GuiController::interestingArea()
         return;
     }
 
-    path = takeCaptureArea();
+    captureArea = captureArea.copy(startX, startY, endX - startX, endY - startY);
+    if (captureArea.save(captureAreaPath, Q_NULLPTR, 100) == false) {
+        Utils::errorMessage("Bad operation.", "Now can't use this funcinality. Try it later.");
+        Log::writeError(QString(Q_FUNC_INFO) + " Could not save capture area in " + captureAreaPath);
 
-    if (!path.isEmpty()) {
-        detectStringsOnImage(path);
+        return;
     }
+
+    // Show informative message.
+    message.setStandardButtons(Q_NULLPTR);
+    message.setWindowTitle("Detecting...");
+    message.setWindowModality(Qt::WindowModal);
+    message.open();
+
+    // Extract strings on image.
+    extractedStrings = detectStringsOnImage(model_->getImage());
+
+    // A copy if creates because extracted strings are in a different thread and this is in conflict with Q_PROPERTYs.
+    foreach (FirmwareString *fwString, extractedStrings) {
+        copy << new FirmwareString(*fwString);
+
+        delete fwString;
+        fwString = Q_NULLPTR;
+    }
+
+    addStrings(copy);
+
+    // Close progress message.
+    message.close();
+
+    // Remove temporal files
+    QFile::remove(captureAreaPath);
 }
 
 void GuiController::indicateProjectChanges()
@@ -649,9 +677,9 @@ void GuiController::connectGuiSignalsAndSlots()
         );
         QObject::connect(
             view_,
-            SIGNAL(interestingAreaRequested()),
+            SIGNAL(selectedCaptureArea(int, int, int, int)),
             this,
-            SLOT(interestingArea()),
+            SLOT(detectsStringOnInterestingArea(int, int, int, int)),
             Qt::UniqueConnection
         );
         QObject::connect(

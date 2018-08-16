@@ -21,7 +21,7 @@ ApplicationWindow {
     signal fpFileConfigRequested()
     signal remoteHostConfigRequested()
     signal refreshRequested()
-    signal interestingAreaRequested()
+    signal selectedCaptureArea(int startX, int startY, int endX, int endY)
 
     id : mainWindow
     visible: true
@@ -193,6 +193,7 @@ ApplicationWindow {
                 Layout.leftMargin: 18
 
                 Rectangle {
+                    id: captureContainer
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     border.width : 1
@@ -203,14 +204,91 @@ ApplicationWindow {
 
                     Image {
                         property string defaultPath: "qrc:/images/imageNotAvailable.png"
+                        property int startSelectedX : 0
+                        property int startSelectedY: 0
+                        property int endSelectedX : 0
+                        property int endSelectedY: 0
+                        property bool select: false
+                        property double ratio
 
+                        id: capture
                         objectName: "containerImage"
                         cache: false
                         source: controller.image ? "file:" + controller.image : defaultPath
-                        fillMode: Image.PreserveAspectFit
                         asynchronous: true
                         anchors.fill: parent
-                        anchors.margins: 1
+                        fillMode: Image.PreserveAspectFit
+                        opacity: select ? 0.7 : 1
+
+                        MouseArea {
+                            id:roiRectArea
+                            anchors.fill: capture
+                            acceptedButtons: Qt.LeftButton
+                            cursorShape: capture.select ? Qt.CrossCursor : Qt.ArrowCursor
+
+                            onPressed: {
+                                if (isClickOnImagen(mouse.x, mouse.y)) {
+                                    capture.select = true;
+                                    capture.startSelectedX = mouse.x;
+                                    capture.startSelectedY = mouse.y;
+                                    capture.endSelectedX = mouse.x;
+                                    capture.endSelectedY = mouse.y;
+                                }
+                            }
+
+                            onReleased: {
+                                if (capture.select) {
+                                    // Emit signal
+                                    var realStartX = capture.startSelectedX * capture.width / capture.paintedWidth;
+                                    var realStartY = capture.startSelectedY * capture.width / capture.paintedWidth;
+                                    var realEndX = capture.endSelectedY * capture.width / capture.paintedWidth;
+                                    var realEndY = capture.endSelectedY * capture.width / capture.paintedWidth;
+                                    selectedCaptureArea(realStartX, realStartY, realEndX, realEndY);
+                                }
+
+                                capture.select = false;
+                                capture.startSelectedX = 0;
+                                capture.startSelectedY = 0;
+                                capture.endSelectedX = 0;
+                                capture.endSelectedY = 0;
+                            }
+
+                            onPositionChanged: {
+                                if (capture.select) {
+                                    if (capture.startSelectedX < mouse.x) {
+                                        // Positive direction
+                                        capture.endSelectedX = mouse.x
+                                        capture.endSelectedY= mouse.y
+                                    } else {
+                                        // Negative direction
+                                        capture.startSelectedX = mouse.x;
+                                        capture.startSelectedY = mouse.y;
+                                    }
+                                }
+                            }
+
+                            function isClickOnImagen(clickX, clickY) {
+                                var marginX = (parent.width - capture.paintedWidth) / 2;
+                                var marginY = (parent.height - capture.paintedHeight) / 2;
+
+                                if (clickX < marginX || clickX > (capture.paintedWidth + marginX) ||
+                                    clickY < marginY || clickY > (capture.paintedHeight + marginY)) {
+                                    return false;
+                                }
+
+                                return true;
+                            }
+                        }
+
+                        Rectangle {
+                            id: selectedZone
+                            opacity: capture.select ? 0.4 : 0
+                            x: capture.startSelectedX
+                            y: capture.startSelectedY
+                            width: capture.endSelectedX - capture.startSelectedX
+                            height: capture.endSelectedY - capture.startSelectedY
+                            //color: "#ffffff"
+                        }
                     }
                 }
 
@@ -221,8 +299,9 @@ ApplicationWindow {
                         id: interestingAreaButton
                         Layout.preferredWidth: 30
                         iconSource: "qrc:/images/interestingArea.png"
+                        checked: true
 
-                        onClicked: interestingAreaRequested()
+                        onClicked: capture.select = true
                     }
 
                     Item {
