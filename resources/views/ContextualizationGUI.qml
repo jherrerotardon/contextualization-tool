@@ -21,7 +21,7 @@ ApplicationWindow {
     signal fpFileConfigRequested()
     signal remoteHostConfigRequested()
     signal refreshRequested()
-    signal selectedCaptureArea(int startX, int startY, int endX, int endY)
+    signal selectedCaptureArea(int startX, int startY, int endX, int endY, int paintedWitdh, int paintedHeight)
 
     id : mainWindow
     visible: true
@@ -228,7 +228,7 @@ ApplicationWindow {
 
                             onPressed: {
                                 if (isClickOnImagen(mouse.x, mouse.y)) {
-                                    capture.select = true;
+                                    //capture.select = true;
                                     capture.startSelectedX = mouse.x;
                                     capture.startSelectedY = mouse.y;
                                     capture.endSelectedX = mouse.x;
@@ -239,11 +239,18 @@ ApplicationWindow {
                             onReleased: {
                                 if (capture.select) {
                                     // Emit signal
-                                    var realStartX = capture.startSelectedX * capture.width / capture.paintedWidth;
-                                    var realStartY = capture.startSelectedY * capture.width / capture.paintedWidth;
-                                    var realEndX = capture.endSelectedY * capture.width / capture.paintedWidth;
-                                    var realEndY = capture.endSelectedY * capture.width / capture.paintedWidth;
-                                    selectedCaptureArea(realStartX, realStartY, realEndX, realEndY);
+                                    /*var realStartX = capture.startSelectedX * capture.width / capture.paintedWidth;
+                                    var realStartY = capture.startSelectedY * capture.height / capture.paintedHeight;
+                                    var realEndX = capture.endSelectedX * capture.width / v;
+                                    var realEndY = capture.endSelectedY * capture.height / capture.paintedHeight;*/
+                                    selectedCaptureArea(
+                                        capture.startSelectedX - calculateHorizontalMargin(),
+                                        capture.startSelectedY - calculateVerticalMargin(),
+                                        capture.endSelectedX - calculateHorizontalMargin(),
+                                        capture.endSelectedY - calculateVerticalMargin(),
+                                        capture.paintedWidth,
+                                        capture.paintedHeight
+                                    );
                                 }
 
                                 capture.select = false;
@@ -268,15 +275,23 @@ ApplicationWindow {
                             }
 
                             function isClickOnImagen(clickX, clickY) {
-                                var marginX = (parent.width - capture.paintedWidth) / 2;
-                                var marginY = (parent.height - capture.paintedHeight) / 2;
+                                var marginX = calculateHorizontalMargin();
+                                var marginY = calculateVerticalMargin();
 
                                 if (clickX < marginX || clickX > (capture.paintedWidth + marginX) ||
-                                    clickY < marginY || clickY > (capture.paintedHeight + marginY)) {
+                                        clickY < marginY || clickY > (capture.paintedHeight + marginY)) {
                                     return false;
                                 }
 
                                 return true;
+                            }
+
+                            function calculateHorizontalMargin() {
+                                return (parent.width - capture.paintedWidth) / 2;
+                            }
+
+                            function calculateVerticalMargin() {
+                                return (parent.height - capture.paintedHeight) / 2;
                             }
                         }
 
@@ -287,7 +302,7 @@ ApplicationWindow {
                             y: capture.startSelectedY
                             width: capture.endSelectedX - capture.startSelectedX
                             height: capture.endSelectedY - capture.startSelectedY
-                            //color: "#ffffff"
+                            color: "#ffffff"
                         }
                     }
                 }

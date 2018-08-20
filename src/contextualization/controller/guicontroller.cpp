@@ -430,8 +430,14 @@ void GuiController::newProject()
     emit unchangedProject();
 }
 
-void GuiController::detectsStringOnInterestingArea(int startX, int startY, int endX, int endY)
-{
+void GuiController::detectsStringOnInterestingArea(
+    int startX,
+    int startY,
+    int endX,
+    int endY,
+    int paintedWidth,
+    int paintedHeight
+) {
     QString path;
     QImage captureArea(model_->getImage());
     QList<FirmwareString *> extractedStrings;
@@ -439,13 +445,19 @@ void GuiController::detectsStringOnInterestingArea(int startX, int startY, int e
     QString captureAreaPath = Utils::getTmpDirectory() + "capture_area_" + Utils::getDateTime() + ".png";
     QMessageBox message;
 
+    // Calculate real selection coordinates on image.
+    int realStartX = startX * captureArea.width() / paintedWidth;
+    int realStartY = startY* captureArea.height() / paintedHeight;
+    int realEndX = endX * captureArea.width() / paintedWidth;
+    int realEndY = endY * captureArea.height() / paintedHeight;
+
     if (!model_->hasImage()) {
         Utils::informativeMessage("Not image.", "You have to set an image to can detect strings in it.");
 
         return;
     }
 
-    captureArea = captureArea.copy(startX, startY, endX - startX, endY - startY);
+    captureArea = captureArea.copy(realStartX, realStartY, realEndX - realStartX, realEndY - realStartY);
     if (captureArea.save(captureAreaPath, Q_NULLPTR, 100) == false) {
         Utils::errorMessage("Bad operation.", "Now can't use this funcinality. Try it later.");
         Log::writeError(QString(Q_FUNC_INFO) + " Could not save capture area in " + captureAreaPath);
@@ -460,7 +472,7 @@ void GuiController::detectsStringOnInterestingArea(int startX, int startY, int e
     message.open();
 
     // Extract strings on image.
-    extractedStrings = detectStringsOnImage(model_->getImage());
+    extractedStrings = detectStringsOnImage(captureAreaPath);
 
     // A copy if creates because extracted strings are in a different thread and this is in conflict with Q_PROPERTYs.
     foreach (FirmwareString *fwString, extractedStrings) {
@@ -677,9 +689,9 @@ void GuiController::connectGuiSignalsAndSlots()
         );
         QObject::connect(
             view_,
-            SIGNAL(selectedCaptureArea(int, int, int, int)),
+            SIGNAL(selectedCaptureArea(int, int, int, int, int, int)),
             this,
-            SLOT(detectsStringOnInterestingArea(int, int, int, int)),
+            SLOT(detectsStringOnInterestingArea(int, int, int, int, int, int)),
             Qt::UniqueConnection
         );
         QObject::connect(
