@@ -15,6 +15,7 @@ const int ContextualizationController::CHUNK_HEIGHT = 150;
 const QString ContextualizationController::DONE_FP_FILE = "/tmp/doneFpFile.fp";
 const QString ContextualizationController::IMAGES_FOLDER = QDir("../storage/images").absolutePath() + '/';
 const QString ContextualizationController::PROJECTS_FOLDER = QDir("../storage/projects").absolutePath() + '/';
+const QString ContextualizationController::CONFIG_FOLDER = QDir("../config").absolutePath() + '/';
 
 ContextualizationController::ContextualizationController(QObject *parent) : QObject(parent)
 {
@@ -39,7 +40,7 @@ ContextualizationController::ContextualizationController(QObject *parent) : QObj
 
     // Make storage directory if not exists
     if(QDir(IMAGES_FOLDER).mkpath(".")) {
-        Log::writeLog(QString(Q_FUNC_INFO) + QString(Q_FUNC_INFO) + "  Created " + IMAGES_FOLDER);
+        Log::writeLog(QString(Q_FUNC_INFO) + "  Created " + IMAGES_FOLDER);
     } else {
         Log::writeError(QString(Q_FUNC_INFO) + " Impossible create " + IMAGES_FOLDER);
     }
@@ -48,6 +49,12 @@ ContextualizationController::ContextualizationController(QObject *parent) : QObj
         Log::writeLog(QString(Q_FUNC_INFO) + " Created " + PROJECTS_FOLDER);
     } else {
         Log::writeError(QString(Q_FUNC_INFO) + " Impossible create " + PROJECTS_FOLDER);
+    }
+
+    if(QDir(CONFIG_FOLDER).mkpath(".")) {
+        Log::writeLog(QString(Q_FUNC_INFO) + " Created " + CONFIG_FOLDER);
+    } else {
+        Log::writeError(QString(Q_FUNC_INFO) + " Impossible create " + CONFIG_FOLDER);
     }
 }
 
@@ -526,7 +533,7 @@ void ContextualizationController::saveConfig()
 {
     QJsonObject root;
     QJsonArray validStates;
-    QString configurationFile("../conf/general.conf");
+    QString configurationFile(CONFIG_FOLDER + "general.conf");
 
     foreach (QString state, validStates_) {
         validStates << QJsonValue(state);

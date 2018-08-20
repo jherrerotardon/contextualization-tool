@@ -100,6 +100,7 @@ protected:
     const static int CHUNK_HEIGHT;          ///< Height of each chunk when a image is splitted.
     const static QString IMAGES_FOLDER;     ///< Directory where will save project images.
     const static QString PROJECTS_FOLDER;   ///< Directory where will save projects.
+    const static QString CONFIG_FOLDER;     ///< Directory where will save configurations.
     ContextualizationModel *model_;         ///< Pointer to the contextualization model.
     QString englishFpFile_;                 ///< Original file where be all firmware strings.
     const static QString DONE_FP_FILE;      ///< File path where the firmware strings will be found.
