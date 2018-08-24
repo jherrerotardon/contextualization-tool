@@ -424,7 +424,7 @@ bool ContextualizationController::setImage(const QString &image)
 {
     QFileInfo imageInfo(image);
 
-    if (QFile::exists(image)) {
+    if (image.isEmpty() || QFile::exists(image)) {
         model_->setImage(image);
         Log::writeLog(QString(Q_FUNC_INFO) + " New image set in the project: " + image);
 

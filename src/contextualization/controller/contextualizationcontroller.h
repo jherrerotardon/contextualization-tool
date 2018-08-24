@@ -111,7 +111,7 @@ protected:
     bool caseSensitive_;                    ///< Indicates if searches will be case sensitive or not.
 
     /**
-     * @brief Exports projet to json file.
+     * @brief Imports projet from json file.
      *
      * Decodes JSON format of the file received by parameter and try to convert it in a ContextualizationModel object.
      * Returns a #Error code.
@@ -121,7 +121,7 @@ protected:
     CodeError importProjectFromJsonFile(const QString &path);
 
     /**
-     * @brief Imports projet from json file.
+     * @brief Exports project to json file.
      *
      * Codes the actual model to JSON format and sabe data in the file received by parameter.
      * Returns true if project was exported succesfully, otherwise, returns false.

@@ -13,6 +13,7 @@
 
 #include <iostream>
 #include <QVariant>
+#include <QList>
 #include "contextualization/controller/contextualizationcontroller.h"
 
 /**
@@ -117,7 +118,8 @@ private:
     QString appName_;       ///< Application name.
     QVariant parameter_;    ///< Value of parameter that will be used by exec depending the behavior.
     ActionType action_;     ///< Behavior of exec() function.
-    MatchType findType_;     ///< Indicates the type of find that will be done.
+    MatchType findType_;    ///< Indicates the type of find that will be done.
+    QString projectPath_;   ///< Path of loaded project.
 
 private slots:
 
@@ -139,12 +141,12 @@ private slots:
     /**
      * @copydoc ContextualizationController::capture();
      */
-    void capture(bool detectStringsOnLoad) override;
+    void capture(bool detectStringsOnLoad = false) override;
 
     /**
      * @copydoc ContextualizationController::load();
      */
-    void load(bool detectStringsOnLoad) override;
+    void load(bool detectStringsOnLoad = false) override;
 
     /**
      * @copydoc ContextualizationController::detect();

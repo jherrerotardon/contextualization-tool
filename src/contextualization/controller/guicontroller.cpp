@@ -162,7 +162,7 @@ void GuiController::capture(bool detectStringsOnLoad)
                 detect();
             }
         } else {
-            Utils::errorMessage("Can't set image.", "Had a problem with the capture.");
+            Utils::errorMessage("Can't set image.", "There was a problem with the capture.");
         }
     }
 }

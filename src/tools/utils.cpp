@@ -183,3 +183,19 @@ QString Utils::getTmpDirectory()
 {
     return QStandardPaths::standardLocations(QStandardPaths::TempLocation).first() + "/";
 }
+
+QString Utils::formatText(const QString &text, QList<TextModifier> modifiers)
+{
+    QString formatted("\033[:formatm:text\033[0m\n");
+    QStringList modifiersArray;
+
+    foreach (TextModifier modifier, modifiers) {
+        modifiersArray << QString::number(modifier);
+    }
+
+    formatted.replace(":format", modifiersArray.join(';'));
+    formatted.replace(":text", text);
+
+    return formatted;
+
+}

@@ -239,27 +239,59 @@ void ConsoleController::printDetectOptions()
 
 void ConsoleController::add(QString newString, int findType)
 {
+    QList <FirmwareString *> stringsFound;
+    int count;
 
+    stringsFound = findString(newString, static_cast<MatchType>(findType));
+
+    count = addStrings(stringsFound);
+
+    std::cout << "Added " << count << " string in to project.";
 }
 
 void ConsoleController::remove(QString stringId)
 {
-
+    if (removeString(stringId)) {
+        std::cout << "The string '" << stringId.toStdString() << "' has been removed succesfully.";
+    } else {
+        std::cout << "There are not any string with the indentifier '" << stringId.toStdString() << "'.";
+    }
 }
 
 void ConsoleController::clear()
 {
+    bool done;
 
+    done = removeAllStrings();
+
+    if (done) {
+        std::cout << "All string removed succesfully.";
+    } else {
+        std::cout << "There are not strings to be removed.";
+    }
 }
 
 void ConsoleController::capture(bool detectStringsOnLoad)
 {
+    Q_UNUSED(detectStringsOnLoad); // In CLI mode is not util.
 
+    QString path;
+
+    path = takeCaptureArea();
+
+    if (setImage(path)) {
+        std::cout << "Capture set succesfully.";
+    } else {
+        std::cout << Utils::formatText(
+            "There was a problem with a capture.",
+            QList<Utils::TextModifier>() << Utils::FG_RED
+        ).toStdString();
+    }
 }
 
 void ConsoleController::load(bool detectStringsOnLoad)
 {
-
+    Q_UNUSED(detectStringsOnLoad); // In CLI mode is not util.
 }
 
 void ConsoleController::detect()
@@ -279,12 +311,13 @@ void ConsoleController::cancel()
 
 bool ConsoleController::save()
 {
-
+    return exportToJsonFile(projectPath_);
 }
 
 bool ConsoleController::saveAs()
 {
-
+    // Is not an option in console mode.
+    return false;
 }
 
 void ConsoleController::open()
