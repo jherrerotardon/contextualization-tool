@@ -353,6 +353,24 @@ protected:
      */
     QStringList splitImage(const QString &image, int chunkWidth, int chunkHeight, bool *someError = Q_NULLPTR);
 
+    /**
+     * @brief Returns a value of a parameter in config file.
+     * @param parameter Parameter name to be returned.
+     * @return Value
+     */
+    QString getParameterFromConfigFile(const QString parameter);
+
+    /**
+     * @brief Sets a parameter in configuration file.
+     *
+     * Returns true if parameter is saved succesfully, otherwhise returns false.
+     * @param parameter Parameter name
+     * @param value Parameter value
+     * @return bool
+     */
+    bool setParameterInConfigFile(const QString parameter, const QString value);
+
+
 protected slots:
 
     /**
@@ -438,18 +456,6 @@ signals:
      * @brief The signal is emitted when a image is setted on the model.
      */
     void imageChanged();
-
-private:
-    const static QStringList COMMON_WORDS;             ///< Dicctionary with the most common words in firmware string.
-
-    /**
-     * @brief Checks if the word is a common word used in firmare strings.
-     *
-     * The common words are saved in a dictionary.
-     * @param word Word to be checked.
-     * @return bool
-     */
-    bool isCommonWord(const QString &word);
 };
 
 #endif // CONTEXTUALIZATIONCONTROLLER_H

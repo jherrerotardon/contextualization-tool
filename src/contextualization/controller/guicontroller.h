@@ -190,6 +190,16 @@ signals:
      * @brief The signal is emitted when a current project is saved.
      */
     void unchangedProject();
+
+    /**
+     * @brief The signal is emitted when a new string is added to the model or a string is removed from the model.
+     */
+    void stringsListChanged();
+
+    /**
+     * @brief The signal is emitted when a image is setted on the model.
+     */
+    void imageChanged();
 };
 
 #endif // GUICONTROLLER_H
