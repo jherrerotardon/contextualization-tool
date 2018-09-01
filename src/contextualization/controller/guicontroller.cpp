@@ -267,7 +267,7 @@ void GuiController::send()
             }
 
             // Show informative message.
-            message.setStandardButtons(0);
+            message.setStandardButtons(Q_NULLPTR);
             message.setWindowTitle("Sending...");
             message.setWindowModality(Qt::WindowModal);
             message.open();

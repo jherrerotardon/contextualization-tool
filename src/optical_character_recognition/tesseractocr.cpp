@@ -28,7 +28,7 @@ TesseractOcr::TesseractOcr(
     pageSegMode_ = pageSegMode;
     language_ = "eng"; ///< Default language always "eng".
 
-    setlocale (LC_NUMERIC, "C"); ///< Necessary for the api to work.
+    setlocale (LC_ALL, "C"); ///< Necessary for the api to work.
     api_ = new tesseract::TessBaseAPI();
 }
 
@@ -40,14 +40,14 @@ TesseractOcr::TesseractOcr(const TesseractOcr &other)
     pageSegMode_ = other.getPageSegMode();
     language_ = other.getLanguages().join('+');
 
-    setlocale (LC_NUMERIC, "C"); ///< Necessary for the api to work.
+    setlocale (LC_ALL, "C"); ///< Necessary for the api to work.
     api_ = new tesseract::TessBaseAPI();
 }
 
 TesseractOcr::~TesseractOcr()
 {
     delete api_;
-    setlocale (LC_NUMERIC, "");
+    setlocale (LC_ALL, "");
 }
 
 QStringList TesseractOcr::extract()
@@ -92,7 +92,7 @@ QStringList TesseractOcr::extract()
     }
 
     if (!imagePix) {
-        Log::writeError(QString(Q_FUNC_INFO) + image_.fileName() + " can't be converted into Pix object.");
+        Log::writeError(QString(Q_FUNC_INFO) + " " + image_.fileName() + " can't be converted into Pix object.");
 
         return QStringList();
     }

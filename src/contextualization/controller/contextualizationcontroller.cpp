@@ -12,7 +12,7 @@
 
 const int ContextualizationController::CHUNK_WIDTH = 300;
 const int ContextualizationController::CHUNK_HEIGHT = 150;
-const QString ContextualizationController::DONE_FP_FILE = "/tmp/doneFpFile.fp";
+const QString ContextualizationController::DONE_FP_FILE = Utils::getTmpDirectory() + "/doneFpFile.fp";
 const QString ContextualizationController::IMAGES_FOLDER = QDir("../storage/images").absolutePath() + '/';
 const QString ContextualizationController::PROJECTS_FOLDER = QDir("../storage/projects").absolutePath() + '/';
 const QString ContextualizationController::CONFIG_FOLDER = QDir("../config").absolutePath() + '/';
@@ -492,7 +492,7 @@ void ContextualizationController::loadConfig()
     QJsonObject root;
     QJsonParseError jsonError;
     QJsonDocument document;
-    QFile configurationFile("../conf/general.conf");
+    QFile configurationFile(CONFIG_FOLDER + "general.conf");
 
     if (configurationFile.exists())
     {
@@ -532,22 +532,33 @@ void ContextualizationController::loadConfig()
 void ContextualizationController::saveConfig()
 {
     QJsonObject root;
-    QJsonArray validStates;
-    QString configurationFile(CONFIG_FOLDER + "general.conf");
+    QJsonDocument document;
+    QJsonParseError jsonError;
+    QFileInfo configurationFile(CONFIG_FOLDER + "general.conf");
 
-    foreach (QString state, validStates_) {
-        validStates << QJsonValue(state);
+    if (configurationFile.exists())
+    {
+        document = QJsonDocument::fromJson(Utils::readAllFile(configurationFile.fileName()), &jsonError);
+
+        if (jsonError.error != QJsonParseError::NoError) {
+            Log::writeError(QString(Q_FUNC_INFO) + " Error decoding configuration file: " + jsonError.errorString());
+
+            return;
+        }
+
+        // Get object with the configuration.
+        root = document.object();
     }
 
+    // Replace or add atributtes.
     root.insert("english.fp", englishFpFile_);
     root.insert("remoteHost", remoteHost_);
-    root.insert("validStates", validStates);
 
     // Write configuration in disk.
-    if (Utils::writeFile(configurationFile, QString(QJsonDocument(root).toJson(QJsonDocument::Indented)))) {
+    if (Utils::writeFile(configurationFile.absoluteFilePath(), QString(QJsonDocument(root).toJson(QJsonDocument::Indented)))) {
         Log::writeLog(QString(Q_FUNC_INFO) + " Configuration saved succesfully.");
     } else {
-        Log::writeError(QString(Q_FUNC_INFO) + " Could not save configuration in file " + configurationFile);
+        Log::writeError(QString(Q_FUNC_INFO) + " Could not save configuration in file " + configurationFile.absoluteFilePath());
     }
 }
 
@@ -639,27 +650,71 @@ void ContextualizationController::refresh()
     emit stringsListChanged();
 }
 
-bool ContextualizationController::isCommonWord(const QString &word)
+QString ContextualizationController::getParameterFromConfigFile(const QString parameter)
 {
-    /**
-     * Dictionary with the most used words that are longer than MIN_LENGTH_FOR_APPROXIMATE.
-     */
-    QStringList dictionary;
+    QJsonObject root;
+    QJsonParseError jsonError;
+    QJsonDocument document;
+    QFile configurationFile(CONFIG_FOLDER + "general.conf");
+    QString value;
 
-    dictionary << "Blueprints"
-               << "Quickset"
-               << "paper type"
-               << "Modify quickset"
-               << "Copy"
-               << "Cancel"
-               << "Output"
-               << "Destination";
+    if (configurationFile.exists())
+    {
+        document = QJsonDocument::fromJson(Utils::readAllFile(configurationFile.fileName()), &jsonError);
 
-    foreach (QString text, dictionary) {
-        if (text.contains(word, Qt::CaseInsensitive)) {
-            return true;
+        if (jsonError.error != QJsonParseError::NoError) {
+            Log::writeError(QString(Q_FUNC_INFO) + " Error decoding configuration file: " + jsonError.errorString());
+
+            return QString();
         }
+
+        // Get object with the configuration.
+        root = document.object();
+        if (root.isEmpty()) {
+            Log::writeError(QString(Q_FUNC_INFO) + " Error format on configuration file. " + configurationFile.fileName());
+
+            return QString();
+        }
+
+        value = root.value(parameter).toString();
+
+        return value.isEmpty() ? QString() : value;
+
     }
 
-    return false;
+    return QString();
+}
+
+bool ContextualizationController::setParameterInConfigFile(const QString parameter, const QString value)
+{
+    QJsonObject root;
+    QJsonDocument document;
+    QJsonParseError jsonError;
+    QFileInfo configurationFile(CONFIG_FOLDER + "general.conf");
+
+    if (configurationFile.exists())
+    {
+        document = QJsonDocument::fromJson(Utils::readAllFile(configurationFile.fileName()), &jsonError);
+
+        if (jsonError.error != QJsonParseError::NoError) {
+            Log::writeError(QString(Q_FUNC_INFO) + " Error decoding configuration file: " + jsonError.errorString());
+
+            return false;
+        }
+
+        // Get object with the configuration.
+        root = document.object();
+    }
+
+    // Replace or add atributtes.
+    root.insert(parameter, value);
+
+    // Write configuration in disk.
+    if (Utils::writeFile(configurationFile.absoluteFilePath(), QString(QJsonDocument(root).toJson(QJsonDocument::Indented)))) {
+        Log::writeLog(QString(Q_FUNC_INFO) + " Parameter " + parameter + " saved succesfully with value " + value +".");
+        return true;
+    } else {
+        Log::writeError(QString(Q_FUNC_INFO) + " Could not save parameter " + parameter + " in file " + configurationFile.absoluteFilePath());
+        return false;
+    }
 }

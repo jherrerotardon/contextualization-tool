@@ -14,6 +14,9 @@
 #include <iostream>
 #include <QVariant>
 #include <QList>
+#include <stdio.h>
+#include <iomanip>
+#include <string.h>
 #include "contextualization/controller/contextualizationcontroller.h"
 
 /**
@@ -44,7 +47,7 @@ public:
         CaptureArea,        ///< Indicates that the app have to let the user capture an area of sreen and set it as image model.
         DetectStrings,      ///< Indicates that the app have to extract strings from image model and add it in active project.
         ExportProject,      ///< Indicates that the app have to save the active project in the path entered by the user.
-        ImportPorject,      ///< Indicates that the app have to import a project entered by the user.
+        ImportProject,      ///< Indicates that the app have to import a project entered by the user.
         Send,               ///< Indicates that the app have to send the active contextualization.
         PrintClearHelp,     ///< Indicates that the app have to print detailed help for clear command.
         PrintAddHelp,       ///< Indicates that the app have to print extended help for add command.
@@ -114,13 +117,6 @@ public:
      */
     void printDetectOptions();
 
-private:
-    QString appName_;       ///< Application name.
-    QVariant parameter_;    ///< Value of parameter that will be used by exec depending the behavior.
-    ActionType action_;     ///< Behavior of exec() function.
-    MatchType findType_;    ///< Indicates the type of find that will be done.
-    QString projectPath_;   ///< Path of loaded project.
-
 private slots:
 
     /**
@@ -182,6 +178,48 @@ private slots:
      * @copydoc ContextualizationController::newProject();
      */
     void newProject() override;
+
+    /**
+     * @brief Prints in console all available projects.
+     */
+    void listProjects();
+
+    /**
+     * @brief Prints in console details of selected project.
+     */
+    void detailCurrentProject();
+
+    /**
+     * @brief Deletes project introduce by user un console parameter.
+     */
+    void deleteProject();
+
+private:
+    QString appName_;       ///< Application name.
+    QVariant parameter_;    ///< Value of parameter that will be used by exec depending the behavior.
+    ActionType action_;     ///< Behavior of exec() function.
+    MatchType findType_;    ///< Indicates the type of find that will be done.
+    QString projectPath_;   ///< Path of loaded project.
+
+    /**
+     * @brief Request by console the username.
+     * @return User input.
+     */
+    QString requestUsername();
+
+    /**
+     * @brief Request by console the password.
+     * @return User input.
+     */
+    QString requestPassword();
+
+    /**
+     * @brief Loads a project(model) from configuration file.
+     *
+     * Create a model with project selected in configuration file.
+     * @return
+     */
+    CodeError loadProjectFromConfiguration();
 };
 
 #endif // CONSOLECONTROLLER_H
