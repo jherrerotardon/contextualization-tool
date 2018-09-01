@@ -22,7 +22,6 @@ ContextualizationController::ContextualizationController(QObject *parent) : QObj
     onlyDoneStrings_ = true;
     caseSensitive_ = true;
 
-    delete model_;
     model_ = new ContextualizationModel();
 
     username_ = QDir::home().dirName();
