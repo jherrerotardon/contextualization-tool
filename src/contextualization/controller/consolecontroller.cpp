@@ -57,20 +57,25 @@ void ConsoleController::exec()
         clear();
         break;
     case ClearImage:
-        //TODO
+        clearImage();
         break;
     case ClearAll:
-        clear();
-        //TODO IMAGE
+        clearAll();
         break;
     case AddString:
-        add(parameter_.toString(), ByApproximateValue);
+        add(parameter_.toString(), findType_);
         break;
     case RemoveString:
         remove(parameter_.toString());
         break;
+    case SelectString:
+        select(parameter_.toString());
+        break;
+    case UnselectString:
+        unselect(parameter_.toString());
+        break;
     case SetImage:
-        // TODO
+        load();
         break;
     case CaptureArea:
         capture();
@@ -82,7 +87,7 @@ void ConsoleController::exec()
         save();
         break;
     case ImportProject:
-        // TODO
+        open();
         break;
     case Send:
         send();
@@ -93,10 +98,17 @@ void ConsoleController::exec()
     case PrintAddHelp:
         printAddDetails();
         break;
+    case PrintDetectHelp:
+        printDetectDetails();
+        break;
     case PrintImageHelp:
         printImageDetails();
         break;
     default:
+        std::cout << Utils::formatText(
+            "Nothing to do.",
+             QList<Utils::TextModifier>() << Utils::FG_RED
+        ).toStdString() << std::endl;
         break;
     }
 }
@@ -110,7 +122,7 @@ bool ConsoleController::decodeArguments(int argc, char **argv)
     // Cases with dynamic number of arguments.
     if (argc >= 3) {
         if (QString::compare(argv[1], "delete") == 0 && QString::compare(argv[2], "project") == 0) {
-           setAction(DeleteProject, argc == 4 ? QVariant(argv[4]) : QVariant());
+           setAction(DeleteProject, argc == 4 ? QVariant(argv[3]) : QVariant());
         } else if (QString::compare(argv[1], "add") == 0) {
             for (int i = 2; i < argc; ++i) {
                 if (i == argc-1 && QString::compare(argv[i], "--help") == 0) {
@@ -129,16 +141,19 @@ bool ConsoleController::decodeArguments(int argc, char **argv)
                     onlyDoneStrings_ = true;
                 } else if (QString::compare(argv[i], "--all-states") == 0) {
                     onlyDoneStrings_ = false;
+                } else {
+                    setAction(PrintAddHelp);
                 }
             }
         }
-    } else if (argc >= 2) {
+    }
+
+    if (argc >= 2) {
         if (QString::compare(argv[1], "detect") == 0) {
+            setAction(DetectStrings);
             for (int i = 2; i < argc; ++i) {
                 if (i == argc-1 && QString::compare(argv[i], "--help") == 0) {
-                    setAction(PrintAddHelp);
-                } else if (i == argc-1) { // The last parameter must be the string to search.
-                    setAction(DetectStrings, parameter_ = QVariant(argv[i]));
+                    setAction(PrintDetectHelp);
                 } else if (QString::compare(argv[i], "--case-sensitive") == 0) {
                     caseSensitive_ = true;
                 } else if (QString::compare(argv[i], "--case-insensitive") == 0) {
@@ -147,6 +162,8 @@ bool ConsoleController::decodeArguments(int argc, char **argv)
                     onlyDoneStrings_ = true;
                 } else if (QString::compare(argv[i], "--all-states") == 0) {
                     onlyDoneStrings_ = false;
+                } else {
+                    setAction(PrintAddHelp);
                 }
             }
         }
@@ -168,8 +185,12 @@ bool ConsoleController::decodeArguments(int argc, char **argv)
         break;
 
     case 3:
-        if (QString::compare(argv[1], "select") == 0) {
+        if (QString::compare(argv[1], "open") == 0) {
             setAction(SelectProject, QVariant(argv[2]));
+        } else if (QString::compare(argv[1], "select") == 0) {
+            setAction(SelectString, QVariant(argv[2]));
+        } else if (QString::compare(argv[1], "unselect") == 0) {
+            setAction(UnselectString, QVariant(argv[2]));
         } else if (QString::compare(argv[1], "clear") == 0) {
             if (QString::compare(argv[2], "strings") == 0) {
                 setAction(ClearStrings);
@@ -185,7 +206,7 @@ bool ConsoleController::decodeArguments(int argc, char **argv)
         } else if (QString::compare(argv[1], "remove") == 0) {
             setAction(RemoveString, QVariant(argv[2]));
         } else if (QString::compare(argv[1], "image") == 0) {
-            if (QString::compare(argv[1], "-c") == 0 || QString::compare(argv[1], "--capture") == 0) {
+            if (QString::compare(argv[2], "-c") == 0 || QString::compare(argv[2], "--capture") == 0) {
                 setAction(CaptureArea);
             } else if (QString::compare(argv[1], "--help") == 0) {
                 setAction(PrintImageHelp);
@@ -203,11 +224,15 @@ bool ConsoleController::decodeArguments(int argc, char **argv)
         break;
 
     default:
-        setAction(PrintHelp);
         break;
     }
 
-    return true;
+    if (action_ == NoAction) {
+        setAction(PrintHelp);
+        return true;
+    }
+
+    return false;
 }
 
 void ConsoleController::setAction(ActionType action, QVariant parameter)
@@ -225,8 +250,8 @@ void ConsoleController::printUsage()
         "  " + appName_ + " detail                  Show details of active project.\n"
         "  " + appName_ + " new <name>              Create a new empty project.\n"
         "  " + appName_ + " delete project [name]   Delete current project or project \"name\".\n"
-        "  " + appName_ + " clear <option>          Clear selected elements in acive project."
-        "  " + appName_ + " select <project>        Select the active project.\n"
+        "  " + appName_ + " clear <option>          Clear selected elements in active project.\n"
+        "  " + appName_ + " open <project>          Open a project and select it as the active project.\n"
         "  " + appName_ + " add [option] <string>   Add new string on active project. Use --help to see options\n"
         "  " + appName_ + " remove <string ID>      Remove from the active project the string with the input ID.\n"
         "  " + appName_ + " image <option>          Sets an image in active project. Use --help to see options.\n"
@@ -261,13 +286,31 @@ void ConsoleController::printAddDetails()
         "  --value              The input string will be searched as a value of string.\n"
         "  --case-sensitive     The search will be case sensitive.\n"
         "  --case-insensitive   The search will not be case sensitive.\n"
-        "  --all-states         Tool will find strings with all valid states."
+        "  --all-states         Tool will find strings with all valid states.\n"
         "  --only-done-strings  Tool will only find string with DONE state.\n\n\n"
-        "By default, searchs will be by identifier, case sensitive and only find strings with DONE state."
+        "By default, searches will be by identifier, case sensitive and only find strings with DONE state."
         ;
 
     std::cout << help.toStdString() << std::endl;
 }
+
+void ConsoleController::printDetectDetails()
+{
+    const QString help =
+        appName_ + " detect <option>\n\n"
+        "OPTIONS:\n"
+        "  --id                 The input string will be searched as an identifier of string.\n"
+        "  --value              The input string will be searched as a value of string.\n"
+        "  --case-sensitive     The search will be case sensitive.\n"
+        "  --case-insensitive   The search will not be case sensitive.\n"
+        "  --all-states         Tool will find strings with all valid states.\n"
+        "  --only-done-strings  Tool will only find string with DONE state.\n\n\n"
+        "By default, searches will be by identifier, case sensitive and only find strings with DONE state."
+        ;
+
+    std::cout << help.toStdString() << std::endl;
+}
+
 
 void ConsoleController::printImageDetails()
 {
@@ -288,7 +331,7 @@ void ConsoleController::printDetectOptions()
         "OPTIONS:\n"
         "  --case-sensitive     The search will be case sensitive.\n"
         "  --case-insensitive   The search will not be case sensitive.\n"
-        "  --all-states         Tool will find strings with all valid states."
+        "  --all-states         Tool will find strings with all valid states.\n"
         "  --only-done-strings  Tool will only find string with DONE state.\n\n\n"
         "By default, searchs will be case sensitive and only find strings with DONE state."
         ;
@@ -305,13 +348,27 @@ void ConsoleController::add(QString newString, int findType)
 
     count = addStrings(stringsFound);
 
-    std::cout << "Added " << count << " string in to project." << std::endl;
+    if (save()) {
+        std::cout << "Added " << count << " string into project." << std::endl;
+    } else {
+        std::cout << Utils::formatText(
+            "There was a problem saving the project.",
+            QList<Utils::TextModifier>() << Utils::FG_RED
+        ).toStdString() << std::endl;
+    }
 }
 
 void ConsoleController::remove(QString stringId)
 {
     if (removeString(stringId)) {
         std::cout << "The string '" << stringId.toStdString() << "' has been removed succesfully." << std::endl;
+
+        if (!save()) {
+            std::cout << Utils::formatText(
+                "There was a problem saving the project.",
+                QList<Utils::TextModifier>() << Utils::FG_RED
+            ).toStdString() << std::endl;
+        }
     } else {
         std::cout << "There are not any string with the indentifier '" << stringId.toStdString() << "'." << std::endl;
     }
@@ -323,8 +380,15 @@ void ConsoleController::clear()
 
     done = removeAllStrings();
 
-    if (done) {
-        std::cout << "All string removed succesfully." << std::endl;
+    if (done) {        
+        if (save()) {
+            std::cout << "All string removed succesfully." << std::endl;
+        } else {
+            std::cout << Utils::formatText(
+                "There was a problem saving the project.",
+                QList<Utils::TextModifier>() << Utils::FG_RED
+            ).toStdString() << std::endl;
+        }
     } else {
         std::cout << "There are not strings to be removed." << std::endl;
     }
@@ -338,8 +402,15 @@ void ConsoleController::capture(bool detectStringsOnLoad)
 
     path = takeCaptureArea();
 
-    if (setImage(path)) {
-        std::cout << "Capture set succesfully." << std::endl;
+    if (setImage(path)) {        
+        if (save()) {
+            std::cout << "Capture set succesfully." << std::endl;
+        } else{
+            std::cout << Utils::formatText(
+                "There was a problem saving the project.",
+                QList<Utils::TextModifier>() << Utils::FG_RED
+            ).toStdString() << std::endl;
+        }
     } else {
         std::cout << Utils::formatText(
             "There was a problem with a capture.",
@@ -351,6 +422,22 @@ void ConsoleController::capture(bool detectStringsOnLoad)
 void ConsoleController::load(bool detectStringsOnLoad)
 {
     Q_UNUSED(detectStringsOnLoad); // In CLI mode is not util.
+
+    if(!setImage(parameter_.toString())) {
+        std::cout << Utils::formatText(
+            "Image not exists.",
+            QList<Utils::TextModifier>() << Utils::FG_RED
+        ).toStdString() << std::endl;
+    }
+
+    if (save()) {
+        std::cout << "Image set succesfully." << std::endl;
+    } else{
+        std::cout << Utils::formatText(
+            "There was a problem saving the project.",
+            QList<Utils::TextModifier>() << Utils::FG_RED
+        ).toStdString() << std::endl;
+    }
 }
 
 void ConsoleController::detect()
@@ -386,7 +473,14 @@ void ConsoleController::detect()
 
     count = addStrings(copy);
 
-    std::cout << count << " strings added into the contextualization." << std::endl;
+    if (save()) {
+        std::cout << count << " strings added into the contextualization." << std::endl;
+    } else {
+        std::cout << Utils::formatText(
+            "There was a problem saving the project.",
+             QList<Utils::TextModifier>() << Utils::FG_RED
+        ).toStdString() << std::endl;
+    }
 }
 
 void ConsoleController::send()
@@ -493,11 +587,13 @@ void ConsoleController::open()
     QString projectName = parameter_.toString();
 
     if (QFile::exists(PROJECTS_FOLDER + projectName)) {
-        if (setParameterInConfigFile("active_project", projectName)) {
+        if (setParameterInConfigFile("selected_project", projectName)) {
             std::cout << Utils::formatText(
                 "Project has been selected.",
                 QList<Utils::TextModifier>() << Utils::FG_GREEN
             ).toStdString() << std::endl;
+
+            return;
         } else {
             std::cout << Utils::formatText(
                 "Project could not be selected",
@@ -516,15 +612,27 @@ void ConsoleController::newProject()
 {
     QString name = parameter_.toString();
 
+    // Add json extension.
+    if (!name.endsWith(".json")) {
+        name += ".json";
+    }
+
     delete model_;
 
     model_ = new ContextualizationModel();
 
-    if (exportToJsonFile(PROJECTS_FOLDER + name)) {
-        std::cout << "New project created succesfully." << std::endl;
+    if (!QFile::exists(PROJECTS_FOLDER + name)) {
+        if (exportToJsonFile(PROJECTS_FOLDER + name)) {
+            std::cout << "New project created succesfully." << std::endl;
+        } else {
+            std::cout << Utils::formatText(
+                "Imposible to create a new project now.",
+                QList<Utils::TextModifier>() << Utils::FG_RED
+            ).toStdString() << std::endl;
+        }
     } else {
         std::cout << Utils::formatText(
-            "Imposible to create a new project now.",
+            "Project already exists.",
             QList<Utils::TextModifier>() << Utils::FG_RED
         ).toStdString() << std::endl;
     }
@@ -534,12 +642,12 @@ void ConsoleController::listProjects()
 {
     QDir projectsDir(PROJECTS_FOLDER);
     QStringList projects;
-    QString activeProject = getParameterFromConfigFile("active_config");
+    QString selectedProject = getParameterFromConfigFile("selected_project");
 
-    projects = projectsDir.entryList();
+    projects = projectsDir.entryList(QStringList() << "*.json");
 
     foreach (QString project, projects) {
-        if (activeProject == project) {
+        if (selectedProject == project) {
             std::cout << Utils::formatText(
                 "(X) " + project,
                 QList<Utils::TextModifier>() << Utils::FG_GREEN << Utils::BOLD
@@ -558,7 +666,7 @@ void ConsoleController::detailCurrentProject()
     QFileInfo project(projectPath_);
     FirmwareString * fwString;
     QString rowSeparator;
-    QString selected = QString("(:selected)");
+    QString selected;
 
     if (model_ != Q_NULLPTR) {
         for (int i = 0; i < 94; i++) {
@@ -573,6 +681,7 @@ void ConsoleController::detailCurrentProject()
 
         std::cout << std::setw(4) << "    " << std::setw(30) << "ID" << std::setw(50) << "VALUE" << std::setw(10) << "STATE"<< std::endl;
         foreach (QObject *object, model_->getStringsList()) {
+            selected = QString("(:selected)");
             fwString = static_cast<FirmwareString *>(object);
 
             std::cout << rowSeparator.toStdString() << std::endl;
@@ -594,15 +703,105 @@ void ConsoleController::detailCurrentProject()
 void ConsoleController::deleteProject()
 {
     QString projectName = parameter_.toString();
+    projectName = projectName.isEmpty() ? QFileInfo(projectPath_).fileName() : projectName;
 
-    if (QFile::remove(CONFIG_FOLDER + projectName) == true) {
+    if (QFile::remove(PROJECTS_FOLDER + projectName)) {
+        QFile::remove(model_->getImage());
         std::cout << Utils::formatText(
             "Project " + projectName + " removed succesfully.",
             QList<Utils::TextModifier>() << Utils::FG_GREEN
         ).toStdString() << std::endl;
     } else {
         std::cout << Utils::formatText(
-            "Imposible to remove the project: " + projectName + ".",
+            "Imposible to remove the project: " + projectName + ". Are you sure that projec exists?",
+            QList<Utils::TextModifier>() << Utils::FG_RED
+        ).toStdString() << std::endl;
+    }
+}
+
+void ConsoleController::clearAll()
+{
+    removeAllStrings();
+    setImage("");
+
+    if (!projectPath_.isEmpty() && save()) {
+        std::cout << "Projects empty succesfully" << std::endl;
+    } else {
+        std::cout << Utils::formatText(
+            "There was a problem saving the project.",
+             QList<Utils::TextModifier>() << Utils::FG_RED
+        ).toStdString() << std::endl;
+    }
+}
+
+void ConsoleController::clearImage()
+{
+    setImage("");
+
+    if (!projectPath_.isEmpty() && save()) {
+        std::cout << "Image empty succesfully" << std::endl;
+    } else {
+        std::cout << Utils::formatText(
+            "There was a problem saving the project.",
+             QList<Utils::TextModifier>() << Utils::FG_RED
+        ).toStdString() << std::endl;
+    }
+}
+
+void ConsoleController::select(const QString id)
+{
+    if (!projectPath_.isEmpty() && selectString(id, true)) {
+        if (save()) {
+            std::cout << "String selected succesfully." << std::endl;
+        } else {
+            std::cout << Utils::formatText(
+                "There was a problem saving the project.",
+                 QList<Utils::TextModifier>() << Utils::FG_RED
+            ).toStdString() << std::endl;
+        }
+    } else {
+        std::cout << Utils::formatText(
+            "There are not any string with " + id + " identifier in selected project.",
+            QList<Utils::TextModifier>() << Utils::FG_RED
+        ).toStdString() << std::endl;
+    }
+}
+
+void ConsoleController::unselect(const QString id)
+{
+    if (!projectPath_.isEmpty() && selectString(id, false)) {
+        if (save()) {
+            std::cout << "String unselected succesfully." << std::endl;
+        } else {
+            std::cout << Utils::formatText(
+                "There was a problem saving the project.",
+                 QList<Utils::TextModifier>() << Utils::FG_RED
+            ).toStdString() << std::endl;
+        }
+    } else {
+        std::cout << Utils::formatText(
+            "There are not any string with " + id + " identifier in selected project.",
+            QList<Utils::TextModifier>() << Utils::FG_RED
+        ).toStdString() << std::endl;
+    }
+}
+
+void ConsoleController::import()
+{
+    QFileInfo projectToImport(parameter_.toString());
+
+    if (projectToImport.suffix() == ".json") {
+        if (QFile::copy(projectToImport.absoluteFilePath(), PROJECTS_FOLDER + projectToImport.fileName())) {
+             std::cout << "Project copied succesfully." << std::endl;
+        } else {
+            std::cout << Utils::formatText(
+                "The project could be not copied to " + PROJECTS_FOLDER + ".",
+                QList<Utils::TextModifier>() << Utils::FG_RED
+            ).toStdString() << std::endl;
+        }
+    } else {
+        std::cout << Utils::formatText(
+            "The project is not a valid contesxtualization projects, it is not a json file.",
             QList<Utils::TextModifier>() << Utils::FG_RED
         ).toStdString() << std::endl;
     }
@@ -637,7 +836,7 @@ ContextualizationController::CodeError ConsoleController::loadProjectFromConfigu
     QString projectName;
     CodeError error;
 
-    projectName = getParameterFromConfigFile("config_file");
+    projectName = getParameterFromConfigFile("selected_project");
 
     if (projectName.isEmpty()) {
         std::cout << Utils::formatText(
@@ -648,9 +847,10 @@ ContextualizationController::CodeError ConsoleController::loadProjectFromConfigu
         return NoImportFile;
     }
 
-    error = importProjectFromJsonFile(CONFIG_FOLDER + projectName);
+    error = importProjectFromJsonFile(PROJECTS_FOLDER + projectName);
     switch (error) {
     case NoError:
+        projectPath_ = PROJECTS_FOLDER + projectName;
         break;
 
     case NoImportFile:

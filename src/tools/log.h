@@ -13,7 +13,7 @@
 
 // Comment this define when when the application will be ran in a production environment.
 #ifndef DEVELOP
-#define DEVELOP
+//#define DEVELOP
 #endif
 
 

@@ -24,11 +24,10 @@ ContextualizationController * HpContextualizationFactory::createController(char 
         return Q_NULLPTR;
     }
 
-    if (count > 1) { // Consider parameters from debugger.
-        cliMode = QString(params[1]).contains("-qmljsdebugger") ? false : true;
-    } else {
-        cliMode = false;
-    }
+    // Remove Qt Creator debbuger parameter.
+    count = QString(params[count-1]).contains("-qmljsdebugger") ? count - 1 : count;
+
+    cliMode = count > 1 ? true : false;
 
     switch (getCurrentKernelType()) {
         case Linux:
@@ -36,14 +35,14 @@ ContextualizationController * HpContextualizationFactory::createController(char 
             return new LinuxConsoleController(count, params);
         }
 
-         return new LinuxGuiController();
+        return new LinuxGuiController();
 
         case Windows:
             if (cliMode) {
                  return new WindowsConsoleController(count, params);
             }
 
-             return new WindowsGuiController();
+            return new WindowsGuiController();
 
         default:
             return Q_NULLPTR;

@@ -171,6 +171,17 @@ protected:
     QList<FirmwareString *> detectStringsOnImage(QString image);
 
     /**
+     * @brief Extracts the strings contained in the image set in the model.
+     *
+     * Returns a QList of FirmwareString containing all of strings extracted converted in FirmwareString objects if are
+     * in the fp file. Each firmware string on QList is a FirmwareString Object extracted from the image. This is
+     * that #sendContextualization(QString image), this is more fast but less precise.
+     * @param image Path of image where strings will be detected.
+     * @return List of FirmwareString found on image.
+     */
+    QList<FirmwareString *> fastDetectStringsOnImage(QString image);
+
+    /**
      * @brief Processes received strings.
      *
      * Tries to find the strings value in fp file and strings that are in the file are returned converted in
@@ -246,6 +257,16 @@ protected:
      * @brief Remove all strings in the model.
      */
     bool removeAllStrings();
+
+    /**
+     * @brief Select the string with the identifier received by parameter.
+     *
+     * Returns true if string was selected succesfully, otherwise, returns false.
+     * @param id Identifier of strogn to select.
+     * @param state Selection state
+     * @return bool
+     */
+    bool selectString(const QString id, bool state);
 
     /**
      * @brief Sets a no image in the model.

@@ -102,6 +102,42 @@ void ContextualizationModel::removeAllStrings()
     }
 }
 
+bool ContextualizationModel::selectString(const QString id)
+{
+    FirmwareString * string;
+
+    foreach (QObject *fwString, stringsList_) {
+        string = static_cast<FirmwareString *>(fwString);
+        if (string->getId() == id) {
+            string->select();
+
+            emit stringsListChanged();
+
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool ContextualizationModel::unselectString(const QString id)
+{
+    FirmwareString * string;
+
+    foreach (QObject *fwString, stringsList_) {
+        string = static_cast<FirmwareString *>(fwString);
+        if (string->getId() == id) {
+            string->unselect();
+
+            emit stringsListChanged();
+
+            return true;
+        }
+    }
+
+    return false;
+}
+
 QList<QObject *> &ContextualizationModel::getStringsList()
 {
     return stringsList_;
@@ -196,11 +232,8 @@ ContextualizationModel * ContextualizationModel::fromJson(QByteArray &json)
     }
 
     image = root.value("image").toString();
-    if (image.isEmpty()) {
-        return Q_NULLPTR;
-    }
-
     stringsListJsonObject = root.value("strings").toObject();
+
     foreach (QString key, stringsListJsonObject.keys()) {
         FirmwareString *fwString;
         QJsonObject stringJsonObject;

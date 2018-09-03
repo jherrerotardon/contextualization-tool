@@ -68,15 +68,16 @@ ContextualizationController::CodeError ContextualizationController::importProjec
     ContextualizationModel *modelTmp;
     QByteArray projectData;
 
-    projectData = Utils::readAllFile(path);
-    if (projectData.isEmpty()) {
+    if (!QFile::exists(path)) {
         Log::writeError(QString(Q_FUNC_INFO) + " Fail to import. File doesn't exist: " + path);
 
         return NoImportFile;
     }
 
+    projectData = Utils::readAllFile(path);
     modelTmp = ContextualizationModel::fromJson(projectData);
-    if (!modelTmp || modelTmp->isEmpty()) {
+
+    if (!modelTmp) {
         Log::writeError(QString(Q_FUNC_INFO) + " Not valid contextualization format to import: " + path);
 
         return ImportFileFormat;
@@ -96,9 +97,9 @@ bool ContextualizationController::exportToJsonFile(const QString &path)
     QFileInfo imageInfo(model_->getImage());
     QString imageName("capture-" + Utils::getDateTime() + '-' + username_ + '.' + imageInfo.suffix());
 
-    // Save image in non volatil folder.
-    if (QFile::copy(model_->getImage(), IMAGES_FOLDER + imageName)) {
-        model_->setImage(IMAGES_FOLDER + imageName);
+    // Save image in non volatil folder if exists or is empty.
+    if (!model_->hasImage() || QFile::copy(model_->getImage(), IMAGES_FOLDER + imageName)) {
+        model_->setImage(model_->hasImage() ? IMAGES_FOLDER + imageName : "");
 
         // Save project in JSON format
         if (Utils::writeFile(path, model_->toJson())) {
@@ -286,6 +287,14 @@ QList<FirmwareString *> ContextualizationController::detectStringsOnImage(QStrin
     return fwStrings;
 }
 
+QList<FirmwareString *> ContextualizationController::fastDetectStringsOnImage(QString image)
+{
+    TesseractOcr worker(image);
+    QList<FirmwareString *> fwStrings;
+
+    return this->processExtractedStrings(worker.extract());
+}
+
 QList<FirmwareString *> ContextualizationController::processExtractedStrings(QStringList strings)
 {
     QList<FirmwareString *> stringsFound;
@@ -413,6 +422,11 @@ bool ContextualizationController::removeAllStrings()
     }
 
     return false;
+}
+
+bool ContextualizationController::selectString(const QString id, bool state)
+{
+    return state ? model_->selectString(id) : model_->unselectString(id);
 }
 
 void ContextualizationController::clearImage()
@@ -694,7 +708,7 @@ bool ContextualizationController::setParameterInConfigFile(const QString paramet
 
     if (configurationFile.exists())
     {
-        document = QJsonDocument::fromJson(Utils::readAllFile(configurationFile.fileName()), &jsonError);
+        document = QJsonDocument::fromJson(Utils::readAllFile(configurationFile.absoluteFilePath()), &jsonError);
 
         if (jsonError.error != QJsonParseError::NoError) {
             Log::writeError(QString(Q_FUNC_INFO) + " Error decoding configuration file: " + jsonError.errorString());

@@ -472,7 +472,7 @@ void GuiController::detectsStringOnInterestingArea(
     message.open();
 
     // Extract strings on image.
-    extractedStrings = detectStringsOnImage(captureAreaPath);
+    extractedStrings = fastDetectStringsOnImage(captureAreaPath);
 
     // A copy if creates because extracted strings are in a different thread and this is in conflict with Q_PROPERTYs.
     foreach (FirmwareString *fwString, extractedStrings) {
