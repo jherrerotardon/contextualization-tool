@@ -135,11 +135,6 @@ private slots:
      */
     void configRemoteHost();
 
-    /**
-     * @brief Opens a dialog where the user can configure all valid states that string can be.
-     */
-    void configValidStates();
-
 private:
     QQuickWindow *view_;            ///< Pointer to view part of the MVC.
     QString currentProjectPath_;    ///< Path of the active project in disk.
