@@ -16,6 +16,7 @@ ConsoleController::ConsoleController()
     appName_ = QString();
     action_ = NoAction;
     findType_ = ByID;
+    model_ = new ContextualizationModel();
 }
 
 ConsoleController::ConsoleController(int argc, char **argv)
@@ -400,22 +401,24 @@ void ConsoleController::capture(bool detectStringsOnLoad)
 
     QString path;
 
-    path = takeCaptureArea();
+    if (!projectPath_.isEmpty()) {
+        path = takeCaptureArea();
 
-    if (setImage(path)) {        
-        if (save()) {
-            std::cout << "Capture set succesfully." << std::endl;
-        } else{
+        if (setImage(path)) {
+            if (save()) {
+                std::cout << "Capture set succesfully." << std::endl;
+            } else{
+                std::cout << Utils::formatText(
+                    "There was a problem saving the project.",
+                    QList<Utils::TextModifier>() << Utils::FG_RED
+                ).toStdString() << std::endl;
+            }
+        } else {
             std::cout << Utils::formatText(
-                "There was a problem saving the project.",
+                "There was a problem with a capture.",
                 QList<Utils::TextModifier>() << Utils::FG_RED
             ).toStdString() << std::endl;
         }
-    } else {
-        std::cout << Utils::formatText(
-            "There was a problem with a capture.",
-            QList<Utils::TextModifier>() << Utils::FG_RED
-        ).toStdString() << std::endl;
     }
 }
 
@@ -573,7 +576,12 @@ void ConsoleController::cancel()
 
 bool ConsoleController::save()
 {
-    return exportToJsonFile(projectPath_);
+    if (!projectPath_.isEmpty()) {
+        return exportToJsonFile(projectPath_);
+    } else {
+        Log::writeError(QString(Q_FUNC_INFO) + " There is not a project to be saved.");
+        return false;
+    }
 }
 
 bool ConsoleController::saveAs()
