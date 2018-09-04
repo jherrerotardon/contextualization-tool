@@ -141,11 +141,6 @@ ApplicationWindow {
                 text: "Process and storage"
                 //onTriggered: fpFileConfigRequested()
             }
-
-            MenuItem {
-                text: "Trasnlate"
-                //onTriggered: remoteHostConfigRequested()
-            }
         }
     }
 
