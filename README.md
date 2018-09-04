@@ -84,8 +84,7 @@ Finally, yo can install the tool.
 ```
 
 The executable file will be in:
-`./bin/ContextualizationTool`
-
+`./contextualization`
 ## Windows
 
 **Comming soon...**
