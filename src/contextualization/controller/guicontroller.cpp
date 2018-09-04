@@ -522,7 +522,7 @@ void GuiController::configRemoteHost()
         remoteHost = QInputDialog::getText(
             Q_NULLPTR,
             tr("Configuration"),
-            tr("English fp path:"),
+            tr("Host where send contextualization:"),
             QLineEdit::Normal,
             remoteHost_,
             &ok
@@ -531,26 +531,6 @@ void GuiController::configRemoteHost()
 
     // Only change value of remote host if user doesn't press cancel.
     remoteHost_ = ok ? remoteHost : remoteHost_;
-}
-
-void GuiController::configValidStates()
-{
-    bool ok;
-    QString validStates;
-
-    do {
-        validStates = QInputDialog::getText(
-            Q_NULLPTR,
-            tr("Configuration"),
-            tr("English fp path:"),
-            QLineEdit::Normal,
-            validStates_.join(','),
-            &ok
-        );
-    } while(ok && validStates.isEmpty());
-
-    // Only change value of remote host if user doesn't press cancel.
-    validStates_ = ok ? validStates.split(',', QString::SkipEmptyParts) : validStates_;
 }
 
 QQuickWindow *GuiController::getView()
