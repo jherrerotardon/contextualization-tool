@@ -1,3 +1,13 @@
+/**
+ * @file contextualizationmodel.h
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class ContextualizationModel
+ *
+ * @brief This is the model class of a MVC architecture on Contextualization Tool app.
+ */
+
 #ifndef CONTEXTUALIZATIONMODEL_H
 #define CONTEXTUALIZATIONMODEL_H
 
@@ -15,7 +25,6 @@ class ContextualizationModel : public QObject
     Q_OBJECT
 
 public:
-    const static QString NO_IMAGE_PATH; ///< Local path of no available image representation.
 
     /**
      * @brief Constructs a model.
@@ -27,7 +36,7 @@ public:
      * @param list List of strings to add on the model.
      */
     ContextualizationModel(
-        QString image = NO_IMAGE_PATH,
+        QString image = "",
         QList<FirmwareString *> list = QList<FirmwareString *>()
     );
 
@@ -69,7 +78,7 @@ public:
     void addStrings(QList<FirmwareString *> &strings);
 
     /**
-     * @brief Removes strings with the identifier received by parameter.
+     * @brief Removes string with the identifier received by parameter.
      *
      * Returns true if the string removed succesfuly. Returns false if there are not any string with this identifer.
      * @param id Identifier of firmware string to remove.
@@ -90,6 +99,25 @@ public:
      * @brief Removes all items from the firmware strings list.
      */
     void removeAllStrings();
+
+    /**
+     * @brief Selects string with the identifier received by parameter.
+     *
+     * Returns true if the string selected succesfuly. Returns false if there are not any string with this identifer.
+     * @param id Identifier of firmware string to remove.
+     * @return bool
+     */
+    bool selectString(const QString id);
+
+    /**
+     * @brief Unselects string with the identifier received by parameter.
+     *
+     * Returns true if the string selected succesfuly. Returns false if there are not any string with this identifer.
+     * @param id Identifier of firmware string to remove.
+     * @return bool
+     */
+    bool unselectString(const QString id);
+
 
     /**
      * @brief Returns the firmware strings list.
@@ -120,8 +148,6 @@ public:
 
     /**
      * @brief Returns true if the model has a valid image associated.
-     *
-     * #NO_IMAGE_PATH is not a valid image.
      * @return bool
      */
     bool hasImage();
@@ -182,7 +208,7 @@ signals:
     /**
      * @brief This signal is emited when a string is modified on model.
      */
-    void stringListChanged();
+    void stringsListChanged();
 
     /**
      * @brief This signal is emited when the image of model is changed.

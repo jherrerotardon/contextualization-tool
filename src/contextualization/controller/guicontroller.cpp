@@ -1,3 +1,13 @@
+/**
+ * @file guicontroller.cpp
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class GuiController
+ *
+ * @brief This is the controller class that works a GUI environment.
+ */
+
 #include "guicontroller.h"
 
 GuiController::GuiController(QQuickWindow *view, QObject *parent)
@@ -31,35 +41,31 @@ void GuiController::add(QString newString, int findType)
         return;
     }
 
-    stringsFound = findString(newString, (MatchType)findType);
+    stringsFound = findString(newString, static_cast<MatchType>(findType));
     switch (stringsFound.size()) {
     // Case where string not found in fp file.
     case 0:
-        if (findType == ByValue) {
-            response = Utils::warningMessage(
-                "Impossible to find the string in " + DONE_FP_FILE + " file.",
-                "Are you sure to add the string?"
+        response = Utils::warningMessage(
+            QString("Impossible to find the ") + (findType == ByID ? "identifier" : "string") + ".",
+            "Are you sure to add the string?"
+        );
+        if (response == QMessageBox::Yes) {
+            error = addString(
+                new FirmwareString(
+                    findType == ByID ? newString : QString(),
+                    findType == ByValue ? newString : QString(),
+                    QString(),
+                    QString::number(newString.size()),
+                    "DONE",
+                    false,
+                    true
+                )
             );
-            if (response == QMessageBox::Yes) {
-                error = addString(
-                    new FirmwareString(
-                        QString(""),
-                        newString,
-                        QString(""),
-                        QString::number(newString.size()),
-                        "DONE",
-                        false
-                    )
-                );
 
-                if (error == StringAlreadyExists) {
-                    Utils::errorMessage("Duplicate string.", "Alredy exists an equal string in the contextualization.");
-                }
+            if (error == StringAlreadyExists) {
+                Utils::errorMessage("Duplicate string.", "Alredy exists an equal string in the contextualization.");
             }
-        } else if (findType == ByID) {
-            Utils::informativeMessage("Not found.", "No string was be found with this ID.");
         }
-
     break;
 
     // Case where more than one string was found in fp file.
@@ -156,7 +162,7 @@ void GuiController::capture(bool detectStringsOnLoad)
                 detect();
             }
         } else {
-            Utils::errorMessage("Can't set image.", "Had a problem with the capture.");
+            Utils::errorMessage("Can't set image.", "There was a problem with the capture.");
         }
     }
 }
@@ -196,9 +202,7 @@ void GuiController::detect()
 {
     QList<FirmwareString *> extractedStrings;
     QList<FirmwareString *> copy;
-    QProgressDialog progress("Detecting strings...", "Abort", 0, 100);
-    QFuture<void> future;   // Control when a thread has finished.
-    bool hasFinished = false;
+    QMessageBox message;
 
     if (!model_->hasImage()) {
         Utils::informativeMessage("Not image.", "You have to set an image to can detect strings in it.");
@@ -206,12 +210,14 @@ void GuiController::detect()
         return;
     }
 
-    // Start increment progess.
-    progress.setWindowModality(Qt::WindowModal);
-    future = Utils::startProgressDialogCounter(&progress, &hasFinished, 70);
+    // Show informative message.
+    message.setStandardButtons(Q_NULLPTR);
+    message.setWindowTitle("Detecting...");
+    message.setWindowModality(Qt::WindowModal);
+    message.open();
 
     // Extract strings on image.
-    extractedStrings = detectStringsOnImage();
+    extractedStrings = detectStringsOnImage(model_->getImage());
 
     // A copy if creates because extracted strings are in a different thread and this is in conflict with Q_PROPERTYs.
     foreach (FirmwareString *fwString, extractedStrings) {
@@ -223,10 +229,8 @@ void GuiController::detect()
 
     addStrings(copy);
 
-    // When extracted has finished, stop increment thread and close ProgressDialog.
-    hasFinished = true;
-    future.waitForFinished();
-    progress.setValue(100);
+    // Close progress message.
+    message.close();
 }
 
 void GuiController::send()
@@ -234,9 +238,7 @@ void GuiController::send()
     QString contextualizationPath;
     QString username;
     QString password;
-    QProgressDialog progress("Sending...", "Abort", 0, 100);
-    QFuture<void> future;   // Control when a thread has finished.
-    bool hasFinished = false;
+    QMessageBox message;
     int hasError;
 
     switch (validateModel()) {
@@ -264,17 +266,17 @@ void GuiController::send()
                 return;
             }
 
-            // Start increment progess.
-            progress.setWindowModality(Qt::WindowModal);
-            future = Utils::startProgressDialogCounter(&progress, &hasFinished);
+            // Show informative message.
+            message.setStandardButtons(Q_NULLPTR);
+            message.setWindowTitle("Sending...");
+            message.setWindowModality(Qt::WindowModal);
+            message.open();
 
             // Send contextualization
             hasError = sendContextualization(contextualizationPath, username, password);
 
-            // When send process has finished, stop increment thread and close ProgressDialog.
-            hasFinished = true;
-            future.waitForFinished();
-            progress.setValue(100);
+            // Close progress message.
+            message.hide();
 
             // Remove contextualization file.
             QFile::remove(contextualizationPath);
@@ -307,34 +309,42 @@ void GuiController::send()
 void GuiController::cancel()
 {
     int response;
+    bool haveToCancel = false;
 
     if (projectHasChanges_) {
         response = Utils::warningMessage("Project has unsaved changes.", "Do you want to save changes?");
         if (response == QMessageBox::Yes) {
-            save();
+            haveToCancel = !save();
         }
     }
 
-    saveConfig();
+    if (!haveToCancel) {
+        saveConfig();
 
-    QFile::remove(DONE_FP_FILE);
+        QFile::remove(DONE_FP_FILE);
 
-    QApplication::quit();
+        QApplication::quit();
+    }
 }
 
-void GuiController::save()
+bool GuiController::save()
 {
+    bool saved;
+
     // If current project already save on disk overwrite it, else creates new file.
     if (currentProjectPath_.isEmpty()) {
-        saveAs();
+       saved = saveAs();
     } else {
         exportToJsonFile(currentProjectPath_);
+        saved = true;
+
+        emit unchangedProject();
     }
 
-    projectHasChanges_ = false;
+    return saved;
 }
 
-void GuiController::saveAs()
+bool GuiController::saveAs()
 {
     QString path;
     QFileDialog dialog(
@@ -348,7 +358,7 @@ void GuiController::saveAs()
     if (model_->isEmpty()) {
         Utils::informativeMessage("Empty contextualization.", "Nothing to be save.");
 
-        return;
+        return true;
     }
 
     dialog.setAcceptMode(QFileDialog::AcceptSave);
@@ -359,13 +369,19 @@ void GuiController::saveAs()
         path = path.endsWith(QString(".json")) ? path : path + ".json";
         exportToJsonFile(path);
         projectHasChanges_ = false;
+
+        emit unchangedProject();
+
+        return true;
     }
+
+    return false;
 }
 
 void GuiController::open()
 {
+    int response;
     QString projectPath;
-
     QFileDialog dialog(
         Q_NULLPTR,
         tr("Open Image"),
@@ -373,16 +389,24 @@ void GuiController::open()
         tr("Contextualization File (*.json)")
     );
 
+    // Save current project if has changes and the user want it.
+    if (projectHasChanges_) {
+        response = Utils::warningMessage("Project has unsaved changes.", "Do you save?");
+        if (response == QMessageBox::Yes) {
+            save();
+        }
+    }
+
     dialog.setAcceptMode(QFileDialog::AcceptOpen);
     dialog.setFileMode(QFileDialog::ExistingFile);
     dialog.setViewMode(QFileDialog::Detail);
     if (dialog.exec()) {
         projectPath = dialog.selectedFiles().first();
-        importProjectFromJsonFile(projectPath);
+        if (importProjectFromJsonFile(projectPath) == NoError) {
+            currentProjectPath_ = projectPath;
 
-        // Load flags for correct save and detect changes.
-        projectHasChanges_ = false;
-        currentProjectPath_ = projectPath;
+            emit unchangedProject();
+        }
     }
 }
 
@@ -390,6 +414,7 @@ void GuiController::newProject()
 {
     int response;
 
+    // Save current project if has changes and the user want it.
     if (projectHasChanges_) {
         response = Utils::warningMessage("Project has unsaved changes.", "Do you save?");
         if (response == QMessageBox::Yes) {
@@ -400,36 +425,90 @@ void GuiController::newProject()
     // Clear all model.
     removeAllStrings();
     clearImage();
-
-    // Load flags for correct save and detect changes.
-    projectHasChanges_ = false;
     currentProjectPath_ = QString();
+
+    emit unchangedProject();
 }
 
-void GuiController::changeModel()
+void GuiController::detectsStringOnInterestingArea(
+    int startX,
+    int startY,
+    int endX,
+    int endY,
+    int paintedWidth,
+    int paintedHeight
+) {
+    QString path;
+    QImage captureArea(model_->getImage());
+    QList<FirmwareString *> extractedStrings;
+    QList<FirmwareString *> copy;
+    QString captureAreaPath = Utils::getTmpDirectory() + "capture_area_" + Utils::getDateTime() + ".png";
+    QMessageBox message;
+
+    // Calculate real selection coordinates on image.
+    int realStartX = startX * captureArea.width() / paintedWidth;
+    int realStartY = startY* captureArea.height() / paintedHeight;
+    int realEndX = endX * captureArea.width() / paintedWidth;
+    int realEndY = endY * captureArea.height() / paintedHeight;
+
+    if (!model_->hasImage()) {
+        Utils::informativeMessage("Not image.", "You have to set an image to can detect strings in it.");
+
+        return;
+    }
+
+    captureArea = captureArea.copy(realStartX, realStartY, realEndX - realStartX, realEndY - realStartY);
+    if (captureArea.save(captureAreaPath, Q_NULLPTR, 100) == false) {
+        Utils::errorMessage("Bad operation.", "Now can't use this funcinality. Try it later.");
+        Log::writeError(QString(Q_FUNC_INFO) + " Could not save capture area in " + captureAreaPath);
+
+        return;
+    }
+
+    // Show informative message.
+    message.setStandardButtons(Q_NULLPTR);
+    message.setWindowTitle("Detecting...");
+    message.setWindowModality(Qt::WindowModal);
+    message.open();
+
+    // Extract strings on image.
+    extractedStrings = fastDetectStringsOnImage(captureAreaPath);
+
+    // A copy if creates because extracted strings are in a different thread and this is in conflict with Q_PROPERTYs.
+    foreach (FirmwareString *fwString, extractedStrings) {
+        copy << new FirmwareString(*fwString);
+
+        delete fwString;
+        fwString = Q_NULLPTR;
+    }
+
+    addStrings(copy);
+
+    // Close progress message.
+    message.close();
+
+    // Remove temporal files
+    QFile::remove(captureAreaPath);
+}
+
+void GuiController::indicateProjectChanges()
 {
     projectHasChanges_ = true;
 }
 
+void GuiController::indicateProjectSaved()
+{
+    projectHasChanges_ = false;
+}
+
 void GuiController::configFpFile()
 {
-    bool ok;
-    QString englishFpFile;
-
-    do {
-        englishFpFile = QInputDialog::getText(
-            Q_NULLPTR,
-            tr("Configuration"),
-            tr("English fp path:"),
-            QLineEdit::Normal,
-            englishFpFile_,
-            &ok
-        );
-    } while(ok && englishFpFile.isEmpty());
-
-    // Only change value of path if user doesn't press cancel. After done fp file is generated.
-    if (ok) {
-        englishFpFile_ = englishFpFile;
+    QFileDialog dialog(Q_NULLPTR, tr("Open Image"), QDir::homePath(), tr("Contextualization (*.json)"));
+    dialog.setAcceptMode(QFileDialog::AcceptOpen);
+    dialog.setFileMode(QFileDialog::ExistingFile);
+    dialog.setViewMode(QFileDialog::Detail);
+    if (dialog.exec()) {
+        englishFpFile_ = dialog.selectedFiles().first();
         generateDoneFpFile();
     }
 }
@@ -535,97 +614,113 @@ void GuiController::connectGuiSignalsAndSlots()
             view_,
             SIGNAL(clearRequested()),
             this,
-            SLOT(clear())
+            SLOT(clear()),
+            Qt::UniqueConnection
         );
         QObject::connect(
             view_,
             SIGNAL(addRequested(QString, int)),
             this,
-            SLOT(add(QString, int))
+            SLOT(add(QString, int)),
+            Qt::UniqueConnection
         );
         QObject::connect(
             view_,
             SIGNAL(stringRemoved(QString)),
             this,
-            SLOT(remove(QString))
+            SLOT(remove(QString)),
+            Qt::UniqueConnection
         );
         QObject::connect(
             view_,
             SIGNAL(cancelRequested()),
             this,
-            SLOT(cancel())
+            SLOT(cancel()),
+            Qt::UniqueConnection
         );
         QObject::connect(
            view_,
             SIGNAL(sendRequested()),
             this,
-            SLOT(send())
+            SLOT(send()),
+            Qt::UniqueConnection
         );
         QObject::connect(
             view_,
             SIGNAL(captureRequested(bool)),
             this,
-            SLOT(capture(bool))
+            SLOT(capture(bool)),
+            Qt::UniqueConnection
         );
         QObject::connect(
             view_,
             SIGNAL(loadImageRequested(bool)),
             this,
-            SLOT(load(bool))
+            SLOT(load(bool)),
+            Qt::UniqueConnection
         );
         QObject::connect(
             view_,
             SIGNAL(detectStringsRequested()),
             this,
-            SLOT(detect())
+            SLOT(detect()),
+            Qt::UniqueConnection
         );
         QObject::connect(
             view_,
             SIGNAL(openRequested()),
             this,
-            SLOT(open())
+            SLOT(open()),
+            Qt::UniqueConnection
         );
         QObject::connect(
             view_,
             SIGNAL(saveRequested()),
             this,
-            SLOT(save())
+            SLOT(save()),
+            Qt::UniqueConnection
         );
         QObject::connect(
             view_,
             SIGNAL(saveAsRequested()),
             this,
-            SLOT(saveAs())
+            SLOT(saveAs()),
+            Qt::UniqueConnection
+        );
+        QObject::connect(
+            view_,
+            SIGNAL(selectedCaptureArea(int, int, int, int, int, int)),
+            this,
+            SLOT(detectsStringOnInterestingArea(int, int, int, int, int, int)),
+            Qt::UniqueConnection
         );
         QObject::connect(
             view_,
             SIGNAL(fpFileConfigRequested()),
             this,
-            SLOT(configFpFile())
+            SLOT(configFpFile()),
+            Qt::UniqueConnection
         );
         QObject::connect(
             view_,
             SIGNAL(remoteHostConfigRequested()),
             this,
-            SLOT(configRemoteHost())
-        );
-        QObject::connect(
-            view_,
-            SIGNAL(validStatesConfigRequested()),
-            this,
-            SLOT(configValidStates())
+            SLOT(configRemoteHost()),
+            Qt::UniqueConnection
         );
         QObject::connect(
             view_,
             SIGNAL(refreshRequested()),
             this,
-            SLOT(refresh())
+            SLOT(refresh()),
+            Qt::UniqueConnection
         );
         QObject::connect(
             view_,
             SIGNAL(newProjectRequested()),
             this,
-            SLOT(newProject())
+            SLOT(newProject()),
+            Qt::UniqueConnection
         );
     }
 }
@@ -637,14 +732,36 @@ void GuiController::connectModelSignalsAndSlots()
             model_,
             SIGNAL(imageChanged()),
             this,
-            SLOT(changeModel())
+            SIGNAL(imageChanged()),
+            Qt::UniqueConnection
         );
         QObject::connect(
             model_,
-            SIGNAL(stringListChanged()),
+            SIGNAL(stringsListChanged()),
             this,
-            SLOT(changeModel())
+            SIGNAL(stringsListChanged()),
+            Qt::UniqueConnection
+        );
+        QObject::connect(
+            this,
+            SIGNAL(stringsListChanged()),
+            this,
+            SLOT(indicateProjectChanges()),
+            Qt::UniqueConnection
+        );
+        QObject::connect(
+            this,
+            SIGNAL(imageChanged()),
+            this,
+            SLOT(indicateProjectChanges()),
+            Qt::UniqueConnection
+        );
+        QObject::connect(
+            this,
+            SIGNAL(unchangedProject()),
+            this,
+            SLOT(indicateProjectSaved()),
+            Qt::UniqueConnection
         );
     }
-
 }

@@ -1,4 +1,4 @@
-import QtQuick 2.10
+import QtQuick 2.6
 import QtQuick.Window 2.2
 import QtQuick.Controls 1.4
 import QtQuick.Layouts 1.3
@@ -20,8 +20,8 @@ ApplicationWindow {
     signal saveAsRequested()
     signal fpFileConfigRequested()
     signal remoteHostConfigRequested()
-    signal validStatesConfigRequested()
     signal refreshRequested()
+    signal selectedCaptureArea(int startX, int startY, int endX, int endY, int paintedWitdh, int paintedHeight)
 
     id : mainWindow
     visible: true
@@ -49,6 +49,7 @@ ApplicationWindow {
         property int height: 21
 
         id: menuBar
+
 
         Menu {
             title: "File"
@@ -131,10 +132,14 @@ ApplicationWindow {
                 text: "Remote Host"
                 onTriggered: remoteHostConfigRequested()
             }
+        }
+
+        Menu {
+            title: "Process"
 
             MenuItem {
-                text: "Valid States"
-                onTriggered: validStatesConfigRequested()
+                text: "Process and storage"
+                //onTriggered: fpFileConfigRequested()
             }
         }
     }
@@ -183,6 +188,7 @@ ApplicationWindow {
                 Layout.leftMargin: 18
 
                 Rectangle {
+                    id: captureContainer
                     Layout.fillWidth: true
                     Layout.fillHeight: true
                     border.width : 1
@@ -192,21 +198,136 @@ ApplicationWindow {
                     clip: true
 
                     Image {
+                        property string defaultPath: "qrc:/images/imageNotAvailable.png"
+                        property int startSelectedX : 0
+                        property int startSelectedY: 0
+                        property int endSelectedX : 0
+                        property int endSelectedY: 0
+                        property bool select: false
+                        property double ratio
+
+                        id: capture
                         objectName: "containerImage"
                         cache: false
-                        source: "file:" + controller.image
-                        fillMode: Image.PreserveAspectFit
+                        source: controller.image ? "file:" + controller.image : defaultPath
                         asynchronous: true
                         anchors.fill: parent
-                        anchors.margins: 1
+                        fillMode: Image.PreserveAspectFit
+                        opacity: select ? 0.7 : 1
+
+                        MouseArea {
+                            id:roiRectArea
+                            anchors.fill: capture
+                            acceptedButtons: Qt.LeftButton
+                            cursorShape: capture.select ? Qt.CrossCursor : Qt.ArrowCursor
+
+                            onPressed: {
+                                if (isClickOnImagen(mouse.x, mouse.y)) {
+                                    //capture.select = true;
+                                    capture.startSelectedX = mouse.x;
+                                    capture.startSelectedY = mouse.y;
+                                    capture.endSelectedX = mouse.x;
+                                    capture.endSelectedY = mouse.y;
+                                }
+                            }
+
+                            onReleased: {
+                                if (capture.select) {
+                                    // Emit signal
+                                    /*var realStartX = capture.startSelectedX * capture.width / capture.paintedWidth;
+                                    var realStartY = capture.startSelectedY * capture.height / capture.paintedHeight;
+                                    var realEndX = capture.endSelectedX * capture.width / v;
+                                    var realEndY = capture.endSelectedY * capture.height / capture.paintedHeight;*/
+                                    selectedCaptureArea(
+                                        capture.startSelectedX - calculateHorizontalMargin(),
+                                        capture.startSelectedY - calculateVerticalMargin(),
+                                        capture.endSelectedX - calculateHorizontalMargin(),
+                                        capture.endSelectedY - calculateVerticalMargin(),
+                                        capture.paintedWidth,
+                                        capture.paintedHeight
+                                    );
+                                }
+
+                                capture.select = false;
+                                capture.startSelectedX = 0;
+                                capture.startSelectedY = 0;
+                                capture.endSelectedX = 0;
+                                capture.endSelectedY = 0;
+                            }
+
+                            onPositionChanged: {
+                                if (capture.select) {
+                                    if (capture.startSelectedX < mouse.x) {
+                                        // Positive direction
+                                        capture.endSelectedX = mouse.x
+                                        capture.endSelectedY= mouse.y
+                                    } else {
+                                        // Negative direction
+                                        capture.startSelectedX = mouse.x;
+                                        capture.startSelectedY = mouse.y;
+                                    }
+                                }
+                            }
+
+                            function isClickOnImagen(clickX, clickY) {
+                                var marginX = calculateHorizontalMargin();
+                                var marginY = calculateVerticalMargin();
+
+                                if (clickX < marginX || clickX > (capture.paintedWidth + marginX) ||
+                                        clickY < marginY || clickY > (capture.paintedHeight + marginY)) {
+                                    return false;
+                                }
+
+                                return true;
+                            }
+
+                            function calculateHorizontalMargin() {
+                                return (parent.width - capture.paintedWidth) / 2;
+                            }
+
+                            function calculateVerticalMargin() {
+                                return (parent.height - capture.paintedHeight) / 2;
+                            }
+                        }
+
+                        Rectangle {
+                            id: selectedZone
+                            opacity: capture.select ? 0.4 : 0
+                            x: capture.startSelectedX
+                            y: capture.startSelectedY
+                            width: capture.endSelectedX - capture.startSelectedX
+                            height: capture.endSelectedY - capture.startSelectedY
+                            color: "#ffffff"
+                        }
                     }
                 }
 
-                CheckBox {
-                    id : autoDetectCheckBox
-                    text: "Detect strings when image is loaded"
-                    Layout.alignment: Qt.AlignHCenter
-                    style: generalCheckboxStyle
+                RowLayout {
+                    Layout.fillWidth: true
+
+                    Button {
+                        id: interestingAreaButton
+                        Layout.preferredWidth: 30
+                        iconSource: "qrc:/images/interestingArea.png"
+                        checked: true
+
+                        onClicked: capture.select = true
+                    }
+
+                    Item {
+                        Layout.fillWidth: true
+                    }
+
+                    CheckBox {
+                        id : autoDetectCheckBox
+                        text: "Detect strings on load image"
+                        Layout.leftMargin: -interestingAreaButton.width
+                        style: generalCheckboxStyle
+                    }
+
+                    Item {
+                        Layout.fillWidth: true
+                    }
                 }
 
                 RowLayout {
@@ -255,8 +376,8 @@ ApplicationWindow {
             }
 
             ColumnLayout {
-                Layout.preferredWidth: parent.width * 0.5
-                Layout.maximumWidth: parent.width * 0.5
+                Layout.preferredWidth: parent.width * 0.55
+                Layout.maximumWidth: parent.width * 0.55
                 Layout.alignment: Qt.AlignRight
                 Layout.topMargin: 18
                 Layout.bottomMargin: 10
@@ -372,22 +493,17 @@ ApplicationWindow {
                         title: "String Key"
                         role: "id"
                         horizontalAlignment: Text.AlignHCenter
-                        width: (stringsTable.width - checkboxsColumn.width - buttonsColumn.width) * 0.45
+                        width: (stringsTable.width - checkboxsColumn.width - buttonsColumn.width - statesColumn.width) * 0.45
 
                         delegate: TextField {
+                            width: parent.width
                             anchors.fill: parent
                             verticalAlignment: Text.AlignVCenter
                             text: styleData.value
-                            readOnly: true
+                            readOnly: !modelData.editable
+                            onTextChanged: modelData.id = text
 
-                            style: TextFieldStyle
-                            {
-                                background: Rectangle {
-                                    opacity: 0
-                                }
-
-
-                            }
+                            style: modelData.editable ? editableTextField : noEditableTextField
                         }
                     }
 
@@ -396,7 +512,30 @@ ApplicationWindow {
                         title: "String"
                         role: "value"
                         horizontalAlignment: Text.AlignHCenter
-                        width: (stringsTable.width - checkboxsColumn.width - buttonsColumn.width) * 0.55
+                        width: (stringsTable.width - checkboxsColumn.width - buttonsColumn.width - statesColumn.width) * 0.55
+
+                        delegate: Item {
+                            anchors.fill: parent
+
+                            TextField {
+                                width: parent.width
+                                anchors.fill: parent
+                                verticalAlignment: Text.AlignVCenter
+                                text: styleData.value
+                                readOnly: !modelData.editable
+                                onTextChanged: modelData.value = text
+
+                                style: modelData.editable ? editableTextField : noEditableTextField
+                            }
+                        }
+                    }
+
+                    TableViewColumn {
+                        id: statesColumn
+                        title: "State"
+                        role: "state"
+                        horizontalAlignment: Text.AlignHCenter
+                        width: 90
 
                         delegate: Item {
                             anchors.fill: parent
@@ -404,17 +543,10 @@ ApplicationWindow {
                             TextField {
                                 anchors.fill: parent
                                 verticalAlignment: Text.AlignVCenter
-                                text: "\"" + styleData.value + "\""
-                                readOnly: true
+                                text: styleData.value
+                                readOnly: !modelData.editable
 
-                                style: TextFieldStyle
-                                {
-                                    background: Rectangle {
-                                        opacity: 0
-                                    }
-
-
-                                }
+                                style: modelData.editable ? editableTextField : noEditableTextField
                             }
                         }
                     }
@@ -574,6 +706,35 @@ ApplicationWindow {
                     anchors.margins: 4
                     anchors.fill: parent
                 }
+            }
+        }
+    }
+
+    Component {
+        id: editableTextField
+
+        TextFieldStyle
+        {
+            textColor: "black"
+            background: Rectangle {
+                radius: 2
+                implicitWidth: 100
+                implicitHeight: 24
+                border.color: "#333"
+                border.width: 1
+            }
+
+
+        }
+    }
+
+    Component {
+        id: noEditableTextField
+
+        TextFieldStyle
+        {
+            background: Rectangle {
+                opacity: 0
             }
         }
     }

@@ -1,3 +1,13 @@
+/**
+ * @file utils.h
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class Utils
+ *
+ * @brief This is static class with a lot of different utilities.
+ */
+
 #ifndef UTILS_H
 #define UTILS_H
 
@@ -15,6 +25,31 @@
 class Utils
 {
 public:
+    enum TextModifier {
+        FG_BLACK = 30,          ///< Black foreground
+        FG_RED = 31,            ///< Red foreground
+        FG_GREEN = 32,          ///< Green foreground
+        FG_YELLOW = 33,         ///< Yellow foreground
+        FG_BLUE = 34,           ///< Blue foreground
+        FG_MAGENTA = 35,        ///< Magenta foreground
+        FG_CYAN = 36,           ///< Cyan foreground
+        FG_WHITE = 37,          ///< White foreground
+        BG_BLACK = 40,          ///< Black background
+        BG_RED = 41,            ///< Red background
+        BG_GREEN = 42,          ///< Green background
+        BG_YELLOW = 43,         ///< Yellow background
+        BG_BLUE = 44,           ///< Blue background
+        BG_MAGENTA = 45,        ///< Magenta background
+        BG_CYAN = 46,           ///< Cyan background
+        BG_WHITE = 47,          ///< White background
+        RESET = 0,              ///< Reset all
+        BOLD = 1,               ///< Bold text
+        UNDERLNE = 4,           ///< Underline text
+        INVERSE = 7,            ///< Inverse text
+        BOLD_OFF = 21,          ///< Off bold text
+        UNDERLINE_OFF = 24,     ///< Off underline text
+        INVERSE_OFF = 27,       ///< Off inverse text
+    };
 
     /**
      * @brief Creates an empty Utils object.
@@ -162,6 +197,22 @@ public:
      * @return Date time.
      */
     static QString getDateTime(QString format = "yyyy_MM_dd_hh_mm_ss");
+
+    /**
+     * @brief Returns a temporal directory of system.
+     * @return
+     */
+    static QString getTmpDirectory();
+
+    /**
+     * @brief Returns a text applying mofifiers to be used in terminal.
+     *
+     * This function use ANSI format, make sure your terminal accepts it.
+     * @param text String to be formatted.
+     * @param modifiers Modifiers to be applied
+     * @return
+     */
+    static QString formatText(const QString &text, QList<TextModifier> modifiers);
 };
 
 #endif // UTILS_H

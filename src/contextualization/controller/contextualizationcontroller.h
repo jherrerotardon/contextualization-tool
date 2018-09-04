@@ -1,3 +1,13 @@
+/**
+ * @file contextualizationcontroller.h
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class ContectualizationController
+ *
+ * @brief This is the controller base class.
+ */
+
 #ifndef CONTEXTUALIZATIONCONTROLLER_H
 #define CONTEXTUALIZATIONCONTROLLER_H
 
@@ -90,6 +100,7 @@ protected:
     const static int CHUNK_HEIGHT;          ///< Height of each chunk when a image is splitted.
     const static QString IMAGES_FOLDER;     ///< Directory where will save project images.
     const static QString PROJECTS_FOLDER;   ///< Directory where will save projects.
+    const static QString CONFIG_FOLDER;     ///< Directory where will save configurations.
     ContextualizationModel *model_;         ///< Pointer to the contextualization model.
     QString englishFpFile_;                 ///< Original file where be all firmware strings.
     const static QString DONE_FP_FILE;      ///< File path where the firmware strings will be found.
@@ -100,24 +111,24 @@ protected:
     bool caseSensitive_;                    ///< Indicates if searches will be case sensitive or not.
 
     /**
-     * @brief Exports projet to json file.
+     * @brief Imports projet from json file.
      *
      * Decodes JSON format of the file received by parameter and try to convert it in a ContextualizationModel object.
      * Returns a #Error code.
      * @param path File path where be readed data project.
      * @return int
      */
-    int importProjectFromJsonFile(const QString &path);
+    CodeError importProjectFromJsonFile(const QString &path);
 
     /**
-     * @brief Imports projet from json file.
+     * @brief Exports project to json file.
      *
      * Codes the actual model to JSON format and sabe data in the file received by parameter.
-     * Returns a #Error code.
+     * Returns true if project was exported succesfully, otherwise, returns false.
      * @param path File path where be saved data project.
-     * @return int
+     * @return bool
      */
-    int exportToJsonFile(const QString &path);
+    bool exportToJsonFile(const QString &path);
 
     /**
      * @brief Checks the actual state of the model.
@@ -147,16 +158,28 @@ protected:
      * @param password Password credential.
      * @return
      */
-    int sendContextualization(QString const &path, QString user, QString password);
+    CodeError sendContextualization(QString const &path, QString user, QString password);
 
     /**
      * @brief Extracts the strings contained in the image set in the model.
      *
      * Returns a QList of FirmwareString containing all of strings extracted converted in FirmwareString objects if are
      * in the fp file. Each firmware string on QList is a FirmwareString Object extracted from the image.
+     * @param image Path of image where strings will be detected.
      * @return List of FirmwareString found on image.
      */
-    QList<FirmwareString *> detectStringsOnImage();
+    QList<FirmwareString *> detectStringsOnImage(QString image);
+
+    /**
+     * @brief Extracts the strings contained in the image set in the model.
+     *
+     * Returns a QList of FirmwareString containing all of strings extracted converted in FirmwareString objects if are
+     * in the fp file. Each firmware string on QList is a FirmwareString Object extracted from the image. This is
+     * that #sendContextualization(QString image), this is more fast but less precise.
+     * @param image Path of image where strings will be detected.
+     * @return List of FirmwareString found on image.
+     */
+    QList<FirmwareString *> fastDetectStringsOnImage(QString image);
 
     /**
      * @brief Processes received strings.
@@ -167,7 +190,7 @@ protected:
      * @param strings String value to be processed.
      * @return List of FirmwareStirng found in fp file.
      */
-    QList<FirmwareString *> processStrings(QStringList strings);
+    QList<FirmwareString *> processExtractedStrings(QStringList strings);
 
     /**
      * @brief Find the text received by parameter in fp file.
@@ -198,9 +221,9 @@ protected:
      * If the parameter fwString is null, nothing is done.
      * Return true if FirmwareString is added successfully and false if not.
      * @param fwString The string to add on the model.
-     * @return bool
+     * @return Error code.
      */
-    int addString(FirmwareString *fwString);
+    CodeError addString(FirmwareString *fwString);
 
     /**
      * @brief Adds new strings on the model.
@@ -234,6 +257,16 @@ protected:
      * @brief Remove all strings in the model.
      */
     bool removeAllStrings();
+
+    /**
+     * @brief Select the string with the identifier received by parameter.
+     *
+     * Returns true if string was selected succesfully, otherwise, returns false.
+     * @param id Identifier of strogn to select.
+     * @param state Selection state
+     * @return bool
+     */
+    bool selectString(const QString id, bool state);
 
     /**
      * @brief Sets a no image in the model.
@@ -311,7 +344,7 @@ protected:
      * If copy was created succesfully returns 0, otherwise returns the code error.
      * @return Code error
      */
-    int generateDoneFpFile();
+    virtual int generateDoneFpFile();
 
     /**
      * @brief Filters a list of firmware strings. Remove from the list all strings that have not the same state as the
@@ -340,6 +373,24 @@ protected:
      * @return QStringList with chunks of image.
      */
     QStringList splitImage(const QString &image, int chunkWidth, int chunkHeight, bool *someError = Q_NULLPTR);
+
+    /**
+     * @brief Returns a value of a parameter in config file.
+     * @param parameter Parameter name to be returned.
+     * @return Value
+     */
+    QString getParameterFromConfigFile(const QString parameter);
+
+    /**
+     * @brief Sets a parameter in configuration file.
+     *
+     * Returns true if parameter is saved succesfully, otherwhise returns false.
+     * @param parameter Parameter name
+     * @param value Parameter value
+     * @return bool
+     */
+    bool setParameterInConfigFile(const QString parameter, const QString value);
+
 
 protected slots:
 
@@ -393,12 +444,12 @@ protected slots:
     /**
      * @brief Saves current project.
      */
-    virtual void save() = 0;
+    virtual bool save() = 0;
 
     /**
      * @brief Opens a dialog and saves current project in the path specied for the user.
      */
-    virtual void saveAs() = 0;
+    virtual bool saveAs() = 0;
 
     /**
      * @brief Opens a project saves on disk.
@@ -426,18 +477,6 @@ signals:
      * @brief The signal is emitted when a image is setted on the model.
      */
     void imageChanged();
-
-private:
-    const static QStringList COMMON_WORDS;             ///< Dicctionary with the most common words in firmware string.
-
-    /**
-     * @brief Checks if the word is a common word used in firmare strings.
-     *
-     * The common words are saved in a dictionary.
-     * @param word Word to be checked.
-     * @return bool
-     */
-    bool isCommonWord(const QString &word);
 };
 
 #endif // CONTEXTUALIZATIONCONTROLLER_H

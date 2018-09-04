@@ -1,5 +1,6 @@
 QT += quick
 QT += widgets
+QT += sql
 CONFIG += c++11
 
 #Include root path of personal classes.

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+selfDirectory=`dirname $(readlink -f $0)`
+
+cd $selfDirectory/bin
+
+if [ -f ContextualizationTool ]; then
+	./ContextualizationTool $@
+else
+	echo "You must to install the tool. Try to exec install.sh"
+fi

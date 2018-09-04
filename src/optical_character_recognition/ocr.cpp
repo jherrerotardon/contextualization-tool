@@ -1,3 +1,13 @@
+/**
+ * @file ocr.cpp
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class Ocr
+ *
+ * @brief This is an interface for a optical character recognition api.
+ */
+
 #include "ocr.h"
 
 Ocr::Ocr()

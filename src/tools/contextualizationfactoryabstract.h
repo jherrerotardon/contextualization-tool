@@ -1,3 +1,13 @@
+/**
+ * @file contextualizationfactoryabstract.h
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class ContextualizationFactoryAbstract
+ *
+ * @brief This is a interface factory to create a concrete class of ContextualizationController.
+ */
+
 #ifndef CONTEXTUALIZATIONFACTORYABSTRACT_H
 #define CONTEXTUALIZATIONFACTORYABSTRACT_H
 
@@ -23,12 +33,6 @@ public:
     ContextualizationFactoryAbstract();
 
     /**
-     * @brief Returns the kernel type where the app is running.
-     * @return Kernel type of the current system.
-     */
-    KernelType getCurrentKernelType();
-
-    /**
      * @brief Instantiates a new controller for a contextualization.
      *
      * This is a pure vistual function that must to be implemented in inherits classes.
@@ -37,6 +41,14 @@ public:
      * @return A new controller.
      */
     virtual ContextualizationController * createController(char **params, int count) = 0;
+
+protected:
+
+    /**
+     * @brief Returns the kernel type where the app is running.
+     * @return Kernel type of the current system.
+     */
+    KernelType getCurrentKernelType();
 };
 
 #endif // CONTEXTUALIZATIONFACTORYABSTRACT_H

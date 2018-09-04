@@ -1,10 +1,21 @@
-﻿#include "contextualizationcontroller.h"
+﻿/**
+ * @file contextualizationcontroller.cpp
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class ContectualizationController
+ *
+ * @brief This is the controller base class.
+ */
+
+#include "contextualizationcontroller.h"
 
 const int ContextualizationController::CHUNK_WIDTH = 300;
 const int ContextualizationController::CHUNK_HEIGHT = 150;
-const QString ContextualizationController::DONE_FP_FILE = "/tmp/doneFpFile.fp";
+const QString ContextualizationController::DONE_FP_FILE = Utils::getTmpDirectory() + "/doneFpFile.fp";
 const QString ContextualizationController::IMAGES_FOLDER = QDir("../storage/images").absolutePath() + '/';
 const QString ContextualizationController::PROJECTS_FOLDER = QDir("../storage/projects").absolutePath() + '/';
+const QString ContextualizationController::CONFIG_FOLDER = QDir("../config").absolutePath() + '/';
 
 ContextualizationController::ContextualizationController(QObject *parent) : QObject(parent)
 {
@@ -28,8 +39,23 @@ ContextualizationController::ContextualizationController(QObject *parent) : QObj
     }
 
     // Make storage directory if not exists
-    QDir(IMAGES_FOLDER).mkpath(".");
-    QDir(PROJECTS_FOLDER).mkpath(".");
+    if(QDir(IMAGES_FOLDER).mkpath(".")) {
+        Log::writeLog(QString(Q_FUNC_INFO) + "  Created " + IMAGES_FOLDER);
+    } else {
+        Log::writeError(QString(Q_FUNC_INFO) + " Impossible create " + IMAGES_FOLDER);
+    }
+
+    if(QDir(PROJECTS_FOLDER).mkpath(".")) {
+        Log::writeLog(QString(Q_FUNC_INFO) + " Created " + PROJECTS_FOLDER);
+    } else {
+        Log::writeError(QString(Q_FUNC_INFO) + " Impossible create " + PROJECTS_FOLDER);
+    }
+
+    if(QDir(CONFIG_FOLDER).mkpath(".")) {
+        Log::writeLog(QString(Q_FUNC_INFO) + " Created " + CONFIG_FOLDER);
+    } else {
+        Log::writeError(QString(Q_FUNC_INFO) + " Impossible create " + CONFIG_FOLDER);
+    }
 }
 
 ContextualizationController::~ContextualizationController()
@@ -37,38 +63,57 @@ ContextualizationController::~ContextualizationController()
     delete model_;
 }
 
-int ContextualizationController::importProjectFromJsonFile(const QString &path)
+ContextualizationController::CodeError ContextualizationController::importProjectFromJsonFile(const QString &path)
 {
     ContextualizationModel *modelTmp;
     QByteArray projectData;
 
-    projectData = Utils::readAllFile(path);
-    if (projectData.isEmpty()) {
-        Log::writeError("Fail to import. File doesn't exist: " + path);
+    if (!QFile::exists(path)) {
+        Log::writeError(QString(Q_FUNC_INFO) + " Fail to import. File doesn't exist: " + path);
 
         return NoImportFile;
     }
+
+    projectData = Utils::readAllFile(path);
     modelTmp = ContextualizationModel::fromJson(projectData);
 
-    if (!modelTmp || modelTmp->isEmpty()) {
-        Log::writeError("Not valid contextualization format to import: " + path);
+    if (!modelTmp) {
+        Log::writeError(QString(Q_FUNC_INFO) + " Not valid contextualization format to import: " + path);
 
         return ImportFileFormat;
     }
 
     *(model_) = *modelTmp;
-
-    emit imageChanged();
-    emit stringsListChanged();
+    Log::writeLog(QString(Q_FUNC_INFO) + " Imported project from: " + path);
 
     delete modelTmp;
 
     return NoError;
 }
 
-int ContextualizationController::exportToJsonFile(const QString &path)
-{    
-    return Utils::writeFile(path, model_->toJson());
+bool ContextualizationController::exportToJsonFile(const QString &path)
+{
+
+    QFileInfo imageInfo(model_->getImage());
+    QString imageName("capture-" + Utils::getDateTime() + '-' + username_ + '.' + imageInfo.suffix());
+
+    // Save image in non volatil folder if exists or is empty.
+    if (!model_->hasImage() || QFile::copy(model_->getImage(), IMAGES_FOLDER + imageName)) {
+        model_->setImage(model_->hasImage() ? IMAGES_FOLDER + imageName : "");
+
+        // Save project in JSON format
+        if (Utils::writeFile(path, model_->toJson())) {
+            Log::writeLog(QString(Q_FUNC_INFO) + " Exported project in: " + path);
+
+            return true;
+        }
+    } else {
+        Log::writeError(QString(Q_FUNC_INFO) +  "Impossible to copy " + model_->getImage() + " in " + IMAGES_FOLDER + imageName);
+    }
+
+    Log::writeError("Can not save current project in " + path);
+
+    return false;
 }
 
 ContextualizationController::ModelError ContextualizationController::validateModel()
@@ -96,13 +141,13 @@ ContextualizationController::ModelError ContextualizationController::validateMod
 
 QString ContextualizationController::generateContextualization()
 {
-    QDir tmpDir("/tmp/" + Utils::getDateTime() + '-' + username_);
+    QDir tmpDir(Utils::getTmpDirectory() + "/" + Utils::getDateTime() + '-' + username_);
     QFileInfo image(model_->getImage());
     QString text("");
     QString contextualizationPackage("");
 
     if(tmpDir.exists()) {
-        Log::writeError("Send process in progress. The contextualization zip file already exists.");
+        Log::writeError(QString(Q_FUNC_INFO) + " Send process in progress. The contextualization zip file already exists.");
         return QString("");
     }
 
@@ -112,44 +157,53 @@ QString ContextualizationController::generateContextualization()
         // Save only selected strings
         foreach (QObject *fwString, model_->getStringsList()) {
             if (static_cast<FirmwareString *>(fwString)->isSelected()) {
-                text += static_cast<FirmwareString *>(fwString)->toFpFileFormat();
+                text += static_cast<FirmwareString *>(fwString)->getId();
                 text += '\n';
             }
         }
 
         Utils::writeFile(tmpDir.absoluteFilePath("FirmwareStrings.fp"), text);
         contextualizationPackage = Utils::zipCompressDirectoryContents(tmpDir.absolutePath(), "/tmp", tmpDir.dirName());
+        if (!contextualizationPackage.isEmpty()) {
+            Log::writeLog(QString(Q_FUNC_INFO) + " Contextualization package generate in: " + contextualizationPackage);
+        } else {
+            Log::writeError(QString(Q_FUNC_INFO) + " Could not create contextualization package " + contextualizationPackage);
+        }
 
         // Delete temporal folder with the contextualization.
         tmpDir.removeRecursively();
     } else {
-        Log::writeError("Contextualization could not be packaged. Error creating directory " + tmpDir.absolutePath());
+        Log::writeError(QString(Q_FUNC_INFO) + " Contextualization could not be packaged. Error creating directory " + tmpDir.absolutePath());
     }
 
     return contextualizationPackage;
 }
 
-int ContextualizationController::sendContextualization(const QString &path, QString user, QString password)
-{
+ContextualizationController::CodeError ContextualizationController::sendContextualization(
+    const QString &path,
+    QString user,
+    QString password
+) {
     QStringList arguments;
-    QString batch("/tmp/batch");
-    QString sshpassEvidences("/tmp/sshpassEvidenceError_" + Utils::getDateTime() + ".txt");
-    int errorCode;;
+    QString batch(Utils::getTmpDirectory() + "/batch");
+    QString sshpassEvidences(Utils::getTmpDirectory() + "/sshpassEvidenceError_" + Utils::getDateTime() + ".txt");
+    CodeError errorCode = NoError;
+    int out;
 
     if (remoteHost_.isEmpty()) {
-        Log::writeError("No remote host (IP or hostname) received when the contextualizacion was going to be sent.");
+        Log::writeError(QString(Q_FUNC_INFO) + " No remote host (IP or hostname) received when the contextualizacion was going to be sent.");
 
         return NoRemoteHost;
     }
 
     if (!Utils::isValidIp(remoteHost_)) {
-        Log::writeError("No valid IP received when the contextualizacion was going to be sent. IP: " + remoteHost_);
+        Log::writeError(QString(Q_FUNC_INFO) + " No valid IP received when the contextualizacion was going to be sent. IP: " + remoteHost_);
 
         return NoValidIp;
     }
 
     if (!QFile::exists(path)) {
-        Log::writeError("Contextualization file to be sent not exists. Contextualization path: " + path);
+        Log::writeError(QString(Q_FUNC_INFO) + " Contextualization file to be sent not exists. Contextualization path: " + path);
 
         return FileNotExists;
     }
@@ -160,13 +214,15 @@ int ContextualizationController::sendContextualization(const QString &path, QStr
     arguments << "sftp" << "-oBatchMode=no" << "-b" << batch
               << user + '@' + remoteHost_ + ":Contextualizations";
 
-    errorCode = Utils::executeProgram("sshpass", arguments, sshpassEvidences);
+    out = Utils::executeProgram("sshpass", arguments, sshpassEvidences);
 
     // If there are some error, write ouput process in error log.
-    if (errorCode != NoError) {
-        Log::writeError(QString(Utils::readAllFile(sshpassEvidences)).replace("\n", ". "));
+    if (out != NoError) {
+        Log::writeError(QString(Q_FUNC_INFO) + QString(Utils::readAllFile(sshpassEvidences)).replace("\n", ". "));
 
-        errorCode = errorCode == SshError ? SshError : SshpassError;
+        errorCode = out == SshError ? SshError : SshpassError;
+    } else {
+        Log::writeLog(QString(Q_FUNC_INFO) + " Contextualization " + path + " sent to " + remoteHost_);
     }
 
     // Remove temporal files.
@@ -176,7 +232,7 @@ int ContextualizationController::sendContextualization(const QString &path, QStr
     return errorCode;
 }
 
-QList<FirmwareString *> ContextualizationController::detectStringsOnImage()
+QList<FirmwareString *> ContextualizationController::detectStringsOnImage(QString image)
 {
     TesseractOcr *worker;
     QList<TesseractOcr *> workers; // Used to save workers because after must be released.
@@ -186,13 +242,13 @@ QList<FirmwareString *> ContextualizationController::detectStringsOnImage()
     QString rootCopy;
 
     // Added root image copy to work it too.
-    rootCopy = "/tmp/rootCopy_" + Utils::getDateTime() + "." + QFileInfo(model_->getImage()).suffix();
-    if (QFile::copy(model_->getImage(), rootCopy)) {
+    rootCopy = Utils::getTmpDirectory() + "/rootCopy_" + Utils::getDateTime() + "." + QFileInfo(image).suffix();
+    if (QFile::copy(image, rootCopy)) {
         imageChunks << rootCopy;
     }
 
     // Split image.
-    imageChunks << splitImage(model_->getImage(), CHUNK_WIDTH, CHUNK_HEIGHT);
+    imageChunks << splitImage(image, CHUNK_WIDTH, CHUNK_HEIGHT);
 
     // Create and start workers.
     foreach (QString image, imageChunks) {
@@ -203,7 +259,7 @@ QList<FirmwareString *> ContextualizationController::detectStringsOnImage()
             [this, worker]() {
                 QList<FirmwareString *> out;
 
-                out = this->processStrings(worker->extract());
+                out = this->processExtractedStrings(worker->extract());
 
                 return out;
             }
@@ -231,7 +287,15 @@ QList<FirmwareString *> ContextualizationController::detectStringsOnImage()
     return fwStrings;
 }
 
-QList<FirmwareString *> ContextualizationController::processStrings(QStringList strings)
+QList<FirmwareString *> ContextualizationController::fastDetectStringsOnImage(QString image)
+{
+    TesseractOcr worker(image);
+    QList<FirmwareString *> fwStrings;
+
+    return this->processExtractedStrings(worker.extract());
+}
+
+QList<FirmwareString *> ContextualizationController::processExtractedStrings(QStringList strings)
 {
     QList<FirmwareString *> stringsFound;
     QList<FirmwareString *> out;
@@ -283,7 +347,7 @@ QList<FirmwareString *> ContextualizationController::findString(const QString &t
             break;
 
         case ByApproximateValue:
-            stringsFound = database.getStringsWithAproximateValue(text, caseSensitive_);
+            stringsFound = database.getStringsWithApproximateValue(text, caseSensitive_);
             break;
     }
 
@@ -294,7 +358,7 @@ QList<FirmwareString *> ContextualizationController::findString(const QString &t
 
     // If only have to get DONE strings and find was not in DONE_FP_FILE is necessary filer strings.
     if (onlyDoneStrings_ && file.fileName() != DONE_FP_FILE) {
-        //filterStringsByState(&out, "DONE");
+        filterStringsByState(&out, "DONE");
     }
 
     return out;
@@ -308,7 +372,7 @@ bool ContextualizationController::isValidState(QString &state)
     return false;
 }
 
-int ContextualizationController::addString(FirmwareString *fwString)
+ContextualizationController::CodeError ContextualizationController::addString(FirmwareString *fwString)
 {
     if (fwString == Q_NULLPTR) {
         return NullPointer;
@@ -323,8 +387,6 @@ int ContextualizationController::addString(FirmwareString *fwString)
 
     model_->addString(fwString);
 
-    emit stringsListChanged();
-
     return NoError;
 }
 
@@ -338,33 +400,17 @@ int ContextualizationController::addStrings(const QList<FirmwareString *> &strin
         }
     }
 
-    if (count < 0) { // Only emit signal if strings have been added.
-        emit stringsListChanged();
-    }
-
     return count;
 }
 
 bool ContextualizationController::removeString(QString stringId)
 {
-    if(model_->removeString(stringId)) { // Only emit signal if string has been added.
-        emit stringsListChanged();
-
-        return true;
-    }
-
-    return false;
+    return model_->removeString(stringId);
 }
 
 bool ContextualizationController::removeString(int row)
 {
-    if(model_->removeString(row)) { // Only emit signal if string has been added.
-        emit stringsListChanged();
-
-        return true;
-    }
-
-    return false;
+    return model_->removeString(row);
 }
 
 bool ContextualizationController::removeAllStrings()
@@ -372,44 +418,37 @@ bool ContextualizationController::removeAllStrings()
     if (!model_->getStringsList().isEmpty()) {
         model_->removeAllStrings();
 
-        emit stringsListChanged();
-
         return true;
     }
 
     return false;
 }
 
+bool ContextualizationController::selectString(const QString id, bool state)
+{
+    return state ? model_->selectString(id) : model_->unselectString(id);
+}
+
 void ContextualizationController::clearImage()
 {
-    model_->setImage(ContextualizationModel::NO_IMAGE_PATH);
-
-    emit imageChanged();
+    model_->setImage("");
 }
 
 bool ContextualizationController::setImage(const QString &image)
 {
     QFileInfo imageInfo(image);
-    QString imageName("capture-" + Utils::getDateTime() + '-' + username_ + '.' + imageInfo.suffix());
-    bool exists = imageInfo.exists();
 
-    if (exists) {
-        // Save image in non volatil folder.
-        QFile::copy(image, IMAGES_FOLDER + imageName);
-    } else {
-        Log::writeError("Image to set not exists: " + image);
+    if (image.isEmpty() || QFile::exists(image)) {
+        model_->setImage(image);
+        Log::writeLog(QString(Q_FUNC_INFO) + " New image set in the project: " + image);
+
+        return true;
     }
 
-    // Remove old image in the model (only if has it) before set the new image.
-    if (model_->hasImage()) {
-        QFile::remove(model_->getImage());
-    }
+    model_->setImage("");
+    Log::writeError(QString(Q_FUNC_INFO) + " Image to set not exists: " + image);
 
-    model_->setImage(exists ? IMAGES_FOLDER + imageName : ContextualizationModel::NO_IMAGE_PATH);
-
-    emit imageChanged();
-
-    return exists;
+    return false;
 }
 
 bool ContextualizationController::isFwStringAlreadyExists(FirmwareString &fwString)
@@ -467,14 +506,14 @@ void ContextualizationController::loadConfig()
     QJsonObject root;
     QJsonParseError jsonError;
     QJsonDocument document;
-    QFile configurationFile("../conf/general.conf");
+    QFile configurationFile(CONFIG_FOLDER + "general.conf");
 
     if (configurationFile.exists())
     {
         document = QJsonDocument::fromJson(Utils::readAllFile(configurationFile.fileName()), &jsonError);
 
         if (jsonError.error != QJsonParseError::NoError) {
-            Log::writeError("Error decoding configuration file: " + jsonError.errorString());
+            Log::writeError(QString(Q_FUNC_INFO) + " Error decoding configuration file: " + jsonError.errorString());
 
             return;
         }
@@ -482,7 +521,7 @@ void ContextualizationController::loadConfig()
         // Get object with the configuration.
         root = document.object();
         if (root.isEmpty()) {
-            Log::writeError("Error format on configuration file. " + configurationFile.fileName());
+            Log::writeError(QString(Q_FUNC_INFO) + " Error format on configuration file. " + configurationFile.fileName());
 
             return;
         }
@@ -499,34 +538,59 @@ void ContextualizationController::loadConfig()
         foreach (QJsonValue value, root.value("validStates").toArray()) {
             validStates_ << value.toString();
         }
+
+        Log::writeLog(QString(Q_FUNC_INFO) + " Loaded config from " + configurationFile.fileName());
     }
 }
 
 void ContextualizationController::saveConfig()
 {
     QJsonObject root;
-    QJsonArray validStates;
-    QString configurationFile("../conf/general.conf");
+    QJsonDocument document;
+    QJsonParseError jsonError;
+    QFileInfo configurationFile(CONFIG_FOLDER + "general.conf");
 
-    foreach (QString state, validStates_) {
-        validStates << QJsonValue(state);
+    if (configurationFile.exists())
+    {
+        document = QJsonDocument::fromJson(Utils::readAllFile(configurationFile.fileName()), &jsonError);
+
+        if (jsonError.error != QJsonParseError::NoError) {
+            Log::writeError(QString(Q_FUNC_INFO) + " Error decoding configuration file: " + jsonError.errorString());
+
+            return;
+        }
+
+        // Get object with the configuration.
+        root = document.object();
     }
 
+    // Replace or add atributtes.
     root.insert("english.fp", englishFpFile_);
     root.insert("remoteHost", remoteHost_);
-    root.insert("validStates", validStates);
 
     // Write configuration in disk.
-    Utils::writeFile(configurationFile, QString(QJsonDocument(root).toJson(QJsonDocument::Indented)));
+    if (Utils::writeFile(configurationFile.absoluteFilePath(), QString(QJsonDocument(root).toJson(QJsonDocument::Indented)))) {
+        Log::writeLog(QString(Q_FUNC_INFO) + " Configuration saved succesfully.");
+    } else {
+        Log::writeError(QString(Q_FUNC_INFO) + " Could not save configuration in file " + configurationFile.absoluteFilePath());
+    }
 }
 
 int ContextualizationController::generateDoneFpFile()
 {
     QStringList grepArguments;
+    int codeError;
 
     grepArguments << "DONE$" << englishFpFile_;
 
-    return Utils::executeProgram("grep", grepArguments, DONE_FP_FILE);
+    codeError = Utils::executeProgram("grep", grepArguments, DONE_FP_FILE);
+    if (codeError == 0) {
+        Log::writeLog(QString(Q_FUNC_INFO) + " DONE fp file generated succesfully: " + DONE_FP_FILE);
+    } else {
+        Log::writeError(QString(Q_FUNC_INFO) + " DONE fp file could not be generated: " + DONE_FP_FILE);
+    }
+
+    return codeError;
 }
 
 int ContextualizationController::filterStringsByState(QList<FirmwareString *> *list, const QString &state)
@@ -575,12 +639,14 @@ QStringList ContextualizationController::splitImage(
 
     // Save images on disk.
     for (int i = 0; i < imageChunks.size(); ++i) {
-        fileName = "/tmp/" + rootImage.baseName() + "_chunk_" + QString::number(i+1) + '.' + rootImage.suffix();
+        fileName = Utils::getTmpDirectory() + "/" + rootImage.baseName() + "_chunk_" + QString::number(i+1) + '.' + rootImage.suffix();
 
         // Only returns chunks saved succesfully.
         if (imageChunks.at(i).save(fileName, Q_NULLPTR, 100)) {
             chunks << fileName;
+            Log::writeLog(QString(Q_FUNC_INFO) + " Saved image chunk: " + fileName);
         } else {
+            Log::writeError(QString(Q_FUNC_INFO) + " Could no saved image chunk: " + fileName);
             if (ok) {
                 *ok = false;
             }
@@ -598,27 +664,71 @@ void ContextualizationController::refresh()
     emit stringsListChanged();
 }
 
-bool ContextualizationController::isCommonWord(const QString &word)
+QString ContextualizationController::getParameterFromConfigFile(const QString parameter)
 {
-    /**
-     * Dictionary with the most used words that are longer than MIN_LENGTH_FOR_APPROXIMATE.
-     */
-    QStringList dictionary;
+    QJsonObject root;
+    QJsonParseError jsonError;
+    QJsonDocument document;
+    QFile configurationFile(CONFIG_FOLDER + "general.conf");
+    QString value;
 
-    dictionary << "Blueprints"
-               << "Quickset"
-               << "paper type"
-               << "Modify quickset"
-               << "Copy"
-               << "Cancel"
-               << "Output"
-               << "Destination";
+    if (configurationFile.exists())
+    {
+        document = QJsonDocument::fromJson(Utils::readAllFile(configurationFile.fileName()), &jsonError);
 
-    foreach (QString text, dictionary) {
-        if (text.contains(word, Qt::CaseInsensitive)) {
-            return true;
+        if (jsonError.error != QJsonParseError::NoError) {
+            Log::writeError(QString(Q_FUNC_INFO) + " Error decoding configuration file: " + jsonError.errorString());
+
+            return QString();
         }
+
+        // Get object with the configuration.
+        root = document.object();
+        if (root.isEmpty()) {
+            Log::writeError(QString(Q_FUNC_INFO) + " Error format on configuration file. " + configurationFile.fileName());
+
+            return QString();
+        }
+
+        value = root.value(parameter).toString();
+
+        return value.isEmpty() ? QString() : value;
+
     }
 
-    return false;
+    return QString();
+}
+
+bool ContextualizationController::setParameterInConfigFile(const QString parameter, const QString value)
+{
+    QJsonObject root;
+    QJsonDocument document;
+    QJsonParseError jsonError;
+    QFileInfo configurationFile(CONFIG_FOLDER + "general.conf");
+
+    if (configurationFile.exists())
+    {
+        document = QJsonDocument::fromJson(Utils::readAllFile(configurationFile.absoluteFilePath()), &jsonError);
+
+        if (jsonError.error != QJsonParseError::NoError) {
+            Log::writeError(QString(Q_FUNC_INFO) + " Error decoding configuration file: " + jsonError.errorString());
+
+            return false;
+        }
+
+        // Get object with the configuration.
+        root = document.object();
+    }
+
+    // Replace or add atributtes.
+    root.insert(parameter, value);
+
+    // Write configuration in disk.
+    if (Utils::writeFile(configurationFile.absoluteFilePath(), QString(QJsonDocument(root).toJson(QJsonDocument::Indented)))) {
+        Log::writeLog(QString(Q_FUNC_INFO) + " Parameter " + parameter + " saved succesfully with value " + value +".");
+        return true;
+    } else {
+        Log::writeError(QString(Q_FUNC_INFO) + " Could not save parameter " + parameter + " in file " + configurationFile.absoluteFilePath());
+        return false;
+    }
 }

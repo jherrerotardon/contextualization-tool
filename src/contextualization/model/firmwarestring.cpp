@@ -1,3 +1,13 @@
+/**
+ * @file frmwarestring.cpp
+ * @author  Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class FirmwareString
+ *
+ * @brief This a representation of a Firmware String used in HP company.
+ */
+
 #include "firmwarestring.h"
 
 FirmwareString::FirmwareString() : String()
@@ -13,6 +23,7 @@ FirmwareString::FirmwareString(FirmwareString &other) : String()
     maxLength_ = other.getMaxLength();
     state_ = other.getState();
     selected_ = other.isSelected();
+    editable_ = other.isEditable();
 }
 
 FirmwareString::FirmwareString(
@@ -21,8 +32,9 @@ FirmwareString::FirmwareString(
     const QString &description,
     const QString &maxLength,
     const QString &state,
-    const bool selected
-) : String(id, value, description, maxLength, state, selected) {
+    const bool selected,
+    const bool editable
+) : String(id, value, description, maxLength, state, selected, editable) {
 
 }
 
@@ -74,25 +86,25 @@ FirmwareString * FirmwareString::fromFpLine(const QString &fpLine)
     if (id.isNull()) {
         hasError = true;
 
-        Log::writeError("Error format in MESSAGE_ID column. Cannot extract the id: " + fpLine);
+        Log::writeError(QString(Q_FUNC_INFO) + " Error format in MESSAGE_ID column. Cannot extract the id: " + fpLine);
     }
 
     if (value.isNull()) {
         hasError = true;
 
-        Log::writeError("Error format in MESSAGE_ID column. Cannot extract the value: " + fpLine);
+        Log::writeError(QString(Q_FUNC_INFO) + " Error format in MESSAGE_ID column. Cannot extract the value: " + fpLine);
     }
 
     if (maxLength.isNull()) {
         hasError = true;
 
-        Log::writeError("Error format in MAX_FIELD_WIDTH column. Cannot extract the max width: " + fpLine);
+        Log::writeError(QString(Q_FUNC_INFO) + " Error format in MAX_FIELD_WIDTH column. Cannot extract the max width: " + fpLine);
     }
 
     if (state.isNull()) {
         hasError = true;
 
-        Log::writeError("Error format in LOCALIZATION column. Cannot extract state or isn't a valid state: "+ fpLine);
+        Log::writeError(QString(Q_FUNC_INFO) + " Error format in LOCALIZATION column. Cannot extract state or isn't a valid state: "+ fpLine);
     }
 
     if (hasError) {
@@ -101,7 +113,7 @@ FirmwareString * FirmwareString::fromFpLine(const QString &fpLine)
 
     selected = state == "DONE" ? true : false;
 
-    return new FirmwareString(id, value, description, maxLength, state, selected);
+    return new FirmwareString(id, value, description, maxLength, state, selected, false);
 }
 
 FirmwareString & FirmwareString::operator=(const FirmwareString &other)

@@ -1,3 +1,13 @@
+/**
+ * @file string.cpp
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class String
+ *
+ * @brief This is the representation of a string with their properties.
+ */
+
 #include "string.h"
 
 String::String() : QObject()
@@ -18,6 +28,7 @@ String::String(String &other) : QObject()
     maxLength_ = other.getMaxLength();
     state_ = other.getState();
     selected_ = other.isSelected();
+    editable_ = other.isEditable();
 }
 
 String::String(
@@ -26,7 +37,8 @@ String::String(
     const QString &description,
     const QString &maxLength,
     const QString &state,
-    const bool selected
+    const bool selected,
+    const bool editable
 ) : QObject() {
     id_ = id;
     value_ = value;
@@ -34,6 +46,7 @@ String::String(
     maxLength_ = maxLength;
     state_ = state;
     selected_ = selected;
+    editable_ = editable;
 }
 
 QString String::getId() const
@@ -41,11 +54,16 @@ QString String::getId() const
     return id_;
 }
 
-void String::setId(const QString &id)
+bool String::setId(const QString &id)
 {
-    id_ = id;
+    if (editable_) {
+        id_ = id;
 
-    emit idChanged();
+        emit idChanged();
+        return true;
+    }
+
+    return false;
 }
 
 QString String::getValue() const
@@ -53,11 +71,16 @@ QString String::getValue() const
     return value_;
 }
 
-void String::setValue(const QString &value)
+bool String::setValue(const QString &value)
 {
-    value_ = value;
+    if (editable_) {
+        value_ = value;
 
-    emit valueChanged();
+        emit valueChanged();
+        return true;
+    }
+
+    return false;
 }
 
 QString String::getDescription() const
@@ -65,11 +88,16 @@ QString String::getDescription() const
     return description_;
 }
 
-void String::setDescription(const QString &description)
+bool String::setDescription(const QString &description)
 {
-    description_ = description;
+    if (editable_) {
+        description_ = description;
 
-    emit descriptionChanged();
+        emit descriptionChanged();
+        return true;
+    }
+
+    return false;
 }
 
 QString String::getMaxLength() const
@@ -77,11 +105,16 @@ QString String::getMaxLength() const
     return maxLength_;
 }
 
-void String::setMaxLength(const QString &maxLength)
+bool String::setMaxLength(const QString &maxLength)
 {
-    maxLength_ = maxLength;
+    if (editable_) {
+        maxLength_ = maxLength;
 
-    emit maxLengthChanged();
+        emit maxLengthChanged();
+        return true;
+    }
+
+    return false;
 }
 
 QString String::getState() const
@@ -89,11 +122,16 @@ QString String::getState() const
     return state_;
 }
 
-void String::setState(const QString &state)
+bool String::setState(const QString &state)
 {
-    state_ = state;
+    if (editable_) {
+        state_ = state;
 
-    emit stateChanged();
+        emit stateChanged();
+        return true;
+    }
+
+    return false;
 }
 
 bool String::isEmpty()
@@ -131,7 +169,19 @@ void String::setSelected(bool selected)
     emit selectedChanged();
 }
 
-QString String::toFpFileFormat()
+bool String::isEditable() const
+{
+    return editable_;
+}
+
+void String::setEditable(const bool editable)
+{
+    editable_ = editable;
+
+    emit editableChanged();
+}
+
+QString String::toFpFileFormat() const
 {
     QString out;
 
@@ -180,21 +230,21 @@ String * String::fromJson(QByteArray &json)
     QJsonDocument document = QJsonDocument::fromJson(json, &jsonError);
 
     if (jsonError.error != QJsonParseError::NoError) {
-        Log::writeError("Error decoding String json: " + jsonError.errorString());
+        Log::writeError(QString(Q_FUNC_INFO) + " Error decoding String json: " + jsonError.errorString());
 
         return Q_NULLPTR;
     }
 
     root = document.object();
     if (root.isEmpty()) {
-        Log::writeError("String fromJson(): error format on root object.");
+        Log::writeError(QString(Q_FUNC_INFO) + " String fromJson(): error format on root object.");
 
         return Q_NULLPTR;
     }
 
     value = root.value("value").toString();
     if (value.isEmpty()) {
-        Log::writeError("String fromJson(): key value is empty.");
+        Log::writeError(QString(Q_FUNC_INFO) + " String fromJson(): key value is empty.");
 
         return Q_NULLPTR;
     }
@@ -218,6 +268,7 @@ String & String::operator=(const String &other)
         maxLength_ = other.getMaxLength();
         state_ = other.getState();
         selected_ = other.isSelected();
+        editable_ = other.editable_;
     }
 
     return *this;

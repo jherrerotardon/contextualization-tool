@@ -1,3 +1,13 @@
+/**
+ * @file utils.cpp
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class Utils
+ *
+ * @brief This is static class with a lot of different utilities.
+ */
+
 #include "utils.h"
 
 Utils::Utils()
@@ -15,6 +25,7 @@ void Utils::errorMessage(const QString &text, const QString &informativeText)
     msgBox.setStandardButtons(QMessageBox::Ok);
     msgBox.setDefaultButton(QMessageBox::Ok);
     msgBox.setIcon(QMessageBox::Critical);
+    msgBox.setWindowModality(Qt::WindowModal);
     //msgBox.setStyleSheet("QLabel{min-width: 450px;}");
     msgBox.exec();
 }
@@ -29,6 +40,7 @@ int Utils::warningMessage(const QString &text, const QString &informativeText)
     msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
     msgBox.setDefaultButton(QMessageBox::No);
     msgBox.setIcon(QMessageBox::Warning);
+    msgBox.setWindowModality(Qt::WindowModal);
     //msgBox.setStyleSheet("QLabel{min-width: 450px;}");
     return msgBox.exec();
 }
@@ -43,6 +55,7 @@ void Utils::informativeMessage(const QString &text, const QString &informativeTe
     msgBox.setStandardButtons(QMessageBox::Ok);
     msgBox.setDefaultButton(QMessageBox::Ok);
     msgBox.setIcon(QMessageBox::Information);
+    msgBox.setWindowModality(Qt::WindowModal);
     //msgBox.setStyleSheet("QLabel{min-width: 450px;}");
     msgBox.exec();
 }
@@ -164,4 +177,25 @@ bool Utils::isValidIp(const QString &ip)
 QString Utils::getDateTime(QString format)
 {
     return QDateTime::currentDateTime().toString(format);
+}
+
+QString Utils::getTmpDirectory()
+{
+    return QStandardPaths::standardLocations(QStandardPaths::TempLocation).first() + "/";
+}
+
+QString Utils::formatText(const QString &text, QList<TextModifier> modifiers)
+{
+    QString formatted("\033[:formatm:text\033[0m\n");
+    QStringList modifiersArray;
+
+    foreach (TextModifier modifier, modifiers) {
+        modifiersArray << QString::number(modifier);
+    }
+
+    formatted.replace(":format", modifiersArray.join(';'));
+    formatted.replace(":text", text);
+
+    return formatted;
+
 }

@@ -1,9 +1,22 @@
+/**
+ * @file fpfileconnector.h
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class FpFileConnector
+ *
+ * @brief This is a class to access a database saved as fp file by HP company.
+ */
+
 #ifndef FPFILECONNECTOR_H
 #define FPFILECONNECTOR_H
 
 #include <QFile>
+#include <QFileInfo>
+#include <QDir>
 #include "databaseconnectorabstract.h"
 #include "contextualization/model/firmwarestring.h"
+#include "tools/utils.h"
 
 class FpFileConnector : public DatabaseConnectorAbstract
 {
@@ -45,9 +58,9 @@ public:
     QList<String *> getStringsWithValue(const QString &value, bool caseSensitive = true) override;
 
     /**
-     * @copydoc DatabaseConnectorAbstract::getStringsWithAproximateValue(const QString &value, bool caseSensitive)
+     * @copydoc DatabaseConnectorAbstract::getStringsWithApproximateValue(const QString &value, bool caseSensitive)
      */
-    QList<String *> getStringsWithAproximateValue(const QString &value, bool caseSensitive = true) override;
+    QList<String *> getStringsWithApproximateValue(const QString &value, bool caseSensitive = true) override;
 
     /**
      * @copydoc DatabaseConnectorAbstract::getStringWithId(const QString &id, bool caseSensitive)
@@ -62,7 +75,7 @@ public:
     /**
      * @copydoc DatabaseConnectorAbstract::insertStrings(const QList<String *> &strings)
      */
-    bool insertStrings(const QList<String *> &strings) override;
+    int insertStrings(const QList<String *> &strings) override;
 
     /**
      * @copydoc DatabaseConnectorAbstract::removeStringsWithValue(const QString &value, bool caseSensitive)
@@ -72,7 +85,17 @@ public:
     /**
      * @copydoc DatabaseConnectorAbstract::removeStringsWithId(const QString &id, bool caseSensitive)
      */
-    bool removeStringsWithId(const QString &id, bool caseSensitive = true) override;
+    int removeStringsWithId(const QString &id, bool caseSensitive = true) override;
+
+    /**
+     * @copydoc DatabaseConnectorAbstract::getLanguages()
+     */
+    QStringList getLanguages() override;
+
+    /**
+     * @copydoc DatabaseConnectorAbstract::getLanguageIds()
+     */
+    QStringList getLanguageIds() override;
 
 private:
     QFile file_;          ///< File where strings is stored.

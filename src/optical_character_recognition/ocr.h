@@ -1,9 +1,13 @@
 /**
+ * @file ocr.h
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
  * @class Ocr
- * @brief Optical Character Recognition.
  *
- * Interface class to use ocr tools.
+ * @brief This is an interface for a optical character recognition api.
  */
+
 #ifndef OCR_H
 #define OCR_H
 

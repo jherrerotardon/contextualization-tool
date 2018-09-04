@@ -2,7 +2,7 @@
 
 ## About
 
-This project was developed by **Jorge Herrero Tardón** as **
+This project was developed by **Jorge Herrero Tardï¿½n** as **
 Final Degree Project** in 2018.
 
 It's a tool designed to contextualize strings with a capture to be sent to the translators. It also has an internal tool to recognize strings on a image using Optical Character Recognition (**OCR**) technology.
@@ -16,8 +16,9 @@ This application was developed in **C++** language using **Qt Framework**. It ha
 Pre-Requisites:
 
 - A compiler for C and C++: GCC
-- [Qt 5.10](https://www.qt.io/download) or above
-- [Leptonica](http://www.leptonica.org/)
+- [Qt 5.6](https://www.qt.io/download) or above
+- [Leptonica 1.74](http://www.leptonica.org/) or above
+- [Tesseract OCR 4.0] (https://github.com/tesseract-ocr/master) or above
 
 #### Leptonica
 
@@ -40,7 +41,9 @@ One option is to install the distro's Leptonica package:
 sudo apt-get install libleptonica-dev
 ```
 
-**but if you are using an oldish version of Linux, the Leptonica version may be too old, so you will need to build from source.**
+**But this option only is valid in Unbuntu 18 or above. In less versions of Ubuntu, as Ubuntu 16.04, you must to install leptonica manually (build from source).**
+
+One fast option is exec script allocated in scripts folder name **installTesseractLeptonica.sh**. This script also install Tesseract OCR libraries.
 
 The sources are at https://github.com/DanBloomberg/leptonica . The instructions for building are given in [Leptonica README](http://www.leptonica.org/source/README.html).
 
@@ -53,18 +56,35 @@ To compile source code is neccesary install:
 sudo apt install libtesseract-dev
 sudo apt-get install libgl1-mesa-dev
 ```
+**Only valid in Ubuntu 18 or above.**
+
+In older versions ob Ubuntu yo must execute scripts/installTesseractLeptonica.sh to build libraries from source.
 
 ### Installing Contextualization Tool from Git
+
+To get project from repository, yo can clone this in your locar storage:
 
 ```
 git clone https://jherrerotardon@bitbucket.org/jherrerotardon/contextualization-tool.git Contextualization-Tool
 cd Contextualization-Tool
+```
+
+Before install tool, sure that you have set correct version of Qt.
+
+To set Qt version to compile tool, exec script **setQtVersion.sh**. Example:
+
+```
+./scripts/setQtVersion.sh 5.11.0
+```
+
+Finally, yo can install the tool.
+
+```
 ./install
 ```
 
 The executable file will be in:
-`./bin/ContextualizationTool`
-
+`./contextualization`
 ## Windows
 
 **Comming soon...**
@@ -78,3 +98,6 @@ Basic command line help:
 
 Execute command without any arguments:
 	`ContextualizationTool`
+
+# References
+***[Tesseract OCR](https://github.com/tesseract-ocr/tesseract)***

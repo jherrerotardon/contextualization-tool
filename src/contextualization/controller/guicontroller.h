@@ -1,3 +1,13 @@
+/**
+ * @file guicontroller.h
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class GuiController
+ *
+ * @brief This is the controller class that works a GUI environment.
+ */
+
 #ifndef GUICONTROLLER_H
 #define GUICONTROLLER_H
 
@@ -76,12 +86,12 @@ private slots:
     /**
      * @copydoc ContextualizationController::save();
      */
-    void save() override;
+    bool save() override;
 
     /**
      * @copydoc ContextualizationController::saveAs();
      */
-    void saveAs() override;
+    bool saveAs() override;
 
     /**
      * @copydoc ContextualizationController::open();
@@ -94,9 +104,26 @@ private slots:
     void newProject() override;
 
     /**
+     * @brief Allows user select an area of image loaded where strings will be detected.
+     */
+    void detectsStringOnInterestingArea(
+        int startX,
+        int startY,
+        int endX,
+        int endY,
+        int paintedWidth,
+        int paintedHeight
+    );
+
+    /**
      * @brief Change a flag to indicate that the model has changed.
      */
-    void changeModel();
+    void indicateProjectChanges();
+
+    /**
+     * @brief Change a flag to indicate that the model has not changes.
+     */
+    void indicateProjectSaved();
 
     /**
      * @brief Opens a dialog where the user can configure the path of fp file.
@@ -158,6 +185,21 @@ signals:
      * @brief The singal is emitted when the pointer to the view changed.
      */
     void viewChanged();
+
+    /**
+     * @brief The signal is emitted when a current project is saved.
+     */
+    void unchangedProject();
+
+    /**
+     * @brief The signal is emitted when a new string is added to the model or a string is removed from the model.
+     */
+    void stringsListChanged();
+
+    /**
+     * @brief The signal is emitted when a image is setted on the model.
+     */
+    void imageChanged();
 };
 
 #endif // GUICONTROLLER_H

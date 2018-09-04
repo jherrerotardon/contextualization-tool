@@ -1,8 +1,22 @@
+/**
+ * @file consolecontroller.h
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ * @class ConsoleController
+ *
+ * @brief This is the controller class that works a CLI environment.
+ */
+
 #ifndef CONSOLECONTROLLER_H
 #define CONSOLECONTROLLER_H
 
 #include <iostream>
 #include <QVariant>
+#include <QList>
+#include <stdio.h>
+#include <iomanip>
+#include <string.h>
 #include "contextualization/controller/contextualizationcontroller.h"
 
 /**
@@ -29,14 +43,17 @@ public:
         ClearAll,           ///< Indicates that the app have to empty the active project.
         AddString,          ///< Indicates that the app have to add new string in the active project.
         RemoveString,       ///< Indicates that the app have to remove a string from the active project.
+        SelectString,       ///< Indicates that the app have to select the string indicated by user.
+        UnselectString,     ///< Indicates that the app have to unselect the string indicated by user.
         SetImage,           ///< Indicates that the app have to set the image in the active project.
         CaptureArea,        ///< Indicates that the app have to let the user capture an area of sreen and set it as image model.
         DetectStrings,      ///< Indicates that the app have to extract strings from image model and add it in active project.
         ExportProject,      ///< Indicates that the app have to save the active project in the path entered by the user.
-        ImportPorject,      ///< Indicates that the app have to import a project entered by the user.
+        ImportProject,      ///< Indicates that the app have to import a project entered by the user.
         Send,               ///< Indicates that the app have to send the active contextualization.
         PrintClearHelp,     ///< Indicates that the app have to print detailed help for clear command.
         PrintAddHelp,       ///< Indicates that the app have to print extended help for add command.
+        PrintDetectHelp,    ///< Indicates that the app have to print extended help for detect command.
         PrintImageHelp,     ///< Indicates that the app have to print extended help for image command.
     };
 
@@ -76,7 +93,7 @@ public:
      * @param action Actions to be executed by exec() function.
      * @param parameter Required parameter to execute the action.
      */
-    void setAction(ActionType action, QVariant parameter);
+    inline void setAction(ActionType action, QVariant parameter = QVariant());
 
     /**
      * @brief Print in screen the general usage of application.
@@ -94,6 +111,11 @@ public:
     void printAddDetails();
 
     /**
+     * @brief Print extended help for detect command.
+     */
+    void printDetectDetails();
+
+    /**
      * @brief Print extended help for image command.
      */
     void printImageDetails();
@@ -102,12 +124,6 @@ public:
      * @brief Print extended help for detect command.
      */
     void printDetectOptions();
-
-private:
-    QString appName_;       ///< Application name.
-    QVariant parameter_;    ///< Value of parameter that will be used by exec depending the behavior.
-    ActionType action_;     ///< Behavior of exec() function.
-    MatchType findType_;     ///< Indicates the type of find that will be done.
 
 private slots:
 
@@ -129,12 +145,12 @@ private slots:
     /**
      * @copydoc ContextualizationController::capture();
      */
-    void capture(bool detectStringsOnLoad) override;
+    void capture(bool detectStringsOnLoad = false) override;
 
     /**
      * @copydoc ContextualizationController::load();
      */
-    void load(bool detectStringsOnLoad) override;
+    void load(bool detectStringsOnLoad = false) override;
 
     /**
      * @copydoc ContextualizationController::detect();
@@ -154,12 +170,12 @@ private slots:
     /**
      * @copydoc ContextualizationController::save();
      */
-    void save() override;
+    bool save() override;
 
     /**
      * @copydoc ContextualizationController::saveAs();
      */
-    void saveAs() override;
+    bool saveAs() override;
 
     /**
      * @copydoc ContextualizationController::open();
@@ -170,6 +186,75 @@ private slots:
      * @copydoc ContextualizationController::newProject();
      */
     void newProject() override;
+
+    /**
+     * @brief Prints in console all available projects.
+     */
+    void listProjects();
+
+    /**
+     * @brief Prints in console details of selected project.
+     */
+    void detailCurrentProject();
+
+    /**
+     * @brief Deletes project introduce by user un console parameter.
+     */
+    void deleteProject();
+
+    /**
+     * @brief Empty all atributtes of selected project.
+     */
+    void clearAll();
+
+    /**
+     * @brief Sets in selected project an empty image.
+     */
+    void clearImage();
+
+    /**
+     * @brief Selects string with the identifier introduced by user.
+     * @param id Identifier of string to be selected.
+     */
+    void select(const QString id);
+
+    /**
+     * @brief Unselects string with the identifier introduced by user.
+     * @param id Identifier of string to be selected.
+     */
+    void unselect(const QString id);
+
+    /**
+     * @brief Move a project to projects folders if is a valid project.
+     */
+    void import();
+
+private:
+    QString appName_;       ///< Application name.
+    QVariant parameter_;    ///< Value of parameter that will be used by exec depending the behavior.
+    ActionType action_;     ///< Behavior of exec() function.
+    MatchType findType_;    ///< Indicates the type of find that will be done.
+    QString projectPath_;   ///< Path of loaded project.
+
+    /**
+     * @brief Request by console the username.
+     * @return User input.
+     */
+    QString requestUsername();
+
+    /**
+     * @brief Request by console the password.
+     * @return User input.
+     */
+    QString requestPassword();
+
+    /**
+     * @brief Loads a project(model) from configuration file.
+     *
+     * Create a model with project selected in configuration file.
+     * @return
+     */
+    CodeError loadProjectFromConfiguration();
 };
 
 #endif // CONSOLECONTROLLER_H
