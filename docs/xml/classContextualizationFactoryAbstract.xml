@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classContextualizationFactoryAbstract" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>ContextualizationFactoryAbstract</compoundname>
+    <derivedcompoundref refid="classHpContextualizationFactory" prot="public" virt="non-virtual">HpContextualizationFactory</derivedcompoundref>
+    <includes refid="contextualizationfactoryabstract_8h" local="no">contextualizationfactoryabstract.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classContextualizationFactoryAbstract_1a87cd3e6ea2f582fe98286a73d3b28f60" prot="public" static="no" strong="no">
+        <type></type>
+        <name>KernelType</name>
+        <enumvalue id="classContextualizationFactoryAbstract_1a87cd3e6ea2f582fe98286a73d3b28f60aab0da7f36843a565e9a7d689cb4f9c5c" prot="public">
+          <name>Windows</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classContextualizationFactoryAbstract_1a87cd3e6ea2f582fe98286a73d3b28f60a56199c6590dcbadbd8c5a6990b9d60c6" prot="public">
+          <name>Linux</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classContextualizationFactoryAbstract_1a87cd3e6ea2f582fe98286a73d3b28f60a2c390cbfc7fec0af425044b4e02cd9d2" prot="public">
+          <name>Undefined</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Kernel types for which ContextuationController are implemented. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/contextualizationfactoryabstract.h" line="24" column="1" bodyfile="src/tools/contextualizationfactoryabstract.h" bodystart="24" bodyend="28"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classContextualizationFactoryAbstract_1a5f3886dc42bb68d69c5ed39e204d982c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ContextualizationFactoryAbstract::ContextualizationFactoryAbstract</definition>
+        <argsstring>()</argsstring>
+        <name>ContextualizationFactoryAbstract</name>
+        <briefdescription>
+<para>Creates an empty <ref refid="classContextualizationFactoryAbstract" kindref="compound">ContextualizationFactoryAbstract</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/contextualizationfactoryabstract.h" line="33" column="1" bodyfile="src/tools/contextualizationfactoryabstract.cpp" bodystart="13" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationFactoryAbstract_1a0898ad4d3a109c5767a1e596bf444e4a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type><ref refid="classContextualizationController" kindref="compound">ContextualizationController</ref> *</type>
+        <definition>virtual ContextualizationController* ContextualizationFactoryAbstract::createController</definition>
+        <argsstring>(char **params, int count)=0</argsstring>
+        <name>createController</name>
+        <reimplementedby refid="classHpContextualizationFactory_1ad9d9c11a2827c8854c4cadbf38b4e7ca">createController</reimplementedby>
+        <param>
+          <type>char **</type>
+          <declname>params</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+<para>Instantiates a new controller for a contextualization. </para>        </briefdescription>
+        <detaileddescription>
+<para>This is a pure vistual function that must to be implemented in inherits classes. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array params. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of elements of params. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>A new controller. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/contextualizationfactoryabstract.h" line="43" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classContextualizationFactoryAbstract_1a2d7958c0f68ad388f832abcb7777397d" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classContextualizationFactoryAbstract_1a87cd3e6ea2f582fe98286a73d3b28f60" kindref="member">KernelType</ref></type>
+        <definition>ContextualizationFactoryAbstract::KernelType ContextualizationFactoryAbstract::getCurrentKernelType</definition>
+        <argsstring>()</argsstring>
+        <name>getCurrentKernelType</name>
+        <briefdescription>
+<para>Returns the kernel type where the app is running. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Kernel type of the current system. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/contextualizationfactoryabstract.h" line="51" column="1" bodyfile="src/tools/contextualizationfactoryabstract.cpp" bodystart="18" bodyend="28"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This is a interface factory to create a concrete class of <ref refid="classContextualizationController" kindref="compound">ContextualizationController</ref>. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="20">
+        <label>ContextualizationFactoryAbstract</label>
+        <link refid="classContextualizationFactoryAbstract"/>
+      </node>
+      <node id="21">
+        <label>HpContextualizationFactory</label>
+        <link refid="classHpContextualizationFactory"/>
+        <childnode refid="20" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="src/tools/contextualizationfactoryabstract.h" line="18" column="1" bodyfile="src/tools/contextualizationfactoryabstract.h" bodystart="17" bodyend="52"/>
+    <listofallmembers>
+      <member refid="classContextualizationFactoryAbstract_1a5f3886dc42bb68d69c5ed39e204d982c" prot="public" virt="non-virtual"><scope>ContextualizationFactoryAbstract</scope><name>ContextualizationFactoryAbstract</name></member>
+      <member refid="classContextualizationFactoryAbstract_1a0898ad4d3a109c5767a1e596bf444e4a" prot="public" virt="pure-virtual"><scope>ContextualizationFactoryAbstract</scope><name>createController</name></member>
+      <member refid="classContextualizationFactoryAbstract_1a2d7958c0f68ad388f832abcb7777397d" prot="protected" virt="non-virtual"><scope>ContextualizationFactoryAbstract</scope><name>getCurrentKernelType</name></member>
+      <member refid="classContextualizationFactoryAbstract_1a87cd3e6ea2f582fe98286a73d3b28f60" prot="public" virt="non-virtual"><scope>ContextualizationFactoryAbstract</scope><name>KernelType</name></member>
+      <member refid="classContextualizationFactoryAbstract_1a87cd3e6ea2f582fe98286a73d3b28f60a56199c6590dcbadbd8c5a6990b9d60c6" prot="public" virt="non-virtual"><scope>ContextualizationFactoryAbstract</scope><name>Linux</name></member>
+      <member refid="classContextualizationFactoryAbstract_1a87cd3e6ea2f582fe98286a73d3b28f60a2c390cbfc7fec0af425044b4e02cd9d2" prot="public" virt="non-virtual"><scope>ContextualizationFactoryAbstract</scope><name>Undefined</name></member>
+      <member refid="classContextualizationFactoryAbstract_1a87cd3e6ea2f582fe98286a73d3b28f60aab0da7f36843a565e9a7d689cb4f9c5c" prot="public" virt="non-virtual"><scope>ContextualizationFactoryAbstract</scope><name>Windows</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

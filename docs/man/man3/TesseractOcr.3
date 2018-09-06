@@ -1,0 +1,239 @@
+.TH "TesseractOcr" 3 "Thu Sep 6 2018" "Version 1.0" "Contextualization Tool" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TesseractOcr \- This is a tool to detect string on images using tesseract api (https://github.com/tesseract-ocr/tesseract)\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <tesseractocr\&.h>\fP
+.PP
+Inherits \fBOcr\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBTesseractOcr\fP ()"
+.br
+.RI "Creates an empty \fBTesseractOcr\fP instance\&. "
+.ti -1c
+.RI "\fBTesseractOcr\fP (QString image, QString datapath=QDir('\&.\&./tesseract/tessdata')\&.absolutePath()+'/', tesseract::OcrEngineMode engineMode=tesseract::OEM_TESSERACT_LSTM_COMBINED, tesseract::PageSegMode pageSegMode=tesseract::PSM_AUTO)"
+.br
+.RI "Creates a \fBTesseractOcr\fP instante with the values received by parameter\&. "
+.ti -1c
+.RI "\fBTesseractOcr\fP (const \fBTesseractOcr\fP &other)"
+.br
+.RI "Creates a copy from other \fBTesseractOcr\fP instance\&. "
+.ti -1c
+.RI "\fB~TesseractOcr\fP ()"
+.br
+.RI "Destroys the tesseract ocr instance\&. "
+.ti -1c
+.RI "QStringList \fBextract\fP () override"
+.br
+.RI "Extracts strings contained in the image\&. "
+.ti -1c
+.RI "QStringList \fBgetAvailableLanguages\fP () const override"
+.br
+.RI "Returns all available languages that can be used to extract strings from image\&. "
+.ti -1c
+.RI "bool \fBisAvailableLanguage\fP (const QString &language) override"
+.br
+.RI "Returns true if the language received by parameter is available to be used in the recognition, otherwise, returns false\&. "
+.ti -1c
+.RI "tesseract::PageSegMode \fBgetPageSegMode\fP () const"
+.br
+.RI "Returns the page segmentation mode configured to be used\&. "
+.ti -1c
+.RI "void \fBsetPageSegMode\fP (tesseract::PageSegMode pageSegMode)"
+.br
+.RI "Sets the page segmentation mode to be used in the extraction\&. "
+.ti -1c
+.RI "tesseract::OcrEngineMode \fBgetEngineMode\fP () const"
+.br
+.RI "Returns the engine mode configured to be used\&. "
+.ti -1c
+.RI "void \fBsetEngineMode\fP (tesseract::OcrEngineMode engineMode)"
+.br
+.RI "Sets the engine mode to be used in the extraction\&. "
+.ti -1c
+.RI "\fBTesseractOcr\fP & \fBoperator=\fP (const \fBTesseractOcr\fP &other)"
+.br
+.RI "Assigns other to \fBTesseractOcr\fP and returns a reference to this \fBTesseractOcr\fP object\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+This is a tool to detect string on images using tesseract api (https://github.com/tesseract-ocr/tesseract)\&. 
+.PP
+Definition at line 21 of file tesseractocr\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "TesseractOcr::TesseractOcr ()"
+
+.PP
+Creates an empty \fBTesseractOcr\fP instance\&. Sets default values\&. 
+.PP
+Definition at line 14 of file tesseractocr\&.cpp\&.
+.SS "TesseractOcr::TesseractOcr (QString image, QString datapath = \fCQDir('\&.\&./tesseract/tessdata')\&.absolutePath() + '/'\fP, tesseract::OcrEngineMode engineMode = \fCtesseract::OEM_TESSERACT_LSTM_COMBINED\fP, tesseract::PageSegMode pageSegMode = \fCtesseract::PSM_AUTO\fP)"
+
+.PP
+Creates a \fBTesseractOcr\fP instante with the values received by parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIimage\fP Path of image where strings will be ectracted\&. 
+.br
+\fIdatapath\fP Folder path where data languages will be\&. 
+.br
+\fIengineMode\fP Engine mode wich will use tesseract\&. 
+.br
+\fIpageSegMode\fP Page segmentation mode will use tesseract\&. 
+.RE
+.PP
+< Default language always 'eng'\&.
+.PP
+< Necessary for the api to work\&. 
+.PP
+Definition at line 19 of file tesseractocr\&.cpp\&.
+.SS "TesseractOcr::TesseractOcr (const \fBTesseractOcr\fP & other)"
+
+.PP
+Creates a copy from other \fBTesseractOcr\fP instance\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIother\fP 
+.RE
+.PP
+< Necessary for the api to work\&. 
+.PP
+Definition at line 35 of file tesseractocr\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "QStringList TesseractOcr::extract ()\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Extracts strings contained in the image\&. Returns a QStringsList containing the strings detected in the image\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Strings list with strings extracted\&. 
+.RE
+.PP
+
+.PP
+Implements \fBOcr\fP\&.
+.PP
+Definition at line 53 of file tesseractocr\&.cpp\&.
+.SS "QStringList TesseractOcr::getAvailableLanguages () const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Returns all available languages that can be used to extract strings from image\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+List with all available languages\&. 
+.RE
+.PP
+
+.PP
+Implements \fBOcr\fP\&.
+.PP
+Definition at line 125 of file tesseractocr\&.cpp\&.
+.SS "tesseract::OcrEngineMode TesseractOcr::getEngineMode () const"
+
+.PP
+Returns the engine mode configured to be used\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Definition at line 159 of file tesseractocr\&.cpp\&.
+.SS "tesseract::PageSegMode TesseractOcr::getPageSegMode () const"
+
+.PP
+Returns the page segmentation mode configured to be used\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Page segmentation mode\&. 
+.RE
+.PP
+
+.PP
+Definition at line 149 of file tesseractocr\&.cpp\&.
+.SS "bool TesseractOcr::isAvailableLanguage (const QString & language)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Returns true if the language received by parameter is available to be used in the recognition, otherwise, returns false\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlanguage\fP \fBString\fP language to check\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBOcr\fP\&.
+.PP
+Definition at line 144 of file tesseractocr\&.cpp\&.
+.SS "\fBTesseractOcr\fP & TesseractOcr::operator= (const \fBTesseractOcr\fP & other)"
+
+.PP
+Assigns other to \fBTesseractOcr\fP and returns a reference to this \fBTesseractOcr\fP object\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIother\fP \fBTesseractOcr\fP object to be copied\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to this \fBTesseractOcr\fP object\&. 
+.RE
+.PP
+
+.PP
+Definition at line 212 of file tesseractocr\&.cpp\&.
+.SS "void TesseractOcr::setEngineMode (tesseract::OcrEngineMode engineMode)"
+
+.PP
+Sets the engine mode to be used in the extraction\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIengineMode\fP Engine mode\&. 
+.RE
+.PP
+
+.PP
+Definition at line 164 of file tesseractocr\&.cpp\&.
+.SS "void TesseractOcr::setPageSegMode (tesseract::PageSegMode pageSegMode)"
+
+.PP
+Sets the page segmentation mode to be used in the extraction\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpageSegMode\fP Page segmentation mode\&. 
+.RE
+.PP
+
+.PP
+Definition at line 154 of file tesseractocr\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Contextualization Tool from the source code\&.

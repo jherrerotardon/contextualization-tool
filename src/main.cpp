@@ -1,3 +1,12 @@
+/**
+ * @file main.cpp
+ * @author Jorge Herrero Tardón (jorgeht@usal.es)
+ * @date 20/02/2018
+ * @version 1.0
+ *
+ * @brief This main file to exec program.
+ */
+
 #include <QApplication>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>

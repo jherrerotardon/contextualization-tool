@@ -1,0 +1,297 @@
+\hypertarget{classDatabaseConnectorAbstract}{}\section{Database\+Connector\+Abstract Class Reference}
+\label{classDatabaseConnectorAbstract}\index{Database\+Connector\+Abstract@{Database\+Connector\+Abstract}}
+
+
+This is an interface to access a different data bases.  
+
+
+
+
+{\ttfamily \#include $<$databaseconnectorabstract.\+h$>$}
+
+Inheritance diagram for Database\+Connector\+Abstract\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classDatabaseConnectorAbstract}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDatabaseConnectorAbstract_a0a5f40156183723e5e01d5ab50418118}\label{classDatabaseConnectorAbstract_a0a5f40156183723e5e01d5ab50418118}} 
+\mbox{\hyperlink{classDatabaseConnectorAbstract_a0a5f40156183723e5e01d5ab50418118}{Database\+Connector\+Abstract}} ()
+\begin{DoxyCompactList}\small\item\em Creates an empty \mbox{\hyperlink{classDatabaseConnectorAbstract}{Database\+Connector\+Abstract}}. \end{DoxyCompactList}\item 
+virtual Q\+List$<$ \mbox{\hyperlink{classString}{String}} $\ast$ $>$ \mbox{\hyperlink{classDatabaseConnectorAbstract_aeb4347bc18b6bed9a9b6120f68c10e9d}{get\+All\+Strings}} ()=0
+\begin{DoxyCompactList}\small\item\em Returns a list containing all strings in the dababase. \end{DoxyCompactList}\item 
+virtual Q\+List$<$ \mbox{\hyperlink{classString}{String}} $\ast$ $>$ \mbox{\hyperlink{classDatabaseConnectorAbstract_a1d33547045c5f8619f44290c932edb1b}{get\+Strings\+With\+Value}} (const Q\+String \&value, bool case\+Sensitive=true)=0
+\begin{DoxyCompactList}\small\item\em Returns all strigns in database with the value received by argument. \end{DoxyCompactList}\item 
+virtual Q\+List$<$ \mbox{\hyperlink{classString}{String}} $\ast$ $>$ \mbox{\hyperlink{classDatabaseConnectorAbstract_a5b0f30372ca105a94073267e969b74ee}{get\+Strings\+With\+Approximate\+Value}} (const Q\+String \&value, bool case\+Sensitive=true)=0
+\begin{DoxyCompactList}\small\item\em Returns all strigns in database with a similar value received by argument. \end{DoxyCompactList}\item 
+virtual Q\+List$<$ \mbox{\hyperlink{classString}{String}} $\ast$ $>$ \mbox{\hyperlink{classDatabaseConnectorAbstract_a757f25feaf50af012d25db8f27b1fef4}{get\+String\+With\+Id}} (const Q\+String \&id, bool case\+Sensitive=true)=0
+\begin{DoxyCompactList}\small\item\em Returns all strigns in database with the identifier received by argument. \end{DoxyCompactList}\item 
+virtual Q\+List$<$ \mbox{\hyperlink{classString}{String}} $\ast$ $>$ \mbox{\hyperlink{classDatabaseConnectorAbstract_a74952c7e14c891e33c84995066003c5a}{get\+Strings\+With\+State}} (const Q\+String state)=0
+\begin{DoxyCompactList}\small\item\em Returns strings with state received by parameter. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classDatabaseConnectorAbstract_ac7cc5cf2deace9652810001722758206}{insert\+String}} (const \mbox{\hyperlink{classString}{String}} \&string, const Q\+String language)=0
+\begin{DoxyCompactList}\small\item\em Inserts a new string in database. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classDatabaseConnectorAbstract_a0e8c94cf0b38c797d6feef864a23347b}{insert\+Strings}} (const Q\+List$<$ \mbox{\hyperlink{classString}{String}} $\ast$$>$ \&strings, const Q\+String language)=0
+\begin{DoxyCompactList}\small\item\em Inserts a set of strings into the database. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classDatabaseConnectorAbstract_af482c0b4af4488c5897c04d0c4dff906}{remove\+Strings\+With\+Value}} (const Q\+String \&value, bool case\+Sensitive=true)=0
+\begin{DoxyCompactList}\small\item\em Removes from databse all strigns with the value received by argument. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classDatabaseConnectorAbstract_a8c2b0fa4e37d16c1b1ea1cafec166ca0}{remove\+Strings\+With\+Id}} (const Q\+String \&id, bool case\+Sensitive=true)=0
+\begin{DoxyCompactList}\small\item\em Removes from databse the strign with the identifier received by argument. \end{DoxyCompactList}\item 
+virtual Q\+String\+List \mbox{\hyperlink{classDatabaseConnectorAbstract_a77ff263d407366e54f3e8512c575ff5e}{get\+Languages}} ()=0
+\begin{DoxyCompactList}\small\item\em Returns all languages stored in database. \end{DoxyCompactList}\item 
+virtual Q\+String\+List \mbox{\hyperlink{classDatabaseConnectorAbstract_a98f5b2472bab6edc82ce2c5554319d7f}{get\+Language\+Ids}} ()=0
+\begin{DoxyCompactList}\small\item\em Returns all language identifiers stored in database. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classDatabaseConnectorAbstract_a1ab06cd87949b36d40d4a26d0fc22ff3}\label{classDatabaseConnectorAbstract_a1ab06cd87949b36d40d4a26d0fc22ff3}} 
+const int \mbox{\hyperlink{classDatabaseConnectorAbstract_a1ab06cd87949b36d40d4a26d0fc22ff3}{M\+I\+N\+\_\+\+L\+E\+N\+G\+T\+H\+\_\+\+F\+O\+R\+\_\+\+A\+P\+P\+R\+O\+X\+I\+M\+A\+TE}}
+\begin{DoxyCompactList}\small\item\em Minimun length for string to do an approximate find. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classDatabaseConnectorAbstract_acb4ab89c1daae4bd7a252677fb87f66e}\label{classDatabaseConnectorAbstract_acb4ab89c1daae4bd7a252677fb87f66e}} 
+const int \mbox{\hyperlink{classDatabaseConnectorAbstract_acb4ab89c1daae4bd7a252677fb87f66e}{M\+A\+X\+\_\+\+L\+E\+N\+G\+T\+H\+\_\+\+D\+I\+F\+F\+E\+R\+E\+N\+CE}}
+\begin{DoxyCompactList}\small\item\em Greatest difference between value and string values found. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is an interface to access a different data bases. 
+
+Definition at line 18 of file databaseconnectorabstract.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classDatabaseConnectorAbstract_aeb4347bc18b6bed9a9b6120f68c10e9d}\label{classDatabaseConnectorAbstract_aeb4347bc18b6bed9a9b6120f68c10e9d}} 
+\index{Database\+Connector\+Abstract@{Database\+Connector\+Abstract}!get\+All\+Strings@{get\+All\+Strings}}
+\index{get\+All\+Strings@{get\+All\+Strings}!Database\+Connector\+Abstract@{Database\+Connector\+Abstract}}
+\subsubsection{\texorpdfstring{get\+All\+Strings()}{getAllStrings()}}
+{\footnotesize\ttfamily virtual Q\+List$<$\mbox{\hyperlink{classString}{String}} $\ast$$>$ Database\+Connector\+Abstract\+::get\+All\+Strings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns a list containing all strings in the dababase. 
+
+\begin{DoxyReturn}{Returns}
+List with strings. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classMySqlConnector_ad6ff79c4049e3631800da97e8d7b7704}{My\+Sql\+Connector}}, and \mbox{\hyperlink{classFpFileConnector_ad392db922a5e04a670b84fc616192eea}{Fp\+File\+Connector}}.
+
+\mbox{\Hypertarget{classDatabaseConnectorAbstract_a98f5b2472bab6edc82ce2c5554319d7f}\label{classDatabaseConnectorAbstract_a98f5b2472bab6edc82ce2c5554319d7f}} 
+\index{Database\+Connector\+Abstract@{Database\+Connector\+Abstract}!get\+Language\+Ids@{get\+Language\+Ids}}
+\index{get\+Language\+Ids@{get\+Language\+Ids}!Database\+Connector\+Abstract@{Database\+Connector\+Abstract}}
+\subsubsection{\texorpdfstring{get\+Language\+Ids()}{getLanguageIds()}}
+{\footnotesize\ttfamily virtual Q\+String\+List Database\+Connector\+Abstract\+::get\+Language\+Ids (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns all language identifiers stored in database. 
+
+\begin{DoxyReturn}{Returns}
+Languages used. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classMySqlConnector_a3493828360c7edd217461e040fc1b00e}{My\+Sql\+Connector}}, and \mbox{\hyperlink{classFpFileConnector_a290016844ec3093b1c58db33fc86cd0a}{Fp\+File\+Connector}}.
+
+\mbox{\Hypertarget{classDatabaseConnectorAbstract_a77ff263d407366e54f3e8512c575ff5e}\label{classDatabaseConnectorAbstract_a77ff263d407366e54f3e8512c575ff5e}} 
+\index{Database\+Connector\+Abstract@{Database\+Connector\+Abstract}!get\+Languages@{get\+Languages}}
+\index{get\+Languages@{get\+Languages}!Database\+Connector\+Abstract@{Database\+Connector\+Abstract}}
+\subsubsection{\texorpdfstring{get\+Languages()}{getLanguages()}}
+{\footnotesize\ttfamily virtual Q\+String\+List Database\+Connector\+Abstract\+::get\+Languages (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns all languages stored in database. 
+
+\begin{DoxyReturn}{Returns}
+Languages used. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classMySqlConnector_a83be1a4d67e509b6604629660eb7c4a0}{My\+Sql\+Connector}}, and \mbox{\hyperlink{classFpFileConnector_a82b6ae6887737cfea3b982cb0874424e}{Fp\+File\+Connector}}.
+
+\mbox{\Hypertarget{classDatabaseConnectorAbstract_a5b0f30372ca105a94073267e969b74ee}\label{classDatabaseConnectorAbstract_a5b0f30372ca105a94073267e969b74ee}} 
+\index{Database\+Connector\+Abstract@{Database\+Connector\+Abstract}!get\+Strings\+With\+Approximate\+Value@{get\+Strings\+With\+Approximate\+Value}}
+\index{get\+Strings\+With\+Approximate\+Value@{get\+Strings\+With\+Approximate\+Value}!Database\+Connector\+Abstract@{Database\+Connector\+Abstract}}
+\subsubsection{\texorpdfstring{get\+Strings\+With\+Approximate\+Value()}{getStringsWithApproximateValue()}}
+{\footnotesize\ttfamily virtual Q\+List$<$\mbox{\hyperlink{classString}{String}} $\ast$$>$ Database\+Connector\+Abstract\+::get\+Strings\+With\+Approximate\+Value (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{value,  }\item[{bool}]{case\+Sensitive = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns all strigns in database with a similar value received by argument. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \mbox{\hyperlink{classString}{String}} value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List with strings. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classMySqlConnector_a8a480141c72dc8da687b15f921ab1a4e}{My\+Sql\+Connector}}, and \mbox{\hyperlink{classFpFileConnector_adc85e526e1dab9f3de03cb8a2f33f7d1}{Fp\+File\+Connector}}.
+
+\mbox{\Hypertarget{classDatabaseConnectorAbstract_a74952c7e14c891e33c84995066003c5a}\label{classDatabaseConnectorAbstract_a74952c7e14c891e33c84995066003c5a}} 
+\index{Database\+Connector\+Abstract@{Database\+Connector\+Abstract}!get\+Strings\+With\+State@{get\+Strings\+With\+State}}
+\index{get\+Strings\+With\+State@{get\+Strings\+With\+State}!Database\+Connector\+Abstract@{Database\+Connector\+Abstract}}
+\subsubsection{\texorpdfstring{get\+Strings\+With\+State()}{getStringsWithState()}}
+{\footnotesize\ttfamily virtual Q\+List$<$\mbox{\hyperlink{classString}{String}} $\ast$$>$ Database\+Connector\+Abstract\+::get\+Strings\+With\+State (\begin{DoxyParamCaption}\item[{const Q\+String}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns strings with state received by parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & State to be found. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classString}{String}} list eith indicated state. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classMySqlConnector_a821c3dcebcd763df1700881cb47685d5}{My\+Sql\+Connector}}, and \mbox{\hyperlink{classFpFileConnector_a4c671329fd2fd1b9c3a7d72de1028afd}{Fp\+File\+Connector}}.
+
+\mbox{\Hypertarget{classDatabaseConnectorAbstract_a1d33547045c5f8619f44290c932edb1b}\label{classDatabaseConnectorAbstract_a1d33547045c5f8619f44290c932edb1b}} 
+\index{Database\+Connector\+Abstract@{Database\+Connector\+Abstract}!get\+Strings\+With\+Value@{get\+Strings\+With\+Value}}
+\index{get\+Strings\+With\+Value@{get\+Strings\+With\+Value}!Database\+Connector\+Abstract@{Database\+Connector\+Abstract}}
+\subsubsection{\texorpdfstring{get\+Strings\+With\+Value()}{getStringsWithValue()}}
+{\footnotesize\ttfamily virtual Q\+List$<$\mbox{\hyperlink{classString}{String}} $\ast$$>$ Database\+Connector\+Abstract\+::get\+Strings\+With\+Value (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{value,  }\item[{bool}]{case\+Sensitive = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns all strigns in database with the value received by argument. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \mbox{\hyperlink{classString}{String}} value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List with strings. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classMySqlConnector_ae7440816a5bda9e63ea526656c4001f5}{My\+Sql\+Connector}}, and \mbox{\hyperlink{classFpFileConnector_a72a6ca5a5b8a44783d2ed990b111675b}{Fp\+File\+Connector}}.
+
+\mbox{\Hypertarget{classDatabaseConnectorAbstract_a757f25feaf50af012d25db8f27b1fef4}\label{classDatabaseConnectorAbstract_a757f25feaf50af012d25db8f27b1fef4}} 
+\index{Database\+Connector\+Abstract@{Database\+Connector\+Abstract}!get\+String\+With\+Id@{get\+String\+With\+Id}}
+\index{get\+String\+With\+Id@{get\+String\+With\+Id}!Database\+Connector\+Abstract@{Database\+Connector\+Abstract}}
+\subsubsection{\texorpdfstring{get\+String\+With\+Id()}{getStringWithId()}}
+{\footnotesize\ttfamily virtual Q\+List$<$\mbox{\hyperlink{classString}{String}} $\ast$$>$ Database\+Connector\+Abstract\+::get\+String\+With\+Id (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{id,  }\item[{bool}]{case\+Sensitive = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns all strigns in database with the identifier received by argument. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \mbox{\hyperlink{classString}{String}} identifier. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List with strings. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classMySqlConnector_a269bbced50451ff0ce48cfc4f2bb6a3b}{My\+Sql\+Connector}}, and \mbox{\hyperlink{classFpFileConnector_a29a6df6ea88a1e44f6b04c600b45925c}{Fp\+File\+Connector}}.
+
+\mbox{\Hypertarget{classDatabaseConnectorAbstract_ac7cc5cf2deace9652810001722758206}\label{classDatabaseConnectorAbstract_ac7cc5cf2deace9652810001722758206}} 
+\index{Database\+Connector\+Abstract@{Database\+Connector\+Abstract}!insert\+String@{insert\+String}}
+\index{insert\+String@{insert\+String}!Database\+Connector\+Abstract@{Database\+Connector\+Abstract}}
+\subsubsection{\texorpdfstring{insert\+String()}{insertString()}}
+{\footnotesize\ttfamily virtual bool Database\+Connector\+Abstract\+::insert\+String (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classString}{String}} \&}]{string,  }\item[{const Q\+String}]{language }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Inserts a new string in database. 
+
+Returns true if the insertion was succesfull, otherwise, returns false. 
+\begin{DoxyParams}{Parameters}
+{\em string} & \mbox{\hyperlink{classString}{String}} instance to be inserted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classMySqlConnector_a4608c0764241969454a55b42873cb86b}{My\+Sql\+Connector}}, and \mbox{\hyperlink{classFpFileConnector_ae4f79d6a1281a20702b0257de56822b2}{Fp\+File\+Connector}}.
+
+\mbox{\Hypertarget{classDatabaseConnectorAbstract_a0e8c94cf0b38c797d6feef864a23347b}\label{classDatabaseConnectorAbstract_a0e8c94cf0b38c797d6feef864a23347b}} 
+\index{Database\+Connector\+Abstract@{Database\+Connector\+Abstract}!insert\+Strings@{insert\+Strings}}
+\index{insert\+Strings@{insert\+Strings}!Database\+Connector\+Abstract@{Database\+Connector\+Abstract}}
+\subsubsection{\texorpdfstring{insert\+Strings()}{insertStrings()}}
+{\footnotesize\ttfamily virtual int Database\+Connector\+Abstract\+::insert\+Strings (\begin{DoxyParamCaption}\item[{const Q\+List$<$ \mbox{\hyperlink{classString}{String}} $\ast$$>$ \&}]{strings,  }\item[{const Q\+String}]{language }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Inserts a set of strings into the database. 
+
+Returns the number of inserted stirngs. 
+\begin{DoxyParams}{Parameters}
+{\em strings} & List with strings to be added into databse. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classMySqlConnector_a77a5169dd8a515b613642c88dac9798b}{My\+Sql\+Connector}}, and \mbox{\hyperlink{classFpFileConnector_a7f31d3e699ce4c489c2303370d032a7e}{Fp\+File\+Connector}}.
+
+\mbox{\Hypertarget{classDatabaseConnectorAbstract_a8c2b0fa4e37d16c1b1ea1cafec166ca0}\label{classDatabaseConnectorAbstract_a8c2b0fa4e37d16c1b1ea1cafec166ca0}} 
+\index{Database\+Connector\+Abstract@{Database\+Connector\+Abstract}!remove\+Strings\+With\+Id@{remove\+Strings\+With\+Id}}
+\index{remove\+Strings\+With\+Id@{remove\+Strings\+With\+Id}!Database\+Connector\+Abstract@{Database\+Connector\+Abstract}}
+\subsubsection{\texorpdfstring{remove\+Strings\+With\+Id()}{removeStringsWithId()}}
+{\footnotesize\ttfamily virtual int Database\+Connector\+Abstract\+::remove\+Strings\+With\+Id (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{id,  }\item[{bool}]{case\+Sensitive = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Removes from databse the strign with the identifier received by argument. 
+
+Returns the number of removed stirngs. 
+\begin{DoxyParams}{Parameters}
+{\em value} & \mbox{\hyperlink{classString}{String}} identifier. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classMySqlConnector_a3c340e5310c56410d64ecd89e5cf6661}{My\+Sql\+Connector}}, and \mbox{\hyperlink{classFpFileConnector_a8e09804b3c21f6b56dcc70659bbf105f}{Fp\+File\+Connector}}.
+
+\mbox{\Hypertarget{classDatabaseConnectorAbstract_af482c0b4af4488c5897c04d0c4dff906}\label{classDatabaseConnectorAbstract_af482c0b4af4488c5897c04d0c4dff906}} 
+\index{Database\+Connector\+Abstract@{Database\+Connector\+Abstract}!remove\+Strings\+With\+Value@{remove\+Strings\+With\+Value}}
+\index{remove\+Strings\+With\+Value@{remove\+Strings\+With\+Value}!Database\+Connector\+Abstract@{Database\+Connector\+Abstract}}
+\subsubsection{\texorpdfstring{remove\+Strings\+With\+Value()}{removeStringsWithValue()}}
+{\footnotesize\ttfamily virtual int Database\+Connector\+Abstract\+::remove\+Strings\+With\+Value (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{value,  }\item[{bool}]{case\+Sensitive = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Removes from databse all strigns with the value received by argument. 
+
+Returns the number of removed strings. 
+\begin{DoxyParams}{Parameters}
+{\em value} & \mbox{\hyperlink{classString}{String}} value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of removed strings 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classMySqlConnector_a528aac591ea56ade27a096bb997abb2a}{My\+Sql\+Connector}}, and \mbox{\hyperlink{classFpFileConnector_a57c6eafd6b4c7dfbd927f6d4cb63d25c}{Fp\+File\+Connector}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/storage/\mbox{\hyperlink{databaseconnectorabstract_8h}{databaseconnectorabstract.\+h}}\item 
+src/storage/\mbox{\hyperlink{databaseconnectorabstract_8cpp}{databaseconnectorabstract.\+cpp}}\end{DoxyCompactItemize}

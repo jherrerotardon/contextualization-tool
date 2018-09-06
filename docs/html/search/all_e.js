@@ -1,0 +1,19 @@
+var searchData=
+[
+  ['printadddetails',['printAddDetails',['../classConsoleController.html#a5e2c72a9589fc8b5a2d9ba5c905850c8',1,'ConsoleController']]],
+  ['printaddhelp',['PrintAddHelp',['../classConsoleController.html#a6bc36e6ee00aa2da0fd9be549b4251d9ad1953c9265bcc1cb3663f2ccc23c5810',1,'ConsoleController']]],
+  ['printcleardetails',['printClearDetails',['../classConsoleController.html#a08cea6c7cb62ea9961af568daeec69c5',1,'ConsoleController']]],
+  ['printclearhelp',['PrintClearHelp',['../classConsoleController.html#a6bc36e6ee00aa2da0fd9be549b4251d9a019ca0fceccfad49f6abea9cee533222',1,'ConsoleController']]],
+  ['printdetectdetails',['printDetectDetails',['../classConsoleController.html#aeef4c9eb3a199d0674c0841eadad6d7e',1,'ConsoleController']]],
+  ['printdetecthelp',['PrintDetectHelp',['../classConsoleController.html#a6bc36e6ee00aa2da0fd9be549b4251d9a1a9ee810a12e81b7cbcb5f74a59e1b76',1,'ConsoleController']]],
+  ['printdetectoptions',['printDetectOptions',['../classConsoleController.html#a5dd7913a42068df42c3de6dc1f313537',1,'ConsoleController']]],
+  ['printhelp',['PrintHelp',['../classConsoleController.html#a6bc36e6ee00aa2da0fd9be549b4251d9a0fada6cf25abb68366ac353a6ec646e0',1,'ConsoleController']]],
+  ['printimagedetails',['printImageDetails',['../classConsoleController.html#ae99f394b6610fd7c771e31d864526756',1,'ConsoleController']]],
+  ['printimagehelp',['PrintImageHelp',['../classConsoleController.html#a6bc36e6ee00aa2da0fd9be549b4251d9a2cc22e62323a75b556c4e7568f9e588f',1,'ConsoleController']]],
+  ['printusage',['printUsage',['../classConsoleController.html#a771c221ac40cd6441f13c76bd08b6927',1,'ConsoleController']]],
+  ['proccessandstorage',['proccessAndStorage',['../classContextualizationController.html#a0ec0241ee096fa917e3ab7de448e5509',1,'ContextualizationController']]],
+  ['processextractedstrings',['processExtractedStrings',['../classContextualizationController.html#a97436fb5b350bcc6be500b0fe2ecc1b7',1,'ContextualizationController']]],
+  ['processextration',['processExtration',['../classOcr.html#ac6f28693948e68e8958f1a27c73c79d1',1,'Ocr']]],
+  ['processfiles',['processFiles',['../classContextualizationController.html#a52f5a73a589942dcdf7299097aee36d1',1,'ContextualizationController::processFiles()'],['../classConsoleController.html#a6bc36e6ee00aa2da0fd9be549b4251d9a465c31f22f889f262d21e867223c19a9',1,'ConsoleController::ProcessFiles()']]],
+  ['projects_5ffolder',['PROJECTS_FOLDER',['../classContextualizationController.html#a33d73ba5d5ef0e4c7a47dbb85cea7a7e',1,'ContextualizationController']]]
+];

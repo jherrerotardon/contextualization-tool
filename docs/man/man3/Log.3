@@ -1,0 +1,85 @@
+.TH "Log" 3 "Thu Sep 6 2018" "Version 1.0" "Contextualization Tool" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Log \- This is a static class to write logs in different channels\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <log\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLog\fP ()"
+.br
+.RI "Constructs an empty log\&. Doesn't do anything\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBwriteDebug\fP (QString text)"
+.br
+.RI "Appends a debug mensage containig text received by parameter in the debug file\&. "
+.ti -1c
+.RI "static void \fBwriteLog\fP (QString text)"
+.br
+.RI "Appends a log mensage containig text received by parameter in the log file\&. "
+.ti -1c
+.RI "static void \fBwriteError\fP (QString text)"
+.br
+.RI "Appends an error mensage containig text received by parameter in the error file\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+This is a static class to write logs in different channels\&. 
+.PP
+Definition at line 27 of file log\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void Log::writeDebug (QString text)\fC [static]\fP"
+
+.PP
+Appends a debug mensage containig text received by parameter in the debug file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP Text to write in file\&. 
+.RE
+.PP
+
+.PP
+Definition at line 25 of file log\&.cpp\&.
+.SS "void Log::writeError (QString text)\fC [static]\fP"
+
+.PP
+Appends an error mensage containig text received by parameter in the error file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP Text to write in file\&. 
+.RE
+.PP
+
+.PP
+Definition at line 42 of file log\&.cpp\&.
+.SS "void Log::writeLog (QString text)\fC [static]\fP"
+
+.PP
+Appends a log mensage containig text received by parameter in the log file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP Text to write in file\&. 
+.RE
+.PP
+
+.PP
+Definition at line 34 of file log\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Contextualization Tool from the source code\&.

@@ -1,0 +1,648 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classContextualizationModel" kind="class" language="C++" prot="public">
+    <compoundname>ContextualizationModel</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QObject</basecompoundref>
+    <includes refid="contextualizationmodel_8h" local="no">contextualizationmodel.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classContextualizationModel_1a398bf0b5ba67fa915d9ba1a3d1f91613" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString ContextualizationModel::image_</definition>
+        <argsstring></argsstring>
+        <name>image_</name>
+        <briefdescription>
+<para>Image associated with the model. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/model/contextualizationmodel.h" line="219" column="1" bodyfile="src/contextualization/model/contextualizationmodel.h" bodystart="219" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classContextualizationModel_1a2df3c9a3de751085a75f6970c4ed06aa" prot="private" static="no" mutable="no">
+        <type>QList&lt; QObject * &gt;</type>
+        <definition>QList&lt;QObject *&gt; ContextualizationModel::stringsList_</definition>
+        <argsstring></argsstring>
+        <name>stringsList_</name>
+        <briefdescription>
+<para>List with the strings associated with the model. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/model/contextualizationmodel.h" line="220" column="1" bodyfile="src/contextualization/model/contextualizationmodel.h" bodystart="220" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classContextualizationModel_1a109126afb677af159e77adecf36fb6f2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ContextualizationModel::ContextualizationModel</definition>
+        <argsstring>(QString image=&quot;&quot;, QList&lt; FirmwareString *&gt; list=QList&lt; FirmwareString *&gt;())</argsstring>
+        <name>ContextualizationModel</name>
+        <param>
+          <type>QString</type>
+          <declname>image</declname>
+          <defval>&quot;&quot;</defval>
+        </param>
+        <param>
+          <type>QList&lt; <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> *&gt;</type>
+          <declname>list</declname>
+          <defval>QList&lt; <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> *&gt;()</defval>
+        </param>
+        <briefdescription>
+<para>Constructs a model. </para>        </briefdescription>
+        <detaileddescription>
+<para>Creates a model setting the image as the image received by parameter. Also adds to the model strings received in the list of the second parameter. If no parameters are received, create an empty model. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>image</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>File path of image to associate to the model. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of strings to add on the model. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/model/contextualizationmodel.h" line="38" column="1" bodyfile="src/contextualization/model/contextualizationmodel.cpp" bodystart="13" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationModel_1a232b273faa1bdb051c7a7f61d6601370" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ContextualizationModel::~ContextualizationModel</definition>
+        <argsstring>()</argsstring>
+        <name>~ContextualizationModel</name>
+        <briefdescription>
+<para>Destroys the model. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/model/contextualizationmodel.h" line="46" column="1" bodyfile="src/contextualization/model/contextualizationmodel.cpp" bodystart="22" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationModel_1aa87bafc64440304e8d9efd7f23f9b897" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ContextualizationModel::addString</definition>
+        <argsstring>(const QString &amp;id, const QString &amp;value, const QString &amp;description, const QString &amp;maxLength, const QString &amp;state, const bool selected)</argsstring>
+        <name>addString</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>description</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>maxLength</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>state</declname>
+        </param>
+        <param>
+          <type>const bool</type>
+          <declname>selected</declname>
+        </param>
+        <briefdescription>
+<para>Adds new string to the model. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> ID. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> value. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>description</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> description. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>maxLength</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> max length. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> state. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>selected</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Indicates if the string is selected. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/model/contextualizationmodel.h" line="57" column="1" bodyfile="src/contextualization/model/contextualizationmodel.cpp" bodystart="30" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationModel_1aad4004198e03fb3e9bba770f0f76489e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ContextualizationModel::addString</definition>
+        <argsstring>(FirmwareString *newString)</argsstring>
+        <name>addString</name>
+        <param>
+          <type><ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> *</type>
+          <declname>newString</declname>
+        </param>
+        <briefdescription>
+<para>Adds new string to the model. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>newString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/model/contextualizationmodel.h" line="70" column="1" bodyfile="src/contextualization/model/contextualizationmodel.cpp" bodystart="42" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationModel_1a24021cc16a5215c9765602b311fe9f77" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ContextualizationModel::addStrings</definition>
+        <argsstring>(QList&lt; FirmwareString *&gt; &amp;strings)</argsstring>
+        <name>addStrings</name>
+        <param>
+          <type>QList&lt; <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> *&gt; &amp;</type>
+          <declname>strings</declname>
+        </param>
+        <briefdescription>
+<para>Adds new string to the model. </para>        </briefdescription>
+        <detaileddescription>
+<para>Adds all strings in the list received by parameter. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>strings</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of strings to add. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/model/contextualizationmodel.h" line="78" column="1" bodyfile="src/contextualization/model/contextualizationmodel.cpp" bodystart="49" bodyend="54"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationModel_1a65def773aab689eb131482834d711a22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ContextualizationModel::removeString</definition>
+        <argsstring>(QString &amp;id)</argsstring>
+        <name>removeString</name>
+        <param>
+          <type>QString &amp;</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Removes string with the identifier received by parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns true if the string removed succesfuly. Returns false if there are not any string with this identifer. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Identifier of firmware string to remove. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/model/contextualizationmodel.h" line="87" column="1" bodyfile="src/contextualization/model/contextualizationmodel.cpp" bodystart="56" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationModel_1a83ce3eb84747d052182a52b481314a85" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ContextualizationModel::removeString</definition>
+        <argsstring>(int pos)</argsstring>
+        <name>removeString</name>
+        <param>
+          <type>int</type>
+          <declname>pos</declname>
+        </param>
+        <briefdescription>
+<para>Removes string that are in position received by parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns true if the string removed succesfuly. Returns false if is not a valid position. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pos</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Position of the string in list. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/model/contextualizationmodel.h" line="96" column="1" bodyfile="src/contextualization/model/contextualizationmodel.cpp" bodystart="75" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationModel_1a09f646708d9dfaa87d064622a4776194" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ContextualizationModel::removeAllStrings</definition>
+        <argsstring>()</argsstring>
+        <name>removeAllStrings</name>
+        <briefdescription>
+<para>Removes all items from the firmware strings list. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/model/contextualizationmodel.h" line="101" column="1" bodyfile="src/contextualization/model/contextualizationmodel.cpp" bodystart="92" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationModel_1a4aafa9c9e08d2b7a52b17871f755f34b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ContextualizationModel::selectString</definition>
+        <argsstring>(const QString id)</argsstring>
+        <name>selectString</name>
+        <param>
+          <type>const QString</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Selects string with the identifier received by parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns true if the string selected succesfuly. Returns false if there are not any string with this identifer. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Identifier of firmware string to remove. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/model/contextualizationmodel.h" line="110" column="1" bodyfile="src/contextualization/model/contextualizationmodel.cpp" bodystart="105" bodyend="121"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationModel_1a7690c31f0c498607a8137d9d5acb3b32" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ContextualizationModel::unselectString</definition>
+        <argsstring>(const QString id)</argsstring>
+        <name>unselectString</name>
+        <param>
+          <type>const QString</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Unselects string with the identifier received by parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns true if the string selected succesfuly. Returns false if there are not any string with this identifer. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Identifier of firmware string to remove. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/model/contextualizationmodel.h" line="119" column="1" bodyfile="src/contextualization/model/contextualizationmodel.cpp" bodystart="123" bodyend="139"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationModel_1ac098ebbf5cce5aac14182adddf7610e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; QObject * &gt; &amp;</type>
+        <definition>QList&lt; QObject * &gt; &amp; ContextualizationModel::getStringsList</definition>
+        <argsstring>()</argsstring>
+        <name>getStringsList</name>
+        <briefdescription>
+<para>Returns the firmware strings list. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>QList&lt;FirmwareString *&gt; &amp; </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/model/contextualizationmodel.h" line="126" column="1" bodyfile="src/contextualization/model/contextualizationmodel.cpp" bodystart="141" bodyend="144"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationModel_1a0d3ac87546d9b527c23cc69d0e4e0954" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ContextualizationModel::setImage</definition>
+        <argsstring>(QString path)</argsstring>
+        <name>setImage</name>
+        <param>
+          <type>QString</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+<para>Sets the image of the model. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>File path of the image. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/model/contextualizationmodel.h" line="132" column="1" bodyfile="src/contextualization/model/contextualizationmodel.cpp" bodystart="146" bodyend="153"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationModel_1a930b89fa044d406be44836cde09be11c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString ContextualizationModel::getImage</definition>
+        <argsstring>()</argsstring>
+        <name>getImage</name>
+        <briefdescription>
+<para>Returns the image associated to the model. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>QString </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/model/contextualizationmodel.h" line="138" column="1" bodyfile="src/contextualization/model/contextualizationmodel.cpp" bodystart="155" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationModel_1a0d5c107172b0d2e4026cae63d3193f4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ContextualizationModel::isEmpty</definition>
+        <argsstring>()</argsstring>
+        <name>isEmpty</name>
+        <briefdescription>
+<para>Checks if the model is empty. </para>        </briefdescription>
+        <detaileddescription>
+<para>The model is empty when there aren&apos;t any image in the model and the firmware strings list is empty. Return true if model is empty. <simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/model/contextualizationmodel.h" line="147" column="1" bodyfile="src/contextualization/model/contextualizationmodel.cpp" bodystart="160" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationModel_1a47cf0c1ba3e6a86f264c501c9fb7e4e5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ContextualizationModel::hasImage</definition>
+        <argsstring>()</argsstring>
+        <name>hasImage</name>
+        <briefdescription>
+<para>Returns true if the model has a valid image associated. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/model/contextualizationmodel.h" line="153" column="1" bodyfile="src/contextualization/model/contextualizationmodel.cpp" bodystart="169" bodyend="172"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationModel_1a369461aa31404ea4ff1c04fc2bd21f92" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ContextualizationModel::hasStrings</definition>
+        <argsstring>()</argsstring>
+        <name>hasStrings</name>
+        <briefdescription>
+<para>Returns true if the model has any string. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>bool. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/model/contextualizationmodel.h" line="159" column="1" bodyfile="src/contextualization/model/contextualizationmodel.cpp" bodystart="174" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationModel_1a17eeedb3696fd1d759761c0184d3dedc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ContextualizationModel::clear</definition>
+        <argsstring>()</argsstring>
+        <name>clear</name>
+        <briefdescription>
+<para>Empty the model. </para>        </briefdescription>
+        <detaileddescription>
+<para>Unsets the path of image and removes all items from the firmware strings list. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/model/contextualizationmodel.h" line="166" column="1" bodyfile="src/contextualization/model/contextualizationmodel.cpp" bodystart="179" bodyend="183"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationModel_1aeaea29193156f1c1d2a38a24de6ebbd5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString ContextualizationModel::toJson</definition>
+        <argsstring>(QJsonDocument::JsonFormat format=QJsonDocument::Compact)</argsstring>
+        <name>toJson</name>
+        <param>
+          <type>QJsonDocument::JsonFormat</type>
+          <declname>format</declname>
+          <defval>QJsonDocument::Compact</defval>
+        </param>
+        <briefdescription>
+<para>Returns the model converted to a JSON QString. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Exit format of JSON. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>QString </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/model/contextualizationmodel.h" line="173" column="1" bodyfile="src/contextualization/model/contextualizationmodel.cpp" bodystart="185" bodyend="188"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationModel_1ac68d84aa77be188dfe51c850c0d5fd4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QJsonObject</type>
+        <definition>QJsonObject ContextualizationModel::toJsonObject</definition>
+        <argsstring>()</argsstring>
+        <name>toJsonObject</name>
+        <briefdescription>
+<para>Returns the model converted to a #QJsonObject. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>QJsonObject </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/model/contextualizationmodel.h" line="179" column="1" bodyfile="src/contextualization/model/contextualizationmodel.cpp" bodystart="190" bodyend="205"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationModel_1a7c8d0dea4d32c2b573f1f58b0c01b81b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classContextualizationModel" kindref="compound">ContextualizationModel</ref> &amp;</type>
+        <definition>ContextualizationModel &amp; ContextualizationModel::operator=</definition>
+        <argsstring>(ContextualizationModel &amp;other)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type><ref refid="classContextualizationModel" kindref="compound">ContextualizationModel</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Assigns other to this model and returns a reference to this model. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Model to be copied. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Reference to this model. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/model/contextualizationmodel.h" line="204" column="1" bodyfile="src/contextualization/model/contextualizationmodel.cpp" bodystart="269" bodyend="286"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classContextualizationModel_1aa334a054aa36564d56e812a1a9e6de30" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classContextualizationModel" kindref="compound">ContextualizationModel</ref> *</type>
+        <definition>ContextualizationModel * ContextualizationModel::fromJson</definition>
+        <argsstring>(QString &amp;json)</argsstring>
+        <name>fromJson</name>
+        <param>
+          <type>QString &amp;</type>
+          <declname>json</declname>
+        </param>
+        <briefdescription>
+<para>Returns a <ref refid="classContextualizationModel" kindref="compound">ContextualizationModel</ref> initializated with the JSON string json. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the JSON data received is not valid, return an empty model. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>json</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> in JSON format to be converted. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classContextualizationModel" kindref="compound">ContextualizationModel</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/model/contextualizationmodel.h" line="188" column="1" bodyfile="src/contextualization/model/contextualizationmodel.cpp" bodystart="207" bodyend="212"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationModel_1a08ac67d6c9c3b949e9085d131fa47619" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classContextualizationModel" kindref="compound">ContextualizationModel</ref> *</type>
+        <definition>ContextualizationModel * ContextualizationModel::fromJson</definition>
+        <argsstring>(QByteArray &amp;json)</argsstring>
+        <name>fromJson</name>
+        <param>
+          <type>QByteArray &amp;</type>
+          <declname>json</declname>
+        </param>
+        <briefdescription>
+<para>Returns a <ref refid="classContextualizationModel" kindref="compound">ContextualizationModel</ref> initializated with the #QByteArray data json. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the JSON data received is not valid, return an empty model. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>json</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>QByteArray in JSON format to be converted. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classContextualizationModel" kindref="compound">ContextualizationModel</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+<para>&lt; Release memory because of an error on json decode process. </para>        </inbodydescription>
+        <location file="src/contextualization/model/contextualizationmodel.h" line="197" column="1" bodyfile="src/contextualization/model/contextualizationmodel.cpp" bodystart="214" bodyend="267"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="signal">
+      <memberdef kind="signal" id="classContextualizationModel_1a7b2878843e87cff00f5bce5bcb2d4949" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ContextualizationModel::stringsListChanged</definition>
+        <argsstring>()</argsstring>
+        <name>stringsListChanged</name>
+        <briefdescription>
+<para>This signal is emited when a string is modified on model. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/model/contextualizationmodel.h" line="211" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classContextualizationModel_1abc9b77f8362faea337fbd18fb25ee93a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ContextualizationModel::imageChanged</definition>
+        <argsstring>()</argsstring>
+        <name>imageChanged</name>
+        <briefdescription>
+<para>This signal is emited when the image of model is changed. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/model/contextualizationmodel.h" line="216" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This is the model class of a MVC architecture on Contextualization Tool app. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="24">
+        <label>QObject</label>
+      </node>
+      <node id="23">
+        <label>ContextualizationModel</label>
+        <link refid="classContextualizationModel"/>
+        <childnode refid="24" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="26">
+        <label>QObject</label>
+      </node>
+      <node id="25">
+        <label>ContextualizationModel</label>
+        <link refid="classContextualizationModel"/>
+        <childnode refid="26" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/contextualization/model/contextualizationmodel.h" line="24" column="1" bodyfile="src/contextualization/model/contextualizationmodel.h" bodystart="23" bodyend="221"/>
+    <listofallmembers>
+      <member refid="classContextualizationModel_1aa87bafc64440304e8d9efd7f23f9b897" prot="public" virt="non-virtual"><scope>ContextualizationModel</scope><name>addString</name></member>
+      <member refid="classContextualizationModel_1aad4004198e03fb3e9bba770f0f76489e" prot="public" virt="non-virtual"><scope>ContextualizationModel</scope><name>addString</name></member>
+      <member refid="classContextualizationModel_1a24021cc16a5215c9765602b311fe9f77" prot="public" virt="non-virtual"><scope>ContextualizationModel</scope><name>addStrings</name></member>
+      <member refid="classContextualizationModel_1a17eeedb3696fd1d759761c0184d3dedc" prot="public" virt="non-virtual"><scope>ContextualizationModel</scope><name>clear</name></member>
+      <member refid="classContextualizationModel_1a109126afb677af159e77adecf36fb6f2" prot="public" virt="non-virtual"><scope>ContextualizationModel</scope><name>ContextualizationModel</name></member>
+      <member refid="classContextualizationModel_1aa334a054aa36564d56e812a1a9e6de30" prot="public" virt="non-virtual"><scope>ContextualizationModel</scope><name>fromJson</name></member>
+      <member refid="classContextualizationModel_1a08ac67d6c9c3b949e9085d131fa47619" prot="public" virt="non-virtual"><scope>ContextualizationModel</scope><name>fromJson</name></member>
+      <member refid="classContextualizationModel_1a930b89fa044d406be44836cde09be11c" prot="public" virt="non-virtual"><scope>ContextualizationModel</scope><name>getImage</name></member>
+      <member refid="classContextualizationModel_1ac098ebbf5cce5aac14182adddf7610e4" prot="public" virt="non-virtual"><scope>ContextualizationModel</scope><name>getStringsList</name></member>
+      <member refid="classContextualizationModel_1a47cf0c1ba3e6a86f264c501c9fb7e4e5" prot="public" virt="non-virtual"><scope>ContextualizationModel</scope><name>hasImage</name></member>
+      <member refid="classContextualizationModel_1a369461aa31404ea4ff1c04fc2bd21f92" prot="public" virt="non-virtual"><scope>ContextualizationModel</scope><name>hasStrings</name></member>
+      <member refid="classContextualizationModel_1a398bf0b5ba67fa915d9ba1a3d1f91613" prot="private" virt="non-virtual"><scope>ContextualizationModel</scope><name>image_</name></member>
+      <member refid="classContextualizationModel_1abc9b77f8362faea337fbd18fb25ee93a" prot="public" virt="non-virtual"><scope>ContextualizationModel</scope><name>imageChanged</name></member>
+      <member refid="classContextualizationModel_1a0d5c107172b0d2e4026cae63d3193f4e" prot="public" virt="non-virtual"><scope>ContextualizationModel</scope><name>isEmpty</name></member>
+      <member refid="classContextualizationModel_1a7c8d0dea4d32c2b573f1f58b0c01b81b" prot="public" virt="non-virtual"><scope>ContextualizationModel</scope><name>operator=</name></member>
+      <member refid="classContextualizationModel_1a09f646708d9dfaa87d064622a4776194" prot="public" virt="non-virtual"><scope>ContextualizationModel</scope><name>removeAllStrings</name></member>
+      <member refid="classContextualizationModel_1a65def773aab689eb131482834d711a22" prot="public" virt="non-virtual"><scope>ContextualizationModel</scope><name>removeString</name></member>
+      <member refid="classContextualizationModel_1a83ce3eb84747d052182a52b481314a85" prot="public" virt="non-virtual"><scope>ContextualizationModel</scope><name>removeString</name></member>
+      <member refid="classContextualizationModel_1a4aafa9c9e08d2b7a52b17871f755f34b" prot="public" virt="non-virtual"><scope>ContextualizationModel</scope><name>selectString</name></member>
+      <member refid="classContextualizationModel_1a0d3ac87546d9b527c23cc69d0e4e0954" prot="public" virt="non-virtual"><scope>ContextualizationModel</scope><name>setImage</name></member>
+      <member refid="classContextualizationModel_1a2df3c9a3de751085a75f6970c4ed06aa" prot="private" virt="non-virtual"><scope>ContextualizationModel</scope><name>stringsList_</name></member>
+      <member refid="classContextualizationModel_1a7b2878843e87cff00f5bce5bcb2d4949" prot="public" virt="non-virtual"><scope>ContextualizationModel</scope><name>stringsListChanged</name></member>
+      <member refid="classContextualizationModel_1aeaea29193156f1c1d2a38a24de6ebbd5" prot="public" virt="non-virtual"><scope>ContextualizationModel</scope><name>toJson</name></member>
+      <member refid="classContextualizationModel_1ac68d84aa77be188dfe51c850c0d5fd4e" prot="public" virt="non-virtual"><scope>ContextualizationModel</scope><name>toJsonObject</name></member>
+      <member refid="classContextualizationModel_1a7690c31f0c498607a8137d9d5acb3b32" prot="public" virt="non-virtual"><scope>ContextualizationModel</scope><name>unselectString</name></member>
+      <member refid="classContextualizationModel_1a232b273faa1bdb051c7a7f61d6601370" prot="public" virt="non-virtual"><scope>ContextualizationModel</scope><name>~ContextualizationModel</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

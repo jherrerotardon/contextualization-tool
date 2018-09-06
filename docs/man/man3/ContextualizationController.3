@@ -1,0 +1,952 @@
+.TH "ContextualizationController" 3 "Thu Sep 6 2018" "Version 1.0" "Contextualization Tool" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ContextualizationController \- This is the controller base class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <contextualizationcontroller\&.h>\fP
+.PP
+Inherits QObject\&.
+.PP
+Inherited by \fBConsoleController\fP, and \fBGuiController\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBModelError\fP { \fBOkModel\fP = 0, \fBNoImage\fP, \fBImageNotExist\fP, \fBNoStrings\fP }"
+.br
+.RI "The ModelError enum\&. "
+.ti -1c
+.RI "enum \fBCodeError\fP { \fBNoError\fP = 0, \fBNullPointer\fP, \fBStringAlreadyExists\fP, \fBNoImportFile\fP, \fBImportFileFormat\fP, \fBFileNotExists\fP, \fBNoRemoteHost\fP, \fBNoValidIp\fP, \fBSshpassError\fP = 254, \fBSshError\fP = 255, \fBWriteFile\fP = -1 }"
+.br
+.RI "The CodeError enum\&. "
+.ti -1c
+.RI "enum \fBMatchType\fP { \fBByID\fP = 0, \fBByValue\fP, \fBByApproximateValue\fP }"
+.br
+.RI "The MatchType enum\&. "
+.in -1c
+.SS "Signals"
+
+.in +1c
+.ti -1c
+.RI "void \fBstringsListChanged\fP ()"
+.br
+.RI "The signal is emitted when a new string is added to the model or a string is removed from the model\&. "
+.ti -1c
+.RI "void \fBimageChanged\fP ()"
+.br
+.RI "The signal is emitted when a image is setted on the model\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBContextualizationController\fP (QObject *parent=Q_NULLPTR)"
+.br
+.RI "Constructs a controller setting his member variables\&. "
+.ti -1c
+.RI "\fB~ContextualizationController\fP ()"
+.br
+.RI "Destroys the controller\&. "
+.in -1c
+.SS "Protected Slots"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBadd\fP (QString newString, int matchType)=0"
+.br
+.RI "Tries to add a new string into the model\&. "
+.ti -1c
+.RI "virtual void \fBremove\fP (QString stringId)=0"
+.br
+.RI "Tries to remove the string in the model with the identifier receiven by parameter\&. "
+.ti -1c
+.RI "virtual void \fBclear\fP ()=0"
+.br
+.RI "Removes all strings in the model\&. "
+.ti -1c
+.RI "virtual void \fBcapture\fP (bool detectStringsOnLoad)=0"
+.br
+.RI "Make a screen capture\&. "
+.ti -1c
+.RI "virtual void \fBload\fP (bool detectStringsOnLoad)=0"
+.br
+.RI "Loads an image in the model\&. "
+.ti -1c
+.RI "virtual void \fBdetect\fP ()=0"
+.br
+.RI "Detects strings in the current image of the model and tries to add them into\&. "
+.ti -1c
+.RI "virtual void \fBsend\fP ()=0"
+.br
+.RI "Tries to send the active contextualization to a remote host\&. "
+.ti -1c
+.RI "virtual void \fBcancel\fP ()=0"
+.br
+.RI "Ensures that the user wants to cancel the project and closes the application in an orderly manner\&. "
+.ti -1c
+.RI "virtual bool \fBsave\fP ()=0"
+.br
+.RI "Saves current project\&. "
+.ti -1c
+.RI "virtual bool \fBsaveAs\fP ()=0"
+.br
+.RI "Opens a dialog and saves current project in the path specied for the user\&. "
+.ti -1c
+.RI "virtual void \fBopen\fP ()=0"
+.br
+.RI "Opens a project saves on disk\&. "
+.ti -1c
+.RI "virtual void \fBrefresh\fP ()"
+.br
+.RI "Refreshes all components on current contextualization (DoneFpFile, Image, Strings\&.\&.\&.)\&. "
+.ti -1c
+.RI "virtual void \fBnewProject\fP ()=0"
+.br
+.RI "Creates a new empty project\&. "
+.ti -1c
+.RI "virtual void \fBprocessFiles\fP ()=0"
+.br
+.RI "Process VALIDATED strings in fp files and storage it in database\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBCodeError\fP \fBimportProjectFromJsonFile\fP (const QString &path)"
+.br
+.RI "Imports projet from json file\&. "
+.ti -1c
+.RI "bool \fBexportToJsonFile\fP (const QString &path)"
+.br
+.RI "Exports project to json file\&. "
+.ti -1c
+.RI "\fBContextualizationController::ModelError\fP \fBvalidateModel\fP ()"
+.br
+.RI "Checks the actual state of the model\&. "
+.ti -1c
+.RI "QString \fBgenerateContextualization\fP ()"
+.br
+.RI "Generates a packet with the contextualization data\&. "
+.ti -1c
+.RI "\fBCodeError\fP \fBsendContextualization\fP (QString const &path, QString user, QString password)"
+.br
+.RI "Process that is responsible for sending the file received by parameter\&. "
+.ti -1c
+.RI "QList< \fBFirmwareString\fP * > \fBdetectStringsOnImage\fP (QString image)"
+.br
+.RI "Extracts the strings contained in the image set in the model\&. "
+.ti -1c
+.RI "QList< \fBFirmwareString\fP * > \fBfastDetectStringsOnImage\fP (QString image)"
+.br
+.RI "Extracts the strings contained in the image set in the model\&. "
+.ti -1c
+.RI "QList< \fBFirmwareString\fP * > \fBprocessExtractedStrings\fP (QStringList strings)"
+.br
+.RI "Processes received strings\&. "
+.ti -1c
+.RI "QList< \fBFirmwareString\fP * > \fBfindString\fP (const QString &text, const \fBMatchType\fP matchType=\fBByID\fP)"
+.br
+.RI "Find the text received by parameter in fp file\&. "
+.ti -1c
+.RI "bool \fBisValidState\fP (QString &state)"
+.br
+.RI "Checks the parameter state is a valid state\&. "
+.ti -1c
+.RI "\fBCodeError\fP \fBaddString\fP (\fBFirmwareString\fP *fwString)"
+.br
+.RI "Adds a new string on the model\&. "
+.ti -1c
+.RI "int \fBaddStrings\fP (const QList< \fBFirmwareString\fP *> &strings)"
+.br
+.RI "Adds new strings on the model\&. "
+.ti -1c
+.RI "bool \fBremoveString\fP (QString stringId)"
+.br
+.RI "Removes the string in the model with the id received by parameter\&. "
+.ti -1c
+.RI "bool \fBremoveString\fP (int row)"
+.br
+.RI "Removes the string in the model row number received by parameter\&. "
+.ti -1c
+.RI "bool \fBremoveAllStrings\fP ()"
+.br
+.RI "Remove all strings in the model\&. "
+.ti -1c
+.RI "bool \fBselectString\fP (const QString id, bool state)"
+.br
+.RI "Select the string with the identifier received by parameter\&. "
+.ti -1c
+.RI "void \fBclearImage\fP ()"
+.br
+.RI "Sets a no image in the model\&. "
+.ti -1c
+.RI "virtual QString \fBtakeCaptureArea\fP ()=0"
+.br
+.RI "Starts a process that allow user capture an area of the screen\&. "
+.ti -1c
+.RI "bool \fBsetImage\fP (const QString &image)"
+.br
+.RI "setImage "
+.ti -1c
+.RI "bool \fBisFwStringAlreadyExists\fP (\fBFirmwareString\fP &fwString)"
+.br
+.RI "Checks that the \fBFirmwareString\fP is not already in the model\&. "
+.ti -1c
+.RI "int \fBeraseExistStrings\fP (QList< \fBFirmwareString\fP *> *strings)"
+.br
+.RI "Erases, from the string list received by parameter, strings that already are in the model\&. "
+.ti -1c
+.RI "QString \fBgetImageOfModel\fP ()"
+.br
+.RI "Returns the actual image of the model\&. "
+.ti -1c
+.RI "QList< QObject * > \fBgetTableModel\fP ()"
+.br
+.RI "Returns the model to be used by ListView, TableView or similar QML object\&. "
+.ti -1c
+.RI "QString \fBgetDateTime\fP (QString format='yyyy_MM_dd_hh_mm_ss')"
+.br
+.RI "Returns a current date time with the format received by parameter\&. "
+.ti -1c
+.RI "void \fBloadConfig\fP ()"
+.br
+.RI "Reads the configuration file, if it exists, and sets the class members to the values in the file\&. "
+.ti -1c
+.RI "void \fBsaveConfig\fP ()"
+.br
+.RI "Saves config in configuration file to can be recuperated in the next run of contetualization tool\&. "
+.ti -1c
+.RI "virtual int \fBgenerateDoneFpFile\fP ()"
+.br
+.RI "Creates a copy of englishFp file in /tmp with only firmware strings with DONE status\&. "
+.ti -1c
+.RI "int \fBfilterStringsByState\fP (QList< \fBFirmwareString\fP *> *list, const QString &state)"
+.br
+.RI "Filters a list of firmware strings\&. Remove from the list all strings that have not the same state as the one received by parameter\&. "
+.ti -1c
+.RI "QStringList \fBsplitImage\fP (const QString &image, int chunkWidth, int chunkHeight, bool *someError=Q_NULLPTR)"
+.br
+.RI "Splits an image in one or more chunks depending of chunk size received by argument\&. "
+.ti -1c
+.RI "QString \fBgetParameterFromConfigFile\fP (const QString parameter)"
+.br
+.RI "Returns a value of a parameter in config file\&. "
+.ti -1c
+.RI "bool \fBsetParameterInConfigFile\fP (const QString parameter, const QString value)"
+.br
+.RI "Sets a parameter in configuration file\&. "
+.ti -1c
+.RI "bool \fBproccessAndStorage\fP ()"
+.br
+.RI "Reads all fp language files that there was congigurated in database\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBContextualizationModel\fP * \fBmodel_\fP"
+.br
+.RI "Pointer to the contextualization model\&. "
+.ti -1c
+.RI "QString \fBenglishFpFile_\fP"
+.br
+.RI "Original file where be all firmware strings\&. "
+.ti -1c
+.RI "QString \fBusername_\fP"
+.br
+.RI "Username who run the app\&. "
+.ti -1c
+.RI "QStringList \fBvalidStates_\fP"
+.br
+.RI "Valid states of firmware strings\&. "
+.ti -1c
+.RI "QString \fBremoteHost_\fP"
+.br
+.RI "Host where the contextualization will be sent\&. "
+.ti -1c
+.RI "bool \fBonlyDoneStrings_\fP"
+.br
+.RI "If is true, only string with state DONE will be found\&. "
+.ti -1c
+.RI "bool \fBcaseSensitive_\fP"
+.br
+.RI "Indicates if searches will be case sensitive or not\&. "
+.in -1c
+.SS "Static Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "static const int \fBCHUNK_WIDTH\fP = 300"
+.br
+.RI "Width of each chunk when a image is splitted\&. "
+.ti -1c
+.RI "static const int \fBCHUNK_HEIGHT\fP = 150"
+.br
+.RI "Height of each chunk when a image is splitted\&. "
+.ti -1c
+.RI "static const QString \fBIMAGES_FOLDER\fP = QDir('\&.\&./storage/images')\&.absolutePath() + '/'"
+.br
+.RI "Directory where will save project images\&. "
+.ti -1c
+.RI "static const QString \fBPROJECTS_FOLDER\fP = QDir('\&.\&./storage/projects')\&.absolutePath() + '/'"
+.br
+.RI "Directory where will save projects\&. "
+.ti -1c
+.RI "static const QString \fBCONFIG_FOLDER\fP = QDir('\&.\&./config')\&.absolutePath() + '/'"
+.br
+.RI "Directory where will save configurations\&. "
+.ti -1c
+.RI "static const QString \fBDONE_FP_FILE\fP = \fBUtils::getTmpDirectory\fP() + '/doneFpFile\&.fp'"
+.br
+.RI "File path where the firmware strings will be found\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+This is the controller base class\&. 
+.PP
+Definition at line 35 of file contextualizationcontroller\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBContextualizationController::CodeError\fP"
+
+.PP
+The CodeError enum\&. Contains all general error that can happen during any process of the controller\&.
+.PP
+WARNING!! Don't change the default values of enum\&. Binary program returns this number values\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINoError \fP\fP
+Indicates that there aren't any error during the process\&. 
+.TP
+\fB\fINullPointer \fP\fP
+Indicates that a null pointer has been received\&. 
+.TP
+\fB\fIStringAlreadyExists \fP\fP
+Indicates that the string to process already exists in the model\&. 
+.TP
+\fB\fINoImportFile \fP\fP
+Indicates that file to import can't ber readed\&. 
+.TP
+\fB\fIImportFileFormat \fP\fP
+Indicates that the file to import has not a correct format\&. 
+.TP
+\fB\fIFileNotExists \fP\fP
+Indicates that the file to read doesn't exist\&. 
+.TP
+\fB\fINoRemoteHost \fP\fP
+Indicates that there is no host to send the file\&. 
+.TP
+\fB\fINoValidIp \fP\fP
+Indicates that the IP to use is not valid\&. 
+.TP
+\fB\fISshpassError \fP\fP
+Indicates that an error ocurred in sshpass process\&. 
+.TP
+\fB\fISshError \fP\fP
+Indicates that an error ocurred in ssh process\&. 
+.TP
+\fB\fIWriteFile \fP\fP
+Indicates that the last try to write in disk wrong\&. 
+.PP
+Definition at line 60 of file contextualizationcontroller\&.h\&.
+.SS "enum \fBContextualizationController::MatchType\fP"
+
+.PP
+The MatchType enum\&. Contains all match types by which you can search a string\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIByID \fP\fP
+The match will be done taking strings with the same idetifier\&. 
+.TP
+\fB\fIByValue \fP\fP
+The match will be done taking strings with the same value\&. 
+.TP
+\fB\fIByApproximateValue \fP\fP
+The match will be done taking strings with similar value to the one you are looking for\&. 
+.PP
+Definition at line 79 of file contextualizationcontroller\&.h\&.
+.SS "enum \fBContextualizationController::ModelError\fP"
+
+.PP
+The ModelError enum\&. Contains all errors that can has the model\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIOkModel \fP\fP
+Indicates that the model has not any error\&. 
+.TP
+\fB\fINoImage \fP\fP
+Indicates that the model has not setted a image\&. 
+.TP
+\fB\fIImageNotExist \fP\fP
+Indicates that the image setted in the model doesn't exist\&. 
+.TP
+\fB\fINoStrings \fP\fP
+Indicates that the model has not any image associated\&. 
+.PP
+Definition at line 46 of file contextualizationcontroller\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ContextualizationController::ContextualizationController (QObject * parent = \fCQ_NULLPTR\fP)"
+
+.PP
+Constructs a controller setting his member variables\&. Reads the configuration file and sets the values\&. If controller can't read the configuration file or hasn't a correct formart, controller sets a default values on member vaiables\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparent\fP 
+.RE
+.PP
+
+.PP
+Definition at line 20 of file contextualizationcontroller\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual void ContextualizationController::add (QString newString, int matchType)\fC [protected]\fP, \fC [pure virtual]\fP, \fC [slot]\fP"
+
+.PP
+Tries to add a new string into the model\&. This slot interacts with the user through the screen showing messages\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInewString\fP New strign to add\&. 
+.br
+\fImatchType\fP Mode in which the string is to be searched for 
+.RE
+.PP
+
+.SS "\fBContextualizationController::CodeError\fP ContextualizationController::addString (\fBFirmwareString\fP * fwString)\fC [protected]\fP"
+
+.PP
+Adds a new string on the model\&. The \fBFirmwareString\fP is added on the model of the tool if is not wrong or is already in the model\&. If the parameter fwString is null, nothing is done\&. Return true if \fBFirmwareString\fP is added successfully and false if not\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfwString\fP The string to add on the model\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Error code\&. 
+.RE
+.PP
+
+.PP
+Definition at line 377 of file contextualizationcontroller\&.cpp\&.
+.SS "int ContextualizationController::addStrings (const QList< \fBFirmwareString\fP *> & strings)\fC [protected]\fP"
+
+.PP
+Adds new strings on the model\&. Append all strings in the list that are not wrong or are already in the model\&. Returns the number of strings that have been added to the model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstrings\fP Strings list to be added in the model\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 395 of file contextualizationcontroller\&.cpp\&.
+.SS "virtual void ContextualizationController::capture (bool detectStringsOnLoad)\fC [protected]\fP, \fC [pure virtual]\fP, \fC [slot]\fP"
+
+.PP
+Make a screen capture\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdetectStringsOnLoad\fP Flag to know if is neccesary detect strings on capture\&. 
+.RE
+.PP
+
+.SS "QList< \fBFirmwareString\fP * > ContextualizationController::detectStringsOnImage (QString image)\fC [protected]\fP"
+
+.PP
+Extracts the strings contained in the image set in the model\&. Returns a QList of \fBFirmwareString\fP containing all of strings extracted converted in \fBFirmwareString\fP objects if are in the fp file\&. Each firmware string on QList is a \fBFirmwareString\fP Object extracted from the image\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIimage\fP Path of image where strings will be detected\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+List of \fBFirmwareString\fP found on image\&. 
+.RE
+.PP
+
+.PP
+Definition at line 237 of file contextualizationcontroller\&.cpp\&.
+.SS "int ContextualizationController::eraseExistStrings (QList< \fBFirmwareString\fP *> * strings)\fC [protected]\fP"
+
+.PP
+Erases, from the string list received by parameter, strings that already are in the model\&. Return the number of strings erased from the strings list\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstrings\fP List of strings to be processed\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+int 
+.RE
+.PP
+
+.PP
+Definition at line 477 of file contextualizationcontroller\&.cpp\&.
+.SS "bool ContextualizationController::exportToJsonFile (const QString & path)\fC [protected]\fP"
+
+.PP
+Exports project to json file\&. Codes the actual model to JSON format and sabe data in the file received by parameter\&. Returns true if project was exported succesfully, otherwise, returns false\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP File path where be saved data project\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Definition at line 94 of file contextualizationcontroller\&.cpp\&.
+.SS "QList< \fBFirmwareString\fP * > ContextualizationController::fastDetectStringsOnImage (QString image)\fC [protected]\fP"
+
+.PP
+Extracts the strings contained in the image set in the model\&. Returns a QList of \fBFirmwareString\fP containing all of strings extracted converted in \fBFirmwareString\fP objects if are in the fp file\&. Each firmware string on QList is a \fBFirmwareString\fP Object extracted from the image\&. This is that #sendContextualization(QString image), this is more fast but less precise\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIimage\fP Path of image where strings will be detected\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+List of \fBFirmwareString\fP found on image\&. 
+.RE
+.PP
+
+.PP
+Definition at line 292 of file contextualizationcontroller\&.cpp\&.
+.SS "int ContextualizationController::filterStringsByState (QList< \fBFirmwareString\fP *> * list, const QString & state)\fC [protected]\fP"
+
+.PP
+Filters a list of firmware strings\&. Remove from the list all strings that have not the same state as the one received by parameter\&. Returns number of strings removed\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlist\fP Firmware strings list to be filtered\&. 
+.br
+\fIstate\fP State that will be filtered\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of removed strings\&. 
+.RE
+.PP
+
+.PP
+Definition at line 598 of file contextualizationcontroller\&.cpp\&.
+.SS "QList< \fBFirmwareString\fP * > ContextualizationController::findString (const QString & text, const \fBMatchType\fP matchType = \fC\fBByID\fP\fP)\fC [protected]\fP"
+
+.PP
+Find the text received by parameter in fp file\&. There are diferrent find types\&. The second parameter indicates the member class of \fBFirmwareString\fP that the text received by parameter have to be compared\&. Returns a firmware string list containing all strings that be found\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP Text to be found\&. 
+.br
+\fImatchType\fP Type of find to be done\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+If only have to find strings with DONE state, tries to do search in DONE_FP_FIlE, else use englishFpFile_\&.
+.PP
+Tries to use DONE_FP_FILE if is possible to do searches faster\&.
+.PP
+Definition at line 315 of file contextualizationcontroller\&.cpp\&.
+.SS "QString ContextualizationController::generateContextualization ()\fC [protected]\fP"
+
+.PP
+Generates a packet with the contextualization data\&. After verifying that the model contains no errors, it packages all the information in a zip file with the data to be sent\&. If there aren't errors, returns the path of the zip file, else returns an empty QString\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+QString 
+.RE
+.PP
+
+.PP
+Definition at line 142 of file contextualizationcontroller\&.cpp\&.
+.SS "int ContextualizationController::generateDoneFpFile ()\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Creates a copy of englishFp file in /tmp with only firmware strings with DONE status\&. If copy was created succesfully returns 0, otherwise returns the code error\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Code error 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBWindowsConsoleController\fP, and \fBWindowsGuiController\fP\&.
+.PP
+Definition at line 581 of file contextualizationcontroller\&.cpp\&.
+.SS "QString ContextualizationController::getDateTime (QString format = \fC'yyyy_MM_dd_hh_mm_ss'\fP)\fC [protected]\fP"
+
+.PP
+Returns a current date time with the format received by parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP Format to returns the date time\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Date time\&. 
+.RE
+.PP
+
+.SS "QString ContextualizationController::getImageOfModel ()\fC [protected]\fP"
+
+.PP
+Returns the actual image of the model\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Absolute image path\&. 
+.RE
+.PP
+
+.PP
+Definition at line 496 of file contextualizationcontroller\&.cpp\&.
+.SS "QString ContextualizationController::getParameterFromConfigFile (const QString parameter)\fC [protected]\fP"
+
+.PP
+Returns a value of a parameter in config file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameter\fP Parameter name to be returned\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Value 
+.RE
+.PP
+
+.PP
+Definition at line 669 of file contextualizationcontroller\&.cpp\&.
+.SS "QList< QObject * > ContextualizationController::getTableModel ()\fC [protected]\fP"
+
+.PP
+Returns the model to be used by ListView, TableView or similar QML object\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A model\&. 
+.RE
+.PP
+
+.PP
+Definition at line 501 of file contextualizationcontroller\&.cpp\&.
+.SS "\fBContextualizationController::CodeError\fP ContextualizationController::importProjectFromJsonFile (const QString & path)\fC [protected]\fP"
+
+.PP
+Imports projet from json file\&. Decodes JSON format of the file received by parameter and try to convert it in a \fBContextualizationModel\fP object\&. Returns a #Error code\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP File path where be readed data project\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+int 
+.RE
+.PP
+
+.PP
+Definition at line 66 of file contextualizationcontroller\&.cpp\&.
+.SS "bool ContextualizationController::isFwStringAlreadyExists (\fBFirmwareString\fP & fwString)\fC [protected]\fP"
+
+.PP
+Checks that the \fBFirmwareString\fP is not already in the model\&. If the \fBFirmwareString\fP has no empty id, checks that there is not any \fBFirmwareString\fP with the same id\&. If the \fBFirmwareString\fP id is empty, then checks that there is not any \fBFirmwareString\fP with the same value\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfwString\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Definition at line 456 of file contextualizationcontroller\&.cpp\&.
+.SS "bool ContextualizationController::isValidState (QString & state)\fC [protected]\fP"
+
+.PP
+Checks the parameter state is a valid state\&. Valid states are stored in a private QStringList validstates\&. Return true if the state is a valid state and return false if not\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstate\fP QString state to check\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Definition at line 369 of file contextualizationcontroller\&.cpp\&.
+.SS "virtual void ContextualizationController::load (bool detectStringsOnLoad)\fC [protected]\fP, \fC [pure virtual]\fP, \fC [slot]\fP"
+
+.PP
+Loads an image in the model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdetectStringsOnLoad\fP Flag to know if is neccesary detect strings on capture\&. 
+.RE
+.PP
+
+.SS "bool ContextualizationController::proccessAndStorage ()\fC [protected]\fP"
+
+.PP
+Reads all fp language files that there was congigurated in database\&. Process all strings and storage in database strings with state VALIDADED\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Definition at line 738 of file contextualizationcontroller\&.cpp\&.
+.SS "QList< \fBFirmwareString\fP * > ContextualizationController::processExtractedStrings (QStringList strings)\fC [protected]\fP"
+
+.PP
+Processes received strings\&. Tries to find the strings value in fp file and strings that are in the file are returned converted in \fBFirmwareString\fP object\&. Returns QList of \fBFirmwareString\fP containing strings found in fp file\&.\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstrings\fP \fBString\fP value to be processed\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+List of FirmwareStirng found in fp file\&. 
+.RE
+.PP
+
+.PP
+Definition at line 300 of file contextualizationcontroller\&.cpp\&.
+.SS "virtual void ContextualizationController::remove (QString stringId)\fC [protected]\fP, \fC [pure virtual]\fP, \fC [slot]\fP"
+
+.PP
+Tries to remove the string in the model with the identifier receiven by parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstringId\fP Idetifier for string to remove\&. 
+.RE
+.PP
+
+.SS "bool ContextualizationController::removeString (QString stringId)\fC [protected]\fP"
+
+.PP
+Removes the string in the model with the id received by parameter\&. Returns true if the string was removed succesfully or false if the string is not in the model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrow\fP Row number of the string to be removed\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Definition at line 408 of file contextualizationcontroller\&.cpp\&.
+.SS "bool ContextualizationController::removeString (int row)\fC [protected]\fP"
+
+.PP
+Removes the string in the model row number received by parameter\&. Returns true if the string was removed succesfully or false if the string is not in the model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrow\fP Row number of the string to be removed\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Definition at line 413 of file contextualizationcontroller\&.cpp\&.
+.SS "bool ContextualizationController::selectString (const QString id, bool state)\fC [protected]\fP"
+
+.PP
+Select the string with the identifier received by parameter\&. Returns true if string was selected succesfully, otherwise, returns false\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP Identifier of strogn to select\&. 
+.br
+\fIstate\fP Selection state 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Definition at line 429 of file contextualizationcontroller\&.cpp\&.
+.SS "\fBContextualizationController::CodeError\fP ContextualizationController::sendContextualization (QString const & path, QString user, QString password)\fC [protected]\fP"
+
+.PP
+Process that is responsible for sending the file received by parameter\&. Using credentials received por parameters, sends by SFTP protocol the file\&. Return the code error returned by SFTP process or a \fBCodeError\fP If there were any errors during the process\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP File path to send\&. 
+.br
+\fIuser\fP Username credential\&. 
+.br
+\fIpassword\fP Password credential\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 182 of file contextualizationcontroller\&.cpp\&.
+.SS "bool ContextualizationController::setImage (const QString & image)\fC [protected]\fP"
+
+.PP
+setImage 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIimage\fP Path of image that will be set to the model\&. Returns true if the image is setted succesfully or returns false if the image can not setted\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Definition at line 439 of file contextualizationcontroller\&.cpp\&.
+.SS "bool ContextualizationController::setParameterInConfigFile (const QString parameter, const QString value)\fC [protected]\fP"
+
+.PP
+Sets a parameter in configuration file\&. Returns true if parameter is saved succesfully, otherwhise returns false\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparameter\fP Parameter name 
+.br
+\fIvalue\fP Parameter value 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Definition at line 704 of file contextualizationcontroller\&.cpp\&.
+.SS "QStringList ContextualizationController::splitImage (const QString & image, int chunkWidth, int chunkHeight, bool * someError = \fCQ_NULLPTR\fP)\fC [protected]\fP"
+
+.PP
+Splits an image in one or more chunks depending of chunk size received by argument\&. If the width of the image is not divisible by the chunkWidth respectively, the last chunk of the row will narrower than all the others\&. Works the same way for height of image and chunkHeight\&. Chunks are saved on disk\&.
+.PP
+Returns a list with path of image chunks\&. Only returns chunks that have been saved on disk succesfully\&.
+.PP
+If ok is nonnull pointer, ok will be set to true if all chunks are saved on disk succesfully\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIimage\fP Image to split\&. 
+.br
+\fIchunkWidth\fP Width of each part of image\&. 
+.br
+\fIchunkHeight\fP Height of each part of image\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+QStringList with chunks of image\&. 
+.RE
+.PP
+
+.PP
+Definition at line 617 of file contextualizationcontroller\&.cpp\&.
+.SS "virtual QString ContextualizationController::takeCaptureArea ()\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Starts a process that allow user capture an area of the screen\&. The user have to select the area to capture with the mouse\&. Return the path where the capture is stored or an empty QString if an error ocurred\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+QString 
+.RE
+.PP
+
+.PP
+Implemented in \fBWindowsConsoleController\fP, \fBLinuxConsoleController\fP, \fBLinuxGuiController\fP, and \fBWindowsGuiController\fP\&.
+.SS "\fBContextualizationController::ModelError\fP ContextualizationController::validateModel ()\fC [protected]\fP"
+
+.PP
+Checks the actual state of the model\&. Returns the error code of the actual state of the model\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+\fBModelError\fP 
+.RE
+.PP
+
+.PP
+Definition at line 119 of file contextualizationcontroller\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Contextualization Tool from the source code\&.

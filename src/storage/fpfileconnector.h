@@ -68,14 +68,19 @@ public:
     QList<String *> getStringWithId(const QString &id, bool caseSensitive = true) override;
 
     /**
-     * @copydoc DatabaseConnectorAbstract::insertString(const String &string)
+     * @copydoc DatabaseConnectorAbstract::getStringsWithState(const QString state)
      */
-    bool insertString(const String &string) override;
+    QList<String *> getStringsWithState(const QString state) override;
 
     /**
-     * @copydoc DatabaseConnectorAbstract::insertStrings(const QList<String *> &strings)
+     * @copydoc DatabaseConnectorAbstract::insertString(const String &string, const QString language)
      */
-    int insertStrings(const QList<String *> &strings) override;
+    bool insertString(const String &string, const QString language = QString()) override;
+
+    /**
+     * @copydoc DatabaseConnectorAbstract::insertStrings(const QList<String *> &strings, const QString language)
+     */
+    int insertStrings(const QList<String *> &strings, const QString language = QString()) override;
 
     /**
      * @copydoc DatabaseConnectorAbstract::removeStringsWithValue(const QString &value, bool caseSensitive)

@@ -1,0 +1,86 @@
+\hypertarget{classWindowsGuiController}{}\section{Windows\+Gui\+Controller Class Reference}
+\label{classWindowsGuiController}\index{Windows\+Gui\+Controller@{Windows\+Gui\+Controller}}
+
+
+This is the controller class that works a G\+UI Windows environment.  
+
+
+
+
+{\ttfamily \#include $<$windowsguicontroller.\+h$>$}
+
+Inheritance diagram for Windows\+Gui\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classWindowsGuiController}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWindowsGuiController_ac6bbeedbefdf126c07e4b8a9b0f82d10}\label{classWindowsGuiController_ac6bbeedbefdf126c07e4b8a9b0f82d10}} 
+{\bfseries Windows\+Gui\+Controller} (Q\+Quick\+Window $\ast$view=Q\+\_\+\+N\+U\+L\+L\+P\+TR, Q\+Object $\ast$parent=Q\+\_\+\+N\+U\+L\+L\+P\+TR)
+\item 
+Q\+String \mbox{\hyperlink{classWindowsGuiController_afcda369c002842873b3fb3cc3a593c06}{take\+Capture\+Area}} () override
+\begin{DoxyCompactList}\small\item\em Starts a process that allow user capture an area of the screen. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classWindowsGuiController_aa78e32ce3635fc99f846d545d4a320b3}{generate\+Done\+Fp\+File}} () override
+\begin{DoxyCompactList}\small\item\em Creates a copy of english\+Fp file in /tmp with only firmware strings with D\+O\+NE status. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+This is the controller class that works a G\+UI Windows environment. 
+
+Definition at line 20 of file windowsguicontroller.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classWindowsGuiController_aa78e32ce3635fc99f846d545d4a320b3}\label{classWindowsGuiController_aa78e32ce3635fc99f846d545d4a320b3}} 
+\index{Windows\+Gui\+Controller@{Windows\+Gui\+Controller}!generate\+Done\+Fp\+File@{generate\+Done\+Fp\+File}}
+\index{generate\+Done\+Fp\+File@{generate\+Done\+Fp\+File}!Windows\+Gui\+Controller@{Windows\+Gui\+Controller}}
+\subsubsection{\texorpdfstring{generate\+Done\+Fp\+File()}{generateDoneFpFile()}}
+{\footnotesize\ttfamily int Windows\+Gui\+Controller\+::generate\+Done\+Fp\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Creates a copy of english\+Fp file in /tmp with only firmware strings with D\+O\+NE status. 
+
+If copy was created succesfully returns 0, otherwise returns the code error. \begin{DoxyReturn}{Returns}
+Code error 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classContextualizationController_af142a8bbd561278c3423ccad3b40c910}{Contextualization\+Controller}}.
+
+
+
+Definition at line 29 of file windowsguicontroller.\+cpp.
+
+\mbox{\Hypertarget{classWindowsGuiController_afcda369c002842873b3fb3cc3a593c06}\label{classWindowsGuiController_afcda369c002842873b3fb3cc3a593c06}} 
+\index{Windows\+Gui\+Controller@{Windows\+Gui\+Controller}!take\+Capture\+Area@{take\+Capture\+Area}}
+\index{take\+Capture\+Area@{take\+Capture\+Area}!Windows\+Gui\+Controller@{Windows\+Gui\+Controller}}
+\subsubsection{\texorpdfstring{take\+Capture\+Area()}{takeCaptureArea()}}
+{\footnotesize\ttfamily Q\+String Windows\+Gui\+Controller\+::take\+Capture\+Area (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Starts a process that allow user capture an area of the screen. 
+
+The user have to select the area to capture with the mouse. Return the path where the capture is stored or an empty Q\+String if an error ocurred. \begin{DoxyReturn}{Returns}
+Q\+String 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classContextualizationController_a121919886590cd4955bbcc2d8b747b26}{Contextualization\+Controller}}.
+
+
+
+Definition at line 24 of file windowsguicontroller.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/contextualization/controller/\mbox{\hyperlink{windowsguicontroller_8h}{windowsguicontroller.\+h}}\item 
+src/contextualization/controller/\mbox{\hyperlink{windowsguicontroller_8cpp}{windowsguicontroller.\+cpp}}\end{DoxyCompactItemize}

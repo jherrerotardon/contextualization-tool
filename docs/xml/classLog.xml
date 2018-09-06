@@ -1,0 +1,199 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classLog" kind="class" language="C++" prot="public">
+    <compoundname>Log</compoundname>
+    <includes refid="log_8h" local="no">log.h</includes>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classLog_1a4a1919e0dd335db90655910c1326a124" prot="private" static="yes" mutable="no">
+        <type>const QString</type>
+        <definition>const QString Log::debugFile_</definition>
+        <argsstring></argsstring>
+        <name>debugFile_</name>
+        <initializer>= QStandardPaths::standardLocations(QStandardPaths::TempLocation).first()
+    + &quot;/contextualization.debug&quot;</initializer>
+        <briefdescription>
+<para>Path of file for debug messages. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/log.h" line="55" column="1" bodyfile="src/tools/log.h" bodystart="55" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classLog_1a611981424c87fab535ca796278fc924e" prot="private" static="yes" mutable="no">
+        <type>const QString</type>
+        <definition>const QString Log::logFile_</definition>
+        <argsstring></argsstring>
+        <name>logFile_</name>
+        <initializer>= QStandardPaths::standardLocations(QStandardPaths::TempLocation).first()
+    + &quot;/contextualization.log&quot;</initializer>
+        <briefdescription>
+<para>Path of file for log messages. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/log.h" line="56" column="1" bodyfile="src/tools/log.h" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classLog_1a3c0a35f5bf55847f95728a2eef8b2110" prot="private" static="yes" mutable="no">
+        <type>const QString</type>
+        <definition>const QString Log::errorFile_</definition>
+        <argsstring></argsstring>
+        <name>errorFile_</name>
+        <initializer>= QStandardPaths::standardLocations(QStandardPaths::TempLocation).first()
+    + &quot;/contextualization.err&quot;</initializer>
+        <briefdescription>
+<para>Path of file for errors messages. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/log.h" line="57" column="1" bodyfile="src/tools/log.h" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classLog_1af6071a60aa52b6c1b511f99b4bc1b8fe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Log::Log</definition>
+        <argsstring>()</argsstring>
+        <name>Log</name>
+        <briefdescription>
+<para>Constructs an empty log. Doesn&apos;t do anything. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/log.h" line="34" column="1" bodyfile="src/tools/log.cpp" bodystart="20" bodyend="23"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classLog_1a8291d71e5438b70ac71232a23606690a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Log::writeDebug</definition>
+        <argsstring>(QString text)</argsstring>
+        <name>writeDebug</name>
+        <param>
+          <type>QString</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>Appends a debug mensage containig text received by parameter in the debug file. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Text to write in file. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/log.h" line="40" column="1" bodyfile="src/tools/log.cpp" bodystart="25" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classLog_1a1808c128874dd41cca3536ed5672df12" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Log::writeLog</definition>
+        <argsstring>(QString text)</argsstring>
+        <name>writeLog</name>
+        <param>
+          <type>QString</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>Appends a log mensage containig text received by parameter in the log file. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Text to write in file. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/log.h" line="46" column="1" bodyfile="src/tools/log.cpp" bodystart="34" bodyend="40"/>
+      </memberdef>
+      <memberdef kind="function" id="classLog_1ae35819424f49efa88b29a0bccc962f93" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Log::writeError</definition>
+        <argsstring>(QString text)</argsstring>
+        <name>writeError</name>
+        <param>
+          <type>QString</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>Appends an error mensage containig text received by parameter in the error file. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Text to write in file. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/log.h" line="52" column="1" bodyfile="src/tools/log.cpp" bodystart="42" bodyend="48"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classLog_1a7f8b5f1f74bb6378e8141885a8d3710d" prot="private" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Log::write</definition>
+        <argsstring>(const QString &amp;path, QString &amp;text)</argsstring>
+        <name>write</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>QString &amp;</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>Appends a text in a file. </para>        </briefdescription>
+        <detaileddescription>
+<para>The content of the file is not deleted or overwritten. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>File path where the text will be added. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Text to append in file. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/log.h" line="66" column="1" bodyfile="src/tools/log.cpp" bodystart="50" bodyend="64"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This is a static class to write logs in different channels. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/tools/log.h" line="28" column="1" bodyfile="src/tools/log.h" bodystart="27" bodyend="67"/>
+    <listofallmembers>
+      <member refid="classLog_1a4a1919e0dd335db90655910c1326a124" prot="private" virt="non-virtual"><scope>Log</scope><name>debugFile_</name></member>
+      <member refid="classLog_1a3c0a35f5bf55847f95728a2eef8b2110" prot="private" virt="non-virtual"><scope>Log</scope><name>errorFile_</name></member>
+      <member refid="classLog_1af6071a60aa52b6c1b511f99b4bc1b8fe" prot="public" virt="non-virtual"><scope>Log</scope><name>Log</name></member>
+      <member refid="classLog_1a611981424c87fab535ca796278fc924e" prot="private" virt="non-virtual"><scope>Log</scope><name>logFile_</name></member>
+      <member refid="classLog_1a7f8b5f1f74bb6378e8141885a8d3710d" prot="private" virt="non-virtual"><scope>Log</scope><name>write</name></member>
+      <member refid="classLog_1a8291d71e5438b70ac71232a23606690a" prot="public" virt="non-virtual"><scope>Log</scope><name>writeDebug</name></member>
+      <member refid="classLog_1ae35819424f49efa88b29a0bccc962f93" prot="public" virt="non-virtual"><scope>Log</scope><name>writeError</name></member>
+      <member refid="classLog_1a1808c128874dd41cca3536ed5672df12" prot="public" virt="non-virtual"><scope>Log</scope><name>writeLog</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,299 @@
+.TH "FpFileConnector" 3 "Thu Sep 6 2018" "Version 1.0" "Contextualization Tool" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+FpFileConnector \- This is a class to access a database saved as fp file by HP company\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <fpfileconnector\&.h>\fP
+.PP
+Inherits \fBDatabaseConnectorAbstract\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFpFileConnector\fP ()"
+.br
+.RI "Creates an empty \fBFpFileConnector\fP\&. "
+.ti -1c
+.RI "\fBFpFileConnector\fP (const QString &path)"
+.br
+.RI "Creates a \fBFpFileConnector\fP and sets the path of file\&. "
+.ti -1c
+.RI "QString \fBgetPath\fP ()"
+.br
+.RI "Returns a path of database file\&. "
+.ti -1c
+.RI "bool \fBsetPath\fP (const QString &path)"
+.br
+.RI "Sets the path of database file\&. "
+.ti -1c
+.RI "QList< \fBString\fP * > \fBgetAllStrings\fP () override"
+.br
+.ti -1c
+.RI "QList< \fBString\fP * > \fBgetStringsWithValue\fP (const QString &value, bool caseSensitive=true) override"
+.br
+.RI "Returns all strigns in database with the value received by argument\&. "
+.ti -1c
+.RI "QList< \fBString\fP * > \fBgetStringsWithApproximateValue\fP (const QString &value, bool caseSensitive=true) override"
+.br
+.RI "Returns all strigns in database with a similar value received by argument\&. "
+.ti -1c
+.RI "QList< \fBString\fP * > \fBgetStringWithId\fP (const QString &id, bool caseSensitive=true) override"
+.br
+.RI "Returns all strigns in database with the identifier received by argument\&. "
+.ti -1c
+.RI "QList< \fBString\fP * > \fBgetStringsWithState\fP (const QString state) override"
+.br
+.RI "Returns strings with state received by parameter\&. "
+.ti -1c
+.RI "bool \fBinsertString\fP (const \fBString\fP &string, const QString language=QString()) override"
+.br
+.RI "Inserts a new string in database\&. "
+.ti -1c
+.RI "int \fBinsertStrings\fP (const QList< \fBString\fP *> &strings, const QString language=QString()) override"
+.br
+.RI "Inserts a set of strings into the database\&. "
+.ti -1c
+.RI "int \fBremoveStringsWithValue\fP (const QString &value, bool caseSensitive=true) override"
+.br
+.RI "Removes from databse all strigns with the value received by argument\&. "
+.ti -1c
+.RI "int \fBremoveStringsWithId\fP (const QString &id, bool caseSensitive=true) override"
+.br
+.RI "Removes from databse the strign with the identifier received by argument\&. "
+.ti -1c
+.RI "QStringList \fBgetLanguages\fP () override"
+.br
+.RI "Returns all languages stored in database\&. "
+.ti -1c
+.RI "QStringList \fBgetLanguageIds\fP () override"
+.br
+.RI "Returns all language identifiers stored in database\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+This is a class to access a database saved as fp file by HP company\&. 
+.PP
+Definition at line 21 of file fpfileconnector\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "FpFileConnector::FpFileConnector (const QString & path)"
+
+.PP
+Creates a \fBFpFileConnector\fP and sets the path of file\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP Database file path 
+.RE
+.PP
+
+.SH "Member Function Documentation"
+.PP 
+.SS "QList<\fBString\fP *> FpFileConnector::getAllStrings ()\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+
+.PP
+Implements \fBDatabaseConnectorAbstract\fP\&.
+.SS "QStringList FpFileConnector::getLanguageIds ()\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Returns all language identifiers stored in database\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Languages used\&. 
+.RE
+.PP
+
+.PP
+Implements \fBDatabaseConnectorAbstract\fP\&.
+.SS "QStringList FpFileConnector::getLanguages ()\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Returns all languages stored in database\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Languages used\&. 
+.RE
+.PP
+
+.PP
+Implements \fBDatabaseConnectorAbstract\fP\&.
+.SS "QString FpFileConnector::getPath ()"
+
+.PP
+Returns a path of database file\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+File path 
+.RE
+.PP
+
+.SS "QList<\fBString\fP *> FpFileConnector::getStringsWithApproximateValue (const QString & value, bool caseSensitive = \fCtrue\fP)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Returns all strigns in database with a similar value received by argument\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP \fBString\fP value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+List with strings\&. 
+.RE
+.PP
+
+.PP
+Implements \fBDatabaseConnectorAbstract\fP\&.
+.SS "QList<\fBString\fP *> FpFileConnector::getStringsWithState (const QString state)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Returns strings with state received by parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstate\fP State to be found\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBString\fP list eith indicated state\&. 
+.RE
+.PP
+
+.PP
+Implements \fBDatabaseConnectorAbstract\fP\&.
+.SS "QList<\fBString\fP *> FpFileConnector::getStringsWithValue (const QString & value, bool caseSensitive = \fCtrue\fP)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Returns all strigns in database with the value received by argument\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP \fBString\fP value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+List with strings\&. 
+.RE
+.PP
+
+.PP
+Implements \fBDatabaseConnectorAbstract\fP\&.
+.SS "QList<\fBString\fP *> FpFileConnector::getStringWithId (const QString & id, bool caseSensitive = \fCtrue\fP)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Returns all strigns in database with the identifier received by argument\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP \fBString\fP identifier\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+List with strings\&. 
+.RE
+.PP
+
+.PP
+Implements \fBDatabaseConnectorAbstract\fP\&.
+.SS "bool FpFileConnector::insertString (const \fBString\fP & string, const QString language = \fCQString()\fP)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Inserts a new string in database\&. Returns true if the insertion was succesfull, otherwise, returns false\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstring\fP \fBString\fP instance to be inserted\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Implements \fBDatabaseConnectorAbstract\fP\&.
+.SS "int FpFileConnector::insertStrings (const QList< \fBString\fP *> & strings, const QString language = \fCQString()\fP)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Inserts a set of strings into the database\&. Returns the number of inserted stirngs\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstrings\fP List with strings to be added into databse\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Implements \fBDatabaseConnectorAbstract\fP\&.
+.SS "int FpFileConnector::removeStringsWithId (const QString & id, bool caseSensitive = \fCtrue\fP)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Removes from databse the strign with the identifier received by argument\&. Returns the number of removed stirngs\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP \fBString\fP identifier\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Implements \fBDatabaseConnectorAbstract\fP\&.
+.SS "int FpFileConnector::removeStringsWithValue (const QString & value, bool caseSensitive = \fCtrue\fP)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Removes from databse all strigns with the value received by argument\&. Returns the number of removed strings\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP \fBString\fP value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of removed strings 
+.RE
+.PP
+
+.PP
+Implements \fBDatabaseConnectorAbstract\fP\&.
+.SS "bool FpFileConnector::setPath (const QString & path)"
+
+.PP
+Sets the path of database file\&. Returns true if the file exists and sets path succesfully, otherwise, returns false\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Contextualization Tool from the source code\&.

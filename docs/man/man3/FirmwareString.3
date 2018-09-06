@@ -1,0 +1,179 @@
+.TH "FirmwareString" 3 "Thu Sep 6 2018" "Version 1.0" "Contextualization Tool" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+FirmwareString \- This a representation of a Firmware \fBString\fP used in HP company\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <firmwarestring\&.h>\fP
+.PP
+Inherits \fBString\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBFirmwareString\fP ()"
+.br
+.RI "Constructs an empty string\&. "
+.ti -1c
+.RI "\fBFirmwareString\fP (\fBFirmwareString\fP &other)"
+.br
+.RI "Constructs a string replic from another received by parameter\&. "
+.ti -1c
+.RI "\fBFirmwareString\fP (const QString &id, const QString &value, const QString &description, const QString &maxLength, const QString &state, const bool selected=false, const bool editable=false)"
+.br
+.RI "Constructs a firmware string with diferents value members received by parameter\&. "
+.ti -1c
+.RI "\fBFirmwareString\fP & \fBoperator=\fP (const \fBFirmwareString\fP &other)"
+.br
+.RI "Assigns other to firmware string and returns a reference to this firmware string\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBFirmwareString\fP * \fBfromJson\fP (QString &json)"
+.br
+.RI "Returns a \fBString\fP initializated with the JSON string json\&. "
+.ti -1c
+.RI "static \fBFirmwareString\fP * \fBfromJson\fP (QByteArray &json)"
+.br
+.RI "Returns a \fBString\fP initializated with the #QByteArray data json\&. "
+.ti -1c
+.RI "static \fBFirmwareString\fP * \fBfromFpLine\fP (const QString &fpLine)"
+.br
+.RI "Converts a line of fp file in a \fBFirmwareString\fP if is possible\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+This a representation of a Firmware \fBString\fP used in HP company\&. 
+.PP
+Definition at line 16 of file firmwarestring\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "FirmwareString::FirmwareString ()"
+
+.PP
+Constructs an empty string\&. 
+.PP
+Definition at line 13 of file firmwarestring\&.cpp\&.
+.SS "FirmwareString::FirmwareString (\fBFirmwareString\fP & other)"
+
+.PP
+Constructs a string replic from another received by parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIother\fP string to be duplicated\&. 
+.RE
+.PP
+
+.PP
+Definition at line 18 of file firmwarestring\&.cpp\&.
+.SS "FirmwareString::FirmwareString (const QString & id, const QString & value, const QString & description, const QString & maxLength, const QString & state, const bool selected = \fCfalse\fP, const bool editable = \fCfalse\fP)"
+
+.PP
+Constructs a firmware string with diferents value members received by parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP Firmware string identifier\&. 
+.br
+\fIvalue\fP Firmware string value\&. 
+.br
+\fIdescription\fP Firmware string description\&. 
+.br
+\fImaxLength\fP Firmware string maxLength\&. 
+.br
+\fIstate\fP Firmware string state\&. 
+.br
+\fIselected\fP Firmware string selected\&. 
+.RE
+.PP
+
+.PP
+Definition at line 29 of file firmwarestring\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBFirmwareString\fP * FirmwareString::fromFpLine (const QString & fpLine)\fC [static]\fP"
+
+.PP
+Converts a line of fp file in a \fBFirmwareString\fP if is possible\&. Return null if there is a format error in the line\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIline\fP Contains string to fragment\&. 
+.br
+\fIlineNumber\fP Contains the number of line on the file\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBFirmwareString\fP *|null 
+.RE
+.PP
+
+.PP
+Definition at line 51 of file firmwarestring\&.cpp\&.
+.SS "\fBFirmwareString\fP * FirmwareString::fromJson (QString & json)\fC [static]\fP"
+
+.PP
+Returns a \fBString\fP initializated with the JSON string json\&. If the JSON data received is not valid, return an empty model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIjson\fP \fBString\fP in JSON format to be converted\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBContextualizationModel\fP 
+.RE
+.PP
+
+.PP
+Definition at line 41 of file firmwarestring\&.cpp\&.
+.SS "\fBFirmwareString\fP * FirmwareString::fromJson (QByteArray & json)\fC [static]\fP"
+
+.PP
+Returns a \fBString\fP initializated with the #QByteArray data json\&. If the JSON data received is not valid, return an empty model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIjson\fP QByteArray in JSON format to be converted\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBString\fP 
+.RE
+.PP
+
+.PP
+Definition at line 46 of file firmwarestring\&.cpp\&.
+.SS "\fBFirmwareString\fP & FirmwareString::operator= (const \fBFirmwareString\fP & other)"
+
+.PP
+Assigns other to firmware string and returns a reference to this firmware string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIother\fP Model to be copied\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to this firmware string\&. 
+.RE
+.PP
+
+.PP
+Definition at line 119 of file firmwarestring\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Contextualization Tool from the source code\&.

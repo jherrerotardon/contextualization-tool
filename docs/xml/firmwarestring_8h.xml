@@ -1,0 +1,289 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="firmwarestring_8h" kind="file" language="C++">
+    <compoundname>firmwarestring.h</compoundname>
+    <includes refid="string_8h" local="yes">string.h</includes>
+    <includedby refid="contextualizationmodel_8h" local="yes">src/contextualization/model/contextualizationmodel.h</includedby>
+    <includedby refid="firmwarestring_8cpp" local="yes">src/contextualization/model/firmwarestring.cpp</includedby>
+    <includedby refid="mysqlconnector_8h" local="yes">src/storage/mysqlconnector.h</includedby>
+    <includedby refid="fpfileconnector_8h" local="yes">src/storage/fpfileconnector.h</includedby>
+    <incdepgraph>
+      <node id="792">
+        <label>QStandardPaths</label>
+      </node>
+      <node id="783">
+        <label>string.h</label>
+        <link refid="string_8h"/>
+        <childnode refid="784" relation="include">
+        </childnode>
+        <childnode refid="785" relation="include">
+        </childnode>
+        <childnode refid="786" relation="include">
+        </childnode>
+        <childnode refid="787" relation="include">
+        </childnode>
+        <childnode refid="788" relation="include">
+        </childnode>
+      </node>
+      <node id="786">
+        <label>QJsonObject</label>
+      </node>
+      <node id="793">
+        <label>QDebug</label>
+      </node>
+      <node id="787">
+        <label>QRegularExpression</label>
+      </node>
+      <node id="791">
+        <label>QDate</label>
+      </node>
+      <node id="784">
+        <label>QString</label>
+      </node>
+      <node id="789">
+        <label>QFile</label>
+      </node>
+      <node id="785">
+        <label>QJsonDocument</label>
+      </node>
+      <node id="790">
+        <label>QTextStream</label>
+      </node>
+      <node id="782">
+        <label>src/contextualization/model/firmwarestring.h</label>
+        <link refid="firmwarestring_8h"/>
+        <childnode refid="783" relation="include">
+        </childnode>
+      </node>
+      <node id="788">
+        <label>tools/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="784" relation="include">
+        </childnode>
+        <childnode refid="789" relation="include">
+        </childnode>
+        <childnode refid="790" relation="include">
+        </childnode>
+        <childnode refid="791" relation="include">
+        </childnode>
+        <childnode refid="792" relation="include">
+        </childnode>
+        <childnode refid="793" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="798">
+        <label>src/tools/contextualizationfactoryabstract.h</label>
+        <link refid="contextualizationfactoryabstract_8h"/>
+        <childnode refid="799" relation="include">
+        </childnode>
+        <childnode refid="802" relation="include">
+        </childnode>
+      </node>
+      <node id="813">
+        <label>src/contextualization/controller/linuxguicontroller.cpp</label>
+        <link refid="linuxguicontroller_8cpp"/>
+      </node>
+      <node id="802">
+        <label>src/tools/contextualizationfactoryabstract.cpp</label>
+        <link refid="contextualizationfactoryabstract_8cpp"/>
+      </node>
+      <node id="811">
+        <label>src/contextualization/controller/guicontroller.cpp</label>
+        <link refid="guicontroller_8cpp"/>
+      </node>
+      <node id="795">
+        <label>src/contextualization/model/contextualizationmodel.h</label>
+        <link refid="contextualizationmodel_8h"/>
+        <childnode refid="796" relation="include">
+        </childnode>
+        <childnode refid="797" relation="include">
+        </childnode>
+      </node>
+      <node id="803">
+        <label>src/contextualization/controller/consolecontroller.h</label>
+        <link refid="consolecontroller_8h"/>
+        <childnode refid="804" relation="include">
+        </childnode>
+        <childnode refid="805" relation="include">
+        </childnode>
+        <childnode refid="807" relation="include">
+        </childnode>
+      </node>
+      <node id="808">
+        <label>src/contextualization/controller/windowsconsolecontroller.cpp</label>
+        <link refid="windowsconsolecontroller_8cpp"/>
+      </node>
+      <node id="806">
+        <label>src/contextualization/controller/linuxconsolecontroller.cpp</label>
+        <link refid="linuxconsolecontroller_8cpp"/>
+      </node>
+      <node id="816">
+        <label>src/contextualization/model/firmwarestring.cpp</label>
+        <link refid="firmwarestring_8cpp"/>
+      </node>
+      <node id="818">
+        <label>src/storage/mysqlconnector.cpp</label>
+        <link refid="mysqlconnector_8cpp"/>
+      </node>
+      <node id="817">
+        <label>src/storage/mysqlconnector.h</label>
+        <link refid="mysqlconnector_8h"/>
+        <childnode refid="797" relation="include">
+        </childnode>
+        <childnode refid="818" relation="include">
+        </childnode>
+      </node>
+      <node id="809">
+        <label>src/contextualization/controller/contextualizationcontroller.cpp</label>
+        <link refid="contextualizationcontroller_8cpp"/>
+      </node>
+      <node id="800">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="796">
+        <label>src/contextualization/model/contextualizationmodel.cpp</label>
+        <link refid="contextualizationmodel_8cpp"/>
+      </node>
+      <node id="812">
+        <label>src/contextualization/controller/linuxguicontroller.h</label>
+        <link refid="linuxguicontroller_8h"/>
+        <childnode refid="799" relation="include">
+        </childnode>
+        <childnode refid="813" relation="include">
+        </childnode>
+      </node>
+      <node id="804">
+        <label>src/contextualization/controller/consolecontroller.cpp</label>
+        <link refid="consolecontroller_8cpp"/>
+      </node>
+      <node id="805">
+        <label>src/contextualization/controller/linuxconsolecontroller.h</label>
+        <link refid="linuxconsolecontroller_8h"/>
+        <childnode refid="799" relation="include">
+        </childnode>
+        <childnode refid="806" relation="include">
+        </childnode>
+      </node>
+      <node id="799">
+        <label>src/tools/hpcontextualizationfactory.h</label>
+        <link refid="hpcontextualizationfactory_8h"/>
+        <childnode refid="800" relation="include">
+        </childnode>
+        <childnode refid="801" relation="include">
+        </childnode>
+      </node>
+      <node id="814">
+        <label>src/contextualization/controller/windowsguicontroller.h</label>
+        <link refid="windowsguicontroller_8h"/>
+        <childnode refid="799" relation="include">
+        </childnode>
+        <childnode refid="815" relation="include">
+        </childnode>
+      </node>
+      <node id="815">
+        <label>src/contextualization/controller/windowsguicontroller.cpp</label>
+        <link refid="windowsguicontroller_8cpp"/>
+      </node>
+      <node id="797">
+        <label>src/contextualization/controller/contextualizationcontroller.h</label>
+        <link refid="contextualizationcontroller_8h"/>
+        <childnode refid="798" relation="include">
+        </childnode>
+        <childnode refid="803" relation="include">
+        </childnode>
+        <childnode refid="809" relation="include">
+        </childnode>
+        <childnode refid="810" relation="include">
+        </childnode>
+      </node>
+      <node id="810">
+        <label>src/contextualization/controller/guicontroller.h</label>
+        <link refid="guicontroller_8h"/>
+        <childnode refid="811" relation="include">
+        </childnode>
+        <childnode refid="812" relation="include">
+        </childnode>
+        <childnode refid="814" relation="include">
+        </childnode>
+      </node>
+      <node id="801">
+        <label>src/tools/hpcontextualizationfactory.cpp</label>
+        <link refid="hpcontextualizationfactory_8cpp"/>
+      </node>
+      <node id="807">
+        <label>src/contextualization/controller/windowsconsolecontroller.h</label>
+        <link refid="windowsconsolecontroller_8h"/>
+        <childnode refid="799" relation="include">
+        </childnode>
+        <childnode refid="808" relation="include">
+        </childnode>
+      </node>
+      <node id="819">
+        <label>src/storage/fpfileconnector.h</label>
+        <link refid="fpfileconnector_8h"/>
+        <childnode refid="797" relation="include">
+        </childnode>
+      </node>
+      <node id="794">
+        <label>src/contextualization/model/firmwarestring.h</label>
+        <link refid="firmwarestring_8h"/>
+        <childnode refid="795" relation="include">
+        </childnode>
+        <childnode refid="816" relation="include">
+        </childnode>
+        <childnode refid="817" relation="include">
+        </childnode>
+        <childnode refid="819" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classFirmwareString" prot="public">FirmwareString</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Jorge Herrero Tardón (<ulink url="mailto:jorgeht@usal.es">jorgeht@usal.es</ulink>) </para></simplesect>
+<simplesect kind="date"><para>20/02/2018 </para></simplesect>
+<simplesect kind="version"><para>1.0 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="11"><highlight class="preprocessor">#ifndef<sp/>FIRMWARESTRING_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FIRMWARESTRING_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="string_8h" kindref="compound">string.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="classFirmwareString" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classFirmwareString" kindref="compound">FirmwareString</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classString" kindref="compound">String</ref></highlight></codeline>
+<codeline lineno="17"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classFirmwareString_1a624ab9d3c534ffd9c99665d2462e73ac" kindref="member">FirmwareString</ref>();</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classFirmwareString_1a624ab9d3c534ffd9c99665d2462e73ac" kindref="member">FirmwareString</ref>(<ref refid="classFirmwareString" kindref="compound">FirmwareString</ref><sp/>&amp;other);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classFirmwareString_1a624ab9d3c534ffd9c99665d2462e73ac" kindref="member">FirmwareString</ref>(</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;value,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;description,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;maxLength,</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;state,</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>selected<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>editable<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classFirmwareString" kindref="compound">FirmwareString</ref><sp/>*<sp/><ref refid="classFirmwareString_1a94293dec7077d625c6b977f1f15bfd2d" kindref="member">fromJson</ref>(QString<sp/>&amp;json);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classFirmwareString" kindref="compound">FirmwareString</ref><sp/>*<sp/><ref refid="classFirmwareString_1a94293dec7077d625c6b977f1f15bfd2d" kindref="member">fromJson</ref>(QByteArray<sp/>&amp;json);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classFirmwareString" kindref="compound">FirmwareString</ref><sp/>*<sp/><ref refid="classFirmwareString_1a0fcfdf14bbecd7c2c4464574b9ce9d91" kindref="member">fromFpLine</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;fpLine);</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classFirmwareString" kindref="compound">FirmwareString</ref><sp/>&amp;<sp/><ref refid="classFirmwareString_1aa2fe115e019e6362ca1fb151097ffe88" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classFirmwareString" kindref="compound">FirmwareString</ref><sp/>&amp;other);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>FIRMWARESTRING_H</highlight></codeline>
+    </programlisting>
+    <location file="src/contextualization/model/firmwarestring.h"/>
+  </compounddef>
+</doxygen>

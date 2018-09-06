@@ -1,0 +1,70 @@
+\hypertarget{classHpContextualizationFactory}{}\section{Hp\+Contextualization\+Factory Class Reference}
+\label{classHpContextualizationFactory}\index{Hp\+Contextualization\+Factory@{Hp\+Contextualization\+Factory}}
+
+
+This is a factory to create a concrete class of \mbox{\hyperlink{classContextualizationController}{Contextualization\+Controller}} specific for HP company.  
+
+
+
+
+{\ttfamily \#include $<$hpcontextualizationfactory.\+h$>$}
+
+Inheritance diagram for Hp\+Contextualization\+Factory\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classHpContextualizationFactory}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classHpContextualizationFactory_afee11305ab5203745cddd4a837542ea3}\label{classHpContextualizationFactory_afee11305ab5203745cddd4a837542ea3}} 
+\mbox{\hyperlink{classHpContextualizationFactory_afee11305ab5203745cddd4a837542ea3}{Hp\+Contextualization\+Factory}} ()
+\begin{DoxyCompactList}\small\item\em Creates an empty \mbox{\hyperlink{classHpContextualizationFactory}{Hp\+Contextualization\+Factory}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classContextualizationController}{Contextualization\+Controller}} $\ast$ \mbox{\hyperlink{classHpContextualizationFactory_ad9d9c11a2827c8854c4cadbf38b4e7ca}{create\+Controller}} (char $\ast$$\ast$params, int count) override
+\begin{DoxyCompactList}\small\item\em Creates a new \mbox{\hyperlink{classContextualizationController}{Contextualization\+Controller}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+This is a factory to create a concrete class of \mbox{\hyperlink{classContextualizationController}{Contextualization\+Controller}} specific for HP company. 
+
+Definition at line 21 of file hpcontextualizationfactory.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classHpContextualizationFactory_ad9d9c11a2827c8854c4cadbf38b4e7ca}\label{classHpContextualizationFactory_ad9d9c11a2827c8854c4cadbf38b4e7ca}} 
+\index{Hp\+Contextualization\+Factory@{Hp\+Contextualization\+Factory}!create\+Controller@{create\+Controller}}
+\index{create\+Controller@{create\+Controller}!Hp\+Contextualization\+Factory@{Hp\+Contextualization\+Factory}}
+\subsubsection{\texorpdfstring{create\+Controller()}{createController()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classContextualizationController}{Contextualization\+Controller}} $\ast$ Hp\+Contextualization\+Factory\+::create\+Controller (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{params,  }\item[{int}]{count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Creates a new \mbox{\hyperlink{classContextualizationController}{Contextualization\+Controller}}. 
+
+Creates one type of \mbox{\hyperlink{classContextualizationController}{Contextualization\+Controller}} depending of received params and the operate system where de application is running. 
+\begin{DoxyParams}{Parameters}
+{\em params} & Array params. \\
+\hline
+{\em count} & Number of elements of params array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Contextualization pointer. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classContextualizationFactoryAbstract_a0898ad4d3a109c5767a1e596bf444e4a}{Contextualization\+Factory\+Abstract}}.
+
+
+
+Definition at line 18 of file hpcontextualizationfactory.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/tools/\mbox{\hyperlink{hpcontextualizationfactory_8h}{hpcontextualizationfactory.\+h}}\item 
+src/tools/\mbox{\hyperlink{hpcontextualizationfactory_8cpp}{hpcontextualizationfactory.\+cpp}}\end{DoxyCompactItemize}

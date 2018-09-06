@@ -1,0 +1,345 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="contextualizationfactoryabstract_8cpp" kind="file" language="C++">
+    <compoundname>contextualizationfactoryabstract.cpp</compoundname>
+    <includes refid="contextualizationfactoryabstract_8h" local="yes">contextualizationfactoryabstract.h</includes>
+    <incdepgraph>
+      <node id="1248">
+        <label>contextualizationfactoryabstract.h</label>
+        <link refid="contextualizationfactoryabstract_8h"/>
+        <childnode refid="1249" relation="include">
+        </childnode>
+        <childnode refid="1250" relation="include">
+        </childnode>
+      </node>
+      <node id="1263">
+        <label>QFuture</label>
+      </node>
+      <node id="1247">
+        <label>src/tools/contextualizationfactoryabstract.cpp</label>
+        <link refid="contextualizationfactoryabstract_8cpp"/>
+        <childnode refid="1248" relation="include">
+        </childnode>
+      </node>
+      <node id="1274">
+        <label>QMessageBox</label>
+      </node>
+      <node id="1278">
+        <label>QDateTime</label>
+      </node>
+      <node id="1251">
+        <label>QObject</label>
+      </node>
+      <node id="1265">
+        <label>contextualization/model/contextualizationmodel.h</label>
+        <link refid="contextualizationmodel_8h"/>
+        <childnode refid="1251" relation="include">
+        </childnode>
+        <childnode refid="1252" relation="include">
+        </childnode>
+        <childnode refid="1266" relation="include">
+        </childnode>
+        <childnode refid="1256" relation="include">
+        </childnode>
+        <childnode refid="1257" relation="include">
+        </childnode>
+        <childnode refid="1258" relation="include">
+        </childnode>
+        <childnode refid="1267" relation="include">
+        </childnode>
+        <childnode refid="1269" relation="include">
+        </childnode>
+      </node>
+      <node id="1255">
+        <label>QStandardPaths</label>
+      </node>
+      <node id="1266">
+        <label>QList</label>
+      </node>
+      <node id="1288">
+        <label>QtSql/QSqlDatabase</label>
+      </node>
+      <node id="1277">
+        <label>QThread</label>
+      </node>
+      <node id="1289">
+        <label>QtSql/QSqlQuery</label>
+      </node>
+      <node id="1287">
+        <label>storage/mysqlconnector.h</label>
+        <link refid="mysqlconnector_8h"/>
+        <childnode refid="1288" relation="include">
+        </childnode>
+        <childnode refid="1289" relation="include">
+        </childnode>
+        <childnode refid="1290" relation="include">
+        </childnode>
+        <childnode refid="1267" relation="include">
+        </childnode>
+        <childnode refid="1286" relation="include">
+        </childnode>
+      </node>
+      <node id="1249">
+        <label>QSysInfo</label>
+      </node>
+      <node id="1276">
+        <label>QProgressDialog</label>
+      </node>
+      <node id="1262">
+        <label>QImage</label>
+      </node>
+      <node id="1268">
+        <label>string.h</label>
+        <link refid="string_8h"/>
+        <childnode refid="1252" relation="include">
+        </childnode>
+        <childnode refid="1257" relation="include">
+        </childnode>
+        <childnode refid="1258" relation="include">
+        </childnode>
+        <childnode refid="1260" relation="include">
+        </childnode>
+        <childnode refid="1269" relation="include">
+        </childnode>
+      </node>
+      <node id="1281">
+        <label>baseapi.h</label>
+      </node>
+      <node id="1261">
+        <label>QRegularExpressionMatch</label>
+      </node>
+      <node id="1259">
+        <label>QJsonArray</label>
+      </node>
+      <node id="1273">
+        <label>tools/utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="1256" relation="include">
+        </childnode>
+        <childnode refid="1254" relation="include">
+        </childnode>
+        <childnode refid="1274" relation="include">
+        </childnode>
+        <childnode refid="1275" relation="include">
+        </childnode>
+        <childnode refid="1276" relation="include">
+        </childnode>
+        <childnode refid="1252" relation="include">
+        </childnode>
+        <childnode refid="1277" relation="include">
+        </childnode>
+        <childnode refid="1263" relation="include">
+        </childnode>
+        <childnode refid="1264" relation="include">
+        </childnode>
+        <childnode refid="1278" relation="include">
+        </childnode>
+      </node>
+      <node id="1258">
+        <label>QJsonObject</label>
+      </node>
+      <node id="1280">
+        <label>leptonica/allheaders.h</label>
+      </node>
+      <node id="1272">
+        <label>QDebug</label>
+      </node>
+      <node id="1250">
+        <label>contextualization/controller/contextualizationcontroller.h</label>
+        <link refid="contextualizationcontroller_8h"/>
+        <childnode refid="1251" relation="include">
+        </childnode>
+        <childnode refid="1252" relation="include">
+        </childnode>
+        <childnode refid="1253" relation="include">
+        </childnode>
+        <childnode refid="1254" relation="include">
+        </childnode>
+        <childnode refid="1255" relation="include">
+        </childnode>
+        <childnode refid="1256" relation="include">
+        </childnode>
+        <childnode refid="1257" relation="include">
+        </childnode>
+        <childnode refid="1258" relation="include">
+        </childnode>
+        <childnode refid="1259" relation="include">
+        </childnode>
+        <childnode refid="1260" relation="include">
+        </childnode>
+        <childnode refid="1261" relation="include">
+        </childnode>
+        <childnode refid="1262" relation="include">
+        </childnode>
+        <childnode refid="1263" relation="include">
+        </childnode>
+        <childnode refid="1264" relation="include">
+        </childnode>
+        <childnode refid="1265" relation="include">
+        </childnode>
+        <childnode refid="1273" relation="include">
+        </childnode>
+        <childnode refid="1269" relation="include">
+        </childnode>
+        <childnode refid="1279" relation="include">
+        </childnode>
+        <childnode refid="1285" relation="include">
+        </childnode>
+        <childnode refid="1287" relation="include">
+        </childnode>
+      </node>
+      <node id="1264">
+        <label>QtConcurrent/QtConcurrent</label>
+      </node>
+      <node id="1260">
+        <label>QRegularExpression</label>
+      </node>
+      <node id="1271">
+        <label>QDate</label>
+      </node>
+      <node id="1252">
+        <label>QString</label>
+      </node>
+      <node id="1254">
+        <label>QFile</label>
+      </node>
+      <node id="1286">
+        <label>databaseconnectorabstract.h</label>
+        <link refid="databaseconnectorabstract_8h"/>
+        <childnode refid="1268" relation="include">
+        </childnode>
+        <childnode refid="1269" relation="include">
+        </childnode>
+        <childnode refid="1273" relation="include">
+        </childnode>
+      </node>
+      <node id="1282">
+        <label>genericvector.h</label>
+      </node>
+      <node id="1290">
+        <label>QtSql/QSqlError</label>
+      </node>
+      <node id="1283">
+        <label>ocr.h</label>
+        <link refid="ocr_8h"/>
+        <childnode refid="1252" relation="include">
+        </childnode>
+        <childnode refid="1253" relation="include">
+        </childnode>
+        <childnode refid="1256" relation="include">
+        </childnode>
+        <childnode refid="1254" relation="include">
+        </childnode>
+        <childnode refid="1284" relation="include">
+        </childnode>
+        <childnode refid="1262" relation="include">
+        </childnode>
+        <childnode refid="1260" relation="include">
+        </childnode>
+        <childnode refid="1269" relation="include">
+        </childnode>
+      </node>
+      <node id="1257">
+        <label>QJsonDocument</label>
+      </node>
+      <node id="1275">
+        <label>QProcess</label>
+      </node>
+      <node id="1279">
+        <label>optical_character_recognition/tesseractocr.h</label>
+        <link refid="tesseractocr_8h"/>
+        <childnode refid="1280" relation="include">
+        </childnode>
+        <childnode refid="1281" relation="include">
+        </childnode>
+        <childnode refid="1282" relation="include">
+        </childnode>
+        <childnode refid="1283" relation="include">
+        </childnode>
+        <childnode refid="1273" relation="include">
+        </childnode>
+        <childnode refid="1269" relation="include">
+        </childnode>
+      </node>
+      <node id="1256">
+        <label>QDir</label>
+      </node>
+      <node id="1270">
+        <label>QTextStream</label>
+      </node>
+      <node id="1285">
+        <label>storage/fpfileconnector.h</label>
+        <link refid="fpfileconnector_8h"/>
+        <childnode refid="1254" relation="include">
+        </childnode>
+        <childnode refid="1284" relation="include">
+        </childnode>
+        <childnode refid="1256" relation="include">
+        </childnode>
+        <childnode refid="1286" relation="include">
+        </childnode>
+        <childnode refid="1267" relation="include">
+        </childnode>
+        <childnode refid="1273" relation="include">
+        </childnode>
+      </node>
+      <node id="1253">
+        <label>QStringList</label>
+      </node>
+      <node id="1284">
+        <label>QFileInfo</label>
+      </node>
+      <node id="1267">
+        <label>firmwarestring.h</label>
+        <link refid="firmwarestring_8h"/>
+        <childnode refid="1268" relation="include">
+        </childnode>
+      </node>
+      <node id="1269">
+        <label>tools/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="1252" relation="include">
+        </childnode>
+        <childnode refid="1254" relation="include">
+        </childnode>
+        <childnode refid="1270" relation="include">
+        </childnode>
+        <childnode refid="1271" relation="include">
+        </childnode>
+        <childnode refid="1255" relation="include">
+        </childnode>
+        <childnode refid="1272" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Jorge Herrero Tardón (<ulink url="mailto:jorgeht@usal.es">jorgeht@usal.es</ulink>) </para></simplesect>
+<simplesect kind="date"><para>20/02/2018 </para></simplesect>
+<simplesect kind="version"><para>1.0 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="11"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="contextualizationfactoryabstract_8h" kindref="compound">contextualizationfactoryabstract.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="classContextualizationFactoryAbstract_1a5f3886dc42bb68d69c5ed39e204d982c" refkind="member"><highlight class="normal"><ref refid="classContextualizationFactoryAbstract_1a5f3886dc42bb68d69c5ed39e204d982c" kindref="member">ContextualizationFactoryAbstract::ContextualizationFactoryAbstract</ref>()</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="classContextualizationFactoryAbstract_1a2d7958c0f68ad388f832abcb7777397d" refkind="member"><highlight class="normal"><ref refid="classContextualizationFactoryAbstract_1a87cd3e6ea2f582fe98286a73d3b28f60" kindref="member">ContextualizationFactoryAbstract::KernelType</ref><sp/><ref refid="classContextualizationFactoryAbstract_1a2d7958c0f68ad388f832abcb7777397d" kindref="member">ContextualizationFactoryAbstract::getCurrentKernelType</ref>(){</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>product<sp/>=<sp/>QSysInfo::productType();</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(product<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;windows&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Windows;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(product<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;debian&quot;</highlight><highlight class="normal"><sp/>||<sp/>product<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;ubuntu&quot;</highlight><highlight class="normal">)<sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Linux;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Undefined;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/tools/contextualizationfactoryabstract.cpp"/>
+  </compounddef>
+</doxygen>

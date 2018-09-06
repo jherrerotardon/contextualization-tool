@@ -1,0 +1,272 @@
+.TH "Ocr" 3 "Thu Sep 6 2018" "Version 1.0" "Contextualization Tool" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Ocr \- This is an interface for a optical character recognition api\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <ocr\&.h>\fP
+.PP
+Inherited by \fBTesseractOcr\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBOcr\fP ()"
+.br
+.RI "Creates an empty \fBOcr\fP object\&. "
+.ti -1c
+.RI "\fB~Ocr\fP ()"
+.br
+.RI "Destroys the ocr instance\&. "
+.ti -1c
+.RI "virtual QStringList \fBextract\fP ()=0"
+.br
+.RI "Extracts strings contained in the image\&. "
+.ti -1c
+.RI "virtual QStringList \fBgetAvailableLanguages\fP () const =0"
+.br
+.RI "Returns all available languages that can be used to extract strings from image\&. "
+.ti -1c
+.RI "virtual QStringList \fBgetLanguages\fP () const"
+.br
+.RI "Returns set languages to extract strings from image\&. "
+.ti -1c
+.RI "virtual bool \fBaddLanguage\fP (const QString &language)"
+.br
+.RI "Add a language to try recognize characters in the image\&. "
+.ti -1c
+.RI "virtual bool \fBremoveLanguage\fP (const QString &language)"
+.br
+.RI "Remove a language to try recognize characters in the image\&. "
+.ti -1c
+.RI "virtual bool \fBisAvailableLanguage\fP (const QString &language)"
+.br
+.RI "Returns true if the language received by parameter is available to be used in the recognition, otherwise, returns false\&. "
+.ti -1c
+.RI "QString \fBgetImage\fP () const"
+.br
+.RI "Returns the path of image configured to recognize characters in\&. "
+.ti -1c
+.RI "void \fBsetImage\fP (const QString &image)"
+.br
+.RI "Sets the image path where try to recognize characters\&. "
+.ti -1c
+.RI "QString \fBgetDataPath\fP () const"
+.br
+.RI "Returns folder path where are languages files\&. "
+.ti -1c
+.RI "void \fBsetDataPath\fP (const QString &datapath)"
+.br
+.RI "Sets folder path where are languages files\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual QStringList \fBprocessExtration\fP (const QString &source)=0"
+.br
+.RI "Processes the text received by parameted\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "QFile \fBimage_\fP"
+.br
+.RI "Image where will try to detect strings\&. "
+.ti -1c
+.RI "QString \fBlanguage_\fP"
+.br
+.RI "Languagues used to detect\&. "
+.ti -1c
+.RI "QString \fBdatapath_\fP"
+.br
+.RI "Path where are languages files\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+This is an interface for a optical character recognition api\&. 
+.PP
+Definition at line 23 of file ocr\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "Ocr::Ocr ()"
+
+.PP
+Creates an empty \fBOcr\fP object\&. Sets default values\&. < Default language always 'eng'\&. 
+.PP
+Definition at line 13 of file ocr\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool Ocr::addLanguage (const QString & language)\fC [virtual]\fP"
+
+.PP
+Add a language to try recognize characters in the image\&. Check if the string recieved is an available language\&. Return true if the lenguage is added, if not return false\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlang\fP QString that contains the language to add\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+true|false 
+.RE
+.PP
+
+.PP
+Definition at line 28 of file ocr\&.cpp\&.
+.SS "virtual QStringList Ocr::extract ()\fC [pure virtual]\fP"
+
+.PP
+Extracts strings contained in the image\&. Returns a QStringsList containing the strings detected in the image\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Strings list with strings extracted\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBTesseractOcr\fP\&.
+.SS "virtual QStringList Ocr::getAvailableLanguages () const\fC [pure virtual]\fP"
+
+.PP
+Returns all available languages that can be used to extract strings from image\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+List with all available languages\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBTesseractOcr\fP\&.
+.SS "QString Ocr::getDataPath () const"
+
+.PP
+Returns folder path where are languages files\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Folder path\&. 
+.RE
+.PP
+
+.PP
+Definition at line 74 of file ocr\&.cpp\&.
+.SS "QString Ocr::getImage () const"
+
+.PP
+Returns the path of image configured to recognize characters in\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Image path\&. 
+.RE
+.PP
+
+.PP
+Definition at line 64 of file ocr\&.cpp\&.
+.SS "QStringList Ocr::getLanguages () const\fC [virtual]\fP"
+
+.PP
+Returns set languages to extract strings from image\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+List with set languages\&. 
+.RE
+.PP
+
+.PP
+Definition at line 23 of file ocr\&.cpp\&.
+.SS "bool Ocr::isAvailableLanguage (const QString & language)\fC [virtual]\fP"
+
+.PP
+Returns true if the language received by parameter is available to be used in the recognition, otherwise, returns false\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlanguage\fP \fBString\fP language to check\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBTesseractOcr\fP\&.
+.PP
+Definition at line 57 of file ocr\&.cpp\&.
+.SS "QStringList Ocr::processExtration (const QString & source)\fC [protected]\fP, \fC [pure virtual]\fP"
+
+.PP
+Processes the text received by parameted\&. Split the string in phrases and returns a list with phrases contained in source\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsource\fP 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 84 of file ocr\&.cpp\&.
+.SS "bool Ocr::removeLanguage (const QString & language)\fC [virtual]\fP"
+
+.PP
+Remove a language to try recognize characters in the image\&. Returns true if the language was removed succesfully, otherwise, returns false\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlanguage\fP \fBString\fP language to be removed\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Definition at line 43 of file ocr\&.cpp\&.
+.SS "void Ocr::setDataPath (const QString & datapath)"
+
+.PP
+Sets folder path where are languages files\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdatapath\fP Folder path\&. 
+.RE
+.PP
+
+.PP
+Definition at line 79 of file ocr\&.cpp\&.
+.SS "void Ocr::setImage (const QString & image)"
+
+.PP
+Sets the image path where try to recognize characters\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIimage\fP Path of image\&. 
+.RE
+.PP
+
+.PP
+Definition at line 69 of file ocr\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Contextualization Tool from the source code\&.

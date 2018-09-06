@@ -1,0 +1,96 @@
+\hypertarget{classGuiController}{}\section{Gui\+Controller Class Reference}
+\label{classGuiController}\index{Gui\+Controller@{Gui\+Controller}}
+
+
+This is the controller class that works a G\+UI environment.  
+
+
+
+
+{\ttfamily \#include $<$guicontroller.\+h$>$}
+
+Inheritance diagram for Gui\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classGuiController}
+\end{center}
+\end{figure}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classGuiController_a3bcaea6fb5694216afc69c4eca13b711}\label{classGuiController_a3bcaea6fb5694216afc69c4eca13b711}} 
+void \mbox{\hyperlink{classGuiController_a3bcaea6fb5694216afc69c4eca13b711}{view\+Changed}} ()
+\begin{DoxyCompactList}\small\item\em The singal is emitted when the pointer to the view changed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGuiController_a916ef2ef2d8d7b9ac4e63ee746dcdaaa}\label{classGuiController_a916ef2ef2d8d7b9ac4e63ee746dcdaaa}} 
+void \mbox{\hyperlink{classGuiController_a916ef2ef2d8d7b9ac4e63ee746dcdaaa}{unchanged\+Project}} ()
+\begin{DoxyCompactList}\small\item\em The signal is emitted when a current project is saved. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGuiController_a20613f0b5eb1d49e4006a82ca80f17c5}\label{classGuiController_a20613f0b5eb1d49e4006a82ca80f17c5}} 
+void \mbox{\hyperlink{classGuiController_a20613f0b5eb1d49e4006a82ca80f17c5}{strings\+List\+Changed}} ()
+\begin{DoxyCompactList}\small\item\em The signal is emitted when a new string is added to the model or a string is removed from the model. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGuiController_a8e5b5cd2b34a4c86d2b95acd1359b86a}\label{classGuiController_a8e5b5cd2b34a4c86d2b95acd1359b86a}} 
+void \mbox{\hyperlink{classGuiController_a8e5b5cd2b34a4c86d2b95acd1359b86a}{image\+Changed}} ()
+\begin{DoxyCompactList}\small\item\em The signal is emitted when a image is setted on the model. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGuiController_a853ee45214496ae1e59cd0139ecd1552}{Gui\+Controller}} (Q\+Quick\+Window $\ast$view=Q\+\_\+\+N\+U\+L\+L\+P\+TR, Q\+Object $\ast$parent=Q\+\_\+\+N\+U\+L\+L\+P\+TR)
+\begin{DoxyCompactList}\small\item\em Creates an instance of a \mbox{\hyperlink{classGuiController}{Gui\+Controller}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classGuiController_a5b3332300c60a28c1f97a28ef51bac43}\label{classGuiController_a5b3332300c60a28c1f97a28ef51bac43}} 
+\mbox{\hyperlink{classGuiController_a5b3332300c60a28c1f97a28ef51bac43}{$\sim$\+Gui\+Controller}} ()
+\begin{DoxyCompactList}\small\item\em Destroys the \mbox{\hyperlink{classGuiController}{Gui\+Controller}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classGuiController_a10a671bf27008ab3e60e62b2106f8275}\label{classGuiController_a10a671bf27008ab3e60e62b2106f8275}} 
+Q\+String {\bfseries image}
+\item 
+\mbox{\Hypertarget{classGuiController_a2ce97d522206f2adf3d38eb534f76d16}\label{classGuiController_a2ce97d522206f2adf3d38eb534f76d16}} 
+Q\+List$<$ Q\+Object $\ast$ $>$ {\bfseries table\+Model}
+\item 
+\mbox{\Hypertarget{classGuiController_ad588a1633d6df3e17673232bc8a548dd}\label{classGuiController_ad588a1633d6df3e17673232bc8a548dd}} 
+Q\+Quick\+Window {\bfseries view}
+\item 
+\mbox{\Hypertarget{classGuiController_a9130c47e3ab1205ed9c5a12a8afa9ec3}\label{classGuiController_a9130c47e3ab1205ed9c5a12a8afa9ec3}} 
+bool {\bfseries only\+Done\+Strings}
+\item 
+\mbox{\Hypertarget{classGuiController_acf4e341b4f9b6c3c383c58531c494ecf}\label{classGuiController_acf4e341b4f9b6c3c383c58531c494ecf}} 
+bool {\bfseries case\+Sensitive}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+This is the controller class that works a G\+UI environment. 
+
+Definition at line 20 of file guicontroller.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGuiController_a853ee45214496ae1e59cd0139ecd1552}\label{classGuiController_a853ee45214496ae1e59cd0139ecd1552}} 
+\index{Gui\+Controller@{Gui\+Controller}!Gui\+Controller@{Gui\+Controller}}
+\index{Gui\+Controller@{Gui\+Controller}!Gui\+Controller@{Gui\+Controller}}
+\subsubsection{\texorpdfstring{Gui\+Controller()}{GuiController()}}
+{\footnotesize\ttfamily Gui\+Controller\+::\+Gui\+Controller (\begin{DoxyParamCaption}\item[{Q\+Quick\+Window $\ast$}]{view = {\ttfamily Q\+\_\+NULLPTR},  }\item[{Q\+Object $\ast$}]{parent = {\ttfamily Q\+\_\+NULLPTR} }\end{DoxyParamCaption})}
+
+
+
+Creates an instance of a \mbox{\hyperlink{classGuiController}{Gui\+Controller}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em view} & Visual part of M\+VC. \\
+\hline
+{\em parent} & Parent object. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 13 of file guicontroller.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/contextualization/controller/\mbox{\hyperlink{guicontroller_8h}{guicontroller.\+h}}\item 
+src/contextualization/controller/\mbox{\hyperlink{guicontroller_8cpp}{guicontroller.\+cpp}}\end{DoxyCompactItemize}

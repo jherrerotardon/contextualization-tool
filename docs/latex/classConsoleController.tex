@@ -1,0 +1,309 @@
+\hypertarget{classConsoleController}{}\section{Console\+Controller Class Reference}
+\label{classConsoleController}\index{Console\+Controller@{Console\+Controller}}
+
+
+The Console\+Contextualization\+Controller class is responsible for controll the Contextualization Tool application when is executed from a terminal (C\+LI).  
+
+
+
+
+{\ttfamily \#include $<$consolecontroller.\+h$>$}
+
+Inheritance diagram for Console\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classConsoleController}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9}{Action\+Type}} \{ \newline
+\mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a0fada6cf25abb68366ac353a6ec646e0}{Print\+Help}} = 0, 
+\mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9ab376541b60038f69f8575f6fe680f9d2}{No\+Action}}, 
+\mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a04bb2e774b79ceb4bc2979c400e8feea}{List\+Projects}}, 
+\mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a230f00a5b6250550356eb456475fe757}{Detail\+Project}}, 
+\newline
+\mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a9963a057c42713ecf9380500367f621b}{New\+Project}}, 
+\mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9aa620b51a7f0e47c93da8f023ca37a81b}{Delete\+Project}}, 
+\mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a39ac9ee6f36481423172c8c7957beb50}{Select\+Project}}, 
+\mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a784b89a27e92a50096f0af414cc7f4ad}{Clear\+Strings}}, 
+\newline
+\mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a4d8a085e65fdc727d7642a25db2403b2}{Clear\+Image}}, 
+\mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9adc51bd8437c400c4193fa01650c087a0}{Clear\+All}}, 
+\mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a121c3067d3adf19104793ce9020fb543}{Add\+String}}, 
+\mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9adf314576f39f9dfe3ce14758e7482422}{Remove\+String}}, 
+\newline
+\mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9abe2b103c6a30c1a23b13772970452b03}{Select\+String}}, 
+\mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9acedfdd10ac8c789aa7d4dd9f78bd3937}{Unselect\+String}}, 
+\mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a346b6628a5522d04a57e23fd96b14e94}{Set\+Image}}, 
+\mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9ac281d38e622624b8d89974cd1a437243}{Capture\+Area}}, 
+\newline
+\mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9af2fd8b4a218c3ddbc0fd91c5b1667693}{Detect\+Strings}}, 
+\mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9ab2dae62af54e26573bd66ca8f9ee3f0a}{Export\+Project}}, 
+\mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9aa66215a16eaf6c015d2569d4574572a9}{Import\+Project}}, 
+\mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a20e0cfce6c39df1ac1c1552ddf2dde22}{Send}}, 
+\newline
+\mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a465c31f22f889f262d21e867223c19a9}{Process\+Files}}, 
+\mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a019ca0fceccfad49f6abea9cee533222}{Print\+Clear\+Help}}, 
+\mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9ad1953c9265bcc1cb3663f2ccc23c5810}{Print\+Add\+Help}}, 
+\mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a1a9ee810a12e81b7cbcb5f74a59e1b76}{Print\+Detect\+Help}}, 
+\newline
+\mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a2cc22e62323a75b556c4e7568f9e588f}{Print\+Image\+Help}}
+ \}
+\begin{DoxyCompactList}\small\item\em Constains all actions that can be done by the exec function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classConsoleController_aed7f998b076f322a0c45f0a0e57202c4}\label{classConsoleController_aed7f998b076f322a0c45f0a0e57202c4}} 
+\mbox{\hyperlink{classConsoleController_aed7f998b076f322a0c45f0a0e57202c4}{Console\+Controller}} ()
+\begin{DoxyCompactList}\small\item\em Creates an empty controller. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classConsoleController_aaf8a775d3f675bcf9e7facd959217fdc}{Console\+Controller}} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em Creates a controller decoding arguments received by argument. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classConsoleController_accdfd546eef82cfe4d0942426a3b6fac}{exec}} ()
+\begin{DoxyCompactList}\small\item\em Executes the logic of controller. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classConsoleController_ab9fdcba75eecb1f28c1fcd3b97183fe8}{decode\+Arguments}} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em Decode arguments entered to set the behavior of the exec method. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classConsoleController_a13eaf91bd8d72afeaa3792255983e019}{set\+Action}} (\mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9}{Action\+Type}} action, Q\+Variant parameter=Q\+Variant())
+\begin{DoxyCompactList}\small\item\em Sets the action to be executed and his parameter,. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConsoleController_a771c221ac40cd6441f13c76bd08b6927}\label{classConsoleController_a771c221ac40cd6441f13c76bd08b6927}} 
+void \mbox{\hyperlink{classConsoleController_a771c221ac40cd6441f13c76bd08b6927}{print\+Usage}} ()
+\begin{DoxyCompactList}\small\item\em Print in screen the general usage of application. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConsoleController_a08cea6c7cb62ea9961af568daeec69c5}\label{classConsoleController_a08cea6c7cb62ea9961af568daeec69c5}} 
+void \mbox{\hyperlink{classConsoleController_a08cea6c7cb62ea9961af568daeec69c5}{print\+Clear\+Details}} ()
+\begin{DoxyCompactList}\small\item\em Print extended help for clear command. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConsoleController_a5e2c72a9589fc8b5a2d9ba5c905850c8}\label{classConsoleController_a5e2c72a9589fc8b5a2d9ba5c905850c8}} 
+void \mbox{\hyperlink{classConsoleController_a5e2c72a9589fc8b5a2d9ba5c905850c8}{print\+Add\+Details}} ()
+\begin{DoxyCompactList}\small\item\em Print extended help for add command. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConsoleController_aeef4c9eb3a199d0674c0841eadad6d7e}\label{classConsoleController_aeef4c9eb3a199d0674c0841eadad6d7e}} 
+void \mbox{\hyperlink{classConsoleController_aeef4c9eb3a199d0674c0841eadad6d7e}{print\+Detect\+Details}} ()
+\begin{DoxyCompactList}\small\item\em Print extended help for detect command. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConsoleController_ae99f394b6610fd7c771e31d864526756}\label{classConsoleController_ae99f394b6610fd7c771e31d864526756}} 
+void \mbox{\hyperlink{classConsoleController_ae99f394b6610fd7c771e31d864526756}{print\+Image\+Details}} ()
+\begin{DoxyCompactList}\small\item\em Print extended help for image command. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classConsoleController_a5dd7913a42068df42c3de6dc1f313537}\label{classConsoleController_a5dd7913a42068df42c3de6dc1f313537}} 
+void \mbox{\hyperlink{classConsoleController_a5dd7913a42068df42c3de6dc1f313537}{print\+Detect\+Options}} ()
+\begin{DoxyCompactList}\small\item\em Print extended help for detect command. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+The Console\+Contextualization\+Controller class is responsible for controll the Contextualization Tool application when is executed from a terminal (C\+LI). 
+
+This is the controller class that works a C\+LI environment. 
+
+Definition at line 26 of file consolecontroller.\+h.
+
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9}\label{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9}} 
+\index{Console\+Controller@{Console\+Controller}!Action\+Type@{Action\+Type}}
+\index{Action\+Type@{Action\+Type}!Console\+Controller@{Console\+Controller}}
+\subsubsection{\texorpdfstring{Action\+Type}{ActionType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9}{Console\+Controller\+::\+Action\+Type}}}
+
+
+
+Constains all actions that can be done by the exec function. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Print\+Help@{Print\+Help}!Console\+Controller@{Console\+Controller}}\index{Console\+Controller@{Console\+Controller}!Print\+Help@{Print\+Help}}}\mbox{\Hypertarget{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a0fada6cf25abb68366ac353a6ec646e0}\label{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a0fada6cf25abb68366ac353a6ec646e0}} 
+Print\+Help&Indicates that the app have to print the general help. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{No\+Action@{No\+Action}!Console\+Controller@{Console\+Controller}}\index{Console\+Controller@{Console\+Controller}!No\+Action@{No\+Action}}}\mbox{\Hypertarget{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9ab376541b60038f69f8575f6fe680f9d2}\label{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9ab376541b60038f69f8575f6fe680f9d2}} 
+No\+Action&Indicates that the app have to do anything. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{List\+Projects@{List\+Projects}!Console\+Controller@{Console\+Controller}}\index{Console\+Controller@{Console\+Controller}!List\+Projects@{List\+Projects}}}\mbox{\Hypertarget{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a04bb2e774b79ceb4bc2979c400e8feea}\label{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a04bb2e774b79ceb4bc2979c400e8feea}} 
+List\+Projects&Indicates that the app have to list all available projects. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Detail\+Project@{Detail\+Project}!Console\+Controller@{Console\+Controller}}\index{Console\+Controller@{Console\+Controller}!Detail\+Project@{Detail\+Project}}}\mbox{\Hypertarget{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a230f00a5b6250550356eb456475fe757}\label{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a230f00a5b6250550356eb456475fe757}} 
+Detail\+Project&Indicates that the app have to show detail for avitve project. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{New\+Project@{New\+Project}!Console\+Controller@{Console\+Controller}}\index{Console\+Controller@{Console\+Controller}!New\+Project@{New\+Project}}}\mbox{\Hypertarget{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a9963a057c42713ecf9380500367f621b}\label{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a9963a057c42713ecf9380500367f621b}} 
+New\+Project&Indicates that the app have to create new project. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Delete\+Project@{Delete\+Project}!Console\+Controller@{Console\+Controller}}\index{Console\+Controller@{Console\+Controller}!Delete\+Project@{Delete\+Project}}}\mbox{\Hypertarget{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9aa620b51a7f0e47c93da8f023ca37a81b}\label{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9aa620b51a7f0e47c93da8f023ca37a81b}} 
+Delete\+Project&Indicates that the app have to delete a project. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Select\+Project@{Select\+Project}!Console\+Controller@{Console\+Controller}}\index{Console\+Controller@{Console\+Controller}!Select\+Project@{Select\+Project}}}\mbox{\Hypertarget{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a39ac9ee6f36481423172c8c7957beb50}\label{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a39ac9ee6f36481423172c8c7957beb50}} 
+Select\+Project&Indicates that the app have to ativate a project. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Clear\+Strings@{Clear\+Strings}!Console\+Controller@{Console\+Controller}}\index{Console\+Controller@{Console\+Controller}!Clear\+Strings@{Clear\+Strings}}}\mbox{\Hypertarget{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a784b89a27e92a50096f0af414cc7f4ad}\label{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a784b89a27e92a50096f0af414cc7f4ad}} 
+Clear\+Strings&Indicates that the app have to clear all strings from the active project. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Clear\+Image@{Clear\+Image}!Console\+Controller@{Console\+Controller}}\index{Console\+Controller@{Console\+Controller}!Clear\+Image@{Clear\+Image}}}\mbox{\Hypertarget{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a4d8a085e65fdc727d7642a25db2403b2}\label{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a4d8a085e65fdc727d7642a25db2403b2}} 
+Clear\+Image&Indicates that the app have to unset current image from the active project. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Clear\+All@{Clear\+All}!Console\+Controller@{Console\+Controller}}\index{Console\+Controller@{Console\+Controller}!Clear\+All@{Clear\+All}}}\mbox{\Hypertarget{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9adc51bd8437c400c4193fa01650c087a0}\label{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9adc51bd8437c400c4193fa01650c087a0}} 
+Clear\+All&Indicates that the app have to empty the active project. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Add\+String@{Add\+String}!Console\+Controller@{Console\+Controller}}\index{Console\+Controller@{Console\+Controller}!Add\+String@{Add\+String}}}\mbox{\Hypertarget{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a121c3067d3adf19104793ce9020fb543}\label{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a121c3067d3adf19104793ce9020fb543}} 
+Add\+String&Indicates that the app have to add new string in the active project. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Remove\+String@{Remove\+String}!Console\+Controller@{Console\+Controller}}\index{Console\+Controller@{Console\+Controller}!Remove\+String@{Remove\+String}}}\mbox{\Hypertarget{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9adf314576f39f9dfe3ce14758e7482422}\label{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9adf314576f39f9dfe3ce14758e7482422}} 
+Remove\+String&Indicates that the app have to remove a string from the active project. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Select\+String@{Select\+String}!Console\+Controller@{Console\+Controller}}\index{Console\+Controller@{Console\+Controller}!Select\+String@{Select\+String}}}\mbox{\Hypertarget{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9abe2b103c6a30c1a23b13772970452b03}\label{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9abe2b103c6a30c1a23b13772970452b03}} 
+Select\+String&Indicates that the app have to select the string indicated by user. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Unselect\+String@{Unselect\+String}!Console\+Controller@{Console\+Controller}}\index{Console\+Controller@{Console\+Controller}!Unselect\+String@{Unselect\+String}}}\mbox{\Hypertarget{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9acedfdd10ac8c789aa7d4dd9f78bd3937}\label{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9acedfdd10ac8c789aa7d4dd9f78bd3937}} 
+Unselect\+String&Indicates that the app have to unselect the string indicated by user. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Set\+Image@{Set\+Image}!Console\+Controller@{Console\+Controller}}\index{Console\+Controller@{Console\+Controller}!Set\+Image@{Set\+Image}}}\mbox{\Hypertarget{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a346b6628a5522d04a57e23fd96b14e94}\label{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a346b6628a5522d04a57e23fd96b14e94}} 
+Set\+Image&Indicates that the app have to set the image in the active project. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Capture\+Area@{Capture\+Area}!Console\+Controller@{Console\+Controller}}\index{Console\+Controller@{Console\+Controller}!Capture\+Area@{Capture\+Area}}}\mbox{\Hypertarget{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9ac281d38e622624b8d89974cd1a437243}\label{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9ac281d38e622624b8d89974cd1a437243}} 
+Capture\+Area&Indicates that the app have to let the user capture an area of sreen and set it as image model. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Detect\+Strings@{Detect\+Strings}!Console\+Controller@{Console\+Controller}}\index{Console\+Controller@{Console\+Controller}!Detect\+Strings@{Detect\+Strings}}}\mbox{\Hypertarget{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9af2fd8b4a218c3ddbc0fd91c5b1667693}\label{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9af2fd8b4a218c3ddbc0fd91c5b1667693}} 
+Detect\+Strings&Indicates that the app have to extract strings from image model and add it in active project. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Export\+Project@{Export\+Project}!Console\+Controller@{Console\+Controller}}\index{Console\+Controller@{Console\+Controller}!Export\+Project@{Export\+Project}}}\mbox{\Hypertarget{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9ab2dae62af54e26573bd66ca8f9ee3f0a}\label{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9ab2dae62af54e26573bd66ca8f9ee3f0a}} 
+Export\+Project&Indicates that the app have to save the active project in the path entered by the user. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Import\+Project@{Import\+Project}!Console\+Controller@{Console\+Controller}}\index{Console\+Controller@{Console\+Controller}!Import\+Project@{Import\+Project}}}\mbox{\Hypertarget{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9aa66215a16eaf6c015d2569d4574572a9}\label{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9aa66215a16eaf6c015d2569d4574572a9}} 
+Import\+Project&Indicates that the app have to import a project entered by the user. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Send@{Send}!Console\+Controller@{Console\+Controller}}\index{Console\+Controller@{Console\+Controller}!Send@{Send}}}\mbox{\Hypertarget{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a20e0cfce6c39df1ac1c1552ddf2dde22}\label{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a20e0cfce6c39df1ac1c1552ddf2dde22}} 
+Send&Indicates that the app have to send the active contextualization. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Process\+Files@{Process\+Files}!Console\+Controller@{Console\+Controller}}\index{Console\+Controller@{Console\+Controller}!Process\+Files@{Process\+Files}}}\mbox{\Hypertarget{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a465c31f22f889f262d21e867223c19a9}\label{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a465c31f22f889f262d21e867223c19a9}} 
+Process\+Files&Indicates that the app have to process files and storage V\+A\+L\+I\+D\+A\+D\+ED strings. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Print\+Clear\+Help@{Print\+Clear\+Help}!Console\+Controller@{Console\+Controller}}\index{Console\+Controller@{Console\+Controller}!Print\+Clear\+Help@{Print\+Clear\+Help}}}\mbox{\Hypertarget{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a019ca0fceccfad49f6abea9cee533222}\label{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a019ca0fceccfad49f6abea9cee533222}} 
+Print\+Clear\+Help&Indicates that the app have to print detailed help for clear command. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Print\+Add\+Help@{Print\+Add\+Help}!Console\+Controller@{Console\+Controller}}\index{Console\+Controller@{Console\+Controller}!Print\+Add\+Help@{Print\+Add\+Help}}}\mbox{\Hypertarget{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9ad1953c9265bcc1cb3663f2ccc23c5810}\label{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9ad1953c9265bcc1cb3663f2ccc23c5810}} 
+Print\+Add\+Help&Indicates that the app have to print extended help for add command. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Print\+Detect\+Help@{Print\+Detect\+Help}!Console\+Controller@{Console\+Controller}}\index{Console\+Controller@{Console\+Controller}!Print\+Detect\+Help@{Print\+Detect\+Help}}}\mbox{\Hypertarget{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a1a9ee810a12e81b7cbcb5f74a59e1b76}\label{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a1a9ee810a12e81b7cbcb5f74a59e1b76}} 
+Print\+Detect\+Help&Indicates that the app have to print extended help for detect command. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Print\+Image\+Help@{Print\+Image\+Help}!Console\+Controller@{Console\+Controller}}\index{Console\+Controller@{Console\+Controller}!Print\+Image\+Help@{Print\+Image\+Help}}}\mbox{\Hypertarget{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a2cc22e62323a75b556c4e7568f9e588f}\label{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9a2cc22e62323a75b556c4e7568f9e588f}} 
+Print\+Image\+Help&Indicates that the app have to print extended help for image command. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 33 of file consolecontroller.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classConsoleController_aaf8a775d3f675bcf9e7facd959217fdc}\label{classConsoleController_aaf8a775d3f675bcf9e7facd959217fdc}} 
+\index{Console\+Controller@{Console\+Controller}!Console\+Controller@{Console\+Controller}}
+\index{Console\+Controller@{Console\+Controller}!Console\+Controller@{Console\+Controller}}
+\subsubsection{\texorpdfstring{Console\+Controller()}{ConsoleController()}}
+{\footnotesize\ttfamily Console\+Controller\+::\+Console\+Controller (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Creates a controller decoding arguments received by argument. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Number of argv elements. \\
+\hline
+{\em argv} & Arguments entered by the user when executed the app. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 22 of file consolecontroller.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classConsoleController_ab9fdcba75eecb1f28c1fcd3b97183fe8}\label{classConsoleController_ab9fdcba75eecb1f28c1fcd3b97183fe8}} 
+\index{Console\+Controller@{Console\+Controller}!decode\+Arguments@{decode\+Arguments}}
+\index{decode\+Arguments@{decode\+Arguments}!Console\+Controller@{Console\+Controller}}
+\subsubsection{\texorpdfstring{decode\+Arguments()}{decodeArguments()}}
+{\footnotesize\ttfamily bool Console\+Controller\+::decode\+Arguments (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Decode arguments entered to set the behavior of the exec method. 
+
+The first element of argv always must be the name of the app. 
+\begin{DoxyParams}{Parameters}
+{\em argc} & Number of argv elements. \\
+\hline
+{\em argv} & Arguments to decode. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 120 of file consolecontroller.\+cpp.
+
+\mbox{\Hypertarget{classConsoleController_accdfd546eef82cfe4d0942426a3b6fac}\label{classConsoleController_accdfd546eef82cfe4d0942426a3b6fac}} 
+\index{Console\+Controller@{Console\+Controller}!exec@{exec}}
+\index{exec@{exec}!Console\+Controller@{Console\+Controller}}
+\subsubsection{\texorpdfstring{exec()}{exec()}}
+{\footnotesize\ttfamily void Console\+Controller\+::exec (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Executes the logic of controller. 
+
+It has mutiples type of behavior depending the value of action\+\_\+ variable.
+
+Types of action can be shown in Action\+Type enum. 
+
+Definition at line 36 of file consolecontroller.\+cpp.
+
+\mbox{\Hypertarget{classConsoleController_a13eaf91bd8d72afeaa3792255983e019}\label{classConsoleController_a13eaf91bd8d72afeaa3792255983e019}} 
+\index{Console\+Controller@{Console\+Controller}!set\+Action@{set\+Action}}
+\index{set\+Action@{set\+Action}!Console\+Controller@{Console\+Controller}}
+\subsubsection{\texorpdfstring{set\+Action()}{setAction()}}
+{\footnotesize\ttfamily void Console\+Controller\+::set\+Action (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classConsoleController_a6bc36e6ee00aa2da0fd9be549b4251d9}{Action\+Type}}}]{action,  }\item[{Q\+Variant}]{parameter = {\ttfamily QVariant()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets the action to be executed and his parameter,. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em action} & Actions to be executed by \mbox{\hyperlink{classConsoleController_accdfd546eef82cfe4d0942426a3b6fac}{exec()}} function. \\
+\hline
+{\em parameter} & Required parameter to execute the action. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 244 of file consolecontroller.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/contextualization/controller/\mbox{\hyperlink{consolecontroller_8h}{consolecontroller.\+h}}\item 
+src/contextualization/controller/\mbox{\hyperlink{consolecontroller_8cpp}{consolecontroller.\+cpp}}\end{DoxyCompactItemize}

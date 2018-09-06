@@ -1,0 +1,380 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="linuxconsolecontroller_8cpp" kind="file" language="C++">
+    <compoundname>linuxconsolecontroller.cpp</compoundname>
+    <includes refid="linuxconsolecontroller_8h" local="yes">linuxconsolecontroller.h</includes>
+    <incdepgraph>
+      <node id="316">
+        <label>iomanip</label>
+      </node>
+      <node id="335">
+        <label>QFuture</label>
+      </node>
+      <node id="340">
+        <label>QMessageBox</label>
+      </node>
+      <node id="344">
+        <label>QDateTime</label>
+      </node>
+      <node id="329">
+        <label>QObject</label>
+      </node>
+      <node id="337">
+        <label>contextualization/model/contextualizationmodel.h</label>
+        <link refid="contextualizationmodel_8h"/>
+        <childnode refid="329" relation="include">
+        </childnode>
+        <childnode refid="318" relation="include">
+        </childnode>
+        <childnode refid="314" relation="include">
+        </childnode>
+        <childnode refid="331" relation="include">
+        </childnode>
+        <childnode refid="319" relation="include">
+        </childnode>
+        <childnode refid="320" relation="include">
+        </childnode>
+        <childnode refid="338" relation="include">
+        </childnode>
+        <childnode refid="322" relation="include">
+        </childnode>
+      </node>
+      <node id="326">
+        <label>QStandardPaths</label>
+      </node>
+      <node id="311">
+        <label>consolecontroller.h</label>
+        <link refid="consolecontroller_8h"/>
+        <childnode refid="312" relation="include">
+        </childnode>
+        <childnode refid="313" relation="include">
+        </childnode>
+        <childnode refid="314" relation="include">
+        </childnode>
+        <childnode refid="315" relation="include">
+        </childnode>
+        <childnode refid="316" relation="include">
+        </childnode>
+        <childnode refid="317" relation="include">
+        </childnode>
+        <childnode refid="328" relation="include">
+        </childnode>
+      </node>
+      <node id="309">
+        <label>src/contextualization/controller/linuxconsolecontroller.cpp</label>
+        <link refid="linuxconsolecontroller_8cpp"/>
+        <childnode refid="310" relation="include">
+        </childnode>
+      </node>
+      <node id="314">
+        <label>QList</label>
+      </node>
+      <node id="354">
+        <label>QtSql/QSqlDatabase</label>
+      </node>
+      <node id="343">
+        <label>QThread</label>
+      </node>
+      <node id="355">
+        <label>QtSql/QSqlQuery</label>
+      </node>
+      <node id="353">
+        <label>storage/mysqlconnector.h</label>
+        <link refid="mysqlconnector_8h"/>
+        <childnode refid="354" relation="include">
+        </childnode>
+        <childnode refid="355" relation="include">
+        </childnode>
+        <childnode refid="356" relation="include">
+        </childnode>
+        <childnode refid="338" relation="include">
+        </childnode>
+        <childnode refid="352" relation="include">
+        </childnode>
+      </node>
+      <node id="342">
+        <label>QProgressDialog</label>
+      </node>
+      <node id="334">
+        <label>QImage</label>
+      </node>
+      <node id="317">
+        <label>string.h</label>
+        <link refid="string_8h"/>
+        <childnode refid="318" relation="include">
+        </childnode>
+        <childnode refid="319" relation="include">
+        </childnode>
+        <childnode refid="320" relation="include">
+        </childnode>
+        <childnode refid="321" relation="include">
+        </childnode>
+        <childnode refid="322" relation="include">
+        </childnode>
+      </node>
+      <node id="347">
+        <label>baseapi.h</label>
+      </node>
+      <node id="333">
+        <label>QRegularExpressionMatch</label>
+      </node>
+      <node id="332">
+        <label>QJsonArray</label>
+      </node>
+      <node id="339">
+        <label>tools/utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="331" relation="include">
+        </childnode>
+        <childnode refid="323" relation="include">
+        </childnode>
+        <childnode refid="340" relation="include">
+        </childnode>
+        <childnode refid="341" relation="include">
+        </childnode>
+        <childnode refid="342" relation="include">
+        </childnode>
+        <childnode refid="318" relation="include">
+        </childnode>
+        <childnode refid="343" relation="include">
+        </childnode>
+        <childnode refid="335" relation="include">
+        </childnode>
+        <childnode refid="336" relation="include">
+        </childnode>
+        <childnode refid="344" relation="include">
+        </childnode>
+      </node>
+      <node id="310">
+        <label>linuxconsolecontroller.h</label>
+        <link refid="linuxconsolecontroller_8h"/>
+        <childnode refid="311" relation="include">
+        </childnode>
+      </node>
+      <node id="320">
+        <label>QJsonObject</label>
+      </node>
+      <node id="346">
+        <label>leptonica/allheaders.h</label>
+      </node>
+      <node id="327">
+        <label>QDebug</label>
+      </node>
+      <node id="328">
+        <label>contextualization/controller/contextualizationcontroller.h</label>
+        <link refid="contextualizationcontroller_8h"/>
+        <childnode refid="329" relation="include">
+        </childnode>
+        <childnode refid="318" relation="include">
+        </childnode>
+        <childnode refid="330" relation="include">
+        </childnode>
+        <childnode refid="323" relation="include">
+        </childnode>
+        <childnode refid="326" relation="include">
+        </childnode>
+        <childnode refid="331" relation="include">
+        </childnode>
+        <childnode refid="319" relation="include">
+        </childnode>
+        <childnode refid="320" relation="include">
+        </childnode>
+        <childnode refid="332" relation="include">
+        </childnode>
+        <childnode refid="321" relation="include">
+        </childnode>
+        <childnode refid="333" relation="include">
+        </childnode>
+        <childnode refid="334" relation="include">
+        </childnode>
+        <childnode refid="335" relation="include">
+        </childnode>
+        <childnode refid="336" relation="include">
+        </childnode>
+        <childnode refid="337" relation="include">
+        </childnode>
+        <childnode refid="339" relation="include">
+        </childnode>
+        <childnode refid="322" relation="include">
+        </childnode>
+        <childnode refid="345" relation="include">
+        </childnode>
+        <childnode refid="351" relation="include">
+        </childnode>
+        <childnode refid="353" relation="include">
+        </childnode>
+      </node>
+      <node id="336">
+        <label>QtConcurrent/QtConcurrent</label>
+      </node>
+      <node id="321">
+        <label>QRegularExpression</label>
+      </node>
+      <node id="325">
+        <label>QDate</label>
+      </node>
+      <node id="318">
+        <label>QString</label>
+      </node>
+      <node id="323">
+        <label>QFile</label>
+      </node>
+      <node id="352">
+        <label>databaseconnectorabstract.h</label>
+        <link refid="databaseconnectorabstract_8h"/>
+        <childnode refid="317" relation="include">
+        </childnode>
+        <childnode refid="322" relation="include">
+        </childnode>
+        <childnode refid="339" relation="include">
+        </childnode>
+      </node>
+      <node id="348">
+        <label>genericvector.h</label>
+      </node>
+      <node id="356">
+        <label>QtSql/QSqlError</label>
+      </node>
+      <node id="349">
+        <label>ocr.h</label>
+        <link refid="ocr_8h"/>
+        <childnode refid="318" relation="include">
+        </childnode>
+        <childnode refid="330" relation="include">
+        </childnode>
+        <childnode refid="331" relation="include">
+        </childnode>
+        <childnode refid="323" relation="include">
+        </childnode>
+        <childnode refid="350" relation="include">
+        </childnode>
+        <childnode refid="334" relation="include">
+        </childnode>
+        <childnode refid="321" relation="include">
+        </childnode>
+        <childnode refid="322" relation="include">
+        </childnode>
+      </node>
+      <node id="319">
+        <label>QJsonDocument</label>
+      </node>
+      <node id="312">
+        <label>iostream</label>
+      </node>
+      <node id="341">
+        <label>QProcess</label>
+      </node>
+      <node id="345">
+        <label>optical_character_recognition/tesseractocr.h</label>
+        <link refid="tesseractocr_8h"/>
+        <childnode refid="346" relation="include">
+        </childnode>
+        <childnode refid="347" relation="include">
+        </childnode>
+        <childnode refid="348" relation="include">
+        </childnode>
+        <childnode refid="349" relation="include">
+        </childnode>
+        <childnode refid="339" relation="include">
+        </childnode>
+        <childnode refid="322" relation="include">
+        </childnode>
+      </node>
+      <node id="331">
+        <label>QDir</label>
+      </node>
+      <node id="324">
+        <label>QTextStream</label>
+      </node>
+      <node id="351">
+        <label>storage/fpfileconnector.h</label>
+        <link refid="fpfileconnector_8h"/>
+        <childnode refid="323" relation="include">
+        </childnode>
+        <childnode refid="350" relation="include">
+        </childnode>
+        <childnode refid="331" relation="include">
+        </childnode>
+        <childnode refid="352" relation="include">
+        </childnode>
+        <childnode refid="338" relation="include">
+        </childnode>
+        <childnode refid="339" relation="include">
+        </childnode>
+      </node>
+      <node id="313">
+        <label>QVariant</label>
+      </node>
+      <node id="330">
+        <label>QStringList</label>
+      </node>
+      <node id="315">
+        <label>stdio.h</label>
+      </node>
+      <node id="350">
+        <label>QFileInfo</label>
+      </node>
+      <node id="338">
+        <label>firmwarestring.h</label>
+        <link refid="firmwarestring_8h"/>
+        <childnode refid="317" relation="include">
+        </childnode>
+      </node>
+      <node id="322">
+        <label>tools/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="318" relation="include">
+        </childnode>
+        <childnode refid="323" relation="include">
+        </childnode>
+        <childnode refid="324" relation="include">
+        </childnode>
+        <childnode refid="325" relation="include">
+        </childnode>
+        <childnode refid="326" relation="include">
+        </childnode>
+        <childnode refid="327" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Jorge Herrero Tardón (<ulink url="mailto:jorgeht@usal.es">jorgeht@usal.es</ulink>) </para></simplesect>
+<simplesect kind="date"><para>20/02/2018 </para></simplesect>
+<simplesect kind="version"><para>1.0 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="11"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="linuxconsolecontroller_8h" kindref="compound">linuxconsolecontroller.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="classLinuxConsoleController_1a22dbaf4b36c07b2bc729287c93118853" refkind="member"><highlight class="normal"><ref refid="classLinuxConsoleController_1a22dbaf4b36c07b2bc729287c93118853" kindref="member">LinuxConsoleController::LinuxConsoleController</ref>()<sp/>:<sp/><ref refid="classConsoleController" kindref="compound">ConsoleController</ref>()</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="classLinuxConsoleController_1a28e3374d97058fa2649d2582686bfe6f" refkind="member"><highlight class="normal"><ref refid="classLinuxConsoleController_1a22dbaf4b36c07b2bc729287c93118853" kindref="member">LinuxConsoleController::LinuxConsoleController</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**argv)<sp/>:<sp/><ref refid="classConsoleController" kindref="compound">ConsoleController</ref>(argc,<sp/>argv)</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classLinuxConsoleController_1ac9944bf1302b077c733802349359e777" refkind="member"><highlight class="normal">QString<sp/><ref refid="classLinuxConsoleController_1ac9944bf1302b077c733802349359e777" kindref="member">LinuxConsoleController::takeCaptureArea</ref>()</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>hasError;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>QStringList<sp/>arguments;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>path(<ref refid="classUtils_1a85a0cb065fa4399c42ce834952420d7a" kindref="member">Utils::getTmpDirectory</ref>()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;capture_&quot;</highlight><highlight class="normal"><sp/>+<sp/><ref refid="classUtils_1aedd4143ac5a4b343d1486b9629a2d185" kindref="member">Utils::getDateTime</ref>()<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;.png&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/>arguments<sp/>&lt;&lt;<sp/>path;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>hasError<sp/>=<sp/><ref refid="classUtils_1a0ba873605d1b72ee448c18507d898d21" kindref="member">Utils::executeProgram</ref>(</highlight><highlight class="stringliteral">&quot;import&quot;</highlight><highlight class="normal">,<sp/>arguments,<sp/>QProcess::nullDevice(),<sp/>QString(),<sp/>30000);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hasError)<sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLog_1ae35819424f49efa88b29a0bccc962f93" kindref="member">Log::writeError</ref>(QString(Q_FUNC_INFO)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Error<sp/>taking<sp/>capture.<sp/>Code<sp/>exit<sp/>of<sp/>import<sp/>process:<sp/>&quot;</highlight><highlight class="normal"><sp/>+</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QString::number(hasError));</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>hasError<sp/>?<sp/>QString()<sp/>:<sp/>path;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/contextualization/controller/linuxconsolecontroller.cpp"/>
+  </compounddef>
+</doxygen>

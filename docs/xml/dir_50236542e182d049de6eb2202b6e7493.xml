@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_50236542e182d049de6eb2202b6e7493" kind="dir">
+    <compoundname>src/contextualization/model</compoundname>
+    <innerfile refid="contextualizationmodel_8cpp">contextualizationmodel.cpp</innerfile>
+    <innerfile refid="contextualizationmodel_8h">contextualizationmodel.h</innerfile>
+    <innerfile refid="firmwarestring_8cpp">firmwarestring.cpp</innerfile>
+    <innerfile refid="firmwarestring_8h">firmwarestring.h</innerfile>
+    <innerfile refid="string_8cpp">string.cpp</innerfile>
+    <innerfile refid="string_8h">string.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/contextualization/model/"/>
+  </compounddef>
+</doxygen>

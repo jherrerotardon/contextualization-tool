@@ -1,0 +1,554 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.15">
+  <compound refid="classConsoleController" kind="class"><name>ConsoleController</name>
+    <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9" kind="enum"><name>ActionType</name></member>
+    <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a0fada6cf25abb68366ac353a6ec646e0" kind="enumvalue"><name>PrintHelp</name></member>
+    <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9ab376541b60038f69f8575f6fe680f9d2" kind="enumvalue"><name>NoAction</name></member>
+    <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a04bb2e774b79ceb4bc2979c400e8feea" kind="enumvalue"><name>ListProjects</name></member>
+    <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a230f00a5b6250550356eb456475fe757" kind="enumvalue"><name>DetailProject</name></member>
+    <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a9963a057c42713ecf9380500367f621b" kind="enumvalue"><name>NewProject</name></member>
+    <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9aa620b51a7f0e47c93da8f023ca37a81b" kind="enumvalue"><name>DeleteProject</name></member>
+    <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a39ac9ee6f36481423172c8c7957beb50" kind="enumvalue"><name>SelectProject</name></member>
+    <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a784b89a27e92a50096f0af414cc7f4ad" kind="enumvalue"><name>ClearStrings</name></member>
+    <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a4d8a085e65fdc727d7642a25db2403b2" kind="enumvalue"><name>ClearImage</name></member>
+    <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9adc51bd8437c400c4193fa01650c087a0" kind="enumvalue"><name>ClearAll</name></member>
+    <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a121c3067d3adf19104793ce9020fb543" kind="enumvalue"><name>AddString</name></member>
+    <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9adf314576f39f9dfe3ce14758e7482422" kind="enumvalue"><name>RemoveString</name></member>
+    <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9abe2b103c6a30c1a23b13772970452b03" kind="enumvalue"><name>SelectString</name></member>
+    <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9acedfdd10ac8c789aa7d4dd9f78bd3937" kind="enumvalue"><name>UnselectString</name></member>
+    <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a346b6628a5522d04a57e23fd96b14e94" kind="enumvalue"><name>SetImage</name></member>
+    <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9ac281d38e622624b8d89974cd1a437243" kind="enumvalue"><name>CaptureArea</name></member>
+    <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9af2fd8b4a218c3ddbc0fd91c5b1667693" kind="enumvalue"><name>DetectStrings</name></member>
+    <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9ab2dae62af54e26573bd66ca8f9ee3f0a" kind="enumvalue"><name>ExportProject</name></member>
+    <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9aa66215a16eaf6c015d2569d4574572a9" kind="enumvalue"><name>ImportProject</name></member>
+    <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a20e0cfce6c39df1ac1c1552ddf2dde22" kind="enumvalue"><name>Send</name></member>
+    <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a465c31f22f889f262d21e867223c19a9" kind="enumvalue"><name>ProcessFiles</name></member>
+    <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a019ca0fceccfad49f6abea9cee533222" kind="enumvalue"><name>PrintClearHelp</name></member>
+    <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9ad1953c9265bcc1cb3663f2ccc23c5810" kind="enumvalue"><name>PrintAddHelp</name></member>
+    <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a1a9ee810a12e81b7cbcb5f74a59e1b76" kind="enumvalue"><name>PrintDetectHelp</name></member>
+    <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a2cc22e62323a75b556c4e7568f9e588f" kind="enumvalue"><name>PrintImageHelp</name></member>
+    <member refid="classConsoleController_1a72bb6251328668877e850852e35ba48c" kind="variable"><name>appName_</name></member>
+    <member refid="classConsoleController_1a70f4692884f3c0c86b7684090fbf7fd0" kind="variable"><name>parameter_</name></member>
+    <member refid="classConsoleController_1a5795febaeb0ee5836a236419e33db3b7" kind="variable"><name>action_</name></member>
+    <member refid="classConsoleController_1abdc4db6b1d26611161ba1b250ed6bfc6" kind="variable"><name>findType_</name></member>
+    <member refid="classConsoleController_1aec085b7a7a8c42a42e8bc348bb952fea" kind="variable"><name>projectPath_</name></member>
+    <member refid="classConsoleController_1aed7f998b076f322a0c45f0a0e57202c4" kind="function"><name>ConsoleController</name></member>
+    <member refid="classConsoleController_1aaf8a775d3f675bcf9e7facd959217fdc" kind="function"><name>ConsoleController</name></member>
+    <member refid="classConsoleController_1accdfd546eef82cfe4d0942426a3b6fac" kind="function"><name>exec</name></member>
+    <member refid="classConsoleController_1ab9fdcba75eecb1f28c1fcd3b97183fe8" kind="function"><name>decodeArguments</name></member>
+    <member refid="classConsoleController_1a13eaf91bd8d72afeaa3792255983e019" kind="function"><name>setAction</name></member>
+    <member refid="classConsoleController_1a771c221ac40cd6441f13c76bd08b6927" kind="function"><name>printUsage</name></member>
+    <member refid="classConsoleController_1a08cea6c7cb62ea9961af568daeec69c5" kind="function"><name>printClearDetails</name></member>
+    <member refid="classConsoleController_1a5e2c72a9589fc8b5a2d9ba5c905850c8" kind="function"><name>printAddDetails</name></member>
+    <member refid="classConsoleController_1aeef4c9eb3a199d0674c0841eadad6d7e" kind="function"><name>printDetectDetails</name></member>
+    <member refid="classConsoleController_1ae99f394b6610fd7c771e31d864526756" kind="function"><name>printImageDetails</name></member>
+    <member refid="classConsoleController_1a5dd7913a42068df42c3de6dc1f313537" kind="function"><name>printDetectOptions</name></member>
+    <member refid="classConsoleController_1ad652f068aca06aad977468414ca1ba5d" kind="slot"><name>add</name></member>
+    <member refid="classConsoleController_1a42a856cb746624cbf674019b4d9abed6" kind="slot"><name>remove</name></member>
+    <member refid="classConsoleController_1a25fb1ebcda016e864e78e12b9d90be44" kind="slot"><name>clear</name></member>
+    <member refid="classConsoleController_1a2d29a993e0d1d502c5f6cce4881c4287" kind="slot"><name>capture</name></member>
+    <member refid="classConsoleController_1a5bdf86dde2871bcd1f0d81578b37bfb1" kind="slot"><name>load</name></member>
+    <member refid="classConsoleController_1a0d8d8586fcfc35bca5fc1d53ab3d3c4d" kind="slot"><name>detect</name></member>
+    <member refid="classConsoleController_1a1add2ad3066b67640437dca7c169126a" kind="slot"><name>send</name></member>
+    <member refid="classConsoleController_1a50b336fccd31bf300e517902567502e0" kind="slot"><name>cancel</name></member>
+    <member refid="classConsoleController_1a81d82a59e318aad77fa08ea554f01dff" kind="slot"><name>save</name></member>
+    <member refid="classConsoleController_1a2a876abe4f1fdf83632c8514cb80f2bb" kind="slot"><name>saveAs</name></member>
+    <member refid="classConsoleController_1a54ef02e4f2086466af5ec38950b4a07a" kind="slot"><name>open</name></member>
+    <member refid="classConsoleController_1a8f3b5410539ab1d13e426eab5d5994f9" kind="slot"><name>newProject</name></member>
+    <member refid="classConsoleController_1a0945df7b08af6d09406a76e43bf4fe65" kind="slot"><name>processFiles</name></member>
+    <member refid="classConsoleController_1ad6eeca25e91660833ef62d94e3d49911" kind="slot"><name>listProjects</name></member>
+    <member refid="classConsoleController_1af54f09168281c0beeb2cffff3971e7f5" kind="slot"><name>detailCurrentProject</name></member>
+    <member refid="classConsoleController_1a12483c2f6972d02ffce25e0744264633" kind="slot"><name>deleteProject</name></member>
+    <member refid="classConsoleController_1a73527d60f7c5f564f686313817de7437" kind="slot"><name>clearAll</name></member>
+    <member refid="classConsoleController_1a206e9a378dd5a29830cced6a94a2c110" kind="slot"><name>clearImage</name></member>
+    <member refid="classConsoleController_1ac4f4d9c00e75c65b11486138ac313d8f" kind="slot"><name>select</name></member>
+    <member refid="classConsoleController_1ae375f532a7bf4e82ac3b26f4795d7e23" kind="slot"><name>unselect</name></member>
+    <member refid="classConsoleController_1a341552de8eb5509a4a2e204c974cf29d" kind="slot"><name>import</name></member>
+    <member refid="classConsoleController_1a69fc688623ef01f4b0b7922861df8aac" kind="function"><name>requestUsername</name></member>
+    <member refid="classConsoleController_1a13ffd534e518937e3d2e44487ec573d5" kind="function"><name>requestPassword</name></member>
+    <member refid="classConsoleController_1a535aab68f50e4afe9d6edba21c690cd6" kind="function"><name>loadProjectFromConfiguration</name></member>
+  </compound>
+  <compound refid="classContextualizationController" kind="class"><name>ContextualizationController</name>
+    <member refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4" kind="enum"><name>ModelError</name></member>
+    <member refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4a6ccff3cdedbdcfcdfc1eb59c4b088d24" kind="enumvalue"><name>OkModel</name></member>
+    <member refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4adba539af7fd279d01da3a2a1e91e40ca" kind="enumvalue"><name>NoImage</name></member>
+    <member refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4a5d1b78a6b1296da8bf43b62432d090c5" kind="enumvalue"><name>ImageNotExist</name></member>
+    <member refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4a2e771e637c2e37c6b410a96c9f48adfd" kind="enumvalue"><name>NoStrings</name></member>
+    <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fd" kind="enum"><name>CodeError</name></member>
+    <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fdac799a856f8460c5e6b100f08191b2d94" kind="enumvalue"><name>NoError</name></member>
+    <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda067a46ac62df6062561a10108b8e77a9" kind="enumvalue"><name>NullPointer</name></member>
+    <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda4a6ad284235290da632cd7b621ae53be" kind="enumvalue"><name>StringAlreadyExists</name></member>
+    <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fdac9ac40727cb32c37655f627ecd1450d4" kind="enumvalue"><name>NoImportFile</name></member>
+    <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda705a292a89a7c137ed934a1ede90968a" kind="enumvalue"><name>ImportFileFormat</name></member>
+    <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fdad866e236894ecf819409ebb4d44b7fd1" kind="enumvalue"><name>FileNotExists</name></member>
+    <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda3da219148b52a6691d2dbcd9f40ed627" kind="enumvalue"><name>NoRemoteHost</name></member>
+    <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda5360679b825af2b3b97283fae1a9717a" kind="enumvalue"><name>NoValidIp</name></member>
+    <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda860490b2223e4e78d29a514fb51f6fc5" kind="enumvalue"><name>SshpassError</name></member>
+    <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda7447fb0b9cf45b0adc6da65c65c34253" kind="enumvalue"><name>SshError</name></member>
+    <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda841e3c0b31b4da700505de6d3b30dabe" kind="enumvalue"><name>WriteFile</name></member>
+    <member refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdced" kind="enum"><name>MatchType</name></member>
+    <member refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdcedab921b1883492c5a7511b20ec6a5f24f3" kind="enumvalue"><name>ByID</name></member>
+    <member refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdceda0e89844c93d199f9e314fc1a1ddae400" kind="enumvalue"><name>ByValue</name></member>
+    <member refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdceda54d0f26a3c6d7f680f2bcbd383f1d9df" kind="enumvalue"><name>ByApproximateValue</name></member>
+    <member refid="classContextualizationController_1a8e94ee12efc5fb6aba91341b4cc47a26" kind="variable"><name>CHUNK_WIDTH</name></member>
+    <member refid="classContextualizationController_1ae9896f11f9e129fa4ea9d482c18d8b82" kind="variable"><name>CHUNK_HEIGHT</name></member>
+    <member refid="classContextualizationController_1a88ea18a10d1edd6cd15f41b6126e813e" kind="variable"><name>IMAGES_FOLDER</name></member>
+    <member refid="classContextualizationController_1a33d73ba5d5ef0e4c7a47dbb85cea7a7e" kind="variable"><name>PROJECTS_FOLDER</name></member>
+    <member refid="classContextualizationController_1ad01707b9671cf54a78960d7fdfa25463" kind="variable"><name>CONFIG_FOLDER</name></member>
+    <member refid="classContextualizationController_1a3d9769435b8558c75379938e3e78ca95" kind="variable"><name>DONE_FP_FILE</name></member>
+    <member refid="classContextualizationController_1a31b85e006b135987dd34ce6443cc9ad1" kind="variable"><name>model_</name></member>
+    <member refid="classContextualizationController_1aaaea6627d8d88579150001d37916f618" kind="variable"><name>englishFpFile_</name></member>
+    <member refid="classContextualizationController_1a07888f57aa02355d2e0230d6a99f2251" kind="variable"><name>username_</name></member>
+    <member refid="classContextualizationController_1a78b977fec84729a2f9b4cc4a3a57a42e" kind="variable"><name>validStates_</name></member>
+    <member refid="classContextualizationController_1afdc03867fd96587139618c736c350ead" kind="variable"><name>remoteHost_</name></member>
+    <member refid="classContextualizationController_1a8313b2b6332dd76f286e5f24a6329b02" kind="variable"><name>onlyDoneStrings_</name></member>
+    <member refid="classContextualizationController_1a2ac26ea74b41512a52f677ac6c8fa83f" kind="variable"><name>caseSensitive_</name></member>
+    <member refid="classContextualizationController_1a055cc7f78056ccc0d0a55023402a29ee" kind="function"><name>ContextualizationController</name></member>
+    <member refid="classContextualizationController_1ae5b1fa3bf3a7b92c8454e8cd98558989" kind="function"><name>~ContextualizationController</name></member>
+    <member refid="classContextualizationController_1ae2b31282f2258673757c77592f7ded00" kind="function"><name>importProjectFromJsonFile</name></member>
+    <member refid="classContextualizationController_1a26fc3969db0e2217dc6994f819c78572" kind="function"><name>exportToJsonFile</name></member>
+    <member refid="classContextualizationController_1a6b806979e0b4e5a3ce3af09230f66fef" kind="function"><name>validateModel</name></member>
+    <member refid="classContextualizationController_1a737d2562702b3b0da946e7b2f9fa336d" kind="function"><name>generateContextualization</name></member>
+    <member refid="classContextualizationController_1a46ec193d423be47137f34d746145801f" kind="function"><name>sendContextualization</name></member>
+    <member refid="classContextualizationController_1ae6817457c7b00d17bb676a4989d59858" kind="function"><name>detectStringsOnImage</name></member>
+    <member refid="classContextualizationController_1a4afb43a5914ef1c7e2a6bb9357cdd822" kind="function"><name>fastDetectStringsOnImage</name></member>
+    <member refid="classContextualizationController_1a97436fb5b350bcc6be500b0fe2ecc1b7" kind="function"><name>processExtractedStrings</name></member>
+    <member refid="classContextualizationController_1a5f94a4894e3a3c0920dc534346527fa0" kind="function"><name>findString</name></member>
+    <member refid="classContextualizationController_1a0d726ece69d0876729c1c801f9c25230" kind="function"><name>isValidState</name></member>
+    <member refid="classContextualizationController_1abb80030963c4abd056a200fefbf8b4e9" kind="function"><name>addString</name></member>
+    <member refid="classContextualizationController_1a4af8f49a57b9d9a7daf5b51d45620ed6" kind="function"><name>addStrings</name></member>
+    <member refid="classContextualizationController_1adedb36b408caff11f15632998e7b9413" kind="function"><name>removeString</name></member>
+    <member refid="classContextualizationController_1a0fb2ae8db12aba7888504f832bb63bd5" kind="function"><name>removeString</name></member>
+    <member refid="classContextualizationController_1af9eb5f70f45cd3c501a8af97a4b280d4" kind="function"><name>removeAllStrings</name></member>
+    <member refid="classContextualizationController_1a943a8703d6e67fa5a08b4b8d73697dfc" kind="function"><name>selectString</name></member>
+    <member refid="classContextualizationController_1af003f565ad5d3a45fb8b7e66a52487fa" kind="function"><name>clearImage</name></member>
+    <member refid="classContextualizationController_1a121919886590cd4955bbcc2d8b747b26" kind="function"><name>takeCaptureArea</name></member>
+    <member refid="classContextualizationController_1afd1e07f8b9439ff36656bfc7163df892" kind="function"><name>setImage</name></member>
+    <member refid="classContextualizationController_1a7eaa7277a256b9dbf26573a651e442bf" kind="function"><name>isFwStringAlreadyExists</name></member>
+    <member refid="classContextualizationController_1a43b14faa02f64178e6f18f94022447fa" kind="function"><name>eraseExistStrings</name></member>
+    <member refid="classContextualizationController_1afd648aaf148c3db3fb5e3af88e6de2e5" kind="function"><name>getImageOfModel</name></member>
+    <member refid="classContextualizationController_1a6c8aba56f5b97fc3042c6e5c8e04e124" kind="function"><name>getTableModel</name></member>
+    <member refid="classContextualizationController_1ab3824ba2a20c6f4b511fb6169a4349da" kind="function"><name>getDateTime</name></member>
+    <member refid="classContextualizationController_1a3b3d997f77ec6cd8cfe7569b81c31d3f" kind="function"><name>loadConfig</name></member>
+    <member refid="classContextualizationController_1a4cfa5ebd6d0e2c1843fe6073c02873f3" kind="function"><name>saveConfig</name></member>
+    <member refid="classContextualizationController_1af142a8bbd561278c3423ccad3b40c910" kind="function"><name>generateDoneFpFile</name></member>
+    <member refid="classContextualizationController_1a627fba866e282e4e7dff813781ed88cb" kind="function"><name>filterStringsByState</name></member>
+    <member refid="classContextualizationController_1a2bef3de188caf57cad70e47bcf7495d1" kind="function"><name>splitImage</name></member>
+    <member refid="classContextualizationController_1a5d60cf7ca2c78b74bb6a5ad5a5b04e9e" kind="function"><name>getParameterFromConfigFile</name></member>
+    <member refid="classContextualizationController_1a6e92320baf8dbbf148bd3b3e97c5d332" kind="function"><name>setParameterInConfigFile</name></member>
+    <member refid="classContextualizationController_1a0ec0241ee096fa917e3ab7de448e5509" kind="function"><name>proccessAndStorage</name></member>
+    <member refid="classContextualizationController_1afea4c16fa2728506e6301e46891bf73f" kind="slot"><name>add</name></member>
+    <member refid="classContextualizationController_1ae06d4c794e77321439668aadc141aca5" kind="slot"><name>remove</name></member>
+    <member refid="classContextualizationController_1a2f19977180ae0d6ecd3900951d686fe3" kind="slot"><name>clear</name></member>
+    <member refid="classContextualizationController_1ad9e65625e6dc228858cf2c9606606691" kind="slot"><name>capture</name></member>
+    <member refid="classContextualizationController_1a3b93cb8ddf7ec41936d0e3ab980644eb" kind="slot"><name>load</name></member>
+    <member refid="classContextualizationController_1a0b79fa3dbd9e95325df5d1bd8507c7a5" kind="slot"><name>detect</name></member>
+    <member refid="classContextualizationController_1a6c22f71d82e58ed54994dd6da55fba5d" kind="slot"><name>send</name></member>
+    <member refid="classContextualizationController_1aef30a9a0c8c18ef27c58cfd71d000502" kind="slot"><name>cancel</name></member>
+    <member refid="classContextualizationController_1a4fc34afd044a02b28cf1ccaa16e6d696" kind="slot"><name>save</name></member>
+    <member refid="classContextualizationController_1aacbc46aa9cf35b5e5d159ad829f03c0b" kind="slot"><name>saveAs</name></member>
+    <member refid="classContextualizationController_1ab5f48377aa2aa821695a08145bdbf522" kind="slot"><name>open</name></member>
+    <member refid="classContextualizationController_1ab0cd81ecd067cc0c6c475ce597d0f414" kind="slot"><name>refresh</name></member>
+    <member refid="classContextualizationController_1a57d48e9139331145d82c1be284ecdaa5" kind="slot"><name>newProject</name></member>
+    <member refid="classContextualizationController_1a52f5a73a589942dcdf7299097aee36d1" kind="slot"><name>processFiles</name></member>
+    <member refid="classContextualizationController_1a0040eddc367f6685480818a2fd9d7a25" kind="signal"><name>stringsListChanged</name></member>
+    <member refid="classContextualizationController_1ac101eb9c6edbc62b829257c4cfcc9fe1" kind="signal"><name>imageChanged</name></member>
+  </compound>
+  <compound refid="classContextualizationFactoryAbstract" kind="class"><name>ContextualizationFactoryAbstract</name>
+    <member refid="classContextualizationFactoryAbstract_1a87cd3e6ea2f582fe98286a73d3b28f60" kind="enum"><name>KernelType</name></member>
+    <member refid="classContextualizationFactoryAbstract_1a87cd3e6ea2f582fe98286a73d3b28f60aab0da7f36843a565e9a7d689cb4f9c5c" kind="enumvalue"><name>Windows</name></member>
+    <member refid="classContextualizationFactoryAbstract_1a87cd3e6ea2f582fe98286a73d3b28f60a56199c6590dcbadbd8c5a6990b9d60c6" kind="enumvalue"><name>Linux</name></member>
+    <member refid="classContextualizationFactoryAbstract_1a87cd3e6ea2f582fe98286a73d3b28f60a2c390cbfc7fec0af425044b4e02cd9d2" kind="enumvalue"><name>Undefined</name></member>
+    <member refid="classContextualizationFactoryAbstract_1a5f3886dc42bb68d69c5ed39e204d982c" kind="function"><name>ContextualizationFactoryAbstract</name></member>
+    <member refid="classContextualizationFactoryAbstract_1a0898ad4d3a109c5767a1e596bf444e4a" kind="function"><name>createController</name></member>
+    <member refid="classContextualizationFactoryAbstract_1a2d7958c0f68ad388f832abcb7777397d" kind="function"><name>getCurrentKernelType</name></member>
+  </compound>
+  <compound refid="classContextualizationModel" kind="class"><name>ContextualizationModel</name>
+    <member refid="classContextualizationModel_1a398bf0b5ba67fa915d9ba1a3d1f91613" kind="variable"><name>image_</name></member>
+    <member refid="classContextualizationModel_1a2df3c9a3de751085a75f6970c4ed06aa" kind="variable"><name>stringsList_</name></member>
+    <member refid="classContextualizationModel_1a109126afb677af159e77adecf36fb6f2" kind="function"><name>ContextualizationModel</name></member>
+    <member refid="classContextualizationModel_1a232b273faa1bdb051c7a7f61d6601370" kind="function"><name>~ContextualizationModel</name></member>
+    <member refid="classContextualizationModel_1aa87bafc64440304e8d9efd7f23f9b897" kind="function"><name>addString</name></member>
+    <member refid="classContextualizationModel_1aad4004198e03fb3e9bba770f0f76489e" kind="function"><name>addString</name></member>
+    <member refid="classContextualizationModel_1a24021cc16a5215c9765602b311fe9f77" kind="function"><name>addStrings</name></member>
+    <member refid="classContextualizationModel_1a65def773aab689eb131482834d711a22" kind="function"><name>removeString</name></member>
+    <member refid="classContextualizationModel_1a83ce3eb84747d052182a52b481314a85" kind="function"><name>removeString</name></member>
+    <member refid="classContextualizationModel_1a09f646708d9dfaa87d064622a4776194" kind="function"><name>removeAllStrings</name></member>
+    <member refid="classContextualizationModel_1a4aafa9c9e08d2b7a52b17871f755f34b" kind="function"><name>selectString</name></member>
+    <member refid="classContextualizationModel_1a7690c31f0c498607a8137d9d5acb3b32" kind="function"><name>unselectString</name></member>
+    <member refid="classContextualizationModel_1ac098ebbf5cce5aac14182adddf7610e4" kind="function"><name>getStringsList</name></member>
+    <member refid="classContextualizationModel_1a0d3ac87546d9b527c23cc69d0e4e0954" kind="function"><name>setImage</name></member>
+    <member refid="classContextualizationModel_1a930b89fa044d406be44836cde09be11c" kind="function"><name>getImage</name></member>
+    <member refid="classContextualizationModel_1a0d5c107172b0d2e4026cae63d3193f4e" kind="function"><name>isEmpty</name></member>
+    <member refid="classContextualizationModel_1a47cf0c1ba3e6a86f264c501c9fb7e4e5" kind="function"><name>hasImage</name></member>
+    <member refid="classContextualizationModel_1a369461aa31404ea4ff1c04fc2bd21f92" kind="function"><name>hasStrings</name></member>
+    <member refid="classContextualizationModel_1a17eeedb3696fd1d759761c0184d3dedc" kind="function"><name>clear</name></member>
+    <member refid="classContextualizationModel_1aeaea29193156f1c1d2a38a24de6ebbd5" kind="function"><name>toJson</name></member>
+    <member refid="classContextualizationModel_1ac68d84aa77be188dfe51c850c0d5fd4e" kind="function"><name>toJsonObject</name></member>
+    <member refid="classContextualizationModel_1a7c8d0dea4d32c2b573f1f58b0c01b81b" kind="function"><name>operator=</name></member>
+    <member refid="classContextualizationModel_1aa334a054aa36564d56e812a1a9e6de30" kind="function"><name>fromJson</name></member>
+    <member refid="classContextualizationModel_1a08ac67d6c9c3b949e9085d131fa47619" kind="function"><name>fromJson</name></member>
+    <member refid="classContextualizationModel_1a7b2878843e87cff00f5bce5bcb2d4949" kind="signal"><name>stringsListChanged</name></member>
+    <member refid="classContextualizationModel_1abc9b77f8362faea337fbd18fb25ee93a" kind="signal"><name>imageChanged</name></member>
+  </compound>
+  <compound refid="classDatabaseConnectorAbstract" kind="class"><name>DatabaseConnectorAbstract</name>
+    <member refid="classDatabaseConnectorAbstract_1a1ab06cd87949b36d40d4a26d0fc22ff3" kind="variable"><name>MIN_LENGTH_FOR_APPROXIMATE</name></member>
+    <member refid="classDatabaseConnectorAbstract_1acb4ab89c1daae4bd7a252677fb87f66e" kind="variable"><name>MAX_LENGTH_DIFFERENCE</name></member>
+    <member refid="classDatabaseConnectorAbstract_1a0a5f40156183723e5e01d5ab50418118" kind="function"><name>DatabaseConnectorAbstract</name></member>
+    <member refid="classDatabaseConnectorAbstract_1aeb4347bc18b6bed9a9b6120f68c10e9d" kind="function"><name>getAllStrings</name></member>
+    <member refid="classDatabaseConnectorAbstract_1a1d33547045c5f8619f44290c932edb1b" kind="function"><name>getStringsWithValue</name></member>
+    <member refid="classDatabaseConnectorAbstract_1a5b0f30372ca105a94073267e969b74ee" kind="function"><name>getStringsWithApproximateValue</name></member>
+    <member refid="classDatabaseConnectorAbstract_1a757f25feaf50af012d25db8f27b1fef4" kind="function"><name>getStringWithId</name></member>
+    <member refid="classDatabaseConnectorAbstract_1a74952c7e14c891e33c84995066003c5a" kind="function"><name>getStringsWithState</name></member>
+    <member refid="classDatabaseConnectorAbstract_1ac7cc5cf2deace9652810001722758206" kind="function"><name>insertString</name></member>
+    <member refid="classDatabaseConnectorAbstract_1a0e8c94cf0b38c797d6feef864a23347b" kind="function"><name>insertStrings</name></member>
+    <member refid="classDatabaseConnectorAbstract_1af482c0b4af4488c5897c04d0c4dff906" kind="function"><name>removeStringsWithValue</name></member>
+    <member refid="classDatabaseConnectorAbstract_1a8c2b0fa4e37d16c1b1ea1cafec166ca0" kind="function"><name>removeStringsWithId</name></member>
+    <member refid="classDatabaseConnectorAbstract_1a77ff263d407366e54f3e8512c575ff5e" kind="function"><name>getLanguages</name></member>
+    <member refid="classDatabaseConnectorAbstract_1a98f5b2472bab6edc82ce2c5554319d7f" kind="function"><name>getLanguageIds</name></member>
+  </compound>
+  <compound refid="classFirmwareString" kind="class"><name>FirmwareString</name>
+    <member refid="classFirmwareString_1a624ab9d3c534ffd9c99665d2462e73ac" kind="function"><name>FirmwareString</name></member>
+    <member refid="classFirmwareString_1a3439d83bad2ac371123d26560f4f3716" kind="function"><name>FirmwareString</name></member>
+    <member refid="classFirmwareString_1a29f14882ef2a8274cebb7d153f0ea85b" kind="function"><name>FirmwareString</name></member>
+    <member refid="classFirmwareString_1aa2fe115e019e6362ca1fb151097ffe88" kind="function"><name>operator=</name></member>
+    <member refid="classFirmwareString_1a94293dec7077d625c6b977f1f15bfd2d" kind="function"><name>fromJson</name></member>
+    <member refid="classFirmwareString_1a90a6e343748d41c0a0ab9eb7e4fccaee" kind="function"><name>fromJson</name></member>
+    <member refid="classFirmwareString_1a0fcfdf14bbecd7c2c4464574b9ce9d91" kind="function"><name>fromFpLine</name></member>
+  </compound>
+  <compound refid="classFpFileConnector" kind="class"><name>FpFileConnector</name>
+    <member refid="classFpFileConnector_1af6a2d03a526f1df7adcf60390fff0ed8" kind="variable"><name>file_</name></member>
+    <member refid="classFpFileConnector_1a2e474f8746dd54729fe68c224ff24275" kind="function"><name>FpFileConnector</name></member>
+    <member refid="classFpFileConnector_1a51b38b735ab4728601aef295d7b4c21f" kind="function"><name>FpFileConnector</name></member>
+    <member refid="classFpFileConnector_1af1a00dabd759abd0b59bf9e26edc73cf" kind="function"><name>getPath</name></member>
+    <member refid="classFpFileConnector_1a7a5c2987feae762ce359de702f5702e3" kind="function"><name>setPath</name></member>
+    <member refid="classFpFileConnector_1ad392db922a5e04a670b84fc616192eea" kind="function"><name>getAllStrings</name></member>
+    <member refid="classFpFileConnector_1a72a6ca5a5b8a44783d2ed990b111675b" kind="function"><name>getStringsWithValue</name></member>
+    <member refid="classFpFileConnector_1adc85e526e1dab9f3de03cb8a2f33f7d1" kind="function"><name>getStringsWithApproximateValue</name></member>
+    <member refid="classFpFileConnector_1a29a6df6ea88a1e44f6b04c600b45925c" kind="function"><name>getStringWithId</name></member>
+    <member refid="classFpFileConnector_1a4c671329fd2fd1b9c3a7d72de1028afd" kind="function"><name>getStringsWithState</name></member>
+    <member refid="classFpFileConnector_1ae4f79d6a1281a20702b0257de56822b2" kind="function"><name>insertString</name></member>
+    <member refid="classFpFileConnector_1a7f31d3e699ce4c489c2303370d032a7e" kind="function"><name>insertStrings</name></member>
+    <member refid="classFpFileConnector_1a57c6eafd6b4c7dfbd927f6d4cb63d25c" kind="function"><name>removeStringsWithValue</name></member>
+    <member refid="classFpFileConnector_1a8e09804b3c21f6b56dcc70659bbf105f" kind="function"><name>removeStringsWithId</name></member>
+    <member refid="classFpFileConnector_1a82b6ae6887737cfea3b982cb0874424e" kind="function"><name>getLanguages</name></member>
+    <member refid="classFpFileConnector_1a290016844ec3093b1c58db33fc86cd0a" kind="function"><name>getLanguageIds</name></member>
+  </compound>
+  <compound refid="classGuiController" kind="class"><name>GuiController</name>
+    <member refid="classGuiController_1a10a671bf27008ab3e60e62b2106f8275" kind="property"><name>image</name></member>
+    <member refid="classGuiController_1a2ce97d522206f2adf3d38eb534f76d16" kind="property"><name>tableModel</name></member>
+    <member refid="classGuiController_1ad588a1633d6df3e17673232bc8a548dd" kind="property"><name>view</name></member>
+    <member refid="classGuiController_1a9130c47e3ab1205ed9c5a12a8afa9ec3" kind="property"><name>onlyDoneStrings</name></member>
+    <member refid="classGuiController_1acf4e341b4f9b6c3c383c58531c494ecf" kind="property"><name>caseSensitive</name></member>
+    <member refid="classGuiController_1ae3c45dd471a5fead2859e073dee9c22b" kind="variable"><name>view_</name></member>
+    <member refid="classGuiController_1a318108e0adc535fdff307b332ba31cbf" kind="variable"><name>currentProjectPath_</name></member>
+    <member refid="classGuiController_1ac2bdb09c739be3d64c1361cdd2d3fb40" kind="variable"><name>projectHasChanges_</name></member>
+    <member refid="classGuiController_1a853ee45214496ae1e59cd0139ecd1552" kind="function"><name>GuiController</name></member>
+    <member refid="classGuiController_1a5b3332300c60a28c1f97a28ef51bac43" kind="function"><name>~GuiController</name></member>
+    <member refid="classGuiController_1aaa62e4444878e5debfb143c7cc5fcf24" kind="slot"><name>add</name></member>
+    <member refid="classGuiController_1adc896e8a62c256e73c7015e6acc91ea5" kind="slot"><name>remove</name></member>
+    <member refid="classGuiController_1a2ecb5b6f3b1ab6f9477b92f959884281" kind="slot"><name>clear</name></member>
+    <member refid="classGuiController_1a4d7dd074d188e0e7e631c7aa21d29792" kind="slot"><name>capture</name></member>
+    <member refid="classGuiController_1a58d647ed044e3ade14234029a879d4eb" kind="slot"><name>load</name></member>
+    <member refid="classGuiController_1aaa89ff4e7227ff4da8f74b856a7331e2" kind="slot"><name>detect</name></member>
+    <member refid="classGuiController_1a12166e0f976a2f7dbc6eab96e8d66a5f" kind="slot"><name>send</name></member>
+    <member refid="classGuiController_1ad4e64ce2ed310c475da6a4e1e68340c9" kind="slot"><name>cancel</name></member>
+    <member refid="classGuiController_1a86c6358a98e8b88198278967bdda29f9" kind="slot"><name>save</name></member>
+    <member refid="classGuiController_1a3a68aaf27475fdd15b12ac2d4c03c1f3" kind="slot"><name>saveAs</name></member>
+    <member refid="classGuiController_1a4becaf327fedcee2da7c2362d502791d" kind="slot"><name>open</name></member>
+    <member refid="classGuiController_1a2d76ebccf2522585145d0fdcf073597a" kind="slot"><name>newProject</name></member>
+    <member refid="classGuiController_1ae7a067a06ed185e840482f84b16ad7f6" kind="slot"><name>processFiles</name></member>
+    <member refid="classGuiController_1a43a13880969fb7f614bcc06084a6e8d3" kind="slot"><name>detectsStringOnInterestingArea</name></member>
+    <member refid="classGuiController_1a8992072983a5daeb134b1315f3c7c926" kind="slot"><name>indicateProjectChanges</name></member>
+    <member refid="classGuiController_1adb53e45b755b5ecc63b756f4207a0bca" kind="slot"><name>indicateProjectSaved</name></member>
+    <member refid="classGuiController_1a867563c42c572b3f2171663a2d17bcf4" kind="slot"><name>configFpFile</name></member>
+    <member refid="classGuiController_1a122e2f31647c10b3ab64e8dd9ed9eca9" kind="slot"><name>configRemoteHost</name></member>
+    <member refid="classGuiController_1a713d58859076eb840c1b42b25300d756" kind="function"><name>connectGuiSignalsAndSlots</name></member>
+    <member refid="classGuiController_1a94adc92d11fbb9b9d01d6a8df925e082" kind="function"><name>connectModelSignalsAndSlots</name></member>
+    <member refid="classGuiController_1ad52ae6c9b19d645b3441c53c41e56e59" kind="function"><name>getView</name></member>
+    <member refid="classGuiController_1a04549e60a653402f6aa64380c3d8864d" kind="function"><name>setView</name></member>
+    <member refid="classGuiController_1ad6ecb3a36250f465611f14736f316f04" kind="function"><name>requestUsername</name></member>
+    <member refid="classGuiController_1af56cb14e8af54fa3889916bda29fe9a5" kind="function"><name>requestPassword</name></member>
+    <member refid="classGuiController_1a3bcaea6fb5694216afc69c4eca13b711" kind="signal"><name>viewChanged</name></member>
+    <member refid="classGuiController_1a916ef2ef2d8d7b9ac4e63ee746dcdaaa" kind="signal"><name>unchangedProject</name></member>
+    <member refid="classGuiController_1a20613f0b5eb1d49e4006a82ca80f17c5" kind="signal"><name>stringsListChanged</name></member>
+    <member refid="classGuiController_1a8e5b5cd2b34a4c86d2b95acd1359b86a" kind="signal"><name>imageChanged</name></member>
+  </compound>
+  <compound refid="classHpContextualizationFactory" kind="class"><name>HpContextualizationFactory</name>
+    <member refid="classHpContextualizationFactory_1afee11305ab5203745cddd4a837542ea3" kind="function"><name>HpContextualizationFactory</name></member>
+    <member refid="classHpContextualizationFactory_1ad9d9c11a2827c8854c4cadbf38b4e7ca" kind="function"><name>createController</name></member>
+  </compound>
+  <compound refid="classLinuxConsoleController" kind="class"><name>LinuxConsoleController</name>
+    <member refid="classLinuxConsoleController_1a22dbaf4b36c07b2bc729287c93118853" kind="function"><name>LinuxConsoleController</name></member>
+    <member refid="classLinuxConsoleController_1a28e3374d97058fa2649d2582686bfe6f" kind="function"><name>LinuxConsoleController</name></member>
+    <member refid="classLinuxConsoleController_1ac9944bf1302b077c733802349359e777" kind="function"><name>takeCaptureArea</name></member>
+  </compound>
+  <compound refid="classLinuxGuiController" kind="class"><name>LinuxGuiController</name>
+    <member refid="classLinuxGuiController_1a26b28a0d7854973830048c9087a3cdf1" kind="function"><name>LinuxGuiController</name></member>
+    <member refid="classLinuxGuiController_1a8242963a9c5f4b967902f8ee576294ec" kind="function"><name>takeCaptureArea</name></member>
+  </compound>
+  <compound refid="classLog" kind="class"><name>Log</name>
+    <member refid="classLog_1a4a1919e0dd335db90655910c1326a124" kind="variable"><name>debugFile_</name></member>
+    <member refid="classLog_1a611981424c87fab535ca796278fc924e" kind="variable"><name>logFile_</name></member>
+    <member refid="classLog_1a3c0a35f5bf55847f95728a2eef8b2110" kind="variable"><name>errorFile_</name></member>
+    <member refid="classLog_1af6071a60aa52b6c1b511f99b4bc1b8fe" kind="function"><name>Log</name></member>
+    <member refid="classLog_1a8291d71e5438b70ac71232a23606690a" kind="function"><name>writeDebug</name></member>
+    <member refid="classLog_1a1808c128874dd41cca3536ed5672df12" kind="function"><name>writeLog</name></member>
+    <member refid="classLog_1ae35819424f49efa88b29a0bccc962f93" kind="function"><name>writeError</name></member>
+    <member refid="classLog_1a7f8b5f1f74bb6378e8141885a8d3710d" kind="function"><name>write</name></member>
+  </compound>
+  <compound refid="classMySqlConnector" kind="class"><name>MySqlConnector</name>
+    <member refid="classMySqlConnector_1a64431121820ea65a8e8350daa7e93c8b" kind="variable"><name>host_</name></member>
+    <member refid="classMySqlConnector_1a6d99ef60b4ff153c578716386428312d" kind="variable"><name>user_</name></member>
+    <member refid="classMySqlConnector_1ab3edeb5190b96da7c7fffcb2f1c4e9d1" kind="variable"><name>password_</name></member>
+    <member refid="classMySqlConnector_1a1e019fdf95acaa5617067ea4d1a70aea" kind="variable"><name>dataBase_</name></member>
+    <member refid="classMySqlConnector_1af17a58a3749687938d0b3b15e276dab7" kind="function"><name>MySqlConnector</name></member>
+    <member refid="classMySqlConnector_1a86344c8e5fb792da1da746bdea3a2474" kind="function"><name>MySqlConnector</name></member>
+    <member refid="classMySqlConnector_1ae652c2a79321d979121e2347cbb25ba0" kind="function"><name>getUser</name></member>
+    <member refid="classMySqlConnector_1a0cf4bedae2d4093449590aa59d200ce8" kind="function"><name>setUser</name></member>
+    <member refid="classMySqlConnector_1a92af1c28da0953a69573b21f68b8a41f" kind="function"><name>setPassword</name></member>
+    <member refid="classMySqlConnector_1a9bada8a552b17c5e39e7d1c903201b4b" kind="function"><name>getDataBase</name></member>
+    <member refid="classMySqlConnector_1a8688bfeb3bb6ba6181f5ce90dc8066d8" kind="function"><name>setDataBase</name></member>
+    <member refid="classMySqlConnector_1ad6ff79c4049e3631800da97e8d7b7704" kind="function"><name>getAllStrings</name></member>
+    <member refid="classMySqlConnector_1ae7440816a5bda9e63ea526656c4001f5" kind="function"><name>getStringsWithValue</name></member>
+    <member refid="classMySqlConnector_1a8a480141c72dc8da687b15f921ab1a4e" kind="function"><name>getStringsWithApproximateValue</name></member>
+    <member refid="classMySqlConnector_1a269bbced50451ff0ce48cfc4f2bb6a3b" kind="function"><name>getStringWithId</name></member>
+    <member refid="classMySqlConnector_1a821c3dcebcd763df1700881cb47685d5" kind="function"><name>getStringsWithState</name></member>
+    <member refid="classMySqlConnector_1a4608c0764241969454a55b42873cb86b" kind="function"><name>insertString</name></member>
+    <member refid="classMySqlConnector_1a77a5169dd8a515b613642c88dac9798b" kind="function"><name>insertStrings</name></member>
+    <member refid="classMySqlConnector_1a528aac591ea56ade27a096bb997abb2a" kind="function"><name>removeStringsWithValue</name></member>
+    <member refid="classMySqlConnector_1a3c340e5310c56410d64ecd89e5cf6661" kind="function"><name>removeStringsWithId</name></member>
+    <member refid="classMySqlConnector_1a83be1a4d67e509b6604629660eb7c4a0" kind="function"><name>getLanguages</name></member>
+    <member refid="classMySqlConnector_1a3493828360c7edd217461e040fc1b00e" kind="function"><name>getLanguageIds</name></member>
+    <member refid="classMySqlConnector_1a16a6f0883e2b384621e738f78c619af6" kind="function"><name>getKeyFromLanguage</name></member>
+    <member refid="classMySqlConnector_1accf4f824e4ab50035697439fd078e93d" kind="function"><name>isAnyImportantFieldEmpty</name></member>
+  </compound>
+  <compound refid="classOcr" kind="class"><name>Ocr</name>
+    <member refid="classOcr_1a731be039b828dfb1c1f3d5efdeaea9aa" kind="variable"><name>image_</name></member>
+    <member refid="classOcr_1ad5f11045f50c9d8a23d2cea235c509ad" kind="variable"><name>language_</name></member>
+    <member refid="classOcr_1a5c13f164c431cb4bc5a487eba75be7b4" kind="variable"><name>datapath_</name></member>
+    <member refid="classOcr_1a285da90c44b929a9883a461de3e6578d" kind="function"><name>Ocr</name></member>
+    <member refid="classOcr_1a93ead91f7b64663ce6ed71ca4542d2f7" kind="function"><name>~Ocr</name></member>
+    <member refid="classOcr_1a09a27b3a1f579c41ebda05f2a2cf4fed" kind="function"><name>extract</name></member>
+    <member refid="classOcr_1a1b0eed20f8e7f553401834849d044bd2" kind="function"><name>getAvailableLanguages</name></member>
+    <member refid="classOcr_1abf98eb2648c41446700515c3e6ed3a24" kind="function"><name>getLanguages</name></member>
+    <member refid="classOcr_1ad2fb764c1c6766233ebbb53e62064bb8" kind="function"><name>addLanguage</name></member>
+    <member refid="classOcr_1a76001048da750374c987bef8171f1977" kind="function"><name>removeLanguage</name></member>
+    <member refid="classOcr_1a0c9ebb9b531bdcd6789d4bf9cffb1d42" kind="function"><name>isAvailableLanguage</name></member>
+    <member refid="classOcr_1a4bd4275b9b0503dd23dd553b4c0ef54c" kind="function"><name>getImage</name></member>
+    <member refid="classOcr_1acdc41b9a0663c194d0fbede8c26ea319" kind="function"><name>setImage</name></member>
+    <member refid="classOcr_1a44f623335f8c26cc956b549a7bbf75fe" kind="function"><name>getDataPath</name></member>
+    <member refid="classOcr_1a0ec269340072accaa9d0932699b2a8ef" kind="function"><name>setDataPath</name></member>
+    <member refid="classOcr_1ac6f28693948e68e8958f1a27c73c79d1" kind="function"><name>processExtration</name></member>
+  </compound>
+  <compound refid="classString" kind="class"><name>String</name>
+    <member refid="classString_1a82cd6049ff79198e7d24ed97b7a6c4c3" kind="property"><name>id</name></member>
+    <member refid="classString_1a08d78cc301801cdac26795f3070fab9c" kind="property"><name>value</name></member>
+    <member refid="classString_1aa3d3e472e670f550eb5f9e26aeee81d6" kind="property"><name>description</name></member>
+    <member refid="classString_1a7a711e734960d3e721a6439d96289ce2" kind="property"><name>maxLength</name></member>
+    <member refid="classString_1ab4d9446f69355dc0c9bdd3ecda847679" kind="property"><name>state</name></member>
+    <member refid="classString_1aa80dde9547a7d229060f9bb094ee28f1" kind="property"><name>selected</name></member>
+    <member refid="classString_1a11a02211f65634f17ea47cb8b1a272ed" kind="property"><name>editable</name></member>
+    <member refid="classString_1a57119b0e8878311777ccf94ea542f745" kind="variable"><name>id_</name></member>
+    <member refid="classString_1a4168491f40c415cd410fbab1cccfc523" kind="variable"><name>value_</name></member>
+    <member refid="classString_1a87cbb04e3c7fd009a4323e95d39cfd1e" kind="variable"><name>description_</name></member>
+    <member refid="classString_1a8463d3d3d595bc50b4f37908f4e6aa74" kind="variable"><name>maxLength_</name></member>
+    <member refid="classString_1acb000d4634c91cdffcc89e44c534c008" kind="variable"><name>state_</name></member>
+    <member refid="classString_1a2c7623a98c3bec1ae8658952dca0b1bf" kind="variable"><name>selected_</name></member>
+    <member refid="classString_1ac8f7b0d152b7aaedb6eadb2c15ed23b5" kind="variable"><name>editable_</name></member>
+    <member refid="classString_1a8a7ef356e05eb9b1ea1ab518baee3095" kind="function"><name>String</name></member>
+    <member refid="classString_1addd6bcc4ba529bdc45d3fd69ad1a3569" kind="function"><name>String</name></member>
+    <member refid="classString_1a4edf46375241ec3585f26758750b3d9e" kind="function"><name>String</name></member>
+    <member refid="classString_1ab32615121278a445dba468c7ef18ee7a" kind="function"><name>getId</name></member>
+    <member refid="classString_1a11c7a52caa2ebc68d27ecd9cb5a35d16" kind="function"><name>setId</name></member>
+    <member refid="classString_1a926f7c30cfca26009604d0c765950c4b" kind="function"><name>getValue</name></member>
+    <member refid="classString_1ae863781e31fe2378468547159a9172a6" kind="function"><name>setValue</name></member>
+    <member refid="classString_1ae604e3af13ef6ba3113a7484edfc3c55" kind="function"><name>getDescription</name></member>
+    <member refid="classString_1ac91f0504a470b1602952cfd657979e4b" kind="function"><name>setDescription</name></member>
+    <member refid="classString_1af95fe7d7e2a8b604d7af3b7f0476ec0e" kind="function"><name>getMaxLength</name></member>
+    <member refid="classString_1a141c695ac9095099e0d27a3f1b01a1ca" kind="function"><name>setMaxLength</name></member>
+    <member refid="classString_1ae5ee38919f5a360e0283baedb11c48e0" kind="function"><name>getState</name></member>
+    <member refid="classString_1a7b1b070889aef0e2e9eb4d7d55161cf3" kind="function"><name>setState</name></member>
+    <member refid="classString_1a43fe9257fb504215834afa322313f8c9" kind="function"><name>isEmpty</name></member>
+    <member refid="classString_1a3f5ffd092dd9870ae281b2e08d3b69dd" kind="function"><name>isSelected</name></member>
+    <member refid="classString_1ad575beeccbf4ae38bc5eab1ebfff3216" kind="function"><name>select</name></member>
+    <member refid="classString_1a26bc857fbf7077d23667cd0b1e9ecd6d" kind="function"><name>unselect</name></member>
+    <member refid="classString_1a68737226a49a262c0a4952473788a77a" kind="function"><name>setSelected</name></member>
+    <member refid="classString_1a64c436144f008a40743c64b5094700bb" kind="function"><name>isEditable</name></member>
+    <member refid="classString_1ae2ff38f8907c105ef577012a8db3f46e" kind="function"><name>setEditable</name></member>
+    <member refid="classString_1ab73513e47b7572940944d54963056d07" kind="function"><name>toFpFileFormat</name></member>
+    <member refid="classString_1a3dca5b8881d9f531a7ee9bbaf2fff535" kind="function"><name>toJson</name></member>
+    <member refid="classString_1a44e35d48e6bf3efe128d3855d242a131" kind="function"><name>toJsonObject</name></member>
+    <member refid="classString_1a734f34a0b7a42bcad30c368d6e8c5469" kind="function"><name>operator=</name></member>
+    <member refid="classString_1af406afb78e8dae5e7d2deef41d1f9ed7" kind="function"><name>fromJson</name></member>
+    <member refid="classString_1ab785f3109ff1638b4fb2b052de6cac03" kind="function"><name>fromJson</name></member>
+    <member refid="classString_1a96493c66757b6aa5a5ac45c245d84740" kind="signal"><name>idChanged</name></member>
+    <member refid="classString_1aa0c62ee31f5e0e91b8f68a13405db51b" kind="signal"><name>valueChanged</name></member>
+    <member refid="classString_1ada21cf632b6350cd959efc3b7c0a1b5f" kind="signal"><name>descriptionChanged</name></member>
+    <member refid="classString_1ae48fd165246597a387bcdc86aede6899" kind="signal"><name>maxLengthChanged</name></member>
+    <member refid="classString_1a9ffcae019b2cfb3a5e75ba4d390d725b" kind="signal"><name>stateChanged</name></member>
+    <member refid="classString_1ab6012061024cd0862b9a8ca9fbc1896d" kind="signal"><name>selectedChanged</name></member>
+    <member refid="classString_1a9f37720f465dce86576a2ad347c386b0" kind="signal"><name>editableChanged</name></member>
+  </compound>
+  <compound refid="classTesseractOcr" kind="class"><name>TesseractOcr</name>
+    <member refid="classTesseractOcr_1adc2e1b9bf20cdbdb8b2c7238355b9005" kind="variable"><name>api_</name></member>
+    <member refid="classTesseractOcr_1aa2ba043b1fdfeaed3925ae1bc386b735" kind="variable"><name>pageSegMode_</name></member>
+    <member refid="classTesseractOcr_1a58298987035af6117dd37a023f53870c" kind="variable"><name>engineMode_</name></member>
+    <member refid="classTesseractOcr_1a9e62c15a4f8e4c8a0a614cf04ec8dea6" kind="function"><name>TesseractOcr</name></member>
+    <member refid="classTesseractOcr_1ad550fd8468a1b1ee0b915c7202281dc7" kind="function"><name>TesseractOcr</name></member>
+    <member refid="classTesseractOcr_1a8cac9f702b0eb765b522375d4aae08e9" kind="function"><name>TesseractOcr</name></member>
+    <member refid="classTesseractOcr_1ad7d20b699dec0f1939c58eb0cc952406" kind="function"><name>~TesseractOcr</name></member>
+    <member refid="classTesseractOcr_1a7e5a1d3e275f710ce187bc1c0b080327" kind="function"><name>extract</name></member>
+    <member refid="classTesseractOcr_1ad3486dcaa8a478c72ebaf76c43671326" kind="function"><name>getAvailableLanguages</name></member>
+    <member refid="classTesseractOcr_1aefe201ace3b144cb8834931b57f79bfd" kind="function"><name>isAvailableLanguage</name></member>
+    <member refid="classTesseractOcr_1afd6329838570d29a97834f3c91f0bb2c" kind="function"><name>getPageSegMode</name></member>
+    <member refid="classTesseractOcr_1a16b1a94b0829a668e2f3ebc48c6e9e37" kind="function"><name>setPageSegMode</name></member>
+    <member refid="classTesseractOcr_1a911234ba57781e4e33515e2f0eab4320" kind="function"><name>getEngineMode</name></member>
+    <member refid="classTesseractOcr_1acd714224045f4808b732f865164e1e1a" kind="function"><name>setEngineMode</name></member>
+    <member refid="classTesseractOcr_1ae1327017072b55801ce9ebdbab956b6a" kind="function"><name>operator=</name></member>
+    <member refid="classTesseractOcr_1a0d18ce6d1819df592b0c9175906bd543" kind="function"><name>initApi</name></member>
+    <member refid="classTesseractOcr_1af105e2b000fe647c9f3a7a33b92c7073" kind="function"><name>processExtration</name></member>
+  </compound>
+  <compound refid="classUtils" kind="class"><name>Utils</name>
+    <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2" kind="enum"><name>TextModifier</name></member>
+    <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a39f1a78939e1d4ce79bcc88d8f0d6a1f" kind="enumvalue"><name>FG_BLACK</name></member>
+    <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2aecba2732375982cddf19e735b12bf9dc" kind="enumvalue"><name>FG_RED</name></member>
+    <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2afa2e3860716ac053c70f6a89f5a47e45" kind="enumvalue"><name>FG_GREEN</name></member>
+    <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2aa72d90f0070ff5f60c1226c7eee4d76e" kind="enumvalue"><name>FG_YELLOW</name></member>
+    <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a238297e309e520bd2796c968314b37d4" kind="enumvalue"><name>FG_BLUE</name></member>
+    <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a9fb8bfe4dbdecd2dea8dcc13691b6bfe" kind="enumvalue"><name>FG_MAGENTA</name></member>
+    <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a7496759502c74e2fb1b6b41e40d708da" kind="enumvalue"><name>FG_CYAN</name></member>
+    <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a0773c8537cc757b3f91ef3f056fc8e01" kind="enumvalue"><name>FG_WHITE</name></member>
+    <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2ae53e180d7734261c1eeb6f5b8046ee24" kind="enumvalue"><name>BG_BLACK</name></member>
+    <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2ae42dc37bb30e3d6a339e31b8799a0cc8" kind="enumvalue"><name>BG_RED</name></member>
+    <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a304cda86f4e91dd0f25fe5cc49fa386f" kind="enumvalue"><name>BG_GREEN</name></member>
+    <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a605748c9069d2aa85ecfc1b18546e65e" kind="enumvalue"><name>BG_YELLOW</name></member>
+    <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a4b3dbf96f2aa0105ccaee7642a0b9c43" kind="enumvalue"><name>BG_BLUE</name></member>
+    <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2ab40a0e2307f8eaf9045c3e7871a67c37" kind="enumvalue"><name>BG_MAGENTA</name></member>
+    <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a98728a943fa0b495de3d0aafc6000943" kind="enumvalue"><name>BG_CYAN</name></member>
+    <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a4294fd26d218c1fae6ac2d0fe0fb99a3" kind="enumvalue"><name>BG_WHITE</name></member>
+    <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a12907a9ced1317d0c7ba02f2dbe0b6ec" kind="enumvalue"><name>RESET</name></member>
+    <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a34a3c1317c33b3b51ada23abfb30d0c3" kind="enumvalue"><name>BOLD</name></member>
+    <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a0cdd170af17e97c899264ba026990145" kind="enumvalue"><name>UNDERLNE</name></member>
+    <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a69b78b99d4b769427fc5bff4cd756353" kind="enumvalue"><name>INVERSE</name></member>
+    <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a30a8134b5e0cce11651d7cefdda133f3" kind="enumvalue"><name>BOLD_OFF</name></member>
+    <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a175f014d51622f39f71f5a275e52ffa0" kind="enumvalue"><name>UNDERLINE_OFF</name></member>
+    <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2acb9181d52a5eaa0e2f557896d42f4139" kind="enumvalue"><name>INVERSE_OFF</name></member>
+    <member refid="classUtils_1a452e78692c87ed5c7c993b6c6ac4981a" kind="function"><name>Utils</name></member>
+    <member refid="classUtils_1ac24a694013a7415b517f63a0641a0fb6" kind="function"><name>errorMessage</name></member>
+    <member refid="classUtils_1a3ff1c4308ffae59e9cc2bec504a1448a" kind="function"><name>warningMessage</name></member>
+    <member refid="classUtils_1aeb00036fda3bd7faa92e805579fffa3e" kind="function"><name>informativeMessage</name></member>
+    <member refid="classUtils_1a77efde99fa16c21245f66273c7fded3a" kind="function"><name>appendFile</name></member>
+    <member refid="classUtils_1ae41ebd024526737fbaaada06e229b3c5" kind="function"><name>writeFile</name></member>
+    <member refid="classUtils_1a8ab4445ab51c372f969d3088ef0b73d9" kind="function"><name>readAllFile</name></member>
+    <member refid="classUtils_1a0ba873605d1b72ee448c18507d898d21" kind="function"><name>executeProgram</name></member>
+    <member refid="classUtils_1ad33c4bda97a81483e4b34e692e747d0b" kind="function"><name>zipCompressDirectoryContents</name></member>
+    <member refid="classUtils_1a12f3c653e90f7ed38287f0a8897f60d5" kind="function"><name>startProgressDialogCounter</name></member>
+    <member refid="classUtils_1a1909e9cbf006b2ea0681d7c32605aca6" kind="function"><name>isValidIp</name></member>
+    <member refid="classUtils_1aedd4143ac5a4b343d1486b9629a2d185" kind="function"><name>getDateTime</name></member>
+    <member refid="classUtils_1a85a0cb065fa4399c42ce834952420d7a" kind="function"><name>getTmpDirectory</name></member>
+    <member refid="classUtils_1a9885ad8eac3df9b5e22363dd1e9ff5b2" kind="function"><name>formatText</name></member>
+  </compound>
+  <compound refid="classWindowsConsoleController" kind="class"><name>WindowsConsoleController</name>
+    <member refid="classWindowsConsoleController_1ac2d015316b132fb43289d44277b33e3b" kind="function"><name>WindowsConsoleController</name></member>
+    <member refid="classWindowsConsoleController_1a684161508236414615ee30bc9b29b79f" kind="function"><name>WindowsConsoleController</name></member>
+    <member refid="classWindowsConsoleController_1ab536d94896c62a1920a6dbfd4b83c18b" kind="function"><name>takeCaptureArea</name></member>
+    <member refid="classWindowsConsoleController_1afca6af922fe103845177580d6af4859e" kind="function"><name>generateDoneFpFile</name></member>
+  </compound>
+  <compound refid="classWindowsGuiController" kind="class"><name>WindowsGuiController</name>
+    <member refid="classWindowsGuiController_1ac6bbeedbefdf126c07e4b8a9b0f82d10" kind="function"><name>WindowsGuiController</name></member>
+    <member refid="classWindowsGuiController_1afcda369c002842873b3fb3cc3a593c06" kind="function"><name>takeCaptureArea</name></member>
+    <member refid="classWindowsGuiController_1aa78e32ce3635fc99f846d545d4a320b3" kind="function"><name>generateDoneFpFile</name></member>
+  </compound>
+  <compound refid="consolecontroller_8cpp" kind="file"><name>consolecontroller.cpp</name>
+  </compound>
+  <compound refid="consolecontroller_8h" kind="file"><name>consolecontroller.h</name>
+  </compound>
+  <compound refid="contextualizationcontroller_8cpp" kind="file"><name>contextualizationcontroller.cpp</name>
+  </compound>
+  <compound refid="contextualizationcontroller_8h" kind="file"><name>contextualizationcontroller.h</name>
+  </compound>
+  <compound refid="guicontroller_8cpp" kind="file"><name>guicontroller.cpp</name>
+  </compound>
+  <compound refid="guicontroller_8h" kind="file"><name>guicontroller.h</name>
+  </compound>
+  <compound refid="linuxconsolecontroller_8cpp" kind="file"><name>linuxconsolecontroller.cpp</name>
+  </compound>
+  <compound refid="linuxconsolecontroller_8h" kind="file"><name>linuxconsolecontroller.h</name>
+  </compound>
+  <compound refid="linuxguicontroller_8cpp" kind="file"><name>linuxguicontroller.cpp</name>
+  </compound>
+  <compound refid="linuxguicontroller_8h" kind="file"><name>linuxguicontroller.h</name>
+  </compound>
+  <compound refid="windowsconsolecontroller_8cpp" kind="file"><name>windowsconsolecontroller.cpp</name>
+  </compound>
+  <compound refid="windowsconsolecontroller_8h" kind="file"><name>windowsconsolecontroller.h</name>
+  </compound>
+  <compound refid="windowsguicontroller_8cpp" kind="file"><name>windowsguicontroller.cpp</name>
+  </compound>
+  <compound refid="windowsguicontroller_8h" kind="file"><name>windowsguicontroller.h</name>
+  </compound>
+  <compound refid="contextualizationmodel_8cpp" kind="file"><name>contextualizationmodel.cpp</name>
+  </compound>
+  <compound refid="contextualizationmodel_8h" kind="file"><name>contextualizationmodel.h</name>
+  </compound>
+  <compound refid="firmwarestring_8cpp" kind="file"><name>firmwarestring.cpp</name>
+  </compound>
+  <compound refid="firmwarestring_8h" kind="file"><name>firmwarestring.h</name>
+  </compound>
+  <compound refid="string_8cpp" kind="file"><name>string.cpp</name>
+  </compound>
+  <compound refid="string_8h" kind="file"><name>string.h</name>
+  </compound>
+  <compound refid="main_8cpp" kind="file"><name>main.cpp</name>
+    <member refid="main_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="ocr_8cpp" kind="file"><name>ocr.cpp</name>
+  </compound>
+  <compound refid="ocr_8h" kind="file"><name>ocr.h</name>
+  </compound>
+  <compound refid="tesseractocr_8cpp" kind="file"><name>tesseractocr.cpp</name>
+  </compound>
+  <compound refid="tesseractocr_8h" kind="file"><name>tesseractocr.h</name>
+  </compound>
+  <compound refid="databaseconnectorabstract_8cpp" kind="file"><name>databaseconnectorabstract.cpp</name>
+  </compound>
+  <compound refid="databaseconnectorabstract_8h" kind="file"><name>databaseconnectorabstract.h</name>
+  </compound>
+  <compound refid="fpfileconnector_8h" kind="file"><name>fpfileconnector.h</name>
+  </compound>
+  <compound refid="mysqlconnector_8cpp" kind="file"><name>mysqlconnector.cpp</name>
+  </compound>
+  <compound refid="mysqlconnector_8h" kind="file"><name>mysqlconnector.h</name>
+  </compound>
+  <compound refid="contextualizationfactoryabstract_8cpp" kind="file"><name>contextualizationfactoryabstract.cpp</name>
+  </compound>
+  <compound refid="contextualizationfactoryabstract_8h" kind="file"><name>contextualizationfactoryabstract.h</name>
+  </compound>
+  <compound refid="hpcontextualizationfactory_8cpp" kind="file"><name>hpcontextualizationfactory.cpp</name>
+  </compound>
+  <compound refid="hpcontextualizationfactory_8h" kind="file"><name>hpcontextualizationfactory.h</name>
+  </compound>
+  <compound refid="log_8cpp" kind="file"><name>log.cpp</name>
+  </compound>
+  <compound refid="log_8h" kind="file"><name>log.h</name>
+  </compound>
+  <compound refid="utils_8cpp" kind="file"><name>utils.cpp</name>
+  </compound>
+  <compound refid="utils_8h" kind="file"><name>utils.h</name>
+  </compound>
+  <compound refid="dir_e1bc5434d70326d4ea72b85c6403df23" kind="dir"><name>src/contextualization</name>
+  </compound>
+  <compound refid="dir_3f7bbb91da281e69976e7e9225881d04" kind="dir"><name>src/contextualization/controller</name>
+  </compound>
+  <compound refid="dir_50236542e182d049de6eb2202b6e7493" kind="dir"><name>src/contextualization/model</name>
+  </compound>
+  <compound refid="dir_12fd111ef1c09259590433672aa92b47" kind="dir"><name>src/optical_character_recognition</name>
+  </compound>
+  <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>src</name>
+  </compound>
+  <compound refid="dir_452baf35e1d7639c9f2a5ece4ec85855" kind="dir"><name>src/storage</name>
+  </compound>
+  <compound refid="dir_1563a38af0d3a5e4a6330d6d45e9792a" kind="dir"><name>src/tools</name>
+  </compound>
+</doxygenindex>

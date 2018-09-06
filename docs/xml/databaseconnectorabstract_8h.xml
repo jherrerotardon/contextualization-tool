@@ -1,0 +1,335 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="databaseconnectorabstract_8h" kind="file" language="C++">
+    <compoundname>databaseconnectorabstract.h</compoundname>
+    <includes refid="string_8h" local="yes">contextualization/model/string.h</includes>
+    <includes refid="log_8h" local="yes">tools/log.h</includes>
+    <includes refid="utils_8h" local="yes">tools/utils.h</includes>
+    <includedby refid="mysqlconnector_8h" local="yes">src/storage/mysqlconnector.h</includedby>
+    <includedby refid="databaseconnectorabstract_8cpp" local="yes">src/storage/databaseconnectorabstract.cpp</includedby>
+    <includedby refid="fpfileconnector_8h" local="yes">src/storage/fpfileconnector.h</includedby>
+    <incdepgraph>
+      <node id="1101">
+        <label>QFuture</label>
+      </node>
+      <node id="1097">
+        <label>QMessageBox</label>
+      </node>
+      <node id="1103">
+        <label>QDateTime</label>
+      </node>
+      <node id="1093">
+        <label>QStandardPaths</label>
+      </node>
+      <node id="1100">
+        <label>QThread</label>
+      </node>
+      <node id="1099">
+        <label>QProgressDialog</label>
+      </node>
+      <node id="1084">
+        <label>contextualization/model/string.h</label>
+        <link refid="string_8h"/>
+        <childnode refid="1085" relation="include">
+        </childnode>
+        <childnode refid="1086" relation="include">
+        </childnode>
+        <childnode refid="1087" relation="include">
+        </childnode>
+        <childnode refid="1088" relation="include">
+        </childnode>
+        <childnode refid="1089" relation="include">
+        </childnode>
+      </node>
+      <node id="1095">
+        <label>tools/utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="1096" relation="include">
+        </childnode>
+        <childnode refid="1090" relation="include">
+        </childnode>
+        <childnode refid="1097" relation="include">
+        </childnode>
+        <childnode refid="1098" relation="include">
+        </childnode>
+        <childnode refid="1099" relation="include">
+        </childnode>
+        <childnode refid="1085" relation="include">
+        </childnode>
+        <childnode refid="1100" relation="include">
+        </childnode>
+        <childnode refid="1101" relation="include">
+        </childnode>
+        <childnode refid="1102" relation="include">
+        </childnode>
+        <childnode refid="1103" relation="include">
+        </childnode>
+      </node>
+      <node id="1087">
+        <label>QJsonObject</label>
+      </node>
+      <node id="1094">
+        <label>QDebug</label>
+      </node>
+      <node id="1102">
+        <label>QtConcurrent/QtConcurrent</label>
+      </node>
+      <node id="1088">
+        <label>QRegularExpression</label>
+      </node>
+      <node id="1092">
+        <label>QDate</label>
+      </node>
+      <node id="1085">
+        <label>QString</label>
+      </node>
+      <node id="1090">
+        <label>QFile</label>
+      </node>
+      <node id="1083">
+        <label>src/storage/databaseconnectorabstract.h</label>
+        <link refid="databaseconnectorabstract_8h"/>
+        <childnode refid="1084" relation="include">
+        </childnode>
+        <childnode refid="1089" relation="include">
+        </childnode>
+        <childnode refid="1095" relation="include">
+        </childnode>
+      </node>
+      <node id="1086">
+        <label>QJsonDocument</label>
+      </node>
+      <node id="1098">
+        <label>QProcess</label>
+      </node>
+      <node id="1096">
+        <label>QDir</label>
+      </node>
+      <node id="1091">
+        <label>QTextStream</label>
+      </node>
+      <node id="1089">
+        <label>tools/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="1085" relation="include">
+        </childnode>
+        <childnode refid="1090" relation="include">
+        </childnode>
+        <childnode refid="1091" relation="include">
+        </childnode>
+        <childnode refid="1092" relation="include">
+        </childnode>
+        <childnode refid="1093" relation="include">
+        </childnode>
+        <childnode refid="1094" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1107">
+        <label>src/tools/contextualizationfactoryabstract.h</label>
+        <link refid="contextualizationfactoryabstract_8h"/>
+        <childnode refid="1108" relation="include">
+        </childnode>
+        <childnode refid="1111" relation="include">
+        </childnode>
+      </node>
+      <node id="1122">
+        <label>src/contextualization/controller/linuxguicontroller.cpp</label>
+        <link refid="linuxguicontroller_8cpp"/>
+      </node>
+      <node id="1111">
+        <label>src/tools/contextualizationfactoryabstract.cpp</label>
+        <link refid="contextualizationfactoryabstract_8cpp"/>
+      </node>
+      <node id="1120">
+        <label>src/contextualization/controller/guicontroller.cpp</label>
+        <link refid="guicontroller_8cpp"/>
+      </node>
+      <node id="1112">
+        <label>src/contextualization/controller/consolecontroller.h</label>
+        <link refid="consolecontroller_8h"/>
+        <childnode refid="1113" relation="include">
+        </childnode>
+        <childnode refid="1114" relation="include">
+        </childnode>
+        <childnode refid="1116" relation="include">
+        </childnode>
+      </node>
+      <node id="1117">
+        <label>src/contextualization/controller/windowsconsolecontroller.cpp</label>
+        <link refid="windowsconsolecontroller_8cpp"/>
+      </node>
+      <node id="1115">
+        <label>src/contextualization/controller/linuxconsolecontroller.cpp</label>
+        <link refid="linuxconsolecontroller_8cpp"/>
+      </node>
+      <node id="1125">
+        <label>src/storage/mysqlconnector.cpp</label>
+        <link refid="mysqlconnector_8cpp"/>
+      </node>
+      <node id="1105">
+        <label>src/storage/mysqlconnector.h</label>
+        <link refid="mysqlconnector_8h"/>
+        <childnode refid="1106" relation="include">
+        </childnode>
+        <childnode refid="1125" relation="include">
+        </childnode>
+      </node>
+      <node id="1118">
+        <label>src/contextualization/controller/contextualizationcontroller.cpp</label>
+        <link refid="contextualizationcontroller_8cpp"/>
+      </node>
+      <node id="1109">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="1121">
+        <label>src/contextualization/controller/linuxguicontroller.h</label>
+        <link refid="linuxguicontroller_8h"/>
+        <childnode refid="1108" relation="include">
+        </childnode>
+        <childnode refid="1122" relation="include">
+        </childnode>
+      </node>
+      <node id="1113">
+        <label>src/contextualization/controller/consolecontroller.cpp</label>
+        <link refid="consolecontroller_8cpp"/>
+      </node>
+      <node id="1114">
+        <label>src/contextualization/controller/linuxconsolecontroller.h</label>
+        <link refid="linuxconsolecontroller_8h"/>
+        <childnode refid="1108" relation="include">
+        </childnode>
+        <childnode refid="1115" relation="include">
+        </childnode>
+      </node>
+      <node id="1108">
+        <label>src/tools/hpcontextualizationfactory.h</label>
+        <link refid="hpcontextualizationfactory_8h"/>
+        <childnode refid="1109" relation="include">
+        </childnode>
+        <childnode refid="1110" relation="include">
+        </childnode>
+      </node>
+      <node id="1123">
+        <label>src/contextualization/controller/windowsguicontroller.h</label>
+        <link refid="windowsguicontroller_8h"/>
+        <childnode refid="1108" relation="include">
+        </childnode>
+        <childnode refid="1124" relation="include">
+        </childnode>
+      </node>
+      <node id="1124">
+        <label>src/contextualization/controller/windowsguicontroller.cpp</label>
+        <link refid="windowsguicontroller_8cpp"/>
+      </node>
+      <node id="1106">
+        <label>src/contextualization/controller/contextualizationcontroller.h</label>
+        <link refid="contextualizationcontroller_8h"/>
+        <childnode refid="1107" relation="include">
+        </childnode>
+        <childnode refid="1112" relation="include">
+        </childnode>
+        <childnode refid="1118" relation="include">
+        </childnode>
+        <childnode refid="1119" relation="include">
+        </childnode>
+      </node>
+      <node id="1119">
+        <label>src/contextualization/controller/guicontroller.h</label>
+        <link refid="guicontroller_8h"/>
+        <childnode refid="1120" relation="include">
+        </childnode>
+        <childnode refid="1121" relation="include">
+        </childnode>
+        <childnode refid="1123" relation="include">
+        </childnode>
+      </node>
+      <node id="1104">
+        <label>src/storage/databaseconnectorabstract.h</label>
+        <link refid="databaseconnectorabstract_8h"/>
+        <childnode refid="1105" relation="include">
+        </childnode>
+        <childnode refid="1126" relation="include">
+        </childnode>
+        <childnode refid="1127" relation="include">
+        </childnode>
+      </node>
+      <node id="1110">
+        <label>src/tools/hpcontextualizationfactory.cpp</label>
+        <link refid="hpcontextualizationfactory_8cpp"/>
+      </node>
+      <node id="1116">
+        <label>src/contextualization/controller/windowsconsolecontroller.h</label>
+        <link refid="windowsconsolecontroller_8h"/>
+        <childnode refid="1108" relation="include">
+        </childnode>
+        <childnode refid="1117" relation="include">
+        </childnode>
+      </node>
+      <node id="1127">
+        <label>src/storage/fpfileconnector.h</label>
+        <link refid="fpfileconnector_8h"/>
+        <childnode refid="1106" relation="include">
+        </childnode>
+      </node>
+      <node id="1126">
+        <label>src/storage/databaseconnectorabstract.cpp</label>
+        <link refid="databaseconnectorabstract_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classDatabaseConnectorAbstract" prot="public">DatabaseConnectorAbstract</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Jorge Herrero Tardón (<ulink url="mailto:jorgeht@usal.es">jorgeht@usal.es</ulink>) </para></simplesect>
+<simplesect kind="date"><para>20/02/2018 </para></simplesect>
+<simplesect kind="version"><para>1.0 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="11"><highlight class="preprocessor">#ifndef<sp/>DATABASEABSTRACT_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>DATABASEABSTRACT_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="string_8h" kindref="compound">contextualization/model/string.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="log_8h" kindref="compound">tools/log.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="utils_8h" kindref="compound">tools/utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="classDatabaseConnectorAbstract" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classDatabaseConnectorAbstract" kindref="compound">DatabaseConnectorAbstract</ref></highlight></codeline>
+<codeline lineno="19"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classDatabaseConnectorAbstract_1a0a5f40156183723e5e01d5ab50418118" kindref="member">DatabaseConnectorAbstract</ref>();</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>QList&lt;String<sp/>*&gt;<sp/><ref refid="classDatabaseConnectorAbstract_1aeb4347bc18b6bed9a9b6120f68c10e9d" kindref="member">getAllStrings</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>QList&lt;String<sp/>*&gt;<sp/><ref refid="classDatabaseConnectorAbstract_1a1d33547045c5f8619f44290c932edb1b" kindref="member">getStringsWithValue</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;value,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>caseSensitive<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>QList&lt;String<sp/>*&gt;<sp/><ref refid="classDatabaseConnectorAbstract_1a5b0f30372ca105a94073267e969b74ee" kindref="member">getStringsWithApproximateValue</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;value,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>caseSensitive<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>QList&lt;String<sp/>*&gt;<sp/><ref refid="classDatabaseConnectorAbstract_1a757f25feaf50af012d25db8f27b1fef4" kindref="member">getStringWithId</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>caseSensitive<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>QList&lt;String<sp/>*&gt;<sp/><ref refid="classDatabaseConnectorAbstract_1a74952c7e14c891e33c84995066003c5a" kindref="member">getStringsWithState</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>state)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classDatabaseConnectorAbstract_1ac7cc5cf2deace9652810001722758206" kindref="member">insertString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classString" kindref="compound">String</ref><sp/>&amp;</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>language)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classDatabaseConnectorAbstract_1a0e8c94cf0b38c797d6feef864a23347b" kindref="member">insertStrings</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QList&lt;String<sp/>*&gt;<sp/>&amp;strings,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>language)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classDatabaseConnectorAbstract_1af482c0b4af4488c5897c04d0c4dff906" kindref="member">removeStringsWithValue</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;value,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>caseSensitive<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classDatabaseConnectorAbstract_1a8c2b0fa4e37d16c1b1ea1cafec166ca0" kindref="member">removeStringsWithId</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>caseSensitive<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>QStringList<sp/><ref refid="classDatabaseConnectorAbstract_1a77ff263d407366e54f3e8512c575ff5e" kindref="member">getLanguages</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>QStringList<sp/><ref refid="classDatabaseConnectorAbstract_1a98f5b2472bab6edc82ce2c5554319d7f" kindref="member">getLanguageIds</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="109" refid="classDatabaseConnectorAbstract_1a1ab06cd87949b36d40d4a26d0fc22ff3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classDatabaseConnectorAbstract_1a1ab06cd87949b36d40d4a26d0fc22ff3" kindref="member">MIN_LENGTH_FOR_APPROXIMATE</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="110" refid="classDatabaseConnectorAbstract_1acb4ab89c1daae4bd7a252677fb87f66e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classDatabaseConnectorAbstract_1acb4ab89c1daae4bd7a252677fb87f66e" kindref="member">MAX_LENGTH_DIFFERENCE</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="111"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>DATABASEABSTRACT_H</highlight></codeline>
+    </programlisting>
+    <location file="src/storage/databaseconnectorabstract.h"/>
+  </compounddef>
+</doxygen>

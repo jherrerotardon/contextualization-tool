@@ -1,0 +1,632 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classMySqlConnector" kind="class" language="C++" prot="public">
+    <compoundname>MySqlConnector</compoundname>
+    <basecompoundref refid="classDatabaseConnectorAbstract" prot="public" virt="non-virtual">DatabaseConnectorAbstract</basecompoundref>
+    <includes refid="mysqlconnector_8h" local="no">mysqlconnector.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classMySqlConnector_1a64431121820ea65a8e8350daa7e93c8b" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString MySqlConnector::host_</definition>
+        <argsstring></argsstring>
+        <name>host_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/mysqlconnector.h" line="136" column="1" bodyfile="src/storage/mysqlconnector.h" bodystart="136" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMySqlConnector_1a6d99ef60b4ff153c578716386428312d" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString MySqlConnector::user_</definition>
+        <argsstring></argsstring>
+        <name>user_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/mysqlconnector.h" line="137" column="1" bodyfile="src/storage/mysqlconnector.h" bodystart="137" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMySqlConnector_1ab3edeb5190b96da7c7fffcb2f1c4e9d1" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString MySqlConnector::password_</definition>
+        <argsstring></argsstring>
+        <name>password_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/mysqlconnector.h" line="138" column="1" bodyfile="src/storage/mysqlconnector.h" bodystart="138" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMySqlConnector_1a1e019fdf95acaa5617067ea4d1a70aea" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString MySqlConnector::dataBase_</definition>
+        <argsstring></argsstring>
+        <name>dataBase_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/mysqlconnector.h" line="139" column="1" bodyfile="src/storage/mysqlconnector.h" bodystart="139" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classMySqlConnector_1af17a58a3749687938d0b3b15e276dab7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MySqlConnector::MySqlConnector</definition>
+        <argsstring>()</argsstring>
+        <name>MySqlConnector</name>
+        <briefdescription>
+<para>Creates an empty <ref refid="classMySqlConnector" kindref="compound">MySqlConnector</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/mysqlconnector.h" line="27" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classMySqlConnector_1a86344c8e5fb792da1da746bdea3a2474" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>MySqlConnector::MySqlConnector</definition>
+        <argsstring>(const QString host, const QString user, const QString password, const QString database=QString())</argsstring>
+        <name>MySqlConnector</name>
+        <param>
+          <type>const QString</type>
+          <declname>host</declname>
+        </param>
+        <param>
+          <type>const QString</type>
+          <declname>user</declname>
+        </param>
+        <param>
+          <type>const QString</type>
+          <declname>password</declname>
+        </param>
+        <param>
+          <type>const QString</type>
+          <declname>database</declname>
+          <defval>QString()</defval>
+        </param>
+        <briefdescription>
+<para>Creates a <ref refid="classMySqlConnector" kindref="compound">MySqlConnector</ref> setting values received by argument. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>user</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Username to access database. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>password</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Password for the username. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>database</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Data base name. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>table</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Table name. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/mysqlconnector.h" line="36" column="1" bodyfile="src/storage/mysqlconnector.cpp" bodystart="13" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classMySqlConnector_1ae652c2a79321d979121e2347cbb25ba0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString MySqlConnector::getUser</definition>
+        <argsstring>()</argsstring>
+        <name>getUser</name>
+        <briefdescription>
+<para>Returns a user name to access database. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>User name. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/mysqlconnector.h" line="47" column="1" bodyfile="src/storage/mysqlconnector.cpp" bodystart="39" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classMySqlConnector_1a0cf4bedae2d4093449590aa59d200ce8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MySqlConnector::setUser</definition>
+        <argsstring>(const QString user)</argsstring>
+        <name>setUser</name>
+        <param>
+          <type>const QString</type>
+          <declname>user</declname>
+        </param>
+        <briefdescription>
+<para>Sets username to access database. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>user</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User name. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/mysqlconnector.h" line="53" column="1" bodyfile="src/storage/mysqlconnector.cpp" bodystart="44" bodyend="47"/>
+      </memberdef>
+      <memberdef kind="function" id="classMySqlConnector_1a92af1c28da0953a69573b21f68b8a41f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MySqlConnector::setPassword</definition>
+        <argsstring>(const QString password)</argsstring>
+        <name>setPassword</name>
+        <param>
+          <type>const QString</type>
+          <declname>password</declname>
+        </param>
+        <briefdescription>
+<para>Sets password to access database. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>user</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Passwrod. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/mysqlconnector.h" line="59" column="1" bodyfile="src/storage/mysqlconnector.cpp" bodystart="49" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classMySqlConnector_1a9bada8a552b17c5e39e7d1c903201b4b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString MySqlConnector::getDataBase</definition>
+        <argsstring>()</argsstring>
+        <name>getDataBase</name>
+        <briefdescription>
+<para>Returns a data base name to access database. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>User name. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/mysqlconnector.h" line="65" column="1" bodyfile="src/storage/mysqlconnector.cpp" bodystart="54" bodyend="57"/>
+      </memberdef>
+      <memberdef kind="function" id="classMySqlConnector_1a8688bfeb3bb6ba6181f5ce90dc8066d8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void MySqlConnector::setDataBase</definition>
+        <argsstring>(const QString dataBase)</argsstring>
+        <name>setDataBase</name>
+        <param>
+          <type>const QString</type>
+          <declname>dataBase</declname>
+        </param>
+        <briefdescription>
+<para>Sets data base to access database. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>user</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>User name. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/mysqlconnector.h" line="71" column="1" bodyfile="src/storage/mysqlconnector.cpp" bodystart="59" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classMySqlConnector_1ad6ff79c4049e3631800da97e8d7b7704" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QList&lt; <ref refid="classString" kindref="compound">String</ref> * &gt;</type>
+        <definition>QList&lt; String * &gt; MySqlConnector::getAllStrings</definition>
+        <argsstring>() override</argsstring>
+        <name>getAllStrings</name>
+        <reimplements refid="classDatabaseConnectorAbstract_1aeb4347bc18b6bed9a9b6120f68c10e9d">getAllStrings</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/mysqlconnector.h" line="76" column="1" bodyfile="src/storage/mysqlconnector.cpp" bodystart="64" bodyend="86"/>
+      </memberdef>
+      <memberdef kind="function" id="classMySqlConnector_1ae7440816a5bda9e63ea526656c4001f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QList&lt; <ref refid="classString" kindref="compound">String</ref> * &gt;</type>
+        <definition>QList&lt; String * &gt; MySqlConnector::getStringsWithValue</definition>
+        <argsstring>(const QString &amp;value, bool caseSensitive=true) override</argsstring>
+        <name>getStringsWithValue</name>
+        <reimplements refid="classDatabaseConnectorAbstract_1a1d33547045c5f8619f44290c932edb1b">getStringsWithValue</reimplements>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>caseSensitive</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Returns all strigns in database with the value received by argument. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> value. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>List with strings. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/mysqlconnector.h" line="81" column="1" bodyfile="src/storage/mysqlconnector.cpp" bodystart="88" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="classMySqlConnector_1a8a480141c72dc8da687b15f921ab1a4e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QList&lt; <ref refid="classString" kindref="compound">String</ref> * &gt;</type>
+        <definition>QList&lt; String * &gt; MySqlConnector::getStringsWithApproximateValue</definition>
+        <argsstring>(const QString &amp;value, bool caseSensitive=true) override</argsstring>
+        <name>getStringsWithApproximateValue</name>
+        <reimplements refid="classDatabaseConnectorAbstract_1a5b0f30372ca105a94073267e969b74ee">getStringsWithApproximateValue</reimplements>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>caseSensitive</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Returns all strigns in database with a similar value received by argument. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> value. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>List with strings. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+<para>If the value belongs to a string, the fwString is saved, otherwise relsease memory of fwString. If size of both strings is longer than MIN_LENGTH_FOR_APPROXIMATE and their size difference is less than MAX_LENGTH_DIFFERENCE, a value is considered valid if it is contained within the fwString value or vice versa. If size of any strings is less than MIN_LENGTH_FOR_APPROXIMATE, a value is considered valid only if it is equals than the value of fwString.</para>        </inbodydescription>
+        <location file="src/storage/mysqlconnector.h" line="86" column="1" bodyfile="src/storage/mysqlconnector.cpp" bodystart="120" bodyend="151"/>
+      </memberdef>
+      <memberdef kind="function" id="classMySqlConnector_1a269bbced50451ff0ce48cfc4f2bb6a3b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QList&lt; <ref refid="classString" kindref="compound">String</ref> * &gt;</type>
+        <definition>QList&lt; String * &gt; MySqlConnector::getStringWithId</definition>
+        <argsstring>(const QString &amp;id, bool caseSensitive=true) override</argsstring>
+        <name>getStringWithId</name>
+        <reimplements refid="classDatabaseConnectorAbstract_1a757f25feaf50af012d25db8f27b1fef4">getStringWithId</reimplements>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>caseSensitive</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Returns all strigns in database with the identifier received by argument. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> identifier. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>List with strings. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/mysqlconnector.h" line="91" column="1" bodyfile="src/storage/mysqlconnector.cpp" bodystart="153" bodyend="183"/>
+      </memberdef>
+      <memberdef kind="function" id="classMySqlConnector_1a821c3dcebcd763df1700881cb47685d5" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QList&lt; <ref refid="classString" kindref="compound">String</ref> * &gt;</type>
+        <definition>QList&lt; String * &gt; MySqlConnector::getStringsWithState</definition>
+        <argsstring>(const QString state) override</argsstring>
+        <name>getStringsWithState</name>
+        <reimplements refid="classDatabaseConnectorAbstract_1a74952c7e14c891e33c84995066003c5a">getStringsWithState</reimplements>
+        <param>
+          <type>const QString</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+<para>Returns strings with state received by parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>State to be found. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classString" kindref="compound">String</ref> list eith indicated state. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/mysqlconnector.h" line="96" column="1" bodyfile="src/storage/mysqlconnector.cpp" bodystart="185" bodyend="210"/>
+      </memberdef>
+      <memberdef kind="function" id="classMySqlConnector_1a4608c0764241969454a55b42873cb86b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool MySqlConnector::insertString</definition>
+        <argsstring>(const String &amp;string, const QString language) override</argsstring>
+        <name>insertString</name>
+        <reimplements refid="classDatabaseConnectorAbstract_1ac7cc5cf2deace9652810001722758206">insertString</reimplements>
+        <param>
+          <type>const <ref refid="classString" kindref="compound">String</ref> &amp;</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type>const QString</type>
+          <declname>language</declname>
+        </param>
+        <briefdescription>
+<para>Inserts a new string in database. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns true if the insertion was succesfull, otherwise, returns false. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> instance to be inserted. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/mysqlconnector.h" line="101" column="1" bodyfile="src/storage/mysqlconnector.cpp" bodystart="212" bodyend="231"/>
+      </memberdef>
+      <memberdef kind="function" id="classMySqlConnector_1a77a5169dd8a515b613642c88dac9798b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int MySqlConnector::insertStrings</definition>
+        <argsstring>(const QList&lt; String *&gt; &amp;strings, const QString language) override</argsstring>
+        <name>insertStrings</name>
+        <reimplements refid="classDatabaseConnectorAbstract_1a0e8c94cf0b38c797d6feef864a23347b">insertStrings</reimplements>
+        <param>
+          <type>const QList&lt; <ref refid="classString" kindref="compound">String</ref> *&gt; &amp;</type>
+          <declname>strings</declname>
+        </param>
+        <param>
+          <type>const QString</type>
+          <declname>language</declname>
+        </param>
+        <briefdescription>
+<para>Inserts a set of strings into the database. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns the number of inserted stirngs. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>strings</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List with strings to be added into databse. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/mysqlconnector.h" line="106" column="1" bodyfile="src/storage/mysqlconnector.cpp" bodystart="233" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="classMySqlConnector_1a528aac591ea56ade27a096bb997abb2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int MySqlConnector::removeStringsWithValue</definition>
+        <argsstring>(const QString &amp;value, bool caseSensitive=true) override</argsstring>
+        <name>removeStringsWithValue</name>
+        <reimplements refid="classDatabaseConnectorAbstract_1af482c0b4af4488c5897c04d0c4dff906">removeStringsWithValue</reimplements>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>caseSensitive</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Removes from databse all strigns with the value received by argument. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns the number of removed strings. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> value. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Number of removed strings </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/mysqlconnector.h" line="111" column="1" bodyfile="src/storage/mysqlconnector.cpp" bodystart="244" bodyend="265"/>
+      </memberdef>
+      <memberdef kind="function" id="classMySqlConnector_1a3c340e5310c56410d64ecd89e5cf6661" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int MySqlConnector::removeStringsWithId</definition>
+        <argsstring>(const QString &amp;id, bool caseSensitive=true) override</argsstring>
+        <name>removeStringsWithId</name>
+        <reimplements refid="classDatabaseConnectorAbstract_1a8c2b0fa4e37d16c1b1ea1cafec166ca0">removeStringsWithId</reimplements>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>caseSensitive</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Removes from databse the strign with the identifier received by argument. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns the number of removed stirngs. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> identifier. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/mysqlconnector.h" line="116" column="1" bodyfile="src/storage/mysqlconnector.cpp" bodystart="267" bodyend="288"/>
+      </memberdef>
+      <memberdef kind="function" id="classMySqlConnector_1a83be1a4d67e509b6604629660eb7c4a0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QStringList</type>
+        <definition>QStringList MySqlConnector::getLanguages</definition>
+        <argsstring>() override</argsstring>
+        <name>getLanguages</name>
+        <reimplements refid="classDatabaseConnectorAbstract_1a77ff263d407366e54f3e8512c575ff5e">getLanguages</reimplements>
+        <briefdescription>
+<para>Returns all languages stored in database. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Languages used. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/mysqlconnector.h" line="121" column="1" bodyfile="src/storage/mysqlconnector.cpp" bodystart="290" bodyend="306"/>
+      </memberdef>
+      <memberdef kind="function" id="classMySqlConnector_1a3493828360c7edd217461e040fc1b00e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QStringList</type>
+        <definition>QStringList MySqlConnector::getLanguageIds</definition>
+        <argsstring>() override</argsstring>
+        <name>getLanguageIds</name>
+        <reimplements refid="classDatabaseConnectorAbstract_1a98f5b2472bab6edc82ce2c5554319d7f">getLanguageIds</reimplements>
+        <briefdescription>
+<para>Returns all language identifiers stored in database. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Languages used. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/mysqlconnector.h" line="126" column="1" bodyfile="src/storage/mysqlconnector.cpp" bodystart="308" bodyend="324"/>
+      </memberdef>
+      <memberdef kind="function" id="classMySqlConnector_1a16a6f0883e2b384621e738f78c619af6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString MySqlConnector::getKeyFromLanguage</definition>
+        <argsstring>(const QString language)</argsstring>
+        <name>getKeyFromLanguage</name>
+        <param>
+          <type>const QString</type>
+          <declname>language</declname>
+        </param>
+        <briefdescription>
+<para>Returns the key of language received by parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>language</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Language to match key </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Language ID </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/mysqlconnector.h" line="133" column="1" bodyfile="src/storage/mysqlconnector.cpp" bodystart="326" bodyend="345"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classMySqlConnector_1accf4f824e4ab50035697439fd078e93d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool MySqlConnector::isAnyImportantFieldEmpty</definition>
+        <argsstring>()</argsstring>
+        <name>isAnyImportantFieldEmpty</name>
+        <briefdescription>
+<para>Checks if user, password, dataBase or tableName is empty. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns true if any of them is empty, else returns false. <simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/mysqlconnector.h" line="147" column="1" bodyfile="src/storage/mysqlconnector.cpp" bodystart="347" bodyend="353"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This is a class to access a MySQL database. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="75">
+        <label>DatabaseConnectorAbstract</label>
+        <link refid="classDatabaseConnectorAbstract"/>
+      </node>
+      <node id="74">
+        <label>MySqlConnector</label>
+        <link refid="classMySqlConnector"/>
+        <childnode refid="75" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="77">
+        <label>DatabaseConnectorAbstract</label>
+        <link refid="classDatabaseConnectorAbstract"/>
+      </node>
+      <node id="76">
+        <label>MySqlConnector</label>
+        <link refid="classMySqlConnector"/>
+        <childnode refid="77" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/storage/mysqlconnector.h" line="21" column="1" bodyfile="src/storage/mysqlconnector.h" bodystart="20" bodyend="148"/>
+    <listofallmembers>
+      <member refid="classMySqlConnector_1a1e019fdf95acaa5617067ea4d1a70aea" prot="private" virt="non-virtual"><scope>MySqlConnector</scope><name>dataBase_</name></member>
+      <member refid="classDatabaseConnectorAbstract_1a0a5f40156183723e5e01d5ab50418118" prot="public" virt="non-virtual"><scope>MySqlConnector</scope><name>DatabaseConnectorAbstract</name></member>
+      <member refid="classMySqlConnector_1ad6ff79c4049e3631800da97e8d7b7704" prot="public" virt="virtual"><scope>MySqlConnector</scope><name>getAllStrings</name></member>
+      <member refid="classMySqlConnector_1a9bada8a552b17c5e39e7d1c903201b4b" prot="public" virt="non-virtual"><scope>MySqlConnector</scope><name>getDataBase</name></member>
+      <member refid="classMySqlConnector_1a16a6f0883e2b384621e738f78c619af6" prot="public" virt="non-virtual"><scope>MySqlConnector</scope><name>getKeyFromLanguage</name></member>
+      <member refid="classMySqlConnector_1a3493828360c7edd217461e040fc1b00e" prot="public" virt="virtual"><scope>MySqlConnector</scope><name>getLanguageIds</name></member>
+      <member refid="classMySqlConnector_1a83be1a4d67e509b6604629660eb7c4a0" prot="public" virt="virtual"><scope>MySqlConnector</scope><name>getLanguages</name></member>
+      <member refid="classMySqlConnector_1a8a480141c72dc8da687b15f921ab1a4e" prot="public" virt="virtual"><scope>MySqlConnector</scope><name>getStringsWithApproximateValue</name></member>
+      <member refid="classMySqlConnector_1a821c3dcebcd763df1700881cb47685d5" prot="public" virt="virtual"><scope>MySqlConnector</scope><name>getStringsWithState</name></member>
+      <member refid="classMySqlConnector_1ae7440816a5bda9e63ea526656c4001f5" prot="public" virt="virtual"><scope>MySqlConnector</scope><name>getStringsWithValue</name></member>
+      <member refid="classMySqlConnector_1a269bbced50451ff0ce48cfc4f2bb6a3b" prot="public" virt="virtual"><scope>MySqlConnector</scope><name>getStringWithId</name></member>
+      <member refid="classMySqlConnector_1ae652c2a79321d979121e2347cbb25ba0" prot="public" virt="non-virtual"><scope>MySqlConnector</scope><name>getUser</name></member>
+      <member refid="classMySqlConnector_1a64431121820ea65a8e8350daa7e93c8b" prot="private" virt="non-virtual"><scope>MySqlConnector</scope><name>host_</name></member>
+      <member refid="classMySqlConnector_1a4608c0764241969454a55b42873cb86b" prot="public" virt="virtual"><scope>MySqlConnector</scope><name>insertString</name></member>
+      <member refid="classMySqlConnector_1a77a5169dd8a515b613642c88dac9798b" prot="public" virt="virtual"><scope>MySqlConnector</scope><name>insertStrings</name></member>
+      <member refid="classMySqlConnector_1accf4f824e4ab50035697439fd078e93d" prot="private" virt="non-virtual"><scope>MySqlConnector</scope><name>isAnyImportantFieldEmpty</name></member>
+      <member refid="classDatabaseConnectorAbstract_1acb4ab89c1daae4bd7a252677fb87f66e" prot="protected" virt="non-virtual"><scope>MySqlConnector</scope><name>MAX_LENGTH_DIFFERENCE</name></member>
+      <member refid="classDatabaseConnectorAbstract_1a1ab06cd87949b36d40d4a26d0fc22ff3" prot="protected" virt="non-virtual"><scope>MySqlConnector</scope><name>MIN_LENGTH_FOR_APPROXIMATE</name></member>
+      <member refid="classMySqlConnector_1af17a58a3749687938d0b3b15e276dab7" prot="public" virt="non-virtual"><scope>MySqlConnector</scope><name>MySqlConnector</name></member>
+      <member refid="classMySqlConnector_1a86344c8e5fb792da1da746bdea3a2474" prot="public" virt="non-virtual"><scope>MySqlConnector</scope><name>MySqlConnector</name></member>
+      <member refid="classMySqlConnector_1ab3edeb5190b96da7c7fffcb2f1c4e9d1" prot="private" virt="non-virtual"><scope>MySqlConnector</scope><name>password_</name></member>
+      <member refid="classMySqlConnector_1a3c340e5310c56410d64ecd89e5cf6661" prot="public" virt="virtual"><scope>MySqlConnector</scope><name>removeStringsWithId</name></member>
+      <member refid="classMySqlConnector_1a528aac591ea56ade27a096bb997abb2a" prot="public" virt="virtual"><scope>MySqlConnector</scope><name>removeStringsWithValue</name></member>
+      <member refid="classMySqlConnector_1a8688bfeb3bb6ba6181f5ce90dc8066d8" prot="public" virt="non-virtual"><scope>MySqlConnector</scope><name>setDataBase</name></member>
+      <member refid="classMySqlConnector_1a92af1c28da0953a69573b21f68b8a41f" prot="public" virt="non-virtual"><scope>MySqlConnector</scope><name>setPassword</name></member>
+      <member refid="classMySqlConnector_1a0cf4bedae2d4093449590aa59d200ce8" prot="public" virt="non-virtual"><scope>MySqlConnector</scope><name>setUser</name></member>
+      <member refid="classMySqlConnector_1a6d99ef60b4ff153c578716386428312d" prot="private" virt="non-virtual"><scope>MySqlConnector</scope><name>user_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

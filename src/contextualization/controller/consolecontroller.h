@@ -51,6 +51,7 @@ public:
         ExportProject,      ///< Indicates that the app have to save the active project in the path entered by the user.
         ImportProject,      ///< Indicates that the app have to import a project entered by the user.
         Send,               ///< Indicates that the app have to send the active contextualization.
+        ProcessFiles,       ///< Indicates that the app have to process files and storage VALIDADED strings.
         PrintClearHelp,     ///< Indicates that the app have to print detailed help for clear command.
         PrintAddHelp,       ///< Indicates that the app have to print extended help for add command.
         PrintDetectHelp,    ///< Indicates that the app have to print extended help for detect command.
@@ -186,6 +187,11 @@ private slots:
      * @copydoc ContextualizationController::newProject();
      */
     void newProject() override;
+    
+    /**
+     * @copydoc ContextualizationController::processFiles();
+     */
+    virtual void processFiles() override;
 
     /**
      * @brief Prints in console all available projects.

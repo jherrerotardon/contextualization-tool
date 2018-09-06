@@ -1,0 +1,92 @@
+.TH "WindowsConsoleController" 3 "Thu Sep 6 2018" "Version 1.0" "Contextualization Tool" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+WindowsConsoleController \- This is the controller class that works a Windows CLI environment\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <windowsconsolecontroller\&.h>\fP
+.PP
+Inherits \fBConsoleController\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBWindowsConsoleController\fP ()"
+.br
+.RI "Creates an empty \fBWindowsConsoleController\fP\&. "
+.ti -1c
+.RI "\fBWindowsConsoleController\fP (int argc, char **argv)"
+.br
+.RI "Creates a \fBWindowsConsoleController\fP initialited with the parameter received in argv\&. "
+.ti -1c
+.RI "QString \fBtakeCaptureArea\fP () override"
+.br
+.RI "Starts a process that allow user capture an area of the screen\&. "
+.ti -1c
+.RI "int \fBgenerateDoneFpFile\fP () override"
+.br
+.RI "Creates a copy of englishFp file in /tmp with only firmware strings with DONE status\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+This is the controller class that works a Windows CLI environment\&. 
+.PP
+Definition at line 20 of file windowsconsolecontroller\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "WindowsConsoleController::WindowsConsoleController (int argc, char ** argv)"
+
+.PP
+Creates a \fBWindowsConsoleController\fP initialited with the parameter received in argv\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIargc\fP Number of elements of argv\&. 
+.br
+\fIargv\fP Parameters 
+.RE
+.PP
+
+.PP
+Definition at line 24 of file windowsconsolecontroller\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int WindowsConsoleController::generateDoneFpFile ()\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Creates a copy of englishFp file in /tmp with only firmware strings with DONE status\&. If copy was created succesfully returns 0, otherwise returns the code error\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Code error 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBContextualizationController\fP\&.
+.PP
+Definition at line 34 of file windowsconsolecontroller\&.cpp\&.
+.SS "QString WindowsConsoleController::takeCaptureArea ()\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Starts a process that allow user capture an area of the screen\&. The user have to select the area to capture with the mouse\&. Return the path where the capture is stored or an empty QString if an error ocurred\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+QString 
+.RE
+.PP
+
+.PP
+Implements \fBContextualizationController\fP\&.
+.PP
+Definition at line 29 of file windowsconsolecontroller\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Contextualization Tool from the source code\&.

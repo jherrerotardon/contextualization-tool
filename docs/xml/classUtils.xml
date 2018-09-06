@@ -1,0 +1,751 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classUtils" kind="class" language="C++" prot="public">
+    <compoundname>Utils</compoundname>
+    <includes refid="utils_8h" local="no">utils.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classUtils_1a32d52b4a749614335d60c2c3969b8df2" prot="public" static="no" strong="no">
+        <type></type>
+        <name>TextModifier</name>
+        <enumvalue id="classUtils_1a32d52b4a749614335d60c2c3969b8df2a39f1a78939e1d4ce79bcc88d8f0d6a1f" prot="public">
+          <name>FG_BLACK</name>
+          <initializer>= 30</initializer>
+          <briefdescription>
+<para>Black foreground. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classUtils_1a32d52b4a749614335d60c2c3969b8df2aecba2732375982cddf19e735b12bf9dc" prot="public">
+          <name>FG_RED</name>
+          <initializer>= 31</initializer>
+          <briefdescription>
+<para>Red foreground. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classUtils_1a32d52b4a749614335d60c2c3969b8df2afa2e3860716ac053c70f6a89f5a47e45" prot="public">
+          <name>FG_GREEN</name>
+          <initializer>= 32</initializer>
+          <briefdescription>
+<para>Green foreground. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classUtils_1a32d52b4a749614335d60c2c3969b8df2aa72d90f0070ff5f60c1226c7eee4d76e" prot="public">
+          <name>FG_YELLOW</name>
+          <initializer>= 33</initializer>
+          <briefdescription>
+<para>Yellow foreground. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classUtils_1a32d52b4a749614335d60c2c3969b8df2a238297e309e520bd2796c968314b37d4" prot="public">
+          <name>FG_BLUE</name>
+          <initializer>= 34</initializer>
+          <briefdescription>
+<para>Blue foreground. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classUtils_1a32d52b4a749614335d60c2c3969b8df2a9fb8bfe4dbdecd2dea8dcc13691b6bfe" prot="public">
+          <name>FG_MAGENTA</name>
+          <initializer>= 35</initializer>
+          <briefdescription>
+<para>Magenta foreground. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classUtils_1a32d52b4a749614335d60c2c3969b8df2a7496759502c74e2fb1b6b41e40d708da" prot="public">
+          <name>FG_CYAN</name>
+          <initializer>= 36</initializer>
+          <briefdescription>
+<para>Cyan foreground. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classUtils_1a32d52b4a749614335d60c2c3969b8df2a0773c8537cc757b3f91ef3f056fc8e01" prot="public">
+          <name>FG_WHITE</name>
+          <initializer>= 37</initializer>
+          <briefdescription>
+<para>White foreground. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classUtils_1a32d52b4a749614335d60c2c3969b8df2ae53e180d7734261c1eeb6f5b8046ee24" prot="public">
+          <name>BG_BLACK</name>
+          <initializer>= 40</initializer>
+          <briefdescription>
+<para>Black background. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classUtils_1a32d52b4a749614335d60c2c3969b8df2ae42dc37bb30e3d6a339e31b8799a0cc8" prot="public">
+          <name>BG_RED</name>
+          <initializer>= 41</initializer>
+          <briefdescription>
+<para>Red background. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classUtils_1a32d52b4a749614335d60c2c3969b8df2a304cda86f4e91dd0f25fe5cc49fa386f" prot="public">
+          <name>BG_GREEN</name>
+          <initializer>= 42</initializer>
+          <briefdescription>
+<para>Green background. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classUtils_1a32d52b4a749614335d60c2c3969b8df2a605748c9069d2aa85ecfc1b18546e65e" prot="public">
+          <name>BG_YELLOW</name>
+          <initializer>= 43</initializer>
+          <briefdescription>
+<para>Yellow background. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classUtils_1a32d52b4a749614335d60c2c3969b8df2a4b3dbf96f2aa0105ccaee7642a0b9c43" prot="public">
+          <name>BG_BLUE</name>
+          <initializer>= 44</initializer>
+          <briefdescription>
+<para>Blue background. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classUtils_1a32d52b4a749614335d60c2c3969b8df2ab40a0e2307f8eaf9045c3e7871a67c37" prot="public">
+          <name>BG_MAGENTA</name>
+          <initializer>= 45</initializer>
+          <briefdescription>
+<para>Magenta background. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classUtils_1a32d52b4a749614335d60c2c3969b8df2a98728a943fa0b495de3d0aafc6000943" prot="public">
+          <name>BG_CYAN</name>
+          <initializer>= 46</initializer>
+          <briefdescription>
+<para>Cyan background. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classUtils_1a32d52b4a749614335d60c2c3969b8df2a4294fd26d218c1fae6ac2d0fe0fb99a3" prot="public">
+          <name>BG_WHITE</name>
+          <initializer>= 47</initializer>
+          <briefdescription>
+<para>White background. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classUtils_1a32d52b4a749614335d60c2c3969b8df2a12907a9ced1317d0c7ba02f2dbe0b6ec" prot="public">
+          <name>RESET</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Reset all. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classUtils_1a32d52b4a749614335d60c2c3969b8df2a34a3c1317c33b3b51ada23abfb30d0c3" prot="public">
+          <name>BOLD</name>
+          <initializer>= 1</initializer>
+          <briefdescription>
+<para>Bold text. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classUtils_1a32d52b4a749614335d60c2c3969b8df2a0cdd170af17e97c899264ba026990145" prot="public">
+          <name>UNDERLNE</name>
+          <initializer>= 4</initializer>
+          <briefdescription>
+<para>Underline text. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classUtils_1a32d52b4a749614335d60c2c3969b8df2a69b78b99d4b769427fc5bff4cd756353" prot="public">
+          <name>INVERSE</name>
+          <initializer>= 7</initializer>
+          <briefdescription>
+<para>Inverse text. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classUtils_1a32d52b4a749614335d60c2c3969b8df2a30a8134b5e0cce11651d7cefdda133f3" prot="public">
+          <name>BOLD_OFF</name>
+          <initializer>= 21</initializer>
+          <briefdescription>
+<para>Off bold text. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classUtils_1a32d52b4a749614335d60c2c3969b8df2a175f014d51622f39f71f5a275e52ffa0" prot="public">
+          <name>UNDERLINE_OFF</name>
+          <initializer>= 24</initializer>
+          <briefdescription>
+<para>Off underline text. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classUtils_1a32d52b4a749614335d60c2c3969b8df2acb9181d52a5eaa0e2f557896d42f4139" prot="public">
+          <name>INVERSE_OFF</name>
+          <initializer>= 27</initializer>
+          <briefdescription>
+<para>Off inverse text. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/utils.h" line="28" column="1" bodyfile="src/tools/utils.h" bodystart="28" bodyend="52"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classUtils_1a452e78692c87ed5c7c993b6c6ac4981a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Utils::Utils</definition>
+        <argsstring>()</argsstring>
+        <name>Utils</name>
+        <briefdescription>
+<para>Creates an empty <ref refid="classUtils" kindref="compound">Utils</ref> object. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/utils.h" line="57" column="1" bodyfile="src/tools/utils.cpp" bodystart="13" bodyend="16"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classUtils_1ac24a694013a7415b517f63a0641a0fb6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Utils::errorMessage</definition>
+        <argsstring>(const QString &amp;text, const QString &amp;informativeText)</argsstring>
+        <name>errorMessage</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>text</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>informativeText</declname>
+        </param>
+        <briefdescription>
+<para>Creates a dialog and displayed it as a modal dialog. The dialog shown is an error dialog. </para>        </briefdescription>
+        <detaileddescription>
+<para>The user only can accept the dialog.</para><para>The function is designed to display error messages to the user without the option of choosing anything. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Message text to be displayed. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>informativeText</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Informative text that provides a fuller description for the message. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/utils.h" line="68" column="1" bodyfile="src/tools/utils.cpp" bodystart="18" bodyend="31"/>
+      </memberdef>
+      <memberdef kind="function" id="classUtils_1a3ff1c4308ffae59e9cc2bec504a1448a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Utils::warningMessage</definition>
+        <argsstring>(const QString &amp;text, const QString &amp;informativeText)</argsstring>
+        <name>warningMessage</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>text</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>informativeText</declname>
+        </param>
+        <briefdescription>
+<para>Creates a dialog and displayed it as a modal dialog. The dialog is a warning dialog. and only has to possible responses: Yes or No. </para>        </briefdescription>
+        <detaileddescription>
+<para>The dialog has only two buttons (Yes and No), which are the two possible options that the user can select. Returns the option selected by the user.</para><para>The function is designed to display warning messages to the user and whether he wants to take the risks. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Message text to be displayed. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>informativeText</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Informative text that provides a fuller description for the message. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>User responser. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/utils.h" line="82" column="1" bodyfile="src/tools/utils.cpp" bodystart="33" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classUtils_1aeb00036fda3bd7faa92e805579fffa3e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Utils::informativeMessage</definition>
+        <argsstring>(const QString &amp;text, const QString &amp;informativeText)</argsstring>
+        <name>informativeMessage</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>text</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>informativeText</declname>
+        </param>
+        <briefdescription>
+<para>Creates a dialog and displayed it as a modal dialog. The dialog shown is an informative dialog. </para>        </briefdescription>
+        <detaileddescription>
+<para>The user only can accept the dialog.</para><para>The function is designed to display informative messages to the user. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Message text to be displayed. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>informativeText</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Informative text that provides a fuller description for the message. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/utils.h" line="93" column="1" bodyfile="src/tools/utils.cpp" bodystart="48" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classUtils_1a77efde99fa16c21245f66273c7fded3a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Utils::appendFile</definition>
+        <argsstring>(const QString &amp;path, const QString &amp;text)</argsstring>
+        <name>appendFile</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>Appends a text on a file. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the file exists is not overwritten. If the file does not exist is created. Returns true if the text is added succesfully, otherwise returns false. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>File where will append the text. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Text to be appended on the file. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/utils.h" line="105" column="1" bodyfile="src/tools/utils.cpp" bodystart="63" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classUtils_1ae41ebd024526737fbaaada06e229b3c5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Utils::writeFile</definition>
+        <argsstring>(const QString &amp;path, const QString &amp;text)</argsstring>
+        <name>writeFile</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>text</declname>
+        </param>
+        <briefdescription>
+<para>Write a text on a file. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the file exists is overwritten. If the file does not exist is created. Returns true if the text is written succesfully, otherwise returns false. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>File where will write the text. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Text to be wroten on the file. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/utils.h" line="117" column="1" bodyfile="src/tools/utils.cpp" bodystart="76" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classUtils_1a8ab4445ab51c372f969d3088ef0b73d9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QByteArray</type>
+        <definition>QByteArray Utils::readAllFile</definition>
+        <argsstring>(const QString &amp;path)</argsstring>
+        <name>readAllFile</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+<para>Read completely the file received by parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns a QByteArray object with the data of the file or an empty QByteArray if something wrong. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>File to be read. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Data read from the file. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/utils.h" line="126" column="1" bodyfile="src/tools/utils.cpp" bodystart="90" bodyend="103"/>
+      </memberdef>
+      <memberdef kind="function" id="classUtils_1a0ba873605d1b72ee448c18507d898d21" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int Utils::executeProgram</definition>
+        <argsstring>(const QString &amp;program, const QStringList &amp;arguments=QStringList(), const QString &amp;standardOutput=QProcess::nullDevice(), const QString &amp;workingDirectory=QString(), const int timeout=-1)</argsstring>
+        <name>executeProgram</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>program</declname>
+        </param>
+        <param>
+          <type>const QStringList &amp;</type>
+          <declname>arguments</declname>
+          <defval>QStringList()</defval>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>standardOutput</declname>
+          <defval>QProcess::nullDevice()</defval>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>workingDirectory</declname>
+          <defval>QString()</defval>
+        </param>
+        <param>
+          <type>const int</type>
+          <declname>timeout</declname>
+          <defval>-1</defval>
+        </param>
+        <briefdescription>
+<para>Executes binary program. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns the code error returned by the execution.</para><para>If an empty standard output file is received, standard output is not saved.</para><para>If an empty working directory is received, the process is executed in current directory.</para><para>A timeout equals to -1 indicates that process has not limit time.</para><para>Some known code errors: -&gt; 255: binary file not found or can&apos;t be executed. -&gt; -1: binary file crashed during the execution. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>program</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of binary file. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>arguments</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Arguments of the program. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>standardOutput</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>File path where process standard output will be saved. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>workDirectory</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Directory where the program must work. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Execution timeout of the program. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Code error of the execution </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/utils.h" line="149" column="1" bodyfile="src/tools/utils.cpp" bodystart="105" bodyend="129"/>
+      </memberdef>
+      <memberdef kind="function" id="classUtils_1ad33c4bda97a81483e4b34e692e747d0b" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString Utils::zipCompressDirectoryContents</definition>
+        <argsstring>(const QString &amp;directory, const QString &amp;zipDestination, const QString &amp;zipName=&quot;compressed&quot;)</argsstring>
+        <name>zipCompressDirectoryContents</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>directory</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>zipDestination</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>zipName</declname>
+          <defval>&quot;compressed&quot;</defval>
+        </param>
+        <briefdescription>
+<para>Compresses all files and folders in the directory received by argument. </para>        </briefdescription>
+        <detaileddescription>
+<para>If compressing was succesfull, returns the absolute path of the zip file. Otherwise returns an empty string. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>directory</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Path of directory to be compressed. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>zipDestination</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Path where de zip file will be saved. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>zipName</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name to be setted to the file. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Absolute path of the result zip file. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/utils.h" line="165" column="1" bodyfile="src/tools/utils.cpp" bodystart="131" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="function" id="classUtils_1a12f3c653e90f7ed38287f0a8897f60d5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QFuture&lt; void &gt;</type>
+        <definition>QFuture&lt; void &gt; Utils::startProgressDialogCounter</definition>
+        <argsstring>(QProgressDialog *dialog, bool *hasFinished, int timeout=40)</argsstring>
+        <name>startProgressDialogCounter</name>
+        <param>
+          <type>QProgressDialog *</type>
+          <declname>dialog</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>hasFinished</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>timeout</declname>
+          <defval>40</defval>
+        </param>
+        <briefdescription>
+<para>Simulates a progress on a QProgressDialog. </para>        </briefdescription>
+        <detaileddescription>
+<para>Counter only finish when hasFinished is true, otherwise progress count stop in 99%. As the counter is created in other thread, out of function you have to make sure that thread finished calling function QFuture::waitForFinished(). If you don&apos;t make sure of it, your program probably will finish unexpectedly with an error.</para><para>Returns a QFuture object for control the end of the thread. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dialog</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Dialog where exec the counter. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>hasFinished</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Flag to finish the counter. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timeout</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Time between each increase in the percentage of progress. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>QFuture object to know when the thread has finished. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/utils.h" line="185" column="1" bodyfile="src/tools/utils.cpp" bodystart="145" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="classUtils_1a1909e9cbf006b2ea0681d7c32605aca6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Utils::isValidIp</definition>
+        <argsstring>(const QString &amp;ip)</argsstring>
+        <name>isValidIp</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>ip</declname>
+        </param>
+        <briefdescription>
+<para>Returns true if is a valid ip, otherwise returns false. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>ip</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ip to be checked. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/utils.h" line="192" column="1" bodyfile="src/tools/utils.cpp" bodystart="169" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="classUtils_1aedd4143ac5a4b343d1486b9629a2d185" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString Utils::getDateTime</definition>
+        <argsstring>(QString format=&quot;yyyy_MM_dd_hh_mm_ss&quot;)</argsstring>
+        <name>getDateTime</name>
+        <param>
+          <type>QString</type>
+          <declname>format</declname>
+          <defval>&quot;yyyy_MM_dd_hh_mm_ss&quot;</defval>
+        </param>
+        <briefdescription>
+<para>Returns a current date time with the format received by parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Format to returns the date time. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Date time. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/utils.h" line="199" column="1" bodyfile="src/tools/utils.cpp" bodystart="177" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="classUtils_1a85a0cb065fa4399c42ce834952420d7a" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString Utils::getTmpDirectory</definition>
+        <argsstring>()</argsstring>
+        <name>getTmpDirectory</name>
+        <briefdescription>
+<para>Returns a temporal directory of system. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/utils.h" line="205" column="1" bodyfile="src/tools/utils.cpp" bodystart="182" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="classUtils_1a9885ad8eac3df9b5e22363dd1e9ff5b2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString Utils::formatText</definition>
+        <argsstring>(const QString &amp;text, QList&lt; TextModifier &gt; modifiers)</argsstring>
+        <name>formatText</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>text</declname>
+        </param>
+        <param>
+          <type>QList&lt; <ref refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2" kindref="member">TextModifier</ref> &gt;</type>
+          <declname>modifiers</declname>
+        </param>
+        <briefdescription>
+<para>Returns a text applying mofifiers to be used in terminal. </para>        </briefdescription>
+        <detaileddescription>
+<para>This function use ANSI format, make sure your terminal accepts it. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> to be formatted. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>modifiers</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Modifiers to be applied </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/utils.h" line="215" column="1" bodyfile="src/tools/utils.cpp" bodystart="187" bodyend="201"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This is static class with a lot of different utilities. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/tools/utils.h" line="26" column="1" bodyfile="src/tools/utils.h" bodystart="25" bodyend="216"/>
+    <listofallmembers>
+      <member refid="classUtils_1a77efde99fa16c21245f66273c7fded3a" prot="public" virt="non-virtual"><scope>Utils</scope><name>appendFile</name></member>
+      <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2ae53e180d7734261c1eeb6f5b8046ee24" prot="public" virt="non-virtual"><scope>Utils</scope><name>BG_BLACK</name></member>
+      <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a4b3dbf96f2aa0105ccaee7642a0b9c43" prot="public" virt="non-virtual"><scope>Utils</scope><name>BG_BLUE</name></member>
+      <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a98728a943fa0b495de3d0aafc6000943" prot="public" virt="non-virtual"><scope>Utils</scope><name>BG_CYAN</name></member>
+      <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a304cda86f4e91dd0f25fe5cc49fa386f" prot="public" virt="non-virtual"><scope>Utils</scope><name>BG_GREEN</name></member>
+      <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2ab40a0e2307f8eaf9045c3e7871a67c37" prot="public" virt="non-virtual"><scope>Utils</scope><name>BG_MAGENTA</name></member>
+      <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2ae42dc37bb30e3d6a339e31b8799a0cc8" prot="public" virt="non-virtual"><scope>Utils</scope><name>BG_RED</name></member>
+      <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a4294fd26d218c1fae6ac2d0fe0fb99a3" prot="public" virt="non-virtual"><scope>Utils</scope><name>BG_WHITE</name></member>
+      <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a605748c9069d2aa85ecfc1b18546e65e" prot="public" virt="non-virtual"><scope>Utils</scope><name>BG_YELLOW</name></member>
+      <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a34a3c1317c33b3b51ada23abfb30d0c3" prot="public" virt="non-virtual"><scope>Utils</scope><name>BOLD</name></member>
+      <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a30a8134b5e0cce11651d7cefdda133f3" prot="public" virt="non-virtual"><scope>Utils</scope><name>BOLD_OFF</name></member>
+      <member refid="classUtils_1ac24a694013a7415b517f63a0641a0fb6" prot="public" virt="non-virtual"><scope>Utils</scope><name>errorMessage</name></member>
+      <member refid="classUtils_1a0ba873605d1b72ee448c18507d898d21" prot="public" virt="non-virtual"><scope>Utils</scope><name>executeProgram</name></member>
+      <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a39f1a78939e1d4ce79bcc88d8f0d6a1f" prot="public" virt="non-virtual"><scope>Utils</scope><name>FG_BLACK</name></member>
+      <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a238297e309e520bd2796c968314b37d4" prot="public" virt="non-virtual"><scope>Utils</scope><name>FG_BLUE</name></member>
+      <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a7496759502c74e2fb1b6b41e40d708da" prot="public" virt="non-virtual"><scope>Utils</scope><name>FG_CYAN</name></member>
+      <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2afa2e3860716ac053c70f6a89f5a47e45" prot="public" virt="non-virtual"><scope>Utils</scope><name>FG_GREEN</name></member>
+      <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a9fb8bfe4dbdecd2dea8dcc13691b6bfe" prot="public" virt="non-virtual"><scope>Utils</scope><name>FG_MAGENTA</name></member>
+      <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2aecba2732375982cddf19e735b12bf9dc" prot="public" virt="non-virtual"><scope>Utils</scope><name>FG_RED</name></member>
+      <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a0773c8537cc757b3f91ef3f056fc8e01" prot="public" virt="non-virtual"><scope>Utils</scope><name>FG_WHITE</name></member>
+      <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2aa72d90f0070ff5f60c1226c7eee4d76e" prot="public" virt="non-virtual"><scope>Utils</scope><name>FG_YELLOW</name></member>
+      <member refid="classUtils_1a9885ad8eac3df9b5e22363dd1e9ff5b2" prot="public" virt="non-virtual"><scope>Utils</scope><name>formatText</name></member>
+      <member refid="classUtils_1aedd4143ac5a4b343d1486b9629a2d185" prot="public" virt="non-virtual"><scope>Utils</scope><name>getDateTime</name></member>
+      <member refid="classUtils_1a85a0cb065fa4399c42ce834952420d7a" prot="public" virt="non-virtual"><scope>Utils</scope><name>getTmpDirectory</name></member>
+      <member refid="classUtils_1aeb00036fda3bd7faa92e805579fffa3e" prot="public" virt="non-virtual"><scope>Utils</scope><name>informativeMessage</name></member>
+      <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a69b78b99d4b769427fc5bff4cd756353" prot="public" virt="non-virtual"><scope>Utils</scope><name>INVERSE</name></member>
+      <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2acb9181d52a5eaa0e2f557896d42f4139" prot="public" virt="non-virtual"><scope>Utils</scope><name>INVERSE_OFF</name></member>
+      <member refid="classUtils_1a1909e9cbf006b2ea0681d7c32605aca6" prot="public" virt="non-virtual"><scope>Utils</scope><name>isValidIp</name></member>
+      <member refid="classUtils_1a8ab4445ab51c372f969d3088ef0b73d9" prot="public" virt="non-virtual"><scope>Utils</scope><name>readAllFile</name></member>
+      <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a12907a9ced1317d0c7ba02f2dbe0b6ec" prot="public" virt="non-virtual"><scope>Utils</scope><name>RESET</name></member>
+      <member refid="classUtils_1a12f3c653e90f7ed38287f0a8897f60d5" prot="public" virt="non-virtual"><scope>Utils</scope><name>startProgressDialogCounter</name></member>
+      <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2" prot="public" virt="non-virtual"><scope>Utils</scope><name>TextModifier</name></member>
+      <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a175f014d51622f39f71f5a275e52ffa0" prot="public" virt="non-virtual"><scope>Utils</scope><name>UNDERLINE_OFF</name></member>
+      <member refid="classUtils_1a32d52b4a749614335d60c2c3969b8df2a0cdd170af17e97c899264ba026990145" prot="public" virt="non-virtual"><scope>Utils</scope><name>UNDERLNE</name></member>
+      <member refid="classUtils_1a452e78692c87ed5c7c993b6c6ac4981a" prot="public" virt="non-virtual"><scope>Utils</scope><name>Utils</name></member>
+      <member refid="classUtils_1a3ff1c4308ffae59e9cc2bec504a1448a" prot="public" virt="non-virtual"><scope>Utils</scope><name>warningMessage</name></member>
+      <member refid="classUtils_1ae41ebd024526737fbaaada06e229b3c5" prot="public" virt="non-virtual"><scope>Utils</scope><name>writeFile</name></member>
+      <member refid="classUtils_1ad33c4bda97a81483e4b34e692e747d0b" prot="public" virt="non-virtual"><scope>Utils</scope><name>zipCompressDirectoryContents</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

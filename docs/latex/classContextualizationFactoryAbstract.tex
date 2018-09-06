@@ -1,0 +1,96 @@
+\hypertarget{classContextualizationFactoryAbstract}{}\section{Contextualization\+Factory\+Abstract Class Reference}
+\label{classContextualizationFactoryAbstract}\index{Contextualization\+Factory\+Abstract@{Contextualization\+Factory\+Abstract}}
+
+
+This is a interface factory to create a concrete class of \mbox{\hyperlink{classContextualizationController}{Contextualization\+Controller}}.  
+
+
+
+
+{\ttfamily \#include $<$contextualizationfactoryabstract.\+h$>$}
+
+Inheritance diagram for Contextualization\+Factory\+Abstract\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classContextualizationFactoryAbstract}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classContextualizationFactoryAbstract_a87cd3e6ea2f582fe98286a73d3b28f60}\label{classContextualizationFactoryAbstract_a87cd3e6ea2f582fe98286a73d3b28f60}} 
+enum \mbox{\hyperlink{classContextualizationFactoryAbstract_a87cd3e6ea2f582fe98286a73d3b28f60}{Kernel\+Type}} \{ {\bfseries Windows}, 
+{\bfseries Linux}, 
+{\bfseries Undefined}
+ \}
+\begin{DoxyCompactList}\small\item\em Kernel types for which Contextuation\+Controller are implemented. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classContextualizationFactoryAbstract_a5f3886dc42bb68d69c5ed39e204d982c}\label{classContextualizationFactoryAbstract_a5f3886dc42bb68d69c5ed39e204d982c}} 
+\mbox{\hyperlink{classContextualizationFactoryAbstract_a5f3886dc42bb68d69c5ed39e204d982c}{Contextualization\+Factory\+Abstract}} ()
+\begin{DoxyCompactList}\small\item\em Creates an empty \mbox{\hyperlink{classContextualizationFactoryAbstract}{Contextualization\+Factory\+Abstract}}. \end{DoxyCompactList}\item 
+virtual \mbox{\hyperlink{classContextualizationController}{Contextualization\+Controller}} $\ast$ \mbox{\hyperlink{classContextualizationFactoryAbstract_a0898ad4d3a109c5767a1e596bf444e4a}{create\+Controller}} (char $\ast$$\ast$params, int count)=0
+\begin{DoxyCompactList}\small\item\em Instantiates a new controller for a contextualization. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classContextualizationFactoryAbstract_a87cd3e6ea2f582fe98286a73d3b28f60}{Kernel\+Type}} \mbox{\hyperlink{classContextualizationFactoryAbstract_a2d7958c0f68ad388f832abcb7777397d}{get\+Current\+Kernel\+Type}} ()
+\begin{DoxyCompactList}\small\item\em Returns the kernel type where the app is running. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is a interface factory to create a concrete class of \mbox{\hyperlink{classContextualizationController}{Contextualization\+Controller}}. 
+
+Definition at line 17 of file contextualizationfactoryabstract.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classContextualizationFactoryAbstract_a0898ad4d3a109c5767a1e596bf444e4a}\label{classContextualizationFactoryAbstract_a0898ad4d3a109c5767a1e596bf444e4a}} 
+\index{Contextualization\+Factory\+Abstract@{Contextualization\+Factory\+Abstract}!create\+Controller@{create\+Controller}}
+\index{create\+Controller@{create\+Controller}!Contextualization\+Factory\+Abstract@{Contextualization\+Factory\+Abstract}}
+\subsubsection{\texorpdfstring{create\+Controller()}{createController()}}
+{\footnotesize\ttfamily virtual \mbox{\hyperlink{classContextualizationController}{Contextualization\+Controller}}$\ast$ Contextualization\+Factory\+Abstract\+::create\+Controller (\begin{DoxyParamCaption}\item[{char $\ast$$\ast$}]{params,  }\item[{int}]{count }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Instantiates a new controller for a contextualization. 
+
+This is a pure vistual function that must to be implemented in inherits classes. 
+\begin{DoxyParams}{Parameters}
+{\em params} & Array params. \\
+\hline
+{\em count} & Number of elements of params. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A new controller. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classHpContextualizationFactory_ad9d9c11a2827c8854c4cadbf38b4e7ca}{Hp\+Contextualization\+Factory}}.
+
+\mbox{\Hypertarget{classContextualizationFactoryAbstract_a2d7958c0f68ad388f832abcb7777397d}\label{classContextualizationFactoryAbstract_a2d7958c0f68ad388f832abcb7777397d}} 
+\index{Contextualization\+Factory\+Abstract@{Contextualization\+Factory\+Abstract}!get\+Current\+Kernel\+Type@{get\+Current\+Kernel\+Type}}
+\index{get\+Current\+Kernel\+Type@{get\+Current\+Kernel\+Type}!Contextualization\+Factory\+Abstract@{Contextualization\+Factory\+Abstract}}
+\subsubsection{\texorpdfstring{get\+Current\+Kernel\+Type()}{getCurrentKernelType()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classContextualizationFactoryAbstract_a87cd3e6ea2f582fe98286a73d3b28f60}{Contextualization\+Factory\+Abstract\+::\+Kernel\+Type}} Contextualization\+Factory\+Abstract\+::get\+Current\+Kernel\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Returns the kernel type where the app is running. 
+
+\begin{DoxyReturn}{Returns}
+Kernel type of the current system. 
+\end{DoxyReturn}
+
+
+Definition at line 18 of file contextualizationfactoryabstract.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/tools/\mbox{\hyperlink{contextualizationfactoryabstract_8h}{contextualizationfactoryabstract.\+h}}\item 
+src/tools/\mbox{\hyperlink{contextualizationfactoryabstract_8cpp}{contextualizationfactoryabstract.\+cpp}}\end{DoxyCompactItemize}

@@ -239,7 +239,7 @@ void GuiController::send()
     QString username;
     QString password;
     QMessageBox message;
-    int hasError;
+    CodeError hasError;
 
     switch (validateModel()) {
         case OkModel:        
@@ -281,7 +281,7 @@ void GuiController::send()
             // Remove contextualization file.
             QFile::remove(contextualizationPath);
 
-            if (hasError) {
+            if (hasError != NoError) {
                 Utils::informativeMessage(
                     "Finished.",
                     "Send process has finished with some errors. See log for more information."
@@ -428,6 +428,19 @@ void GuiController::newProject()
     currentProjectPath_ = QString();
 
     emit unchangedProject();
+}
+
+void GuiController::processFiles()
+{
+    int error;
+
+    error = proccessAndStorage();
+
+    if (error) {
+        Utils::errorMessage("Fail to process.", "Is not possible to process files now.");
+    } else {
+        Utils::informativeMessage("Done!", "Process has finished succesfully.");
+    }
 }
 
 void GuiController::detectsStringOnInterestingArea(
@@ -700,6 +713,13 @@ void GuiController::connectGuiSignalsAndSlots()
             SIGNAL(newProjectRequested()),
             this,
             SLOT(newProject()),
+            Qt::UniqueConnection
+        );
+        QObject::connect(
+            view_,
+            SIGNAL(processFiles()),
+            this,
+            SLOT(processFiles()),
             Qt::UniqueConnection
         );
     }

@@ -1,0 +1,69 @@
+.TH "LinuxGuiController" 3 "Thu Sep 6 2018" "Version 1.0" "Contextualization Tool" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LinuxGuiController \- This is the controller class that works a linux GUI environment\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <linuxguicontroller\&.h>\fP
+.PP
+Inherits \fBGuiController\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLinuxGuiController\fP (QQuickWindow *view=Q_NULLPTR, QObject *parent=Q_NULLPTR)"
+.br
+.RI "\fBLinuxGuiController\fP\&. "
+.ti -1c
+.RI "QString \fBtakeCaptureArea\fP () override"
+.br
+.RI "Starts a process that allow user capture an area of the screen\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+This is the controller class that works a linux GUI environment\&. 
+.PP
+Definition at line 16 of file linuxguicontroller\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "LinuxGuiController::LinuxGuiController (QQuickWindow * view = \fCQ_NULLPTR\fP, QObject * parent = \fCQ_NULLPTR\fP)"
+
+.PP
+\fBLinuxGuiController\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIview\fP 
+.br
+\fIparent\fP 
+.RE
+.PP
+
+.PP
+Definition at line 13 of file linuxguicontroller\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "QString LinuxGuiController::takeCaptureArea ()\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Starts a process that allow user capture an area of the screen\&. The user have to select the area to capture with the mouse\&. Return the path where the capture is stored or an empty QString if an error ocurred\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+QString 
+.RE
+.PP
+
+.PP
+Implements \fBContextualizationController\fP\&.
+.PP
+Definition at line 18 of file linuxguicontroller\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Contextualization Tool from the source code\&.

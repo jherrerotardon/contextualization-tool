@@ -1,0 +1,553 @@
+.TH "String" 3 "Thu Sep 6 2018" "Version 1.0" "Contextualization Tool" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+String \- This is the representation of a string with their properties\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <string\&.h>\fP
+.PP
+Inherits QObject\&.
+.PP
+Inherited by \fBFirmwareString\fP\&.
+.SS "Signals"
+
+.in +1c
+.ti -1c
+.RI "void \fBidChanged\fP ()"
+.br
+.RI "The signal is emitted when the identifier of the string has changed\&. "
+.ti -1c
+.RI "void \fBvalueChanged\fP ()"
+.br
+.RI "The signal is emitted when the value of the string has changed\&. "
+.ti -1c
+.RI "void \fBdescriptionChanged\fP ()"
+.br
+.RI "The signal is emitted when the description of the string has changed\&. "
+.ti -1c
+.RI "void \fBmaxLengthChanged\fP ()"
+.br
+.RI "The signal is emitted when the max length of the string has changed\&. "
+.ti -1c
+.RI "void \fBstateChanged\fP ()"
+.br
+.RI "The signal is emitted when the state of the string has changed\&. "
+.ti -1c
+.RI "void \fBselectedChanged\fP ()"
+.br
+.RI "The signal is emitted when the string is selected or unselected\&. "
+.ti -1c
+.RI "void \fBeditableChanged\fP ()"
+.br
+.RI "The signal is emitted when the editable parameter is changed\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBString\fP ()"
+.br
+.RI "Constructs an empty string\&. "
+.ti -1c
+.RI "\fBString\fP (\fBString\fP &other)"
+.br
+.RI "Constructs a string replic from another received by parameter\&. "
+.ti -1c
+.RI "\fBString\fP (const QString &id, const QString &value, const QString &description, const QString &maxLength, const QString &state, const bool selected=false, const bool editable=true)"
+.br
+.RI "Constructs a string with diferents value members received by parameter\&. "
+.ti -1c
+.RI "QString \fBgetId\fP () const"
+.br
+.RI "Returns the identifier of the string\&. "
+.ti -1c
+.RI "bool \fBsetId\fP (const QString &id)"
+.br
+.RI "Sets the identifier of the string\&. "
+.ti -1c
+.RI "QString \fBgetValue\fP () const"
+.br
+.RI "Returns the value of the string\&. "
+.ti -1c
+.RI "bool \fBsetValue\fP (const QString &value)"
+.br
+.RI "Sets the value of the string\&. "
+.ti -1c
+.RI "QString \fBgetDescription\fP () const"
+.br
+.RI "Returns the description of the string\&. "
+.ti -1c
+.RI "bool \fBsetDescription\fP (const QString &description)"
+.br
+.RI "Sets the description of the string\&. "
+.ti -1c
+.RI "QString \fBgetMaxLength\fP () const"
+.br
+.RI "Returns the max length of the string\&. "
+.ti -1c
+.RI "bool \fBsetMaxLength\fP (const QString &maxLength)"
+.br
+.RI "Sets the max length of the string\&. "
+.ti -1c
+.RI "QString \fBgetState\fP () const"
+.br
+.RI "Returns the state of the string\&. "
+.ti -1c
+.RI "bool \fBsetState\fP (const QString &state)"
+.br
+.RI "Sets the state of the string\&. "
+.ti -1c
+.RI "bool \fBisEmpty\fP ()"
+.br
+.RI "Returns true if string is empty\&. "
+.ti -1c
+.RI "bool \fBisSelected\fP () const"
+.br
+.RI "Returns true if string is selected, else returns false\&. "
+.ti -1c
+.RI "void \fBselect\fP ()"
+.br
+.RI "Changes the string to selected\&. "
+.ti -1c
+.RI "void \fBunselect\fP ()"
+.br
+.RI "Changes the string to unselected\&. "
+.ti -1c
+.RI "void \fBsetSelected\fP (bool selected)"
+.br
+.RI "Changes the string to selected or unselected depending on the value received by parameter\&. "
+.ti -1c
+.RI "bool \fBisEditable\fP () const"
+.br
+.RI "Returns the editable state of the string\&. "
+.ti -1c
+.RI "void \fBsetEditable\fP (bool editable)"
+.br
+.RI "Sets the editable parameter of the string\&. "
+.ti -1c
+.RI "QString \fBtoFpFileFormat\fP () const"
+.br
+.RI "Returns the model converted to a string with the format in file fp\&. "
+.ti -1c
+.RI "QString \fBtoJson\fP (QJsonDocument::JsonFormat format=QJsonDocument::Compact)"
+.br
+.RI "Returns the string converted to a JSON QString\&. "
+.ti -1c
+.RI "QJsonObject \fBtoJsonObject\fP ()"
+.br
+.RI "Returns the string converted to a #QJsonObject\&. "
+.ti -1c
+.RI "\fBString\fP & \fBoperator=\fP (const \fBString\fP &other)"
+.br
+.RI "Assigns other to string and returns a reference to this string\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBString\fP * \fBfromJson\fP (QString &json)"
+.br
+.RI "Returns a \fBString\fP initializated with the JSON string json\&. "
+.ti -1c
+.RI "static \fBString\fP * \fBfromJson\fP (QByteArray &json)"
+.br
+.RI "Returns a \fBString\fP initializated with the #QByteArray data json\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "QString \fBid_\fP"
+.br
+.ti -1c
+.RI "QString \fBvalue_\fP"
+.br
+.ti -1c
+.RI "QString \fBdescription_\fP"
+.br
+.ti -1c
+.RI "QString \fBmaxLength_\fP"
+.br
+.ti -1c
+.RI "QString \fBstate_\fP"
+.br
+.ti -1c
+.RI "bool \fBselected_\fP"
+.br
+.ti -1c
+.RI "bool \fBeditable_\fP"
+.br
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "QString \fBid\fP"
+.br
+.ti -1c
+.RI "QString \fBvalue\fP"
+.br
+.ti -1c
+.RI "QString \fBdescription\fP"
+.br
+.ti -1c
+.RI "QString \fBmaxLength\fP"
+.br
+.ti -1c
+.RI "QString \fBstate\fP"
+.br
+.ti -1c
+.RI "bool \fBselected\fP"
+.br
+.ti -1c
+.RI "bool \fBeditable\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+This is the representation of a string with their properties\&. 
+.PP
+Definition at line 19 of file string\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "String::String (\fBString\fP & other)"
+
+.PP
+Constructs a string replic from another received by parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIother\fP string to be duplicated\&. 
+.RE
+.PP
+
+.PP
+Definition at line 23 of file string\&.cpp\&.
+.SS "String::String (const QString & id, const QString & value, const QString & description, const QString & maxLength, const QString & state, const bool selected = \fCfalse\fP, const bool editable = \fCtrue\fP)"
+
+.PP
+Constructs a string with diferents value members received by parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP \fBString\fP identifier\&. 
+.br
+\fIvalue\fP \fBString\fP value\&. 
+.br
+\fIdescription\fP \fBString\fP description\&. 
+.br
+\fImaxLength\fP \fBString\fP maxLength\&. 
+.br
+\fIstate\fP \fBString\fP state\&. 
+.br
+\fIselected\fP \fBString\fP selected\&. 
+.br
+\fIeditable\fP \fBString\fP editable state\&. 
+.RE
+.PP
+
+.PP
+Definition at line 34 of file string\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBString\fP * String::fromJson (QString & json)\fC [static]\fP"
+
+.PP
+Returns a \fBString\fP initializated with the JSON string json\&. If the JSON data received is not valid, return an empty model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIjson\fP \fBString\fP in JSON format to be converted\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBContextualizationModel\fP 
+.RE
+.PP
+
+.PP
+Definition at line 218 of file string\&.cpp\&.
+.SS "\fBString\fP * String::fromJson (QByteArray & json)\fC [static]\fP"
+
+.PP
+Returns a \fBString\fP initializated with the #QByteArray data json\&. If the JSON data received is not valid, return an empty model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIjson\fP QByteArray in JSON format to be converted\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBString\fP 
+.RE
+.PP
+
+.PP
+Definition at line 225 of file string\&.cpp\&.
+.SS "QString String::getDescription () const"
+
+.PP
+Returns the description of the string\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Description of the string\&. 
+.RE
+.PP
+
+.PP
+Definition at line 86 of file string\&.cpp\&.
+.SS "QString String::getId () const"
+
+.PP
+Returns the identifier of the string\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Identifier of the string\&. 
+.RE
+.PP
+
+.PP
+Definition at line 52 of file string\&.cpp\&.
+.SS "QString String::getMaxLength () const"
+
+.PP
+Returns the max length of the string\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Max length of the string\&. 
+.RE
+.PP
+
+.PP
+Definition at line 103 of file string\&.cpp\&.
+.SS "QString String::getState () const"
+
+.PP
+Returns the state of the string\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+State of the string\&. 
+.RE
+.PP
+
+.PP
+Definition at line 120 of file string\&.cpp\&.
+.SS "QString String::getValue () const"
+
+.PP
+Returns the value of the string\&. Returns true if the identifier was set, otherwise, returns false\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Value of the string\&. 
+.RE
+.PP
+
+.PP
+Definition at line 69 of file string\&.cpp\&.
+.SS "bool String::isEditable () const"
+
+.PP
+Returns the editable state of the string\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Editable state of the string\&. 
+.RE
+.PP
+
+.PP
+Definition at line 172 of file string\&.cpp\&.
+.SS "bool String::isEmpty ()"
+
+.PP
+Returns true if string is empty\&. A string is empty if has a null o empty value\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Definition at line 137 of file string\&.cpp\&.
+.SS "bool String::isSelected () const"
+
+.PP
+Returns true if string is selected, else returns false\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Definition at line 146 of file string\&.cpp\&.
+.SS "\fBString\fP & String::operator= (const \fBString\fP & other)"
+
+.PP
+Assigns other to string and returns a reference to this string\&. Overloads fromString(QString &json) function\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIother\fP Model to be copied\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to this string\&. 
+.RE
+.PP
+
+.PP
+Definition at line 262 of file string\&.cpp\&.
+.SS "bool String::setDescription (const QString & description)"
+
+.PP
+Sets the description of the string\&. Returns true if the description was set, otherwise, returns false\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdescription\fP New description of the string\&. 
+.RE
+.PP
+
+.PP
+Definition at line 91 of file string\&.cpp\&.
+.SS "void String::setEditable (bool editable)"
+
+.PP
+Sets the editable parameter of the string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstate\fP New editable state of the string\&. 
+.RE
+.PP
+
+.PP
+Definition at line 177 of file string\&.cpp\&.
+.SS "bool String::setId (const QString & id)"
+
+.PP
+Sets the identifier of the string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP New identifier of the string\&. 
+.RE
+.PP
+
+.PP
+Definition at line 57 of file string\&.cpp\&.
+.SS "bool String::setMaxLength (const QString & maxLength)"
+
+.PP
+Sets the max length of the string\&. Returns true if the max length was set, otherwise, returns false\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fImaxLength\fP New max length of the string\&. 
+.RE
+.PP
+
+.PP
+Definition at line 108 of file string\&.cpp\&.
+.SS "void String::setSelected (bool selected)"
+
+.PP
+Changes the string to selected or unselected depending on the value received by parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIselected\fP New selection state of the string\&.\&. 
+.RE
+.PP
+
+.PP
+Definition at line 165 of file string\&.cpp\&.
+.SS "bool String::setState (const QString & state)"
+
+.PP
+Sets the state of the string\&. Returns true if the state was set, otherwise, returns false\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstate\fP New state of the string\&. 
+.RE
+.PP
+
+.PP
+Definition at line 125 of file string\&.cpp\&.
+.SS "bool String::setValue (const QString & value)"
+
+.PP
+Sets the value of the string\&. Returns true if the value was set, otherwise, returns false\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP New value of the string\&. 
+.RE
+.PP
+
+.PP
+Definition at line 74 of file string\&.cpp\&.
+.SS "QString String::toFpFileFormat () const"
+
+.PP
+Returns the model converted to a string with the format in file fp\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+A string\&. 
+.RE
+.PP
+
+.PP
+Definition at line 184 of file string\&.cpp\&.
+.SS "QString String::toJson (QJsonDocument::JsonFormat format = \fCQJsonDocument::Compact\fP)"
+
+.PP
+Returns the string converted to a JSON QString\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP Exit format of JSON\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+A JSON string, 
+.RE
+.PP
+
+.PP
+Definition at line 199 of file string\&.cpp\&.
+.SS "QJsonObject String::toJsonObject ()"
+
+.PP
+Returns the string converted to a #QJsonObject\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+QJsonObject 
+.RE
+.PP
+
+.PP
+Definition at line 204 of file string\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Contextualization Tool from the source code\&.

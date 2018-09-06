@@ -1,0 +1,1625 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classContextualizationController" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>ContextualizationController</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">QObject</basecompoundref>
+    <derivedcompoundref refid="classConsoleController" prot="public" virt="non-virtual">ConsoleController</derivedcompoundref>
+    <derivedcompoundref refid="classGuiController" prot="public" virt="non-virtual">GuiController</derivedcompoundref>
+    <includes refid="contextualizationcontroller_8h" local="no">contextualizationcontroller.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4" prot="public" static="no" strong="no">
+        <type></type>
+        <name>ModelError</name>
+        <enumvalue id="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4a6ccff3cdedbdcfcdfc1eb59c4b088d24" prot="public">
+          <name>OkModel</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Indicates that the model has not any error. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4adba539af7fd279d01da3a2a1e91e40ca" prot="public">
+          <name>NoImage</name>
+          <briefdescription>
+<para>Indicates that the model has not setted a image. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4a5d1b78a6b1296da8bf43b62432d090c5" prot="public">
+          <name>ImageNotExist</name>
+          <briefdescription>
+<para>Indicates that the image setted in the model doesn&apos;t exist. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4a2e771e637c2e37c6b410a96c9f48adfd" prot="public">
+          <name>NoStrings</name>
+          <briefdescription>
+<para>Indicates that the model has not any image associated. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The ModelError enum. </para>        </briefdescription>
+        <detaileddescription>
+<para>Contains all errors that can has the model. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="46" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.h" bodystart="46" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="enum" id="classContextualizationController_1acb38587f7f9e610a5950956b345d69fd" prot="public" static="no" strong="no">
+        <type></type>
+        <name>CodeError</name>
+        <enumvalue id="classContextualizationController_1acb38587f7f9e610a5950956b345d69fdac799a856f8460c5e6b100f08191b2d94" prot="public">
+          <name>NoError</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Indicates that there aren&apos;t any error during the process. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda067a46ac62df6062561a10108b8e77a9" prot="public">
+          <name>NullPointer</name>
+          <briefdescription>
+<para>Indicates that a null pointer has been received. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda4a6ad284235290da632cd7b621ae53be" prot="public">
+          <name>StringAlreadyExists</name>
+          <briefdescription>
+<para>Indicates that the string to process already exists in the model. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classContextualizationController_1acb38587f7f9e610a5950956b345d69fdac9ac40727cb32c37655f627ecd1450d4" prot="public">
+          <name>NoImportFile</name>
+          <briefdescription>
+<para>Indicates that file to import can&apos;t ber readed. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda705a292a89a7c137ed934a1ede90968a" prot="public">
+          <name>ImportFileFormat</name>
+          <briefdescription>
+<para>Indicates that the file to import has not a correct format. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classContextualizationController_1acb38587f7f9e610a5950956b345d69fdad866e236894ecf819409ebb4d44b7fd1" prot="public">
+          <name>FileNotExists</name>
+          <briefdescription>
+<para>Indicates that the file to read doesn&apos;t exist. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda3da219148b52a6691d2dbcd9f40ed627" prot="public">
+          <name>NoRemoteHost</name>
+          <briefdescription>
+<para>Indicates that there is no host to send the file. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda5360679b825af2b3b97283fae1a9717a" prot="public">
+          <name>NoValidIp</name>
+          <briefdescription>
+<para>Indicates that the IP to use is not valid. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda860490b2223e4e78d29a514fb51f6fc5" prot="public">
+          <name>SshpassError</name>
+          <initializer>= 254</initializer>
+          <briefdescription>
+<para>Indicates that an error ocurred in sshpass process. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda7447fb0b9cf45b0adc6da65c65c34253" prot="public">
+          <name>SshError</name>
+          <initializer>= 255</initializer>
+          <briefdescription>
+<para>Indicates that an error ocurred in ssh process. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda841e3c0b31b4da700505de6d3b30dabe" prot="public">
+          <name>WriteFile</name>
+          <initializer>= -1</initializer>
+          <briefdescription>
+<para>Indicates that the last try to write in disk wrong. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The CodeError enum. </para>        </briefdescription>
+        <detaileddescription>
+<para>Contains all general error that can happen during any process of the controller.</para><para>WARNING!! Don&apos;t change the default values of enum. Binary program returns this number values. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="60" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.h" bodystart="60" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="enum" id="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdced" prot="public" static="no" strong="no">
+        <type></type>
+        <name>MatchType</name>
+        <enumvalue id="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdcedab921b1883492c5a7511b20ec6a5f24f3" prot="public">
+          <name>ByID</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>The match will be done taking strings with the same idetifier. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdceda0e89844c93d199f9e314fc1a1ddae400" prot="public">
+          <name>ByValue</name>
+          <briefdescription>
+<para>The match will be done taking strings with the same value. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdceda54d0f26a3c6d7f680f2bcbd383f1d9df" prot="public">
+          <name>ByApproximateValue</name>
+          <briefdescription>
+<para>The match will be done taking strings with similar value to the one you are looking for. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>The MatchType enum. </para>        </briefdescription>
+        <detaileddescription>
+<para>Contains all match types by which you can search a string. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="79" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.h" bodystart="79" bodyend="83"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-attrib">
+      <memberdef kind="variable" id="classContextualizationController_1a8e94ee12efc5fb6aba91341b4cc47a26" prot="protected" static="yes" mutable="no">
+        <type>const int</type>
+        <definition>const int ContextualizationController::CHUNK_WIDTH</definition>
+        <argsstring></argsstring>
+        <name>CHUNK_WIDTH</name>
+        <initializer>= 300</initializer>
+        <briefdescription>
+<para>Width of each chunk when a image is splitted. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="100" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classContextualizationController_1ae9896f11f9e129fa4ea9d482c18d8b82" prot="protected" static="yes" mutable="no">
+        <type>const int</type>
+        <definition>const int ContextualizationController::CHUNK_HEIGHT</definition>
+        <argsstring></argsstring>
+        <name>CHUNK_HEIGHT</name>
+        <initializer>= 150</initializer>
+        <briefdescription>
+<para>Height of each chunk when a image is splitted. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="101" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.h" bodystart="101" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classContextualizationController_1a88ea18a10d1edd6cd15f41b6126e813e" prot="protected" static="yes" mutable="no">
+        <type>const QString</type>
+        <definition>const QString ContextualizationController::IMAGES_FOLDER</definition>
+        <argsstring></argsstring>
+        <name>IMAGES_FOLDER</name>
+        <initializer>= QDir(&quot;../storage/images&quot;).absolutePath() + &apos;/&apos;</initializer>
+        <briefdescription>
+<para>Directory where will save project images. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="102" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classContextualizationController_1a33d73ba5d5ef0e4c7a47dbb85cea7a7e" prot="protected" static="yes" mutable="no">
+        <type>const QString</type>
+        <definition>const QString ContextualizationController::PROJECTS_FOLDER</definition>
+        <argsstring></argsstring>
+        <name>PROJECTS_FOLDER</name>
+        <initializer>= QDir(&quot;../storage/projects&quot;).absolutePath() + &apos;/&apos;</initializer>
+        <briefdescription>
+<para>Directory where will save projects. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="103" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classContextualizationController_1ad01707b9671cf54a78960d7fdfa25463" prot="protected" static="yes" mutable="no">
+        <type>const QString</type>
+        <definition>const QString ContextualizationController::CONFIG_FOLDER</definition>
+        <argsstring></argsstring>
+        <name>CONFIG_FOLDER</name>
+        <initializer>= QDir(&quot;../config&quot;).absolutePath() + &apos;/&apos;</initializer>
+        <briefdescription>
+<para>Directory where will save configurations. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="104" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classContextualizationController_1a3d9769435b8558c75379938e3e78ca95" prot="protected" static="yes" mutable="no">
+        <type>const QString</type>
+        <definition>const QString ContextualizationController::DONE_FP_FILE</definition>
+        <argsstring></argsstring>
+        <name>DONE_FP_FILE</name>
+        <initializer>= <ref refid="classUtils_1a85a0cb065fa4399c42ce834952420d7a" kindref="member">Utils::getTmpDirectory</ref>() + &quot;/doneFpFile.fp&quot;</initializer>
+        <briefdescription>
+<para>File path where the firmware strings will be found. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="107" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.h" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classContextualizationController_1a31b85e006b135987dd34ce6443cc9ad1" prot="protected" static="no" mutable="no">
+        <type><ref refid="classContextualizationModel" kindref="compound">ContextualizationModel</ref> *</type>
+        <definition>ContextualizationModel* ContextualizationController::model_</definition>
+        <argsstring></argsstring>
+        <name>model_</name>
+        <briefdescription>
+<para>Pointer to the contextualization model. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="105" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classContextualizationController_1aaaea6627d8d88579150001d37916f618" prot="protected" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString ContextualizationController::englishFpFile_</definition>
+        <argsstring></argsstring>
+        <name>englishFpFile_</name>
+        <briefdescription>
+<para>Original file where be all firmware strings. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="106" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classContextualizationController_1a07888f57aa02355d2e0230d6a99f2251" prot="protected" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString ContextualizationController::username_</definition>
+        <argsstring></argsstring>
+        <name>username_</name>
+        <briefdescription>
+<para>Username who run the app. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="108" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classContextualizationController_1a78b977fec84729a2f9b4cc4a3a57a42e" prot="protected" static="no" mutable="no">
+        <type>QStringList</type>
+        <definition>QStringList ContextualizationController::validStates_</definition>
+        <argsstring></argsstring>
+        <name>validStates_</name>
+        <briefdescription>
+<para>Valid states of firmware strings. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="109" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classContextualizationController_1afdc03867fd96587139618c736c350ead" prot="protected" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString ContextualizationController::remoteHost_</definition>
+        <argsstring></argsstring>
+        <name>remoteHost_</name>
+        <briefdescription>
+<para>Host where the contextualization will be sent. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="110" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classContextualizationController_1a8313b2b6332dd76f286e5f24a6329b02" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool ContextualizationController::onlyDoneStrings_</definition>
+        <argsstring></argsstring>
+        <name>onlyDoneStrings_</name>
+        <briefdescription>
+<para>If is true, only string with state DONE will be found. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="111" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classContextualizationController_1a2ac26ea74b41512a52f677ac6c8fa83f" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool ContextualizationController::caseSensitive_</definition>
+        <argsstring></argsstring>
+        <name>caseSensitive_</name>
+        <briefdescription>
+<para>Indicates if searches will be case sensitive or not. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="112" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classContextualizationController_1a055cc7f78056ccc0d0a55023402a29ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ContextualizationController::ContextualizationController</definition>
+        <argsstring>(QObject *parent=Q_NULLPTR)</argsstring>
+        <name>ContextualizationController</name>
+        <param>
+          <type>QObject *</type>
+          <declname>parent</declname>
+          <defval>Q_NULLPTR</defval>
+        </param>
+        <briefdescription>
+<para>Constructs a controller setting his member variables. </para>        </briefdescription>
+        <detaileddescription>
+<para>Reads the configuration file and sets the values. If controller can&apos;t read the configuration file or hasn&apos;t a correct formart, controller sets a default values on member vaiables. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>parent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="92" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="20" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1ae5b1fa3bf3a7b92c8454e8cd98558989" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ContextualizationController::~ContextualizationController</definition>
+        <argsstring>()</argsstring>
+        <name>~ContextualizationController</name>
+        <briefdescription>
+<para>Destroys the controller. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="97" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="61" bodyend="64"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classContextualizationController_1ae2b31282f2258673757c77592f7ded00" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fd" kindref="member">CodeError</ref></type>
+        <definition>ContextualizationController::CodeError ContextualizationController::importProjectFromJsonFile</definition>
+        <argsstring>(const QString &amp;path)</argsstring>
+        <name>importProjectFromJsonFile</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+<para>Imports projet from json file. </para>        </briefdescription>
+        <detaileddescription>
+<para>Decodes JSON format of the file received by parameter and try to convert it in a <ref refid="classContextualizationModel" kindref="compound">ContextualizationModel</ref> object. Returns a #Error code. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>File path where be readed data project. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="122" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="66" bodyend="92"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1a26fc3969db0e2217dc6994f819c78572" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ContextualizationController::exportToJsonFile</definition>
+        <argsstring>(const QString &amp;path)</argsstring>
+        <name>exportToJsonFile</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+<para>Exports project to json file. </para>        </briefdescription>
+        <detaileddescription>
+<para>Codes the actual model to JSON format and sabe data in the file received by parameter. Returns true if project was exported succesfully, otherwise, returns false. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>File path where be saved data project. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="132" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="94" bodyend="117"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1a6b806979e0b4e5a3ce3af09230f66fef" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4" kindref="member">ContextualizationController::ModelError</ref></type>
+        <definition>ContextualizationController::ModelError ContextualizationController::validateModel</definition>
+        <argsstring>()</argsstring>
+        <name>validateModel</name>
+        <briefdescription>
+<para>Checks the actual state of the model. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns the error code of the actual state of the model. <simplesect kind="return"><para><ref refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4" kindref="member">ModelError</ref> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="140" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="119" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1a737d2562702b3b0da946e7b2f9fa336d" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString ContextualizationController::generateContextualization</definition>
+        <argsstring>()</argsstring>
+        <name>generateContextualization</name>
+        <briefdescription>
+<para>Generates a packet with the contextualization data. </para>        </briefdescription>
+        <detaileddescription>
+<para>After verifying that the model contains no errors, it packages all the information in a zip file with the data to be sent. If there aren&apos;t errors, returns the path of the zip file, else returns an empty QString. <simplesect kind="return"><para>QString </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="150" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="142" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1a46ec193d423be47137f34d746145801f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fd" kindref="member">CodeError</ref></type>
+        <definition>ContextualizationController::CodeError ContextualizationController::sendContextualization</definition>
+        <argsstring>(QString const &amp;path, QString user, QString password)</argsstring>
+        <name>sendContextualization</name>
+        <param>
+          <type>QString const &amp;</type>
+          <declname>path</declname>
+        </param>
+        <param>
+          <type>QString</type>
+          <declname>user</declname>
+        </param>
+        <param>
+          <type>QString</type>
+          <declname>password</declname>
+        </param>
+        <briefdescription>
+<para>Process that is responsible for sending the file received by parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para>Using credentials received por parameters, sends by SFTP protocol the file. Return the code error returned by SFTP process or a <ref refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fd" kindref="member">CodeError</ref> If there were any errors during the process. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>File path to send. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>user</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Username credential. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>password</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Password credential. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="162" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="182" bodyend="235"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1ae6817457c7b00d17bb676a4989d59858" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> * &gt;</type>
+        <definition>QList&lt; FirmwareString * &gt; ContextualizationController::detectStringsOnImage</definition>
+        <argsstring>(QString image)</argsstring>
+        <name>detectStringsOnImage</name>
+        <param>
+          <type>QString</type>
+          <declname>image</declname>
+        </param>
+        <briefdescription>
+<para>Extracts the strings contained in the image set in the model. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns a QList of <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> containing all of strings extracted converted in <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> objects if are in the fp file. Each firmware string on QList is a <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> Object extracted from the image. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>image</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Path of image where strings will be detected. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>List of <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> found on image. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="172" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="237" bodyend="290"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1a4afb43a5914ef1c7e2a6bb9357cdd822" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> * &gt;</type>
+        <definition>QList&lt; FirmwareString * &gt; ContextualizationController::fastDetectStringsOnImage</definition>
+        <argsstring>(QString image)</argsstring>
+        <name>fastDetectStringsOnImage</name>
+        <param>
+          <type>QString</type>
+          <declname>image</declname>
+        </param>
+        <briefdescription>
+<para>Extracts the strings contained in the image set in the model. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns a QList of <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> containing all of strings extracted converted in <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> objects if are in the fp file. Each firmware string on QList is a <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> Object extracted from the image. This is that #sendContextualization(QString image), this is more fast but less precise. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>image</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Path of image where strings will be detected. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>List of <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> found on image. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="183" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="292" bodyend="298"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1a97436fb5b350bcc6be500b0fe2ecc1b7" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> * &gt;</type>
+        <definition>QList&lt; FirmwareString * &gt; ContextualizationController::processExtractedStrings</definition>
+        <argsstring>(QStringList strings)</argsstring>
+        <name>processExtractedStrings</name>
+        <param>
+          <type>QStringList</type>
+          <declname>strings</declname>
+        </param>
+        <briefdescription>
+<para>Processes received strings. </para>        </briefdescription>
+        <detaileddescription>
+<para>Tries to find the strings value in fp file and strings that are in the file are returned converted in <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> object. Returns QList of <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> containing strings found in fp file.. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>strings</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> value to be processed. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>List of FirmwareStirng found in fp file. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="194" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="300" bodyend="313"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1a5f94a4894e3a3c0920dc534346527fa0" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> * &gt;</type>
+        <definition>QList&lt; FirmwareString * &gt; ContextualizationController::findString</definition>
+        <argsstring>(const QString &amp;text, const MatchType matchType=ByID)</argsstring>
+        <name>findString</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>text</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdced" kindref="member">MatchType</ref></type>
+          <declname>matchType</declname>
+          <defval><ref refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdcedab921b1883492c5a7511b20ec6a5f24f3" kindref="member">ByID</ref></defval>
+        </param>
+        <briefdescription>
+<para>Find the text received by parameter in fp file. </para>        </briefdescription>
+        <detaileddescription>
+<para>There are diferrent find types. The second parameter indicates the member class of <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> that the text received by parameter have to be compared. Returns a firmware string list containing all strings that be found. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>text</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Text to be found. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>matchType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of find to be done. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+<para>If only have to find strings with DONE state, tries to do search in DONE_FP_FIlE, else use englishFpFile_.</para><para>Tries to use DONE_FP_FILE if is possible to do searches faster.</para>        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="206" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="315" bodyend="367"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1a0d726ece69d0876729c1c801f9c25230" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ContextualizationController::isValidState</definition>
+        <argsstring>(QString &amp;state)</argsstring>
+        <name>isValidState</name>
+        <param>
+          <type>QString &amp;</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+<para>Checks the parameter state is a valid state. </para>        </briefdescription>
+        <detaileddescription>
+<para>Valid states are stored in a private QStringList validstates. Return true if the state is a valid state and return false if not. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>QString state to check. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="216" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="369" bodyend="375"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1abb80030963c4abd056a200fefbf8b4e9" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fd" kindref="member">CodeError</ref></type>
+        <definition>ContextualizationController::CodeError ContextualizationController::addString</definition>
+        <argsstring>(FirmwareString *fwString)</argsstring>
+        <name>addString</name>
+        <param>
+          <type><ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> *</type>
+          <declname>fwString</declname>
+        </param>
+        <briefdescription>
+<para>Adds a new string on the model. </para>        </briefdescription>
+        <detaileddescription>
+<para>The <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> is added on the model of the tool if is not wrong or is already in the model. If the parameter fwString is null, nothing is done. Return true if <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> is added successfully and false if not. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fwString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The string to add on the model. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Error code. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="227" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="377" bodyend="393"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1a4af8f49a57b9d9a7daf5b51d45620ed6" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int ContextualizationController::addStrings</definition>
+        <argsstring>(const QList&lt; FirmwareString *&gt; &amp;strings)</argsstring>
+        <name>addStrings</name>
+        <param>
+          <type>const QList&lt; <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> *&gt; &amp;</type>
+          <declname>strings</declname>
+        </param>
+        <briefdescription>
+<para>Adds new strings on the model. </para>        </briefdescription>
+        <detaileddescription>
+<para>Append all strings in the list that are not wrong or are already in the model. Returns the number of strings that have been added to the model. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>strings</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Strings list to be added in the model. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="237" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="395" bodyend="406"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1adedb36b408caff11f15632998e7b9413" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ContextualizationController::removeString</definition>
+        <argsstring>(QString stringId)</argsstring>
+        <name>removeString</name>
+        <param>
+          <type>QString</type>
+          <declname>stringId</declname>
+        </param>
+        <briefdescription>
+<para>Removes the string in the model with the id received by parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns true if the string was removed succesfully or false if the string is not in the model. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>row</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Row number of the string to be removed. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="246" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="408" bodyend="411"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1a0fb2ae8db12aba7888504f832bb63bd5" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ContextualizationController::removeString</definition>
+        <argsstring>(int row)</argsstring>
+        <name>removeString</name>
+        <param>
+          <type>int</type>
+          <declname>row</declname>
+        </param>
+        <briefdescription>
+<para>Removes the string in the model row number received by parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns true if the string was removed succesfully or false if the string is not in the model. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>row</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Row number of the string to be removed. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="255" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="413" bodyend="416"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1af9eb5f70f45cd3c501a8af97a4b280d4" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ContextualizationController::removeAllStrings</definition>
+        <argsstring>()</argsstring>
+        <name>removeAllStrings</name>
+        <briefdescription>
+<para>Remove all strings in the model. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="260" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="418" bodyend="427"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1a943a8703d6e67fa5a08b4b8d73697dfc" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ContextualizationController::selectString</definition>
+        <argsstring>(const QString id, bool state)</argsstring>
+        <name>selectString</name>
+        <param>
+          <type>const QString</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+<para>Select the string with the identifier received by parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns true if string was selected succesfully, otherwise, returns false. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Identifier of strogn to select. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Selection state </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="270" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="429" bodyend="432"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1af003f565ad5d3a45fb8b7e66a52487fa" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ContextualizationController::clearImage</definition>
+        <argsstring>()</argsstring>
+        <name>clearImage</name>
+        <briefdescription>
+<para>Sets a no image in the model. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="275" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="434" bodyend="437"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1a121919886590cd4955bbcc2d8b747b26" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>QString</type>
+        <definition>virtual QString ContextualizationController::takeCaptureArea</definition>
+        <argsstring>()=0</argsstring>
+        <name>takeCaptureArea</name>
+        <reimplementedby refid="classWindowsGuiController_1afcda369c002842873b3fb3cc3a593c06">takeCaptureArea</reimplementedby>
+        <reimplementedby refid="classLinuxGuiController_1a8242963a9c5f4b967902f8ee576294ec">takeCaptureArea</reimplementedby>
+        <reimplementedby refid="classLinuxConsoleController_1ac9944bf1302b077c733802349359e777">takeCaptureArea</reimplementedby>
+        <reimplementedby refid="classWindowsConsoleController_1ab536d94896c62a1920a6dbfd4b83c18b">takeCaptureArea</reimplementedby>
+        <briefdescription>
+<para>Starts a process that allow user capture an area of the screen. </para>        </briefdescription>
+        <detaileddescription>
+<para>The user have to select the area to capture with the mouse. Return the path where the capture is stored or an empty QString if an error ocurred. <simplesect kind="return"><para>QString </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="284" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1afd1e07f8b9439ff36656bfc7163df892" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ContextualizationController::setImage</definition>
+        <argsstring>(const QString &amp;image)</argsstring>
+        <name>setImage</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>image</declname>
+        </param>
+        <briefdescription>
+<para>setImage </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>image</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Path of image that will be set to the model. Returns true if the image is setted succesfully or returns false if the image can not setted. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="292" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="439" bodyend="454"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1a7eaa7277a256b9dbf26573a651e442bf" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ContextualizationController::isFwStringAlreadyExists</definition>
+        <argsstring>(FirmwareString &amp;fwString)</argsstring>
+        <name>isFwStringAlreadyExists</name>
+        <param>
+          <type><ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> &amp;</type>
+          <declname>fwString</declname>
+        </param>
+        <briefdescription>
+<para>Checks that the <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> is not already in the model. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> has no empty id, checks that there is not any <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> with the same id. If the <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> id is empty, then checks that there is not any <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> with the same value. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>fwString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="302" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="456" bodyend="475"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1a43b14faa02f64178e6f18f94022447fa" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int ContextualizationController::eraseExistStrings</definition>
+        <argsstring>(QList&lt; FirmwareString *&gt; *strings)</argsstring>
+        <name>eraseExistStrings</name>
+        <param>
+          <type>QList&lt; <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> *&gt; *</type>
+          <declname>strings</declname>
+        </param>
+        <briefdescription>
+<para>Erases, from the string list received by parameter, strings that already are in the model. </para>        </briefdescription>
+        <detaileddescription>
+<para>Return the number of strings erased from the strings list. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>strings</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List of strings to be processed. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>int </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="311" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="477" bodyend="494"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1afd648aaf148c3db3fb5e3af88e6de2e5" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString ContextualizationController::getImageOfModel</definition>
+        <argsstring>()</argsstring>
+        <name>getImageOfModel</name>
+        <briefdescription>
+<para>Returns the actual image of the model. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Absolute image path. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="317" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="496" bodyend="499"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1a6c8aba56f5b97fc3042c6e5c8e04e124" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QList&lt; QObject * &gt;</type>
+        <definition>QList&lt; QObject * &gt; ContextualizationController::getTableModel</definition>
+        <argsstring>()</argsstring>
+        <name>getTableModel</name>
+        <briefdescription>
+<para>Returns the model to be used by ListView, TableView or similar QML object. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>A model. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="323" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="501" bodyend="504"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1ab3824ba2a20c6f4b511fb6169a4349da" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString ContextualizationController::getDateTime</definition>
+        <argsstring>(QString format=&quot;yyyy_MM_dd_hh_mm_ss&quot;)</argsstring>
+        <name>getDateTime</name>
+        <param>
+          <type>QString</type>
+          <declname>format</declname>
+          <defval>&quot;yyyy_MM_dd_hh_mm_ss&quot;</defval>
+        </param>
+        <briefdescription>
+<para>Returns a current date time with the format received by parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>format</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Format to returns the date time. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Date time. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="330" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1a3b3d997f77ec6cd8cfe7569b81c31d3f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ContextualizationController::loadConfig</definition>
+        <argsstring>()</argsstring>
+        <name>loadConfig</name>
+        <briefdescription>
+<para>Reads the configuration file, if it exists, and sets the class members to the values in the file. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="335" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="506" bodyend="546"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1a4cfa5ebd6d0e2c1843fe6073c02873f3" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ContextualizationController::saveConfig</definition>
+        <argsstring>()</argsstring>
+        <name>saveConfig</name>
+        <briefdescription>
+<para>Saves config in configuration file to can be recuperated in the next run of contetualization tool. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="340" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="548" bodyend="579"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1af142a8bbd561278c3423ccad3b40c910" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int ContextualizationController::generateDoneFpFile</definition>
+        <argsstring>()</argsstring>
+        <name>generateDoneFpFile</name>
+        <reimplementedby refid="classWindowsGuiController_1aa78e32ce3635fc99f846d545d4a320b3">generateDoneFpFile</reimplementedby>
+        <reimplementedby refid="classWindowsConsoleController_1afca6af922fe103845177580d6af4859e">generateDoneFpFile</reimplementedby>
+        <briefdescription>
+<para>Creates a copy of englishFp file in /tmp with only firmware strings with DONE status. </para>        </briefdescription>
+        <detaileddescription>
+<para>If copy was created succesfully returns 0, otherwise returns the code error. <simplesect kind="return"><para>Code error </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="348" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="581" bodyend="596"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1a627fba866e282e4e7dff813781ed88cb" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int ContextualizationController::filterStringsByState</definition>
+        <argsstring>(QList&lt; FirmwareString *&gt; *list, const QString &amp;state)</argsstring>
+        <name>filterStringsByState</name>
+        <param>
+          <type>QList&lt; <ref refid="classFirmwareString" kindref="compound">FirmwareString</ref> *&gt; *</type>
+          <declname>list</declname>
+        </param>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+<para>Filters a list of firmware strings. Remove from the list all strings that have not the same state as the one received by parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns number of strings removed. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Firmware strings list to be filtered. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>State that will be filtered. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Number of removed strings. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="359" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="598" bodyend="615"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1a2bef3de188caf57cad70e47bcf7495d1" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QStringList</type>
+        <definition>QStringList ContextualizationController::splitImage</definition>
+        <argsstring>(const QString &amp;image, int chunkWidth, int chunkHeight, bool *someError=Q_NULLPTR)</argsstring>
+        <name>splitImage</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>image</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>chunkWidth</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>chunkHeight</declname>
+        </param>
+        <param>
+          <type>bool *</type>
+          <declname>someError</declname>
+          <defval>Q_NULLPTR</defval>
+        </param>
+        <briefdescription>
+<para>Splits an image in one or more chunks depending of chunk size received by argument. </para>        </briefdescription>
+        <detaileddescription>
+<para>If the width of the image is not divisible by the chunkWidth respectively, the last chunk of the row will narrower than all the others. Works the same way for height of image and chunkHeight. Chunks are saved on disk.</para><para>Returns a list with path of image chunks. Only returns chunks that have been saved on disk succesfully.</para><para>If ok is nonnull pointer, ok will be set to true if all chunks are saved on disk succesfully. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>image</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Image to split. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>chunkWidth</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Width of each part of image. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>chunkHeight</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Height of each part of image. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>QStringList with chunks of image. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="376" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="617" bodyend="659"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1a5d60cf7ca2c78b74bb6a5ad5a5b04e9e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString ContextualizationController::getParameterFromConfigFile</definition>
+        <argsstring>(const QString parameter)</argsstring>
+        <name>getParameterFromConfigFile</name>
+        <param>
+          <type>const QString</type>
+          <declname>parameter</declname>
+        </param>
+        <briefdescription>
+<para>Returns a value of a parameter in config file. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>parameter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parameter name to be returned. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Value </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="383" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="669" bodyend="702"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1a6e92320baf8dbbf148bd3b3e97c5d332" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ContextualizationController::setParameterInConfigFile</definition>
+        <argsstring>(const QString parameter, const QString value)</argsstring>
+        <name>setParameterInConfigFile</name>
+        <param>
+          <type>const QString</type>
+          <declname>parameter</declname>
+        </param>
+        <param>
+          <type>const QString</type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Sets a parameter in configuration file. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns true if parameter is saved succesfully, otherwhise returns false. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>parameter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parameter name </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parameter value </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="393" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="704" bodyend="736"/>
+      </memberdef>
+      <memberdef kind="function" id="classContextualizationController_1a0ec0241ee096fa917e3ab7de448e5509" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ContextualizationController::proccessAndStorage</definition>
+        <argsstring>()</argsstring>
+        <name>proccessAndStorage</name>
+        <briefdescription>
+<para>Reads all fp language files that there was congigurated in database. </para>        </briefdescription>
+        <detaileddescription>
+<para>Process all strings and storage in database strings with state VALIDADED. <simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="401" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="738" bodyend="778"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-slot">
+      <memberdef kind="slot" id="classContextualizationController_1afea4c16fa2728506e6301e46891bf73f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ContextualizationController::add</definition>
+        <argsstring>(QString newString, int matchType)=0</argsstring>
+        <name>add</name>
+        <param>
+          <type>QString</type>
+          <declname>newString</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>matchType</declname>
+        </param>
+        <briefdescription>
+<para>Tries to add a new string into the model. </para>        </briefdescription>
+        <detaileddescription>
+<para>This slot interacts with the user through the screen showing messages. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>newString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New strign to add. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>matchType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Mode in which the string is to be searched for </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="413" column="1"/>
+      </memberdef>
+      <memberdef kind="slot" id="classContextualizationController_1ae06d4c794e77321439668aadc141aca5" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ContextualizationController::remove</definition>
+        <argsstring>(QString stringId)=0</argsstring>
+        <name>remove</name>
+        <param>
+          <type>QString</type>
+          <declname>stringId</declname>
+        </param>
+        <briefdescription>
+<para>Tries to remove the string in the model with the identifier receiven by parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>stringId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Idetifier for string to remove. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="419" column="1"/>
+      </memberdef>
+      <memberdef kind="slot" id="classContextualizationController_1a2f19977180ae0d6ecd3900951d686fe3" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ContextualizationController::clear</definition>
+        <argsstring>()=0</argsstring>
+        <name>clear</name>
+        <briefdescription>
+<para>Removes all strings in the model. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="424" column="1"/>
+      </memberdef>
+      <memberdef kind="slot" id="classContextualizationController_1ad9e65625e6dc228858cf2c9606606691" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ContextualizationController::capture</definition>
+        <argsstring>(bool detectStringsOnLoad)=0</argsstring>
+        <name>capture</name>
+        <param>
+          <type>bool</type>
+          <declname>detectStringsOnLoad</declname>
+        </param>
+        <briefdescription>
+<para>Make a screen capture. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>detectStringsOnLoad</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Flag to know if is neccesary detect strings on capture. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="430" column="1"/>
+      </memberdef>
+      <memberdef kind="slot" id="classContextualizationController_1a3b93cb8ddf7ec41936d0e3ab980644eb" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ContextualizationController::load</definition>
+        <argsstring>(bool detectStringsOnLoad)=0</argsstring>
+        <name>load</name>
+        <param>
+          <type>bool</type>
+          <declname>detectStringsOnLoad</declname>
+        </param>
+        <briefdescription>
+<para>Loads an image in the model. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>detectStringsOnLoad</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Flag to know if is neccesary detect strings on capture. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="436" column="1"/>
+      </memberdef>
+      <memberdef kind="slot" id="classContextualizationController_1a0b79fa3dbd9e95325df5d1bd8507c7a5" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ContextualizationController::detect</definition>
+        <argsstring>()=0</argsstring>
+        <name>detect</name>
+        <briefdescription>
+<para>Detects strings in the current image of the model and tries to add them into. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="441" column="1"/>
+      </memberdef>
+      <memberdef kind="slot" id="classContextualizationController_1a6c22f71d82e58ed54994dd6da55fba5d" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ContextualizationController::send</definition>
+        <argsstring>()=0</argsstring>
+        <name>send</name>
+        <briefdescription>
+<para>Tries to send the active contextualization to a remote host. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="446" column="1"/>
+      </memberdef>
+      <memberdef kind="slot" id="classContextualizationController_1aef30a9a0c8c18ef27c58cfd71d000502" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ContextualizationController::cancel</definition>
+        <argsstring>()=0</argsstring>
+        <name>cancel</name>
+        <briefdescription>
+<para>Ensures that the user wants to cancel the project and closes the application in an orderly manner. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="451" column="1"/>
+      </memberdef>
+      <memberdef kind="slot" id="classContextualizationController_1a4fc34afd044a02b28cf1ccaa16e6d696" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool ContextualizationController::save</definition>
+        <argsstring>()=0</argsstring>
+        <name>save</name>
+        <briefdescription>
+<para>Saves current project. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="456" column="1"/>
+      </memberdef>
+      <memberdef kind="slot" id="classContextualizationController_1aacbc46aa9cf35b5e5d159ad829f03c0b" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool ContextualizationController::saveAs</definition>
+        <argsstring>()=0</argsstring>
+        <name>saveAs</name>
+        <briefdescription>
+<para>Opens a dialog and saves current project in the path specied for the user. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="461" column="1"/>
+      </memberdef>
+      <memberdef kind="slot" id="classContextualizationController_1ab5f48377aa2aa821695a08145bdbf522" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ContextualizationController::open</definition>
+        <argsstring>()=0</argsstring>
+        <name>open</name>
+        <briefdescription>
+<para>Opens a project saves on disk. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="466" column="1"/>
+      </memberdef>
+      <memberdef kind="slot" id="classContextualizationController_1ab0cd81ecd067cc0c6c475ce597d0f414" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ContextualizationController::refresh</definition>
+        <argsstring>()</argsstring>
+        <name>refresh</name>
+        <briefdescription>
+<para>Refreshes all components on current contextualization (DoneFpFile, Image, Strings...). </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="471" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.cpp" bodystart="661" bodyend="667"/>
+      </memberdef>
+      <memberdef kind="slot" id="classContextualizationController_1a57d48e9139331145d82c1be284ecdaa5" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ContextualizationController::newProject</definition>
+        <argsstring>()=0</argsstring>
+        <name>newProject</name>
+        <briefdescription>
+<para>Creates a new empty project. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="476" column="1"/>
+      </memberdef>
+      <memberdef kind="slot" id="classContextualizationController_1a52f5a73a589942dcdf7299097aee36d1" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void ContextualizationController::processFiles</definition>
+        <argsstring>()=0</argsstring>
+        <name>processFiles</name>
+        <briefdescription>
+<para>Process VALIDATED strings in fp files and storage it in database. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="481" column="1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="signal">
+      <memberdef kind="signal" id="classContextualizationController_1a0040eddc367f6685480818a2fd9d7a25" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ContextualizationController::stringsListChanged</definition>
+        <argsstring>()</argsstring>
+        <name>stringsListChanged</name>
+        <briefdescription>
+<para>The signal is emitted when a new string is added to the model or a string is removed from the model. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="488" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classContextualizationController_1ac101eb9c6edbc62b829257c4cfcc9fe1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ContextualizationController::imageChanged</definition>
+        <argsstring>()</argsstring>
+        <name>imageChanged</name>
+        <briefdescription>
+<para>The signal is emitted when a image is setted on the model. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/contextualizationcontroller.h" line="493" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This is the controller base class. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="14">
+        <label>GuiController</label>
+        <link refid="classGuiController"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>QObject</label>
+      </node>
+      <node id="13">
+        <label>WindowsConsoleController</label>
+        <link refid="classWindowsConsoleController"/>
+        <childnode refid="11" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>ContextualizationController</label>
+        <link refid="classContextualizationController"/>
+        <childnode refid="10" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>ConsoleController</label>
+        <link refid="classConsoleController"/>
+        <childnode refid="9" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>LinuxConsoleController</label>
+        <link refid="classLinuxConsoleController"/>
+        <childnode refid="11" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>LinuxGuiController</label>
+        <link refid="classLinuxGuiController"/>
+        <childnode refid="14" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>WindowsGuiController</label>
+        <link refid="classWindowsGuiController"/>
+        <childnode refid="14" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="18">
+        <label>QObject</label>
+      </node>
+      <node id="17">
+        <label>ContextualizationController</label>
+        <link refid="classContextualizationController"/>
+        <childnode refid="18" relation="public-inheritance">
+        </childnode>
+        <childnode refid="19" relation="usage">
+          <edgelabel>model_</edgelabel>
+        </childnode>
+      </node>
+      <node id="19">
+        <label>ContextualizationModel</label>
+        <link refid="classContextualizationModel"/>
+        <childnode refid="18" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/contextualization/controller/contextualizationcontroller.h" line="36" column="1" bodyfile="src/contextualization/controller/contextualizationcontroller.h" bodystart="35" bodyend="494"/>
+    <listofallmembers>
+      <member refid="classContextualizationController_1afea4c16fa2728506e6301e46891bf73f" prot="protected" virt="pure-virtual"><scope>ContextualizationController</scope><name>add</name></member>
+      <member refid="classContextualizationController_1abb80030963c4abd056a200fefbf8b4e9" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>addString</name></member>
+      <member refid="classContextualizationController_1a4af8f49a57b9d9a7daf5b51d45620ed6" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>addStrings</name></member>
+      <member refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdceda54d0f26a3c6d7f680f2bcbd383f1d9df" prot="public" virt="non-virtual"><scope>ContextualizationController</scope><name>ByApproximateValue</name></member>
+      <member refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdcedab921b1883492c5a7511b20ec6a5f24f3" prot="public" virt="non-virtual"><scope>ContextualizationController</scope><name>ByID</name></member>
+      <member refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdceda0e89844c93d199f9e314fc1a1ddae400" prot="public" virt="non-virtual"><scope>ContextualizationController</scope><name>ByValue</name></member>
+      <member refid="classContextualizationController_1aef30a9a0c8c18ef27c58cfd71d000502" prot="protected" virt="pure-virtual"><scope>ContextualizationController</scope><name>cancel</name></member>
+      <member refid="classContextualizationController_1ad9e65625e6dc228858cf2c9606606691" prot="protected" virt="pure-virtual"><scope>ContextualizationController</scope><name>capture</name></member>
+      <member refid="classContextualizationController_1a2ac26ea74b41512a52f677ac6c8fa83f" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>caseSensitive_</name></member>
+      <member refid="classContextualizationController_1ae9896f11f9e129fa4ea9d482c18d8b82" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>CHUNK_HEIGHT</name></member>
+      <member refid="classContextualizationController_1a8e94ee12efc5fb6aba91341b4cc47a26" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>CHUNK_WIDTH</name></member>
+      <member refid="classContextualizationController_1a2f19977180ae0d6ecd3900951d686fe3" prot="protected" virt="pure-virtual"><scope>ContextualizationController</scope><name>clear</name></member>
+      <member refid="classContextualizationController_1af003f565ad5d3a45fb8b7e66a52487fa" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>clearImage</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fd" prot="public" virt="non-virtual"><scope>ContextualizationController</scope><name>CodeError</name></member>
+      <member refid="classContextualizationController_1ad01707b9671cf54a78960d7fdfa25463" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>CONFIG_FOLDER</name></member>
+      <member refid="classContextualizationController_1a055cc7f78056ccc0d0a55023402a29ee" prot="public" virt="non-virtual"><scope>ContextualizationController</scope><name>ContextualizationController</name></member>
+      <member refid="classContextualizationController_1a0b79fa3dbd9e95325df5d1bd8507c7a5" prot="protected" virt="pure-virtual"><scope>ContextualizationController</scope><name>detect</name></member>
+      <member refid="classContextualizationController_1ae6817457c7b00d17bb676a4989d59858" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>detectStringsOnImage</name></member>
+      <member refid="classContextualizationController_1a3d9769435b8558c75379938e3e78ca95" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>DONE_FP_FILE</name></member>
+      <member refid="classContextualizationController_1aaaea6627d8d88579150001d37916f618" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>englishFpFile_</name></member>
+      <member refid="classContextualizationController_1a43b14faa02f64178e6f18f94022447fa" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>eraseExistStrings</name></member>
+      <member refid="classContextualizationController_1a26fc3969db0e2217dc6994f819c78572" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>exportToJsonFile</name></member>
+      <member refid="classContextualizationController_1a4afb43a5914ef1c7e2a6bb9357cdd822" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>fastDetectStringsOnImage</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fdad866e236894ecf819409ebb4d44b7fd1" prot="public" virt="non-virtual"><scope>ContextualizationController</scope><name>FileNotExists</name></member>
+      <member refid="classContextualizationController_1a627fba866e282e4e7dff813781ed88cb" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>filterStringsByState</name></member>
+      <member refid="classContextualizationController_1a5f94a4894e3a3c0920dc534346527fa0" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>findString</name></member>
+      <member refid="classContextualizationController_1a737d2562702b3b0da946e7b2f9fa336d" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>generateContextualization</name></member>
+      <member refid="classContextualizationController_1af142a8bbd561278c3423ccad3b40c910" prot="protected" virt="virtual"><scope>ContextualizationController</scope><name>generateDoneFpFile</name></member>
+      <member refid="classContextualizationController_1ab3824ba2a20c6f4b511fb6169a4349da" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>getDateTime</name></member>
+      <member refid="classContextualizationController_1afd648aaf148c3db3fb5e3af88e6de2e5" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>getImageOfModel</name></member>
+      <member refid="classContextualizationController_1a5d60cf7ca2c78b74bb6a5ad5a5b04e9e" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>getParameterFromConfigFile</name></member>
+      <member refid="classContextualizationController_1a6c8aba56f5b97fc3042c6e5c8e04e124" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>getTableModel</name></member>
+      <member refid="classContextualizationController_1ac101eb9c6edbc62b829257c4cfcc9fe1" prot="public" virt="non-virtual"><scope>ContextualizationController</scope><name>imageChanged</name></member>
+      <member refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4a5d1b78a6b1296da8bf43b62432d090c5" prot="public" virt="non-virtual"><scope>ContextualizationController</scope><name>ImageNotExist</name></member>
+      <member refid="classContextualizationController_1a88ea18a10d1edd6cd15f41b6126e813e" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>IMAGES_FOLDER</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda705a292a89a7c137ed934a1ede90968a" prot="public" virt="non-virtual"><scope>ContextualizationController</scope><name>ImportFileFormat</name></member>
+      <member refid="classContextualizationController_1ae2b31282f2258673757c77592f7ded00" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>importProjectFromJsonFile</name></member>
+      <member refid="classContextualizationController_1a7eaa7277a256b9dbf26573a651e442bf" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>isFwStringAlreadyExists</name></member>
+      <member refid="classContextualizationController_1a0d726ece69d0876729c1c801f9c25230" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>isValidState</name></member>
+      <member refid="classContextualizationController_1a3b93cb8ddf7ec41936d0e3ab980644eb" prot="protected" virt="pure-virtual"><scope>ContextualizationController</scope><name>load</name></member>
+      <member refid="classContextualizationController_1a3b3d997f77ec6cd8cfe7569b81c31d3f" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>loadConfig</name></member>
+      <member refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdced" prot="public" virt="non-virtual"><scope>ContextualizationController</scope><name>MatchType</name></member>
+      <member refid="classContextualizationController_1a31b85e006b135987dd34ce6443cc9ad1" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>model_</name></member>
+      <member refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4" prot="public" virt="non-virtual"><scope>ContextualizationController</scope><name>ModelError</name></member>
+      <member refid="classContextualizationController_1a57d48e9139331145d82c1be284ecdaa5" prot="protected" virt="pure-virtual"><scope>ContextualizationController</scope><name>newProject</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fdac799a856f8460c5e6b100f08191b2d94" prot="public" virt="non-virtual"><scope>ContextualizationController</scope><name>NoError</name></member>
+      <member refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4adba539af7fd279d01da3a2a1e91e40ca" prot="public" virt="non-virtual"><scope>ContextualizationController</scope><name>NoImage</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fdac9ac40727cb32c37655f627ecd1450d4" prot="public" virt="non-virtual"><scope>ContextualizationController</scope><name>NoImportFile</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda3da219148b52a6691d2dbcd9f40ed627" prot="public" virt="non-virtual"><scope>ContextualizationController</scope><name>NoRemoteHost</name></member>
+      <member refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4a2e771e637c2e37c6b410a96c9f48adfd" prot="public" virt="non-virtual"><scope>ContextualizationController</scope><name>NoStrings</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda5360679b825af2b3b97283fae1a9717a" prot="public" virt="non-virtual"><scope>ContextualizationController</scope><name>NoValidIp</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda067a46ac62df6062561a10108b8e77a9" prot="public" virt="non-virtual"><scope>ContextualizationController</scope><name>NullPointer</name></member>
+      <member refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4a6ccff3cdedbdcfcdfc1eb59c4b088d24" prot="public" virt="non-virtual"><scope>ContextualizationController</scope><name>OkModel</name></member>
+      <member refid="classContextualizationController_1a8313b2b6332dd76f286e5f24a6329b02" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>onlyDoneStrings_</name></member>
+      <member refid="classContextualizationController_1ab5f48377aa2aa821695a08145bdbf522" prot="protected" virt="pure-virtual"><scope>ContextualizationController</scope><name>open</name></member>
+      <member refid="classContextualizationController_1a0ec0241ee096fa917e3ab7de448e5509" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>proccessAndStorage</name></member>
+      <member refid="classContextualizationController_1a97436fb5b350bcc6be500b0fe2ecc1b7" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>processExtractedStrings</name></member>
+      <member refid="classContextualizationController_1a52f5a73a589942dcdf7299097aee36d1" prot="protected" virt="pure-virtual"><scope>ContextualizationController</scope><name>processFiles</name></member>
+      <member refid="classContextualizationController_1a33d73ba5d5ef0e4c7a47dbb85cea7a7e" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>PROJECTS_FOLDER</name></member>
+      <member refid="classContextualizationController_1ab0cd81ecd067cc0c6c475ce597d0f414" prot="protected" virt="virtual"><scope>ContextualizationController</scope><name>refresh</name></member>
+      <member refid="classContextualizationController_1afdc03867fd96587139618c736c350ead" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>remoteHost_</name></member>
+      <member refid="classContextualizationController_1ae06d4c794e77321439668aadc141aca5" prot="protected" virt="pure-virtual"><scope>ContextualizationController</scope><name>remove</name></member>
+      <member refid="classContextualizationController_1af9eb5f70f45cd3c501a8af97a4b280d4" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>removeAllStrings</name></member>
+      <member refid="classContextualizationController_1adedb36b408caff11f15632998e7b9413" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>removeString</name></member>
+      <member refid="classContextualizationController_1a0fb2ae8db12aba7888504f832bb63bd5" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>removeString</name></member>
+      <member refid="classContextualizationController_1a4fc34afd044a02b28cf1ccaa16e6d696" prot="protected" virt="pure-virtual"><scope>ContextualizationController</scope><name>save</name></member>
+      <member refid="classContextualizationController_1aacbc46aa9cf35b5e5d159ad829f03c0b" prot="protected" virt="pure-virtual"><scope>ContextualizationController</scope><name>saveAs</name></member>
+      <member refid="classContextualizationController_1a4cfa5ebd6d0e2c1843fe6073c02873f3" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>saveConfig</name></member>
+      <member refid="classContextualizationController_1a943a8703d6e67fa5a08b4b8d73697dfc" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>selectString</name></member>
+      <member refid="classContextualizationController_1a6c22f71d82e58ed54994dd6da55fba5d" prot="protected" virt="pure-virtual"><scope>ContextualizationController</scope><name>send</name></member>
+      <member refid="classContextualizationController_1a46ec193d423be47137f34d746145801f" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>sendContextualization</name></member>
+      <member refid="classContextualizationController_1afd1e07f8b9439ff36656bfc7163df892" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>setImage</name></member>
+      <member refid="classContextualizationController_1a6e92320baf8dbbf148bd3b3e97c5d332" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>setParameterInConfigFile</name></member>
+      <member refid="classContextualizationController_1a2bef3de188caf57cad70e47bcf7495d1" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>splitImage</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda7447fb0b9cf45b0adc6da65c65c34253" prot="public" virt="non-virtual"><scope>ContextualizationController</scope><name>SshError</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda860490b2223e4e78d29a514fb51f6fc5" prot="public" virt="non-virtual"><scope>ContextualizationController</scope><name>SshpassError</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda4a6ad284235290da632cd7b621ae53be" prot="public" virt="non-virtual"><scope>ContextualizationController</scope><name>StringAlreadyExists</name></member>
+      <member refid="classContextualizationController_1a0040eddc367f6685480818a2fd9d7a25" prot="public" virt="non-virtual"><scope>ContextualizationController</scope><name>stringsListChanged</name></member>
+      <member refid="classContextualizationController_1a121919886590cd4955bbcc2d8b747b26" prot="protected" virt="pure-virtual"><scope>ContextualizationController</scope><name>takeCaptureArea</name></member>
+      <member refid="classContextualizationController_1a07888f57aa02355d2e0230d6a99f2251" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>username_</name></member>
+      <member refid="classContextualizationController_1a6b806979e0b4e5a3ce3af09230f66fef" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>validateModel</name></member>
+      <member refid="classContextualizationController_1a78b977fec84729a2f9b4cc4a3a57a42e" prot="protected" virt="non-virtual"><scope>ContextualizationController</scope><name>validStates_</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda841e3c0b31b4da700505de6d3b30dabe" prot="public" virt="non-virtual"><scope>ContextualizationController</scope><name>WriteFile</name></member>
+      <member refid="classContextualizationController_1ae5b1fa3bf3a7b92c8454e8cd98558989" prot="public" virt="non-virtual"><scope>ContextualizationController</scope><name>~ContextualizationController</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

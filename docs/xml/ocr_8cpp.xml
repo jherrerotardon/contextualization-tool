@@ -1,0 +1,190 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="ocr_8cpp" kind="file" language="C++">
+    <compoundname>ocr.cpp</compoundname>
+    <includes refid="ocr_8h" local="yes">ocr.h</includes>
+    <incdepgraph>
+      <node id="948">
+        <label>QStandardPaths</label>
+      </node>
+      <node id="936">
+        <label>src/optical_character_recognition/ocr.cpp</label>
+        <link refid="ocr_8cpp"/>
+        <childnode refid="937" relation="include">
+        </childnode>
+      </node>
+      <node id="943">
+        <label>QImage</label>
+      </node>
+      <node id="949">
+        <label>QDebug</label>
+      </node>
+      <node id="944">
+        <label>QRegularExpression</label>
+      </node>
+      <node id="947">
+        <label>QDate</label>
+      </node>
+      <node id="938">
+        <label>QString</label>
+      </node>
+      <node id="941">
+        <label>QFile</label>
+      </node>
+      <node id="937">
+        <label>ocr.h</label>
+        <link refid="ocr_8h"/>
+        <childnode refid="938" relation="include">
+        </childnode>
+        <childnode refid="939" relation="include">
+        </childnode>
+        <childnode refid="940" relation="include">
+        </childnode>
+        <childnode refid="941" relation="include">
+        </childnode>
+        <childnode refid="942" relation="include">
+        </childnode>
+        <childnode refid="943" relation="include">
+        </childnode>
+        <childnode refid="944" relation="include">
+        </childnode>
+        <childnode refid="945" relation="include">
+        </childnode>
+      </node>
+      <node id="940">
+        <label>QDir</label>
+      </node>
+      <node id="946">
+        <label>QTextStream</label>
+      </node>
+      <node id="939">
+        <label>QStringList</label>
+      </node>
+      <node id="942">
+        <label>QFileInfo</label>
+      </node>
+      <node id="945">
+        <label>tools/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="938" relation="include">
+        </childnode>
+        <childnode refid="941" relation="include">
+        </childnode>
+        <childnode refid="946" relation="include">
+        </childnode>
+        <childnode refid="947" relation="include">
+        </childnode>
+        <childnode refid="948" relation="include">
+        </childnode>
+        <childnode refid="949" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Jorge Herrero Tardón (<ulink url="mailto:jorgeht@usal.es">jorgeht@usal.es</ulink>) </para></simplesect>
+<simplesect kind="date"><para>20/02/2018 </para></simplesect>
+<simplesect kind="version"><para>1.0 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="11"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="ocr_8h" kindref="compound">ocr.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="classOcr_1a285da90c44b929a9883a461de3e6578d" refkind="member"><highlight class="normal"><ref refid="classOcr_1a285da90c44b929a9883a461de3e6578d" kindref="member">Ocr::Ocr</ref>()</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOcr_1ad5f11045f50c9d8a23d2cea235c509ad" kindref="member">language_</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;eng&quot;</highlight><highlight class="normal">;<sp/></highlight></codeline>
+<codeline lineno="16"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="classOcr_1a93ead91f7b64663ce6ed71ca4542d2f7" refkind="member"><highlight class="normal"><ref refid="classOcr_1a93ead91f7b64663ce6ed71ca4542d2f7" kindref="member">Ocr::~Ocr</ref>()</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classOcr_1abf98eb2648c41446700515c3e6ed3a24" refkind="member"><highlight class="normal">QStringList<sp/><ref refid="classOcr_1abf98eb2648c41446700515c3e6ed3a24" kindref="member">Ocr::getLanguages</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="24"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classOcr_1ad5f11045f50c9d8a23d2cea235c509ad" kindref="member">language_</ref>.split(</highlight><highlight class="charliteral">&apos;+&apos;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classOcr_1ad2fb764c1c6766233ebbb53e62064bb8" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classOcr_1ad2fb764c1c6766233ebbb53e62064bb8" kindref="member">Ocr::addLanguage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;language)</highlight></codeline>
+<codeline lineno="29"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(!<ref refid="classOcr_1a0c9ebb9b531bdcd6789d4bf9cffb1d42" kindref="member">isAvailableLanguage</ref>(language)<sp/>||<sp/><ref refid="classOcr_1ad5f11045f50c9d8a23d2cea235c509ad" kindref="member">language_</ref>.split(QString(</highlight><highlight class="stringliteral">&quot;+&quot;</highlight><highlight class="normal">)).contains(language))<sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classOcr_1ad5f11045f50c9d8a23d2cea235c509ad" kindref="member">language_</ref>.isEmpty())<sp/>{</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOcr_1ad5f11045f50c9d8a23d2cea235c509ad" kindref="member">language_</ref><sp/>=<sp/>language;</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOcr_1ad5f11045f50c9d8a23d2cea235c509ad" kindref="member">language_</ref>.append(</highlight><highlight class="stringliteral">&quot;+&quot;</highlight><highlight class="normal"><sp/>+<sp/>language);</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="41"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classOcr_1a76001048da750374c987bef8171f1977" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classOcr_1a76001048da750374c987bef8171f1977" kindref="member">Ocr::removeLanguage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;language)</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>position;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>position<sp/>=<sp/><ref refid="classOcr_1ad5f11045f50c9d8a23d2cea235c509ad" kindref="member">language_</ref>.indexOf(language);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(position<sp/>!=<sp/>-1)<sp/>{</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classOcr_1ad5f11045f50c9d8a23d2cea235c509ad" kindref="member">language_</ref>.remove(position,<sp/>language.length()+1);</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57" refid="classOcr_1a0c9ebb9b531bdcd6789d4bf9cffb1d42" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classOcr_1a0c9ebb9b531bdcd6789d4bf9cffb1d42" kindref="member">Ocr::isAvailableLanguage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;language)</highlight></codeline>
+<codeline lineno="58"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_UNUSED(language);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="classOcr_1a4bd4275b9b0503dd23dd553b4c0ef54c" refkind="member"><highlight class="normal">QString<sp/><ref refid="classOcr_1a4bd4275b9b0503dd23dd553b4c0ef54c" kindref="member">Ocr::getImage</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="65"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classOcr_1a731be039b828dfb1c1f3d5efdeaea9aa" kindref="member">image_</ref>.fileName();</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69" refid="classOcr_1acdc41b9a0663c194d0fbede8c26ea319" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOcr_1acdc41b9a0663c194d0fbede8c26ea319" kindref="member">Ocr::setImage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;image)</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOcr_1a731be039b828dfb1c1f3d5efdeaea9aa" kindref="member">image_</ref>.setFileName(image);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="74" refid="classOcr_1a44f623335f8c26cc956b549a7bbf75fe" refkind="member"><highlight class="normal">QString<sp/><ref refid="classOcr_1a44f623335f8c26cc956b549a7bbf75fe" kindref="member">Ocr::getDataPath</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="75"><highlight class="keyword"></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classOcr_1a5c13f164c431cb4bc5a487eba75be7b4" kindref="member">datapath_</ref>;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="classOcr_1a0ec269340072accaa9d0932699b2a8ef" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOcr_1a0ec269340072accaa9d0932699b2a8ef" kindref="member">Ocr::setDataPath</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;datapath)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOcr_1a5c13f164c431cb4bc5a487eba75be7b4" kindref="member">datapath_</ref><sp/>=<sp/>datapath.endsWith(</highlight><highlight class="charliteral">&apos;/&apos;</highlight><highlight class="normal">)<sp/>?<sp/>datapath<sp/>:<sp/>datapath<sp/>+<sp/></highlight><highlight class="charliteral">&apos;/&apos;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84" refid="classOcr_1ac6f28693948e68e8958f1a27c73c79d1" refkind="member"><highlight class="normal">QStringList<sp/><ref refid="classOcr_1ac6f28693948e68e8958f1a27c73c79d1" kindref="member">Ocr::processExtration</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;source)</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>QStringList<sp/>result;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>text<sp/>=<sp/>source;<sp/><sp/></highlight><highlight class="comment">//<sp/>Because<sp/>future<sp/>replace<sp/>will<sp/>modify<sp/>the<sp/>string.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(source.isEmpty())<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Remove<sp/>rare<sp/>characters<sp/>(Slug)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/>text<sp/>=<sp/>text.replace(QRegularExpression(</highlight><highlight class="stringliteral">&quot;[^a-zA-Z0-9<sp/>-,\.]&quot;</highlight><highlight class="normal">),<sp/></highlight><highlight class="stringliteral">&quot;\n&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Force<sp/>the<sp/>beginning<sp/>of<sp/>the<sp/>string<sp/>to<sp/>be<sp/>a<sp/>one-word<sp/>character.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>text<sp/>=<sp/>text.replace(QRegularExpression(</highlight><highlight class="stringliteral">&quot;^\\W\\s*&quot;</highlight><highlight class="normal">),<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/>result<sp/>&lt;&lt;<sp/>text.split(</highlight><highlight class="charliteral">&apos;\n&apos;</highlight><highlight class="normal">,QString::SkipEmptyParts);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/>result.removeDuplicates();</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Returns<sp/>only<sp/>those<sp/>strings<sp/>that<sp/>have<sp/>at<sp/>least<sp/>any<sp/>character<sp/>of<sp/>a<sp/>word.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>result.filter(QRegularExpression(</highlight><highlight class="stringliteral">&quot;\\w+&quot;</highlight><highlight class="normal">));</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/optical_character_recognition/ocr.cpp"/>
+  </compounddef>
+</doxygen>

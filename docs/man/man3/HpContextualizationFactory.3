@@ -1,0 +1,59 @@
+.TH "HpContextualizationFactory" 3 "Thu Sep 6 2018" "Version 1.0" "Contextualization Tool" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+HpContextualizationFactory \- This is a factory to create a concrete class of \fBContextualizationController\fP specific for HP company\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <hpcontextualizationfactory\&.h>\fP
+.PP
+Inherits \fBContextualizationFactoryAbstract\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBHpContextualizationFactory\fP ()"
+.br
+.RI "Creates an empty \fBHpContextualizationFactory\fP\&. "
+.ti -1c
+.RI "\fBContextualizationController\fP * \fBcreateController\fP (char **params, int count) override"
+.br
+.RI "Creates a new \fBContextualizationController\fP\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+This is a factory to create a concrete class of \fBContextualizationController\fP specific for HP company\&. 
+.PP
+Definition at line 21 of file hpcontextualizationfactory\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBContextualizationController\fP * HpContextualizationFactory::createController (char ** params, int count)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Creates a new \fBContextualizationController\fP\&. Creates one type of \fBContextualizationController\fP depending of received params and the operate system where de application is running\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIparams\fP Array params\&. 
+.br
+\fIcount\fP Number of elements of params array\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Contextualization pointer\&. 
+.RE
+.PP
+
+.PP
+Implements \fBContextualizationFactoryAbstract\fP\&.
+.PP
+Definition at line 18 of file hpcontextualizationfactory\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Contextualization Tool from the source code\&.

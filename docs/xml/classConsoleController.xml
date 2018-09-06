@@ -1,0 +1,1068 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classConsoleController" kind="class" language="C++" prot="public">
+    <compoundname>ConsoleController</compoundname>
+    <basecompoundref refid="classContextualizationController" prot="public" virt="non-virtual">ContextualizationController</basecompoundref>
+    <derivedcompoundref refid="classLinuxConsoleController" prot="public" virt="non-virtual">LinuxConsoleController</derivedcompoundref>
+    <derivedcompoundref refid="classWindowsConsoleController" prot="public" virt="non-virtual">WindowsConsoleController</derivedcompoundref>
+    <includes refid="consolecontroller_8h" local="no">consolecontroller.h</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9" prot="public" static="no" strong="no">
+        <type></type>
+        <name>ActionType</name>
+        <enumvalue id="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a0fada6cf25abb68366ac353a6ec646e0" prot="public">
+          <name>PrintHelp</name>
+          <initializer>= 0</initializer>
+          <briefdescription>
+<para>Indicates that the app have to print the general help. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9ab376541b60038f69f8575f6fe680f9d2" prot="public">
+          <name>NoAction</name>
+          <briefdescription>
+<para>Indicates that the app have to do anything. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a04bb2e774b79ceb4bc2979c400e8feea" prot="public">
+          <name>ListProjects</name>
+          <briefdescription>
+<para>Indicates that the app have to list all available projects. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a230f00a5b6250550356eb456475fe757" prot="public">
+          <name>DetailProject</name>
+          <briefdescription>
+<para>Indicates that the app have to show detail for avitve project. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a9963a057c42713ecf9380500367f621b" prot="public">
+          <name>NewProject</name>
+          <briefdescription>
+<para>Indicates that the app have to create new project. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9aa620b51a7f0e47c93da8f023ca37a81b" prot="public">
+          <name>DeleteProject</name>
+          <briefdescription>
+<para>Indicates that the app have to delete a project. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a39ac9ee6f36481423172c8c7957beb50" prot="public">
+          <name>SelectProject</name>
+          <briefdescription>
+<para>Indicates that the app have to ativate a project. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a784b89a27e92a50096f0af414cc7f4ad" prot="public">
+          <name>ClearStrings</name>
+          <briefdescription>
+<para>Indicates that the app have to clear all strings from the active project. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a4d8a085e65fdc727d7642a25db2403b2" prot="public">
+          <name>ClearImage</name>
+          <briefdescription>
+<para>Indicates that the app have to unset current image from the active project. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9adc51bd8437c400c4193fa01650c087a0" prot="public">
+          <name>ClearAll</name>
+          <briefdescription>
+<para>Indicates that the app have to empty the active project. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a121c3067d3adf19104793ce9020fb543" prot="public">
+          <name>AddString</name>
+          <briefdescription>
+<para>Indicates that the app have to add new string in the active project. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9adf314576f39f9dfe3ce14758e7482422" prot="public">
+          <name>RemoveString</name>
+          <briefdescription>
+<para>Indicates that the app have to remove a string from the active project. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9abe2b103c6a30c1a23b13772970452b03" prot="public">
+          <name>SelectString</name>
+          <briefdescription>
+<para>Indicates that the app have to select the string indicated by user. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9acedfdd10ac8c789aa7d4dd9f78bd3937" prot="public">
+          <name>UnselectString</name>
+          <briefdescription>
+<para>Indicates that the app have to unselect the string indicated by user. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a346b6628a5522d04a57e23fd96b14e94" prot="public">
+          <name>SetImage</name>
+          <briefdescription>
+<para>Indicates that the app have to set the image in the active project. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9ac281d38e622624b8d89974cd1a437243" prot="public">
+          <name>CaptureArea</name>
+          <briefdescription>
+<para>Indicates that the app have to let the user capture an area of sreen and set it as image model. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9af2fd8b4a218c3ddbc0fd91c5b1667693" prot="public">
+          <name>DetectStrings</name>
+          <briefdescription>
+<para>Indicates that the app have to extract strings from image model and add it in active project. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9ab2dae62af54e26573bd66ca8f9ee3f0a" prot="public">
+          <name>ExportProject</name>
+          <briefdescription>
+<para>Indicates that the app have to save the active project in the path entered by the user. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9aa66215a16eaf6c015d2569d4574572a9" prot="public">
+          <name>ImportProject</name>
+          <briefdescription>
+<para>Indicates that the app have to import a project entered by the user. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a20e0cfce6c39df1ac1c1552ddf2dde22" prot="public">
+          <name>Send</name>
+          <briefdescription>
+<para>Indicates that the app have to send the active contextualization. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a465c31f22f889f262d21e867223c19a9" prot="public">
+          <name>ProcessFiles</name>
+          <briefdescription>
+<para>Indicates that the app have to process files and storage VALIDADED strings. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a019ca0fceccfad49f6abea9cee533222" prot="public">
+          <name>PrintClearHelp</name>
+          <briefdescription>
+<para>Indicates that the app have to print detailed help for clear command. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9ad1953c9265bcc1cb3663f2ccc23c5810" prot="public">
+          <name>PrintAddHelp</name>
+          <briefdescription>
+<para>Indicates that the app have to print extended help for add command. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a1a9ee810a12e81b7cbcb5f74a59e1b76" prot="public">
+          <name>PrintDetectHelp</name>
+          <briefdescription>
+<para>Indicates that the app have to print extended help for detect command. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a2cc22e62323a75b556c4e7568f9e588f" prot="public">
+          <name>PrintImageHelp</name>
+          <briefdescription>
+<para>Indicates that the app have to print extended help for image command. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Constains all actions that can be done by the exec function. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="33" column="1" bodyfile="src/contextualization/controller/consolecontroller.h" bodystart="33" bodyend="59"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classConsoleController_1a72bb6251328668877e850852e35ba48c" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString ConsoleController::appName_</definition>
+        <argsstring></argsstring>
+        <name>appName_</name>
+        <briefdescription>
+<para>Application name. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="239" column="1" bodyfile="src/contextualization/controller/consolecontroller.h" bodystart="239" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classConsoleController_1a70f4692884f3c0c86b7684090fbf7fd0" prot="private" static="no" mutable="no">
+        <type>QVariant</type>
+        <definition>QVariant ConsoleController::parameter_</definition>
+        <argsstring></argsstring>
+        <name>parameter_</name>
+        <briefdescription>
+<para>Value of parameter that will be used by exec depending the behavior. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="240" column="1" bodyfile="src/contextualization/controller/consolecontroller.h" bodystart="240" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classConsoleController_1a5795febaeb0ee5836a236419e33db3b7" prot="private" static="no" mutable="no">
+        <type><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9" kindref="member">ActionType</ref></type>
+        <definition>ActionType ConsoleController::action_</definition>
+        <argsstring></argsstring>
+        <name>action_</name>
+        <briefdescription>
+<para>Behavior of <ref refid="classConsoleController_1accdfd546eef82cfe4d0942426a3b6fac" kindref="member">exec()</ref> function. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="241" column="1" bodyfile="src/contextualization/controller/consolecontroller.h" bodystart="241" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classConsoleController_1abdc4db6b1d26611161ba1b250ed6bfc6" prot="private" static="no" mutable="no">
+        <type><ref refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdced" kindref="member">MatchType</ref></type>
+        <definition>MatchType ConsoleController::findType_</definition>
+        <argsstring></argsstring>
+        <name>findType_</name>
+        <briefdescription>
+<para>Indicates the type of find that will be done. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="242" column="1" bodyfile="src/contextualization/controller/consolecontroller.h" bodystart="242" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classConsoleController_1aec085b7a7a8c42a42e8bc348bb952fea" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString ConsoleController::projectPath_</definition>
+        <argsstring></argsstring>
+        <name>projectPath_</name>
+        <briefdescription>
+<para>Path of loaded project. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="243" column="1" bodyfile="src/contextualization/controller/consolecontroller.h" bodystart="243" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classConsoleController_1aed7f998b076f322a0c45f0a0e57202c4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ConsoleController::ConsoleController</definition>
+        <argsstring>()</argsstring>
+        <name>ConsoleController</name>
+        <briefdescription>
+<para>Creates an empty controller. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="64" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="13" bodyend="20"/>
+      </memberdef>
+      <memberdef kind="function" id="classConsoleController_1aaf8a775d3f675bcf9e7facd959217fdc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>ConsoleController::ConsoleController</definition>
+        <argsstring>(int argc, char **argv)</argsstring>
+        <name>ConsoleController</name>
+        <param>
+          <type>int</type>
+          <declname>argc</declname>
+        </param>
+        <param>
+          <type>char **</type>
+          <declname>argv</declname>
+        </param>
+        <briefdescription>
+<para>Creates a controller decoding arguments received by argument. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>argc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of argv elements. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>argv</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Arguments entered by the user when executed the app. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="71" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="22" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classConsoleController_1accdfd546eef82cfe4d0942426a3b6fac" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConsoleController::exec</definition>
+        <argsstring>()</argsstring>
+        <name>exec</name>
+        <briefdescription>
+<para>Executes the logic of controller. </para>        </briefdescription>
+        <detaileddescription>
+<para>It has mutiples type of behavior depending the value of action_ variable.</para><para>Types of action can be shown in ActionType enum. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="80" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="36" bodyend="118"/>
+      </memberdef>
+      <memberdef kind="function" id="classConsoleController_1ab9fdcba75eecb1f28c1fcd3b97183fe8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ConsoleController::decodeArguments</definition>
+        <argsstring>(int argc, char **argv)</argsstring>
+        <name>decodeArguments</name>
+        <param>
+          <type>int</type>
+          <declname>argc</declname>
+        </param>
+        <param>
+          <type>char **</type>
+          <declname>argv</declname>
+        </param>
+        <briefdescription>
+<para>Decode arguments entered to set the behavior of the exec method. </para>        </briefdescription>
+        <detaileddescription>
+<para>The first element of argv always must be the name of the app. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>argc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of argv elements. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>argv</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Arguments to decode. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="90" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="120" bodyend="242"/>
+      </memberdef>
+      <memberdef kind="function" id="classConsoleController_1a13eaf91bd8d72afeaa3792255983e019" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConsoleController::setAction</definition>
+        <argsstring>(ActionType action, QVariant parameter=QVariant())</argsstring>
+        <name>setAction</name>
+        <param>
+          <type><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9" kindref="member">ActionType</ref></type>
+          <declname>action</declname>
+        </param>
+        <param>
+          <type>QVariant</type>
+          <declname>parameter</declname>
+          <defval>QVariant()</defval>
+        </param>
+        <briefdescription>
+<para>Sets the action to be executed and his parameter,. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>action</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Actions to be executed by <ref refid="classConsoleController_1accdfd546eef82cfe4d0942426a3b6fac" kindref="member">exec()</ref> function. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>parameter</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Required parameter to execute the action. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="97" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="244" bodyend="248"/>
+      </memberdef>
+      <memberdef kind="function" id="classConsoleController_1a771c221ac40cd6441f13c76bd08b6927" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConsoleController::printUsage</definition>
+        <argsstring>()</argsstring>
+        <name>printUsage</name>
+        <briefdescription>
+<para>Print in screen the general usage of application. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="102" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="250" bodyend="272"/>
+      </memberdef>
+      <memberdef kind="function" id="classConsoleController_1a08cea6c7cb62ea9961af568daeec69c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConsoleController::printClearDetails</definition>
+        <argsstring>()</argsstring>
+        <name>printClearDetails</name>
+        <briefdescription>
+<para>Print extended help for clear command. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="107" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="274" bodyend="285"/>
+      </memberdef>
+      <memberdef kind="function" id="classConsoleController_1a5e2c72a9589fc8b5a2d9ba5c905850c8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConsoleController::printAddDetails</definition>
+        <argsstring>()</argsstring>
+        <name>printAddDetails</name>
+        <briefdescription>
+<para>Print extended help for add command. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="112" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="287" bodyend="302"/>
+      </memberdef>
+      <memberdef kind="function" id="classConsoleController_1aeef4c9eb3a199d0674c0841eadad6d7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConsoleController::printDetectDetails</definition>
+        <argsstring>()</argsstring>
+        <name>printDetectDetails</name>
+        <briefdescription>
+<para>Print extended help for detect command. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="117" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="304" bodyend="319"/>
+      </memberdef>
+      <memberdef kind="function" id="classConsoleController_1ae99f394b6610fd7c771e31d864526756" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConsoleController::printImageDetails</definition>
+        <argsstring>()</argsstring>
+        <name>printImageDetails</name>
+        <briefdescription>
+<para>Print extended help for image command. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="122" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="322" bodyend="332"/>
+      </memberdef>
+      <memberdef kind="function" id="classConsoleController_1a5dd7913a42068df42c3de6dc1f313537" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConsoleController::printDetectOptions</definition>
+        <argsstring>()</argsstring>
+        <name>printDetectOptions</name>
+        <briefdescription>
+<para>Print extended help for detect command. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="127" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="334" bodyend="347"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-slot">
+      <memberdef kind="slot" id="classConsoleController_1ad652f068aca06aad977468414ca1ba5d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConsoleController::add</definition>
+        <argsstring>(QString newString, int findType) override</argsstring>
+        <name>add</name>
+        <param>
+          <type>QString</type>
+          <declname>newString</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>findType</declname>
+        </param>
+        <briefdescription>
+<para>Tries to add a new string into the model. </para>        </briefdescription>
+        <detaileddescription>
+<para>This slot interacts with the user through the screen showing messages. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>newString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New strign to add. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>matchType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Mode in which the string is to be searched for </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="134" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="349" bodyend="366"/>
+      </memberdef>
+      <memberdef kind="slot" id="classConsoleController_1a42a856cb746624cbf674019b4d9abed6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConsoleController::remove</definition>
+        <argsstring>(QString stringId) override</argsstring>
+        <name>remove</name>
+        <param>
+          <type>QString</type>
+          <declname>stringId</declname>
+        </param>
+        <briefdescription>
+<para>Tries to remove the string in the model with the identifier receiven by parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>stringId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Idetifier for string to remove. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="139" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="368" bodyend="382"/>
+      </memberdef>
+      <memberdef kind="slot" id="classConsoleController_1a25fb1ebcda016e864e78e12b9d90be44" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConsoleController::clear</definition>
+        <argsstring>() override</argsstring>
+        <name>clear</name>
+        <briefdescription>
+<para>Removes all strings in the model. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="144" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="384" bodyend="402"/>
+      </memberdef>
+      <memberdef kind="slot" id="classConsoleController_1a2d29a993e0d1d502c5f6cce4881c4287" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConsoleController::capture</definition>
+        <argsstring>(bool detectStringsOnLoad=false) override</argsstring>
+        <name>capture</name>
+        <param>
+          <type>bool</type>
+          <declname>detectStringsOnLoad</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="149" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="404" bodyend="429"/>
+      </memberdef>
+      <memberdef kind="slot" id="classConsoleController_1a5bdf86dde2871bcd1f0d81578b37bfb1" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConsoleController::load</definition>
+        <argsstring>(bool detectStringsOnLoad=false) override</argsstring>
+        <name>load</name>
+        <param>
+          <type>bool</type>
+          <declname>detectStringsOnLoad</declname>
+          <defval>false</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="154" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="431" bodyend="450"/>
+      </memberdef>
+      <memberdef kind="slot" id="classConsoleController_1a0d8d8586fcfc35bca5fc1d53ab3d3c4d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConsoleController::detect</definition>
+        <argsstring>() override</argsstring>
+        <name>detect</name>
+        <briefdescription>
+<para>Detects strings in the current image of the model and tries to add them into. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="159" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="452" bodyend="493"/>
+      </memberdef>
+      <memberdef kind="slot" id="classConsoleController_1a1add2ad3066b67640437dca7c169126a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConsoleController::send</definition>
+        <argsstring>() override</argsstring>
+        <name>send</name>
+        <briefdescription>
+<para>Tries to send the active contextualization to a remote host. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="164" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="495" bodyend="576"/>
+      </memberdef>
+      <memberdef kind="slot" id="classConsoleController_1a50b336fccd31bf300e517902567502e0" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConsoleController::cancel</definition>
+        <argsstring>() override</argsstring>
+        <name>cancel</name>
+        <briefdescription>
+<para>Ensures that the user wants to cancel the project and closes the application in an orderly manner. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="169" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="594" bodyend="597"/>
+      </memberdef>
+      <memberdef kind="slot" id="classConsoleController_1a81d82a59e318aad77fa08ea554f01dff" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ConsoleController::save</definition>
+        <argsstring>() override</argsstring>
+        <name>save</name>
+        <briefdescription>
+<para>Saves current project. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="174" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="599" bodyend="607"/>
+      </memberdef>
+      <memberdef kind="slot" id="classConsoleController_1a2a876abe4f1fdf83632c8514cb80f2bb" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool ConsoleController::saveAs</definition>
+        <argsstring>() override</argsstring>
+        <name>saveAs</name>
+        <briefdescription>
+<para>Opens a dialog and saves current project in the path specied for the user. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="179" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="609" bodyend="613"/>
+      </memberdef>
+      <memberdef kind="slot" id="classConsoleController_1a54ef02e4f2086466af5ec38950b4a07a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConsoleController::open</definition>
+        <argsstring>() override</argsstring>
+        <name>open</name>
+        <briefdescription>
+<para>Opens a project saves on disk. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="184" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="615" bodyend="639"/>
+      </memberdef>
+      <memberdef kind="slot" id="classConsoleController_1a8f3b5410539ab1d13e426eab5d5994f9" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConsoleController::newProject</definition>
+        <argsstring>() override</argsstring>
+        <name>newProject</name>
+        <briefdescription>
+<para>Creates a new empty project. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="189" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="641" bodyend="669"/>
+      </memberdef>
+      <memberdef kind="slot" id="classConsoleController_1a0945df7b08af6d09406a76e43bf4fe65" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void ConsoleController::processFiles</definition>
+        <argsstring>() override</argsstring>
+        <name>processFiles</name>
+        <briefdescription>
+<para>Process VALIDATED strings in fp files and storage it in database. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="194" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="578" bodyend="592"/>
+      </memberdef>
+      <memberdef kind="slot" id="classConsoleController_1ad6eeca25e91660833ef62d94e3d49911" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConsoleController::listProjects</definition>
+        <argsstring>()</argsstring>
+        <name>listProjects</name>
+        <briefdescription>
+<para>Prints in console all available projects. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="199" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="671" bodyend="692"/>
+      </memberdef>
+      <memberdef kind="slot" id="classConsoleController_1af54f09168281c0beeb2cffff3971e7f5" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConsoleController::detailCurrentProject</definition>
+        <argsstring>()</argsstring>
+        <name>detailCurrentProject</name>
+        <briefdescription>
+<para>Prints in console details of selected project. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="204" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="694" bodyend="730"/>
+      </memberdef>
+      <memberdef kind="slot" id="classConsoleController_1a12483c2f6972d02ffce25e0744264633" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConsoleController::deleteProject</definition>
+        <argsstring>()</argsstring>
+        <name>deleteProject</name>
+        <briefdescription>
+<para>Deletes project introduce by user un console parameter. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="209" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="733" bodyend="750"/>
+      </memberdef>
+      <memberdef kind="slot" id="classConsoleController_1a73527d60f7c5f564f686313817de7437" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConsoleController::clearAll</definition>
+        <argsstring>()</argsstring>
+        <name>clearAll</name>
+        <briefdescription>
+<para>Empty all atributtes of selected project. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="214" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="752" bodyend="765"/>
+      </memberdef>
+      <memberdef kind="slot" id="classConsoleController_1a206e9a378dd5a29830cced6a94a2c110" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConsoleController::clearImage</definition>
+        <argsstring>()</argsstring>
+        <name>clearImage</name>
+        <briefdescription>
+<para>Sets in selected project an empty image. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="219" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="767" bodyend="779"/>
+      </memberdef>
+      <memberdef kind="slot" id="classConsoleController_1ac4f4d9c00e75c65b11486138ac313d8f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConsoleController::select</definition>
+        <argsstring>(const QString id)</argsstring>
+        <name>select</name>
+        <param>
+          <type>const QString</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Selects string with the identifier introduced by user. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Identifier of string to be selected. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="225" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="781" bodyend="798"/>
+      </memberdef>
+      <memberdef kind="slot" id="classConsoleController_1ae375f532a7bf4e82ac3b26f4795d7e23" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConsoleController::unselect</definition>
+        <argsstring>(const QString id)</argsstring>
+        <name>unselect</name>
+        <param>
+          <type>const QString</type>
+          <declname>id</declname>
+        </param>
+        <briefdescription>
+<para>Unselects string with the identifier introduced by user. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>id</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Identifier of string to be selected. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="231" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="800" bodyend="817"/>
+      </memberdef>
+      <memberdef kind="slot" id="classConsoleController_1a341552de8eb5509a4a2e204c974cf29d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void ConsoleController::import</definition>
+        <argsstring>()</argsstring>
+        <name>import</name>
+        <briefdescription>
+<para>Move a project to projects folders if is a valid project. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="236" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="819" bodyend="838"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classConsoleController_1a69fc688623ef01f4b0b7922861df8aac" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString ConsoleController::requestUsername</definition>
+        <argsstring>()</argsstring>
+        <name>requestUsername</name>
+        <briefdescription>
+<para>Request by console the username. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>User input. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="249" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="840" bodyend="848"/>
+      </memberdef>
+      <memberdef kind="function" id="classConsoleController_1a13ffd534e518937e3d2e44487ec573d5" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString ConsoleController::requestPassword</definition>
+        <argsstring>()</argsstring>
+        <name>requestPassword</name>
+        <briefdescription>
+<para>Request by console the password. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>User input. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="255" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="850" bodyend="862"/>
+      </memberdef>
+      <memberdef kind="function" id="classConsoleController_1a535aab68f50e4afe9d6edba21c690cd6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fd" kindref="member">CodeError</ref></type>
+        <definition>ContextualizationController::CodeError ConsoleController::loadProjectFromConfiguration</definition>
+        <argsstring>()</argsstring>
+        <name>loadProjectFromConfiguration</name>
+        <briefdescription>
+<para>Loads a project(model) from configuration file. </para>        </briefdescription>
+        <detaileddescription>
+<para>Create a model with project selected in configuration file. <simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/consolecontroller.h" line="263" column="1" bodyfile="src/contextualization/controller/consolecontroller.cpp" bodystart="864" bodyend="909"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>The ConsoleContextualizationController class is responsible for controll the Contextualization Tool application when is executed from a terminal (CLI). </para>    </briefdescription>
+    <detaileddescription>
+<para>This is the controller class that works a CLI environment. </para>    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>QObject</label>
+      </node>
+      <node id="4">
+        <label>WindowsConsoleController</label>
+        <link refid="classWindowsConsoleController"/>
+        <childnode refid="0" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>ContextualizationController</label>
+        <link refid="classContextualizationController"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="0">
+        <label>ConsoleController</label>
+        <link refid="classConsoleController"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>LinuxConsoleController</label>
+        <link refid="classLinuxConsoleController"/>
+        <childnode refid="0" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="7">
+        <label>QObject</label>
+      </node>
+      <node id="6">
+        <label>ContextualizationController</label>
+        <link refid="classContextualizationController"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+        <childnode refid="8" relation="usage">
+          <edgelabel>model_</edgelabel>
+        </childnode>
+      </node>
+      <node id="5">
+        <label>ConsoleController</label>
+        <link refid="classConsoleController"/>
+        <childnode refid="6" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>ContextualizationModel</label>
+        <link refid="classContextualizationModel"/>
+        <childnode refid="7" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/contextualization/controller/consolecontroller.h" line="27" column="1" bodyfile="src/contextualization/controller/consolecontroller.h" bodystart="26" bodyend="264"/>
+    <listofallmembers>
+      <member refid="classConsoleController_1a5795febaeb0ee5836a236419e33db3b7" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>action_</name></member>
+      <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>ActionType</name></member>
+      <member refid="classConsoleController_1ad652f068aca06aad977468414ca1ba5d" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>add</name></member>
+      <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a121c3067d3adf19104793ce9020fb543" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>AddString</name></member>
+      <member refid="classContextualizationController_1abb80030963c4abd056a200fefbf8b4e9" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>addString</name></member>
+      <member refid="classContextualizationController_1a4af8f49a57b9d9a7daf5b51d45620ed6" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>addStrings</name></member>
+      <member refid="classConsoleController_1a72bb6251328668877e850852e35ba48c" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>appName_</name></member>
+      <member refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdceda54d0f26a3c6d7f680f2bcbd383f1d9df" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>ByApproximateValue</name></member>
+      <member refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdcedab921b1883492c5a7511b20ec6a5f24f3" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>ByID</name></member>
+      <member refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdceda0e89844c93d199f9e314fc1a1ddae400" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>ByValue</name></member>
+      <member refid="classConsoleController_1a50b336fccd31bf300e517902567502e0" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>cancel</name></member>
+      <member refid="classConsoleController_1a2d29a993e0d1d502c5f6cce4881c4287" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>capture</name></member>
+      <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9ac281d38e622624b8d89974cd1a437243" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>CaptureArea</name></member>
+      <member refid="classContextualizationController_1a2ac26ea74b41512a52f677ac6c8fa83f" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>caseSensitive_</name></member>
+      <member refid="classContextualizationController_1ae9896f11f9e129fa4ea9d482c18d8b82" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>CHUNK_HEIGHT</name></member>
+      <member refid="classContextualizationController_1a8e94ee12efc5fb6aba91341b4cc47a26" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>CHUNK_WIDTH</name></member>
+      <member refid="classConsoleController_1a25fb1ebcda016e864e78e12b9d90be44" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>clear</name></member>
+      <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9adc51bd8437c400c4193fa01650c087a0" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>ClearAll</name></member>
+      <member refid="classConsoleController_1a73527d60f7c5f564f686313817de7437" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>clearAll</name></member>
+      <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a4d8a085e65fdc727d7642a25db2403b2" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>ClearImage</name></member>
+      <member refid="classConsoleController_1a206e9a378dd5a29830cced6a94a2c110" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>clearImage</name></member>
+      <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a784b89a27e92a50096f0af414cc7f4ad" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>ClearStrings</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fd" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>CodeError</name></member>
+      <member refid="classContextualizationController_1ad01707b9671cf54a78960d7fdfa25463" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>CONFIG_FOLDER</name></member>
+      <member refid="classConsoleController_1aed7f998b076f322a0c45f0a0e57202c4" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>ConsoleController</name></member>
+      <member refid="classConsoleController_1aaf8a775d3f675bcf9e7facd959217fdc" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>ConsoleController</name></member>
+      <member refid="classContextualizationController_1a055cc7f78056ccc0d0a55023402a29ee" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>ContextualizationController</name></member>
+      <member refid="classConsoleController_1ab9fdcba75eecb1f28c1fcd3b97183fe8" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>decodeArguments</name></member>
+      <member refid="classConsoleController_1a12483c2f6972d02ffce25e0744264633" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>deleteProject</name></member>
+      <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9aa620b51a7f0e47c93da8f023ca37a81b" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>DeleteProject</name></member>
+      <member refid="classConsoleController_1af54f09168281c0beeb2cffff3971e7f5" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>detailCurrentProject</name></member>
+      <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a230f00a5b6250550356eb456475fe757" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>DetailProject</name></member>
+      <member refid="classConsoleController_1a0d8d8586fcfc35bca5fc1d53ab3d3c4d" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>detect</name></member>
+      <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9af2fd8b4a218c3ddbc0fd91c5b1667693" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>DetectStrings</name></member>
+      <member refid="classContextualizationController_1ae6817457c7b00d17bb676a4989d59858" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>detectStringsOnImage</name></member>
+      <member refid="classContextualizationController_1a3d9769435b8558c75379938e3e78ca95" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>DONE_FP_FILE</name></member>
+      <member refid="classContextualizationController_1aaaea6627d8d88579150001d37916f618" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>englishFpFile_</name></member>
+      <member refid="classContextualizationController_1a43b14faa02f64178e6f18f94022447fa" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>eraseExistStrings</name></member>
+      <member refid="classConsoleController_1accdfd546eef82cfe4d0942426a3b6fac" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>exec</name></member>
+      <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9ab2dae62af54e26573bd66ca8f9ee3f0a" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>ExportProject</name></member>
+      <member refid="classContextualizationController_1a26fc3969db0e2217dc6994f819c78572" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>exportToJsonFile</name></member>
+      <member refid="classContextualizationController_1a4afb43a5914ef1c7e2a6bb9357cdd822" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>fastDetectStringsOnImage</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fdad866e236894ecf819409ebb4d44b7fd1" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>FileNotExists</name></member>
+      <member refid="classContextualizationController_1a627fba866e282e4e7dff813781ed88cb" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>filterStringsByState</name></member>
+      <member refid="classContextualizationController_1a5f94a4894e3a3c0920dc534346527fa0" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>findString</name></member>
+      <member refid="classConsoleController_1abdc4db6b1d26611161ba1b250ed6bfc6" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>findType_</name></member>
+      <member refid="classContextualizationController_1a737d2562702b3b0da946e7b2f9fa336d" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>generateContextualization</name></member>
+      <member refid="classContextualizationController_1af142a8bbd561278c3423ccad3b40c910" prot="protected" virt="virtual"><scope>ConsoleController</scope><name>generateDoneFpFile</name></member>
+      <member refid="classContextualizationController_1ab3824ba2a20c6f4b511fb6169a4349da" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>getDateTime</name></member>
+      <member refid="classContextualizationController_1afd648aaf148c3db3fb5e3af88e6de2e5" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>getImageOfModel</name></member>
+      <member refid="classContextualizationController_1a5d60cf7ca2c78b74bb6a5ad5a5b04e9e" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>getParameterFromConfigFile</name></member>
+      <member refid="classContextualizationController_1a6c8aba56f5b97fc3042c6e5c8e04e124" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>getTableModel</name></member>
+      <member refid="classContextualizationController_1ac101eb9c6edbc62b829257c4cfcc9fe1" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>imageChanged</name></member>
+      <member refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4a5d1b78a6b1296da8bf43b62432d090c5" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>ImageNotExist</name></member>
+      <member refid="classContextualizationController_1a88ea18a10d1edd6cd15f41b6126e813e" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>IMAGES_FOLDER</name></member>
+      <member refid="classConsoleController_1a341552de8eb5509a4a2e204c974cf29d" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>import</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda705a292a89a7c137ed934a1ede90968a" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>ImportFileFormat</name></member>
+      <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9aa66215a16eaf6c015d2569d4574572a9" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>ImportProject</name></member>
+      <member refid="classContextualizationController_1ae2b31282f2258673757c77592f7ded00" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>importProjectFromJsonFile</name></member>
+      <member refid="classContextualizationController_1a7eaa7277a256b9dbf26573a651e442bf" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>isFwStringAlreadyExists</name></member>
+      <member refid="classContextualizationController_1a0d726ece69d0876729c1c801f9c25230" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>isValidState</name></member>
+      <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a04bb2e774b79ceb4bc2979c400e8feea" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>ListProjects</name></member>
+      <member refid="classConsoleController_1ad6eeca25e91660833ef62d94e3d49911" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>listProjects</name></member>
+      <member refid="classConsoleController_1a5bdf86dde2871bcd1f0d81578b37bfb1" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>load</name></member>
+      <member refid="classContextualizationController_1a3b3d997f77ec6cd8cfe7569b81c31d3f" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>loadConfig</name></member>
+      <member refid="classConsoleController_1a535aab68f50e4afe9d6edba21c690cd6" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>loadProjectFromConfiguration</name></member>
+      <member refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdced" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>MatchType</name></member>
+      <member refid="classContextualizationController_1a31b85e006b135987dd34ce6443cc9ad1" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>model_</name></member>
+      <member refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>ModelError</name></member>
+      <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a9963a057c42713ecf9380500367f621b" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>NewProject</name></member>
+      <member refid="classConsoleController_1a8f3b5410539ab1d13e426eab5d5994f9" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>newProject</name></member>
+      <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9ab376541b60038f69f8575f6fe680f9d2" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>NoAction</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fdac799a856f8460c5e6b100f08191b2d94" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>NoError</name></member>
+      <member refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4adba539af7fd279d01da3a2a1e91e40ca" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>NoImage</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fdac9ac40727cb32c37655f627ecd1450d4" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>NoImportFile</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda3da219148b52a6691d2dbcd9f40ed627" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>NoRemoteHost</name></member>
+      <member refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4a2e771e637c2e37c6b410a96c9f48adfd" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>NoStrings</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda5360679b825af2b3b97283fae1a9717a" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>NoValidIp</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda067a46ac62df6062561a10108b8e77a9" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>NullPointer</name></member>
+      <member refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4a6ccff3cdedbdcfcdfc1eb59c4b088d24" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>OkModel</name></member>
+      <member refid="classContextualizationController_1a8313b2b6332dd76f286e5f24a6329b02" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>onlyDoneStrings_</name></member>
+      <member refid="classConsoleController_1a54ef02e4f2086466af5ec38950b4a07a" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>open</name></member>
+      <member refid="classConsoleController_1a70f4692884f3c0c86b7684090fbf7fd0" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>parameter_</name></member>
+      <member refid="classConsoleController_1a5e2c72a9589fc8b5a2d9ba5c905850c8" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>printAddDetails</name></member>
+      <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9ad1953c9265bcc1cb3663f2ccc23c5810" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>PrintAddHelp</name></member>
+      <member refid="classConsoleController_1a08cea6c7cb62ea9961af568daeec69c5" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>printClearDetails</name></member>
+      <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a019ca0fceccfad49f6abea9cee533222" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>PrintClearHelp</name></member>
+      <member refid="classConsoleController_1aeef4c9eb3a199d0674c0841eadad6d7e" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>printDetectDetails</name></member>
+      <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a1a9ee810a12e81b7cbcb5f74a59e1b76" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>PrintDetectHelp</name></member>
+      <member refid="classConsoleController_1a5dd7913a42068df42c3de6dc1f313537" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>printDetectOptions</name></member>
+      <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a0fada6cf25abb68366ac353a6ec646e0" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>PrintHelp</name></member>
+      <member refid="classConsoleController_1ae99f394b6610fd7c771e31d864526756" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>printImageDetails</name></member>
+      <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a2cc22e62323a75b556c4e7568f9e588f" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>PrintImageHelp</name></member>
+      <member refid="classConsoleController_1a771c221ac40cd6441f13c76bd08b6927" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>printUsage</name></member>
+      <member refid="classContextualizationController_1a0ec0241ee096fa917e3ab7de448e5509" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>proccessAndStorage</name></member>
+      <member refid="classContextualizationController_1a97436fb5b350bcc6be500b0fe2ecc1b7" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>processExtractedStrings</name></member>
+      <member refid="classConsoleController_1a0945df7b08af6d09406a76e43bf4fe65" prot="private" virt="virtual"><scope>ConsoleController</scope><name>processFiles</name></member>
+      <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a465c31f22f889f262d21e867223c19a9" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>ProcessFiles</name></member>
+      <member refid="classConsoleController_1aec085b7a7a8c42a42e8bc348bb952fea" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>projectPath_</name></member>
+      <member refid="classContextualizationController_1a33d73ba5d5ef0e4c7a47dbb85cea7a7e" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>PROJECTS_FOLDER</name></member>
+      <member refid="classContextualizationController_1ab0cd81ecd067cc0c6c475ce597d0f414" prot="protected" virt="virtual"><scope>ConsoleController</scope><name>refresh</name></member>
+      <member refid="classContextualizationController_1afdc03867fd96587139618c736c350ead" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>remoteHost_</name></member>
+      <member refid="classConsoleController_1a42a856cb746624cbf674019b4d9abed6" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>remove</name></member>
+      <member refid="classContextualizationController_1af9eb5f70f45cd3c501a8af97a4b280d4" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>removeAllStrings</name></member>
+      <member refid="classContextualizationController_1adedb36b408caff11f15632998e7b9413" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>removeString</name></member>
+      <member refid="classContextualizationController_1a0fb2ae8db12aba7888504f832bb63bd5" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>removeString</name></member>
+      <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9adf314576f39f9dfe3ce14758e7482422" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>RemoveString</name></member>
+      <member refid="classConsoleController_1a13ffd534e518937e3d2e44487ec573d5" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>requestPassword</name></member>
+      <member refid="classConsoleController_1a69fc688623ef01f4b0b7922861df8aac" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>requestUsername</name></member>
+      <member refid="classConsoleController_1a81d82a59e318aad77fa08ea554f01dff" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>save</name></member>
+      <member refid="classConsoleController_1a2a876abe4f1fdf83632c8514cb80f2bb" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>saveAs</name></member>
+      <member refid="classContextualizationController_1a4cfa5ebd6d0e2c1843fe6073c02873f3" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>saveConfig</name></member>
+      <member refid="classConsoleController_1ac4f4d9c00e75c65b11486138ac313d8f" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>select</name></member>
+      <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a39ac9ee6f36481423172c8c7957beb50" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>SelectProject</name></member>
+      <member refid="classContextualizationController_1a943a8703d6e67fa5a08b4b8d73697dfc" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>selectString</name></member>
+      <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9abe2b103c6a30c1a23b13772970452b03" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>SelectString</name></member>
+      <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a20e0cfce6c39df1ac1c1552ddf2dde22" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>Send</name></member>
+      <member refid="classConsoleController_1a1add2ad3066b67640437dca7c169126a" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>send</name></member>
+      <member refid="classContextualizationController_1a46ec193d423be47137f34d746145801f" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>sendContextualization</name></member>
+      <member refid="classConsoleController_1a13eaf91bd8d72afeaa3792255983e019" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>setAction</name></member>
+      <member refid="classContextualizationController_1afd1e07f8b9439ff36656bfc7163df892" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>setImage</name></member>
+      <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a346b6628a5522d04a57e23fd96b14e94" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>SetImage</name></member>
+      <member refid="classContextualizationController_1a6e92320baf8dbbf148bd3b3e97c5d332" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>setParameterInConfigFile</name></member>
+      <member refid="classContextualizationController_1a2bef3de188caf57cad70e47bcf7495d1" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>splitImage</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda7447fb0b9cf45b0adc6da65c65c34253" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>SshError</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda860490b2223e4e78d29a514fb51f6fc5" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>SshpassError</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda4a6ad284235290da632cd7b621ae53be" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>StringAlreadyExists</name></member>
+      <member refid="classContextualizationController_1a0040eddc367f6685480818a2fd9d7a25" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>stringsListChanged</name></member>
+      <member refid="classContextualizationController_1a121919886590cd4955bbcc2d8b747b26" prot="protected" virt="pure-virtual"><scope>ConsoleController</scope><name>takeCaptureArea</name></member>
+      <member refid="classConsoleController_1ae375f532a7bf4e82ac3b26f4795d7e23" prot="private" virt="non-virtual"><scope>ConsoleController</scope><name>unselect</name></member>
+      <member refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9acedfdd10ac8c789aa7d4dd9f78bd3937" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>UnselectString</name></member>
+      <member refid="classContextualizationController_1a07888f57aa02355d2e0230d6a99f2251" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>username_</name></member>
+      <member refid="classContextualizationController_1a6b806979e0b4e5a3ce3af09230f66fef" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>validateModel</name></member>
+      <member refid="classContextualizationController_1a78b977fec84729a2f9b4cc4a3a57a42e" prot="protected" virt="non-virtual"><scope>ConsoleController</scope><name>validStates_</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda841e3c0b31b4da700505de6d3b30dabe" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>WriteFile</name></member>
+      <member refid="classContextualizationController_1ae5b1fa3bf3a7b92c8454e8cd98558989" prot="public" virt="non-virtual"><scope>ConsoleController</scope><name>~ContextualizationController</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,427 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classTesseractOcr" kind="class" language="C++" prot="public">
+    <compoundname>TesseractOcr</compoundname>
+    <basecompoundref refid="classOcr" prot="public" virt="non-virtual">Ocr</basecompoundref>
+    <includes refid="tesseractocr_8h" local="no">tesseractocr.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classTesseractOcr_1adc2e1b9bf20cdbdb8b2c7238355b9005" prot="private" static="no" mutable="no">
+        <type>tesseract::TessBaseAPI *</type>
+        <definition>tesseract::TessBaseAPI* TesseractOcr::api_</definition>
+        <argsstring></argsstring>
+        <name>api_</name>
+        <briefdescription>
+<para>Api pointer class wich work the recognition. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/tesseractocr.h" line="104" column="1" bodyfile="src/optical_character_recognition/tesseractocr.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTesseractOcr_1aa2ba043b1fdfeaed3925ae1bc386b735" prot="private" static="no" mutable="no">
+        <type>tesseract::PageSegMode</type>
+        <definition>tesseract::PageSegMode TesseractOcr::pageSegMode_</definition>
+        <argsstring></argsstring>
+        <name>pageSegMode_</name>
+        <briefdescription>
+<para>Page segmentation mode to be used by tesseract. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/tesseractocr.h" line="105" column="1" bodyfile="src/optical_character_recognition/tesseractocr.h" bodystart="105" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classTesseractOcr_1a58298987035af6117dd37a023f53870c" prot="private" static="no" mutable="no">
+        <type>tesseract::OcrEngineMode</type>
+        <definition>tesseract::OcrEngineMode TesseractOcr::engineMode_</definition>
+        <argsstring></argsstring>
+        <name>engineMode_</name>
+        <briefdescription>
+<para>Engine mode to be used by tesseract. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/tesseractocr.h" line="106" column="1" bodyfile="src/optical_character_recognition/tesseractocr.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classTesseractOcr_1a9e62c15a4f8e4c8a0a614cf04ec8dea6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TesseractOcr::TesseractOcr</definition>
+        <argsstring>()</argsstring>
+        <name>TesseractOcr</name>
+        <briefdescription>
+<para>Creates an empty <ref refid="classTesseractOcr" kindref="compound">TesseractOcr</ref> instance. </para>        </briefdescription>
+        <detaileddescription>
+<para>Sets default values. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/tesseractocr.h" line="30" column="1" bodyfile="src/optical_character_recognition/tesseractocr.cpp" bodystart="14" bodyend="17"/>
+      </memberdef>
+      <memberdef kind="function" id="classTesseractOcr_1ad550fd8468a1b1ee0b915c7202281dc7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TesseractOcr::TesseractOcr</definition>
+        <argsstring>(QString image, QString datapath=QDir(&quot;../tesseract/tessdata&quot;).absolutePath()+&apos;/&apos;, tesseract::OcrEngineMode engineMode=tesseract::OEM_TESSERACT_LSTM_COMBINED, tesseract::PageSegMode pageSegMode=tesseract::PSM_AUTO)</argsstring>
+        <name>TesseractOcr</name>
+        <param>
+          <type>QString</type>
+          <declname>image</declname>
+        </param>
+        <param>
+          <type>QString</type>
+          <declname>datapath</declname>
+          <defval>QDir(&quot;../tesseract/tessdata&quot;).absolutePath()+&apos;/&apos;</defval>
+        </param>
+        <param>
+          <type>tesseract::OcrEngineMode</type>
+          <declname>engineMode</declname>
+          <defval>tesseract::OEM_TESSERACT_LSTM_COMBINED</defval>
+        </param>
+        <param>
+          <type>tesseract::PageSegMode</type>
+          <declname>pageSegMode</declname>
+          <defval>tesseract::PSM_AUTO</defval>
+        </param>
+        <briefdescription>
+<para>Creates a <ref refid="classTesseractOcr" kindref="compound">TesseractOcr</ref> instante with the values received by parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>image</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Path of image where strings will be ectracted. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>datapath</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Folder path where data languages will be. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>engineMode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Engine mode wich will use tesseract. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>pageSegMode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Page segmentation mode will use tesseract. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+<para>&lt; Default language always &quot;eng&quot;.</para><para>&lt; Necessary for the api to work. </para>        </inbodydescription>
+        <location file="src/optical_character_recognition/tesseractocr.h" line="39" column="1" bodyfile="src/optical_character_recognition/tesseractocr.cpp" bodystart="19" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classTesseractOcr_1a8cac9f702b0eb765b522375d4aae08e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TesseractOcr::TesseractOcr</definition>
+        <argsstring>(const TesseractOcr &amp;other)</argsstring>
+        <name>TesseractOcr</name>
+        <param>
+          <type>const <ref refid="classTesseractOcr" kindref="compound">TesseractOcr</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Creates a copy from other <ref refid="classTesseractOcr" kindref="compound">TesseractOcr</ref> instance. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+<para>&lt; Necessary for the api to work. </para>        </inbodydescription>
+        <location file="src/optical_character_recognition/tesseractocr.h" line="50" column="1" bodyfile="src/optical_character_recognition/tesseractocr.cpp" bodystart="35" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classTesseractOcr_1ad7d20b699dec0f1939c58eb0cc952406" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>TesseractOcr::~TesseractOcr</definition>
+        <argsstring>()</argsstring>
+        <name>~TesseractOcr</name>
+        <briefdescription>
+<para>Destroys the tesseract ocr instance. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/tesseractocr.h" line="55" column="1" bodyfile="src/optical_character_recognition/tesseractocr.cpp" bodystart="47" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classTesseractOcr_1a7e5a1d3e275f710ce187bc1c0b080327" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QStringList</type>
+        <definition>QStringList TesseractOcr::extract</definition>
+        <argsstring>() override</argsstring>
+        <name>extract</name>
+        <reimplements refid="classOcr_1a09a27b3a1f579c41ebda05f2a2cf4fed">extract</reimplements>
+        <briefdescription>
+<para>Extracts strings contained in the image. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns a QStringsList containing the strings detected in the image. <simplesect kind="return"><para>Strings list with strings extracted. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/tesseractocr.h" line="60" column="1" bodyfile="src/optical_character_recognition/tesseractocr.cpp" bodystart="53" bodyend="123"/>
+      </memberdef>
+      <memberdef kind="function" id="classTesseractOcr_1ad3486dcaa8a478c72ebaf76c43671326" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QStringList</type>
+        <definition>QStringList TesseractOcr::getAvailableLanguages</definition>
+        <argsstring>() const override</argsstring>
+        <name>getAvailableLanguages</name>
+        <reimplements refid="classOcr_1a1b0eed20f8e7f553401834849d044bd2">getAvailableLanguages</reimplements>
+        <briefdescription>
+<para>Returns all available languages that can be used to extract strings from image. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>List with all available languages. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/tesseractocr.h" line="65" column="1" bodyfile="src/optical_character_recognition/tesseractocr.cpp" bodystart="125" bodyend="142"/>
+      </memberdef>
+      <memberdef kind="function" id="classTesseractOcr_1aefe201ace3b144cb8834931b57f79bfd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool TesseractOcr::isAvailableLanguage</definition>
+        <argsstring>(const QString &amp;language) override</argsstring>
+        <name>isAvailableLanguage</name>
+        <reimplements refid="classOcr_1a0c9ebb9b531bdcd6789d4bf9cffb1d42">isAvailableLanguage</reimplements>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>language</declname>
+        </param>
+        <briefdescription>
+<para>Returns true if the language received by parameter is available to be used in the recognition, otherwise, returns false. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>language</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> language to check. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/tesseractocr.h" line="70" column="1" bodyfile="src/optical_character_recognition/tesseractocr.cpp" bodystart="144" bodyend="147"/>
+      </memberdef>
+      <memberdef kind="function" id="classTesseractOcr_1afd6329838570d29a97834f3c91f0bb2c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>tesseract::PageSegMode</type>
+        <definition>tesseract::PageSegMode TesseractOcr::getPageSegMode</definition>
+        <argsstring>() const</argsstring>
+        <name>getPageSegMode</name>
+        <briefdescription>
+<para>Returns the page segmentation mode configured to be used. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Page segmentation mode. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/tesseractocr.h" line="76" column="1" bodyfile="src/optical_character_recognition/tesseractocr.cpp" bodystart="149" bodyend="152"/>
+      </memberdef>
+      <memberdef kind="function" id="classTesseractOcr_1a16b1a94b0829a668e2f3ebc48c6e9e37" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TesseractOcr::setPageSegMode</definition>
+        <argsstring>(tesseract::PageSegMode pageSegMode)</argsstring>
+        <name>setPageSegMode</name>
+        <param>
+          <type>tesseract::PageSegMode</type>
+          <declname>pageSegMode</declname>
+        </param>
+        <briefdescription>
+<para>Sets the page segmentation mode to be used in the extraction. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>pageSegMode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Page segmentation mode. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/tesseractocr.h" line="82" column="1" bodyfile="src/optical_character_recognition/tesseractocr.cpp" bodystart="154" bodyend="157"/>
+      </memberdef>
+      <memberdef kind="function" id="classTesseractOcr_1a911234ba57781e4e33515e2f0eab4320" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>tesseract::OcrEngineMode</type>
+        <definition>tesseract::OcrEngineMode TesseractOcr::getEngineMode</definition>
+        <argsstring>() const</argsstring>
+        <name>getEngineMode</name>
+        <briefdescription>
+<para>Returns the engine mode configured to be used. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/tesseractocr.h" line="88" column="1" bodyfile="src/optical_character_recognition/tesseractocr.cpp" bodystart="159" bodyend="162"/>
+      </memberdef>
+      <memberdef kind="function" id="classTesseractOcr_1acd714224045f4808b732f865164e1e1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void TesseractOcr::setEngineMode</definition>
+        <argsstring>(tesseract::OcrEngineMode engineMode)</argsstring>
+        <name>setEngineMode</name>
+        <param>
+          <type>tesseract::OcrEngineMode</type>
+          <declname>engineMode</declname>
+        </param>
+        <briefdescription>
+<para>Sets the engine mode to be used in the extraction. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>engineMode</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Engine mode. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/tesseractocr.h" line="94" column="1" bodyfile="src/optical_character_recognition/tesseractocr.cpp" bodystart="164" bodyend="167"/>
+      </memberdef>
+      <memberdef kind="function" id="classTesseractOcr_1ae1327017072b55801ce9ebdbab956b6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classTesseractOcr" kindref="compound">TesseractOcr</ref> &amp;</type>
+        <definition>TesseractOcr &amp; TesseractOcr::operator=</definition>
+        <argsstring>(const TesseractOcr &amp;other)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classTesseractOcr" kindref="compound">TesseractOcr</ref> &amp;</type>
+          <declname>other</declname>
+        </param>
+        <briefdescription>
+<para>Assigns other to <ref refid="classTesseractOcr" kindref="compound">TesseractOcr</ref> and returns a reference to this <ref refid="classTesseractOcr" kindref="compound">TesseractOcr</ref> object. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>other</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classTesseractOcr" kindref="compound">TesseractOcr</ref> object to be copied. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Reference to this <ref refid="classTesseractOcr" kindref="compound">TesseractOcr</ref> object. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/tesseractocr.h" line="101" column="1" bodyfile="src/optical_character_recognition/tesseractocr.cpp" bodystart="212" bodyend="223"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classTesseractOcr_1a0d18ce6d1819df592b0c9175906bd543" prot="private" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int TesseractOcr::initApi</definition>
+        <argsstring>() const</argsstring>
+        <name>initApi</name>
+        <briefdescription>
+<para>Inits tesseract API. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns 0 if there was no errors, else, returns a numer longer than 0. <simplesect kind="return"><para>Code error. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/tesseractocr.h" line="114" column="1" bodyfile="src/optical_character_recognition/tesseractocr.cpp" bodystart="169" bodyend="184"/>
+      </memberdef>
+      <memberdef kind="function" id="classTesseractOcr_1af105e2b000fe647c9f3a7a33b92c7073" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QStringList</type>
+        <definition>QStringList TesseractOcr::processExtration</definition>
+        <argsstring>(const QString &amp;source) override</argsstring>
+        <name>processExtration</name>
+        <reimplements refid="classOcr_1ac6f28693948e68e8958f1a27c73c79d1">processExtration</reimplements>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Processes the text received by parameted. </para>        </briefdescription>
+        <detaileddescription>
+<para>Split the string in phrases and returns a list with phrases contained in source. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/tesseractocr.h" line="119" column="1" bodyfile="src/optical_character_recognition/tesseractocr.cpp" bodystart="186" bodyend="210"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This is a tool to detect string on images using tesseract api (<ulink url="https://github.com/tesseract-ocr/tesseract">https://github.com/tesseract-ocr/tesseract</ulink>). </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="86">
+        <label>TesseractOcr</label>
+        <link refid="classTesseractOcr"/>
+        <childnode refid="87" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="87">
+        <label>Ocr</label>
+        <link refid="classOcr"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="88">
+        <label>TesseractOcr</label>
+        <link refid="classTesseractOcr"/>
+        <childnode refid="89" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="89">
+        <label>Ocr</label>
+        <link refid="classOcr"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/optical_character_recognition/tesseractocr.h" line="22" column="1" bodyfile="src/optical_character_recognition/tesseractocr.h" bodystart="21" bodyend="121"/>
+    <listofallmembers>
+      <member refid="classOcr_1ad2fb764c1c6766233ebbb53e62064bb8" prot="public" virt="virtual"><scope>TesseractOcr</scope><name>addLanguage</name></member>
+      <member refid="classTesseractOcr_1adc2e1b9bf20cdbdb8b2c7238355b9005" prot="private" virt="non-virtual"><scope>TesseractOcr</scope><name>api_</name></member>
+      <member refid="classOcr_1a5c13f164c431cb4bc5a487eba75be7b4" prot="protected" virt="non-virtual"><scope>TesseractOcr</scope><name>datapath_</name></member>
+      <member refid="classTesseractOcr_1a58298987035af6117dd37a023f53870c" prot="private" virt="non-virtual"><scope>TesseractOcr</scope><name>engineMode_</name></member>
+      <member refid="classTesseractOcr_1a7e5a1d3e275f710ce187bc1c0b080327" prot="public" virt="virtual"><scope>TesseractOcr</scope><name>extract</name></member>
+      <member refid="classTesseractOcr_1ad3486dcaa8a478c72ebaf76c43671326" prot="public" virt="virtual"><scope>TesseractOcr</scope><name>getAvailableLanguages</name></member>
+      <member refid="classOcr_1a44f623335f8c26cc956b549a7bbf75fe" prot="public" virt="non-virtual"><scope>TesseractOcr</scope><name>getDataPath</name></member>
+      <member refid="classTesseractOcr_1a911234ba57781e4e33515e2f0eab4320" prot="public" virt="non-virtual"><scope>TesseractOcr</scope><name>getEngineMode</name></member>
+      <member refid="classOcr_1a4bd4275b9b0503dd23dd553b4c0ef54c" prot="public" virt="non-virtual"><scope>TesseractOcr</scope><name>getImage</name></member>
+      <member refid="classOcr_1abf98eb2648c41446700515c3e6ed3a24" prot="public" virt="virtual"><scope>TesseractOcr</scope><name>getLanguages</name></member>
+      <member refid="classTesseractOcr_1afd6329838570d29a97834f3c91f0bb2c" prot="public" virt="non-virtual"><scope>TesseractOcr</scope><name>getPageSegMode</name></member>
+      <member refid="classOcr_1a731be039b828dfb1c1f3d5efdeaea9aa" prot="protected" virt="non-virtual"><scope>TesseractOcr</scope><name>image_</name></member>
+      <member refid="classTesseractOcr_1a0d18ce6d1819df592b0c9175906bd543" prot="private" virt="non-virtual"><scope>TesseractOcr</scope><name>initApi</name></member>
+      <member refid="classTesseractOcr_1aefe201ace3b144cb8834931b57f79bfd" prot="public" virt="virtual"><scope>TesseractOcr</scope><name>isAvailableLanguage</name></member>
+      <member refid="classOcr_1ad5f11045f50c9d8a23d2cea235c509ad" prot="protected" virt="non-virtual"><scope>TesseractOcr</scope><name>language_</name></member>
+      <member refid="classOcr_1a285da90c44b929a9883a461de3e6578d" prot="public" virt="non-virtual"><scope>TesseractOcr</scope><name>Ocr</name></member>
+      <member refid="classTesseractOcr_1ae1327017072b55801ce9ebdbab956b6a" prot="public" virt="non-virtual"><scope>TesseractOcr</scope><name>operator=</name></member>
+      <member refid="classTesseractOcr_1aa2ba043b1fdfeaed3925ae1bc386b735" prot="private" virt="non-virtual"><scope>TesseractOcr</scope><name>pageSegMode_</name></member>
+      <member refid="classTesseractOcr_1af105e2b000fe647c9f3a7a33b92c7073" prot="private" virt="virtual"><scope>TesseractOcr</scope><name>processExtration</name></member>
+      <member refid="classOcr_1a76001048da750374c987bef8171f1977" prot="public" virt="virtual"><scope>TesseractOcr</scope><name>removeLanguage</name></member>
+      <member refid="classOcr_1a0ec269340072accaa9d0932699b2a8ef" prot="public" virt="non-virtual"><scope>TesseractOcr</scope><name>setDataPath</name></member>
+      <member refid="classTesseractOcr_1acd714224045f4808b732f865164e1e1a" prot="public" virt="non-virtual"><scope>TesseractOcr</scope><name>setEngineMode</name></member>
+      <member refid="classOcr_1acdc41b9a0663c194d0fbede8c26ea319" prot="public" virt="non-virtual"><scope>TesseractOcr</scope><name>setImage</name></member>
+      <member refid="classTesseractOcr_1a16b1a94b0829a668e2f3ebc48c6e9e37" prot="public" virt="non-virtual"><scope>TesseractOcr</scope><name>setPageSegMode</name></member>
+      <member refid="classTesseractOcr_1a9e62c15a4f8e4c8a0a614cf04ec8dea6" prot="public" virt="non-virtual"><scope>TesseractOcr</scope><name>TesseractOcr</name></member>
+      <member refid="classTesseractOcr_1ad550fd8468a1b1ee0b915c7202281dc7" prot="public" virt="non-virtual"><scope>TesseractOcr</scope><name>TesseractOcr</name></member>
+      <member refid="classTesseractOcr_1a8cac9f702b0eb765b522375d4aae08e9" prot="public" virt="non-virtual"><scope>TesseractOcr</scope><name>TesseractOcr</name></member>
+      <member refid="classOcr_1a93ead91f7b64663ce6ed71ca4542d2f7" prot="public" virt="non-virtual"><scope>TesseractOcr</scope><name>~Ocr</name></member>
+      <member refid="classTesseractOcr_1ad7d20b699dec0f1939c58eb0cc952406" prot="public" virt="non-virtual"><scope>TesseractOcr</scope><name>~TesseractOcr</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

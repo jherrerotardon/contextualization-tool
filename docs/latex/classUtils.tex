@@ -1,0 +1,522 @@
+\hypertarget{classUtils}{}\section{Utils Class Reference}
+\label{classUtils}\index{Utils@{Utils}}
+
+
+This is static class with a lot of different utilities.  
+
+
+
+
+{\ttfamily \#include $<$utils.\+h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classUtils_a32d52b4a749614335d60c2c3969b8df2}{Text\+Modifier}} \{ \newline
+\mbox{\hyperlink{classUtils_a32d52b4a749614335d60c2c3969b8df2a39f1a78939e1d4ce79bcc88d8f0d6a1f}{F\+G\+\_\+\+B\+L\+A\+CK}} = 30, 
+\mbox{\hyperlink{classUtils_a32d52b4a749614335d60c2c3969b8df2aecba2732375982cddf19e735b12bf9dc}{F\+G\+\_\+\+R\+ED}} = 31, 
+\mbox{\hyperlink{classUtils_a32d52b4a749614335d60c2c3969b8df2afa2e3860716ac053c70f6a89f5a47e45}{F\+G\+\_\+\+G\+R\+E\+EN}} = 32, 
+\mbox{\hyperlink{classUtils_a32d52b4a749614335d60c2c3969b8df2aa72d90f0070ff5f60c1226c7eee4d76e}{F\+G\+\_\+\+Y\+E\+L\+L\+OW}} = 33, 
+\newline
+\mbox{\hyperlink{classUtils_a32d52b4a749614335d60c2c3969b8df2a238297e309e520bd2796c968314b37d4}{F\+G\+\_\+\+B\+L\+UE}} = 34, 
+\mbox{\hyperlink{classUtils_a32d52b4a749614335d60c2c3969b8df2a9fb8bfe4dbdecd2dea8dcc13691b6bfe}{F\+G\+\_\+\+M\+A\+G\+E\+N\+TA}} = 35, 
+\mbox{\hyperlink{classUtils_a32d52b4a749614335d60c2c3969b8df2a7496759502c74e2fb1b6b41e40d708da}{F\+G\+\_\+\+C\+Y\+AN}} = 36, 
+\mbox{\hyperlink{classUtils_a32d52b4a749614335d60c2c3969b8df2a0773c8537cc757b3f91ef3f056fc8e01}{F\+G\+\_\+\+W\+H\+I\+TE}} = 37, 
+\newline
+\mbox{\hyperlink{classUtils_a32d52b4a749614335d60c2c3969b8df2ae53e180d7734261c1eeb6f5b8046ee24}{B\+G\+\_\+\+B\+L\+A\+CK}} = 40, 
+\mbox{\hyperlink{classUtils_a32d52b4a749614335d60c2c3969b8df2ae42dc37bb30e3d6a339e31b8799a0cc8}{B\+G\+\_\+\+R\+ED}} = 41, 
+\mbox{\hyperlink{classUtils_a32d52b4a749614335d60c2c3969b8df2a304cda86f4e91dd0f25fe5cc49fa386f}{B\+G\+\_\+\+G\+R\+E\+EN}} = 42, 
+\mbox{\hyperlink{classUtils_a32d52b4a749614335d60c2c3969b8df2a605748c9069d2aa85ecfc1b18546e65e}{B\+G\+\_\+\+Y\+E\+L\+L\+OW}} = 43, 
+\newline
+\mbox{\hyperlink{classUtils_a32d52b4a749614335d60c2c3969b8df2a4b3dbf96f2aa0105ccaee7642a0b9c43}{B\+G\+\_\+\+B\+L\+UE}} = 44, 
+\mbox{\hyperlink{classUtils_a32d52b4a749614335d60c2c3969b8df2ab40a0e2307f8eaf9045c3e7871a67c37}{B\+G\+\_\+\+M\+A\+G\+E\+N\+TA}} = 45, 
+\mbox{\hyperlink{classUtils_a32d52b4a749614335d60c2c3969b8df2a98728a943fa0b495de3d0aafc6000943}{B\+G\+\_\+\+C\+Y\+AN}} = 46, 
+\mbox{\hyperlink{classUtils_a32d52b4a749614335d60c2c3969b8df2a4294fd26d218c1fae6ac2d0fe0fb99a3}{B\+G\+\_\+\+W\+H\+I\+TE}} = 47, 
+\newline
+\mbox{\hyperlink{classUtils_a32d52b4a749614335d60c2c3969b8df2a12907a9ced1317d0c7ba02f2dbe0b6ec}{R\+E\+S\+ET}} = 0, 
+\mbox{\hyperlink{classUtils_a32d52b4a749614335d60c2c3969b8df2a34a3c1317c33b3b51ada23abfb30d0c3}{B\+O\+LD}} = 1, 
+\mbox{\hyperlink{classUtils_a32d52b4a749614335d60c2c3969b8df2a0cdd170af17e97c899264ba026990145}{U\+N\+D\+E\+R\+L\+NE}} = 4, 
+\mbox{\hyperlink{classUtils_a32d52b4a749614335d60c2c3969b8df2a69b78b99d4b769427fc5bff4cd756353}{I\+N\+V\+E\+R\+SE}} = 7, 
+\newline
+\mbox{\hyperlink{classUtils_a32d52b4a749614335d60c2c3969b8df2a30a8134b5e0cce11651d7cefdda133f3}{B\+O\+L\+D\+\_\+\+O\+FF}} = 21, 
+\mbox{\hyperlink{classUtils_a32d52b4a749614335d60c2c3969b8df2a175f014d51622f39f71f5a275e52ffa0}{U\+N\+D\+E\+R\+L\+I\+N\+E\+\_\+\+O\+FF}} = 24, 
+\mbox{\hyperlink{classUtils_a32d52b4a749614335d60c2c3969b8df2acb9181d52a5eaa0e2f557896d42f4139}{I\+N\+V\+E\+R\+S\+E\+\_\+\+O\+FF}} = 27
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classUtils_a452e78692c87ed5c7c993b6c6ac4981a}\label{classUtils_a452e78692c87ed5c7c993b6c6ac4981a}} 
+\mbox{\hyperlink{classUtils_a452e78692c87ed5c7c993b6c6ac4981a}{Utils}} ()
+\begin{DoxyCompactList}\small\item\em Creates an empty \mbox{\hyperlink{classUtils}{Utils}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classUtils_ac24a694013a7415b517f63a0641a0fb6}{error\+Message}} (const Q\+String \&text, const Q\+String \&informative\+Text)
+\begin{DoxyCompactList}\small\item\em Creates a dialog and displayed it as a modal dialog. The dialog shown is an error dialog. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{classUtils_a3ff1c4308ffae59e9cc2bec504a1448a}{warning\+Message}} (const Q\+String \&text, const Q\+String \&informative\+Text)
+\begin{DoxyCompactList}\small\item\em Creates a dialog and displayed it as a modal dialog. The dialog is a warning dialog. and only has to possible responses\+: Yes or No. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classUtils_aeb00036fda3bd7faa92e805579fffa3e}{informative\+Message}} (const Q\+String \&text, const Q\+String \&informative\+Text)
+\begin{DoxyCompactList}\small\item\em Creates a dialog and displayed it as a modal dialog. The dialog shown is an informative dialog. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classUtils_a77efde99fa16c21245f66273c7fded3a}{append\+File}} (const Q\+String \&path, const Q\+String \&text)
+\begin{DoxyCompactList}\small\item\em Appends a text on a file. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classUtils_ae41ebd024526737fbaaada06e229b3c5}{write\+File}} (const Q\+String \&path, const Q\+String \&text)
+\begin{DoxyCompactList}\small\item\em Write a text on a file. \end{DoxyCompactList}\item 
+static Q\+Byte\+Array \mbox{\hyperlink{classUtils_a8ab4445ab51c372f969d3088ef0b73d9}{read\+All\+File}} (const Q\+String \&path)
+\begin{DoxyCompactList}\small\item\em Read completely the file received by parameter. \end{DoxyCompactList}\item 
+static int \mbox{\hyperlink{classUtils_a0ba873605d1b72ee448c18507d898d21}{execute\+Program}} (const Q\+String \&program, const Q\+String\+List \&arguments=Q\+String\+List(), const Q\+String \&standard\+Output=Q\+Process\+::null\+Device(), const Q\+String \&working\+Directory=Q\+String(), const int timeout=-\/1)
+\begin{DoxyCompactList}\small\item\em Executes binary program. \end{DoxyCompactList}\item 
+static Q\+String \mbox{\hyperlink{classUtils_ad33c4bda97a81483e4b34e692e747d0b}{zip\+Compress\+Directory\+Contents}} (const Q\+String \&directory, const Q\+String \&zip\+Destination, const Q\+String \&zip\+Name=\char`\"{}compressed\char`\"{})
+\begin{DoxyCompactList}\small\item\em Compresses all files and folders in the directory received by argument. \end{DoxyCompactList}\item 
+static Q\+Future$<$ void $>$ \mbox{\hyperlink{classUtils_a12f3c653e90f7ed38287f0a8897f60d5}{start\+Progress\+Dialog\+Counter}} (Q\+Progress\+Dialog $\ast$dialog, bool $\ast$has\+Finished, int timeout=40)
+\begin{DoxyCompactList}\small\item\em Simulates a progress on a Q\+Progress\+Dialog. \end{DoxyCompactList}\item 
+static bool \mbox{\hyperlink{classUtils_a1909e9cbf006b2ea0681d7c32605aca6}{is\+Valid\+Ip}} (const Q\+String \&ip)
+\begin{DoxyCompactList}\small\item\em Returns true if is a valid ip, otherwise returns false. \end{DoxyCompactList}\item 
+static Q\+String \mbox{\hyperlink{classUtils_aedd4143ac5a4b343d1486b9629a2d185}{get\+Date\+Time}} (Q\+String format=\char`\"{}yyyy\+\_\+\+M\+M\+\_\+dd\+\_\+hh\+\_\+mm\+\_\+ss\char`\"{})
+\begin{DoxyCompactList}\small\item\em Returns a current date time with the format received by parameter. \end{DoxyCompactList}\item 
+static Q\+String \mbox{\hyperlink{classUtils_a85a0cb065fa4399c42ce834952420d7a}{get\+Tmp\+Directory}} ()
+\begin{DoxyCompactList}\small\item\em Returns a temporal directory of system. \end{DoxyCompactList}\item 
+static Q\+String \mbox{\hyperlink{classUtils_a9885ad8eac3df9b5e22363dd1e9ff5b2}{format\+Text}} (const Q\+String \&text, Q\+List$<$ \mbox{\hyperlink{classUtils_a32d52b4a749614335d60c2c3969b8df2}{Text\+Modifier}} $>$ modifiers)
+\begin{DoxyCompactList}\small\item\em Returns a text applying mofifiers to be used in terminal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is static class with a lot of different utilities. 
+
+Definition at line 25 of file utils.\+h.
+
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classUtils_a32d52b4a749614335d60c2c3969b8df2}\label{classUtils_a32d52b4a749614335d60c2c3969b8df2}} 
+\index{Utils@{Utils}!Text\+Modifier@{Text\+Modifier}}
+\index{Text\+Modifier@{Text\+Modifier}!Utils@{Utils}}
+\subsubsection{\texorpdfstring{Text\+Modifier}{TextModifier}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classUtils_a32d52b4a749614335d60c2c3969b8df2}{Utils\+::\+Text\+Modifier}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+G\+\_\+\+B\+L\+A\+CK@{F\+G\+\_\+\+B\+L\+A\+CK}!Utils@{Utils}}\index{Utils@{Utils}!F\+G\+\_\+\+B\+L\+A\+CK@{F\+G\+\_\+\+B\+L\+A\+CK}}}\mbox{\Hypertarget{classUtils_a32d52b4a749614335d60c2c3969b8df2a39f1a78939e1d4ce79bcc88d8f0d6a1f}\label{classUtils_a32d52b4a749614335d60c2c3969b8df2a39f1a78939e1d4ce79bcc88d8f0d6a1f}} 
+F\+G\+\_\+\+B\+L\+A\+CK&Black foreground. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+G\+\_\+\+R\+ED@{F\+G\+\_\+\+R\+ED}!Utils@{Utils}}\index{Utils@{Utils}!F\+G\+\_\+\+R\+ED@{F\+G\+\_\+\+R\+ED}}}\mbox{\Hypertarget{classUtils_a32d52b4a749614335d60c2c3969b8df2aecba2732375982cddf19e735b12bf9dc}\label{classUtils_a32d52b4a749614335d60c2c3969b8df2aecba2732375982cddf19e735b12bf9dc}} 
+F\+G\+\_\+\+R\+ED&Red foreground. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+G\+\_\+\+G\+R\+E\+EN@{F\+G\+\_\+\+G\+R\+E\+EN}!Utils@{Utils}}\index{Utils@{Utils}!F\+G\+\_\+\+G\+R\+E\+EN@{F\+G\+\_\+\+G\+R\+E\+EN}}}\mbox{\Hypertarget{classUtils_a32d52b4a749614335d60c2c3969b8df2afa2e3860716ac053c70f6a89f5a47e45}\label{classUtils_a32d52b4a749614335d60c2c3969b8df2afa2e3860716ac053c70f6a89f5a47e45}} 
+F\+G\+\_\+\+G\+R\+E\+EN&Green foreground. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+G\+\_\+\+Y\+E\+L\+L\+OW@{F\+G\+\_\+\+Y\+E\+L\+L\+OW}!Utils@{Utils}}\index{Utils@{Utils}!F\+G\+\_\+\+Y\+E\+L\+L\+OW@{F\+G\+\_\+\+Y\+E\+L\+L\+OW}}}\mbox{\Hypertarget{classUtils_a32d52b4a749614335d60c2c3969b8df2aa72d90f0070ff5f60c1226c7eee4d76e}\label{classUtils_a32d52b4a749614335d60c2c3969b8df2aa72d90f0070ff5f60c1226c7eee4d76e}} 
+F\+G\+\_\+\+Y\+E\+L\+L\+OW&Yellow foreground. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+G\+\_\+\+B\+L\+UE@{F\+G\+\_\+\+B\+L\+UE}!Utils@{Utils}}\index{Utils@{Utils}!F\+G\+\_\+\+B\+L\+UE@{F\+G\+\_\+\+B\+L\+UE}}}\mbox{\Hypertarget{classUtils_a32d52b4a749614335d60c2c3969b8df2a238297e309e520bd2796c968314b37d4}\label{classUtils_a32d52b4a749614335d60c2c3969b8df2a238297e309e520bd2796c968314b37d4}} 
+F\+G\+\_\+\+B\+L\+UE&Blue foreground. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+G\+\_\+\+M\+A\+G\+E\+N\+TA@{F\+G\+\_\+\+M\+A\+G\+E\+N\+TA}!Utils@{Utils}}\index{Utils@{Utils}!F\+G\+\_\+\+M\+A\+G\+E\+N\+TA@{F\+G\+\_\+\+M\+A\+G\+E\+N\+TA}}}\mbox{\Hypertarget{classUtils_a32d52b4a749614335d60c2c3969b8df2a9fb8bfe4dbdecd2dea8dcc13691b6bfe}\label{classUtils_a32d52b4a749614335d60c2c3969b8df2a9fb8bfe4dbdecd2dea8dcc13691b6bfe}} 
+F\+G\+\_\+\+M\+A\+G\+E\+N\+TA&Magenta foreground. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+G\+\_\+\+C\+Y\+AN@{F\+G\+\_\+\+C\+Y\+AN}!Utils@{Utils}}\index{Utils@{Utils}!F\+G\+\_\+\+C\+Y\+AN@{F\+G\+\_\+\+C\+Y\+AN}}}\mbox{\Hypertarget{classUtils_a32d52b4a749614335d60c2c3969b8df2a7496759502c74e2fb1b6b41e40d708da}\label{classUtils_a32d52b4a749614335d60c2c3969b8df2a7496759502c74e2fb1b6b41e40d708da}} 
+F\+G\+\_\+\+C\+Y\+AN&Cyan foreground. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{F\+G\+\_\+\+W\+H\+I\+TE@{F\+G\+\_\+\+W\+H\+I\+TE}!Utils@{Utils}}\index{Utils@{Utils}!F\+G\+\_\+\+W\+H\+I\+TE@{F\+G\+\_\+\+W\+H\+I\+TE}}}\mbox{\Hypertarget{classUtils_a32d52b4a749614335d60c2c3969b8df2a0773c8537cc757b3f91ef3f056fc8e01}\label{classUtils_a32d52b4a749614335d60c2c3969b8df2a0773c8537cc757b3f91ef3f056fc8e01}} 
+F\+G\+\_\+\+W\+H\+I\+TE&White foreground. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{B\+G\+\_\+\+B\+L\+A\+CK@{B\+G\+\_\+\+B\+L\+A\+CK}!Utils@{Utils}}\index{Utils@{Utils}!B\+G\+\_\+\+B\+L\+A\+CK@{B\+G\+\_\+\+B\+L\+A\+CK}}}\mbox{\Hypertarget{classUtils_a32d52b4a749614335d60c2c3969b8df2ae53e180d7734261c1eeb6f5b8046ee24}\label{classUtils_a32d52b4a749614335d60c2c3969b8df2ae53e180d7734261c1eeb6f5b8046ee24}} 
+B\+G\+\_\+\+B\+L\+A\+CK&Black background. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{B\+G\+\_\+\+R\+ED@{B\+G\+\_\+\+R\+ED}!Utils@{Utils}}\index{Utils@{Utils}!B\+G\+\_\+\+R\+ED@{B\+G\+\_\+\+R\+ED}}}\mbox{\Hypertarget{classUtils_a32d52b4a749614335d60c2c3969b8df2ae42dc37bb30e3d6a339e31b8799a0cc8}\label{classUtils_a32d52b4a749614335d60c2c3969b8df2ae42dc37bb30e3d6a339e31b8799a0cc8}} 
+B\+G\+\_\+\+R\+ED&Red background. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{B\+G\+\_\+\+G\+R\+E\+EN@{B\+G\+\_\+\+G\+R\+E\+EN}!Utils@{Utils}}\index{Utils@{Utils}!B\+G\+\_\+\+G\+R\+E\+EN@{B\+G\+\_\+\+G\+R\+E\+EN}}}\mbox{\Hypertarget{classUtils_a32d52b4a749614335d60c2c3969b8df2a304cda86f4e91dd0f25fe5cc49fa386f}\label{classUtils_a32d52b4a749614335d60c2c3969b8df2a304cda86f4e91dd0f25fe5cc49fa386f}} 
+B\+G\+\_\+\+G\+R\+E\+EN&Green background. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{B\+G\+\_\+\+Y\+E\+L\+L\+OW@{B\+G\+\_\+\+Y\+E\+L\+L\+OW}!Utils@{Utils}}\index{Utils@{Utils}!B\+G\+\_\+\+Y\+E\+L\+L\+OW@{B\+G\+\_\+\+Y\+E\+L\+L\+OW}}}\mbox{\Hypertarget{classUtils_a32d52b4a749614335d60c2c3969b8df2a605748c9069d2aa85ecfc1b18546e65e}\label{classUtils_a32d52b4a749614335d60c2c3969b8df2a605748c9069d2aa85ecfc1b18546e65e}} 
+B\+G\+\_\+\+Y\+E\+L\+L\+OW&Yellow background. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{B\+G\+\_\+\+B\+L\+UE@{B\+G\+\_\+\+B\+L\+UE}!Utils@{Utils}}\index{Utils@{Utils}!B\+G\+\_\+\+B\+L\+UE@{B\+G\+\_\+\+B\+L\+UE}}}\mbox{\Hypertarget{classUtils_a32d52b4a749614335d60c2c3969b8df2a4b3dbf96f2aa0105ccaee7642a0b9c43}\label{classUtils_a32d52b4a749614335d60c2c3969b8df2a4b3dbf96f2aa0105ccaee7642a0b9c43}} 
+B\+G\+\_\+\+B\+L\+UE&Blue background. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{B\+G\+\_\+\+M\+A\+G\+E\+N\+TA@{B\+G\+\_\+\+M\+A\+G\+E\+N\+TA}!Utils@{Utils}}\index{Utils@{Utils}!B\+G\+\_\+\+M\+A\+G\+E\+N\+TA@{B\+G\+\_\+\+M\+A\+G\+E\+N\+TA}}}\mbox{\Hypertarget{classUtils_a32d52b4a749614335d60c2c3969b8df2ab40a0e2307f8eaf9045c3e7871a67c37}\label{classUtils_a32d52b4a749614335d60c2c3969b8df2ab40a0e2307f8eaf9045c3e7871a67c37}} 
+B\+G\+\_\+\+M\+A\+G\+E\+N\+TA&Magenta background. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{B\+G\+\_\+\+C\+Y\+AN@{B\+G\+\_\+\+C\+Y\+AN}!Utils@{Utils}}\index{Utils@{Utils}!B\+G\+\_\+\+C\+Y\+AN@{B\+G\+\_\+\+C\+Y\+AN}}}\mbox{\Hypertarget{classUtils_a32d52b4a749614335d60c2c3969b8df2a98728a943fa0b495de3d0aafc6000943}\label{classUtils_a32d52b4a749614335d60c2c3969b8df2a98728a943fa0b495de3d0aafc6000943}} 
+B\+G\+\_\+\+C\+Y\+AN&Cyan background. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{B\+G\+\_\+\+W\+H\+I\+TE@{B\+G\+\_\+\+W\+H\+I\+TE}!Utils@{Utils}}\index{Utils@{Utils}!B\+G\+\_\+\+W\+H\+I\+TE@{B\+G\+\_\+\+W\+H\+I\+TE}}}\mbox{\Hypertarget{classUtils_a32d52b4a749614335d60c2c3969b8df2a4294fd26d218c1fae6ac2d0fe0fb99a3}\label{classUtils_a32d52b4a749614335d60c2c3969b8df2a4294fd26d218c1fae6ac2d0fe0fb99a3}} 
+B\+G\+\_\+\+W\+H\+I\+TE&White background. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{R\+E\+S\+ET@{R\+E\+S\+ET}!Utils@{Utils}}\index{Utils@{Utils}!R\+E\+S\+ET@{R\+E\+S\+ET}}}\mbox{\Hypertarget{classUtils_a32d52b4a749614335d60c2c3969b8df2a12907a9ced1317d0c7ba02f2dbe0b6ec}\label{classUtils_a32d52b4a749614335d60c2c3969b8df2a12907a9ced1317d0c7ba02f2dbe0b6ec}} 
+R\+E\+S\+ET&Reset all. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{B\+O\+LD@{B\+O\+LD}!Utils@{Utils}}\index{Utils@{Utils}!B\+O\+LD@{B\+O\+LD}}}\mbox{\Hypertarget{classUtils_a32d52b4a749614335d60c2c3969b8df2a34a3c1317c33b3b51ada23abfb30d0c3}\label{classUtils_a32d52b4a749614335d60c2c3969b8df2a34a3c1317c33b3b51ada23abfb30d0c3}} 
+B\+O\+LD&Bold text. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{U\+N\+D\+E\+R\+L\+NE@{U\+N\+D\+E\+R\+L\+NE}!Utils@{Utils}}\index{Utils@{Utils}!U\+N\+D\+E\+R\+L\+NE@{U\+N\+D\+E\+R\+L\+NE}}}\mbox{\Hypertarget{classUtils_a32d52b4a749614335d60c2c3969b8df2a0cdd170af17e97c899264ba026990145}\label{classUtils_a32d52b4a749614335d60c2c3969b8df2a0cdd170af17e97c899264ba026990145}} 
+U\+N\+D\+E\+R\+L\+NE&Underline text. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+N\+V\+E\+R\+SE@{I\+N\+V\+E\+R\+SE}!Utils@{Utils}}\index{Utils@{Utils}!I\+N\+V\+E\+R\+SE@{I\+N\+V\+E\+R\+SE}}}\mbox{\Hypertarget{classUtils_a32d52b4a749614335d60c2c3969b8df2a69b78b99d4b769427fc5bff4cd756353}\label{classUtils_a32d52b4a749614335d60c2c3969b8df2a69b78b99d4b769427fc5bff4cd756353}} 
+I\+N\+V\+E\+R\+SE&Inverse text. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{B\+O\+L\+D\+\_\+\+O\+FF@{B\+O\+L\+D\+\_\+\+O\+FF}!Utils@{Utils}}\index{Utils@{Utils}!B\+O\+L\+D\+\_\+\+O\+FF@{B\+O\+L\+D\+\_\+\+O\+FF}}}\mbox{\Hypertarget{classUtils_a32d52b4a749614335d60c2c3969b8df2a30a8134b5e0cce11651d7cefdda133f3}\label{classUtils_a32d52b4a749614335d60c2c3969b8df2a30a8134b5e0cce11651d7cefdda133f3}} 
+B\+O\+L\+D\+\_\+\+O\+FF&Off bold text. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{U\+N\+D\+E\+R\+L\+I\+N\+E\+\_\+\+O\+FF@{U\+N\+D\+E\+R\+L\+I\+N\+E\+\_\+\+O\+FF}!Utils@{Utils}}\index{Utils@{Utils}!U\+N\+D\+E\+R\+L\+I\+N\+E\+\_\+\+O\+FF@{U\+N\+D\+E\+R\+L\+I\+N\+E\+\_\+\+O\+FF}}}\mbox{\Hypertarget{classUtils_a32d52b4a749614335d60c2c3969b8df2a175f014d51622f39f71f5a275e52ffa0}\label{classUtils_a32d52b4a749614335d60c2c3969b8df2a175f014d51622f39f71f5a275e52ffa0}} 
+U\+N\+D\+E\+R\+L\+I\+N\+E\+\_\+\+O\+FF&Off underline text. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{I\+N\+V\+E\+R\+S\+E\+\_\+\+O\+FF@{I\+N\+V\+E\+R\+S\+E\+\_\+\+O\+FF}!Utils@{Utils}}\index{Utils@{Utils}!I\+N\+V\+E\+R\+S\+E\+\_\+\+O\+FF@{I\+N\+V\+E\+R\+S\+E\+\_\+\+O\+FF}}}\mbox{\Hypertarget{classUtils_a32d52b4a749614335d60c2c3969b8df2acb9181d52a5eaa0e2f557896d42f4139}\label{classUtils_a32d52b4a749614335d60c2c3969b8df2acb9181d52a5eaa0e2f557896d42f4139}} 
+I\+N\+V\+E\+R\+S\+E\+\_\+\+O\+FF&Off inverse text. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 28 of file utils.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classUtils_a77efde99fa16c21245f66273c7fded3a}\label{classUtils_a77efde99fa16c21245f66273c7fded3a}} 
+\index{Utils@{Utils}!append\+File@{append\+File}}
+\index{append\+File@{append\+File}!Utils@{Utils}}
+\subsubsection{\texorpdfstring{append\+File()}{appendFile()}}
+{\footnotesize\ttfamily bool Utils\+::append\+File (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{path,  }\item[{const Q\+String \&}]{text }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Appends a text on a file. 
+
+If the file exists is not overwritten. If the file does not exist is created. Returns true if the text is added succesfully, otherwise returns false. 
+\begin{DoxyParams}{Parameters}
+{\em path} & File where will append the text. \\
+\hline
+{\em text} & Text to be appended on the file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line 63 of file utils.\+cpp.
+
+\mbox{\Hypertarget{classUtils_ac24a694013a7415b517f63a0641a0fb6}\label{classUtils_ac24a694013a7415b517f63a0641a0fb6}} 
+\index{Utils@{Utils}!error\+Message@{error\+Message}}
+\index{error\+Message@{error\+Message}!Utils@{Utils}}
+\subsubsection{\texorpdfstring{error\+Message()}{errorMessage()}}
+{\footnotesize\ttfamily void Utils\+::error\+Message (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{text,  }\item[{const Q\+String \&}]{informative\+Text }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Creates a dialog and displayed it as a modal dialog. The dialog shown is an error dialog. 
+
+The user only can accept the dialog.
+
+The function is designed to display error messages to the user without the option of choosing anything. 
+\begin{DoxyParams}{Parameters}
+{\em text} & Message text to be displayed. \\
+\hline
+{\em informative\+Text} & Informative text that provides a fuller description for the message. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 18 of file utils.\+cpp.
+
+\mbox{\Hypertarget{classUtils_a0ba873605d1b72ee448c18507d898d21}\label{classUtils_a0ba873605d1b72ee448c18507d898d21}} 
+\index{Utils@{Utils}!execute\+Program@{execute\+Program}}
+\index{execute\+Program@{execute\+Program}!Utils@{Utils}}
+\subsubsection{\texorpdfstring{execute\+Program()}{executeProgram()}}
+{\footnotesize\ttfamily int Utils\+::execute\+Program (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{program,  }\item[{const Q\+String\+List \&}]{arguments = {\ttfamily QStringList()},  }\item[{const Q\+String \&}]{standard\+Output = {\ttfamily QProcess\+:\+:nullDevice()},  }\item[{const Q\+String \&}]{working\+Directory = {\ttfamily QString()},  }\item[{const int}]{timeout = {\ttfamily -\/1} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Executes binary program. 
+
+Returns the code error returned by the execution.
+
+If an empty standard output file is received, standard output is not saved.
+
+If an empty working directory is received, the process is executed in current directory.
+
+A timeout equals to -\/1 indicates that process has not limit time.
+
+Some known code errors\+: -\/$>$ 255\+: binary file not found or can\textquotesingle{}t be executed. -\/$>$ -\/1\+: binary file crashed during the execution. 
+\begin{DoxyParams}{Parameters}
+{\em program} & Name of binary file. \\
+\hline
+{\em arguments} & Arguments of the program. \\
+\hline
+{\em standard\+Output} & File path where process standard output will be saved. \\
+\hline
+{\em work\+Directory} & Directory where the program must work. \\
+\hline
+{\em timeout} & Execution timeout of the program. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Code error of the execution 
+\end{DoxyReturn}
+
+
+Definition at line 105 of file utils.\+cpp.
+
+\mbox{\Hypertarget{classUtils_a9885ad8eac3df9b5e22363dd1e9ff5b2}\label{classUtils_a9885ad8eac3df9b5e22363dd1e9ff5b2}} 
+\index{Utils@{Utils}!format\+Text@{format\+Text}}
+\index{format\+Text@{format\+Text}!Utils@{Utils}}
+\subsubsection{\texorpdfstring{format\+Text()}{formatText()}}
+{\footnotesize\ttfamily Q\+String Utils\+::format\+Text (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{text,  }\item[{Q\+List$<$ \mbox{\hyperlink{classUtils_a32d52b4a749614335d60c2c3969b8df2}{Text\+Modifier}} $>$}]{modifiers }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns a text applying mofifiers to be used in terminal. 
+
+This function use A\+N\+SI format, make sure your terminal accepts it. 
+\begin{DoxyParams}{Parameters}
+{\em text} & \mbox{\hyperlink{classString}{String}} to be formatted. \\
+\hline
+{\em modifiers} & Modifiers to be applied \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 187 of file utils.\+cpp.
+
+\mbox{\Hypertarget{classUtils_aedd4143ac5a4b343d1486b9629a2d185}\label{classUtils_aedd4143ac5a4b343d1486b9629a2d185}} 
+\index{Utils@{Utils}!get\+Date\+Time@{get\+Date\+Time}}
+\index{get\+Date\+Time@{get\+Date\+Time}!Utils@{Utils}}
+\subsubsection{\texorpdfstring{get\+Date\+Time()}{getDateTime()}}
+{\footnotesize\ttfamily Q\+String Utils\+::get\+Date\+Time (\begin{DoxyParamCaption}\item[{Q\+String}]{format = {\ttfamily \char`\"{}yyyy\+\_\+MM\+\_\+dd\+\_\+hh\+\_\+mm\+\_\+ss\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns a current date time with the format received by parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em format} & Format to returns the date time. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Date time. 
+\end{DoxyReturn}
+
+
+Definition at line 177 of file utils.\+cpp.
+
+\mbox{\Hypertarget{classUtils_a85a0cb065fa4399c42ce834952420d7a}\label{classUtils_a85a0cb065fa4399c42ce834952420d7a}} 
+\index{Utils@{Utils}!get\+Tmp\+Directory@{get\+Tmp\+Directory}}
+\index{get\+Tmp\+Directory@{get\+Tmp\+Directory}!Utils@{Utils}}
+\subsubsection{\texorpdfstring{get\+Tmp\+Directory()}{getTmpDirectory()}}
+{\footnotesize\ttfamily Q\+String Utils\+::get\+Tmp\+Directory (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns a temporal directory of system. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 182 of file utils.\+cpp.
+
+\mbox{\Hypertarget{classUtils_aeb00036fda3bd7faa92e805579fffa3e}\label{classUtils_aeb00036fda3bd7faa92e805579fffa3e}} 
+\index{Utils@{Utils}!informative\+Message@{informative\+Message}}
+\index{informative\+Message@{informative\+Message}!Utils@{Utils}}
+\subsubsection{\texorpdfstring{informative\+Message()}{informativeMessage()}}
+{\footnotesize\ttfamily void Utils\+::informative\+Message (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{text,  }\item[{const Q\+String \&}]{informative\+Text }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Creates a dialog and displayed it as a modal dialog. The dialog shown is an informative dialog. 
+
+The user only can accept the dialog.
+
+The function is designed to display informative messages to the user. 
+\begin{DoxyParams}{Parameters}
+{\em text} & Message text to be displayed. \\
+\hline
+{\em informative\+Text} & Informative text that provides a fuller description for the message. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 48 of file utils.\+cpp.
+
+\mbox{\Hypertarget{classUtils_a1909e9cbf006b2ea0681d7c32605aca6}\label{classUtils_a1909e9cbf006b2ea0681d7c32605aca6}} 
+\index{Utils@{Utils}!is\+Valid\+Ip@{is\+Valid\+Ip}}
+\index{is\+Valid\+Ip@{is\+Valid\+Ip}!Utils@{Utils}}
+\subsubsection{\texorpdfstring{is\+Valid\+Ip()}{isValidIp()}}
+{\footnotesize\ttfamily bool Utils\+::is\+Valid\+Ip (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{ip }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns true if is a valid ip, otherwise returns false. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ip} & Ip to be checked. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line 169 of file utils.\+cpp.
+
+\mbox{\Hypertarget{classUtils_a8ab4445ab51c372f969d3088ef0b73d9}\label{classUtils_a8ab4445ab51c372f969d3088ef0b73d9}} 
+\index{Utils@{Utils}!read\+All\+File@{read\+All\+File}}
+\index{read\+All\+File@{read\+All\+File}!Utils@{Utils}}
+\subsubsection{\texorpdfstring{read\+All\+File()}{readAllFile()}}
+{\footnotesize\ttfamily Q\+Byte\+Array Utils\+::read\+All\+File (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Read completely the file received by parameter. 
+
+Returns a Q\+Byte\+Array object with the data of the file or an empty Q\+Byte\+Array if something wrong. 
+\begin{DoxyParams}{Parameters}
+{\em path} & File to be read. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Data read from the file. 
+\end{DoxyReturn}
+
+
+Definition at line 90 of file utils.\+cpp.
+
+\mbox{\Hypertarget{classUtils_a12f3c653e90f7ed38287f0a8897f60d5}\label{classUtils_a12f3c653e90f7ed38287f0a8897f60d5}} 
+\index{Utils@{Utils}!start\+Progress\+Dialog\+Counter@{start\+Progress\+Dialog\+Counter}}
+\index{start\+Progress\+Dialog\+Counter@{start\+Progress\+Dialog\+Counter}!Utils@{Utils}}
+\subsubsection{\texorpdfstring{start\+Progress\+Dialog\+Counter()}{startProgressDialogCounter()}}
+{\footnotesize\ttfamily Q\+Future$<$ void $>$ Utils\+::start\+Progress\+Dialog\+Counter (\begin{DoxyParamCaption}\item[{Q\+Progress\+Dialog $\ast$}]{dialog,  }\item[{bool $\ast$}]{has\+Finished,  }\item[{int}]{timeout = {\ttfamily 40} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Simulates a progress on a Q\+Progress\+Dialog. 
+
+Counter only finish when has\+Finished is true, otherwise progress count stop in 99\%. As the counter is created in other thread, out of function you have to make sure that thread finished calling function Q\+Future\+::wait\+For\+Finished(). If you don\textquotesingle{}t make sure of it, your program probably will finish unexpectedly with an error.
+
+Returns a Q\+Future object for control the end of the thread. 
+\begin{DoxyParams}{Parameters}
+{\em dialog} & Dialog where exec the counter. \\
+\hline
+{\em has\+Finished} & Flag to finish the counter. \\
+\hline
+{\em timeout} & Time between each increase in the percentage of progress. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Q\+Future object to know when the thread has finished. 
+\end{DoxyReturn}
+
+
+Definition at line 145 of file utils.\+cpp.
+
+\mbox{\Hypertarget{classUtils_a3ff1c4308ffae59e9cc2bec504a1448a}\label{classUtils_a3ff1c4308ffae59e9cc2bec504a1448a}} 
+\index{Utils@{Utils}!warning\+Message@{warning\+Message}}
+\index{warning\+Message@{warning\+Message}!Utils@{Utils}}
+\subsubsection{\texorpdfstring{warning\+Message()}{warningMessage()}}
+{\footnotesize\ttfamily int Utils\+::warning\+Message (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{text,  }\item[{const Q\+String \&}]{informative\+Text }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Creates a dialog and displayed it as a modal dialog. The dialog is a warning dialog. and only has to possible responses\+: Yes or No. 
+
+The dialog has only two buttons (Yes and No), which are the two possible options that the user can select. Returns the option selected by the user.
+
+The function is designed to display warning messages to the user and whether he wants to take the risks. 
+\begin{DoxyParams}{Parameters}
+{\em text} & Message text to be displayed. \\
+\hline
+{\em informative\+Text} & Informative text that provides a fuller description for the message. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+User responser. 
+\end{DoxyReturn}
+
+
+Definition at line 33 of file utils.\+cpp.
+
+\mbox{\Hypertarget{classUtils_ae41ebd024526737fbaaada06e229b3c5}\label{classUtils_ae41ebd024526737fbaaada06e229b3c5}} 
+\index{Utils@{Utils}!write\+File@{write\+File}}
+\index{write\+File@{write\+File}!Utils@{Utils}}
+\subsubsection{\texorpdfstring{write\+File()}{writeFile()}}
+{\footnotesize\ttfamily bool Utils\+::write\+File (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{path,  }\item[{const Q\+String \&}]{text }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Write a text on a file. 
+
+If the file exists is overwritten. If the file does not exist is created. Returns true if the text is written succesfully, otherwise returns false. 
+\begin{DoxyParams}{Parameters}
+{\em path} & File where will write the text. \\
+\hline
+{\em text} & Text to be wroten on the file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line 76 of file utils.\+cpp.
+
+\mbox{\Hypertarget{classUtils_ad33c4bda97a81483e4b34e692e747d0b}\label{classUtils_ad33c4bda97a81483e4b34e692e747d0b}} 
+\index{Utils@{Utils}!zip\+Compress\+Directory\+Contents@{zip\+Compress\+Directory\+Contents}}
+\index{zip\+Compress\+Directory\+Contents@{zip\+Compress\+Directory\+Contents}!Utils@{Utils}}
+\subsubsection{\texorpdfstring{zip\+Compress\+Directory\+Contents()}{zipCompressDirectoryContents()}}
+{\footnotesize\ttfamily Q\+String Utils\+::zip\+Compress\+Directory\+Contents (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{directory,  }\item[{const Q\+String \&}]{zip\+Destination,  }\item[{const Q\+String \&}]{zip\+Name = {\ttfamily \char`\"{}compressed\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Compresses all files and folders in the directory received by argument. 
+
+If compressing was succesfull, returns the absolute path of the zip file. Otherwise returns an empty string. 
+\begin{DoxyParams}{Parameters}
+{\em directory} & Path of directory to be compressed. \\
+\hline
+{\em zip\+Destination} & Path where de zip file will be saved. \\
+\hline
+{\em zip\+Name} & Name to be setted to the file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Absolute path of the result zip file. 
+\end{DoxyReturn}
+
+
+Definition at line 131 of file utils.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/tools/\mbox{\hyperlink{utils_8h}{utils.\+h}}\item 
+src/tools/\mbox{\hyperlink{utils_8cpp}{utils.\+cpp}}\end{DoxyCompactItemize}

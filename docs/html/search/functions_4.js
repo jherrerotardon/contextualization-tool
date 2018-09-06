@@ -1,0 +1,11 @@
+var searchData=
+[
+  ['fastdetectstringsonimage',['fastDetectStringsOnImage',['../classContextualizationController.html#a4afb43a5914ef1c7e2a6bb9357cdd822',1,'ContextualizationController']]],
+  ['filterstringsbystate',['filterStringsByState',['../classContextualizationController.html#a627fba866e282e4e7dff813781ed88cb',1,'ContextualizationController']]],
+  ['findstring',['findString',['../classContextualizationController.html#a5f94a4894e3a3c0920dc534346527fa0',1,'ContextualizationController']]],
+  ['firmwarestring',['FirmwareString',['../classFirmwareString.html#a624ab9d3c534ffd9c99665d2462e73ac',1,'FirmwareString::FirmwareString()'],['../classFirmwareString.html#a3439d83bad2ac371123d26560f4f3716',1,'FirmwareString::FirmwareString(FirmwareString &amp;other)'],['../classFirmwareString.html#a29f14882ef2a8274cebb7d153f0ea85b',1,'FirmwareString::FirmwareString(const QString &amp;id, const QString &amp;value, const QString &amp;description, const QString &amp;maxLength, const QString &amp;state, const bool selected=false, const bool editable=false)']]],
+  ['formattext',['formatText',['../classUtils.html#a9885ad8eac3df9b5e22363dd1e9ff5b2',1,'Utils']]],
+  ['fpfileconnector',['FpFileConnector',['../classFpFileConnector.html#a2e474f8746dd54729fe68c224ff24275',1,'FpFileConnector::FpFileConnector()'],['../classFpFileConnector.html#a51b38b735ab4728601aef295d7b4c21f',1,'FpFileConnector::FpFileConnector(const QString &amp;path)']]],
+  ['fromfpline',['fromFpLine',['../classFirmwareString.html#a0fcfdf14bbecd7c2c4464574b9ce9d91',1,'FirmwareString']]],
+  ['fromjson',['fromJson',['../classContextualizationModel.html#aa334a054aa36564d56e812a1a9e6de30',1,'ContextualizationModel::fromJson(QString &amp;json)'],['../classContextualizationModel.html#a08ac67d6c9c3b949e9085d131fa47619',1,'ContextualizationModel::fromJson(QByteArray &amp;json)'],['../classFirmwareString.html#a94293dec7077d625c6b977f1f15bfd2d',1,'FirmwareString::fromJson(QString &amp;json)'],['../classFirmwareString.html#a90a6e343748d41c0a0ab9eb7e4fccaee',1,'FirmwareString::fromJson(QByteArray &amp;json)'],['../classString.html#af406afb78e8dae5e7d2deef41d1f9ed7',1,'String::fromJson(QString &amp;json)'],['../classString.html#ab785f3109ff1638b4fb2b052de6cac03',1,'String::fromJson(QByteArray &amp;json)']]]
+];

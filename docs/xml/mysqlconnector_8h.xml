@@ -1,0 +1,371 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="mysqlconnector_8h" kind="file" language="C++">
+    <compoundname>mysqlconnector.h</compoundname>
+    <includes local="no">QtSql/QSqlDatabase</includes>
+    <includes local="no">QtSql/QSqlQuery</includes>
+    <includes local="no">QtSql/QSqlError</includes>
+    <includes refid="firmwarestring_8h" local="yes">contextualization/model/firmwarestring.h</includes>
+    <includes refid="databaseconnectorabstract_8h" local="yes">databaseconnectorabstract.h</includes>
+    <includedby refid="contextualizationcontroller_8h" local="yes">src/contextualization/controller/contextualizationcontroller.h</includedby>
+    <includedby refid="mysqlconnector_8cpp" local="yes">src/storage/mysqlconnector.cpp</includedby>
+    <incdepgraph>
+      <node id="1223">
+        <label>QFuture</label>
+      </node>
+      <node id="1219">
+        <label>QMessageBox</label>
+      </node>
+      <node id="1225">
+        <label>QDateTime</label>
+      </node>
+      <node id="1214">
+        <label>QStandardPaths</label>
+      </node>
+      <node id="1201">
+        <label>QtSql/QSqlDatabase</label>
+      </node>
+      <node id="1222">
+        <label>QThread</label>
+      </node>
+      <node id="1202">
+        <label>QtSql/QSqlQuery</label>
+      </node>
+      <node id="1200">
+        <label>src/storage/mysqlconnector.h</label>
+        <link refid="mysqlconnector_8h"/>
+        <childnode refid="1201" relation="include">
+        </childnode>
+        <childnode refid="1202" relation="include">
+        </childnode>
+        <childnode refid="1203" relation="include">
+        </childnode>
+        <childnode refid="1204" relation="include">
+        </childnode>
+        <childnode refid="1216" relation="include">
+        </childnode>
+      </node>
+      <node id="1221">
+        <label>QProgressDialog</label>
+      </node>
+      <node id="1205">
+        <label>string.h</label>
+        <link refid="string_8h"/>
+        <childnode refid="1206" relation="include">
+        </childnode>
+        <childnode refid="1207" relation="include">
+        </childnode>
+        <childnode refid="1208" relation="include">
+        </childnode>
+        <childnode refid="1209" relation="include">
+        </childnode>
+        <childnode refid="1210" relation="include">
+        </childnode>
+      </node>
+      <node id="1217">
+        <label>tools/utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="1218" relation="include">
+        </childnode>
+        <childnode refid="1211" relation="include">
+        </childnode>
+        <childnode refid="1219" relation="include">
+        </childnode>
+        <childnode refid="1220" relation="include">
+        </childnode>
+        <childnode refid="1221" relation="include">
+        </childnode>
+        <childnode refid="1206" relation="include">
+        </childnode>
+        <childnode refid="1222" relation="include">
+        </childnode>
+        <childnode refid="1223" relation="include">
+        </childnode>
+        <childnode refid="1224" relation="include">
+        </childnode>
+        <childnode refid="1225" relation="include">
+        </childnode>
+      </node>
+      <node id="1208">
+        <label>QJsonObject</label>
+      </node>
+      <node id="1215">
+        <label>QDebug</label>
+      </node>
+      <node id="1224">
+        <label>QtConcurrent/QtConcurrent</label>
+      </node>
+      <node id="1209">
+        <label>QRegularExpression</label>
+      </node>
+      <node id="1213">
+        <label>QDate</label>
+      </node>
+      <node id="1206">
+        <label>QString</label>
+      </node>
+      <node id="1211">
+        <label>QFile</label>
+      </node>
+      <node id="1216">
+        <label>databaseconnectorabstract.h</label>
+        <link refid="databaseconnectorabstract_8h"/>
+        <childnode refid="1205" relation="include">
+        </childnode>
+        <childnode refid="1210" relation="include">
+        </childnode>
+        <childnode refid="1217" relation="include">
+        </childnode>
+      </node>
+      <node id="1203">
+        <label>QtSql/QSqlError</label>
+      </node>
+      <node id="1207">
+        <label>QJsonDocument</label>
+      </node>
+      <node id="1220">
+        <label>QProcess</label>
+      </node>
+      <node id="1218">
+        <label>QDir</label>
+      </node>
+      <node id="1212">
+        <label>QTextStream</label>
+      </node>
+      <node id="1204">
+        <label>contextualization/model/firmwarestring.h</label>
+        <link refid="firmwarestring_8h"/>
+        <childnode refid="1205" relation="include">
+        </childnode>
+      </node>
+      <node id="1210">
+        <label>tools/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="1206" relation="include">
+        </childnode>
+        <childnode refid="1211" relation="include">
+        </childnode>
+        <childnode refid="1212" relation="include">
+        </childnode>
+        <childnode refid="1213" relation="include">
+        </childnode>
+        <childnode refid="1214" relation="include">
+        </childnode>
+        <childnode refid="1215" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1228">
+        <label>src/tools/contextualizationfactoryabstract.h</label>
+        <link refid="contextualizationfactoryabstract_8h"/>
+        <childnode refid="1229" relation="include">
+        </childnode>
+        <childnode refid="1232" relation="include">
+        </childnode>
+      </node>
+      <node id="1243">
+        <label>src/contextualization/controller/linuxguicontroller.cpp</label>
+        <link refid="linuxguicontroller_8cpp"/>
+      </node>
+      <node id="1232">
+        <label>src/tools/contextualizationfactoryabstract.cpp</label>
+        <link refid="contextualizationfactoryabstract_8cpp"/>
+      </node>
+      <node id="1241">
+        <label>src/contextualization/controller/guicontroller.cpp</label>
+        <link refid="guicontroller_8cpp"/>
+      </node>
+      <node id="1233">
+        <label>src/contextualization/controller/consolecontroller.h</label>
+        <link refid="consolecontroller_8h"/>
+        <childnode refid="1234" relation="include">
+        </childnode>
+        <childnode refid="1235" relation="include">
+        </childnode>
+        <childnode refid="1237" relation="include">
+        </childnode>
+      </node>
+      <node id="1238">
+        <label>src/contextualization/controller/windowsconsolecontroller.cpp</label>
+        <link refid="windowsconsolecontroller_8cpp"/>
+      </node>
+      <node id="1236">
+        <label>src/contextualization/controller/linuxconsolecontroller.cpp</label>
+        <link refid="linuxconsolecontroller_8cpp"/>
+      </node>
+      <node id="1246">
+        <label>src/storage/mysqlconnector.cpp</label>
+        <link refid="mysqlconnector_8cpp"/>
+      </node>
+      <node id="1226">
+        <label>src/storage/mysqlconnector.h</label>
+        <link refid="mysqlconnector_8h"/>
+        <childnode refid="1227" relation="include">
+        </childnode>
+        <childnode refid="1246" relation="include">
+        </childnode>
+      </node>
+      <node id="1239">
+        <label>src/contextualization/controller/contextualizationcontroller.cpp</label>
+        <link refid="contextualizationcontroller_8cpp"/>
+      </node>
+      <node id="1230">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="1242">
+        <label>src/contextualization/controller/linuxguicontroller.h</label>
+        <link refid="linuxguicontroller_8h"/>
+        <childnode refid="1229" relation="include">
+        </childnode>
+        <childnode refid="1243" relation="include">
+        </childnode>
+      </node>
+      <node id="1234">
+        <label>src/contextualization/controller/consolecontroller.cpp</label>
+        <link refid="consolecontroller_8cpp"/>
+      </node>
+      <node id="1235">
+        <label>src/contextualization/controller/linuxconsolecontroller.h</label>
+        <link refid="linuxconsolecontroller_8h"/>
+        <childnode refid="1229" relation="include">
+        </childnode>
+        <childnode refid="1236" relation="include">
+        </childnode>
+      </node>
+      <node id="1229">
+        <label>src/tools/hpcontextualizationfactory.h</label>
+        <link refid="hpcontextualizationfactory_8h"/>
+        <childnode refid="1230" relation="include">
+        </childnode>
+        <childnode refid="1231" relation="include">
+        </childnode>
+      </node>
+      <node id="1244">
+        <label>src/contextualization/controller/windowsguicontroller.h</label>
+        <link refid="windowsguicontroller_8h"/>
+        <childnode refid="1229" relation="include">
+        </childnode>
+        <childnode refid="1245" relation="include">
+        </childnode>
+      </node>
+      <node id="1245">
+        <label>src/contextualization/controller/windowsguicontroller.cpp</label>
+        <link refid="windowsguicontroller_8cpp"/>
+      </node>
+      <node id="1227">
+        <label>src/contextualization/controller/contextualizationcontroller.h</label>
+        <link refid="contextualizationcontroller_8h"/>
+        <childnode refid="1228" relation="include">
+        </childnode>
+        <childnode refid="1233" relation="include">
+        </childnode>
+        <childnode refid="1239" relation="include">
+        </childnode>
+        <childnode refid="1240" relation="include">
+        </childnode>
+      </node>
+      <node id="1240">
+        <label>src/contextualization/controller/guicontroller.h</label>
+        <link refid="guicontroller_8h"/>
+        <childnode refid="1241" relation="include">
+        </childnode>
+        <childnode refid="1242" relation="include">
+        </childnode>
+        <childnode refid="1244" relation="include">
+        </childnode>
+      </node>
+      <node id="1231">
+        <label>src/tools/hpcontextualizationfactory.cpp</label>
+        <link refid="hpcontextualizationfactory_8cpp"/>
+      </node>
+      <node id="1237">
+        <label>src/contextualization/controller/windowsconsolecontroller.h</label>
+        <link refid="windowsconsolecontroller_8h"/>
+        <childnode refid="1229" relation="include">
+        </childnode>
+        <childnode refid="1238" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classMySqlConnector" prot="public">MySqlConnector</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Jorge Herrero Tardón (<ulink url="mailto:jorgeht@usal.es">jorgeht@usal.es</ulink>) </para></simplesect>
+<simplesect kind="date"><para>20/02/2018 </para></simplesect>
+<simplesect kind="version"><para>1.0 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="11"><highlight class="preprocessor">#ifndef<sp/>MYSQLCONNECTOR_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MYSQLCONNECTOR_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QtSql/QSqlDatabase&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QtSql/QSqlQuery&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QtSql/QSqlError&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="firmwarestring_8h" kindref="compound">contextualization/model/firmwarestring.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="databaseconnectorabstract_8h" kindref="compound">databaseconnectorabstract.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20" refid="classMySqlConnector" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMySqlConnector" kindref="compound">MySqlConnector</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classDatabaseConnectorAbstract" kindref="compound">DatabaseConnectorAbstract</ref></highlight></codeline>
+<codeline lineno="21"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMySqlConnector_1af17a58a3749687938d0b3b15e276dab7" kindref="member">MySqlConnector</ref>();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classMySqlConnector_1af17a58a3749687938d0b3b15e276dab7" kindref="member">MySqlConnector</ref>(</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>host,</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>user,</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>password,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>database<sp/>=<sp/>QString()</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/><ref refid="classMySqlConnector_1ae652c2a79321d979121e2347cbb25ba0" kindref="member">getUser</ref>();</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMySqlConnector_1a0cf4bedae2d4093449590aa59d200ce8" kindref="member">setUser</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>user);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMySqlConnector_1a92af1c28da0953a69573b21f68b8a41f" kindref="member">setPassword</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>password);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/><ref refid="classMySqlConnector_1a9bada8a552b17c5e39e7d1c903201b4b" kindref="member">getDataBase</ref>();</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMySqlConnector_1a8688bfeb3bb6ba6181f5ce90dc8066d8" kindref="member">setDataBase</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>dataBase);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>QList&lt;String<sp/>*&gt;<sp/><ref refid="classMySqlConnector_1ad6ff79c4049e3631800da97e8d7b7704" kindref="member">getAllStrings</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/>QList&lt;String<sp/>*&gt;<sp/><ref refid="classMySqlConnector_1ae7440816a5bda9e63ea526656c4001f5" kindref="member">getStringsWithValue</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;value,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>caseSensitive<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/>QList&lt;String<sp/>*&gt;<sp/><ref refid="classMySqlConnector_1a8a480141c72dc8da687b15f921ab1a4e" kindref="member">getStringsWithApproximateValue</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;value,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>caseSensitive<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>QList&lt;String<sp/>*&gt;<sp/><ref refid="classMySqlConnector_1a269bbced50451ff0ce48cfc4f2bb6a3b" kindref="member">getStringWithId</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>caseSensitive<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>QList&lt;String<sp/>*&gt;<sp/><ref refid="classMySqlConnector_1a821c3dcebcd763df1700881cb47685d5" kindref="member">getStringsWithState</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>state)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMySqlConnector_1a4608c0764241969454a55b42873cb86b" kindref="member">insertString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classString" kindref="compound">String</ref><sp/>&amp;</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>language)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classMySqlConnector_1a77a5169dd8a515b613642c88dac9798b" kindref="member">insertStrings</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QList&lt;String<sp/>*&gt;<sp/>&amp;strings,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>language)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classMySqlConnector_1a528aac591ea56ade27a096bb997abb2a" kindref="member">removeStringsWithValue</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;value,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>caseSensitive<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classMySqlConnector_1a3c340e5310c56410d64ecd89e5cf6661" kindref="member">removeStringsWithId</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>caseSensitive<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>QStringList<sp/><ref refid="classMySqlConnector_1a83be1a4d67e509b6604629660eb7c4a0" kindref="member">getLanguages</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>QStringList<sp/><ref refid="classMySqlConnector_1a3493828360c7edd217461e040fc1b00e" kindref="member">getLanguageIds</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/><ref refid="classMySqlConnector_1a16a6f0883e2b384621e738f78c619af6" kindref="member">getKeyFromLanguage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>language);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>host_;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>user_;</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>password_;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>dataBase_;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>isAnyImportantFieldEmpty();</highlight></codeline>
+<codeline lineno="148"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>MYSQLCONNECTOR_H</highlight></codeline>
+    </programlisting>
+    <location file="src/storage/mysqlconnector.h"/>
+  </compounddef>
+</doxygen>

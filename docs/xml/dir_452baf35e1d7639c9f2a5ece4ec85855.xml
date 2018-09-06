@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_452baf35e1d7639c9f2a5ece4ec85855" kind="dir">
+    <compoundname>src/storage</compoundname>
+    <innerfile refid="databaseconnectorabstract_8cpp">databaseconnectorabstract.cpp</innerfile>
+    <innerfile refid="databaseconnectorabstract_8h">databaseconnectorabstract.h</innerfile>
+    <innerfile refid="fpfileconnector_8h">fpfileconnector.h</innerfile>
+    <innerfile refid="mysqlconnector_8cpp">mysqlconnector.cpp</innerfile>
+    <innerfile refid="mysqlconnector_8h">mysqlconnector.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/storage/"/>
+  </compounddef>
+</doxygen>

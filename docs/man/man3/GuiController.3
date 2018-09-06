@@ -1,0 +1,93 @@
+.TH "GuiController" 3 "Thu Sep 6 2018" "Version 1.0" "Contextualization Tool" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+GuiController \- This is the controller class that works a GUI environment\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <guicontroller\&.h>\fP
+.PP
+Inherits \fBContextualizationController\fP\&.
+.PP
+Inherited by \fBLinuxGuiController\fP, and \fBWindowsGuiController\fP\&.
+.SS "Signals"
+
+.in +1c
+.ti -1c
+.RI "void \fBviewChanged\fP ()"
+.br
+.RI "The singal is emitted when the pointer to the view changed\&. "
+.ti -1c
+.RI "void \fBunchangedProject\fP ()"
+.br
+.RI "The signal is emitted when a current project is saved\&. "
+.ti -1c
+.RI "void \fBstringsListChanged\fP ()"
+.br
+.RI "The signal is emitted when a new string is added to the model or a string is removed from the model\&. "
+.ti -1c
+.RI "void \fBimageChanged\fP ()"
+.br
+.RI "The signal is emitted when a image is setted on the model\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGuiController\fP (QQuickWindow *view=Q_NULLPTR, QObject *parent=Q_NULLPTR)"
+.br
+.RI "Creates an instance of a \fBGuiController\fP\&. "
+.ti -1c
+.RI "\fB~GuiController\fP ()"
+.br
+.RI "Destroys the \fBGuiController\fP\&. "
+.in -1c
+.SS "Properties"
+
+.in +1c
+.ti -1c
+.RI "QString \fBimage\fP"
+.br
+.ti -1c
+.RI "QList< QObject * > \fBtableModel\fP"
+.br
+.ti -1c
+.RI "QQuickWindow \fBview\fP"
+.br
+.ti -1c
+.RI "bool \fBonlyDoneStrings\fP"
+.br
+.ti -1c
+.RI "bool \fBcaseSensitive\fP"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+This is the controller class that works a GUI environment\&. 
+.PP
+Definition at line 20 of file guicontroller\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "GuiController::GuiController (QQuickWindow * view = \fCQ_NULLPTR\fP, QObject * parent = \fCQ_NULLPTR\fP)"
+
+.PP
+Creates an instance of a \fBGuiController\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIview\fP Visual part of MVC\&. 
+.br
+\fIparent\fP Parent object\&. 
+.RE
+.PP
+
+.PP
+Definition at line 13 of file guicontroller\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Contextualization Tool from the source code\&.

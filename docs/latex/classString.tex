@@ -1,0 +1,610 @@
+\hypertarget{classString}{}\section{String Class Reference}
+\label{classString}\index{String@{String}}
+
+
+This is the representation of a string with their properties.  
+
+
+
+
+{\ttfamily \#include $<$string.\+h$>$}
+
+Inheritance diagram for String\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classString}
+\end{center}
+\end{figure}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classString_a96493c66757b6aa5a5ac45c245d84740}\label{classString_a96493c66757b6aa5a5ac45c245d84740}} 
+void \mbox{\hyperlink{classString_a96493c66757b6aa5a5ac45c245d84740}{id\+Changed}} ()
+\begin{DoxyCompactList}\small\item\em The signal is emitted when the identifier of the string has changed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classString_aa0c62ee31f5e0e91b8f68a13405db51b}\label{classString_aa0c62ee31f5e0e91b8f68a13405db51b}} 
+void \mbox{\hyperlink{classString_aa0c62ee31f5e0e91b8f68a13405db51b}{value\+Changed}} ()
+\begin{DoxyCompactList}\small\item\em The signal is emitted when the value of the string has changed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classString_ada21cf632b6350cd959efc3b7c0a1b5f}\label{classString_ada21cf632b6350cd959efc3b7c0a1b5f}} 
+void \mbox{\hyperlink{classString_ada21cf632b6350cd959efc3b7c0a1b5f}{description\+Changed}} ()
+\begin{DoxyCompactList}\small\item\em The signal is emitted when the description of the string has changed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classString_ae48fd165246597a387bcdc86aede6899}\label{classString_ae48fd165246597a387bcdc86aede6899}} 
+void \mbox{\hyperlink{classString_ae48fd165246597a387bcdc86aede6899}{max\+Length\+Changed}} ()
+\begin{DoxyCompactList}\small\item\em The signal is emitted when the max length of the string has changed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classString_a9ffcae019b2cfb3a5e75ba4d390d725b}\label{classString_a9ffcae019b2cfb3a5e75ba4d390d725b}} 
+void \mbox{\hyperlink{classString_a9ffcae019b2cfb3a5e75ba4d390d725b}{state\+Changed}} ()
+\begin{DoxyCompactList}\small\item\em The signal is emitted when the state of the string has changed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classString_ab6012061024cd0862b9a8ca9fbc1896d}\label{classString_ab6012061024cd0862b9a8ca9fbc1896d}} 
+void \mbox{\hyperlink{classString_ab6012061024cd0862b9a8ca9fbc1896d}{selected\+Changed}} ()
+\begin{DoxyCompactList}\small\item\em The signal is emitted when the string is selected or unselected. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classString_a9f37720f465dce86576a2ad347c386b0}\label{classString_a9f37720f465dce86576a2ad347c386b0}} 
+void \mbox{\hyperlink{classString_a9f37720f465dce86576a2ad347c386b0}{editable\+Changed}} ()
+\begin{DoxyCompactList}\small\item\em The signal is emitted when the editable parameter is changed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classString_a8a7ef356e05eb9b1ea1ab518baee3095}\label{classString_a8a7ef356e05eb9b1ea1ab518baee3095}} 
+\mbox{\hyperlink{classString_a8a7ef356e05eb9b1ea1ab518baee3095}{String}} ()
+\begin{DoxyCompactList}\small\item\em Constructs an empty string. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classString_addd6bcc4ba529bdc45d3fd69ad1a3569}{String}} (\mbox{\hyperlink{classString}{String}} \&other)
+\begin{DoxyCompactList}\small\item\em Constructs a string replic from another received by parameter. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classString_a4edf46375241ec3585f26758750b3d9e}{String}} (const Q\+String \&id, const Q\+String \&value, const Q\+String \&description, const Q\+String \&max\+Length, const Q\+String \&state, const bool selected=false, const bool editable=true)
+\begin{DoxyCompactList}\small\item\em Constructs a string with diferents value members received by parameter. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{classString_ab32615121278a445dba468c7ef18ee7a}{get\+Id}} () const
+\begin{DoxyCompactList}\small\item\em Returns the identifier of the string. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classString_a11c7a52caa2ebc68d27ecd9cb5a35d16}{set\+Id}} (const Q\+String \&id)
+\begin{DoxyCompactList}\small\item\em Sets the identifier of the string. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{classString_a926f7c30cfca26009604d0c765950c4b}{get\+Value}} () const
+\begin{DoxyCompactList}\small\item\em Returns the value of the string. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classString_ae863781e31fe2378468547159a9172a6}{set\+Value}} (const Q\+String \&value)
+\begin{DoxyCompactList}\small\item\em Sets the value of the string. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{classString_ae604e3af13ef6ba3113a7484edfc3c55}{get\+Description}} () const
+\begin{DoxyCompactList}\small\item\em Returns the description of the string. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classString_ac91f0504a470b1602952cfd657979e4b}{set\+Description}} (const Q\+String \&description)
+\begin{DoxyCompactList}\small\item\em Sets the description of the string. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{classString_af95fe7d7e2a8b604d7af3b7f0476ec0e}{get\+Max\+Length}} () const
+\begin{DoxyCompactList}\small\item\em Returns the max length of the string. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classString_a141c695ac9095099e0d27a3f1b01a1ca}{set\+Max\+Length}} (const Q\+String \&max\+Length)
+\begin{DoxyCompactList}\small\item\em Sets the max length of the string. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{classString_ae5ee38919f5a360e0283baedb11c48e0}{get\+State}} () const
+\begin{DoxyCompactList}\small\item\em Returns the state of the string. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classString_a7b1b070889aef0e2e9eb4d7d55161cf3}{set\+State}} (const Q\+String \&state)
+\begin{DoxyCompactList}\small\item\em Sets the state of the string. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classString_a43fe9257fb504215834afa322313f8c9}{is\+Empty}} ()
+\begin{DoxyCompactList}\small\item\em Returns true if string is empty. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classString_a3f5ffd092dd9870ae281b2e08d3b69dd}{is\+Selected}} () const
+\begin{DoxyCompactList}\small\item\em Returns true if string is selected, else returns false. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classString_ad575beeccbf4ae38bc5eab1ebfff3216}\label{classString_ad575beeccbf4ae38bc5eab1ebfff3216}} 
+void \mbox{\hyperlink{classString_ad575beeccbf4ae38bc5eab1ebfff3216}{select}} ()
+\begin{DoxyCompactList}\small\item\em Changes the string to selected. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classString_a26bc857fbf7077d23667cd0b1e9ecd6d}\label{classString_a26bc857fbf7077d23667cd0b1e9ecd6d}} 
+void \mbox{\hyperlink{classString_a26bc857fbf7077d23667cd0b1e9ecd6d}{unselect}} ()
+\begin{DoxyCompactList}\small\item\em Changes the string to unselected. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classString_a68737226a49a262c0a4952473788a77a}{set\+Selected}} (bool selected)
+\begin{DoxyCompactList}\small\item\em Changes the string to selected or unselected depending on the value received by parameter. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classString_a64c436144f008a40743c64b5094700bb}{is\+Editable}} () const
+\begin{DoxyCompactList}\small\item\em Returns the editable state of the string. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classString_ae2ff38f8907c105ef577012a8db3f46e}{set\+Editable}} (bool editable)
+\begin{DoxyCompactList}\small\item\em Sets the editable parameter of the string. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{classString_ab73513e47b7572940944d54963056d07}{to\+Fp\+File\+Format}} () const
+\begin{DoxyCompactList}\small\item\em Returns the model converted to a string with the format in file fp. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{classString_a3dca5b8881d9f531a7ee9bbaf2fff535}{to\+Json}} (Q\+Json\+Document\+::\+Json\+Format format=Q\+Json\+Document\+::\+Compact)
+\begin{DoxyCompactList}\small\item\em Returns the string converted to a J\+S\+ON Q\+String. \end{DoxyCompactList}\item 
+Q\+Json\+Object \mbox{\hyperlink{classString_a44e35d48e6bf3efe128d3855d242a131}{to\+Json\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Returns the string converted to a \#\+Q\+Json\+Object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classString}{String}} \& \mbox{\hyperlink{classString_a734f34a0b7a42bcad30c368d6e8c5469}{operator=}} (const \mbox{\hyperlink{classString}{String}} \&other)
+\begin{DoxyCompactList}\small\item\em Assigns other to string and returns a reference to this string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classString}{String}} $\ast$ \mbox{\hyperlink{classString_af406afb78e8dae5e7d2deef41d1f9ed7}{from\+Json}} (Q\+String \&json)
+\begin{DoxyCompactList}\small\item\em Returns a \mbox{\hyperlink{classString}{String}} initializated with the J\+S\+ON string json. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classString}{String}} $\ast$ \mbox{\hyperlink{classString_ab785f3109ff1638b4fb2b052de6cac03}{from\+Json}} (Q\+Byte\+Array \&json)
+\begin{DoxyCompactList}\small\item\em Returns a \mbox{\hyperlink{classString}{String}} initializated with the \#\+Q\+Byte\+Array data json. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classString_a57119b0e8878311777ccf94ea542f745}\label{classString_a57119b0e8878311777ccf94ea542f745}} 
+Q\+String {\bfseries id\+\_\+}
+\item 
+\mbox{\Hypertarget{classString_a4168491f40c415cd410fbab1cccfc523}\label{classString_a4168491f40c415cd410fbab1cccfc523}} 
+Q\+String {\bfseries value\+\_\+}
+\item 
+\mbox{\Hypertarget{classString_a87cbb04e3c7fd009a4323e95d39cfd1e}\label{classString_a87cbb04e3c7fd009a4323e95d39cfd1e}} 
+Q\+String {\bfseries description\+\_\+}
+\item 
+\mbox{\Hypertarget{classString_a8463d3d3d595bc50b4f37908f4e6aa74}\label{classString_a8463d3d3d595bc50b4f37908f4e6aa74}} 
+Q\+String {\bfseries max\+Length\+\_\+}
+\item 
+\mbox{\Hypertarget{classString_acb000d4634c91cdffcc89e44c534c008}\label{classString_acb000d4634c91cdffcc89e44c534c008}} 
+Q\+String {\bfseries state\+\_\+}
+\item 
+\mbox{\Hypertarget{classString_a2c7623a98c3bec1ae8658952dca0b1bf}\label{classString_a2c7623a98c3bec1ae8658952dca0b1bf}} 
+bool {\bfseries selected\+\_\+}
+\item 
+\mbox{\Hypertarget{classString_ac8f7b0d152b7aaedb6eadb2c15ed23b5}\label{classString_ac8f7b0d152b7aaedb6eadb2c15ed23b5}} 
+bool {\bfseries editable\+\_\+}
+\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classString_a82cd6049ff79198e7d24ed97b7a6c4c3}\label{classString_a82cd6049ff79198e7d24ed97b7a6c4c3}} 
+Q\+String {\bfseries id}
+\item 
+\mbox{\Hypertarget{classString_a08d78cc301801cdac26795f3070fab9c}\label{classString_a08d78cc301801cdac26795f3070fab9c}} 
+Q\+String {\bfseries value}
+\item 
+\mbox{\Hypertarget{classString_aa3d3e472e670f550eb5f9e26aeee81d6}\label{classString_aa3d3e472e670f550eb5f9e26aeee81d6}} 
+Q\+String {\bfseries description}
+\item 
+\mbox{\Hypertarget{classString_a7a711e734960d3e721a6439d96289ce2}\label{classString_a7a711e734960d3e721a6439d96289ce2}} 
+Q\+String {\bfseries max\+Length}
+\item 
+\mbox{\Hypertarget{classString_ab4d9446f69355dc0c9bdd3ecda847679}\label{classString_ab4d9446f69355dc0c9bdd3ecda847679}} 
+Q\+String {\bfseries state}
+\item 
+\mbox{\Hypertarget{classString_aa80dde9547a7d229060f9bb094ee28f1}\label{classString_aa80dde9547a7d229060f9bb094ee28f1}} 
+bool {\bfseries selected}
+\item 
+\mbox{\Hypertarget{classString_a11a02211f65634f17ea47cb8b1a272ed}\label{classString_a11a02211f65634f17ea47cb8b1a272ed}} 
+bool {\bfseries editable}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the representation of a string with their properties. 
+
+Definition at line 19 of file string.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classString_addd6bcc4ba529bdc45d3fd69ad1a3569}\label{classString_addd6bcc4ba529bdc45d3fd69ad1a3569}} 
+\index{String@{String}!String@{String}}
+\index{String@{String}!String@{String}}
+\subsubsection{\texorpdfstring{String()}{String()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily String\+::\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classString}{String}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Constructs a string replic from another received by parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & string to be duplicated. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 23 of file string.\+cpp.
+
+\mbox{\Hypertarget{classString_a4edf46375241ec3585f26758750b3d9e}\label{classString_a4edf46375241ec3585f26758750b3d9e}} 
+\index{String@{String}!String@{String}}
+\index{String@{String}!String@{String}}
+\subsubsection{\texorpdfstring{String()}{String()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily String\+::\+String (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{id,  }\item[{const Q\+String \&}]{value,  }\item[{const Q\+String \&}]{description,  }\item[{const Q\+String \&}]{max\+Length,  }\item[{const Q\+String \&}]{state,  }\item[{const bool}]{selected = {\ttfamily false},  }\item[{const bool}]{editable = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Constructs a string with diferents value members received by parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \mbox{\hyperlink{classString}{String}} identifier. \\
+\hline
+{\em value} & \mbox{\hyperlink{classString}{String}} value. \\
+\hline
+{\em description} & \mbox{\hyperlink{classString}{String}} description. \\
+\hline
+{\em max\+Length} & \mbox{\hyperlink{classString}{String}} max\+Length. \\
+\hline
+{\em state} & \mbox{\hyperlink{classString}{String}} state. \\
+\hline
+{\em selected} & \mbox{\hyperlink{classString}{String}} selected. \\
+\hline
+{\em editable} & \mbox{\hyperlink{classString}{String}} editable state. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 34 of file string.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classString_af406afb78e8dae5e7d2deef41d1f9ed7}\label{classString_af406afb78e8dae5e7d2deef41d1f9ed7}} 
+\index{String@{String}!from\+Json@{from\+Json}}
+\index{from\+Json@{from\+Json}!String@{String}}
+\subsubsection{\texorpdfstring{from\+Json()}{fromJson()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classString}{String}} $\ast$ String\+::from\+Json (\begin{DoxyParamCaption}\item[{Q\+String \&}]{json }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns a \mbox{\hyperlink{classString}{String}} initializated with the J\+S\+ON string json. 
+
+If the J\+S\+ON data received is not valid, return an empty model. 
+\begin{DoxyParams}{Parameters}
+{\em json} & \mbox{\hyperlink{classString}{String}} in J\+S\+ON format to be converted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classContextualizationModel}{Contextualization\+Model}} 
+\end{DoxyReturn}
+
+
+Definition at line 218 of file string.\+cpp.
+
+\mbox{\Hypertarget{classString_ab785f3109ff1638b4fb2b052de6cac03}\label{classString_ab785f3109ff1638b4fb2b052de6cac03}} 
+\index{String@{String}!from\+Json@{from\+Json}}
+\index{from\+Json@{from\+Json}!String@{String}}
+\subsubsection{\texorpdfstring{from\+Json()}{fromJson()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classString}{String}} $\ast$ String\+::from\+Json (\begin{DoxyParamCaption}\item[{Q\+Byte\+Array \&}]{json }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns a \mbox{\hyperlink{classString}{String}} initializated with the \#\+Q\+Byte\+Array data json. 
+
+If the J\+S\+ON data received is not valid, return an empty model. 
+\begin{DoxyParams}{Parameters}
+{\em json} & Q\+Byte\+Array in J\+S\+ON format to be converted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classString}{String}} 
+\end{DoxyReturn}
+
+
+Definition at line 225 of file string.\+cpp.
+
+\mbox{\Hypertarget{classString_ae604e3af13ef6ba3113a7484edfc3c55}\label{classString_ae604e3af13ef6ba3113a7484edfc3c55}} 
+\index{String@{String}!get\+Description@{get\+Description}}
+\index{get\+Description@{get\+Description}!String@{String}}
+\subsubsection{\texorpdfstring{get\+Description()}{getDescription()}}
+{\footnotesize\ttfamily Q\+String String\+::get\+Description (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the description of the string. 
+
+\begin{DoxyReturn}{Returns}
+Description of the string. 
+\end{DoxyReturn}
+
+
+Definition at line 86 of file string.\+cpp.
+
+\mbox{\Hypertarget{classString_ab32615121278a445dba468c7ef18ee7a}\label{classString_ab32615121278a445dba468c7ef18ee7a}} 
+\index{String@{String}!get\+Id@{get\+Id}}
+\index{get\+Id@{get\+Id}!String@{String}}
+\subsubsection{\texorpdfstring{get\+Id()}{getId()}}
+{\footnotesize\ttfamily Q\+String String\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the identifier of the string. 
+
+\begin{DoxyReturn}{Returns}
+Identifier of the string. 
+\end{DoxyReturn}
+
+
+Definition at line 52 of file string.\+cpp.
+
+\mbox{\Hypertarget{classString_af95fe7d7e2a8b604d7af3b7f0476ec0e}\label{classString_af95fe7d7e2a8b604d7af3b7f0476ec0e}} 
+\index{String@{String}!get\+Max\+Length@{get\+Max\+Length}}
+\index{get\+Max\+Length@{get\+Max\+Length}!String@{String}}
+\subsubsection{\texorpdfstring{get\+Max\+Length()}{getMaxLength()}}
+{\footnotesize\ttfamily Q\+String String\+::get\+Max\+Length (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the max length of the string. 
+
+\begin{DoxyReturn}{Returns}
+Max length of the string. 
+\end{DoxyReturn}
+
+
+Definition at line 103 of file string.\+cpp.
+
+\mbox{\Hypertarget{classString_ae5ee38919f5a360e0283baedb11c48e0}\label{classString_ae5ee38919f5a360e0283baedb11c48e0}} 
+\index{String@{String}!get\+State@{get\+State}}
+\index{get\+State@{get\+State}!String@{String}}
+\subsubsection{\texorpdfstring{get\+State()}{getState()}}
+{\footnotesize\ttfamily Q\+String String\+::get\+State (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the state of the string. 
+
+\begin{DoxyReturn}{Returns}
+State of the string. 
+\end{DoxyReturn}
+
+
+Definition at line 120 of file string.\+cpp.
+
+\mbox{\Hypertarget{classString_a926f7c30cfca26009604d0c765950c4b}\label{classString_a926f7c30cfca26009604d0c765950c4b}} 
+\index{String@{String}!get\+Value@{get\+Value}}
+\index{get\+Value@{get\+Value}!String@{String}}
+\subsubsection{\texorpdfstring{get\+Value()}{getValue()}}
+{\footnotesize\ttfamily Q\+String String\+::get\+Value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the value of the string. 
+
+Returns true if the identifier was set, otherwise, returns false. \begin{DoxyReturn}{Returns}
+Value of the string. 
+\end{DoxyReturn}
+
+
+Definition at line 69 of file string.\+cpp.
+
+\mbox{\Hypertarget{classString_a64c436144f008a40743c64b5094700bb}\label{classString_a64c436144f008a40743c64b5094700bb}} 
+\index{String@{String}!is\+Editable@{is\+Editable}}
+\index{is\+Editable@{is\+Editable}!String@{String}}
+\subsubsection{\texorpdfstring{is\+Editable()}{isEditable()}}
+{\footnotesize\ttfamily bool String\+::is\+Editable (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the editable state of the string. 
+
+\begin{DoxyReturn}{Returns}
+Editable state of the string. 
+\end{DoxyReturn}
+
+
+Definition at line 172 of file string.\+cpp.
+
+\mbox{\Hypertarget{classString_a43fe9257fb504215834afa322313f8c9}\label{classString_a43fe9257fb504215834afa322313f8c9}} 
+\index{String@{String}!is\+Empty@{is\+Empty}}
+\index{is\+Empty@{is\+Empty}!String@{String}}
+\subsubsection{\texorpdfstring{is\+Empty()}{isEmpty()}}
+{\footnotesize\ttfamily bool String\+::is\+Empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns true if string is empty. 
+
+A string is empty if has a null o empty value. \begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line 137 of file string.\+cpp.
+
+\mbox{\Hypertarget{classString_a3f5ffd092dd9870ae281b2e08d3b69dd}\label{classString_a3f5ffd092dd9870ae281b2e08d3b69dd}} 
+\index{String@{String}!is\+Selected@{is\+Selected}}
+\index{is\+Selected@{is\+Selected}!String@{String}}
+\subsubsection{\texorpdfstring{is\+Selected()}{isSelected()}}
+{\footnotesize\ttfamily bool String\+::is\+Selected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns true if string is selected, else returns false. 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line 146 of file string.\+cpp.
+
+\mbox{\Hypertarget{classString_a734f34a0b7a42bcad30c368d6e8c5469}\label{classString_a734f34a0b7a42bcad30c368d6e8c5469}} 
+\index{String@{String}!operator=@{operator=}}
+\index{operator=@{operator=}!String@{String}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classString}{String}} \& String\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classString}{String}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Assigns other to string and returns a reference to this string. 
+
+Overloads from\+String(\+Q\+String \&json) function. 
+\begin{DoxyParams}{Parameters}
+{\em other} & Model to be copied. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to this string. 
+\end{DoxyReturn}
+
+
+Definition at line 262 of file string.\+cpp.
+
+\mbox{\Hypertarget{classString_ac91f0504a470b1602952cfd657979e4b}\label{classString_ac91f0504a470b1602952cfd657979e4b}} 
+\index{String@{String}!set\+Description@{set\+Description}}
+\index{set\+Description@{set\+Description}!String@{String}}
+\subsubsection{\texorpdfstring{set\+Description()}{setDescription()}}
+{\footnotesize\ttfamily bool String\+::set\+Description (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{description }\end{DoxyParamCaption})}
+
+
+
+Sets the description of the string. 
+
+Returns true if the description was set, otherwise, returns false. 
+\begin{DoxyParams}{Parameters}
+{\em description} & New description of the string. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 91 of file string.\+cpp.
+
+\mbox{\Hypertarget{classString_ae2ff38f8907c105ef577012a8db3f46e}\label{classString_ae2ff38f8907c105ef577012a8db3f46e}} 
+\index{String@{String}!set\+Editable@{set\+Editable}}
+\index{set\+Editable@{set\+Editable}!String@{String}}
+\subsubsection{\texorpdfstring{set\+Editable()}{setEditable()}}
+{\footnotesize\ttfamily void String\+::set\+Editable (\begin{DoxyParamCaption}\item[{bool}]{editable }\end{DoxyParamCaption})}
+
+
+
+Sets the editable parameter of the string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & New editable state of the string. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 177 of file string.\+cpp.
+
+\mbox{\Hypertarget{classString_a11c7a52caa2ebc68d27ecd9cb5a35d16}\label{classString_a11c7a52caa2ebc68d27ecd9cb5a35d16}} 
+\index{String@{String}!set\+Id@{set\+Id}}
+\index{set\+Id@{set\+Id}!String@{String}}
+\subsubsection{\texorpdfstring{set\+Id()}{setId()}}
+{\footnotesize\ttfamily bool String\+::set\+Id (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{id }\end{DoxyParamCaption})}
+
+
+
+Sets the identifier of the string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & New identifier of the string. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 57 of file string.\+cpp.
+
+\mbox{\Hypertarget{classString_a141c695ac9095099e0d27a3f1b01a1ca}\label{classString_a141c695ac9095099e0d27a3f1b01a1ca}} 
+\index{String@{String}!set\+Max\+Length@{set\+Max\+Length}}
+\index{set\+Max\+Length@{set\+Max\+Length}!String@{String}}
+\subsubsection{\texorpdfstring{set\+Max\+Length()}{setMaxLength()}}
+{\footnotesize\ttfamily bool String\+::set\+Max\+Length (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{max\+Length }\end{DoxyParamCaption})}
+
+
+
+Sets the max length of the string. 
+
+Returns true if the max length was set, otherwise, returns false. 
+\begin{DoxyParams}{Parameters}
+{\em max\+Length} & New max length of the string. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 108 of file string.\+cpp.
+
+\mbox{\Hypertarget{classString_a68737226a49a262c0a4952473788a77a}\label{classString_a68737226a49a262c0a4952473788a77a}} 
+\index{String@{String}!set\+Selected@{set\+Selected}}
+\index{set\+Selected@{set\+Selected}!String@{String}}
+\subsubsection{\texorpdfstring{set\+Selected()}{setSelected()}}
+{\footnotesize\ttfamily void String\+::set\+Selected (\begin{DoxyParamCaption}\item[{bool}]{selected }\end{DoxyParamCaption})}
+
+
+
+Changes the string to selected or unselected depending on the value received by parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em selected} & New selection state of the string.. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 165 of file string.\+cpp.
+
+\mbox{\Hypertarget{classString_a7b1b070889aef0e2e9eb4d7d55161cf3}\label{classString_a7b1b070889aef0e2e9eb4d7d55161cf3}} 
+\index{String@{String}!set\+State@{set\+State}}
+\index{set\+State@{set\+State}!String@{String}}
+\subsubsection{\texorpdfstring{set\+State()}{setState()}}
+{\footnotesize\ttfamily bool String\+::set\+State (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{state }\end{DoxyParamCaption})}
+
+
+
+Sets the state of the string. 
+
+Returns true if the state was set, otherwise, returns false. 
+\begin{DoxyParams}{Parameters}
+{\em state} & New state of the string. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 125 of file string.\+cpp.
+
+\mbox{\Hypertarget{classString_ae863781e31fe2378468547159a9172a6}\label{classString_ae863781e31fe2378468547159a9172a6}} 
+\index{String@{String}!set\+Value@{set\+Value}}
+\index{set\+Value@{set\+Value}!String@{String}}
+\subsubsection{\texorpdfstring{set\+Value()}{setValue()}}
+{\footnotesize\ttfamily bool String\+::set\+Value (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{value }\end{DoxyParamCaption})}
+
+
+
+Sets the value of the string. 
+
+Returns true if the value was set, otherwise, returns false. 
+\begin{DoxyParams}{Parameters}
+{\em value} & New value of the string. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 74 of file string.\+cpp.
+
+\mbox{\Hypertarget{classString_ab73513e47b7572940944d54963056d07}\label{classString_ab73513e47b7572940944d54963056d07}} 
+\index{String@{String}!to\+Fp\+File\+Format@{to\+Fp\+File\+Format}}
+\index{to\+Fp\+File\+Format@{to\+Fp\+File\+Format}!String@{String}}
+\subsubsection{\texorpdfstring{to\+Fp\+File\+Format()}{toFpFileFormat()}}
+{\footnotesize\ttfamily Q\+String String\+::to\+Fp\+File\+Format (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the model converted to a string with the format in file fp. 
+
+\begin{DoxyReturn}{Returns}
+A string. 
+\end{DoxyReturn}
+
+
+Definition at line 184 of file string.\+cpp.
+
+\mbox{\Hypertarget{classString_a3dca5b8881d9f531a7ee9bbaf2fff535}\label{classString_a3dca5b8881d9f531a7ee9bbaf2fff535}} 
+\index{String@{String}!to\+Json@{to\+Json}}
+\index{to\+Json@{to\+Json}!String@{String}}
+\subsubsection{\texorpdfstring{to\+Json()}{toJson()}}
+{\footnotesize\ttfamily Q\+String String\+::to\+Json (\begin{DoxyParamCaption}\item[{Q\+Json\+Document\+::\+Json\+Format}]{format = {\ttfamily QJsonDocument\+:\+:Compact} }\end{DoxyParamCaption})}
+
+
+
+Returns the string converted to a J\+S\+ON Q\+String. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em format} & Exit format of J\+S\+ON. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A J\+S\+ON string, 
+\end{DoxyReturn}
+
+
+Definition at line 199 of file string.\+cpp.
+
+\mbox{\Hypertarget{classString_a44e35d48e6bf3efe128d3855d242a131}\label{classString_a44e35d48e6bf3efe128d3855d242a131}} 
+\index{String@{String}!to\+Json\+Object@{to\+Json\+Object}}
+\index{to\+Json\+Object@{to\+Json\+Object}!String@{String}}
+\subsubsection{\texorpdfstring{to\+Json\+Object()}{toJsonObject()}}
+{\footnotesize\ttfamily Q\+Json\+Object String\+::to\+Json\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the string converted to a \#\+Q\+Json\+Object. 
+
+\begin{DoxyReturn}{Returns}
+Q\+Json\+Object 
+\end{DoxyReturn}
+
+
+Definition at line 204 of file string.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/contextualization/model/\mbox{\hyperlink{string_8h}{string.\+h}}\item 
+src/contextualization/model/\mbox{\hyperlink{string_8cpp}{string.\+cpp}}\end{DoxyCompactItemize}

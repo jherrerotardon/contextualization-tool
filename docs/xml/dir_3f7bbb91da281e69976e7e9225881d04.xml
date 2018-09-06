@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_3f7bbb91da281e69976e7e9225881d04" kind="dir">
+    <compoundname>src/contextualization/controller</compoundname>
+    <innerfile refid="consolecontroller_8cpp">consolecontroller.cpp</innerfile>
+    <innerfile refid="consolecontroller_8h">consolecontroller.h</innerfile>
+    <innerfile refid="contextualizationcontroller_8cpp">contextualizationcontroller.cpp</innerfile>
+    <innerfile refid="contextualizationcontroller_8h">contextualizationcontroller.h</innerfile>
+    <innerfile refid="guicontroller_8cpp">guicontroller.cpp</innerfile>
+    <innerfile refid="guicontroller_8h">guicontroller.h</innerfile>
+    <innerfile refid="linuxconsolecontroller_8cpp">linuxconsolecontroller.cpp</innerfile>
+    <innerfile refid="linuxconsolecontroller_8h">linuxconsolecontroller.h</innerfile>
+    <innerfile refid="linuxguicontroller_8cpp">linuxguicontroller.cpp</innerfile>
+    <innerfile refid="linuxguicontroller_8h">linuxguicontroller.h</innerfile>
+    <innerfile refid="windowsconsolecontroller_8cpp">windowsconsolecontroller.cpp</innerfile>
+    <innerfile refid="windowsconsolecontroller_8h">windowsconsolecontroller.h</innerfile>
+    <innerfile refid="windowsguicontroller_8cpp">windowsguicontroller.cpp</innerfile>
+    <innerfile refid="windowsguicontroller_8h">windowsguicontroller.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/contextualization/controller/"/>
+  </compounddef>
+</doxygen>

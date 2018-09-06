@@ -3,7 +3,7 @@
  * @author Jorge Herrero Tardón (jorgeht@usal.es)
  * @date 20/02/2018
  * @version 1.0
- * @class ContectualizationController
+ * @class ContextualizationController
  *
  * @brief This is the controller base class.
  */
@@ -223,6 +223,8 @@ ContextualizationController::CodeError ContextualizationController::sendContextu
         errorCode = out == SshError ? SshError : SshpassError;
     } else {
         Log::writeLog(QString(Q_FUNC_INFO) + " Contextualization " + path + " sent to " + remoteHost_);
+
+        errorCode = NoError;
     }
 
     // Remove temporal files.
@@ -731,4 +733,46 @@ bool ContextualizationController::setParameterInConfigFile(const QString paramet
         Log::writeError(QString(Q_FUNC_INFO) + " Could not save parameter " + parameter + " in file " + configurationFile.absoluteFilePath());
         return false;
     }
+}
+
+bool ContextualizationController::proccessAndStorage()
+{
+    FpFileConnector fpFile;
+    QStringList languages;
+    QFileInfo englishFpFile(englishFpFile_);
+    QString filename;
+    QList<String *> fwStrings;
+
+    try {
+        // In this moment is a beta. Host, username, etc, should not be in code source
+        MySqlConnector mysql("192.168.18.128", "root", "12345678", "ContextualizationTool");
+
+        if (!englishFpFile.exists()) {
+            Log::writeError(QString(Q_FUNC_INFO) + " Could not process strings, english.fp does not exist: " + englishFpFile_);
+            return false;
+        }
+
+        languages = mysql.getLanguages();
+
+        if (languages.contains("english", Qt::CaseInsensitive)) {
+            Log::writeError(QString(Q_FUNC_INFO) + " Error languags from database. English not configured.");
+            return false;
+        }
+
+        foreach (QString language, languages) {
+            filename = language.toLower() + ".fp";
+
+            if (fpFile.setPath(englishFpFile.absoluteDir().absoluteFilePath(filename))) {
+                fwStrings = fpFile.getStringsWithState("VALIDATED");
+                mysql.insertStrings(fwStrings, language);
+            } else {
+                Log::writeError(QString(Q_FUNC_INFO) + " " + language + " will not be processed. Does not exist his fp file.");
+            }
+        }
+    } catch (char *e){
+        Q_UNUSED(e);
+        return false;
+    }
+
+    return true;
 }

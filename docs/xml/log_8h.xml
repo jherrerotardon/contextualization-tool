@@ -1,0 +1,348 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="log_8h" kind="file" language="C++">
+    <compoundname>log.h</compoundname>
+    <includes local="no">QString</includes>
+    <includes local="no">QFile</includes>
+    <includes local="no">QTextStream</includes>
+    <includes local="no">QDate</includes>
+    <includes local="no">QStandardPaths</includes>
+    <includes local="no">QDebug</includes>
+    <includedby refid="string_8h" local="yes">src/contextualization/model/string.h</includedby>
+    <includedby refid="contextualizationmodel_8h" local="yes">src/contextualization/model/contextualizationmodel.h</includedby>
+    <includedby refid="ocr_8h" local="yes">src/optical_character_recognition/ocr.h</includedby>
+    <includedby refid="log_8cpp" local="yes">src/tools/log.cpp</includedby>
+    <includedby refid="contextualizationcontroller_8h" local="yes">src/contextualization/controller/contextualizationcontroller.h</includedby>
+    <includedby refid="tesseractocr_8h" local="yes">src/optical_character_recognition/tesseractocr.h</includedby>
+    <includedby refid="databaseconnectorabstract_8h" local="yes">src/storage/databaseconnectorabstract.h</includedby>
+    <incdepgraph>
+      <node id="1475">
+        <label>QStandardPaths</label>
+      </node>
+      <node id="1476">
+        <label>QDebug</label>
+      </node>
+      <node id="1474">
+        <label>QDate</label>
+      </node>
+      <node id="1471">
+        <label>QString</label>
+      </node>
+      <node id="1472">
+        <label>QFile</label>
+      </node>
+      <node id="1473">
+        <label>QTextStream</label>
+      </node>
+      <node id="1470">
+        <label>src/tools/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="1471" relation="include">
+        </childnode>
+        <childnode refid="1472" relation="include">
+        </childnode>
+        <childnode refid="1473" relation="include">
+        </childnode>
+        <childnode refid="1474" relation="include">
+        </childnode>
+        <childnode refid="1475" relation="include">
+        </childnode>
+        <childnode refid="1476" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1483">
+        <label>src/tools/contextualizationfactoryabstract.h</label>
+        <link refid="contextualizationfactoryabstract_8h"/>
+        <childnode refid="1484" relation="include">
+        </childnode>
+        <childnode refid="1487" relation="include">
+        </childnode>
+      </node>
+      <node id="1498">
+        <label>src/contextualization/controller/linuxguicontroller.cpp</label>
+        <link refid="linuxguicontroller_8cpp"/>
+      </node>
+      <node id="1487">
+        <label>src/tools/contextualizationfactoryabstract.cpp</label>
+        <link refid="contextualizationfactoryabstract_8cpp"/>
+      </node>
+      <node id="1496">
+        <label>src/contextualization/controller/guicontroller.cpp</label>
+        <link refid="guicontroller_8cpp"/>
+      </node>
+      <node id="1480">
+        <label>src/contextualization/model/contextualizationmodel.h</label>
+        <link refid="contextualizationmodel_8h"/>
+        <childnode refid="1481" relation="include">
+        </childnode>
+        <childnode refid="1482" relation="include">
+        </childnode>
+      </node>
+      <node id="1488">
+        <label>src/contextualization/controller/consolecontroller.h</label>
+        <link refid="consolecontroller_8h"/>
+        <childnode refid="1489" relation="include">
+        </childnode>
+        <childnode refid="1490" relation="include">
+        </childnode>
+        <childnode refid="1492" relation="include">
+        </childnode>
+      </node>
+      <node id="1493">
+        <label>src/contextualization/controller/windowsconsolecontroller.cpp</label>
+        <link refid="windowsconsolecontroller_8cpp"/>
+      </node>
+      <node id="1511">
+        <label>src/optical_character_recognition/tesseractocr.cpp</label>
+        <link refid="tesseractocr_8cpp"/>
+      </node>
+      <node id="1491">
+        <label>src/contextualization/controller/linuxconsolecontroller.cpp</label>
+        <link refid="linuxconsolecontroller_8cpp"/>
+      </node>
+      <node id="1501">
+        <label>src/contextualization/model/firmwarestring.cpp</label>
+        <link refid="firmwarestring_8cpp"/>
+      </node>
+      <node id="1503">
+        <label>src/storage/mysqlconnector.cpp</label>
+        <link refid="mysqlconnector_8cpp"/>
+      </node>
+      <node id="1502">
+        <label>src/storage/mysqlconnector.h</label>
+        <link refid="mysqlconnector_8h"/>
+        <childnode refid="1482" relation="include">
+        </childnode>
+        <childnode refid="1503" relation="include">
+        </childnode>
+      </node>
+      <node id="1494">
+        <label>src/contextualization/controller/contextualizationcontroller.cpp</label>
+        <link refid="contextualizationcontroller_8cpp"/>
+      </node>
+      <node id="1509">
+        <label>src/optical_character_recognition/ocr.cpp</label>
+        <link refid="ocr_8cpp"/>
+      </node>
+      <node id="1485">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="1481">
+        <label>src/contextualization/model/contextualizationmodel.cpp</label>
+        <link refid="contextualizationmodel_8cpp"/>
+      </node>
+      <node id="1478">
+        <label>src/contextualization/model/string.h</label>
+        <link refid="string_8h"/>
+        <childnode refid="1479" relation="include">
+        </childnode>
+        <childnode refid="1488" relation="include">
+        </childnode>
+        <childnode refid="1505" relation="include">
+        </childnode>
+        <childnode refid="1506" relation="include">
+        </childnode>
+      </node>
+      <node id="1497">
+        <label>src/contextualization/controller/linuxguicontroller.h</label>
+        <link refid="linuxguicontroller_8h"/>
+        <childnode refid="1484" relation="include">
+        </childnode>
+        <childnode refid="1498" relation="include">
+        </childnode>
+      </node>
+      <node id="1489">
+        <label>src/contextualization/controller/consolecontroller.cpp</label>
+        <link refid="consolecontroller_8cpp"/>
+      </node>
+      <node id="1490">
+        <label>src/contextualization/controller/linuxconsolecontroller.h</label>
+        <link refid="linuxconsolecontroller_8h"/>
+        <childnode refid="1484" relation="include">
+        </childnode>
+        <childnode refid="1491" relation="include">
+        </childnode>
+      </node>
+      <node id="1484">
+        <label>src/tools/hpcontextualizationfactory.h</label>
+        <link refid="hpcontextualizationfactory_8h"/>
+        <childnode refid="1485" relation="include">
+        </childnode>
+        <childnode refid="1486" relation="include">
+        </childnode>
+      </node>
+      <node id="1499">
+        <label>src/contextualization/controller/windowsguicontroller.h</label>
+        <link refid="windowsguicontroller_8h"/>
+        <childnode refid="1484" relation="include">
+        </childnode>
+        <childnode refid="1500" relation="include">
+        </childnode>
+      </node>
+      <node id="1500">
+        <label>src/contextualization/controller/windowsguicontroller.cpp</label>
+        <link refid="windowsguicontroller_8cpp"/>
+      </node>
+      <node id="1505">
+        <label>src/contextualization/model/string.cpp</label>
+        <link refid="string_8cpp"/>
+      </node>
+      <node id="1482">
+        <label>src/contextualization/controller/contextualizationcontroller.h</label>
+        <link refid="contextualizationcontroller_8h"/>
+        <childnode refid="1483" relation="include">
+        </childnode>
+        <childnode refid="1488" relation="include">
+        </childnode>
+        <childnode refid="1494" relation="include">
+        </childnode>
+        <childnode refid="1495" relation="include">
+        </childnode>
+      </node>
+      <node id="1495">
+        <label>src/contextualization/controller/guicontroller.h</label>
+        <link refid="guicontroller_8h"/>
+        <childnode refid="1496" relation="include">
+        </childnode>
+        <childnode refid="1497" relation="include">
+        </childnode>
+        <childnode refid="1499" relation="include">
+        </childnode>
+      </node>
+      <node id="1506">
+        <label>src/storage/databaseconnectorabstract.h</label>
+        <link refid="databaseconnectorabstract_8h"/>
+        <childnode refid="1502" relation="include">
+        </childnode>
+        <childnode refid="1507" relation="include">
+        </childnode>
+        <childnode refid="1504" relation="include">
+        </childnode>
+      </node>
+      <node id="1486">
+        <label>src/tools/hpcontextualizationfactory.cpp</label>
+        <link refid="hpcontextualizationfactory_8cpp"/>
+      </node>
+      <node id="1508">
+        <label>src/optical_character_recognition/ocr.h</label>
+        <link refid="ocr_8h"/>
+        <childnode refid="1509" relation="include">
+        </childnode>
+        <childnode refid="1510" relation="include">
+        </childnode>
+      </node>
+      <node id="1510">
+        <label>src/optical_character_recognition/tesseractocr.h</label>
+        <link refid="tesseractocr_8h"/>
+        <childnode refid="1482" relation="include">
+        </childnode>
+        <childnode refid="1511" relation="include">
+        </childnode>
+      </node>
+      <node id="1492">
+        <label>src/contextualization/controller/windowsconsolecontroller.h</label>
+        <link refid="windowsconsolecontroller_8h"/>
+        <childnode refid="1484" relation="include">
+        </childnode>
+        <childnode refid="1493" relation="include">
+        </childnode>
+      </node>
+      <node id="1512">
+        <label>src/tools/log.cpp</label>
+        <link refid="log_8cpp"/>
+      </node>
+      <node id="1504">
+        <label>src/storage/fpfileconnector.h</label>
+        <link refid="fpfileconnector_8h"/>
+        <childnode refid="1482" relation="include">
+        </childnode>
+      </node>
+      <node id="1507">
+        <label>src/storage/databaseconnectorabstract.cpp</label>
+        <link refid="databaseconnectorabstract_8cpp"/>
+      </node>
+      <node id="1479">
+        <label>src/contextualization/model/firmwarestring.h</label>
+        <link refid="firmwarestring_8h"/>
+        <childnode refid="1480" relation="include">
+        </childnode>
+        <childnode refid="1501" relation="include">
+        </childnode>
+        <childnode refid="1502" relation="include">
+        </childnode>
+        <childnode refid="1504" relation="include">
+        </childnode>
+      </node>
+      <node id="1477">
+        <label>src/tools/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="1478" relation="include">
+        </childnode>
+        <childnode refid="1480" relation="include">
+        </childnode>
+        <childnode refid="1508" relation="include">
+        </childnode>
+        <childnode refid="1512" relation="include">
+        </childnode>
+        <childnode refid="1482" relation="include">
+        </childnode>
+        <childnode refid="1510" relation="include">
+        </childnode>
+        <childnode refid="1506" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classLog" prot="public">Log</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Jorge Herrero Tardón (<ulink url="mailto:jorgeht@usal.es">jorgeht@usal.es</ulink>) </para></simplesect>
+<simplesect kind="date"><para>20/02/2018 </para></simplesect>
+<simplesect kind="version"><para>1.0 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="11"><highlight class="preprocessor">#ifndef<sp/>LOG_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LOG_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="comment">//<sp/>Comment<sp/>this<sp/>define<sp/>when<sp/>when<sp/>the<sp/>application<sp/>will<sp/>be<sp/>ran<sp/>in<sp/>a<sp/>production<sp/>environment.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>DEVELOP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">//#define<sp/>DEVELOP</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QString&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QFile&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QTextStream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QDate&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QStandardPaths&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QDebug&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classLog" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classLog" kindref="compound">Log</ref></highlight></codeline>
+<codeline lineno="28"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classLog_1af6071a60aa52b6c1b511f99b4bc1b8fe" kindref="member">Log</ref>();</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLog_1a8291d71e5438b70ac71232a23606690a" kindref="member">writeDebug</ref>(QString<sp/>text);</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLog_1a1808c128874dd41cca3536ed5672df12" kindref="member">writeLog</ref>(QString<sp/>text);</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classLog_1ae35819424f49efa88b29a0bccc962f93" kindref="member">writeError</ref>(QString<sp/>text);</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>QString<sp/>debugFile_;<sp/></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>QString<sp/>logFile_;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>QString<sp/>errorFile_;<sp/></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>write(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;path,<sp/>QString<sp/>&amp;text);</highlight></codeline>
+<codeline lineno="67"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>LOG_H</highlight></codeline>
+    </programlisting>
+    <location file="src/tools/log.h"/>
+  </compounddef>
+</doxygen>
