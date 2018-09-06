@@ -1,0 +1,496 @@
+\hypertarget{classContextualizationModel}{}\section{Contextualization\+Model Class Reference}
+\label{classContextualizationModel}\index{Contextualization\+Model@{Contextualization\+Model}}
+
+
+This is the model class of a M\+VC architecture on Contextualization Tool app.  
+
+
+
+
+{\ttfamily \#include $<$contextualizationmodel.\+h$>$}
+
+Inheritance diagram for Contextualization\+Model\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classContextualizationModel}
+\end{center}
+\end{figure}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classContextualizationModel_a7b2878843e87cff00f5bce5bcb2d4949}\label{classContextualizationModel_a7b2878843e87cff00f5bce5bcb2d4949}} 
+void \mbox{\hyperlink{classContextualizationModel_a7b2878843e87cff00f5bce5bcb2d4949}{strings\+List\+Changed}} ()
+\begin{DoxyCompactList}\small\item\em This signal is emited when a string is modified on model. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationModel_abc9b77f8362faea337fbd18fb25ee93a}\label{classContextualizationModel_abc9b77f8362faea337fbd18fb25ee93a}} 
+void \mbox{\hyperlink{classContextualizationModel_abc9b77f8362faea337fbd18fb25ee93a}{image\+Changed}} ()
+\begin{DoxyCompactList}\small\item\em This signal is emited when the image of model is changed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classContextualizationModel_a109126afb677af159e77adecf36fb6f2}{Contextualization\+Model}} (Q\+String image=\char`\"{}\char`\"{}, Q\+List$<$ \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$$>$ list=Q\+List$<$ \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$$>$())
+\begin{DoxyCompactList}\small\item\em Constructs a model. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationModel_a232b273faa1bdb051c7a7f61d6601370}\label{classContextualizationModel_a232b273faa1bdb051c7a7f61d6601370}} 
+\mbox{\hyperlink{classContextualizationModel_a232b273faa1bdb051c7a7f61d6601370}{$\sim$\+Contextualization\+Model}} ()
+\begin{DoxyCompactList}\small\item\em Destroys the model. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classContextualizationModel_aa87bafc64440304e8d9efd7f23f9b897}{add\+String}} (const Q\+String \&id, const Q\+String \&value, const Q\+String \&description, const Q\+String \&max\+Length, const Q\+String \&state, const bool selected)
+\begin{DoxyCompactList}\small\item\em Adds new string to the model. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classContextualizationModel_aad4004198e03fb3e9bba770f0f76489e}{add\+String}} (\mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$new\+String)
+\begin{DoxyCompactList}\small\item\em Adds new string to the model. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classContextualizationModel_a24021cc16a5215c9765602b311fe9f77}{add\+Strings}} (Q\+List$<$ \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$$>$ \&strings)
+\begin{DoxyCompactList}\small\item\em Adds new string to the model. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classContextualizationModel_a65def773aab689eb131482834d711a22}{remove\+String}} (Q\+String \&id)
+\begin{DoxyCompactList}\small\item\em Removes string with the identifier received by parameter. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classContextualizationModel_a83ce3eb84747d052182a52b481314a85}{remove\+String}} (int pos)
+\begin{DoxyCompactList}\small\item\em Removes string that are in position received by parameter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationModel_a09f646708d9dfaa87d064622a4776194}\label{classContextualizationModel_a09f646708d9dfaa87d064622a4776194}} 
+void \mbox{\hyperlink{classContextualizationModel_a09f646708d9dfaa87d064622a4776194}{remove\+All\+Strings}} ()
+\begin{DoxyCompactList}\small\item\em Removes all items from the firmware strings list. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classContextualizationModel_a4aafa9c9e08d2b7a52b17871f755f34b}{select\+String}} (const Q\+String id)
+\begin{DoxyCompactList}\small\item\em Selects string with the identifier received by parameter. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classContextualizationModel_a7690c31f0c498607a8137d9d5acb3b32}{unselect\+String}} (const Q\+String id)
+\begin{DoxyCompactList}\small\item\em Unselects string with the identifier received by parameter. \end{DoxyCompactList}\item 
+Q\+List$<$ Q\+Object $\ast$ $>$ \& \mbox{\hyperlink{classContextualizationModel_ac098ebbf5cce5aac14182adddf7610e4}{get\+Strings\+List}} ()
+\begin{DoxyCompactList}\small\item\em Returns the firmware strings list. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classContextualizationModel_a0d3ac87546d9b527c23cc69d0e4e0954}{set\+Image}} (Q\+String path)
+\begin{DoxyCompactList}\small\item\em Sets the image of the model. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{classContextualizationModel_a930b89fa044d406be44836cde09be11c}{get\+Image}} ()
+\begin{DoxyCompactList}\small\item\em Returns the image associated to the model. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classContextualizationModel_a0d5c107172b0d2e4026cae63d3193f4e}{is\+Empty}} ()
+\begin{DoxyCompactList}\small\item\em Checks if the model is empty. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classContextualizationModel_a47cf0c1ba3e6a86f264c501c9fb7e4e5}{has\+Image}} ()
+\begin{DoxyCompactList}\small\item\em Returns true if the model has a valid image associated. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classContextualizationModel_a369461aa31404ea4ff1c04fc2bd21f92}{has\+Strings}} ()
+\begin{DoxyCompactList}\small\item\em Returns true if the model has any string. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classContextualizationModel_a17eeedb3696fd1d759761c0184d3dedc}{clear}} ()
+\begin{DoxyCompactList}\small\item\em Empty the model. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{classContextualizationModel_aeaea29193156f1c1d2a38a24de6ebbd5}{to\+Json}} (Q\+Json\+Document\+::\+Json\+Format format=Q\+Json\+Document\+::\+Compact)
+\begin{DoxyCompactList}\small\item\em Returns the model converted to a J\+S\+ON Q\+String. \end{DoxyCompactList}\item 
+Q\+Json\+Object \mbox{\hyperlink{classContextualizationModel_ac68d84aa77be188dfe51c850c0d5fd4e}{to\+Json\+Object}} ()
+\begin{DoxyCompactList}\small\item\em Returns the model converted to a \#\+Q\+Json\+Object. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classContextualizationModel}{Contextualization\+Model}} \& \mbox{\hyperlink{classContextualizationModel_a7c8d0dea4d32c2b573f1f58b0c01b81b}{operator=}} (\mbox{\hyperlink{classContextualizationModel}{Contextualization\+Model}} \&other)
+\begin{DoxyCompactList}\small\item\em Assigns other to this model and returns a reference to this model. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classContextualizationModel}{Contextualization\+Model}} $\ast$ \mbox{\hyperlink{classContextualizationModel_aa334a054aa36564d56e812a1a9e6de30}{from\+Json}} (Q\+String \&json)
+\begin{DoxyCompactList}\small\item\em Returns a \mbox{\hyperlink{classContextualizationModel}{Contextualization\+Model}} initializated with the J\+S\+ON string json. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classContextualizationModel}{Contextualization\+Model}} $\ast$ \mbox{\hyperlink{classContextualizationModel_a08ac67d6c9c3b949e9085d131fa47619}{from\+Json}} (Q\+Byte\+Array \&json)
+\begin{DoxyCompactList}\small\item\em Returns a \mbox{\hyperlink{classContextualizationModel}{Contextualization\+Model}} initializated with the \#\+Q\+Byte\+Array data json. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the model class of a M\+VC architecture on Contextualization Tool app. 
+
+Definition at line 23 of file contextualizationmodel.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classContextualizationModel_a109126afb677af159e77adecf36fb6f2}\label{classContextualizationModel_a109126afb677af159e77adecf36fb6f2}} 
+\index{Contextualization\+Model@{Contextualization\+Model}!Contextualization\+Model@{Contextualization\+Model}}
+\index{Contextualization\+Model@{Contextualization\+Model}!Contextualization\+Model@{Contextualization\+Model}}
+\subsubsection{\texorpdfstring{Contextualization\+Model()}{ContextualizationModel()}}
+{\footnotesize\ttfamily Contextualization\+Model\+::\+Contextualization\+Model (\begin{DoxyParamCaption}\item[{Q\+String}]{image = {\ttfamily \char`\"{}\char`\"{}},  }\item[{Q\+List$<$ \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$$>$}]{list = {\ttfamily QList$<$\mbox{\hyperlink{classFirmwareString}{Firmware\+String}}~$\ast$$>$()} }\end{DoxyParamCaption})}
+
+
+
+Constructs a model. 
+
+Creates a model setting the image as the image received by parameter. Also adds to the model strings received in the list of the second parameter. If no parameters are received, create an empty model. 
+\begin{DoxyParams}{Parameters}
+{\em image} & File path of image to associate to the model. \\
+\hline
+{\em list} & List of strings to add on the model. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 13 of file contextualizationmodel.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classContextualizationModel_aa87bafc64440304e8d9efd7f23f9b897}\label{classContextualizationModel_aa87bafc64440304e8d9efd7f23f9b897}} 
+\index{Contextualization\+Model@{Contextualization\+Model}!add\+String@{add\+String}}
+\index{add\+String@{add\+String}!Contextualization\+Model@{Contextualization\+Model}}
+\subsubsection{\texorpdfstring{add\+String()}{addString()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Contextualization\+Model\+::add\+String (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{id,  }\item[{const Q\+String \&}]{value,  }\item[{const Q\+String \&}]{description,  }\item[{const Q\+String \&}]{max\+Length,  }\item[{const Q\+String \&}]{state,  }\item[{const bool}]{selected }\end{DoxyParamCaption})}
+
+
+
+Adds new string to the model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & \mbox{\hyperlink{classString}{String}} ID. \\
+\hline
+{\em value} & \mbox{\hyperlink{classString}{String}} value. \\
+\hline
+{\em description} & \mbox{\hyperlink{classString}{String}} description. \\
+\hline
+{\em max\+Length} & \mbox{\hyperlink{classString}{String}} max length. \\
+\hline
+{\em state} & \mbox{\hyperlink{classString}{String}} state. \\
+\hline
+{\em selected} & Indicates if the string is selected. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 30 of file contextualizationmodel.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationModel_aad4004198e03fb3e9bba770f0f76489e}\label{classContextualizationModel_aad4004198e03fb3e9bba770f0f76489e}} 
+\index{Contextualization\+Model@{Contextualization\+Model}!add\+String@{add\+String}}
+\index{add\+String@{add\+String}!Contextualization\+Model@{Contextualization\+Model}}
+\subsubsection{\texorpdfstring{add\+String()}{addString()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void Contextualization\+Model\+::add\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$}]{new\+String }\end{DoxyParamCaption})}
+
+
+
+Adds new string to the model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+String} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 42 of file contextualizationmodel.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationModel_a24021cc16a5215c9765602b311fe9f77}\label{classContextualizationModel_a24021cc16a5215c9765602b311fe9f77}} 
+\index{Contextualization\+Model@{Contextualization\+Model}!add\+Strings@{add\+Strings}}
+\index{add\+Strings@{add\+Strings}!Contextualization\+Model@{Contextualization\+Model}}
+\subsubsection{\texorpdfstring{add\+Strings()}{addStrings()}}
+{\footnotesize\ttfamily void Contextualization\+Model\+::add\+Strings (\begin{DoxyParamCaption}\item[{Q\+List$<$ \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$$>$ \&}]{strings }\end{DoxyParamCaption})}
+
+
+
+Adds new string to the model. 
+
+Adds all strings in the list received by parameter. 
+\begin{DoxyParams}{Parameters}
+{\em strings} & List of strings to add. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 49 of file contextualizationmodel.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationModel_a17eeedb3696fd1d759761c0184d3dedc}\label{classContextualizationModel_a17eeedb3696fd1d759761c0184d3dedc}} 
+\index{Contextualization\+Model@{Contextualization\+Model}!clear@{clear}}
+\index{clear@{clear}!Contextualization\+Model@{Contextualization\+Model}}
+\subsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily void Contextualization\+Model\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Empty the model. 
+
+Unsets the path of image and removes all items from the firmware strings list. 
+
+Definition at line 179 of file contextualizationmodel.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationModel_aa334a054aa36564d56e812a1a9e6de30}\label{classContextualizationModel_aa334a054aa36564d56e812a1a9e6de30}} 
+\index{Contextualization\+Model@{Contextualization\+Model}!from\+Json@{from\+Json}}
+\index{from\+Json@{from\+Json}!Contextualization\+Model@{Contextualization\+Model}}
+\subsubsection{\texorpdfstring{from\+Json()}{fromJson()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classContextualizationModel}{Contextualization\+Model}} $\ast$ Contextualization\+Model\+::from\+Json (\begin{DoxyParamCaption}\item[{Q\+String \&}]{json }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns a \mbox{\hyperlink{classContextualizationModel}{Contextualization\+Model}} initializated with the J\+S\+ON string json. 
+
+If the J\+S\+ON data received is not valid, return an empty model. 
+\begin{DoxyParams}{Parameters}
+{\em json} & \mbox{\hyperlink{classString}{String}} in J\+S\+ON format to be converted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classContextualizationModel}{Contextualization\+Model}} 
+\end{DoxyReturn}
+
+
+Definition at line 207 of file contextualizationmodel.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationModel_a08ac67d6c9c3b949e9085d131fa47619}\label{classContextualizationModel_a08ac67d6c9c3b949e9085d131fa47619}} 
+\index{Contextualization\+Model@{Contextualization\+Model}!from\+Json@{from\+Json}}
+\index{from\+Json@{from\+Json}!Contextualization\+Model@{Contextualization\+Model}}
+\subsubsection{\texorpdfstring{from\+Json()}{fromJson()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classContextualizationModel}{Contextualization\+Model}} $\ast$ Contextualization\+Model\+::from\+Json (\begin{DoxyParamCaption}\item[{Q\+Byte\+Array \&}]{json }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns a \mbox{\hyperlink{classContextualizationModel}{Contextualization\+Model}} initializated with the \#\+Q\+Byte\+Array data json. 
+
+If the J\+S\+ON data received is not valid, return an empty model. 
+\begin{DoxyParams}{Parameters}
+{\em json} & Q\+Byte\+Array in J\+S\+ON format to be converted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classContextualizationModel}{Contextualization\+Model}} 
+\end{DoxyReturn}
+$<$ Release memory because of an error on json decode process. 
+
+Definition at line 214 of file contextualizationmodel.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationModel_a930b89fa044d406be44836cde09be11c}\label{classContextualizationModel_a930b89fa044d406be44836cde09be11c}} 
+\index{Contextualization\+Model@{Contextualization\+Model}!get\+Image@{get\+Image}}
+\index{get\+Image@{get\+Image}!Contextualization\+Model@{Contextualization\+Model}}
+\subsubsection{\texorpdfstring{get\+Image()}{getImage()}}
+{\footnotesize\ttfamily Q\+String Contextualization\+Model\+::get\+Image (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the image associated to the model. 
+
+\begin{DoxyReturn}{Returns}
+Q\+String 
+\end{DoxyReturn}
+
+
+Definition at line 155 of file contextualizationmodel.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationModel_ac098ebbf5cce5aac14182adddf7610e4}\label{classContextualizationModel_ac098ebbf5cce5aac14182adddf7610e4}} 
+\index{Contextualization\+Model@{Contextualization\+Model}!get\+Strings\+List@{get\+Strings\+List}}
+\index{get\+Strings\+List@{get\+Strings\+List}!Contextualization\+Model@{Contextualization\+Model}}
+\subsubsection{\texorpdfstring{get\+Strings\+List()}{getStringsList()}}
+{\footnotesize\ttfamily Q\+List$<$ Q\+Object $\ast$ $>$ \& Contextualization\+Model\+::get\+Strings\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the firmware strings list. 
+
+\begin{DoxyReturn}{Returns}
+Q\+List$<$\+Firmware\+String $\ast$$>$ \& 
+\end{DoxyReturn}
+
+
+Definition at line 141 of file contextualizationmodel.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationModel_a47cf0c1ba3e6a86f264c501c9fb7e4e5}\label{classContextualizationModel_a47cf0c1ba3e6a86f264c501c9fb7e4e5}} 
+\index{Contextualization\+Model@{Contextualization\+Model}!has\+Image@{has\+Image}}
+\index{has\+Image@{has\+Image}!Contextualization\+Model@{Contextualization\+Model}}
+\subsubsection{\texorpdfstring{has\+Image()}{hasImage()}}
+{\footnotesize\ttfamily bool Contextualization\+Model\+::has\+Image (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns true if the model has a valid image associated. 
+
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line 169 of file contextualizationmodel.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationModel_a369461aa31404ea4ff1c04fc2bd21f92}\label{classContextualizationModel_a369461aa31404ea4ff1c04fc2bd21f92}} 
+\index{Contextualization\+Model@{Contextualization\+Model}!has\+Strings@{has\+Strings}}
+\index{has\+Strings@{has\+Strings}!Contextualization\+Model@{Contextualization\+Model}}
+\subsubsection{\texorpdfstring{has\+Strings()}{hasStrings()}}
+{\footnotesize\ttfamily bool Contextualization\+Model\+::has\+Strings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns true if the model has any string. 
+
+\begin{DoxyReturn}{Returns}
+bool. 
+\end{DoxyReturn}
+
+
+Definition at line 174 of file contextualizationmodel.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationModel_a0d5c107172b0d2e4026cae63d3193f4e}\label{classContextualizationModel_a0d5c107172b0d2e4026cae63d3193f4e}} 
+\index{Contextualization\+Model@{Contextualization\+Model}!is\+Empty@{is\+Empty}}
+\index{is\+Empty@{is\+Empty}!Contextualization\+Model@{Contextualization\+Model}}
+\subsubsection{\texorpdfstring{is\+Empty()}{isEmpty()}}
+{\footnotesize\ttfamily bool Contextualization\+Model\+::is\+Empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks if the model is empty. 
+
+The model is empty when there aren\textquotesingle{}t any image in the model and the firmware strings list is empty. Return true if model is empty. \begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 160 of file contextualizationmodel.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationModel_a7c8d0dea4d32c2b573f1f58b0c01b81b}\label{classContextualizationModel_a7c8d0dea4d32c2b573f1f58b0c01b81b}} 
+\index{Contextualization\+Model@{Contextualization\+Model}!operator=@{operator=}}
+\index{operator=@{operator=}!Contextualization\+Model@{Contextualization\+Model}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classContextualizationModel}{Contextualization\+Model}} \& Contextualization\+Model\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classContextualizationModel}{Contextualization\+Model}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Assigns other to this model and returns a reference to this model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Model to be copied. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to this model. 
+\end{DoxyReturn}
+
+
+Definition at line 269 of file contextualizationmodel.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationModel_a65def773aab689eb131482834d711a22}\label{classContextualizationModel_a65def773aab689eb131482834d711a22}} 
+\index{Contextualization\+Model@{Contextualization\+Model}!remove\+String@{remove\+String}}
+\index{remove\+String@{remove\+String}!Contextualization\+Model@{Contextualization\+Model}}
+\subsubsection{\texorpdfstring{remove\+String()}{removeString()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Contextualization\+Model\+::remove\+String (\begin{DoxyParamCaption}\item[{Q\+String \&}]{id }\end{DoxyParamCaption})}
+
+
+
+Removes string with the identifier received by parameter. 
+
+Returns true if the string removed succesfuly. Returns false if there are not any string with this identifer. 
+\begin{DoxyParams}{Parameters}
+{\em id} & Identifier of firmware string to remove. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line 56 of file contextualizationmodel.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationModel_a83ce3eb84747d052182a52b481314a85}\label{classContextualizationModel_a83ce3eb84747d052182a52b481314a85}} 
+\index{Contextualization\+Model@{Contextualization\+Model}!remove\+String@{remove\+String}}
+\index{remove\+String@{remove\+String}!Contextualization\+Model@{Contextualization\+Model}}
+\subsubsection{\texorpdfstring{remove\+String()}{removeString()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Contextualization\+Model\+::remove\+String (\begin{DoxyParamCaption}\item[{int}]{pos }\end{DoxyParamCaption})}
+
+
+
+Removes string that are in position received by parameter. 
+
+Returns true if the string removed succesfuly. Returns false if is not a valid position. 
+\begin{DoxyParams}{Parameters}
+{\em pos} & Position of the string in list. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line 75 of file contextualizationmodel.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationModel_a4aafa9c9e08d2b7a52b17871f755f34b}\label{classContextualizationModel_a4aafa9c9e08d2b7a52b17871f755f34b}} 
+\index{Contextualization\+Model@{Contextualization\+Model}!select\+String@{select\+String}}
+\index{select\+String@{select\+String}!Contextualization\+Model@{Contextualization\+Model}}
+\subsubsection{\texorpdfstring{select\+String()}{selectString()}}
+{\footnotesize\ttfamily bool Contextualization\+Model\+::select\+String (\begin{DoxyParamCaption}\item[{const Q\+String}]{id }\end{DoxyParamCaption})}
+
+
+
+Selects string with the identifier received by parameter. 
+
+Returns true if the string selected succesfuly. Returns false if there are not any string with this identifer. 
+\begin{DoxyParams}{Parameters}
+{\em id} & Identifier of firmware string to remove. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line 105 of file contextualizationmodel.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationModel_a0d3ac87546d9b527c23cc69d0e4e0954}\label{classContextualizationModel_a0d3ac87546d9b527c23cc69d0e4e0954}} 
+\index{Contextualization\+Model@{Contextualization\+Model}!set\+Image@{set\+Image}}
+\index{set\+Image@{set\+Image}!Contextualization\+Model@{Contextualization\+Model}}
+\subsubsection{\texorpdfstring{set\+Image()}{setImage()}}
+{\footnotesize\ttfamily void Contextualization\+Model\+::set\+Image (\begin{DoxyParamCaption}\item[{Q\+String}]{path }\end{DoxyParamCaption})}
+
+
+
+Sets the image of the model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & File path of the image. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 146 of file contextualizationmodel.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationModel_aeaea29193156f1c1d2a38a24de6ebbd5}\label{classContextualizationModel_aeaea29193156f1c1d2a38a24de6ebbd5}} 
+\index{Contextualization\+Model@{Contextualization\+Model}!to\+Json@{to\+Json}}
+\index{to\+Json@{to\+Json}!Contextualization\+Model@{Contextualization\+Model}}
+\subsubsection{\texorpdfstring{to\+Json()}{toJson()}}
+{\footnotesize\ttfamily Q\+String Contextualization\+Model\+::to\+Json (\begin{DoxyParamCaption}\item[{Q\+Json\+Document\+::\+Json\+Format}]{format = {\ttfamily QJsonDocument\+:\+:Compact} }\end{DoxyParamCaption})}
+
+
+
+Returns the model converted to a J\+S\+ON Q\+String. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em format} & Exit format of J\+S\+ON. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Q\+String 
+\end{DoxyReturn}
+
+
+Definition at line 185 of file contextualizationmodel.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationModel_ac68d84aa77be188dfe51c850c0d5fd4e}\label{classContextualizationModel_ac68d84aa77be188dfe51c850c0d5fd4e}} 
+\index{Contextualization\+Model@{Contextualization\+Model}!to\+Json\+Object@{to\+Json\+Object}}
+\index{to\+Json\+Object@{to\+Json\+Object}!Contextualization\+Model@{Contextualization\+Model}}
+\subsubsection{\texorpdfstring{to\+Json\+Object()}{toJsonObject()}}
+{\footnotesize\ttfamily Q\+Json\+Object Contextualization\+Model\+::to\+Json\+Object (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns the model converted to a \#\+Q\+Json\+Object. 
+
+\begin{DoxyReturn}{Returns}
+Q\+Json\+Object 
+\end{DoxyReturn}
+
+
+Definition at line 190 of file contextualizationmodel.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationModel_a7690c31f0c498607a8137d9d5acb3b32}\label{classContextualizationModel_a7690c31f0c498607a8137d9d5acb3b32}} 
+\index{Contextualization\+Model@{Contextualization\+Model}!unselect\+String@{unselect\+String}}
+\index{unselect\+String@{unselect\+String}!Contextualization\+Model@{Contextualization\+Model}}
+\subsubsection{\texorpdfstring{unselect\+String()}{unselectString()}}
+{\footnotesize\ttfamily bool Contextualization\+Model\+::unselect\+String (\begin{DoxyParamCaption}\item[{const Q\+String}]{id }\end{DoxyParamCaption})}
+
+
+
+Unselects string with the identifier received by parameter. 
+
+Returns true if the string selected succesfuly. Returns false if there are not any string with this identifer. 
+\begin{DoxyParams}{Parameters}
+{\em id} & Identifier of firmware string to remove. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line 123 of file contextualizationmodel.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/contextualization/model/\mbox{\hyperlink{contextualizationmodel_8h}{contextualizationmodel.\+h}}\item 
+src/contextualization/model/\mbox{\hyperlink{contextualizationmodel_8cpp}{contextualizationmodel.\+cpp}}\end{DoxyCompactItemize}

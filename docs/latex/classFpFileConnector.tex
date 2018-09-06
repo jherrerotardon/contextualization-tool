@@ -1,0 +1,335 @@
+\hypertarget{classFpFileConnector}{}\section{Fp\+File\+Connector Class Reference}
+\label{classFpFileConnector}\index{Fp\+File\+Connector@{Fp\+File\+Connector}}
+
+
+This is a class to access a database saved as fp file by HP company.  
+
+
+
+
+{\ttfamily \#include $<$fpfileconnector.\+h$>$}
+
+Inheritance diagram for Fp\+File\+Connector\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classFpFileConnector}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFpFileConnector_a2e474f8746dd54729fe68c224ff24275}\label{classFpFileConnector_a2e474f8746dd54729fe68c224ff24275}} 
+\mbox{\hyperlink{classFpFileConnector_a2e474f8746dd54729fe68c224ff24275}{Fp\+File\+Connector}} ()
+\begin{DoxyCompactList}\small\item\em Creates an empty \mbox{\hyperlink{classFpFileConnector}{Fp\+File\+Connector}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classFpFileConnector_a51b38b735ab4728601aef295d7b4c21f}{Fp\+File\+Connector}} (const Q\+String \&path)
+\begin{DoxyCompactList}\small\item\em Creates a \mbox{\hyperlink{classFpFileConnector}{Fp\+File\+Connector}} and sets the path of file. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{classFpFileConnector_af1a00dabd759abd0b59bf9e26edc73cf}{get\+Path}} ()
+\begin{DoxyCompactList}\small\item\em Returns a path of database file. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classFpFileConnector_a7a5c2987feae762ce359de702f5702e3}{set\+Path}} (const Q\+String \&path)
+\begin{DoxyCompactList}\small\item\em Sets the path of database file. \end{DoxyCompactList}\item 
+Q\+List$<$ \mbox{\hyperlink{classString}{String}} $\ast$ $>$ \mbox{\hyperlink{classFpFileConnector_ad392db922a5e04a670b84fc616192eea}{get\+All\+Strings}} () override
+\item 
+Q\+List$<$ \mbox{\hyperlink{classString}{String}} $\ast$ $>$ \mbox{\hyperlink{classFpFileConnector_a72a6ca5a5b8a44783d2ed990b111675b}{get\+Strings\+With\+Value}} (const Q\+String \&value, bool case\+Sensitive=true) override
+\begin{DoxyCompactList}\small\item\em Returns all strigns in database with the value received by argument. \end{DoxyCompactList}\item 
+Q\+List$<$ \mbox{\hyperlink{classString}{String}} $\ast$ $>$ \mbox{\hyperlink{classFpFileConnector_adc85e526e1dab9f3de03cb8a2f33f7d1}{get\+Strings\+With\+Approximate\+Value}} (const Q\+String \&value, bool case\+Sensitive=true) override
+\begin{DoxyCompactList}\small\item\em Returns all strigns in database with a similar value received by argument. \end{DoxyCompactList}\item 
+Q\+List$<$ \mbox{\hyperlink{classString}{String}} $\ast$ $>$ \mbox{\hyperlink{classFpFileConnector_a29a6df6ea88a1e44f6b04c600b45925c}{get\+String\+With\+Id}} (const Q\+String \&id, bool case\+Sensitive=true) override
+\begin{DoxyCompactList}\small\item\em Returns all strigns in database with the identifier received by argument. \end{DoxyCompactList}\item 
+Q\+List$<$ \mbox{\hyperlink{classString}{String}} $\ast$ $>$ \mbox{\hyperlink{classFpFileConnector_a4c671329fd2fd1b9c3a7d72de1028afd}{get\+Strings\+With\+State}} (const Q\+String state) override
+\begin{DoxyCompactList}\small\item\em Returns strings with state received by parameter. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classFpFileConnector_ae4f79d6a1281a20702b0257de56822b2}{insert\+String}} (const \mbox{\hyperlink{classString}{String}} \&string, const Q\+String language=Q\+String()) override
+\begin{DoxyCompactList}\small\item\em Inserts a new string in database. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classFpFileConnector_a7f31d3e699ce4c489c2303370d032a7e}{insert\+Strings}} (const Q\+List$<$ \mbox{\hyperlink{classString}{String}} $\ast$$>$ \&strings, const Q\+String language=Q\+String()) override
+\begin{DoxyCompactList}\small\item\em Inserts a set of strings into the database. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classFpFileConnector_a57c6eafd6b4c7dfbd927f6d4cb63d25c}{remove\+Strings\+With\+Value}} (const Q\+String \&value, bool case\+Sensitive=true) override
+\begin{DoxyCompactList}\small\item\em Removes from databse all strigns with the value received by argument. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classFpFileConnector_a8e09804b3c21f6b56dcc70659bbf105f}{remove\+Strings\+With\+Id}} (const Q\+String \&id, bool case\+Sensitive=true) override
+\begin{DoxyCompactList}\small\item\em Removes from databse the strign with the identifier received by argument. \end{DoxyCompactList}\item 
+Q\+String\+List \mbox{\hyperlink{classFpFileConnector_a82b6ae6887737cfea3b982cb0874424e}{get\+Languages}} () override
+\begin{DoxyCompactList}\small\item\em Returns all languages stored in database. \end{DoxyCompactList}\item 
+Q\+String\+List \mbox{\hyperlink{classFpFileConnector_a290016844ec3093b1c58db33fc86cd0a}{get\+Language\+Ids}} () override
+\begin{DoxyCompactList}\small\item\em Returns all language identifiers stored in database. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+This is a class to access a database saved as fp file by HP company. 
+
+Definition at line 21 of file fpfileconnector.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classFpFileConnector_a51b38b735ab4728601aef295d7b4c21f}\label{classFpFileConnector_a51b38b735ab4728601aef295d7b4c21f}} 
+\index{Fp\+File\+Connector@{Fp\+File\+Connector}!Fp\+File\+Connector@{Fp\+File\+Connector}}
+\index{Fp\+File\+Connector@{Fp\+File\+Connector}!Fp\+File\+Connector@{Fp\+File\+Connector}}
+\subsubsection{\texorpdfstring{Fp\+File\+Connector()}{FpFileConnector()}}
+{\footnotesize\ttfamily Fp\+File\+Connector\+::\+Fp\+File\+Connector (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{path }\end{DoxyParamCaption})}
+
+
+
+Creates a \mbox{\hyperlink{classFpFileConnector}{Fp\+File\+Connector}} and sets the path of file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & Database file path \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classFpFileConnector_ad392db922a5e04a670b84fc616192eea}\label{classFpFileConnector_ad392db922a5e04a670b84fc616192eea}} 
+\index{Fp\+File\+Connector@{Fp\+File\+Connector}!get\+All\+Strings@{get\+All\+Strings}}
+\index{get\+All\+Strings@{get\+All\+Strings}!Fp\+File\+Connector@{Fp\+File\+Connector}}
+\subsubsection{\texorpdfstring{get\+All\+Strings()}{getAllStrings()}}
+{\footnotesize\ttfamily Q\+List$<$\mbox{\hyperlink{classString}{String}} $\ast$$>$ Fp\+File\+Connector\+::get\+All\+Strings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+
+
+
+
+Implements \mbox{\hyperlink{classDatabaseConnectorAbstract_aeb4347bc18b6bed9a9b6120f68c10e9d}{Database\+Connector\+Abstract}}.
+
+\mbox{\Hypertarget{classFpFileConnector_a290016844ec3093b1c58db33fc86cd0a}\label{classFpFileConnector_a290016844ec3093b1c58db33fc86cd0a}} 
+\index{Fp\+File\+Connector@{Fp\+File\+Connector}!get\+Language\+Ids@{get\+Language\+Ids}}
+\index{get\+Language\+Ids@{get\+Language\+Ids}!Fp\+File\+Connector@{Fp\+File\+Connector}}
+\subsubsection{\texorpdfstring{get\+Language\+Ids()}{getLanguageIds()}}
+{\footnotesize\ttfamily Q\+String\+List Fp\+File\+Connector\+::get\+Language\+Ids (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns all language identifiers stored in database. 
+
+\begin{DoxyReturn}{Returns}
+Languages used. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classDatabaseConnectorAbstract_a98f5b2472bab6edc82ce2c5554319d7f}{Database\+Connector\+Abstract}}.
+
+\mbox{\Hypertarget{classFpFileConnector_a82b6ae6887737cfea3b982cb0874424e}\label{classFpFileConnector_a82b6ae6887737cfea3b982cb0874424e}} 
+\index{Fp\+File\+Connector@{Fp\+File\+Connector}!get\+Languages@{get\+Languages}}
+\index{get\+Languages@{get\+Languages}!Fp\+File\+Connector@{Fp\+File\+Connector}}
+\subsubsection{\texorpdfstring{get\+Languages()}{getLanguages()}}
+{\footnotesize\ttfamily Q\+String\+List Fp\+File\+Connector\+::get\+Languages (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns all languages stored in database. 
+
+\begin{DoxyReturn}{Returns}
+Languages used. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classDatabaseConnectorAbstract_a77ff263d407366e54f3e8512c575ff5e}{Database\+Connector\+Abstract}}.
+
+\mbox{\Hypertarget{classFpFileConnector_af1a00dabd759abd0b59bf9e26edc73cf}\label{classFpFileConnector_af1a00dabd759abd0b59bf9e26edc73cf}} 
+\index{Fp\+File\+Connector@{Fp\+File\+Connector}!get\+Path@{get\+Path}}
+\index{get\+Path@{get\+Path}!Fp\+File\+Connector@{Fp\+File\+Connector}}
+\subsubsection{\texorpdfstring{get\+Path()}{getPath()}}
+{\footnotesize\ttfamily Q\+String Fp\+File\+Connector\+::get\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns a path of database file. 
+
+\begin{DoxyReturn}{Returns}
+File path 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classFpFileConnector_adc85e526e1dab9f3de03cb8a2f33f7d1}\label{classFpFileConnector_adc85e526e1dab9f3de03cb8a2f33f7d1}} 
+\index{Fp\+File\+Connector@{Fp\+File\+Connector}!get\+Strings\+With\+Approximate\+Value@{get\+Strings\+With\+Approximate\+Value}}
+\index{get\+Strings\+With\+Approximate\+Value@{get\+Strings\+With\+Approximate\+Value}!Fp\+File\+Connector@{Fp\+File\+Connector}}
+\subsubsection{\texorpdfstring{get\+Strings\+With\+Approximate\+Value()}{getStringsWithApproximateValue()}}
+{\footnotesize\ttfamily Q\+List$<$\mbox{\hyperlink{classString}{String}} $\ast$$>$ Fp\+File\+Connector\+::get\+Strings\+With\+Approximate\+Value (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{value,  }\item[{bool}]{case\+Sensitive = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns all strigns in database with a similar value received by argument. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \mbox{\hyperlink{classString}{String}} value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List with strings. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classDatabaseConnectorAbstract_a5b0f30372ca105a94073267e969b74ee}{Database\+Connector\+Abstract}}.
+
+\mbox{\Hypertarget{classFpFileConnector_a4c671329fd2fd1b9c3a7d72de1028afd}\label{classFpFileConnector_a4c671329fd2fd1b9c3a7d72de1028afd}} 
+\index{Fp\+File\+Connector@{Fp\+File\+Connector}!get\+Strings\+With\+State@{get\+Strings\+With\+State}}
+\index{get\+Strings\+With\+State@{get\+Strings\+With\+State}!Fp\+File\+Connector@{Fp\+File\+Connector}}
+\subsubsection{\texorpdfstring{get\+Strings\+With\+State()}{getStringsWithState()}}
+{\footnotesize\ttfamily Q\+List$<$\mbox{\hyperlink{classString}{String}} $\ast$$>$ Fp\+File\+Connector\+::get\+Strings\+With\+State (\begin{DoxyParamCaption}\item[{const Q\+String}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns strings with state received by parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & State to be found. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classString}{String}} list eith indicated state. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classDatabaseConnectorAbstract_a74952c7e14c891e33c84995066003c5a}{Database\+Connector\+Abstract}}.
+
+\mbox{\Hypertarget{classFpFileConnector_a72a6ca5a5b8a44783d2ed990b111675b}\label{classFpFileConnector_a72a6ca5a5b8a44783d2ed990b111675b}} 
+\index{Fp\+File\+Connector@{Fp\+File\+Connector}!get\+Strings\+With\+Value@{get\+Strings\+With\+Value}}
+\index{get\+Strings\+With\+Value@{get\+Strings\+With\+Value}!Fp\+File\+Connector@{Fp\+File\+Connector}}
+\subsubsection{\texorpdfstring{get\+Strings\+With\+Value()}{getStringsWithValue()}}
+{\footnotesize\ttfamily Q\+List$<$\mbox{\hyperlink{classString}{String}} $\ast$$>$ Fp\+File\+Connector\+::get\+Strings\+With\+Value (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{value,  }\item[{bool}]{case\+Sensitive = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns all strigns in database with the value received by argument. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \mbox{\hyperlink{classString}{String}} value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List with strings. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classDatabaseConnectorAbstract_a1d33547045c5f8619f44290c932edb1b}{Database\+Connector\+Abstract}}.
+
+\mbox{\Hypertarget{classFpFileConnector_a29a6df6ea88a1e44f6b04c600b45925c}\label{classFpFileConnector_a29a6df6ea88a1e44f6b04c600b45925c}} 
+\index{Fp\+File\+Connector@{Fp\+File\+Connector}!get\+String\+With\+Id@{get\+String\+With\+Id}}
+\index{get\+String\+With\+Id@{get\+String\+With\+Id}!Fp\+File\+Connector@{Fp\+File\+Connector}}
+\subsubsection{\texorpdfstring{get\+String\+With\+Id()}{getStringWithId()}}
+{\footnotesize\ttfamily Q\+List$<$\mbox{\hyperlink{classString}{String}} $\ast$$>$ Fp\+File\+Connector\+::get\+String\+With\+Id (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{id,  }\item[{bool}]{case\+Sensitive = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns all strigns in database with the identifier received by argument. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \mbox{\hyperlink{classString}{String}} identifier. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List with strings. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classDatabaseConnectorAbstract_a757f25feaf50af012d25db8f27b1fef4}{Database\+Connector\+Abstract}}.
+
+\mbox{\Hypertarget{classFpFileConnector_ae4f79d6a1281a20702b0257de56822b2}\label{classFpFileConnector_ae4f79d6a1281a20702b0257de56822b2}} 
+\index{Fp\+File\+Connector@{Fp\+File\+Connector}!insert\+String@{insert\+String}}
+\index{insert\+String@{insert\+String}!Fp\+File\+Connector@{Fp\+File\+Connector}}
+\subsubsection{\texorpdfstring{insert\+String()}{insertString()}}
+{\footnotesize\ttfamily bool Fp\+File\+Connector\+::insert\+String (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classString}{String}} \&}]{string,  }\item[{const Q\+String}]{language = {\ttfamily QString()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Inserts a new string in database. 
+
+Returns true if the insertion was succesfull, otherwise, returns false. 
+\begin{DoxyParams}{Parameters}
+{\em string} & \mbox{\hyperlink{classString}{String}} instance to be inserted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classDatabaseConnectorAbstract_ac7cc5cf2deace9652810001722758206}{Database\+Connector\+Abstract}}.
+
+\mbox{\Hypertarget{classFpFileConnector_a7f31d3e699ce4c489c2303370d032a7e}\label{classFpFileConnector_a7f31d3e699ce4c489c2303370d032a7e}} 
+\index{Fp\+File\+Connector@{Fp\+File\+Connector}!insert\+Strings@{insert\+Strings}}
+\index{insert\+Strings@{insert\+Strings}!Fp\+File\+Connector@{Fp\+File\+Connector}}
+\subsubsection{\texorpdfstring{insert\+Strings()}{insertStrings()}}
+{\footnotesize\ttfamily int Fp\+File\+Connector\+::insert\+Strings (\begin{DoxyParamCaption}\item[{const Q\+List$<$ \mbox{\hyperlink{classString}{String}} $\ast$$>$ \&}]{strings,  }\item[{const Q\+String}]{language = {\ttfamily QString()} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Inserts a set of strings into the database. 
+
+Returns the number of inserted stirngs. 
+\begin{DoxyParams}{Parameters}
+{\em strings} & List with strings to be added into databse. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classDatabaseConnectorAbstract_a0e8c94cf0b38c797d6feef864a23347b}{Database\+Connector\+Abstract}}.
+
+\mbox{\Hypertarget{classFpFileConnector_a8e09804b3c21f6b56dcc70659bbf105f}\label{classFpFileConnector_a8e09804b3c21f6b56dcc70659bbf105f}} 
+\index{Fp\+File\+Connector@{Fp\+File\+Connector}!remove\+Strings\+With\+Id@{remove\+Strings\+With\+Id}}
+\index{remove\+Strings\+With\+Id@{remove\+Strings\+With\+Id}!Fp\+File\+Connector@{Fp\+File\+Connector}}
+\subsubsection{\texorpdfstring{remove\+Strings\+With\+Id()}{removeStringsWithId()}}
+{\footnotesize\ttfamily int Fp\+File\+Connector\+::remove\+Strings\+With\+Id (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{id,  }\item[{bool}]{case\+Sensitive = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Removes from databse the strign with the identifier received by argument. 
+
+Returns the number of removed stirngs. 
+\begin{DoxyParams}{Parameters}
+{\em value} & \mbox{\hyperlink{classString}{String}} identifier. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classDatabaseConnectorAbstract_a8c2b0fa4e37d16c1b1ea1cafec166ca0}{Database\+Connector\+Abstract}}.
+
+\mbox{\Hypertarget{classFpFileConnector_a57c6eafd6b4c7dfbd927f6d4cb63d25c}\label{classFpFileConnector_a57c6eafd6b4c7dfbd927f6d4cb63d25c}} 
+\index{Fp\+File\+Connector@{Fp\+File\+Connector}!remove\+Strings\+With\+Value@{remove\+Strings\+With\+Value}}
+\index{remove\+Strings\+With\+Value@{remove\+Strings\+With\+Value}!Fp\+File\+Connector@{Fp\+File\+Connector}}
+\subsubsection{\texorpdfstring{remove\+Strings\+With\+Value()}{removeStringsWithValue()}}
+{\footnotesize\ttfamily int Fp\+File\+Connector\+::remove\+Strings\+With\+Value (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{value,  }\item[{bool}]{case\+Sensitive = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Removes from databse all strigns with the value received by argument. 
+
+Returns the number of removed strings. 
+\begin{DoxyParams}{Parameters}
+{\em value} & \mbox{\hyperlink{classString}{String}} value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of removed strings 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classDatabaseConnectorAbstract_af482c0b4af4488c5897c04d0c4dff906}{Database\+Connector\+Abstract}}.
+
+\mbox{\Hypertarget{classFpFileConnector_a7a5c2987feae762ce359de702f5702e3}\label{classFpFileConnector_a7a5c2987feae762ce359de702f5702e3}} 
+\index{Fp\+File\+Connector@{Fp\+File\+Connector}!set\+Path@{set\+Path}}
+\index{set\+Path@{set\+Path}!Fp\+File\+Connector@{Fp\+File\+Connector}}
+\subsubsection{\texorpdfstring{set\+Path()}{setPath()}}
+{\footnotesize\ttfamily bool Fp\+File\+Connector\+::set\+Path (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{path }\end{DoxyParamCaption})}
+
+
+
+Sets the path of database file. 
+
+Returns true if the file exists and sets path succesfully, otherwise, returns false. \begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/storage/\mbox{\hyperlink{fpfileconnector_8h}{fpfileconnector.\+h}}\end{DoxyCompactItemize}

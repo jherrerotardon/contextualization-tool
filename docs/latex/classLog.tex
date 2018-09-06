@@ -1,0 +1,99 @@
+\hypertarget{classLog}{}\section{Log Class Reference}
+\label{classLog}\index{Log@{Log}}
+
+
+This is a static class to write logs in different channels.  
+
+
+
+
+{\ttfamily \#include $<$log.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classLog_af6071a60aa52b6c1b511f99b4bc1b8fe}\label{classLog_af6071a60aa52b6c1b511f99b4bc1b8fe}} 
+\mbox{\hyperlink{classLog_af6071a60aa52b6c1b511f99b4bc1b8fe}{Log}} ()
+\begin{DoxyCompactList}\small\item\em Constructs an empty log. Doesn\textquotesingle{}t do anything. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \mbox{\hyperlink{classLog_a8291d71e5438b70ac71232a23606690a}{write\+Debug}} (Q\+String text)
+\begin{DoxyCompactList}\small\item\em Appends a debug mensage containig text received by parameter in the debug file. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classLog_a1808c128874dd41cca3536ed5672df12}{write\+Log}} (Q\+String text)
+\begin{DoxyCompactList}\small\item\em Appends a log mensage containig text received by parameter in the log file. \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classLog_ae35819424f49efa88b29a0bccc962f93}{write\+Error}} (Q\+String text)
+\begin{DoxyCompactList}\small\item\em Appends an error mensage containig text received by parameter in the error file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is a static class to write logs in different channels. 
+
+Definition at line 27 of file log.\+h.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classLog_a8291d71e5438b70ac71232a23606690a}\label{classLog_a8291d71e5438b70ac71232a23606690a}} 
+\index{Log@{Log}!write\+Debug@{write\+Debug}}
+\index{write\+Debug@{write\+Debug}!Log@{Log}}
+\subsubsection{\texorpdfstring{write\+Debug()}{writeDebug()}}
+{\footnotesize\ttfamily void Log\+::write\+Debug (\begin{DoxyParamCaption}\item[{Q\+String}]{text }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Appends a debug mensage containig text received by parameter in the debug file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & Text to write in file. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 25 of file log.\+cpp.
+
+\mbox{\Hypertarget{classLog_ae35819424f49efa88b29a0bccc962f93}\label{classLog_ae35819424f49efa88b29a0bccc962f93}} 
+\index{Log@{Log}!write\+Error@{write\+Error}}
+\index{write\+Error@{write\+Error}!Log@{Log}}
+\subsubsection{\texorpdfstring{write\+Error()}{writeError()}}
+{\footnotesize\ttfamily void Log\+::write\+Error (\begin{DoxyParamCaption}\item[{Q\+String}]{text }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Appends an error mensage containig text received by parameter in the error file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & Text to write in file. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 42 of file log.\+cpp.
+
+\mbox{\Hypertarget{classLog_a1808c128874dd41cca3536ed5672df12}\label{classLog_a1808c128874dd41cca3536ed5672df12}} 
+\index{Log@{Log}!write\+Log@{write\+Log}}
+\index{write\+Log@{write\+Log}!Log@{Log}}
+\subsubsection{\texorpdfstring{write\+Log()}{writeLog()}}
+{\footnotesize\ttfamily void Log\+::write\+Log (\begin{DoxyParamCaption}\item[{Q\+String}]{text }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Appends a log mensage containig text received by parameter in the log file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & Text to write in file. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 34 of file log.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/tools/\mbox{\hyperlink{log_8h}{log.\+h}}\item 
+src/tools/\mbox{\hyperlink{log_8cpp}{log.\+cpp}}\end{DoxyCompactItemize}

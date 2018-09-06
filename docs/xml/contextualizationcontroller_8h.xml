@@ -1,0 +1,635 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="contextualizationcontroller_8h" kind="file" language="C++">
+    <compoundname>contextualizationcontroller.h</compoundname>
+    <includes local="no">QObject</includes>
+    <includes local="no">QString</includes>
+    <includes local="no">QStringList</includes>
+    <includes local="no">QFile</includes>
+    <includes local="no">QStandardPaths</includes>
+    <includes local="no">QDir</includes>
+    <includes local="no">QJsonDocument</includes>
+    <includes local="no">QJsonObject</includes>
+    <includes local="no">QJsonArray</includes>
+    <includes local="no">QRegularExpression</includes>
+    <includes local="no">QRegularExpressionMatch</includes>
+    <includes local="no">QImage</includes>
+    <includes local="no">QFuture</includes>
+    <includes local="no">QtConcurrent/QtConcurrent</includes>
+    <includes refid="contextualizationmodel_8h" local="yes">contextualization/model/contextualizationmodel.h</includes>
+    <includes refid="utils_8h" local="yes">tools/utils.h</includes>
+    <includes refid="log_8h" local="yes">tools/log.h</includes>
+    <includes refid="tesseractocr_8h" local="yes">optical_character_recognition/tesseractocr.h</includes>
+    <includes refid="fpfileconnector_8h" local="yes">storage/fpfileconnector.h</includes>
+    <includes refid="mysqlconnector_8h" local="yes">storage/mysqlconnector.h</includes>
+    <includedby refid="contextualizationfactoryabstract_8h" local="yes">src/tools/contextualizationfactoryabstract.h</includedby>
+    <includedby refid="consolecontroller_8h" local="yes">src/contextualization/controller/consolecontroller.h</includedby>
+    <includedby refid="contextualizationcontroller_8cpp" local="yes">src/contextualization/controller/contextualizationcontroller.cpp</includedby>
+    <includedby refid="guicontroller_8h" local="yes">src/contextualization/controller/guicontroller.h</includedby>
+    <incdepgraph>
+      <node id="159">
+        <label>QFuture</label>
+      </node>
+      <node id="170">
+        <label>QMessageBox</label>
+      </node>
+      <node id="174">
+        <label>QDateTime</label>
+      </node>
+      <node id="147">
+        <label>QObject</label>
+      </node>
+      <node id="161">
+        <label>contextualization/model/contextualizationmodel.h</label>
+        <link refid="contextualizationmodel_8h"/>
+        <childnode refid="147" relation="include">
+        </childnode>
+        <childnode refid="148" relation="include">
+        </childnode>
+        <childnode refid="162" relation="include">
+        </childnode>
+        <childnode refid="152" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="154" relation="include">
+        </childnode>
+        <childnode refid="163" relation="include">
+        </childnode>
+        <childnode refid="165" relation="include">
+        </childnode>
+      </node>
+      <node id="151">
+        <label>QStandardPaths</label>
+      </node>
+      <node id="162">
+        <label>QList</label>
+      </node>
+      <node id="184">
+        <label>QtSql/QSqlDatabase</label>
+      </node>
+      <node id="173">
+        <label>QThread</label>
+      </node>
+      <node id="185">
+        <label>QtSql/QSqlQuery</label>
+      </node>
+      <node id="183">
+        <label>storage/mysqlconnector.h</label>
+        <link refid="mysqlconnector_8h"/>
+        <childnode refid="184" relation="include">
+        </childnode>
+        <childnode refid="185" relation="include">
+        </childnode>
+        <childnode refid="186" relation="include">
+        </childnode>
+        <childnode refid="163" relation="include">
+        </childnode>
+        <childnode refid="182" relation="include">
+        </childnode>
+      </node>
+      <node id="172">
+        <label>QProgressDialog</label>
+      </node>
+      <node id="158">
+        <label>QImage</label>
+      </node>
+      <node id="164">
+        <label>string.h</label>
+        <link refid="string_8h"/>
+        <childnode refid="148" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="154" relation="include">
+        </childnode>
+        <childnode refid="156" relation="include">
+        </childnode>
+        <childnode refid="165" relation="include">
+        </childnode>
+      </node>
+      <node id="177">
+        <label>baseapi.h</label>
+      </node>
+      <node id="157">
+        <label>QRegularExpressionMatch</label>
+      </node>
+      <node id="155">
+        <label>QJsonArray</label>
+      </node>
+      <node id="169">
+        <label>tools/utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="152" relation="include">
+        </childnode>
+        <childnode refid="150" relation="include">
+        </childnode>
+        <childnode refid="170" relation="include">
+        </childnode>
+        <childnode refid="171" relation="include">
+        </childnode>
+        <childnode refid="172" relation="include">
+        </childnode>
+        <childnode refid="148" relation="include">
+        </childnode>
+        <childnode refid="173" relation="include">
+        </childnode>
+        <childnode refid="159" relation="include">
+        </childnode>
+        <childnode refid="160" relation="include">
+        </childnode>
+        <childnode refid="174" relation="include">
+        </childnode>
+      </node>
+      <node id="154">
+        <label>QJsonObject</label>
+      </node>
+      <node id="176">
+        <label>leptonica/allheaders.h</label>
+      </node>
+      <node id="168">
+        <label>QDebug</label>
+      </node>
+      <node id="146">
+        <label>src/contextualization/controller/contextualizationcontroller.h</label>
+        <link refid="contextualizationcontroller_8h"/>
+        <childnode refid="147" relation="include">
+        </childnode>
+        <childnode refid="148" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+        <childnode refid="150" relation="include">
+        </childnode>
+        <childnode refid="151" relation="include">
+        </childnode>
+        <childnode refid="152" relation="include">
+        </childnode>
+        <childnode refid="153" relation="include">
+        </childnode>
+        <childnode refid="154" relation="include">
+        </childnode>
+        <childnode refid="155" relation="include">
+        </childnode>
+        <childnode refid="156" relation="include">
+        </childnode>
+        <childnode refid="157" relation="include">
+        </childnode>
+        <childnode refid="158" relation="include">
+        </childnode>
+        <childnode refid="159" relation="include">
+        </childnode>
+        <childnode refid="160" relation="include">
+        </childnode>
+        <childnode refid="161" relation="include">
+        </childnode>
+        <childnode refid="169" relation="include">
+        </childnode>
+        <childnode refid="165" relation="include">
+        </childnode>
+        <childnode refid="175" relation="include">
+        </childnode>
+        <childnode refid="181" relation="include">
+        </childnode>
+        <childnode refid="183" relation="include">
+        </childnode>
+      </node>
+      <node id="160">
+        <label>QtConcurrent/QtConcurrent</label>
+      </node>
+      <node id="156">
+        <label>QRegularExpression</label>
+      </node>
+      <node id="167">
+        <label>QDate</label>
+      </node>
+      <node id="148">
+        <label>QString</label>
+      </node>
+      <node id="150">
+        <label>QFile</label>
+      </node>
+      <node id="182">
+        <label>databaseconnectorabstract.h</label>
+        <link refid="databaseconnectorabstract_8h"/>
+        <childnode refid="164" relation="include">
+        </childnode>
+        <childnode refid="165" relation="include">
+        </childnode>
+        <childnode refid="169" relation="include">
+        </childnode>
+      </node>
+      <node id="178">
+        <label>genericvector.h</label>
+      </node>
+      <node id="186">
+        <label>QtSql/QSqlError</label>
+      </node>
+      <node id="179">
+        <label>ocr.h</label>
+        <link refid="ocr_8h"/>
+        <childnode refid="148" relation="include">
+        </childnode>
+        <childnode refid="149" relation="include">
+        </childnode>
+        <childnode refid="152" relation="include">
+        </childnode>
+        <childnode refid="150" relation="include">
+        </childnode>
+        <childnode refid="180" relation="include">
+        </childnode>
+        <childnode refid="158" relation="include">
+        </childnode>
+        <childnode refid="156" relation="include">
+        </childnode>
+        <childnode refid="165" relation="include">
+        </childnode>
+      </node>
+      <node id="153">
+        <label>QJsonDocument</label>
+      </node>
+      <node id="171">
+        <label>QProcess</label>
+      </node>
+      <node id="175">
+        <label>optical_character_recognition/tesseractocr.h</label>
+        <link refid="tesseractocr_8h"/>
+        <childnode refid="176" relation="include">
+        </childnode>
+        <childnode refid="177" relation="include">
+        </childnode>
+        <childnode refid="178" relation="include">
+        </childnode>
+        <childnode refid="179" relation="include">
+        </childnode>
+        <childnode refid="169" relation="include">
+        </childnode>
+        <childnode refid="165" relation="include">
+        </childnode>
+      </node>
+      <node id="152">
+        <label>QDir</label>
+      </node>
+      <node id="166">
+        <label>QTextStream</label>
+      </node>
+      <node id="181">
+        <label>storage/fpfileconnector.h</label>
+        <link refid="fpfileconnector_8h"/>
+        <childnode refid="150" relation="include">
+        </childnode>
+        <childnode refid="180" relation="include">
+        </childnode>
+        <childnode refid="152" relation="include">
+        </childnode>
+        <childnode refid="182" relation="include">
+        </childnode>
+        <childnode refid="163" relation="include">
+        </childnode>
+        <childnode refid="169" relation="include">
+        </childnode>
+      </node>
+      <node id="149">
+        <label>QStringList</label>
+      </node>
+      <node id="180">
+        <label>QFileInfo</label>
+      </node>
+      <node id="163">
+        <label>firmwarestring.h</label>
+        <link refid="firmwarestring_8h"/>
+        <childnode refid="164" relation="include">
+        </childnode>
+      </node>
+      <node id="165">
+        <label>tools/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="148" relation="include">
+        </childnode>
+        <childnode refid="150" relation="include">
+        </childnode>
+        <childnode refid="166" relation="include">
+        </childnode>
+        <childnode refid="167" relation="include">
+        </childnode>
+        <childnode refid="151" relation="include">
+        </childnode>
+        <childnode refid="168" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="188">
+        <label>src/tools/contextualizationfactoryabstract.h</label>
+        <link refid="contextualizationfactoryabstract_8h"/>
+        <childnode refid="189" relation="include">
+        </childnode>
+        <childnode refid="192" relation="include">
+        </childnode>
+      </node>
+      <node id="203">
+        <label>src/contextualization/controller/linuxguicontroller.cpp</label>
+        <link refid="linuxguicontroller_8cpp"/>
+      </node>
+      <node id="192">
+        <label>src/tools/contextualizationfactoryabstract.cpp</label>
+        <link refid="contextualizationfactoryabstract_8cpp"/>
+      </node>
+      <node id="201">
+        <label>src/contextualization/controller/guicontroller.cpp</label>
+        <link refid="guicontroller_8cpp"/>
+      </node>
+      <node id="193">
+        <label>src/contextualization/controller/consolecontroller.h</label>
+        <link refid="consolecontroller_8h"/>
+        <childnode refid="194" relation="include">
+        </childnode>
+        <childnode refid="195" relation="include">
+        </childnode>
+        <childnode refid="197" relation="include">
+        </childnode>
+      </node>
+      <node id="198">
+        <label>src/contextualization/controller/windowsconsolecontroller.cpp</label>
+        <link refid="windowsconsolecontroller_8cpp"/>
+      </node>
+      <node id="196">
+        <label>src/contextualization/controller/linuxconsolecontroller.cpp</label>
+        <link refid="linuxconsolecontroller_8cpp"/>
+      </node>
+      <node id="199">
+        <label>src/contextualization/controller/contextualizationcontroller.cpp</label>
+        <link refid="contextualizationcontroller_8cpp"/>
+      </node>
+      <node id="190">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="202">
+        <label>src/contextualization/controller/linuxguicontroller.h</label>
+        <link refid="linuxguicontroller_8h"/>
+        <childnode refid="189" relation="include">
+        </childnode>
+        <childnode refid="203" relation="include">
+        </childnode>
+      </node>
+      <node id="194">
+        <label>src/contextualization/controller/consolecontroller.cpp</label>
+        <link refid="consolecontroller_8cpp"/>
+      </node>
+      <node id="195">
+        <label>src/contextualization/controller/linuxconsolecontroller.h</label>
+        <link refid="linuxconsolecontroller_8h"/>
+        <childnode refid="189" relation="include">
+        </childnode>
+        <childnode refid="196" relation="include">
+        </childnode>
+      </node>
+      <node id="189">
+        <label>src/tools/hpcontextualizationfactory.h</label>
+        <link refid="hpcontextualizationfactory_8h"/>
+        <childnode refid="190" relation="include">
+        </childnode>
+        <childnode refid="191" relation="include">
+        </childnode>
+      </node>
+      <node id="204">
+        <label>src/contextualization/controller/windowsguicontroller.h</label>
+        <link refid="windowsguicontroller_8h"/>
+        <childnode refid="189" relation="include">
+        </childnode>
+        <childnode refid="205" relation="include">
+        </childnode>
+      </node>
+      <node id="205">
+        <label>src/contextualization/controller/windowsguicontroller.cpp</label>
+        <link refid="windowsguicontroller_8cpp"/>
+      </node>
+      <node id="187">
+        <label>src/contextualization/controller/contextualizationcontroller.h</label>
+        <link refid="contextualizationcontroller_8h"/>
+        <childnode refid="188" relation="include">
+        </childnode>
+        <childnode refid="193" relation="include">
+        </childnode>
+        <childnode refid="199" relation="include">
+        </childnode>
+        <childnode refid="200" relation="include">
+        </childnode>
+      </node>
+      <node id="200">
+        <label>src/contextualization/controller/guicontroller.h</label>
+        <link refid="guicontroller_8h"/>
+        <childnode refid="201" relation="include">
+        </childnode>
+        <childnode refid="202" relation="include">
+        </childnode>
+        <childnode refid="204" relation="include">
+        </childnode>
+      </node>
+      <node id="191">
+        <label>src/tools/hpcontextualizationfactory.cpp</label>
+        <link refid="hpcontextualizationfactory_8cpp"/>
+      </node>
+      <node id="197">
+        <label>src/contextualization/controller/windowsconsolecontroller.h</label>
+        <link refid="windowsconsolecontroller_8h"/>
+        <childnode refid="189" relation="include">
+        </childnode>
+        <childnode refid="198" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classContextualizationController" prot="public">ContextualizationController</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Jorge Herrero Tardón (<ulink url="mailto:jorgeht@usal.es">jorgeht@usal.es</ulink>) </para></simplesect>
+<simplesect kind="date"><para>20/02/2018 </para></simplesect>
+<simplesect kind="version"><para>1.0 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="11"><highlight class="preprocessor">#ifndef<sp/>CONTEXTUALIZATIONCONTROLLER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONTEXTUALIZATIONCONTROLLER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QObject&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QString&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QStringList&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QFile&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QStandardPaths&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QDir&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QJsonDocument&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QJsonObject&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QJsonArray&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QRegularExpression&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QRegularExpressionMatch&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QImage&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QFuture&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QtConcurrent/QtConcurrent&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="contextualizationmodel_8h" kindref="compound">contextualization/model/contextualizationmodel.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="utils_8h" kindref="compound">tools/utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="log_8h" kindref="compound">tools/log.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="tesseractocr_8h" kindref="compound">optical_character_recognition/tesseractocr.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="fpfileconnector_8h" kindref="compound">storage/fpfileconnector.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mysqlconnector_8h" kindref="compound">storage/mysqlconnector.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="classContextualizationController" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classContextualizationController" kindref="compound">ContextualizationController</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>QObject</highlight></codeline>
+<codeline lineno="36"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_OBJECT</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4" kindref="member">ModelError</ref><sp/>{</highlight></codeline>
+<codeline lineno="47" refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4a6ccff3cdedbdcfcdfc1eb59c4b088d24" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4a6ccff3cdedbdcfcdfc1eb59c4b088d24" kindref="member">OkModel</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="48" refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4adba539af7fd279d01da3a2a1e91e40ca" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4adba539af7fd279d01da3a2a1e91e40ca" kindref="member">NoImage</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="49" refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4a5d1b78a6b1296da8bf43b62432d090c5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4a5d1b78a6b1296da8bf43b62432d090c5" kindref="member">ImageNotExist</ref>,<sp/><sp/></highlight></codeline>
+<codeline lineno="50" refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4a2e771e637c2e37c6b410a96c9f48adfd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4a2e771e637c2e37c6b410a96c9f48adfd" kindref="member">NoStrings</ref>,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60" refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fd" kindref="member">CodeError</ref><sp/>{</highlight></codeline>
+<codeline lineno="61" refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fdac799a856f8460c5e6b100f08191b2d94" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fdac799a856f8460c5e6b100f08191b2d94" kindref="member">NoError</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="62" refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda067a46ac62df6062561a10108b8e77a9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda067a46ac62df6062561a10108b8e77a9" kindref="member">NullPointer</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="63" refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda4a6ad284235290da632cd7b621ae53be" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda4a6ad284235290da632cd7b621ae53be" kindref="member">StringAlreadyExists</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="64" refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fdac9ac40727cb32c37655f627ecd1450d4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fdac9ac40727cb32c37655f627ecd1450d4" kindref="member">NoImportFile</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="65" refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda705a292a89a7c137ed934a1ede90968a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda705a292a89a7c137ed934a1ede90968a" kindref="member">ImportFileFormat</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="66" refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fdad866e236894ecf819409ebb4d44b7fd1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fdad866e236894ecf819409ebb4d44b7fd1" kindref="member">FileNotExists</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="67" refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda3da219148b52a6691d2dbcd9f40ed627" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda3da219148b52a6691d2dbcd9f40ed627" kindref="member">NoRemoteHost</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="68" refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda5360679b825af2b3b97283fae1a9717a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda5360679b825af2b3b97283fae1a9717a" kindref="member">NoValidIp</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="69" refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda860490b2223e4e78d29a514fb51f6fc5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda860490b2223e4e78d29a514fb51f6fc5" kindref="member">SshpassError</ref><sp/>=<sp/>254,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="70" refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda7447fb0b9cf45b0adc6da65c65c34253" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda7447fb0b9cf45b0adc6da65c65c34253" kindref="member">SshError</ref><sp/>=<sp/>255,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="71" refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda841e3c0b31b4da700505de6d3b30dabe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda841e3c0b31b4da700505de6d3b30dabe" kindref="member">WriteFile</ref><sp/>=<sp/>-1,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"></highlight></codeline>
+<codeline lineno="79" refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdced" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdced" kindref="member">MatchType</ref><sp/>{</highlight></codeline>
+<codeline lineno="80" refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdcedab921b1883492c5a7511b20ec6a5f24f3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdcedab921b1883492c5a7511b20ec6a5f24f3" kindref="member">ByID</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="81" refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdceda0e89844c93d199f9e314fc1a1ddae400" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdceda0e89844c93d199f9e314fc1a1ddae400" kindref="member">ByValue</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="82" refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdceda54d0f26a3c6d7f680f2bcbd383f1d9df" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdceda54d0f26a3c6d7f680f2bcbd383f1d9df" kindref="member">ByApproximateValue</ref>,<sp/></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classContextualizationController_1a055cc7f78056ccc0d0a55023402a29ee" kindref="member">ContextualizationController</ref>(QObject<sp/>*parent<sp/>=<sp/>Q_NULLPTR);</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classContextualizationController_1ae5b1fa3bf3a7b92c8454e8cd98558989" kindref="member">~ContextualizationController</ref>();</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="100" refid="classContextualizationController_1a8e94ee12efc5fb6aba91341b4cc47a26" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1a8e94ee12efc5fb6aba91341b4cc47a26" kindref="member">CHUNK_WIDTH</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="101" refid="classContextualizationController_1ae9896f11f9e129fa4ea9d482c18d8b82" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1ae9896f11f9e129fa4ea9d482c18d8b82" kindref="member">CHUNK_HEIGHT</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="102" refid="classContextualizationController_1a88ea18a10d1edd6cd15f41b6126e813e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>QString<sp/><ref refid="classContextualizationController_1a88ea18a10d1edd6cd15f41b6126e813e" kindref="member">IMAGES_FOLDER</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="103" refid="classContextualizationController_1a33d73ba5d5ef0e4c7a47dbb85cea7a7e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>QString<sp/><ref refid="classContextualizationController_1a33d73ba5d5ef0e4c7a47dbb85cea7a7e" kindref="member">PROJECTS_FOLDER</ref>;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="104" refid="classContextualizationController_1ad01707b9671cf54a78960d7fdfa25463" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>QString<sp/><ref refid="classContextualizationController_1ad01707b9671cf54a78960d7fdfa25463" kindref="member">CONFIG_FOLDER</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="105" refid="classContextualizationController_1a31b85e006b135987dd34ce6443cc9ad1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classContextualizationModel" kindref="compound">ContextualizationModel</ref><sp/>*<ref refid="classContextualizationController_1a31b85e006b135987dd34ce6443cc9ad1" kindref="member">model_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="106" refid="classContextualizationController_1aaaea6627d8d88579150001d37916f618" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/><ref refid="classContextualizationController_1aaaea6627d8d88579150001d37916f618" kindref="member">englishFpFile_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="107" refid="classContextualizationController_1a3d9769435b8558c75379938e3e78ca95" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>QString<sp/><ref refid="classContextualizationController_1a3d9769435b8558c75379938e3e78ca95" kindref="member">DONE_FP_FILE</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="108" refid="classContextualizationController_1a07888f57aa02355d2e0230d6a99f2251" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/><ref refid="classContextualizationController_1a07888f57aa02355d2e0230d6a99f2251" kindref="member">username_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="109" refid="classContextualizationController_1a78b977fec84729a2f9b4cc4a3a57a42e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>QStringList<sp/><ref refid="classContextualizationController_1a78b977fec84729a2f9b4cc4a3a57a42e" kindref="member">validStates_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="110" refid="classContextualizationController_1afdc03867fd96587139618c736c350ead" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/><ref refid="classContextualizationController_1afdc03867fd96587139618c736c350ead" kindref="member">remoteHost_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="111" refid="classContextualizationController_1a8313b2b6332dd76f286e5f24a6329b02" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1a8313b2b6332dd76f286e5f24a6329b02" kindref="member">onlyDoneStrings_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="112" refid="classContextualizationController_1a2ac26ea74b41512a52f677ac6c8fa83f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1a2ac26ea74b41512a52f677ac6c8fa83f" kindref="member">caseSensitive_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fd" kindref="member">CodeError</ref><sp/><ref refid="classContextualizationController_1ae2b31282f2258673757c77592f7ded00" kindref="member">importProjectFromJsonFile</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;path);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1a26fc3969db0e2217dc6994f819c78572" kindref="member">exportToJsonFile</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;path);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4" kindref="member">ContextualizationController::ModelError</ref><sp/><ref refid="classContextualizationController_1a6b806979e0b4e5a3ce3af09230f66fef" kindref="member">validateModel</ref>();</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/><ref refid="classContextualizationController_1a737d2562702b3b0da946e7b2f9fa336d" kindref="member">generateContextualization</ref>();</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fd" kindref="member">CodeError</ref><sp/><ref refid="classContextualizationController_1a46ec193d423be47137f34d746145801f" kindref="member">sendContextualization</ref>(QString<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>&amp;path,<sp/>QString<sp/>user,<sp/>QString<sp/>password);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/>QList&lt;FirmwareString<sp/>*&gt;<sp/><ref refid="classContextualizationController_1ae6817457c7b00d17bb676a4989d59858" kindref="member">detectStringsOnImage</ref>(QString<sp/>image);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/>QList&lt;FirmwareString<sp/>*&gt;<sp/><ref refid="classContextualizationController_1a4afb43a5914ef1c7e2a6bb9357cdd822" kindref="member">fastDetectStringsOnImage</ref>(QString<sp/>image);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>QList&lt;FirmwareString<sp/>*&gt;<sp/><ref refid="classContextualizationController_1a97436fb5b350bcc6be500b0fe2ecc1b7" kindref="member">processExtractedStrings</ref>(QStringList<sp/>strings);</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/><sp/><sp/>QList&lt;FirmwareString<sp/>*&gt;<sp/><ref refid="classContextualizationController_1a5f94a4894e3a3c0920dc534346527fa0" kindref="member">findString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;text,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdced" kindref="member">MatchType</ref><sp/>matchType<sp/>=<sp/><ref refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdcedab921b1883492c5a7511b20ec6a5f24f3" kindref="member">ByID</ref>);</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1a0d726ece69d0876729c1c801f9c25230" kindref="member">isValidState</ref>(QString<sp/>&amp;state);</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fd" kindref="member">CodeError</ref><sp/><ref refid="classContextualizationController_1abb80030963c4abd056a200fefbf8b4e9" kindref="member">addString</ref>(<ref refid="classFirmwareString" kindref="compound">FirmwareString</ref><sp/>*fwString);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1a4af8f49a57b9d9a7daf5b51d45620ed6" kindref="member">addStrings</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QList&lt;FirmwareString<sp/>*&gt;<sp/>&amp;strings);</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1adedb36b408caff11f15632998e7b9413" kindref="member">removeString</ref>(QString<sp/>stringId);</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1adedb36b408caff11f15632998e7b9413" kindref="member">removeString</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>row);</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1af9eb5f70f45cd3c501a8af97a4b280d4" kindref="member">removeAllStrings</ref>();</highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1a943a8703d6e67fa5a08b4b8d73697dfc" kindref="member">selectString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>state);</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1af003f565ad5d3a45fb8b7e66a52487fa" kindref="member">clearImage</ref>();</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>QString<sp/><ref refid="classContextualizationController_1a121919886590cd4955bbcc2d8b747b26" kindref="member">takeCaptureArea</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1afd1e07f8b9439ff36656bfc7163df892" kindref="member">setImage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;image);</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1a7eaa7277a256b9dbf26573a651e442bf" kindref="member">isFwStringAlreadyExists</ref>(<ref refid="classFirmwareString" kindref="compound">FirmwareString</ref><sp/>&amp;fwString);</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1a43b14faa02f64178e6f18f94022447fa" kindref="member">eraseExistStrings</ref>(QList&lt;FirmwareString<sp/>*&gt;<sp/>*strings);</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/><ref refid="classContextualizationController_1afd648aaf148c3db3fb5e3af88e6de2e5" kindref="member">getImageOfModel</ref>();</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"></highlight></codeline>
+<codeline lineno="323"><highlight class="normal"><sp/><sp/><sp/><sp/>QList&lt;QObject<sp/>*&gt;<sp/><ref refid="classContextualizationController_1a6c8aba56f5b97fc3042c6e5c8e04e124" kindref="member">getTableModel</ref>();</highlight></codeline>
+<codeline lineno="324"><highlight class="normal"></highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/><ref refid="classContextualizationController_1ab3824ba2a20c6f4b511fb6169a4349da" kindref="member">getDateTime</ref>(QString<sp/>format<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;yyyy_MM_dd_hh_mm_ss&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="331"><highlight class="normal"></highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1a3b3d997f77ec6cd8cfe7569b81c31d3f" kindref="member">loadConfig</ref>();</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight></codeline>
+<codeline lineno="340"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1a4cfa5ebd6d0e2c1843fe6073c02873f3" kindref="member">saveConfig</ref>();</highlight></codeline>
+<codeline lineno="341"><highlight class="normal"></highlight></codeline>
+<codeline lineno="348"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1af142a8bbd561278c3423ccad3b40c910" kindref="member">generateDoneFpFile</ref>();</highlight></codeline>
+<codeline lineno="349"><highlight class="normal"></highlight></codeline>
+<codeline lineno="359"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1a627fba866e282e4e7dff813781ed88cb" kindref="member">filterStringsByState</ref>(QList&lt;FirmwareString<sp/>*&gt;<sp/>*list,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;state);</highlight></codeline>
+<codeline lineno="360"><highlight class="normal"></highlight></codeline>
+<codeline lineno="376"><highlight class="normal"><sp/><sp/><sp/><sp/>QStringList<sp/><ref refid="classContextualizationController_1a2bef3de188caf57cad70e47bcf7495d1" kindref="member">splitImage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;image,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>chunkWidth,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>chunkHeight,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>*someError<sp/>=<sp/>Q_NULLPTR);</highlight></codeline>
+<codeline lineno="377"><highlight class="normal"></highlight></codeline>
+<codeline lineno="383"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/><ref refid="classContextualizationController_1a5d60cf7ca2c78b74bb6a5ad5a5b04e9e" kindref="member">getParameterFromConfigFile</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>parameter);</highlight></codeline>
+<codeline lineno="384"><highlight class="normal"></highlight></codeline>
+<codeline lineno="393"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1a6e92320baf8dbbf148bd3b3e97c5d332" kindref="member">setParameterInConfigFile</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>parameter,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>value);</highlight></codeline>
+<codeline lineno="394"><highlight class="normal"></highlight></codeline>
+<codeline lineno="401"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1a0ec0241ee096fa917e3ab7de448e5509" kindref="member">proccessAndStorage</ref>();</highlight></codeline>
+<codeline lineno="402"><highlight class="normal"></highlight></codeline>
+<codeline lineno="403"><highlight class="normal"></highlight></codeline>
+<codeline lineno="404"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal"><sp/>slots:</highlight></codeline>
+<codeline lineno="405"><highlight class="normal"></highlight></codeline>
+<codeline lineno="413"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1afea4c16fa2728506e6301e46891bf73f" kindref="member">add</ref>(QString<sp/>newString,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>matchType)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="414"><highlight class="normal"></highlight></codeline>
+<codeline lineno="419"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">remove</highlight><highlight class="normal">(QString<sp/>stringId)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="420"><highlight class="normal"></highlight></codeline>
+<codeline lineno="424"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1a2f19977180ae0d6ecd3900951d686fe3" kindref="member">clear</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="425"><highlight class="normal"></highlight></codeline>
+<codeline lineno="430"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1ad9e65625e6dc228858cf2c9606606691" kindref="member">capture</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>detectStringsOnLoad)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="431"><highlight class="normal"></highlight></codeline>
+<codeline lineno="436"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1a3b93cb8ddf7ec41936d0e3ab980644eb" kindref="member">load</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>detectStringsOnLoad)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="437"><highlight class="normal"></highlight></codeline>
+<codeline lineno="441"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1a0b79fa3dbd9e95325df5d1bd8507c7a5" kindref="member">detect</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="442"><highlight class="normal"></highlight></codeline>
+<codeline lineno="446"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1a6c22f71d82e58ed54994dd6da55fba5d" kindref="member">send</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="447"><highlight class="normal"></highlight></codeline>
+<codeline lineno="451"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1aef30a9a0c8c18ef27c58cfd71d000502" kindref="member">cancel</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="452"><highlight class="normal"></highlight></codeline>
+<codeline lineno="456"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1a4fc34afd044a02b28cf1ccaa16e6d696" kindref="member">save</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="457"><highlight class="normal"></highlight></codeline>
+<codeline lineno="461"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1aacbc46aa9cf35b5e5d159ad829f03c0b" kindref="member">saveAs</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="462"><highlight class="normal"></highlight></codeline>
+<codeline lineno="466"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1ab5f48377aa2aa821695a08145bdbf522" kindref="member">open</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="467"><highlight class="normal"></highlight></codeline>
+<codeline lineno="471"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1ab0cd81ecd067cc0c6c475ce597d0f414" kindref="member">refresh</ref>();</highlight></codeline>
+<codeline lineno="472"><highlight class="normal"></highlight></codeline>
+<codeline lineno="476"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1a57d48e9139331145d82c1be284ecdaa5" kindref="member">newProject</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="477"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="481"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1a52f5a73a589942dcdf7299097aee36d1" kindref="member">processFiles</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="482"><highlight class="normal"></highlight></codeline>
+<codeline lineno="483"><highlight class="normal">signals:</highlight></codeline>
+<codeline lineno="484"><highlight class="normal"></highlight></codeline>
+<codeline lineno="488"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1a0040eddc367f6685480818a2fd9d7a25" kindref="member">stringsListChanged</ref>();</highlight></codeline>
+<codeline lineno="489"><highlight class="normal"></highlight></codeline>
+<codeline lineno="493"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController_1ac101eb9c6edbc62b829257c4cfcc9fe1" kindref="member">imageChanged</ref>();</highlight></codeline>
+<codeline lineno="494"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="495"><highlight class="normal"></highlight></codeline>
+<codeline lineno="496"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>CONTEXTUALIZATIONCONTROLLER_H</highlight></codeline>
+    </programlisting>
+    <location file="src/contextualization/controller/contextualizationcontroller.h"/>
+  </compounddef>
+</doxygen>

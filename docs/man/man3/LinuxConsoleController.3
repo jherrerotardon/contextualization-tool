@@ -1,0 +1,73 @@
+.TH "LinuxConsoleController" 3 "Thu Sep 6 2018" "Version 1.0" "Contextualization Tool" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+LinuxConsoleController \- This is the controller class that works a linux CLI environment\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <linuxconsolecontroller\&.h>\fP
+.PP
+Inherits \fBConsoleController\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLinuxConsoleController\fP ()"
+.br
+.RI "Creates an empty \fBLinuxConsoleController\fP\&. "
+.ti -1c
+.RI "\fBLinuxConsoleController\fP (int argc, char **argv)"
+.br
+.RI "Creates a \fBLinuxConsoleController\fP initialited with the parameter received in argv\&. "
+.ti -1c
+.RI "QString \fBtakeCaptureArea\fP () override"
+.br
+.RI "Starts a process that allow user capture an area of the screen\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+This is the controller class that works a linux CLI environment\&. 
+.PP
+Definition at line 17 of file linuxconsolecontroller\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "LinuxConsoleController::LinuxConsoleController (int argc, char ** argv)"
+
+.PP
+Creates a \fBLinuxConsoleController\fP initialited with the parameter received in argv\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIargc\fP Number of elements of argv\&. 
+.br
+\fIargv\fP Parameters 
+.RE
+.PP
+
+.PP
+Definition at line 18 of file linuxconsolecontroller\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "QString LinuxConsoleController::takeCaptureArea ()\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Starts a process that allow user capture an area of the screen\&. The user have to select the area to capture with the mouse\&. Return the path where the capture is stored or an empty QString if an error ocurred\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+QString 
+.RE
+.PP
+
+.PP
+Implements \fBContextualizationController\fP\&.
+.PP
+Definition at line 23 of file linuxconsolecontroller\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Contextualization Tool from the source code\&.

@@ -1,0 +1,112 @@
+\hypertarget{classWindowsConsoleController}{}\section{Windows\+Console\+Controller Class Reference}
+\label{classWindowsConsoleController}\index{Windows\+Console\+Controller@{Windows\+Console\+Controller}}
+
+
+This is the controller class that works a Windows C\+LI environment.  
+
+
+
+
+{\ttfamily \#include $<$windowsconsolecontroller.\+h$>$}
+
+Inheritance diagram for Windows\+Console\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classWindowsConsoleController}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWindowsConsoleController_ac2d015316b132fb43289d44277b33e3b}\label{classWindowsConsoleController_ac2d015316b132fb43289d44277b33e3b}} 
+\mbox{\hyperlink{classWindowsConsoleController_ac2d015316b132fb43289d44277b33e3b}{Windows\+Console\+Controller}} ()
+\begin{DoxyCompactList}\small\item\em Creates an empty \mbox{\hyperlink{classWindowsConsoleController}{Windows\+Console\+Controller}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classWindowsConsoleController_a684161508236414615ee30bc9b29b79f}{Windows\+Console\+Controller}} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em Creates a \mbox{\hyperlink{classWindowsConsoleController}{Windows\+Console\+Controller}} initialited with the parameter received in argv. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{classWindowsConsoleController_ab536d94896c62a1920a6dbfd4b83c18b}{take\+Capture\+Area}} () override
+\begin{DoxyCompactList}\small\item\em Starts a process that allow user capture an area of the screen. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classWindowsConsoleController_afca6af922fe103845177580d6af4859e}{generate\+Done\+Fp\+File}} () override
+\begin{DoxyCompactList}\small\item\em Creates a copy of english\+Fp file in /tmp with only firmware strings with D\+O\+NE status. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+This is the controller class that works a Windows C\+LI environment. 
+
+Definition at line 20 of file windowsconsolecontroller.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classWindowsConsoleController_a684161508236414615ee30bc9b29b79f}\label{classWindowsConsoleController_a684161508236414615ee30bc9b29b79f}} 
+\index{Windows\+Console\+Controller@{Windows\+Console\+Controller}!Windows\+Console\+Controller@{Windows\+Console\+Controller}}
+\index{Windows\+Console\+Controller@{Windows\+Console\+Controller}!Windows\+Console\+Controller@{Windows\+Console\+Controller}}
+\subsubsection{\texorpdfstring{Windows\+Console\+Controller()}{WindowsConsoleController()}}
+{\footnotesize\ttfamily Windows\+Console\+Controller\+::\+Windows\+Console\+Controller (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Creates a \mbox{\hyperlink{classWindowsConsoleController}{Windows\+Console\+Controller}} initialited with the parameter received in argv. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Number of elements of argv. \\
+\hline
+{\em argv} & Parameters \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 24 of file windowsconsolecontroller.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classWindowsConsoleController_afca6af922fe103845177580d6af4859e}\label{classWindowsConsoleController_afca6af922fe103845177580d6af4859e}} 
+\index{Windows\+Console\+Controller@{Windows\+Console\+Controller}!generate\+Done\+Fp\+File@{generate\+Done\+Fp\+File}}
+\index{generate\+Done\+Fp\+File@{generate\+Done\+Fp\+File}!Windows\+Console\+Controller@{Windows\+Console\+Controller}}
+\subsubsection{\texorpdfstring{generate\+Done\+Fp\+File()}{generateDoneFpFile()}}
+{\footnotesize\ttfamily int Windows\+Console\+Controller\+::generate\+Done\+Fp\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Creates a copy of english\+Fp file in /tmp with only firmware strings with D\+O\+NE status. 
+
+If copy was created succesfully returns 0, otherwise returns the code error. \begin{DoxyReturn}{Returns}
+Code error 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classContextualizationController_af142a8bbd561278c3423ccad3b40c910}{Contextualization\+Controller}}.
+
+
+
+Definition at line 34 of file windowsconsolecontroller.\+cpp.
+
+\mbox{\Hypertarget{classWindowsConsoleController_ab536d94896c62a1920a6dbfd4b83c18b}\label{classWindowsConsoleController_ab536d94896c62a1920a6dbfd4b83c18b}} 
+\index{Windows\+Console\+Controller@{Windows\+Console\+Controller}!take\+Capture\+Area@{take\+Capture\+Area}}
+\index{take\+Capture\+Area@{take\+Capture\+Area}!Windows\+Console\+Controller@{Windows\+Console\+Controller}}
+\subsubsection{\texorpdfstring{take\+Capture\+Area()}{takeCaptureArea()}}
+{\footnotesize\ttfamily Q\+String Windows\+Console\+Controller\+::take\+Capture\+Area (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Starts a process that allow user capture an area of the screen. 
+
+The user have to select the area to capture with the mouse. Return the path where the capture is stored or an empty Q\+String if an error ocurred. \begin{DoxyReturn}{Returns}
+Q\+String 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classContextualizationController_a121919886590cd4955bbcc2d8b747b26}{Contextualization\+Controller}}.
+
+
+
+Definition at line 29 of file windowsconsolecontroller.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/contextualization/controller/\mbox{\hyperlink{windowsconsolecontroller_8h}{windowsconsolecontroller.\+h}}\item 
+src/contextualization/controller/\mbox{\hyperlink{windowsconsolecontroller_8cpp}{windowsconsolecontroller.\+cpp}}\end{DoxyCompactItemize}

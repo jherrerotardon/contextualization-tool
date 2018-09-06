@@ -1,0 +1,89 @@
+\hypertarget{classLinuxConsoleController}{}\section{Linux\+Console\+Controller Class Reference}
+\label{classLinuxConsoleController}\index{Linux\+Console\+Controller@{Linux\+Console\+Controller}}
+
+
+This is the controller class that works a linux C\+LI environment.  
+
+
+
+
+{\ttfamily \#include $<$linuxconsolecontroller.\+h$>$}
+
+Inheritance diagram for Linux\+Console\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{classLinuxConsoleController}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classLinuxConsoleController_a22dbaf4b36c07b2bc729287c93118853}\label{classLinuxConsoleController_a22dbaf4b36c07b2bc729287c93118853}} 
+\mbox{\hyperlink{classLinuxConsoleController_a22dbaf4b36c07b2bc729287c93118853}{Linux\+Console\+Controller}} ()
+\begin{DoxyCompactList}\small\item\em Creates an empty \mbox{\hyperlink{classLinuxConsoleController}{Linux\+Console\+Controller}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classLinuxConsoleController_a28e3374d97058fa2649d2582686bfe6f}{Linux\+Console\+Controller}} (int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em Creates a \mbox{\hyperlink{classLinuxConsoleController}{Linux\+Console\+Controller}} initialited with the parameter received in argv. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{classLinuxConsoleController_ac9944bf1302b077c733802349359e777}{take\+Capture\+Area}} () override
+\begin{DoxyCompactList}\small\item\em Starts a process that allow user capture an area of the screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+This is the controller class that works a linux C\+LI environment. 
+
+Definition at line 17 of file linuxconsolecontroller.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classLinuxConsoleController_a28e3374d97058fa2649d2582686bfe6f}\label{classLinuxConsoleController_a28e3374d97058fa2649d2582686bfe6f}} 
+\index{Linux\+Console\+Controller@{Linux\+Console\+Controller}!Linux\+Console\+Controller@{Linux\+Console\+Controller}}
+\index{Linux\+Console\+Controller@{Linux\+Console\+Controller}!Linux\+Console\+Controller@{Linux\+Console\+Controller}}
+\subsubsection{\texorpdfstring{Linux\+Console\+Controller()}{LinuxConsoleController()}}
+{\footnotesize\ttfamily Linux\+Console\+Controller\+::\+Linux\+Console\+Controller (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Creates a \mbox{\hyperlink{classLinuxConsoleController}{Linux\+Console\+Controller}} initialited with the parameter received in argv. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Number of elements of argv. \\
+\hline
+{\em argv} & Parameters \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 18 of file linuxconsolecontroller.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classLinuxConsoleController_ac9944bf1302b077c733802349359e777}\label{classLinuxConsoleController_ac9944bf1302b077c733802349359e777}} 
+\index{Linux\+Console\+Controller@{Linux\+Console\+Controller}!take\+Capture\+Area@{take\+Capture\+Area}}
+\index{take\+Capture\+Area@{take\+Capture\+Area}!Linux\+Console\+Controller@{Linux\+Console\+Controller}}
+\subsubsection{\texorpdfstring{take\+Capture\+Area()}{takeCaptureArea()}}
+{\footnotesize\ttfamily Q\+String Linux\+Console\+Controller\+::take\+Capture\+Area (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Starts a process that allow user capture an area of the screen. 
+
+The user have to select the area to capture with the mouse. Return the path where the capture is stored or an empty Q\+String if an error ocurred. \begin{DoxyReturn}{Returns}
+Q\+String 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classContextualizationController_a121919886590cd4955bbcc2d8b747b26}{Contextualization\+Controller}}.
+
+
+
+Definition at line 23 of file linuxconsolecontroller.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/contextualization/controller/\mbox{\hyperlink{linuxconsolecontroller_8h}{linuxconsolecontroller.\+h}}\item 
+src/contextualization/controller/\mbox{\hyperlink{linuxconsolecontroller_8cpp}{linuxconsolecontroller.\+cpp}}\end{DoxyCompactItemize}

@@ -3,7 +3,7 @@
  * @author Jorge Herrero Tardón (jorgeht@usal.es)
  * @date 20/02/2018
  * @version 1.0
- * @class ContectualizationController
+ * @class ContextualizationController
  *
  * @brief This is the controller base class.
  */
@@ -30,6 +30,7 @@
 #include "tools/log.h"
 #include "optical_character_recognition/tesseractocr.h"
 #include "storage/fpfileconnector.h"
+#include "storage/mysqlconnector.h"
 
 class ContextualizationController : public QObject
 {
@@ -391,6 +392,14 @@ protected:
      */
     bool setParameterInConfigFile(const QString parameter, const QString value);
 
+    /**
+     * @brief Reads all fp language files that there was congigurated in database.
+     *
+     * Process all strings and storage in database strings with state VALIDADED.
+     * @return bool
+     */
+    bool proccessAndStorage();
+
 
 protected slots:
 
@@ -465,6 +474,11 @@ protected slots:
      * @brief Creates a new empty project.
      */
     virtual void newProject() = 0;
+    
+    /**
+     * @brief Process VALIDATED strings in fp files and storage it in database.
+     */
+    virtual void processFiles() = 0;
 
 signals:
 

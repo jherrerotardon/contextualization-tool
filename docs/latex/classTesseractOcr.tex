@@ -1,0 +1,287 @@
+\hypertarget{classTesseractOcr}{}\section{Tesseract\+Ocr Class Reference}
+\label{classTesseractOcr}\index{Tesseract\+Ocr@{Tesseract\+Ocr}}
+
+
+This is a tool to detect string on images using tesseract api (\href{https://github.com/tesseract-ocr/tesseract}{\tt https\+://github.\+com/tesseract-\/ocr/tesseract}).  
+
+
+
+
+{\ttfamily \#include $<$tesseractocr.\+h$>$}
+
+Inheritance diagram for Tesseract\+Ocr\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classTesseractOcr}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classTesseractOcr_a9e62c15a4f8e4c8a0a614cf04ec8dea6}{Tesseract\+Ocr}} ()
+\begin{DoxyCompactList}\small\item\em Creates an empty \mbox{\hyperlink{classTesseractOcr}{Tesseract\+Ocr}} instance. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTesseractOcr_ad550fd8468a1b1ee0b915c7202281dc7}{Tesseract\+Ocr}} (Q\+String image, Q\+String datapath=Q\+Dir(\char`\"{}../tesseract/tessdata\char`\"{}).absolute\+Path()+\textquotesingle{}/\textquotesingle{}, tesseract\+::\+Ocr\+Engine\+Mode engine\+Mode=tesseract\+::\+O\+E\+M\+\_\+\+T\+E\+S\+S\+E\+R\+A\+C\+T\+\_\+\+L\+S\+T\+M\+\_\+\+C\+O\+M\+B\+I\+N\+ED, tesseract\+::\+Page\+Seg\+Mode page\+Seg\+Mode=tesseract\+::\+P\+S\+M\+\_\+\+A\+U\+TO)
+\begin{DoxyCompactList}\small\item\em Creates a \mbox{\hyperlink{classTesseractOcr}{Tesseract\+Ocr}} instante with the values received by parameter. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTesseractOcr_a8cac9f702b0eb765b522375d4aae08e9}{Tesseract\+Ocr}} (const \mbox{\hyperlink{classTesseractOcr}{Tesseract\+Ocr}} \&other)
+\begin{DoxyCompactList}\small\item\em Creates a copy from other \mbox{\hyperlink{classTesseractOcr}{Tesseract\+Ocr}} instance. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classTesseractOcr_ad7d20b699dec0f1939c58eb0cc952406}\label{classTesseractOcr_ad7d20b699dec0f1939c58eb0cc952406}} 
+\mbox{\hyperlink{classTesseractOcr_ad7d20b699dec0f1939c58eb0cc952406}{$\sim$\+Tesseract\+Ocr}} ()
+\begin{DoxyCompactList}\small\item\em Destroys the tesseract ocr instance. \end{DoxyCompactList}\item 
+Q\+String\+List \mbox{\hyperlink{classTesseractOcr_a7e5a1d3e275f710ce187bc1c0b080327}{extract}} () override
+\begin{DoxyCompactList}\small\item\em Extracts strings contained in the image. \end{DoxyCompactList}\item 
+Q\+String\+List \mbox{\hyperlink{classTesseractOcr_ad3486dcaa8a478c72ebaf76c43671326}{get\+Available\+Languages}} () const override
+\begin{DoxyCompactList}\small\item\em Returns all available languages that can be used to extract strings from image. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classTesseractOcr_aefe201ace3b144cb8834931b57f79bfd}{is\+Available\+Language}} (const Q\+String \&language) override
+\begin{DoxyCompactList}\small\item\em Returns true if the language received by parameter is available to be used in the recognition, otherwise, returns false. \end{DoxyCompactList}\item 
+tesseract\+::\+Page\+Seg\+Mode \mbox{\hyperlink{classTesseractOcr_afd6329838570d29a97834f3c91f0bb2c}{get\+Page\+Seg\+Mode}} () const
+\begin{DoxyCompactList}\small\item\em Returns the page segmentation mode configured to be used. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTesseractOcr_a16b1a94b0829a668e2f3ebc48c6e9e37}{set\+Page\+Seg\+Mode}} (tesseract\+::\+Page\+Seg\+Mode page\+Seg\+Mode)
+\begin{DoxyCompactList}\small\item\em Sets the page segmentation mode to be used in the extraction. \end{DoxyCompactList}\item 
+tesseract\+::\+Ocr\+Engine\+Mode \mbox{\hyperlink{classTesseractOcr_a911234ba57781e4e33515e2f0eab4320}{get\+Engine\+Mode}} () const
+\begin{DoxyCompactList}\small\item\em Returns the engine mode configured to be used. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classTesseractOcr_acd714224045f4808b732f865164e1e1a}{set\+Engine\+Mode}} (tesseract\+::\+Ocr\+Engine\+Mode engine\+Mode)
+\begin{DoxyCompactList}\small\item\em Sets the engine mode to be used in the extraction. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classTesseractOcr}{Tesseract\+Ocr}} \& \mbox{\hyperlink{classTesseractOcr_ae1327017072b55801ce9ebdbab956b6a}{operator=}} (const \mbox{\hyperlink{classTesseractOcr}{Tesseract\+Ocr}} \&other)
+\begin{DoxyCompactList}\small\item\em Assigns other to \mbox{\hyperlink{classTesseractOcr}{Tesseract\+Ocr}} and returns a reference to this \mbox{\hyperlink{classTesseractOcr}{Tesseract\+Ocr}} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+This is a tool to detect string on images using tesseract api (\href{https://github.com/tesseract-ocr/tesseract}{\tt https\+://github.\+com/tesseract-\/ocr/tesseract}). 
+
+Definition at line 21 of file tesseractocr.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTesseractOcr_a9e62c15a4f8e4c8a0a614cf04ec8dea6}\label{classTesseractOcr_a9e62c15a4f8e4c8a0a614cf04ec8dea6}} 
+\index{Tesseract\+Ocr@{Tesseract\+Ocr}!Tesseract\+Ocr@{Tesseract\+Ocr}}
+\index{Tesseract\+Ocr@{Tesseract\+Ocr}!Tesseract\+Ocr@{Tesseract\+Ocr}}
+\subsubsection{\texorpdfstring{Tesseract\+Ocr()}{TesseractOcr()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Tesseract\+Ocr\+::\+Tesseract\+Ocr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates an empty \mbox{\hyperlink{classTesseractOcr}{Tesseract\+Ocr}} instance. 
+
+Sets default values. 
+
+Definition at line 14 of file tesseractocr.\+cpp.
+
+\mbox{\Hypertarget{classTesseractOcr_ad550fd8468a1b1ee0b915c7202281dc7}\label{classTesseractOcr_ad550fd8468a1b1ee0b915c7202281dc7}} 
+\index{Tesseract\+Ocr@{Tesseract\+Ocr}!Tesseract\+Ocr@{Tesseract\+Ocr}}
+\index{Tesseract\+Ocr@{Tesseract\+Ocr}!Tesseract\+Ocr@{Tesseract\+Ocr}}
+\subsubsection{\texorpdfstring{Tesseract\+Ocr()}{TesseractOcr()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Tesseract\+Ocr\+::\+Tesseract\+Ocr (\begin{DoxyParamCaption}\item[{Q\+String}]{image,  }\item[{Q\+String}]{datapath = {\ttfamily QDir(\char`\"{}../tesseract/tessdata\char`\"{}).absolutePath()~+~\textquotesingle{}/\textquotesingle{}},  }\item[{tesseract\+::\+Ocr\+Engine\+Mode}]{engine\+Mode = {\ttfamily tesseract\+:\+:OEM\+\_\+TESSERACT\+\_\+LSTM\+\_\+COMBINED},  }\item[{tesseract\+::\+Page\+Seg\+Mode}]{page\+Seg\+Mode = {\ttfamily tesseract\+:\+:PSM\+\_\+AUTO} }\end{DoxyParamCaption})}
+
+
+
+Creates a \mbox{\hyperlink{classTesseractOcr}{Tesseract\+Ocr}} instante with the values received by parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em image} & Path of image where strings will be ectracted. \\
+\hline
+{\em datapath} & Folder path where data languages will be. \\
+\hline
+{\em engine\+Mode} & Engine mode wich will use tesseract. \\
+\hline
+{\em page\+Seg\+Mode} & Page segmentation mode will use tesseract. \\
+\hline
+\end{DoxyParams}
+$<$ Default language always \char`\"{}eng\char`\"{}.
+
+$<$ Necessary for the api to work. 
+
+Definition at line 19 of file tesseractocr.\+cpp.
+
+\mbox{\Hypertarget{classTesseractOcr_a8cac9f702b0eb765b522375d4aae08e9}\label{classTesseractOcr_a8cac9f702b0eb765b522375d4aae08e9}} 
+\index{Tesseract\+Ocr@{Tesseract\+Ocr}!Tesseract\+Ocr@{Tesseract\+Ocr}}
+\index{Tesseract\+Ocr@{Tesseract\+Ocr}!Tesseract\+Ocr@{Tesseract\+Ocr}}
+\subsubsection{\texorpdfstring{Tesseract\+Ocr()}{TesseractOcr()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Tesseract\+Ocr\+::\+Tesseract\+Ocr (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classTesseractOcr}{Tesseract\+Ocr}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Creates a copy from other \mbox{\hyperlink{classTesseractOcr}{Tesseract\+Ocr}} instance. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & \\
+\hline
+\end{DoxyParams}
+$<$ Necessary for the api to work. 
+
+Definition at line 35 of file tesseractocr.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classTesseractOcr_a7e5a1d3e275f710ce187bc1c0b080327}\label{classTesseractOcr_a7e5a1d3e275f710ce187bc1c0b080327}} 
+\index{Tesseract\+Ocr@{Tesseract\+Ocr}!extract@{extract}}
+\index{extract@{extract}!Tesseract\+Ocr@{Tesseract\+Ocr}}
+\subsubsection{\texorpdfstring{extract()}{extract()}}
+{\footnotesize\ttfamily Q\+String\+List Tesseract\+Ocr\+::extract (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Extracts strings contained in the image. 
+
+Returns a Q\+Strings\+List containing the strings detected in the image. \begin{DoxyReturn}{Returns}
+Strings list with strings extracted. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classOcr_a09a27b3a1f579c41ebda05f2a2cf4fed}{Ocr}}.
+
+
+
+Definition at line 53 of file tesseractocr.\+cpp.
+
+\mbox{\Hypertarget{classTesseractOcr_ad3486dcaa8a478c72ebaf76c43671326}\label{classTesseractOcr_ad3486dcaa8a478c72ebaf76c43671326}} 
+\index{Tesseract\+Ocr@{Tesseract\+Ocr}!get\+Available\+Languages@{get\+Available\+Languages}}
+\index{get\+Available\+Languages@{get\+Available\+Languages}!Tesseract\+Ocr@{Tesseract\+Ocr}}
+\subsubsection{\texorpdfstring{get\+Available\+Languages()}{getAvailableLanguages()}}
+{\footnotesize\ttfamily Q\+String\+List Tesseract\+Ocr\+::get\+Available\+Languages (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns all available languages that can be used to extract strings from image. 
+
+\begin{DoxyReturn}{Returns}
+List with all available languages. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classOcr_a1b0eed20f8e7f553401834849d044bd2}{Ocr}}.
+
+
+
+Definition at line 125 of file tesseractocr.\+cpp.
+
+\mbox{\Hypertarget{classTesseractOcr_a911234ba57781e4e33515e2f0eab4320}\label{classTesseractOcr_a911234ba57781e4e33515e2f0eab4320}} 
+\index{Tesseract\+Ocr@{Tesseract\+Ocr}!get\+Engine\+Mode@{get\+Engine\+Mode}}
+\index{get\+Engine\+Mode@{get\+Engine\+Mode}!Tesseract\+Ocr@{Tesseract\+Ocr}}
+\subsubsection{\texorpdfstring{get\+Engine\+Mode()}{getEngineMode()}}
+{\footnotesize\ttfamily tesseract\+::\+Ocr\+Engine\+Mode Tesseract\+Ocr\+::get\+Engine\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the engine mode configured to be used. 
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 159 of file tesseractocr.\+cpp.
+
+\mbox{\Hypertarget{classTesseractOcr_afd6329838570d29a97834f3c91f0bb2c}\label{classTesseractOcr_afd6329838570d29a97834f3c91f0bb2c}} 
+\index{Tesseract\+Ocr@{Tesseract\+Ocr}!get\+Page\+Seg\+Mode@{get\+Page\+Seg\+Mode}}
+\index{get\+Page\+Seg\+Mode@{get\+Page\+Seg\+Mode}!Tesseract\+Ocr@{Tesseract\+Ocr}}
+\subsubsection{\texorpdfstring{get\+Page\+Seg\+Mode()}{getPageSegMode()}}
+{\footnotesize\ttfamily tesseract\+::\+Page\+Seg\+Mode Tesseract\+Ocr\+::get\+Page\+Seg\+Mode (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the page segmentation mode configured to be used. 
+
+\begin{DoxyReturn}{Returns}
+Page segmentation mode. 
+\end{DoxyReturn}
+
+
+Definition at line 149 of file tesseractocr.\+cpp.
+
+\mbox{\Hypertarget{classTesseractOcr_aefe201ace3b144cb8834931b57f79bfd}\label{classTesseractOcr_aefe201ace3b144cb8834931b57f79bfd}} 
+\index{Tesseract\+Ocr@{Tesseract\+Ocr}!is\+Available\+Language@{is\+Available\+Language}}
+\index{is\+Available\+Language@{is\+Available\+Language}!Tesseract\+Ocr@{Tesseract\+Ocr}}
+\subsubsection{\texorpdfstring{is\+Available\+Language()}{isAvailableLanguage()}}
+{\footnotesize\ttfamily bool Tesseract\+Ocr\+::is\+Available\+Language (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{language }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns true if the language received by parameter is available to be used in the recognition, otherwise, returns false. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em language} & \mbox{\hyperlink{classString}{String}} language to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{classOcr_a0c9ebb9b531bdcd6789d4bf9cffb1d42}{Ocr}}.
+
+
+
+Definition at line 144 of file tesseractocr.\+cpp.
+
+\mbox{\Hypertarget{classTesseractOcr_ae1327017072b55801ce9ebdbab956b6a}\label{classTesseractOcr_ae1327017072b55801ce9ebdbab956b6a}} 
+\index{Tesseract\+Ocr@{Tesseract\+Ocr}!operator=@{operator=}}
+\index{operator=@{operator=}!Tesseract\+Ocr@{Tesseract\+Ocr}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classTesseractOcr}{Tesseract\+Ocr}} \& Tesseract\+Ocr\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classTesseractOcr}{Tesseract\+Ocr}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Assigns other to \mbox{\hyperlink{classTesseractOcr}{Tesseract\+Ocr}} and returns a reference to this \mbox{\hyperlink{classTesseractOcr}{Tesseract\+Ocr}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & \mbox{\hyperlink{classTesseractOcr}{Tesseract\+Ocr}} object to be copied. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to this \mbox{\hyperlink{classTesseractOcr}{Tesseract\+Ocr}} object. 
+\end{DoxyReturn}
+
+
+Definition at line 212 of file tesseractocr.\+cpp.
+
+\mbox{\Hypertarget{classTesseractOcr_acd714224045f4808b732f865164e1e1a}\label{classTesseractOcr_acd714224045f4808b732f865164e1e1a}} 
+\index{Tesseract\+Ocr@{Tesseract\+Ocr}!set\+Engine\+Mode@{set\+Engine\+Mode}}
+\index{set\+Engine\+Mode@{set\+Engine\+Mode}!Tesseract\+Ocr@{Tesseract\+Ocr}}
+\subsubsection{\texorpdfstring{set\+Engine\+Mode()}{setEngineMode()}}
+{\footnotesize\ttfamily void Tesseract\+Ocr\+::set\+Engine\+Mode (\begin{DoxyParamCaption}\item[{tesseract\+::\+Ocr\+Engine\+Mode}]{engine\+Mode }\end{DoxyParamCaption})}
+
+
+
+Sets the engine mode to be used in the extraction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em engine\+Mode} & Engine mode. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 164 of file tesseractocr.\+cpp.
+
+\mbox{\Hypertarget{classTesseractOcr_a16b1a94b0829a668e2f3ebc48c6e9e37}\label{classTesseractOcr_a16b1a94b0829a668e2f3ebc48c6e9e37}} 
+\index{Tesseract\+Ocr@{Tesseract\+Ocr}!set\+Page\+Seg\+Mode@{set\+Page\+Seg\+Mode}}
+\index{set\+Page\+Seg\+Mode@{set\+Page\+Seg\+Mode}!Tesseract\+Ocr@{Tesseract\+Ocr}}
+\subsubsection{\texorpdfstring{set\+Page\+Seg\+Mode()}{setPageSegMode()}}
+{\footnotesize\ttfamily void Tesseract\+Ocr\+::set\+Page\+Seg\+Mode (\begin{DoxyParamCaption}\item[{tesseract\+::\+Page\+Seg\+Mode}]{page\+Seg\+Mode }\end{DoxyParamCaption})}
+
+
+
+Sets the page segmentation mode to be used in the extraction. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em page\+Seg\+Mode} & Page segmentation mode. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 154 of file tesseractocr.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/optical\+\_\+character\+\_\+recognition/\mbox{\hyperlink{tesseractocr_8h}{tesseractocr.\+h}}\item 
+src/optical\+\_\+character\+\_\+recognition/\mbox{\hyperlink{tesseractocr_8cpp}{tesseractocr.\+cpp}}\end{DoxyCompactItemize}

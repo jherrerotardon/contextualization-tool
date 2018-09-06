@@ -1,0 +1,406 @@
+.TH "MySqlConnector" 3 "Thu Sep 6 2018" "Version 1.0" "Contextualization Tool" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MySqlConnector \- This is a class to access a MySQL database\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <mysqlconnector\&.h>\fP
+.PP
+Inherits \fBDatabaseConnectorAbstract\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMySqlConnector\fP ()"
+.br
+.RI "Creates an empty \fBMySqlConnector\fP\&. "
+.ti -1c
+.RI "\fBMySqlConnector\fP (const QString host, const QString user, const QString password, const QString database=QString())"
+.br
+.RI "Creates a \fBMySqlConnector\fP setting values received by argument\&. "
+.ti -1c
+.RI "QString \fBgetUser\fP ()"
+.br
+.RI "Returns a user name to access database\&. "
+.ti -1c
+.RI "void \fBsetUser\fP (const QString user)"
+.br
+.RI "Sets username to access database\&. "
+.ti -1c
+.RI "void \fBsetPassword\fP (const QString password)"
+.br
+.RI "Sets password to access database\&. "
+.ti -1c
+.RI "QString \fBgetDataBase\fP ()"
+.br
+.RI "Returns a data base name to access database\&. "
+.ti -1c
+.RI "void \fBsetDataBase\fP (const QString dataBase)"
+.br
+.RI "Sets data base to access database\&. "
+.ti -1c
+.RI "QList< \fBString\fP * > \fBgetAllStrings\fP () override"
+.br
+.ti -1c
+.RI "QList< \fBString\fP * > \fBgetStringsWithValue\fP (const QString &value, bool caseSensitive=true) override"
+.br
+.RI "Returns all strigns in database with the value received by argument\&. "
+.ti -1c
+.RI "QList< \fBString\fP * > \fBgetStringsWithApproximateValue\fP (const QString &value, bool caseSensitive=true) override"
+.br
+.RI "Returns all strigns in database with a similar value received by argument\&. "
+.ti -1c
+.RI "QList< \fBString\fP * > \fBgetStringWithId\fP (const QString &id, bool caseSensitive=true) override"
+.br
+.RI "Returns all strigns in database with the identifier received by argument\&. "
+.ti -1c
+.RI "QList< \fBString\fP * > \fBgetStringsWithState\fP (const QString state) override"
+.br
+.RI "Returns strings with state received by parameter\&. "
+.ti -1c
+.RI "bool \fBinsertString\fP (const \fBString\fP &string, const QString language) override"
+.br
+.RI "Inserts a new string in database\&. "
+.ti -1c
+.RI "int \fBinsertStrings\fP (const QList< \fBString\fP *> &strings, const QString language) override"
+.br
+.RI "Inserts a set of strings into the database\&. "
+.ti -1c
+.RI "int \fBremoveStringsWithValue\fP (const QString &value, bool caseSensitive=true) override"
+.br
+.RI "Removes from databse all strigns with the value received by argument\&. "
+.ti -1c
+.RI "int \fBremoveStringsWithId\fP (const QString &id, bool caseSensitive=true) override"
+.br
+.RI "Removes from databse the strign with the identifier received by argument\&. "
+.ti -1c
+.RI "QStringList \fBgetLanguages\fP () override"
+.br
+.RI "Returns all languages stored in database\&. "
+.ti -1c
+.RI "QStringList \fBgetLanguageIds\fP () override"
+.br
+.RI "Returns all language identifiers stored in database\&. "
+.ti -1c
+.RI "QString \fBgetKeyFromLanguage\fP (const QString language)"
+.br
+.RI "Returns the key of language received by parameter\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+This is a class to access a MySQL database\&. 
+.PP
+Definition at line 20 of file mysqlconnector\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "MySqlConnector::MySqlConnector (const QString host, const QString user, const QString password, const QString database = \fCQString()\fP)"
+
+.PP
+Creates a \fBMySqlConnector\fP setting values received by argument\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIuser\fP Username to access database\&. 
+.br
+\fIpassword\fP Password for the username\&. 
+.br
+\fIdatabase\fP Data base name\&. 
+.br
+\fItable\fP Table name\&. 
+.RE
+.PP
+
+.PP
+Definition at line 13 of file mysqlconnector\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "QList< \fBString\fP * > MySqlConnector::getAllStrings ()\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+
+.PP
+Implements \fBDatabaseConnectorAbstract\fP\&.
+.PP
+Definition at line 64 of file mysqlconnector\&.cpp\&.
+.SS "QString MySqlConnector::getDataBase ()"
+
+.PP
+Returns a data base name to access database\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+User name\&. 
+.RE
+.PP
+
+.PP
+Definition at line 54 of file mysqlconnector\&.cpp\&.
+.SS "QString MySqlConnector::getKeyFromLanguage (const QString language)"
+
+.PP
+Returns the key of language received by parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlanguage\fP Language to match key 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Language ID 
+.RE
+.PP
+
+.PP
+Definition at line 326 of file mysqlconnector\&.cpp\&.
+.SS "QStringList MySqlConnector::getLanguageIds ()\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Returns all language identifiers stored in database\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Languages used\&. 
+.RE
+.PP
+
+.PP
+Implements \fBDatabaseConnectorAbstract\fP\&.
+.PP
+Definition at line 308 of file mysqlconnector\&.cpp\&.
+.SS "QStringList MySqlConnector::getLanguages ()\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Returns all languages stored in database\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Languages used\&. 
+.RE
+.PP
+
+.PP
+Implements \fBDatabaseConnectorAbstract\fP\&.
+.PP
+Definition at line 290 of file mysqlconnector\&.cpp\&.
+.SS "QList< \fBString\fP * > MySqlConnector::getStringsWithApproximateValue (const QString & value, bool caseSensitive = \fCtrue\fP)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Returns all strigns in database with a similar value received by argument\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP \fBString\fP value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+List with strings\&. 
+.RE
+.PP
+If the value belongs to a string, the fwString is saved, otherwise relsease memory of fwString\&. If size of both strings is longer than MIN_LENGTH_FOR_APPROXIMATE and their size difference is less than MAX_LENGTH_DIFFERENCE, a value is considered valid if it is contained within the fwString value or vice versa\&. If size of any strings is less than MIN_LENGTH_FOR_APPROXIMATE, a value is considered valid only if it is equals than the value of fwString\&.
+.PP
+Implements \fBDatabaseConnectorAbstract\fP\&.
+.PP
+Definition at line 120 of file mysqlconnector\&.cpp\&.
+.SS "QList< \fBString\fP * > MySqlConnector::getStringsWithState (const QString state)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Returns strings with state received by parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstate\fP State to be found\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBString\fP list eith indicated state\&. 
+.RE
+.PP
+
+.PP
+Implements \fBDatabaseConnectorAbstract\fP\&.
+.PP
+Definition at line 185 of file mysqlconnector\&.cpp\&.
+.SS "QList< \fBString\fP * > MySqlConnector::getStringsWithValue (const QString & value, bool caseSensitive = \fCtrue\fP)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Returns all strigns in database with the value received by argument\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP \fBString\fP value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+List with strings\&. 
+.RE
+.PP
+
+.PP
+Implements \fBDatabaseConnectorAbstract\fP\&.
+.PP
+Definition at line 88 of file mysqlconnector\&.cpp\&.
+.SS "QList< \fBString\fP * > MySqlConnector::getStringWithId (const QString & id, bool caseSensitive = \fCtrue\fP)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Returns all strigns in database with the identifier received by argument\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP \fBString\fP identifier\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+List with strings\&. 
+.RE
+.PP
+
+.PP
+Implements \fBDatabaseConnectorAbstract\fP\&.
+.PP
+Definition at line 153 of file mysqlconnector\&.cpp\&.
+.SS "QString MySqlConnector::getUser ()"
+
+.PP
+Returns a user name to access database\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+User name\&. 
+.RE
+.PP
+
+.PP
+Definition at line 39 of file mysqlconnector\&.cpp\&.
+.SS "bool MySqlConnector::insertString (const \fBString\fP & string, const QString language)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Inserts a new string in database\&. Returns true if the insertion was succesfull, otherwise, returns false\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstring\fP \fBString\fP instance to be inserted\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Implements \fBDatabaseConnectorAbstract\fP\&.
+.PP
+Definition at line 212 of file mysqlconnector\&.cpp\&.
+.SS "int MySqlConnector::insertStrings (const QList< \fBString\fP *> & strings, const QString language)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Inserts a set of strings into the database\&. Returns the number of inserted stirngs\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstrings\fP List with strings to be added into databse\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Implements \fBDatabaseConnectorAbstract\fP\&.
+.PP
+Definition at line 233 of file mysqlconnector\&.cpp\&.
+.SS "int MySqlConnector::removeStringsWithId (const QString & id, bool caseSensitive = \fCtrue\fP)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Removes from databse the strign with the identifier received by argument\&. Returns the number of removed stirngs\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP \fBString\fP identifier\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Implements \fBDatabaseConnectorAbstract\fP\&.
+.PP
+Definition at line 267 of file mysqlconnector\&.cpp\&.
+.SS "int MySqlConnector::removeStringsWithValue (const QString & value, bool caseSensitive = \fCtrue\fP)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Removes from databse all strigns with the value received by argument\&. Returns the number of removed strings\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP \fBString\fP value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of removed strings 
+.RE
+.PP
+
+.PP
+Implements \fBDatabaseConnectorAbstract\fP\&.
+.PP
+Definition at line 244 of file mysqlconnector\&.cpp\&.
+.SS "void MySqlConnector::setDataBase (const QString dataBase)"
+
+.PP
+Sets data base to access database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIuser\fP User name\&. 
+.RE
+.PP
+
+.PP
+Definition at line 59 of file mysqlconnector\&.cpp\&.
+.SS "void MySqlConnector::setPassword (const QString password)"
+
+.PP
+Sets password to access database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIuser\fP Passwrod\&. 
+.RE
+.PP
+
+.PP
+Definition at line 49 of file mysqlconnector\&.cpp\&.
+.SS "void MySqlConnector::setUser (const QString user)"
+
+.PP
+Sets username to access database\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIuser\fP User name\&. 
+.RE
+.PP
+
+.PP
+Definition at line 44 of file mysqlconnector\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Contextualization Tool from the source code\&.

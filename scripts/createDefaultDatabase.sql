@@ -10,9 +10,9 @@ CREATE TABLE Language (
 CREATE TABLE String (
 	ID varchar(100) NOT NULL,
 	Value varchar(255) NOT NULL,
-	Description (255),
-	MaxLenght (50),
-	State (50),
+	Description varchar(255),
+	MaxLenght varchar(50),
+	State varchar(50),
 	LanguageID varchar(10),
 	PRIMARY KEY (ID),
 	FOREIGN KEY (LanguageID) REFERENCES Language(ID)

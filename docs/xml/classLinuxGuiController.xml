@@ -1,0 +1,206 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classLinuxGuiController" kind="class" language="C++" prot="public">
+    <compoundname>LinuxGuiController</compoundname>
+    <basecompoundref refid="classGuiController" prot="public" virt="non-virtual">GuiController</basecompoundref>
+    <includes refid="linuxguicontroller_8h" local="no">linuxguicontroller.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classLinuxGuiController_1a26b28a0d7854973830048c9087a3cdf1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>LinuxGuiController::LinuxGuiController</definition>
+        <argsstring>(QQuickWindow *view=Q_NULLPTR, QObject *parent=Q_NULLPTR)</argsstring>
+        <name>LinuxGuiController</name>
+        <param>
+          <type>QQuickWindow *</type>
+          <declname>view</declname>
+          <defval>Q_NULLPTR</defval>
+        </param>
+        <param>
+          <type>QObject *</type>
+          <declname>parent</declname>
+          <defval>Q_NULLPTR</defval>
+        </param>
+        <briefdescription>
+<para><ref refid="classLinuxGuiController" kindref="compound">LinuxGuiController</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>view</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>parent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/linuxguicontroller.h" line="25" column="1" bodyfile="src/contextualization/controller/linuxguicontroller.cpp" bodystart="13" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classLinuxGuiController_1a8242963a9c5f4b967902f8ee576294ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QString</type>
+        <definition>QString LinuxGuiController::takeCaptureArea</definition>
+        <argsstring>() override</argsstring>
+        <name>takeCaptureArea</name>
+        <reimplements refid="classContextualizationController_1a121919886590cd4955bbcc2d8b747b26">takeCaptureArea</reimplements>
+        <briefdescription>
+<para>Starts a process that allow user capture an area of the screen. </para>        </briefdescription>
+        <detaileddescription>
+<para>The user have to select the area to capture with the mouse. Return the path where the capture is stored or an empty QString if an error ocurred. <simplesect kind="return"><para>QString </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/linuxguicontroller.h" line="30" column="1" bodyfile="src/contextualization/controller/linuxguicontroller.cpp" bodystart="18" bodyend="33"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This is the controller class that works a linux GUI environment. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="64">
+        <label>GuiController</label>
+        <link refid="classGuiController"/>
+        <childnode refid="65" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="66">
+        <label>QObject</label>
+      </node>
+      <node id="65">
+        <label>ContextualizationController</label>
+        <link refid="classContextualizationController"/>
+        <childnode refid="66" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>LinuxGuiController</label>
+        <link refid="classLinuxGuiController"/>
+        <childnode refid="64" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="68">
+        <label>GuiController</label>
+        <link refid="classGuiController"/>
+        <childnode refid="69" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="70">
+        <label>QObject</label>
+      </node>
+      <node id="69">
+        <label>ContextualizationController</label>
+        <link refid="classContextualizationController"/>
+        <childnode refid="70" relation="public-inheritance">
+        </childnode>
+        <childnode refid="71" relation="usage">
+          <edgelabel>model_</edgelabel>
+        </childnode>
+      </node>
+      <node id="71">
+        <label>ContextualizationModel</label>
+        <link refid="classContextualizationModel"/>
+        <childnode refid="70" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="67">
+        <label>LinuxGuiController</label>
+        <link refid="classLinuxGuiController"/>
+        <childnode refid="68" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/contextualization/controller/linuxguicontroller.h" line="17" column="1" bodyfile="src/contextualization/controller/linuxguicontroller.h" bodystart="16" bodyend="31"/>
+    <listofallmembers>
+      <member refid="classContextualizationController_1abb80030963c4abd056a200fefbf8b4e9" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>addString</name></member>
+      <member refid="classContextualizationController_1a4af8f49a57b9d9a7daf5b51d45620ed6" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>addStrings</name></member>
+      <member refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdceda54d0f26a3c6d7f680f2bcbd383f1d9df" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>ByApproximateValue</name></member>
+      <member refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdcedab921b1883492c5a7511b20ec6a5f24f3" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>ByID</name></member>
+      <member refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdceda0e89844c93d199f9e314fc1a1ddae400" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>ByValue</name></member>
+      <member refid="classGuiController_1acf4e341b4f9b6c3c383c58531c494ecf" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>caseSensitive</name></member>
+      <member refid="classContextualizationController_1a2ac26ea74b41512a52f677ac6c8fa83f" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>caseSensitive_</name></member>
+      <member refid="classContextualizationController_1ae9896f11f9e129fa4ea9d482c18d8b82" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>CHUNK_HEIGHT</name></member>
+      <member refid="classContextualizationController_1a8e94ee12efc5fb6aba91341b4cc47a26" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>CHUNK_WIDTH</name></member>
+      <member refid="classContextualizationController_1af003f565ad5d3a45fb8b7e66a52487fa" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>clearImage</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fd" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>CodeError</name></member>
+      <member refid="classContextualizationController_1ad01707b9671cf54a78960d7fdfa25463" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>CONFIG_FOLDER</name></member>
+      <member refid="classContextualizationController_1a055cc7f78056ccc0d0a55023402a29ee" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>ContextualizationController</name></member>
+      <member refid="classContextualizationController_1ae6817457c7b00d17bb676a4989d59858" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>detectStringsOnImage</name></member>
+      <member refid="classContextualizationController_1a3d9769435b8558c75379938e3e78ca95" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>DONE_FP_FILE</name></member>
+      <member refid="classContextualizationController_1aaaea6627d8d88579150001d37916f618" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>englishFpFile_</name></member>
+      <member refid="classContextualizationController_1a43b14faa02f64178e6f18f94022447fa" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>eraseExistStrings</name></member>
+      <member refid="classContextualizationController_1a26fc3969db0e2217dc6994f819c78572" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>exportToJsonFile</name></member>
+      <member refid="classContextualizationController_1a4afb43a5914ef1c7e2a6bb9357cdd822" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>fastDetectStringsOnImage</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fdad866e236894ecf819409ebb4d44b7fd1" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>FileNotExists</name></member>
+      <member refid="classContextualizationController_1a627fba866e282e4e7dff813781ed88cb" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>filterStringsByState</name></member>
+      <member refid="classContextualizationController_1a5f94a4894e3a3c0920dc534346527fa0" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>findString</name></member>
+      <member refid="classContextualizationController_1a737d2562702b3b0da946e7b2f9fa336d" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>generateContextualization</name></member>
+      <member refid="classContextualizationController_1af142a8bbd561278c3423ccad3b40c910" prot="protected" virt="virtual"><scope>LinuxGuiController</scope><name>generateDoneFpFile</name></member>
+      <member refid="classContextualizationController_1ab3824ba2a20c6f4b511fb6169a4349da" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>getDateTime</name></member>
+      <member refid="classContextualizationController_1afd648aaf148c3db3fb5e3af88e6de2e5" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>getImageOfModel</name></member>
+      <member refid="classContextualizationController_1a5d60cf7ca2c78b74bb6a5ad5a5b04e9e" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>getParameterFromConfigFile</name></member>
+      <member refid="classContextualizationController_1a6c8aba56f5b97fc3042c6e5c8e04e124" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>getTableModel</name></member>
+      <member refid="classGuiController_1a853ee45214496ae1e59cd0139ecd1552" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>GuiController</name></member>
+      <member refid="classGuiController_1a10a671bf27008ab3e60e62b2106f8275" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>image</name></member>
+      <member refid="classGuiController_1a8e5b5cd2b34a4c86d2b95acd1359b86a" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>imageChanged</name></member>
+      <member refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4a5d1b78a6b1296da8bf43b62432d090c5" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>ImageNotExist</name></member>
+      <member refid="classContextualizationController_1a88ea18a10d1edd6cd15f41b6126e813e" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>IMAGES_FOLDER</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda705a292a89a7c137ed934a1ede90968a" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>ImportFileFormat</name></member>
+      <member refid="classContextualizationController_1ae2b31282f2258673757c77592f7ded00" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>importProjectFromJsonFile</name></member>
+      <member refid="classContextualizationController_1a7eaa7277a256b9dbf26573a651e442bf" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>isFwStringAlreadyExists</name></member>
+      <member refid="classContextualizationController_1a0d726ece69d0876729c1c801f9c25230" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>isValidState</name></member>
+      <member refid="classLinuxGuiController_1a26b28a0d7854973830048c9087a3cdf1" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>LinuxGuiController</name></member>
+      <member refid="classContextualizationController_1a3b3d997f77ec6cd8cfe7569b81c31d3f" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>loadConfig</name></member>
+      <member refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdced" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>MatchType</name></member>
+      <member refid="classContextualizationController_1a31b85e006b135987dd34ce6443cc9ad1" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>model_</name></member>
+      <member refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>ModelError</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fdac799a856f8460c5e6b100f08191b2d94" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>NoError</name></member>
+      <member refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4adba539af7fd279d01da3a2a1e91e40ca" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>NoImage</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fdac9ac40727cb32c37655f627ecd1450d4" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>NoImportFile</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda3da219148b52a6691d2dbcd9f40ed627" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>NoRemoteHost</name></member>
+      <member refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4a2e771e637c2e37c6b410a96c9f48adfd" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>NoStrings</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda5360679b825af2b3b97283fae1a9717a" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>NoValidIp</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda067a46ac62df6062561a10108b8e77a9" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>NullPointer</name></member>
+      <member refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4a6ccff3cdedbdcfcdfc1eb59c4b088d24" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>OkModel</name></member>
+      <member refid="classGuiController_1a9130c47e3ab1205ed9c5a12a8afa9ec3" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>onlyDoneStrings</name></member>
+      <member refid="classContextualizationController_1a8313b2b6332dd76f286e5f24a6329b02" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>onlyDoneStrings_</name></member>
+      <member refid="classContextualizationController_1a0ec0241ee096fa917e3ab7de448e5509" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>proccessAndStorage</name></member>
+      <member refid="classContextualizationController_1a97436fb5b350bcc6be500b0fe2ecc1b7" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>processExtractedStrings</name></member>
+      <member refid="classContextualizationController_1a33d73ba5d5ef0e4c7a47dbb85cea7a7e" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>PROJECTS_FOLDER</name></member>
+      <member refid="classContextualizationController_1ab0cd81ecd067cc0c6c475ce597d0f414" prot="protected" virt="virtual"><scope>LinuxGuiController</scope><name>refresh</name></member>
+      <member refid="classContextualizationController_1afdc03867fd96587139618c736c350ead" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>remoteHost_</name></member>
+      <member refid="classContextualizationController_1af9eb5f70f45cd3c501a8af97a4b280d4" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>removeAllStrings</name></member>
+      <member refid="classContextualizationController_1adedb36b408caff11f15632998e7b9413" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>removeString</name></member>
+      <member refid="classContextualizationController_1a0fb2ae8db12aba7888504f832bb63bd5" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>removeString</name></member>
+      <member refid="classContextualizationController_1a4cfa5ebd6d0e2c1843fe6073c02873f3" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>saveConfig</name></member>
+      <member refid="classContextualizationController_1a943a8703d6e67fa5a08b4b8d73697dfc" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>selectString</name></member>
+      <member refid="classContextualizationController_1a46ec193d423be47137f34d746145801f" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>sendContextualization</name></member>
+      <member refid="classContextualizationController_1afd1e07f8b9439ff36656bfc7163df892" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>setImage</name></member>
+      <member refid="classContextualizationController_1a6e92320baf8dbbf148bd3b3e97c5d332" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>setParameterInConfigFile</name></member>
+      <member refid="classContextualizationController_1a2bef3de188caf57cad70e47bcf7495d1" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>splitImage</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda7447fb0b9cf45b0adc6da65c65c34253" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>SshError</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda860490b2223e4e78d29a514fb51f6fc5" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>SshpassError</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda4a6ad284235290da632cd7b621ae53be" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>StringAlreadyExists</name></member>
+      <member refid="classGuiController_1a20613f0b5eb1d49e4006a82ca80f17c5" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>stringsListChanged</name></member>
+      <member refid="classGuiController_1a2ce97d522206f2adf3d38eb534f76d16" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>tableModel</name></member>
+      <member refid="classLinuxGuiController_1a8242963a9c5f4b967902f8ee576294ec" prot="public" virt="virtual"><scope>LinuxGuiController</scope><name>takeCaptureArea</name></member>
+      <member refid="classGuiController_1a916ef2ef2d8d7b9ac4e63ee746dcdaaa" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>unchangedProject</name></member>
+      <member refid="classContextualizationController_1a07888f57aa02355d2e0230d6a99f2251" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>username_</name></member>
+      <member refid="classContextualizationController_1a6b806979e0b4e5a3ce3af09230f66fef" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>validateModel</name></member>
+      <member refid="classContextualizationController_1a78b977fec84729a2f9b4cc4a3a57a42e" prot="protected" virt="non-virtual"><scope>LinuxGuiController</scope><name>validStates_</name></member>
+      <member refid="classGuiController_1ad588a1633d6df3e17673232bc8a548dd" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>view</name></member>
+      <member refid="classGuiController_1a3bcaea6fb5694216afc69c4eca13b711" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>viewChanged</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda841e3c0b31b4da700505de6d3b30dabe" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>WriteFile</name></member>
+      <member refid="classContextualizationController_1ae5b1fa3bf3a7b92c8454e8cd98558989" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>~ContextualizationController</name></member>
+      <member refid="classGuiController_1a5b3332300c60a28c1f97a28ef51bac43" prot="public" virt="non-virtual"><scope>LinuxGuiController</scope><name>~GuiController</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

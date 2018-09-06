@@ -1,0 +1,396 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classDatabaseConnectorAbstract" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>DatabaseConnectorAbstract</compoundname>
+    <derivedcompoundref refid="classFpFileConnector" prot="public" virt="non-virtual">FpFileConnector</derivedcompoundref>
+    <derivedcompoundref refid="classMySqlConnector" prot="public" virt="non-virtual">MySqlConnector</derivedcompoundref>
+    <includes refid="databaseconnectorabstract_8h" local="no">databaseconnectorabstract.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classDatabaseConnectorAbstract_1a1ab06cd87949b36d40d4a26d0fc22ff3" prot="protected" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int DatabaseConnectorAbstract::MIN_LENGTH_FOR_APPROXIMATE</definition>
+        <argsstring></argsstring>
+        <name>MIN_LENGTH_FOR_APPROXIMATE</name>
+        <briefdescription>
+<para>Minimun length for string to do an approximate find. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/databaseconnectorabstract.h" line="109" column="1" bodyfile="src/storage/databaseconnectorabstract.h" bodystart="109" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classDatabaseConnectorAbstract_1acb4ab89c1daae4bd7a252677fb87f66e" prot="protected" static="no" mutable="no">
+        <type>const int</type>
+        <definition>const int DatabaseConnectorAbstract::MAX_LENGTH_DIFFERENCE</definition>
+        <argsstring></argsstring>
+        <name>MAX_LENGTH_DIFFERENCE</name>
+        <briefdescription>
+<para>Greatest difference between value and string values found. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/databaseconnectorabstract.h" line="110" column="1" bodyfile="src/storage/databaseconnectorabstract.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classDatabaseConnectorAbstract_1a0a5f40156183723e5e01d5ab50418118" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>DatabaseConnectorAbstract::DatabaseConnectorAbstract</definition>
+        <argsstring>()</argsstring>
+        <name>DatabaseConnectorAbstract</name>
+        <briefdescription>
+<para>Creates an empty <ref refid="classDatabaseConnectorAbstract" kindref="compound">DatabaseConnectorAbstract</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/databaseconnectorabstract.h" line="25" column="1" bodyfile="src/storage/databaseconnectorabstract.cpp" bodystart="13" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classDatabaseConnectorAbstract_1aeb4347bc18b6bed9a9b6120f68c10e9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>QList&lt; <ref refid="classString" kindref="compound">String</ref> * &gt;</type>
+        <definition>virtual QList&lt;String *&gt; DatabaseConnectorAbstract::getAllStrings</definition>
+        <argsstring>()=0</argsstring>
+        <name>getAllStrings</name>
+        <reimplementedby refid="classFpFileConnector_1ad392db922a5e04a670b84fc616192eea">getAllStrings</reimplementedby>
+        <reimplementedby refid="classMySqlConnector_1ad6ff79c4049e3631800da97e8d7b7704">getAllStrings</reimplementedby>
+        <briefdescription>
+<para>Returns a list containing all strings in the dababase. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>List with strings. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/databaseconnectorabstract.h" line="31" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classDatabaseConnectorAbstract_1a1d33547045c5f8619f44290c932edb1b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>QList&lt; <ref refid="classString" kindref="compound">String</ref> * &gt;</type>
+        <definition>virtual QList&lt;String *&gt; DatabaseConnectorAbstract::getStringsWithValue</definition>
+        <argsstring>(const QString &amp;value, bool caseSensitive=true)=0</argsstring>
+        <name>getStringsWithValue</name>
+        <reimplementedby refid="classFpFileConnector_1a72a6ca5a5b8a44783d2ed990b111675b">getStringsWithValue</reimplementedby>
+        <reimplementedby refid="classMySqlConnector_1ae7440816a5bda9e63ea526656c4001f5">getStringsWithValue</reimplementedby>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>caseSensitive</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Returns all strigns in database with the value received by argument. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> value. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>List with strings. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/databaseconnectorabstract.h" line="38" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classDatabaseConnectorAbstract_1a5b0f30372ca105a94073267e969b74ee" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>QList&lt; <ref refid="classString" kindref="compound">String</ref> * &gt;</type>
+        <definition>virtual QList&lt;String *&gt; DatabaseConnectorAbstract::getStringsWithApproximateValue</definition>
+        <argsstring>(const QString &amp;value, bool caseSensitive=true)=0</argsstring>
+        <name>getStringsWithApproximateValue</name>
+        <reimplementedby refid="classFpFileConnector_1adc85e526e1dab9f3de03cb8a2f33f7d1">getStringsWithApproximateValue</reimplementedby>
+        <reimplementedby refid="classMySqlConnector_1a8a480141c72dc8da687b15f921ab1a4e">getStringsWithApproximateValue</reimplementedby>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>caseSensitive</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Returns all strigns in database with a similar value received by argument. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> value. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>List with strings. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/databaseconnectorabstract.h" line="45" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classDatabaseConnectorAbstract_1a757f25feaf50af012d25db8f27b1fef4" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>QList&lt; <ref refid="classString" kindref="compound">String</ref> * &gt;</type>
+        <definition>virtual QList&lt;String *&gt; DatabaseConnectorAbstract::getStringWithId</definition>
+        <argsstring>(const QString &amp;id, bool caseSensitive=true)=0</argsstring>
+        <name>getStringWithId</name>
+        <reimplementedby refid="classFpFileConnector_1a29a6df6ea88a1e44f6b04c600b45925c">getStringWithId</reimplementedby>
+        <reimplementedby refid="classMySqlConnector_1a269bbced50451ff0ce48cfc4f2bb6a3b">getStringWithId</reimplementedby>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>caseSensitive</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Returns all strigns in database with the identifier received by argument. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> identifier. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>List with strings. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/databaseconnectorabstract.h" line="52" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classDatabaseConnectorAbstract_1a74952c7e14c891e33c84995066003c5a" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>QList&lt; <ref refid="classString" kindref="compound">String</ref> * &gt;</type>
+        <definition>virtual QList&lt;String *&gt; DatabaseConnectorAbstract::getStringsWithState</definition>
+        <argsstring>(const QString state)=0</argsstring>
+        <name>getStringsWithState</name>
+        <reimplementedby refid="classFpFileConnector_1a4c671329fd2fd1b9c3a7d72de1028afd">getStringsWithState</reimplementedby>
+        <reimplementedby refid="classMySqlConnector_1a821c3dcebcd763df1700881cb47685d5">getStringsWithState</reimplementedby>
+        <param>
+          <type>const QString</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+<para>Returns strings with state received by parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>State to be found. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classString" kindref="compound">String</ref> list eith indicated state. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/databaseconnectorabstract.h" line="59" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classDatabaseConnectorAbstract_1ac7cc5cf2deace9652810001722758206" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool DatabaseConnectorAbstract::insertString</definition>
+        <argsstring>(const String &amp;string, const QString language)=0</argsstring>
+        <name>insertString</name>
+        <reimplementedby refid="classFpFileConnector_1ae4f79d6a1281a20702b0257de56822b2">insertString</reimplementedby>
+        <reimplementedby refid="classMySqlConnector_1a4608c0764241969454a55b42873cb86b">insertString</reimplementedby>
+        <param>
+          <type>const <ref refid="classString" kindref="compound">String</ref> &amp;</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type>const QString</type>
+          <declname>language</declname>
+        </param>
+        <briefdescription>
+<para>Inserts a new string in database. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns true if the insertion was succesfull, otherwise, returns false. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> instance to be inserted. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/databaseconnectorabstract.h" line="67" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classDatabaseConnectorAbstract_1a0e8c94cf0b38c797d6feef864a23347b" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int DatabaseConnectorAbstract::insertStrings</definition>
+        <argsstring>(const QList&lt; String *&gt; &amp;strings, const QString language)=0</argsstring>
+        <name>insertStrings</name>
+        <reimplementedby refid="classFpFileConnector_1a7f31d3e699ce4c489c2303370d032a7e">insertStrings</reimplementedby>
+        <reimplementedby refid="classMySqlConnector_1a77a5169dd8a515b613642c88dac9798b">insertStrings</reimplementedby>
+        <param>
+          <type>const QList&lt; <ref refid="classString" kindref="compound">String</ref> *&gt; &amp;</type>
+          <declname>strings</declname>
+        </param>
+        <param>
+          <type>const QString</type>
+          <declname>language</declname>
+        </param>
+        <briefdescription>
+<para>Inserts a set of strings into the database. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns the number of inserted stirngs. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>strings</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List with strings to be added into databse. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/databaseconnectorabstract.h" line="76" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classDatabaseConnectorAbstract_1af482c0b4af4488c5897c04d0c4dff906" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int DatabaseConnectorAbstract::removeStringsWithValue</definition>
+        <argsstring>(const QString &amp;value, bool caseSensitive=true)=0</argsstring>
+        <name>removeStringsWithValue</name>
+        <reimplementedby refid="classFpFileConnector_1a57c6eafd6b4c7dfbd927f6d4cb63d25c">removeStringsWithValue</reimplementedby>
+        <reimplementedby refid="classMySqlConnector_1a528aac591ea56ade27a096bb997abb2a">removeStringsWithValue</reimplementedby>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>caseSensitive</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Removes from databse all strigns with the value received by argument. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns the number of removed strings. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> value. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Number of removed strings </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/databaseconnectorabstract.h" line="85" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classDatabaseConnectorAbstract_1a8c2b0fa4e37d16c1b1ea1cafec166ca0" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>int</type>
+        <definition>virtual int DatabaseConnectorAbstract::removeStringsWithId</definition>
+        <argsstring>(const QString &amp;id, bool caseSensitive=true)=0</argsstring>
+        <name>removeStringsWithId</name>
+        <reimplementedby refid="classFpFileConnector_1a8e09804b3c21f6b56dcc70659bbf105f">removeStringsWithId</reimplementedby>
+        <reimplementedby refid="classMySqlConnector_1a3c340e5310c56410d64ecd89e5cf6661">removeStringsWithId</reimplementedby>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>caseSensitive</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Removes from databse the strign with the identifier received by argument. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns the number of removed stirngs. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> identifier. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/databaseconnectorabstract.h" line="94" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classDatabaseConnectorAbstract_1a77ff263d407366e54f3e8512c575ff5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>QStringList</type>
+        <definition>virtual QStringList DatabaseConnectorAbstract::getLanguages</definition>
+        <argsstring>()=0</argsstring>
+        <name>getLanguages</name>
+        <reimplementedby refid="classFpFileConnector_1a82b6ae6887737cfea3b982cb0874424e">getLanguages</reimplementedby>
+        <reimplementedby refid="classMySqlConnector_1a83be1a4d67e509b6604629660eb7c4a0">getLanguages</reimplementedby>
+        <briefdescription>
+<para>Returns all languages stored in database. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Languages used. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/databaseconnectorabstract.h" line="100" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classDatabaseConnectorAbstract_1a98f5b2472bab6edc82ce2c5554319d7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>QStringList</type>
+        <definition>virtual QStringList DatabaseConnectorAbstract::getLanguageIds</definition>
+        <argsstring>()=0</argsstring>
+        <name>getLanguageIds</name>
+        <reimplementedby refid="classFpFileConnector_1a290016844ec3093b1c58db33fc86cd0a">getLanguageIds</reimplementedby>
+        <reimplementedby refid="classMySqlConnector_1a3493828360c7edd217461e040fc1b00e">getLanguageIds</reimplementedby>
+        <briefdescription>
+<para>Returns all language identifiers stored in database. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Languages used. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/databaseconnectorabstract.h" line="106" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This is an interface to access a different data bases. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="27">
+        <label>DatabaseConnectorAbstract</label>
+        <link refid="classDatabaseConnectorAbstract"/>
+      </node>
+      <node id="28">
+        <label>FpFileConnector</label>
+        <link refid="classFpFileConnector"/>
+        <childnode refid="27" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>MySqlConnector</label>
+        <link refid="classMySqlConnector"/>
+        <childnode refid="27" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="src/storage/databaseconnectorabstract.h" line="19" column="1" bodyfile="src/storage/databaseconnectorabstract.h" bodystart="18" bodyend="111"/>
+    <listofallmembers>
+      <member refid="classDatabaseConnectorAbstract_1a0a5f40156183723e5e01d5ab50418118" prot="public" virt="non-virtual"><scope>DatabaseConnectorAbstract</scope><name>DatabaseConnectorAbstract</name></member>
+      <member refid="classDatabaseConnectorAbstract_1aeb4347bc18b6bed9a9b6120f68c10e9d" prot="public" virt="pure-virtual"><scope>DatabaseConnectorAbstract</scope><name>getAllStrings</name></member>
+      <member refid="classDatabaseConnectorAbstract_1a98f5b2472bab6edc82ce2c5554319d7f" prot="public" virt="pure-virtual"><scope>DatabaseConnectorAbstract</scope><name>getLanguageIds</name></member>
+      <member refid="classDatabaseConnectorAbstract_1a77ff263d407366e54f3e8512c575ff5e" prot="public" virt="pure-virtual"><scope>DatabaseConnectorAbstract</scope><name>getLanguages</name></member>
+      <member refid="classDatabaseConnectorAbstract_1a5b0f30372ca105a94073267e969b74ee" prot="public" virt="pure-virtual"><scope>DatabaseConnectorAbstract</scope><name>getStringsWithApproximateValue</name></member>
+      <member refid="classDatabaseConnectorAbstract_1a74952c7e14c891e33c84995066003c5a" prot="public" virt="pure-virtual"><scope>DatabaseConnectorAbstract</scope><name>getStringsWithState</name></member>
+      <member refid="classDatabaseConnectorAbstract_1a1d33547045c5f8619f44290c932edb1b" prot="public" virt="pure-virtual"><scope>DatabaseConnectorAbstract</scope><name>getStringsWithValue</name></member>
+      <member refid="classDatabaseConnectorAbstract_1a757f25feaf50af012d25db8f27b1fef4" prot="public" virt="pure-virtual"><scope>DatabaseConnectorAbstract</scope><name>getStringWithId</name></member>
+      <member refid="classDatabaseConnectorAbstract_1ac7cc5cf2deace9652810001722758206" prot="public" virt="pure-virtual"><scope>DatabaseConnectorAbstract</scope><name>insertString</name></member>
+      <member refid="classDatabaseConnectorAbstract_1a0e8c94cf0b38c797d6feef864a23347b" prot="public" virt="pure-virtual"><scope>DatabaseConnectorAbstract</scope><name>insertStrings</name></member>
+      <member refid="classDatabaseConnectorAbstract_1acb4ab89c1daae4bd7a252677fb87f66e" prot="protected" virt="non-virtual"><scope>DatabaseConnectorAbstract</scope><name>MAX_LENGTH_DIFFERENCE</name></member>
+      <member refid="classDatabaseConnectorAbstract_1a1ab06cd87949b36d40d4a26d0fc22ff3" prot="protected" virt="non-virtual"><scope>DatabaseConnectorAbstract</scope><name>MIN_LENGTH_FOR_APPROXIMATE</name></member>
+      <member refid="classDatabaseConnectorAbstract_1a8c2b0fa4e37d16c1b1ea1cafec166ca0" prot="public" virt="pure-virtual"><scope>DatabaseConnectorAbstract</scope><name>removeStringsWithId</name></member>
+      <member refid="classDatabaseConnectorAbstract_1af482c0b4af4488c5897c04d0c4dff906" prot="public" virt="pure-virtual"><scope>DatabaseConnectorAbstract</scope><name>removeStringsWithValue</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

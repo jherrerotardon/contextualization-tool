@@ -1,0 +1,390 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="linuxguicontroller_8h" kind="file" language="C++">
+    <compoundname>linuxguicontroller.h</compoundname>
+    <includes refid="guicontroller_8h" local="yes">guicontroller.h</includes>
+    <includedby refid="hpcontextualizationfactory_8h" local="yes">src/tools/hpcontextualizationfactory.h</includedby>
+    <includedby refid="linuxguicontroller_8cpp" local="yes">src/contextualization/controller/linuxguicontroller.cpp</includedby>
+    <incdepgraph>
+      <node id="478">
+        <label>QFuture</label>
+      </node>
+      <node id="489">
+        <label>QMessageBox</label>
+      </node>
+      <node id="493">
+        <label>QDateTime</label>
+      </node>
+      <node id="466">
+        <label>QObject</label>
+      </node>
+      <node id="480">
+        <label>contextualization/model/contextualizationmodel.h</label>
+        <link refid="contextualizationmodel_8h"/>
+        <childnode refid="466" relation="include">
+        </childnode>
+        <childnode refid="467" relation="include">
+        </childnode>
+        <childnode refid="481" relation="include">
+        </childnode>
+        <childnode refid="471" relation="include">
+        </childnode>
+        <childnode refid="472" relation="include">
+        </childnode>
+        <childnode refid="473" relation="include">
+        </childnode>
+        <childnode refid="482" relation="include">
+        </childnode>
+        <childnode refid="484" relation="include">
+        </childnode>
+      </node>
+      <node id="470">
+        <label>QStandardPaths</label>
+      </node>
+      <node id="481">
+        <label>QList</label>
+      </node>
+      <node id="503">
+        <label>QtSql/QSqlDatabase</label>
+      </node>
+      <node id="461">
+        <label>QInputDialog</label>
+      </node>
+      <node id="492">
+        <label>QThread</label>
+      </node>
+      <node id="504">
+        <label>QtSql/QSqlQuery</label>
+      </node>
+      <node id="502">
+        <label>storage/mysqlconnector.h</label>
+        <link refid="mysqlconnector_8h"/>
+        <childnode refid="503" relation="include">
+        </childnode>
+        <childnode refid="504" relation="include">
+        </childnode>
+        <childnode refid="505" relation="include">
+        </childnode>
+        <childnode refid="482" relation="include">
+        </childnode>
+        <childnode refid="501" relation="include">
+        </childnode>
+      </node>
+      <node id="491">
+        <label>QProgressDialog</label>
+      </node>
+      <node id="477">
+        <label>QImage</label>
+      </node>
+      <node id="483">
+        <label>string.h</label>
+        <link refid="string_8h"/>
+        <childnode refid="467" relation="include">
+        </childnode>
+        <childnode refid="472" relation="include">
+        </childnode>
+        <childnode refid="473" relation="include">
+        </childnode>
+        <childnode refid="475" relation="include">
+        </childnode>
+        <childnode refid="484" relation="include">
+        </childnode>
+      </node>
+      <node id="459">
+        <label>src/contextualization/controller/linuxguicontroller.h</label>
+        <link refid="linuxguicontroller_8h"/>
+        <childnode refid="460" relation="include">
+        </childnode>
+      </node>
+      <node id="496">
+        <label>baseapi.h</label>
+      </node>
+      <node id="476">
+        <label>QRegularExpressionMatch</label>
+      </node>
+      <node id="474">
+        <label>QJsonArray</label>
+      </node>
+      <node id="488">
+        <label>tools/utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="471" relation="include">
+        </childnode>
+        <childnode refid="469" relation="include">
+        </childnode>
+        <childnode refid="489" relation="include">
+        </childnode>
+        <childnode refid="490" relation="include">
+        </childnode>
+        <childnode refid="491" relation="include">
+        </childnode>
+        <childnode refid="467" relation="include">
+        </childnode>
+        <childnode refid="492" relation="include">
+        </childnode>
+        <childnode refid="478" relation="include">
+        </childnode>
+        <childnode refid="479" relation="include">
+        </childnode>
+        <childnode refid="493" relation="include">
+        </childnode>
+      </node>
+      <node id="473">
+        <label>QJsonObject</label>
+      </node>
+      <node id="462">
+        <label>QFileDialog</label>
+      </node>
+      <node id="464">
+        <label>QQuickWindow</label>
+      </node>
+      <node id="463">
+        <label>QApplication</label>
+      </node>
+      <node id="495">
+        <label>leptonica/allheaders.h</label>
+      </node>
+      <node id="487">
+        <label>QDebug</label>
+      </node>
+      <node id="465">
+        <label>contextualization/controller/contextualizationcontroller.h</label>
+        <link refid="contextualizationcontroller_8h"/>
+        <childnode refid="466" relation="include">
+        </childnode>
+        <childnode refid="467" relation="include">
+        </childnode>
+        <childnode refid="468" relation="include">
+        </childnode>
+        <childnode refid="469" relation="include">
+        </childnode>
+        <childnode refid="470" relation="include">
+        </childnode>
+        <childnode refid="471" relation="include">
+        </childnode>
+        <childnode refid="472" relation="include">
+        </childnode>
+        <childnode refid="473" relation="include">
+        </childnode>
+        <childnode refid="474" relation="include">
+        </childnode>
+        <childnode refid="475" relation="include">
+        </childnode>
+        <childnode refid="476" relation="include">
+        </childnode>
+        <childnode refid="477" relation="include">
+        </childnode>
+        <childnode refid="478" relation="include">
+        </childnode>
+        <childnode refid="479" relation="include">
+        </childnode>
+        <childnode refid="480" relation="include">
+        </childnode>
+        <childnode refid="488" relation="include">
+        </childnode>
+        <childnode refid="484" relation="include">
+        </childnode>
+        <childnode refid="494" relation="include">
+        </childnode>
+        <childnode refid="500" relation="include">
+        </childnode>
+        <childnode refid="502" relation="include">
+        </childnode>
+      </node>
+      <node id="460">
+        <label>guicontroller.h</label>
+        <link refid="guicontroller_8h"/>
+        <childnode refid="461" relation="include">
+        </childnode>
+        <childnode refid="462" relation="include">
+        </childnode>
+        <childnode refid="463" relation="include">
+        </childnode>
+        <childnode refid="464" relation="include">
+        </childnode>
+        <childnode refid="465" relation="include">
+        </childnode>
+      </node>
+      <node id="479">
+        <label>QtConcurrent/QtConcurrent</label>
+      </node>
+      <node id="475">
+        <label>QRegularExpression</label>
+      </node>
+      <node id="486">
+        <label>QDate</label>
+      </node>
+      <node id="467">
+        <label>QString</label>
+      </node>
+      <node id="469">
+        <label>QFile</label>
+      </node>
+      <node id="501">
+        <label>databaseconnectorabstract.h</label>
+        <link refid="databaseconnectorabstract_8h"/>
+        <childnode refid="483" relation="include">
+        </childnode>
+        <childnode refid="484" relation="include">
+        </childnode>
+        <childnode refid="488" relation="include">
+        </childnode>
+      </node>
+      <node id="497">
+        <label>genericvector.h</label>
+      </node>
+      <node id="505">
+        <label>QtSql/QSqlError</label>
+      </node>
+      <node id="498">
+        <label>ocr.h</label>
+        <link refid="ocr_8h"/>
+        <childnode refid="467" relation="include">
+        </childnode>
+        <childnode refid="468" relation="include">
+        </childnode>
+        <childnode refid="471" relation="include">
+        </childnode>
+        <childnode refid="469" relation="include">
+        </childnode>
+        <childnode refid="499" relation="include">
+        </childnode>
+        <childnode refid="477" relation="include">
+        </childnode>
+        <childnode refid="475" relation="include">
+        </childnode>
+        <childnode refid="484" relation="include">
+        </childnode>
+      </node>
+      <node id="472">
+        <label>QJsonDocument</label>
+      </node>
+      <node id="490">
+        <label>QProcess</label>
+      </node>
+      <node id="494">
+        <label>optical_character_recognition/tesseractocr.h</label>
+        <link refid="tesseractocr_8h"/>
+        <childnode refid="495" relation="include">
+        </childnode>
+        <childnode refid="496" relation="include">
+        </childnode>
+        <childnode refid="497" relation="include">
+        </childnode>
+        <childnode refid="498" relation="include">
+        </childnode>
+        <childnode refid="488" relation="include">
+        </childnode>
+        <childnode refid="484" relation="include">
+        </childnode>
+      </node>
+      <node id="471">
+        <label>QDir</label>
+      </node>
+      <node id="485">
+        <label>QTextStream</label>
+      </node>
+      <node id="500">
+        <label>storage/fpfileconnector.h</label>
+        <link refid="fpfileconnector_8h"/>
+        <childnode refid="469" relation="include">
+        </childnode>
+        <childnode refid="499" relation="include">
+        </childnode>
+        <childnode refid="471" relation="include">
+        </childnode>
+        <childnode refid="501" relation="include">
+        </childnode>
+        <childnode refid="482" relation="include">
+        </childnode>
+        <childnode refid="488" relation="include">
+        </childnode>
+      </node>
+      <node id="468">
+        <label>QStringList</label>
+      </node>
+      <node id="499">
+        <label>QFileInfo</label>
+      </node>
+      <node id="482">
+        <label>firmwarestring.h</label>
+        <link refid="firmwarestring_8h"/>
+        <childnode refid="483" relation="include">
+        </childnode>
+      </node>
+      <node id="484">
+        <label>tools/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="467" relation="include">
+        </childnode>
+        <childnode refid="469" relation="include">
+        </childnode>
+        <childnode refid="485" relation="include">
+        </childnode>
+        <childnode refid="486" relation="include">
+        </childnode>
+        <childnode refid="470" relation="include">
+        </childnode>
+        <childnode refid="487" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="510">
+        <label>src/contextualization/controller/linuxguicontroller.cpp</label>
+        <link refid="linuxguicontroller_8cpp"/>
+      </node>
+      <node id="508">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="506">
+        <label>src/contextualization/controller/linuxguicontroller.h</label>
+        <link refid="linuxguicontroller_8h"/>
+        <childnode refid="507" relation="include">
+        </childnode>
+        <childnode refid="510" relation="include">
+        </childnode>
+      </node>
+      <node id="507">
+        <label>src/tools/hpcontextualizationfactory.h</label>
+        <link refid="hpcontextualizationfactory_8h"/>
+        <childnode refid="508" relation="include">
+        </childnode>
+        <childnode refid="509" relation="include">
+        </childnode>
+      </node>
+      <node id="509">
+        <label>src/tools/hpcontextualizationfactory.cpp</label>
+        <link refid="hpcontextualizationfactory_8cpp"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classLinuxGuiController" prot="public">LinuxGuiController</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Jorge Herrero Tardón (<ulink url="mailto:jorgeht@usal.es">jorgeht@usal.es</ulink>) </para></simplesect>
+<simplesect kind="date"><para>20/02/2018 </para></simplesect>
+<simplesect kind="version"><para>1.0 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="11"><highlight class="preprocessor">#ifndef<sp/>LINUXGUICONTROLLER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>LINUXGUICONTROLLER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="guicontroller_8h" kindref="compound">guicontroller.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="classLinuxGuiController" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classLinuxGuiController" kindref="compound">LinuxGuiController</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classGuiController" kindref="compound">GuiController</ref></highlight></codeline>
+<codeline lineno="17"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classLinuxGuiController_1a26b28a0d7854973830048c9087a3cdf1" kindref="member">LinuxGuiController</ref>(QQuickWindow<sp/>*view<sp/>=<sp/>Q_NULLPTR,<sp/>QObject<sp/>*parent<sp/>=<sp/>Q_NULLPTR);</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/><ref refid="classLinuxGuiController_1a8242963a9c5f4b967902f8ee576294ec" kindref="member">takeCaptureArea</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>LINUXGUICONTROLLER_H</highlight></codeline>
+    </programlisting>
+    <location file="src/contextualization/controller/linuxguicontroller.h"/>
+  </compounddef>
+</doxygen>

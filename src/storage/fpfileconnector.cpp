@@ -196,8 +196,47 @@ QList<String *> FpFileConnector::getStringWithId(const QString &id, bool caseSen
     return out;
 }
 
-bool FpFileConnector::insertString(const String &string)
+QList<String *> FpFileConnector::getStringsWithState(const QString state)
 {
+    QString line;
+    QList<String *> out;
+    FirmwareString *fwString;
+
+    // Begin read file.
+    if (!file_.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        Log::writeError(QString(Q_FUNC_INFO) + "  Fail to open file: " + file_.fileName());
+
+        return out;
+    }
+
+    QTextStream in(&file_);
+
+    while (!in.atEnd()) {
+        line = in.readLine();
+        if (line.startsWith('#')) { // It is a comment line.
+            continue;
+        }
+
+        fwString = FirmwareString::fromFpLine(line);
+        if (fwString) {
+            // If the state mathes with the string, the fwString is saved, otherwise relsease memory of fwString.
+            if (state.compare(fwString->getId(), Qt::CaseSensitive) == 0) {
+                out << fwString;
+            } else {
+                delete fwString;
+            }
+        }
+    }
+
+    file_.close();
+
+    return out;
+}
+
+bool FpFileConnector::insertString(const String &string, const QString language)
+{
+    Q_UNUSED(language);
+
     if (getStringWithId(string.getId(), true).size() > 0) {
         Log::writeError(QString(Q_FUNC_INFO) + " Try to add string in " + file_.fileName() +
                         " but ID already exists: " + string.toFpFileFormat());
@@ -214,8 +253,10 @@ bool FpFileConnector::insertString(const String &string)
     return false;
 }
 
-int FpFileConnector::insertStrings(const QList<String *> &strings)
+int FpFileConnector::insertStrings(const QList<String *> &strings, const QString language)
 {
+    Q_UNUSED(language);
+
     int count = 0;
 
     foreach (String *string, strings) {

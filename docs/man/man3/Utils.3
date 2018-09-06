@@ -1,0 +1,433 @@
+.TH "Utils" 3 "Thu Sep 6 2018" "Version 1.0" "Contextualization Tool" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Utils \- This is static class with a lot of different utilities\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <utils\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBTextModifier\fP { \fBFG_BLACK\fP = 30, \fBFG_RED\fP = 31, \fBFG_GREEN\fP = 32, \fBFG_YELLOW\fP = 33, \fBFG_BLUE\fP = 34, \fBFG_MAGENTA\fP = 35, \fBFG_CYAN\fP = 36, \fBFG_WHITE\fP = 37, \fBBG_BLACK\fP = 40, \fBBG_RED\fP = 41, \fBBG_GREEN\fP = 42, \fBBG_YELLOW\fP = 43, \fBBG_BLUE\fP = 44, \fBBG_MAGENTA\fP = 45, \fBBG_CYAN\fP = 46, \fBBG_WHITE\fP = 47, \fBRESET\fP = 0, \fBBOLD\fP = 1, \fBUNDERLNE\fP = 4, \fBINVERSE\fP = 7, \fBBOLD_OFF\fP = 21, \fBUNDERLINE_OFF\fP = 24, \fBINVERSE_OFF\fP = 27 }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBUtils\fP ()"
+.br
+.RI "Creates an empty \fBUtils\fP object\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBerrorMessage\fP (const QString &text, const QString &informativeText)"
+.br
+.RI "Creates a dialog and displayed it as a modal dialog\&. The dialog shown is an error dialog\&. "
+.ti -1c
+.RI "static int \fBwarningMessage\fP (const QString &text, const QString &informativeText)"
+.br
+.RI "Creates a dialog and displayed it as a modal dialog\&. The dialog is a warning dialog\&. and only has to possible responses: Yes or No\&. "
+.ti -1c
+.RI "static void \fBinformativeMessage\fP (const QString &text, const QString &informativeText)"
+.br
+.RI "Creates a dialog and displayed it as a modal dialog\&. The dialog shown is an informative dialog\&. "
+.ti -1c
+.RI "static bool \fBappendFile\fP (const QString &path, const QString &text)"
+.br
+.RI "Appends a text on a file\&. "
+.ti -1c
+.RI "static bool \fBwriteFile\fP (const QString &path, const QString &text)"
+.br
+.RI "Write a text on a file\&. "
+.ti -1c
+.RI "static QByteArray \fBreadAllFile\fP (const QString &path)"
+.br
+.RI "Read completely the file received by parameter\&. "
+.ti -1c
+.RI "static int \fBexecuteProgram\fP (const QString &program, const QStringList &arguments=QStringList(), const QString &standardOutput=QProcess::nullDevice(), const QString &workingDirectory=QString(), const int timeout=\-1)"
+.br
+.RI "Executes binary program\&. "
+.ti -1c
+.RI "static QString \fBzipCompressDirectoryContents\fP (const QString &directory, const QString &zipDestination, const QString &zipName='compressed')"
+.br
+.RI "Compresses all files and folders in the directory received by argument\&. "
+.ti -1c
+.RI "static QFuture< void > \fBstartProgressDialogCounter\fP (QProgressDialog *dialog, bool *hasFinished, int timeout=40)"
+.br
+.RI "Simulates a progress on a QProgressDialog\&. "
+.ti -1c
+.RI "static bool \fBisValidIp\fP (const QString &ip)"
+.br
+.RI "Returns true if is a valid ip, otherwise returns false\&. "
+.ti -1c
+.RI "static QString \fBgetDateTime\fP (QString format='yyyy_MM_dd_hh_mm_ss')"
+.br
+.RI "Returns a current date time with the format received by parameter\&. "
+.ti -1c
+.RI "static QString \fBgetTmpDirectory\fP ()"
+.br
+.RI "Returns a temporal directory of system\&. "
+.ti -1c
+.RI "static QString \fBformatText\fP (const QString &text, QList< \fBTextModifier\fP > modifiers)"
+.br
+.RI "Returns a text applying mofifiers to be used in terminal\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+This is static class with a lot of different utilities\&. 
+.PP
+Definition at line 25 of file utils\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBUtils::TextModifier\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIFG_BLACK \fP\fP
+Black foreground\&. 
+.TP
+\fB\fIFG_RED \fP\fP
+Red foreground\&. 
+.TP
+\fB\fIFG_GREEN \fP\fP
+Green foreground\&. 
+.TP
+\fB\fIFG_YELLOW \fP\fP
+Yellow foreground\&. 
+.TP
+\fB\fIFG_BLUE \fP\fP
+Blue foreground\&. 
+.TP
+\fB\fIFG_MAGENTA \fP\fP
+Magenta foreground\&. 
+.TP
+\fB\fIFG_CYAN \fP\fP
+Cyan foreground\&. 
+.TP
+\fB\fIFG_WHITE \fP\fP
+White foreground\&. 
+.TP
+\fB\fIBG_BLACK \fP\fP
+Black background\&. 
+.TP
+\fB\fIBG_RED \fP\fP
+Red background\&. 
+.TP
+\fB\fIBG_GREEN \fP\fP
+Green background\&. 
+.TP
+\fB\fIBG_YELLOW \fP\fP
+Yellow background\&. 
+.TP
+\fB\fIBG_BLUE \fP\fP
+Blue background\&. 
+.TP
+\fB\fIBG_MAGENTA \fP\fP
+Magenta background\&. 
+.TP
+\fB\fIBG_CYAN \fP\fP
+Cyan background\&. 
+.TP
+\fB\fIBG_WHITE \fP\fP
+White background\&. 
+.TP
+\fB\fIRESET \fP\fP
+Reset all\&. 
+.TP
+\fB\fIBOLD \fP\fP
+Bold text\&. 
+.TP
+\fB\fIUNDERLNE \fP\fP
+Underline text\&. 
+.TP
+\fB\fIINVERSE \fP\fP
+Inverse text\&. 
+.TP
+\fB\fIBOLD_OFF \fP\fP
+Off bold text\&. 
+.TP
+\fB\fIUNDERLINE_OFF \fP\fP
+Off underline text\&. 
+.TP
+\fB\fIINVERSE_OFF \fP\fP
+Off inverse text\&. 
+.PP
+Definition at line 28 of file utils\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool Utils::appendFile (const QString & path, const QString & text)\fC [static]\fP"
+
+.PP
+Appends a text on a file\&. If the file exists is not overwritten\&. If the file does not exist is created\&. Returns true if the text is added succesfully, otherwise returns false\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP File where will append the text\&. 
+.br
+\fItext\fP Text to be appended on the file\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Definition at line 63 of file utils\&.cpp\&.
+.SS "void Utils::errorMessage (const QString & text, const QString & informativeText)\fC [static]\fP"
+
+.PP
+Creates a dialog and displayed it as a modal dialog\&. The dialog shown is an error dialog\&. The user only can accept the dialog\&.
+.PP
+The function is designed to display error messages to the user without the option of choosing anything\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP Message text to be displayed\&. 
+.br
+\fIinformativeText\fP Informative text that provides a fuller description for the message\&. 
+.RE
+.PP
+
+.PP
+Definition at line 18 of file utils\&.cpp\&.
+.SS "int Utils::executeProgram (const QString & program, const QStringList & arguments = \fCQStringList()\fP, const QString & standardOutput = \fCQProcess::nullDevice()\fP, const QString & workingDirectory = \fCQString()\fP, const int timeout = \fC\-1\fP)\fC [static]\fP"
+
+.PP
+Executes binary program\&. Returns the code error returned by the execution\&.
+.PP
+If an empty standard output file is received, standard output is not saved\&.
+.PP
+If an empty working directory is received, the process is executed in current directory\&.
+.PP
+A timeout equals to -1 indicates that process has not limit time\&.
+.PP
+Some known code errors: -> 255: binary file not found or can't be executed\&. -> -1: binary file crashed during the execution\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIprogram\fP Name of binary file\&. 
+.br
+\fIarguments\fP Arguments of the program\&. 
+.br
+\fIstandardOutput\fP File path where process standard output will be saved\&. 
+.br
+\fIworkDirectory\fP Directory where the program must work\&. 
+.br
+\fItimeout\fP Execution timeout of the program\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Code error of the execution 
+.RE
+.PP
+
+.PP
+Definition at line 105 of file utils\&.cpp\&.
+.SS "QString Utils::formatText (const QString & text, QList< \fBTextModifier\fP > modifiers)\fC [static]\fP"
+
+.PP
+Returns a text applying mofifiers to be used in terminal\&. This function use ANSI format, make sure your terminal accepts it\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP \fBString\fP to be formatted\&. 
+.br
+\fImodifiers\fP Modifiers to be applied 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+.RE
+.PP
+
+.PP
+Definition at line 187 of file utils\&.cpp\&.
+.SS "QString Utils::getDateTime (QString format = \fC'yyyy_MM_dd_hh_mm_ss'\fP)\fC [static]\fP"
+
+.PP
+Returns a current date time with the format received by parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP Format to returns the date time\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Date time\&. 
+.RE
+.PP
+
+.PP
+Definition at line 177 of file utils\&.cpp\&.
+.SS "QString Utils::getTmpDirectory ()\fC [static]\fP"
+
+.PP
+Returns a temporal directory of system\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Definition at line 182 of file utils\&.cpp\&.
+.SS "void Utils::informativeMessage (const QString & text, const QString & informativeText)\fC [static]\fP"
+
+.PP
+Creates a dialog and displayed it as a modal dialog\&. The dialog shown is an informative dialog\&. The user only can accept the dialog\&.
+.PP
+The function is designed to display informative messages to the user\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP Message text to be displayed\&. 
+.br
+\fIinformativeText\fP Informative text that provides a fuller description for the message\&. 
+.RE
+.PP
+
+.PP
+Definition at line 48 of file utils\&.cpp\&.
+.SS "bool Utils::isValidIp (const QString & ip)\fC [static]\fP"
+
+.PP
+Returns true if is a valid ip, otherwise returns false\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIip\fP Ip to be checked\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Definition at line 169 of file utils\&.cpp\&.
+.SS "QByteArray Utils::readAllFile (const QString & path)\fC [static]\fP"
+
+.PP
+Read completely the file received by parameter\&. Returns a QByteArray object with the data of the file or an empty QByteArray if something wrong\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP File to be read\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Data read from the file\&. 
+.RE
+.PP
+
+.PP
+Definition at line 90 of file utils\&.cpp\&.
+.SS "QFuture< void > Utils::startProgressDialogCounter (QProgressDialog * dialog, bool * hasFinished, int timeout = \fC40\fP)\fC [static]\fP"
+
+.PP
+Simulates a progress on a QProgressDialog\&. Counter only finish when hasFinished is true, otherwise progress count stop in 99%\&. As the counter is created in other thread, out of function you have to make sure that thread finished calling function QFuture::waitForFinished()\&. If you don't make sure of it, your program probably will finish unexpectedly with an error\&.
+.PP
+Returns a QFuture object for control the end of the thread\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdialog\fP Dialog where exec the counter\&. 
+.br
+\fIhasFinished\fP Flag to finish the counter\&. 
+.br
+\fItimeout\fP Time between each increase in the percentage of progress\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+QFuture object to know when the thread has finished\&. 
+.RE
+.PP
+
+.PP
+Definition at line 145 of file utils\&.cpp\&.
+.SS "int Utils::warningMessage (const QString & text, const QString & informativeText)\fC [static]\fP"
+
+.PP
+Creates a dialog and displayed it as a modal dialog\&. The dialog is a warning dialog\&. and only has to possible responses: Yes or No\&. The dialog has only two buttons (Yes and No), which are the two possible options that the user can select\&. Returns the option selected by the user\&.
+.PP
+The function is designed to display warning messages to the user and whether he wants to take the risks\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fItext\fP Message text to be displayed\&. 
+.br
+\fIinformativeText\fP Informative text that provides a fuller description for the message\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+User responser\&. 
+.RE
+.PP
+
+.PP
+Definition at line 33 of file utils\&.cpp\&.
+.SS "bool Utils::writeFile (const QString & path, const QString & text)\fC [static]\fP"
+
+.PP
+Write a text on a file\&. If the file exists is overwritten\&. If the file does not exist is created\&. Returns true if the text is written succesfully, otherwise returns false\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP File where will write the text\&. 
+.br
+\fItext\fP Text to be wroten on the file\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Definition at line 76 of file utils\&.cpp\&.
+.SS "QString Utils::zipCompressDirectoryContents (const QString & directory, const QString & zipDestination, const QString & zipName = \fC'compressed'\fP)\fC [static]\fP"
+
+.PP
+Compresses all files and folders in the directory received by argument\&. If compressing was succesfull, returns the absolute path of the zip file\&. Otherwise returns an empty string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdirectory\fP Path of directory to be compressed\&. 
+.br
+\fIzipDestination\fP Path where de zip file will be saved\&. 
+.br
+\fIzipName\fP Name to be setted to the file\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Absolute path of the result zip file\&. 
+.RE
+.PP
+
+.PP
+Definition at line 131 of file utils\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Contextualization Tool from the source code\&.

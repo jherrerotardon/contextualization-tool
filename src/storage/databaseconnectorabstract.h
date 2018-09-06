@@ -52,13 +52,19 @@ public:
     virtual QList<String *> getStringWithId(const QString &id, bool caseSensitive = true) = 0;
 
     /**
+     * @brief Returns strings with state received by parameter.
+     * @param state State to be found.
+     * @return String list eith indicated state.
+     */
+    virtual QList<String *> getStringsWithState(const QString state) = 0;
+    /**
      * @brief Inserts a new string in database.
      *
      * Returns true if the insertion was succesfull, otherwise, returns false.
      * @param string String instance to be inserted.
      * @return bool
      */
-    virtual bool insertString(const String &string) = 0;
+    virtual bool insertString(const String &string, const QString language) = 0;
 
     /**
      * @brief Inserts a set of strings into the database.
@@ -67,7 +73,7 @@ public:
      * @param strings List with strings to be added into databse.
      * @return bool
      */
-    virtual int insertStrings(const QList<String *> &strings) = 0;
+    virtual int insertStrings(const QList<String *> &strings, const QString language) = 0;
 
     /**
      * @brief Removes from databse all strigns with the value received by argument.

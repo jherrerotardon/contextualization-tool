@@ -37,8 +37,7 @@ public:
         const QString host,
         const QString user,
         const QString password,
-        const QString database = QString(),
-        const QString tableName = QString()
+        const QString database = QString()
     );
 
     /**
@@ -72,18 +71,6 @@ public:
     void setDataBase(const QString dataBase);
 
     /**
-     * @brief Returns a table name to access database.
-     * @return User name.
-     */
-    QString getTableName();
-
-    /**
-     * @brief Sets table to access database.
-     * @param user User name.
-     */
-    void setTableName(const QString tableName);
-
-    /**
      * @copydoc DatabaseConnectorAbstract::getAllStrings(const QString &value)
      */
     QList<String *> getAllStrings() override;
@@ -104,14 +91,19 @@ public:
     QList<String *> getStringWithId(const QString &id, bool caseSensitive = true) override;
 
     /**
-     * @copydoc DatabaseConnectorAbstract::insertString(const String &string)
+     * @copydoc DatabaseConnectorAbstract::getStringsWithState(const QString state)
      */
-    bool insertString(const String &string) override;
+    QList<String *> getStringsWithState(const QString state) override;
 
     /**
-     * @copydoc DatabaseConnectorAbstract::insertStrings(const QList<String *> &strings)
+     * @copydoc DatabaseConnectorAbstract::insertString(const String &string, const QString language)
      */
-    int insertStrings(const QList<String *> &strings) override;
+    bool insertString(const String &string, const QString language) override;
+
+    /**
+     * @copydoc DatabaseConnectorAbstract::insertStrings(const QList<String *> &strings, const QString language)
+     */
+    int insertStrings(const QList<String *> &strings, const QString language) override;
 
     /**
      * @copydoc DatabaseConnectorAbstract::removeStringsWithValue(const QString &value, bool caseSensitive)
@@ -133,12 +125,18 @@ public:
      */
     QStringList getLanguageIds() override;
 
+    /**
+     * @brief Returns the key of language received by parameter
+     * @param language Language to match key
+     * @return Language ID
+     */
+    QString getKeyFromLanguage(const QString language);
+
 private:
     QString host_;
     QString user_;
     QString password_;
     QString dataBase_;
-    QString tableName_;
 
     /**
      * @brief Checks if user, password, dataBase or tableName is empty.

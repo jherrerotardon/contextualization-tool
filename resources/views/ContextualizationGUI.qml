@@ -16,6 +16,7 @@ ApplicationWindow {
     signal loadImageRequested(bool detectStringsOnLoad)
     signal detectStringsRequested()
     signal openRequested()
+    signal processFiles()
     signal saveRequested()
     signal saveAsRequested()
     signal fpFileConfigRequested()
@@ -139,7 +140,7 @@ ApplicationWindow {
 
             MenuItem {
                 text: "Process and storage"
-                //onTriggered: fpFileConfigRequested()
+                onTriggered: processFiles()
             }
         }
     }

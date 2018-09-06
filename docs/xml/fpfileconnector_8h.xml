@@ -1,0 +1,344 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="fpfileconnector_8h" kind="file" language="C++">
+    <compoundname>fpfileconnector.h</compoundname>
+    <includes local="no">QFile</includes>
+    <includes local="no">QFileInfo</includes>
+    <includes local="no">QDir</includes>
+    <includes refid="databaseconnectorabstract_8h" local="yes">databaseconnectorabstract.h</includes>
+    <includes refid="firmwarestring_8h" local="yes">contextualization/model/firmwarestring.h</includes>
+    <includes refid="utils_8h" local="yes">tools/utils.h</includes>
+    <includedby refid="contextualizationcontroller_8h" local="yes">src/contextualization/controller/contextualizationcontroller.h</includedby>
+    <incdepgraph>
+      <node id="1148">
+        <label>QFuture</label>
+      </node>
+      <node id="1144">
+        <label>QMessageBox</label>
+      </node>
+      <node id="1150">
+        <label>QDateTime</label>
+      </node>
+      <node id="1141">
+        <label>QStandardPaths</label>
+      </node>
+      <node id="1147">
+        <label>QThread</label>
+      </node>
+      <node id="1146">
+        <label>QProgressDialog</label>
+      </node>
+      <node id="1133">
+        <label>contextualization/model/string.h</label>
+        <link refid="string_8h"/>
+        <childnode refid="1134" relation="include">
+        </childnode>
+        <childnode refid="1135" relation="include">
+        </childnode>
+        <childnode refid="1136" relation="include">
+        </childnode>
+        <childnode refid="1137" relation="include">
+        </childnode>
+        <childnode refid="1138" relation="include">
+        </childnode>
+      </node>
+      <node id="1143">
+        <label>tools/utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="1131" relation="include">
+        </childnode>
+        <childnode refid="1129" relation="include">
+        </childnode>
+        <childnode refid="1144" relation="include">
+        </childnode>
+        <childnode refid="1145" relation="include">
+        </childnode>
+        <childnode refid="1146" relation="include">
+        </childnode>
+        <childnode refid="1134" relation="include">
+        </childnode>
+        <childnode refid="1147" relation="include">
+        </childnode>
+        <childnode refid="1148" relation="include">
+        </childnode>
+        <childnode refid="1149" relation="include">
+        </childnode>
+        <childnode refid="1150" relation="include">
+        </childnode>
+      </node>
+      <node id="1136">
+        <label>QJsonObject</label>
+      </node>
+      <node id="1142">
+        <label>QDebug</label>
+      </node>
+      <node id="1149">
+        <label>QtConcurrent/QtConcurrent</label>
+      </node>
+      <node id="1137">
+        <label>QRegularExpression</label>
+      </node>
+      <node id="1140">
+        <label>QDate</label>
+      </node>
+      <node id="1134">
+        <label>QString</label>
+      </node>
+      <node id="1129">
+        <label>QFile</label>
+      </node>
+      <node id="1132">
+        <label>databaseconnectorabstract.h</label>
+        <link refid="databaseconnectorabstract_8h"/>
+        <childnode refid="1133" relation="include">
+        </childnode>
+        <childnode refid="1138" relation="include">
+        </childnode>
+        <childnode refid="1143" relation="include">
+        </childnode>
+      </node>
+      <node id="1135">
+        <label>QJsonDocument</label>
+      </node>
+      <node id="1145">
+        <label>QProcess</label>
+      </node>
+      <node id="1131">
+        <label>QDir</label>
+      </node>
+      <node id="1139">
+        <label>QTextStream</label>
+      </node>
+      <node id="1128">
+        <label>src/storage/fpfileconnector.h</label>
+        <link refid="fpfileconnector_8h"/>
+        <childnode refid="1129" relation="include">
+        </childnode>
+        <childnode refid="1130" relation="include">
+        </childnode>
+        <childnode refid="1131" relation="include">
+        </childnode>
+        <childnode refid="1132" relation="include">
+        </childnode>
+        <childnode refid="1151" relation="include">
+        </childnode>
+        <childnode refid="1143" relation="include">
+        </childnode>
+      </node>
+      <node id="1130">
+        <label>QFileInfo</label>
+      </node>
+      <node id="1151">
+        <label>contextualization/model/firmwarestring.h</label>
+        <link refid="firmwarestring_8h"/>
+        <childnode refid="1133" relation="include">
+        </childnode>
+      </node>
+      <node id="1138">
+        <label>tools/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="1134" relation="include">
+        </childnode>
+        <childnode refid="1129" relation="include">
+        </childnode>
+        <childnode refid="1139" relation="include">
+        </childnode>
+        <childnode refid="1140" relation="include">
+        </childnode>
+        <childnode refid="1141" relation="include">
+        </childnode>
+        <childnode refid="1142" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1154">
+        <label>src/tools/contextualizationfactoryabstract.h</label>
+        <link refid="contextualizationfactoryabstract_8h"/>
+        <childnode refid="1155" relation="include">
+        </childnode>
+        <childnode refid="1158" relation="include">
+        </childnode>
+      </node>
+      <node id="1169">
+        <label>src/contextualization/controller/linuxguicontroller.cpp</label>
+        <link refid="linuxguicontroller_8cpp"/>
+      </node>
+      <node id="1158">
+        <label>src/tools/contextualizationfactoryabstract.cpp</label>
+        <link refid="contextualizationfactoryabstract_8cpp"/>
+      </node>
+      <node id="1167">
+        <label>src/contextualization/controller/guicontroller.cpp</label>
+        <link refid="guicontroller_8cpp"/>
+      </node>
+      <node id="1159">
+        <label>src/contextualization/controller/consolecontroller.h</label>
+        <link refid="consolecontroller_8h"/>
+        <childnode refid="1160" relation="include">
+        </childnode>
+        <childnode refid="1161" relation="include">
+        </childnode>
+        <childnode refid="1163" relation="include">
+        </childnode>
+      </node>
+      <node id="1164">
+        <label>src/contextualization/controller/windowsconsolecontroller.cpp</label>
+        <link refid="windowsconsolecontroller_8cpp"/>
+      </node>
+      <node id="1162">
+        <label>src/contextualization/controller/linuxconsolecontroller.cpp</label>
+        <link refid="linuxconsolecontroller_8cpp"/>
+      </node>
+      <node id="1165">
+        <label>src/contextualization/controller/contextualizationcontroller.cpp</label>
+        <link refid="contextualizationcontroller_8cpp"/>
+      </node>
+      <node id="1156">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="1168">
+        <label>src/contextualization/controller/linuxguicontroller.h</label>
+        <link refid="linuxguicontroller_8h"/>
+        <childnode refid="1155" relation="include">
+        </childnode>
+        <childnode refid="1169" relation="include">
+        </childnode>
+      </node>
+      <node id="1160">
+        <label>src/contextualization/controller/consolecontroller.cpp</label>
+        <link refid="consolecontroller_8cpp"/>
+      </node>
+      <node id="1161">
+        <label>src/contextualization/controller/linuxconsolecontroller.h</label>
+        <link refid="linuxconsolecontroller_8h"/>
+        <childnode refid="1155" relation="include">
+        </childnode>
+        <childnode refid="1162" relation="include">
+        </childnode>
+      </node>
+      <node id="1155">
+        <label>src/tools/hpcontextualizationfactory.h</label>
+        <link refid="hpcontextualizationfactory_8h"/>
+        <childnode refid="1156" relation="include">
+        </childnode>
+        <childnode refid="1157" relation="include">
+        </childnode>
+      </node>
+      <node id="1170">
+        <label>src/contextualization/controller/windowsguicontroller.h</label>
+        <link refid="windowsguicontroller_8h"/>
+        <childnode refid="1155" relation="include">
+        </childnode>
+        <childnode refid="1171" relation="include">
+        </childnode>
+      </node>
+      <node id="1171">
+        <label>src/contextualization/controller/windowsguicontroller.cpp</label>
+        <link refid="windowsguicontroller_8cpp"/>
+      </node>
+      <node id="1153">
+        <label>src/contextualization/controller/contextualizationcontroller.h</label>
+        <link refid="contextualizationcontroller_8h"/>
+        <childnode refid="1154" relation="include">
+        </childnode>
+        <childnode refid="1159" relation="include">
+        </childnode>
+        <childnode refid="1165" relation="include">
+        </childnode>
+        <childnode refid="1166" relation="include">
+        </childnode>
+      </node>
+      <node id="1166">
+        <label>src/contextualization/controller/guicontroller.h</label>
+        <link refid="guicontroller_8h"/>
+        <childnode refid="1167" relation="include">
+        </childnode>
+        <childnode refid="1168" relation="include">
+        </childnode>
+        <childnode refid="1170" relation="include">
+        </childnode>
+      </node>
+      <node id="1157">
+        <label>src/tools/hpcontextualizationfactory.cpp</label>
+        <link refid="hpcontextualizationfactory_8cpp"/>
+      </node>
+      <node id="1163">
+        <label>src/contextualization/controller/windowsconsolecontroller.h</label>
+        <link refid="windowsconsolecontroller_8h"/>
+        <childnode refid="1155" relation="include">
+        </childnode>
+        <childnode refid="1164" relation="include">
+        </childnode>
+      </node>
+      <node id="1152">
+        <label>src/storage/fpfileconnector.h</label>
+        <link refid="fpfileconnector_8h"/>
+        <childnode refid="1153" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classFpFileConnector" prot="public">FpFileConnector</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Jorge Herrero Tardón (<ulink url="mailto:jorgeht@usal.es">jorgeht@usal.es</ulink>) </para></simplesect>
+<simplesect kind="date"><para>20/02/2018 </para></simplesect>
+<simplesect kind="version"><para>1.0 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="11"><highlight class="preprocessor">#ifndef<sp/>FPFILECONNECTOR_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>FPFILECONNECTOR_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QFile&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QFileInfo&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QDir&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="databaseconnectorabstract_8h" kindref="compound">databaseconnectorabstract.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="firmwarestring_8h" kindref="compound">contextualization/model/firmwarestring.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="utils_8h" kindref="compound">tools/utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classFpFileConnector" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classFpFileConnector" kindref="compound">FpFileConnector</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classDatabaseConnectorAbstract" kindref="compound">DatabaseConnectorAbstract</ref></highlight></codeline>
+<codeline lineno="22"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classFpFileConnector_1a2e474f8746dd54729fe68c224ff24275" kindref="member">FpFileConnector</ref>();</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classFpFileConnector_1a2e474f8746dd54729fe68c224ff24275" kindref="member">FpFileConnector</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;path);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/><ref refid="classFpFileConnector_1af1a00dabd759abd0b59bf9e26edc73cf" kindref="member">getPath</ref>();</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classFpFileConnector_1a7a5c2987feae762ce359de702f5702e3" kindref="member">setPath</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;path);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>QList&lt;String<sp/>*&gt;<sp/><ref refid="classFpFileConnector_1ad392db922a5e04a670b84fc616192eea" kindref="member">getAllStrings</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/>QList&lt;String<sp/>*&gt;<sp/><ref refid="classFpFileConnector_1a72a6ca5a5b8a44783d2ed990b111675b" kindref="member">getStringsWithValue</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;value,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>caseSensitive<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>QList&lt;String<sp/>*&gt;<sp/><ref refid="classFpFileConnector_1adc85e526e1dab9f3de03cb8a2f33f7d1" kindref="member">getStringsWithApproximateValue</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;value,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>caseSensitive<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/>QList&lt;String<sp/>*&gt;<sp/><ref refid="classFpFileConnector_1a29a6df6ea88a1e44f6b04c600b45925c" kindref="member">getStringWithId</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>caseSensitive<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/>QList&lt;String<sp/>*&gt;<sp/><ref refid="classFpFileConnector_1a4c671329fd2fd1b9c3a7d72de1028afd" kindref="member">getStringsWithState</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>state)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classFpFileConnector_1ae4f79d6a1281a20702b0257de56822b2" kindref="member">insertString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classString" kindref="compound">String</ref><sp/>&amp;</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>language<sp/>=<sp/>QString())<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classFpFileConnector_1a7f31d3e699ce4c489c2303370d032a7e" kindref="member">insertStrings</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QList&lt;String<sp/>*&gt;<sp/>&amp;strings,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>language<sp/>=<sp/>QString())<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classFpFileConnector_1a57c6eafd6b4c7dfbd927f6d4cb63d25c" kindref="member">removeStringsWithValue</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;value,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>caseSensitive<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classFpFileConnector_1a8e09804b3c21f6b56dcc70659bbf105f" kindref="member">removeStringsWithId</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>caseSensitive<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/>QStringList<sp/><ref refid="classFpFileConnector_1a82b6ae6887737cfea3b982cb0874424e" kindref="member">getLanguages</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>QStringList<sp/><ref refid="classFpFileConnector_1a290016844ec3093b1c58db33fc86cd0a" kindref="member">getLanguageIds</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>QFile<sp/>file_;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="107"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>FPFILECONNECTOR_H</highlight></codeline>
+    </programlisting>
+    <location file="src/storage/fpfileconnector.h"/>
+  </compounddef>
+</doxygen>

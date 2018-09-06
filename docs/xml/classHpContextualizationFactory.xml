@@ -1,0 +1,100 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classHpContextualizationFactory" kind="class" language="C++" prot="public">
+    <compoundname>HpContextualizationFactory</compoundname>
+    <basecompoundref refid="classContextualizationFactoryAbstract" prot="public" virt="non-virtual">ContextualizationFactoryAbstract</basecompoundref>
+    <includes refid="hpcontextualizationfactory_8h" local="no">hpcontextualizationfactory.h</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classHpContextualizationFactory_1afee11305ab5203745cddd4a837542ea3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>HpContextualizationFactory::HpContextualizationFactory</definition>
+        <argsstring>()</argsstring>
+        <name>HpContextualizationFactory</name>
+        <briefdescription>
+<para>Creates an empty <ref refid="classHpContextualizationFactory" kindref="compound">HpContextualizationFactory</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/hpcontextualizationfactory.h" line="28" column="1" bodyfile="src/tools/hpcontextualizationfactory.cpp" bodystart="13" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classHpContextualizationFactory_1ad9d9c11a2827c8854c4cadbf38b4e7ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type><ref refid="classContextualizationController" kindref="compound">ContextualizationController</ref> *</type>
+        <definition>ContextualizationController * HpContextualizationFactory::createController</definition>
+        <argsstring>(char **params, int count) override</argsstring>
+        <name>createController</name>
+        <reimplements refid="classContextualizationFactoryAbstract_1a0898ad4d3a109c5767a1e596bf444e4a">createController</reimplements>
+        <param>
+          <type>char **</type>
+          <declname>params</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>count</declname>
+        </param>
+        <briefdescription>
+<para>Creates a new <ref refid="classContextualizationController" kindref="compound">ContextualizationController</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para>Creates one type of <ref refid="classContextualizationController" kindref="compound">ContextualizationController</ref> depending of received params and the operate system where de application is running. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>params</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array params. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>count</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of elements of params array. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Contextualization pointer. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/tools/hpcontextualizationfactory.h" line="39" column="1" bodyfile="src/tools/hpcontextualizationfactory.cpp" bodystart="18" bodyend="50"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This is a factory to create a concrete class of <ref refid="classContextualizationController" kindref="compound">ContextualizationController</ref> specific for HP company. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="51">
+        <label>ContextualizationFactoryAbstract</label>
+        <link refid="classContextualizationFactoryAbstract"/>
+      </node>
+      <node id="50">
+        <label>HpContextualizationFactory</label>
+        <link refid="classHpContextualizationFactory"/>
+        <childnode refid="51" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="53">
+        <label>ContextualizationFactoryAbstract</label>
+        <link refid="classContextualizationFactoryAbstract"/>
+      </node>
+      <node id="52">
+        <label>HpContextualizationFactory</label>
+        <link refid="classHpContextualizationFactory"/>
+        <childnode refid="53" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/tools/hpcontextualizationfactory.h" line="22" column="1" bodyfile="src/tools/hpcontextualizationfactory.h" bodystart="21" bodyend="40"/>
+    <listofallmembers>
+      <member refid="classContextualizationFactoryAbstract_1a5f3886dc42bb68d69c5ed39e204d982c" prot="public" virt="non-virtual"><scope>HpContextualizationFactory</scope><name>ContextualizationFactoryAbstract</name></member>
+      <member refid="classHpContextualizationFactory_1ad9d9c11a2827c8854c4cadbf38b4e7ca" prot="public" virt="virtual"><scope>HpContextualizationFactory</scope><name>createController</name></member>
+      <member refid="classContextualizationFactoryAbstract_1a2d7958c0f68ad388f832abcb7777397d" prot="protected" virt="non-virtual"><scope>HpContextualizationFactory</scope><name>getCurrentKernelType</name></member>
+      <member refid="classHpContextualizationFactory_1afee11305ab5203745cddd4a837542ea3" prot="public" virt="non-virtual"><scope>HpContextualizationFactory</scope><name>HpContextualizationFactory</name></member>
+      <member refid="classContextualizationFactoryAbstract_1a87cd3e6ea2f582fe98286a73d3b28f60" prot="public" virt="non-virtual"><scope>HpContextualizationFactory</scope><name>KernelType</name></member>
+      <member refid="classContextualizationFactoryAbstract_1a87cd3e6ea2f582fe98286a73d3b28f60a56199c6590dcbadbd8c5a6990b9d60c6" prot="public" virt="non-virtual"><scope>HpContextualizationFactory</scope><name>Linux</name></member>
+      <member refid="classContextualizationFactoryAbstract_1a87cd3e6ea2f582fe98286a73d3b28f60a2c390cbfc7fec0af425044b4e02cd9d2" prot="public" virt="non-virtual"><scope>HpContextualizationFactory</scope><name>Undefined</name></member>
+      <member refid="classContextualizationFactoryAbstract_1a87cd3e6ea2f582fe98286a73d3b28f60aab0da7f36843a565e9a7d689cb4f9c5c" prot="public" virt="non-virtual"><scope>HpContextualizationFactory</scope><name>Windows</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

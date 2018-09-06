@@ -102,6 +102,11 @@ private slots:
      * @copydoc ContextualizationController::newProject();
      */
     void newProject() override;
+    
+    /**
+     * @copydoc ContextualizationController::processFiles();
+     */
+    virtual void processFiles() override;
 
     /**
      * @brief Allows user select an area of image loaded where strings will be detected.

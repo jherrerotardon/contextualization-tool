@@ -1,0 +1,209 @@
+\hypertarget{classFirmwareString}{}\section{Firmware\+String Class Reference}
+\label{classFirmwareString}\index{Firmware\+String@{Firmware\+String}}
+
+
+This a representation of a Firmware \mbox{\hyperlink{classString}{String}} used in HP company.  
+
+
+
+
+{\ttfamily \#include $<$firmwarestring.\+h$>$}
+
+Inheritance diagram for Firmware\+String\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classFirmwareString}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classFirmwareString_a624ab9d3c534ffd9c99665d2462e73ac}{Firmware\+String}} ()
+\begin{DoxyCompactList}\small\item\em Constructs an empty string. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classFirmwareString_a3439d83bad2ac371123d26560f4f3716}{Firmware\+String}} (\mbox{\hyperlink{classFirmwareString}{Firmware\+String}} \&other)
+\begin{DoxyCompactList}\small\item\em Constructs a string replic from another received by parameter. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classFirmwareString_a29f14882ef2a8274cebb7d153f0ea85b}{Firmware\+String}} (const Q\+String \&id, const Q\+String \&value, const Q\+String \&description, const Q\+String \&max\+Length, const Q\+String \&state, const bool selected=false, const bool editable=false)
+\begin{DoxyCompactList}\small\item\em Constructs a firmware string with diferents value members received by parameter. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classFirmwareString}{Firmware\+String}} \& \mbox{\hyperlink{classFirmwareString_aa2fe115e019e6362ca1fb151097ffe88}{operator=}} (const \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} \&other)
+\begin{DoxyCompactList}\small\item\em Assigns other to firmware string and returns a reference to this firmware string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$ \mbox{\hyperlink{classFirmwareString_a94293dec7077d625c6b977f1f15bfd2d}{from\+Json}} (Q\+String \&json)
+\begin{DoxyCompactList}\small\item\em Returns a \mbox{\hyperlink{classString}{String}} initializated with the J\+S\+ON string json. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$ \mbox{\hyperlink{classFirmwareString_a90a6e343748d41c0a0ab9eb7e4fccaee}{from\+Json}} (Q\+Byte\+Array \&json)
+\begin{DoxyCompactList}\small\item\em Returns a \mbox{\hyperlink{classString}{String}} initializated with the \#\+Q\+Byte\+Array data json. \end{DoxyCompactList}\item 
+static \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$ \mbox{\hyperlink{classFirmwareString_a0fcfdf14bbecd7c2c4464574b9ce9d91}{from\+Fp\+Line}} (const Q\+String \&fp\+Line)
+\begin{DoxyCompactList}\small\item\em Converts a line of fp file in a \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} if is possible. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+This a representation of a Firmware \mbox{\hyperlink{classString}{String}} used in HP company. 
+
+Definition at line 16 of file firmwarestring.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classFirmwareString_a624ab9d3c534ffd9c99665d2462e73ac}\label{classFirmwareString_a624ab9d3c534ffd9c99665d2462e73ac}} 
+\index{Firmware\+String@{Firmware\+String}!Firmware\+String@{Firmware\+String}}
+\index{Firmware\+String@{Firmware\+String}!Firmware\+String@{Firmware\+String}}
+\subsubsection{\texorpdfstring{Firmware\+String()}{FirmwareString()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Firmware\+String\+::\+Firmware\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Constructs an empty string. 
+
+
+
+Definition at line 13 of file firmwarestring.\+cpp.
+
+\mbox{\Hypertarget{classFirmwareString_a3439d83bad2ac371123d26560f4f3716}\label{classFirmwareString_a3439d83bad2ac371123d26560f4f3716}} 
+\index{Firmware\+String@{Firmware\+String}!Firmware\+String@{Firmware\+String}}
+\index{Firmware\+String@{Firmware\+String}!Firmware\+String@{Firmware\+String}}
+\subsubsection{\texorpdfstring{Firmware\+String()}{FirmwareString()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Firmware\+String\+::\+Firmware\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classFirmwareString}{Firmware\+String}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Constructs a string replic from another received by parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & string to be duplicated. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 18 of file firmwarestring.\+cpp.
+
+\mbox{\Hypertarget{classFirmwareString_a29f14882ef2a8274cebb7d153f0ea85b}\label{classFirmwareString_a29f14882ef2a8274cebb7d153f0ea85b}} 
+\index{Firmware\+String@{Firmware\+String}!Firmware\+String@{Firmware\+String}}
+\index{Firmware\+String@{Firmware\+String}!Firmware\+String@{Firmware\+String}}
+\subsubsection{\texorpdfstring{Firmware\+String()}{FirmwareString()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Firmware\+String\+::\+Firmware\+String (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{id,  }\item[{const Q\+String \&}]{value,  }\item[{const Q\+String \&}]{description,  }\item[{const Q\+String \&}]{max\+Length,  }\item[{const Q\+String \&}]{state,  }\item[{const bool}]{selected = {\ttfamily false},  }\item[{const bool}]{editable = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Constructs a firmware string with diferents value members received by parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id} & Firmware string identifier. \\
+\hline
+{\em value} & Firmware string value. \\
+\hline
+{\em description} & Firmware string description. \\
+\hline
+{\em max\+Length} & Firmware string max\+Length. \\
+\hline
+{\em state} & Firmware string state. \\
+\hline
+{\em selected} & Firmware string selected. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 29 of file firmwarestring.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classFirmwareString_a0fcfdf14bbecd7c2c4464574b9ce9d91}\label{classFirmwareString_a0fcfdf14bbecd7c2c4464574b9ce9d91}} 
+\index{Firmware\+String@{Firmware\+String}!from\+Fp\+Line@{from\+Fp\+Line}}
+\index{from\+Fp\+Line@{from\+Fp\+Line}!Firmware\+String@{Firmware\+String}}
+\subsubsection{\texorpdfstring{from\+Fp\+Line()}{fromFpLine()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$ Firmware\+String\+::from\+Fp\+Line (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{fp\+Line }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Converts a line of fp file in a \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} if is possible. 
+
+Return null if there is a format error in the line. 
+\begin{DoxyParams}{Parameters}
+{\em line} & Contains string to fragment. \\
+\hline
+{\em line\+Number} & Contains the number of line on the file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$$\vert$null 
+\end{DoxyReturn}
+
+
+Definition at line 51 of file firmwarestring.\+cpp.
+
+\mbox{\Hypertarget{classFirmwareString_a94293dec7077d625c6b977f1f15bfd2d}\label{classFirmwareString_a94293dec7077d625c6b977f1f15bfd2d}} 
+\index{Firmware\+String@{Firmware\+String}!from\+Json@{from\+Json}}
+\index{from\+Json@{from\+Json}!Firmware\+String@{Firmware\+String}}
+\subsubsection{\texorpdfstring{from\+Json()}{fromJson()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$ Firmware\+String\+::from\+Json (\begin{DoxyParamCaption}\item[{Q\+String \&}]{json }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns a \mbox{\hyperlink{classString}{String}} initializated with the J\+S\+ON string json. 
+
+If the J\+S\+ON data received is not valid, return an empty model. 
+\begin{DoxyParams}{Parameters}
+{\em json} & \mbox{\hyperlink{classString}{String}} in J\+S\+ON format to be converted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classContextualizationModel}{Contextualization\+Model}} 
+\end{DoxyReturn}
+
+
+Definition at line 41 of file firmwarestring.\+cpp.
+
+\mbox{\Hypertarget{classFirmwareString_a90a6e343748d41c0a0ab9eb7e4fccaee}\label{classFirmwareString_a90a6e343748d41c0a0ab9eb7e4fccaee}} 
+\index{Firmware\+String@{Firmware\+String}!from\+Json@{from\+Json}}
+\index{from\+Json@{from\+Json}!Firmware\+String@{Firmware\+String}}
+\subsubsection{\texorpdfstring{from\+Json()}{fromJson()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$ Firmware\+String\+::from\+Json (\begin{DoxyParamCaption}\item[{Q\+Byte\+Array \&}]{json }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Returns a \mbox{\hyperlink{classString}{String}} initializated with the \#\+Q\+Byte\+Array data json. 
+
+If the J\+S\+ON data received is not valid, return an empty model. 
+\begin{DoxyParams}{Parameters}
+{\em json} & Q\+Byte\+Array in J\+S\+ON format to be converted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classString}{String}} 
+\end{DoxyReturn}
+
+
+Definition at line 46 of file firmwarestring.\+cpp.
+
+\mbox{\Hypertarget{classFirmwareString_aa2fe115e019e6362ca1fb151097ffe88}\label{classFirmwareString_aa2fe115e019e6362ca1fb151097ffe88}} 
+\index{Firmware\+String@{Firmware\+String}!operator=@{operator=}}
+\index{operator=@{operator=}!Firmware\+String@{Firmware\+String}}
+\subsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} \& Firmware\+String\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Assigns other to firmware string and returns a reference to this firmware string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & Model to be copied. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Reference to this firmware string. 
+\end{DoxyReturn}
+
+
+Definition at line 119 of file firmwarestring.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/contextualization/model/\mbox{\hyperlink{firmwarestring_8h}{firmwarestring.\+h}}\item 
+src/contextualization/model/\mbox{\hyperlink{firmwarestring_8cpp}{firmwarestring.\+cpp}}\end{DoxyCompactItemize}

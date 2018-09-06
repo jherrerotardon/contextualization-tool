@@ -93,6 +93,9 @@ void ConsoleController::exec()
     case Send:
         send();
         break;
+    case ProcessFiles:
+        processFiles();
+        break;
     case PrintClearHelp:
         printClearDetails();
         break;
@@ -181,6 +184,8 @@ bool ConsoleController::decodeArguments(int argc, char **argv)
             setAction(DetailProject);
         } else if (QString::compare(argv[1], "add") == 0) {
             setAction(PrintAddHelp);
+        } else if (QString::compare(argv[1], "process") == 0) {
+            setAction(ProcessFiles);
         }
 
         break;
@@ -260,6 +265,7 @@ void ConsoleController::printUsage()
         "  " + appName_ + " export <path>           Saves the active project in the input path.\n"
         "  " + appName_ + " import <path>           Import a project from the input path.\n"
         "  " + appName_ + " send [user]@hostname    Send the active project to input host.\n"
+        "  " + appName_ + " process                 Process fp files and storage VALIDATED strings in databse.\n"
         ;
 
     std::cout << help.toStdString() << std::endl;
@@ -566,6 +572,22 @@ void ConsoleController::send()
                 QList<Utils::TextModifier>() << Utils::FG_RED
             ).toStdString() << std::endl;
             break;
+    }
+}
+
+void ConsoleController::processFiles()
+{
+    int error;
+
+    error = proccessAndStorage();
+
+    if (error) {
+        std::cout << Utils::formatText(
+            "Fail to process!! Is not possible to process files now.",
+            QList<Utils::TextModifier>() << Utils::FG_RED
+        ).toStdString() << std::endl;
+    } else {
+        std::cout << "Done!! Process has finished succesfully.";
     }
 }
 

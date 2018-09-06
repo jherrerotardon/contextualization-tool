@@ -1,0 +1,530 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="consolecontroller_8h" kind="file" language="C++">
+    <compoundname>consolecontroller.h</compoundname>
+    <includes local="no">iostream</includes>
+    <includes local="no">QVariant</includes>
+    <includes local="no">QList</includes>
+    <includes local="no">stdio.h</includes>
+    <includes local="no">iomanip</includes>
+    <includes refid="string_8h" local="no">string.h</includes>
+    <includes refid="contextualizationcontroller_8h" local="yes">contextualization/controller/contextualizationcontroller.h</includes>
+    <includedby refid="consolecontroller_8cpp" local="yes">src/contextualization/controller/consolecontroller.cpp</includedby>
+    <includedby refid="linuxconsolecontroller_8h" local="yes">src/contextualization/controller/linuxconsolecontroller.h</includedby>
+    <includedby refid="windowsconsolecontroller_8h" local="yes">src/contextualization/controller/windowsconsolecontroller.h</includedby>
+    <incdepgraph>
+      <node id="53">
+        <label>iomanip</label>
+      </node>
+      <node id="72">
+        <label>QFuture</label>
+      </node>
+      <node id="77">
+        <label>QMessageBox</label>
+      </node>
+      <node id="81">
+        <label>QDateTime</label>
+      </node>
+      <node id="66">
+        <label>QObject</label>
+      </node>
+      <node id="74">
+        <label>contextualization/model/contextualizationmodel.h</label>
+        <link refid="contextualizationmodel_8h"/>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+      </node>
+      <node id="63">
+        <label>QStandardPaths</label>
+      </node>
+      <node id="48">
+        <label>src/contextualization/controller/consolecontroller.h</label>
+        <link refid="consolecontroller_8h"/>
+        <childnode refid="49" relation="include">
+        </childnode>
+        <childnode refid="50" relation="include">
+        </childnode>
+        <childnode refid="51" relation="include">
+        </childnode>
+        <childnode refid="52" relation="include">
+        </childnode>
+        <childnode refid="53" relation="include">
+        </childnode>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="65" relation="include">
+        </childnode>
+      </node>
+      <node id="51">
+        <label>QList</label>
+      </node>
+      <node id="91">
+        <label>QtSql/QSqlDatabase</label>
+      </node>
+      <node id="80">
+        <label>QThread</label>
+      </node>
+      <node id="92">
+        <label>QtSql/QSqlQuery</label>
+      </node>
+      <node id="90">
+        <label>storage/mysqlconnector.h</label>
+        <link refid="mysqlconnector_8h"/>
+        <childnode refid="91" relation="include">
+        </childnode>
+        <childnode refid="92" relation="include">
+        </childnode>
+        <childnode refid="93" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+      </node>
+      <node id="79">
+        <label>QProgressDialog</label>
+      </node>
+      <node id="71">
+        <label>QImage</label>
+      </node>
+      <node id="54">
+        <label>string.h</label>
+        <link refid="string_8h"/>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+      </node>
+      <node id="84">
+        <label>baseapi.h</label>
+      </node>
+      <node id="70">
+        <label>QRegularExpressionMatch</label>
+      </node>
+      <node id="69">
+        <label>QJsonArray</label>
+      </node>
+      <node id="76">
+        <label>tools/utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="77" relation="include">
+        </childnode>
+        <childnode refid="78" relation="include">
+        </childnode>
+        <childnode refid="79" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="80" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="81" relation="include">
+        </childnode>
+      </node>
+      <node id="57">
+        <label>QJsonObject</label>
+      </node>
+      <node id="83">
+        <label>leptonica/allheaders.h</label>
+      </node>
+      <node id="64">
+        <label>QDebug</label>
+      </node>
+      <node id="65">
+        <label>contextualization/controller/contextualizationcontroller.h</label>
+        <link refid="contextualizationcontroller_8h"/>
+        <childnode refid="66" relation="include">
+        </childnode>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="56" relation="include">
+        </childnode>
+        <childnode refid="57" relation="include">
+        </childnode>
+        <childnode refid="69" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="70" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="72" relation="include">
+        </childnode>
+        <childnode refid="73" relation="include">
+        </childnode>
+        <childnode refid="74" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="82" relation="include">
+        </childnode>
+        <childnode refid="88" relation="include">
+        </childnode>
+        <childnode refid="90" relation="include">
+        </childnode>
+      </node>
+      <node id="73">
+        <label>QtConcurrent/QtConcurrent</label>
+      </node>
+      <node id="58">
+        <label>QRegularExpression</label>
+      </node>
+      <node id="62">
+        <label>QDate</label>
+      </node>
+      <node id="55">
+        <label>QString</label>
+      </node>
+      <node id="60">
+        <label>QFile</label>
+      </node>
+      <node id="89">
+        <label>databaseconnectorabstract.h</label>
+        <link refid="databaseconnectorabstract_8h"/>
+        <childnode refid="54" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+      </node>
+      <node id="85">
+        <label>genericvector.h</label>
+      </node>
+      <node id="93">
+        <label>QtSql/QSqlError</label>
+      </node>
+      <node id="86">
+        <label>ocr.h</label>
+        <link refid="ocr_8h"/>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="67" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="71" relation="include">
+        </childnode>
+        <childnode refid="58" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+      </node>
+      <node id="56">
+        <label>QJsonDocument</label>
+      </node>
+      <node id="49">
+        <label>iostream</label>
+      </node>
+      <node id="78">
+        <label>QProcess</label>
+      </node>
+      <node id="82">
+        <label>optical_character_recognition/tesseractocr.h</label>
+        <link refid="tesseractocr_8h"/>
+        <childnode refid="83" relation="include">
+        </childnode>
+        <childnode refid="84" relation="include">
+        </childnode>
+        <childnode refid="85" relation="include">
+        </childnode>
+        <childnode refid="86" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+        <childnode refid="59" relation="include">
+        </childnode>
+      </node>
+      <node id="68">
+        <label>QDir</label>
+      </node>
+      <node id="61">
+        <label>QTextStream</label>
+      </node>
+      <node id="88">
+        <label>storage/fpfileconnector.h</label>
+        <link refid="fpfileconnector_8h"/>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="87" relation="include">
+        </childnode>
+        <childnode refid="68" relation="include">
+        </childnode>
+        <childnode refid="89" relation="include">
+        </childnode>
+        <childnode refid="75" relation="include">
+        </childnode>
+        <childnode refid="76" relation="include">
+        </childnode>
+      </node>
+      <node id="50">
+        <label>QVariant</label>
+      </node>
+      <node id="67">
+        <label>QStringList</label>
+      </node>
+      <node id="52">
+        <label>stdio.h</label>
+      </node>
+      <node id="87">
+        <label>QFileInfo</label>
+      </node>
+      <node id="75">
+        <label>firmwarestring.h</label>
+        <link refid="firmwarestring_8h"/>
+        <childnode refid="54" relation="include">
+        </childnode>
+      </node>
+      <node id="59">
+        <label>tools/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="55" relation="include">
+        </childnode>
+        <childnode refid="60" relation="include">
+        </childnode>
+        <childnode refid="61" relation="include">
+        </childnode>
+        <childnode refid="62" relation="include">
+        </childnode>
+        <childnode refid="63" relation="include">
+        </childnode>
+        <childnode refid="64" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="94">
+        <label>src/contextualization/controller/consolecontroller.h</label>
+        <link refid="consolecontroller_8h"/>
+        <childnode refid="95" relation="include">
+        </childnode>
+        <childnode refid="96" relation="include">
+        </childnode>
+        <childnode refid="101" relation="include">
+        </childnode>
+      </node>
+      <node id="102">
+        <label>src/contextualization/controller/windowsconsolecontroller.cpp</label>
+        <link refid="windowsconsolecontroller_8cpp"/>
+      </node>
+      <node id="100">
+        <label>src/contextualization/controller/linuxconsolecontroller.cpp</label>
+        <link refid="linuxconsolecontroller_8cpp"/>
+      </node>
+      <node id="98">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="95">
+        <label>src/contextualization/controller/consolecontroller.cpp</label>
+        <link refid="consolecontroller_8cpp"/>
+      </node>
+      <node id="97">
+        <label>src/tools/hpcontextualizationfactory.h</label>
+        <link refid="hpcontextualizationfactory_8h"/>
+        <childnode refid="98" relation="include">
+        </childnode>
+        <childnode refid="99" relation="include">
+        </childnode>
+      </node>
+      <node id="96">
+        <label>src/contextualization/controller/linuxconsolecontroller.h</label>
+        <link refid="linuxconsolecontroller_8h"/>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="100" relation="include">
+        </childnode>
+      </node>
+      <node id="99">
+        <label>src/tools/hpcontextualizationfactory.cpp</label>
+        <link refid="hpcontextualizationfactory_8cpp"/>
+      </node>
+      <node id="101">
+        <label>src/contextualization/controller/windowsconsolecontroller.h</label>
+        <link refid="windowsconsolecontroller_8h"/>
+        <childnode refid="97" relation="include">
+        </childnode>
+        <childnode refid="102" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classConsoleController" prot="public">ConsoleController</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Jorge Herrero Tardón (<ulink url="mailto:jorgeht@usal.es">jorgeht@usal.es</ulink>) </para></simplesect>
+<simplesect kind="date"><para>20/02/2018 </para></simplesect>
+<simplesect kind="version"><para>1.0 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="11"><highlight class="preprocessor">#ifndef<sp/>CONSOLECONTROLLER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONSOLECONTROLLER_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QVariant&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QList&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdio.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iomanip&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;<ref refid="string_8h" kindref="compound">string.h</ref>&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="contextualizationcontroller_8h" kindref="compound">contextualization/controller/contextualizationcontroller.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classConsoleController" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classConsoleController" kindref="compound">ConsoleController</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classContextualizationController" kindref="compound">ContextualizationController</ref></highlight></codeline>
+<codeline lineno="27"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum</highlight><highlight class="normal"><sp/><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9" kindref="member">ActionType</ref><sp/>{</highlight></codeline>
+<codeline lineno="34" refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a0fada6cf25abb68366ac353a6ec646e0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a0fada6cf25abb68366ac353a6ec646e0" kindref="member">PrintHelp</ref><sp/>=<sp/>0,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="35" refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9ab376541b60038f69f8575f6fe680f9d2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9ab376541b60038f69f8575f6fe680f9d2" kindref="member">NoAction</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="36" refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a04bb2e774b79ceb4bc2979c400e8feea" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a04bb2e774b79ceb4bc2979c400e8feea" kindref="member">ListProjects</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="37" refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a230f00a5b6250550356eb456475fe757" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a230f00a5b6250550356eb456475fe757" kindref="member">DetailProject</ref>,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="38" refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a9963a057c42713ecf9380500367f621b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a9963a057c42713ecf9380500367f621b" kindref="member">NewProject</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="39" refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9aa620b51a7f0e47c93da8f023ca37a81b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9aa620b51a7f0e47c93da8f023ca37a81b" kindref="member">DeleteProject</ref>,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="40" refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a39ac9ee6f36481423172c8c7957beb50" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a39ac9ee6f36481423172c8c7957beb50" kindref="member">SelectProject</ref>,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="41" refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a784b89a27e92a50096f0af414cc7f4ad" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a784b89a27e92a50096f0af414cc7f4ad" kindref="member">ClearStrings</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="42" refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a4d8a085e65fdc727d7642a25db2403b2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a4d8a085e65fdc727d7642a25db2403b2" kindref="member">ClearImage</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="43" refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9adc51bd8437c400c4193fa01650c087a0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9adc51bd8437c400c4193fa01650c087a0" kindref="member">ClearAll</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="44" refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a121c3067d3adf19104793ce9020fb543" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a121c3067d3adf19104793ce9020fb543" kindref="member">AddString</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="45" refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9adf314576f39f9dfe3ce14758e7482422" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9adf314576f39f9dfe3ce14758e7482422" kindref="member">RemoveString</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="46" refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9abe2b103c6a30c1a23b13772970452b03" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9abe2b103c6a30c1a23b13772970452b03" kindref="member">SelectString</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="47" refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9acedfdd10ac8c789aa7d4dd9f78bd3937" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9acedfdd10ac8c789aa7d4dd9f78bd3937" kindref="member">UnselectString</ref>,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="48" refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a346b6628a5522d04a57e23fd96b14e94" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a346b6628a5522d04a57e23fd96b14e94" kindref="member">SetImage</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="49" refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9ac281d38e622624b8d89974cd1a437243" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9ac281d38e622624b8d89974cd1a437243" kindref="member">CaptureArea</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="50" refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9af2fd8b4a218c3ddbc0fd91c5b1667693" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9af2fd8b4a218c3ddbc0fd91c5b1667693" kindref="member">DetectStrings</ref>,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="51" refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9ab2dae62af54e26573bd66ca8f9ee3f0a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9ab2dae62af54e26573bd66ca8f9ee3f0a" kindref="member">ExportProject</ref>,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="52" refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9aa66215a16eaf6c015d2569d4574572a9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9aa66215a16eaf6c015d2569d4574572a9" kindref="member">ImportProject</ref>,<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="53" refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a20e0cfce6c39df1ac1c1552ddf2dde22" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a20e0cfce6c39df1ac1c1552ddf2dde22" kindref="member">Send</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="54" refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a465c31f22f889f262d21e867223c19a9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a465c31f22f889f262d21e867223c19a9" kindref="member">ProcessFiles</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="55" refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a019ca0fceccfad49f6abea9cee533222" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a019ca0fceccfad49f6abea9cee533222" kindref="member">PrintClearHelp</ref>,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="56" refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9ad1953c9265bcc1cb3663f2ccc23c5810" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9ad1953c9265bcc1cb3663f2ccc23c5810" kindref="member">PrintAddHelp</ref>,<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="57" refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a1a9ee810a12e81b7cbcb5f74a59e1b76" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a1a9ee810a12e81b7cbcb5f74a59e1b76" kindref="member">PrintDetectHelp</ref>,<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="58" refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a2cc22e62323a75b556c4e7568f9e588f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9a2cc22e62323a75b556c4e7568f9e588f" kindref="member">PrintImageHelp</ref>,<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1aed7f998b076f322a0c45f0a0e57202c4" kindref="member">ConsoleController</ref>();</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1aed7f998b076f322a0c45f0a0e57202c4" kindref="member">ConsoleController</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**argv);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConsoleController_1accdfd546eef82cfe4d0942426a3b6fac" kindref="member">exec</ref>();</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classConsoleController_1ab9fdcba75eecb1f28c1fcd3b97183fe8" kindref="member">decodeArguments</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>**argv);</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">inline</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConsoleController_1a13eaf91bd8d72afeaa3792255983e019" kindref="member">setAction</ref>(<ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9" kindref="member">ActionType</ref><sp/>action,<sp/>QVariant<sp/>parameter<sp/>=<sp/>QVariant());</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConsoleController_1a771c221ac40cd6441f13c76bd08b6927" kindref="member">printUsage</ref>();</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConsoleController_1a08cea6c7cb62ea9961af568daeec69c5" kindref="member">printClearDetails</ref>();</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConsoleController_1a5e2c72a9589fc8b5a2d9ba5c905850c8" kindref="member">printAddDetails</ref>();</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConsoleController_1aeef4c9eb3a199d0674c0841eadad6d7e" kindref="member">printDetectDetails</ref>();</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConsoleController_1ae99f394b6610fd7c771e31d864526756" kindref="member">printImageDetails</ref>();</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classConsoleController_1a5dd7913a42068df42c3de6dc1f313537" kindref="member">printDetectOptions</ref>();</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/>slots:</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>add(QString<sp/>newString,<sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>findType)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">remove</highlight><highlight class="normal">(QString<sp/>stringId)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>clear()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>capture(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>detectStringsOnLoad<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>load(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>detectStringsOnLoad<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>detect()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>send()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>cancel()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>save()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>saveAs()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>open()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>newProject()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>processFiles()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>listProjects();</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>detailCurrentProject();</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>deleteProject();</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>clearAll();</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>clearImage();</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>select(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>unselect(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">import</highlight><highlight class="normal">();</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>appName_;<sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><sp/><sp/>QVariant<sp/>parameter_;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classConsoleController_1a6bc36e6ee00aa2da0fd9be549b4251d9" kindref="member">ActionType</ref><sp/>action_;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdced" kindref="member">MatchType</ref><sp/>findType_;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>projectPath_;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>requestUsername();</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>requestPassword();</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="263"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fd" kindref="member">CodeError</ref><sp/>loadProjectFromConfiguration();</highlight></codeline>
+<codeline lineno="264"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"></highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>CONSOLECONTROLLER_H</highlight></codeline>
+    </programlisting>
+    <location file="src/contextualization/controller/consolecontroller.h"/>
+  </compounddef>
+</doxygen>

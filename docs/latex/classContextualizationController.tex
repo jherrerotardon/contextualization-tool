@@ -1,0 +1,1049 @@
+\hypertarget{classContextualizationController}{}\section{Contextualization\+Controller Class Reference}
+\label{classContextualizationController}\index{Contextualization\+Controller@{Contextualization\+Controller}}
+
+
+This is the controller base class.  
+
+
+
+
+{\ttfamily \#include $<$contextualizationcontroller.\+h$>$}
+
+Inheritance diagram for Contextualization\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.255814cm]{classContextualizationController}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{classContextualizationController_a78e15dc8f6f1e0cb4df6d86b921be8a4}{Model\+Error}} \{ \mbox{\hyperlink{classContextualizationController_a78e15dc8f6f1e0cb4df6d86b921be8a4a6ccff3cdedbdcfcdfc1eb59c4b088d24}{Ok\+Model}} = 0, 
+\mbox{\hyperlink{classContextualizationController_a78e15dc8f6f1e0cb4df6d86b921be8a4adba539af7fd279d01da3a2a1e91e40ca}{No\+Image}}, 
+\mbox{\hyperlink{classContextualizationController_a78e15dc8f6f1e0cb4df6d86b921be8a4a5d1b78a6b1296da8bf43b62432d090c5}{Image\+Not\+Exist}}, 
+\mbox{\hyperlink{classContextualizationController_a78e15dc8f6f1e0cb4df6d86b921be8a4a2e771e637c2e37c6b410a96c9f48adfd}{No\+Strings}}
+ \}
+\begin{DoxyCompactList}\small\item\em The Model\+Error enum. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{classContextualizationController_acb38587f7f9e610a5950956b345d69fd}{Code\+Error}} \{ \newline
+\mbox{\hyperlink{classContextualizationController_acb38587f7f9e610a5950956b345d69fdac799a856f8460c5e6b100f08191b2d94}{No\+Error}} = 0, 
+\mbox{\hyperlink{classContextualizationController_acb38587f7f9e610a5950956b345d69fda067a46ac62df6062561a10108b8e77a9}{Null\+Pointer}}, 
+\mbox{\hyperlink{classContextualizationController_acb38587f7f9e610a5950956b345d69fda4a6ad284235290da632cd7b621ae53be}{String\+Already\+Exists}}, 
+\mbox{\hyperlink{classContextualizationController_acb38587f7f9e610a5950956b345d69fdac9ac40727cb32c37655f627ecd1450d4}{No\+Import\+File}}, 
+\newline
+\mbox{\hyperlink{classContextualizationController_acb38587f7f9e610a5950956b345d69fda705a292a89a7c137ed934a1ede90968a}{Import\+File\+Format}}, 
+\mbox{\hyperlink{classContextualizationController_acb38587f7f9e610a5950956b345d69fdad866e236894ecf819409ebb4d44b7fd1}{File\+Not\+Exists}}, 
+\mbox{\hyperlink{classContextualizationController_acb38587f7f9e610a5950956b345d69fda3da219148b52a6691d2dbcd9f40ed627}{No\+Remote\+Host}}, 
+\mbox{\hyperlink{classContextualizationController_acb38587f7f9e610a5950956b345d69fda5360679b825af2b3b97283fae1a9717a}{No\+Valid\+Ip}}, 
+\newline
+\mbox{\hyperlink{classContextualizationController_acb38587f7f9e610a5950956b345d69fda860490b2223e4e78d29a514fb51f6fc5}{Sshpass\+Error}} = 254, 
+\mbox{\hyperlink{classContextualizationController_acb38587f7f9e610a5950956b345d69fda7447fb0b9cf45b0adc6da65c65c34253}{Ssh\+Error}} = 255, 
+\mbox{\hyperlink{classContextualizationController_acb38587f7f9e610a5950956b345d69fda841e3c0b31b4da700505de6d3b30dabe}{Write\+File}} = -\/1
+ \}
+\begin{DoxyCompactList}\small\item\em The Code\+Error enum. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{classContextualizationController_a211b7dd2dba820139e8055b4f88fdced}{Match\+Type}} \{ \mbox{\hyperlink{classContextualizationController_a211b7dd2dba820139e8055b4f88fdcedab921b1883492c5a7511b20ec6a5f24f3}{By\+ID}} = 0, 
+\mbox{\hyperlink{classContextualizationController_a211b7dd2dba820139e8055b4f88fdceda0e89844c93d199f9e314fc1a1ddae400}{By\+Value}}, 
+\mbox{\hyperlink{classContextualizationController_a211b7dd2dba820139e8055b4f88fdceda54d0f26a3c6d7f680f2bcbd383f1d9df}{By\+Approximate\+Value}}
+ \}
+\begin{DoxyCompactList}\small\item\em The Match\+Type enum. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Signals}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classContextualizationController_a0040eddc367f6685480818a2fd9d7a25}\label{classContextualizationController_a0040eddc367f6685480818a2fd9d7a25}} 
+void \mbox{\hyperlink{classContextualizationController_a0040eddc367f6685480818a2fd9d7a25}{strings\+List\+Changed}} ()
+\begin{DoxyCompactList}\small\item\em The signal is emitted when a new string is added to the model or a string is removed from the model. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationController_ac101eb9c6edbc62b829257c4cfcc9fe1}\label{classContextualizationController_ac101eb9c6edbc62b829257c4cfcc9fe1}} 
+void \mbox{\hyperlink{classContextualizationController_ac101eb9c6edbc62b829257c4cfcc9fe1}{image\+Changed}} ()
+\begin{DoxyCompactList}\small\item\em The signal is emitted when a image is setted on the model. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classContextualizationController_a055cc7f78056ccc0d0a55023402a29ee}{Contextualization\+Controller}} (Q\+Object $\ast$parent=Q\+\_\+\+N\+U\+L\+L\+P\+TR)
+\begin{DoxyCompactList}\small\item\em Constructs a controller setting his member variables. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationController_ae5b1fa3bf3a7b92c8454e8cd98558989}\label{classContextualizationController_ae5b1fa3bf3a7b92c8454e8cd98558989}} 
+\mbox{\hyperlink{classContextualizationController_ae5b1fa3bf3a7b92c8454e8cd98558989}{$\sim$\+Contextualization\+Controller}} ()
+\begin{DoxyCompactList}\small\item\em Destroys the controller. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Slots}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classContextualizationController_afea4c16fa2728506e6301e46891bf73f}{add}} (Q\+String new\+String, int match\+Type)=0
+\begin{DoxyCompactList}\small\item\em Tries to add a new string into the model. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classContextualizationController_ae06d4c794e77321439668aadc141aca5}{remove}} (Q\+String string\+Id)=0
+\begin{DoxyCompactList}\small\item\em Tries to remove the string in the model with the identifier receiven by parameter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationController_a2f19977180ae0d6ecd3900951d686fe3}\label{classContextualizationController_a2f19977180ae0d6ecd3900951d686fe3}} 
+virtual void \mbox{\hyperlink{classContextualizationController_a2f19977180ae0d6ecd3900951d686fe3}{clear}} ()=0
+\begin{DoxyCompactList}\small\item\em Removes all strings in the model. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classContextualizationController_ad9e65625e6dc228858cf2c9606606691}{capture}} (bool detect\+Strings\+On\+Load)=0
+\begin{DoxyCompactList}\small\item\em Make a screen capture. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classContextualizationController_a3b93cb8ddf7ec41936d0e3ab980644eb}{load}} (bool detect\+Strings\+On\+Load)=0
+\begin{DoxyCompactList}\small\item\em Loads an image in the model. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationController_a0b79fa3dbd9e95325df5d1bd8507c7a5}\label{classContextualizationController_a0b79fa3dbd9e95325df5d1bd8507c7a5}} 
+virtual void \mbox{\hyperlink{classContextualizationController_a0b79fa3dbd9e95325df5d1bd8507c7a5}{detect}} ()=0
+\begin{DoxyCompactList}\small\item\em Detects strings in the current image of the model and tries to add them into. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationController_a6c22f71d82e58ed54994dd6da55fba5d}\label{classContextualizationController_a6c22f71d82e58ed54994dd6da55fba5d}} 
+virtual void \mbox{\hyperlink{classContextualizationController_a6c22f71d82e58ed54994dd6da55fba5d}{send}} ()=0
+\begin{DoxyCompactList}\small\item\em Tries to send the active contextualization to a remote host. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationController_aef30a9a0c8c18ef27c58cfd71d000502}\label{classContextualizationController_aef30a9a0c8c18ef27c58cfd71d000502}} 
+virtual void \mbox{\hyperlink{classContextualizationController_aef30a9a0c8c18ef27c58cfd71d000502}{cancel}} ()=0
+\begin{DoxyCompactList}\small\item\em Ensures that the user wants to cancel the project and closes the application in an orderly manner. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationController_a4fc34afd044a02b28cf1ccaa16e6d696}\label{classContextualizationController_a4fc34afd044a02b28cf1ccaa16e6d696}} 
+virtual bool \mbox{\hyperlink{classContextualizationController_a4fc34afd044a02b28cf1ccaa16e6d696}{save}} ()=0
+\begin{DoxyCompactList}\small\item\em Saves current project. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationController_aacbc46aa9cf35b5e5d159ad829f03c0b}\label{classContextualizationController_aacbc46aa9cf35b5e5d159ad829f03c0b}} 
+virtual bool \mbox{\hyperlink{classContextualizationController_aacbc46aa9cf35b5e5d159ad829f03c0b}{save\+As}} ()=0
+\begin{DoxyCompactList}\small\item\em Opens a dialog and saves current project in the path specied for the user. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationController_ab5f48377aa2aa821695a08145bdbf522}\label{classContextualizationController_ab5f48377aa2aa821695a08145bdbf522}} 
+virtual void \mbox{\hyperlink{classContextualizationController_ab5f48377aa2aa821695a08145bdbf522}{open}} ()=0
+\begin{DoxyCompactList}\small\item\em Opens a project saves on disk. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationController_ab0cd81ecd067cc0c6c475ce597d0f414}\label{classContextualizationController_ab0cd81ecd067cc0c6c475ce597d0f414}} 
+virtual void \mbox{\hyperlink{classContextualizationController_ab0cd81ecd067cc0c6c475ce597d0f414}{refresh}} ()
+\begin{DoxyCompactList}\small\item\em Refreshes all components on current contextualization (Done\+Fp\+File, Image, Strings...). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationController_a57d48e9139331145d82c1be284ecdaa5}\label{classContextualizationController_a57d48e9139331145d82c1be284ecdaa5}} 
+virtual void \mbox{\hyperlink{classContextualizationController_a57d48e9139331145d82c1be284ecdaa5}{new\+Project}} ()=0
+\begin{DoxyCompactList}\small\item\em Creates a new empty project. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationController_a52f5a73a589942dcdf7299097aee36d1}\label{classContextualizationController_a52f5a73a589942dcdf7299097aee36d1}} 
+virtual void \mbox{\hyperlink{classContextualizationController_a52f5a73a589942dcdf7299097aee36d1}{process\+Files}} ()=0
+\begin{DoxyCompactList}\small\item\em Process V\+A\+L\+I\+D\+A\+T\+ED strings in fp files and storage it in database. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classContextualizationController_acb38587f7f9e610a5950956b345d69fd}{Code\+Error}} \mbox{\hyperlink{classContextualizationController_ae2b31282f2258673757c77592f7ded00}{import\+Project\+From\+Json\+File}} (const Q\+String \&path)
+\begin{DoxyCompactList}\small\item\em Imports projet from json file. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classContextualizationController_a26fc3969db0e2217dc6994f819c78572}{export\+To\+Json\+File}} (const Q\+String \&path)
+\begin{DoxyCompactList}\small\item\em Exports project to json file. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classContextualizationController_a78e15dc8f6f1e0cb4df6d86b921be8a4}{Contextualization\+Controller\+::\+Model\+Error}} \mbox{\hyperlink{classContextualizationController_a6b806979e0b4e5a3ce3af09230f66fef}{validate\+Model}} ()
+\begin{DoxyCompactList}\small\item\em Checks the actual state of the model. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{classContextualizationController_a737d2562702b3b0da946e7b2f9fa336d}{generate\+Contextualization}} ()
+\begin{DoxyCompactList}\small\item\em Generates a packet with the contextualization data. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classContextualizationController_acb38587f7f9e610a5950956b345d69fd}{Code\+Error}} \mbox{\hyperlink{classContextualizationController_a46ec193d423be47137f34d746145801f}{send\+Contextualization}} (Q\+String const \&path, Q\+String user, Q\+String password)
+\begin{DoxyCompactList}\small\item\em Process that is responsible for sending the file received by parameter. \end{DoxyCompactList}\item 
+Q\+List$<$ \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$ $>$ \mbox{\hyperlink{classContextualizationController_ae6817457c7b00d17bb676a4989d59858}{detect\+Strings\+On\+Image}} (Q\+String image)
+\begin{DoxyCompactList}\small\item\em Extracts the strings contained in the image set in the model. \end{DoxyCompactList}\item 
+Q\+List$<$ \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$ $>$ \mbox{\hyperlink{classContextualizationController_a4afb43a5914ef1c7e2a6bb9357cdd822}{fast\+Detect\+Strings\+On\+Image}} (Q\+String image)
+\begin{DoxyCompactList}\small\item\em Extracts the strings contained in the image set in the model. \end{DoxyCompactList}\item 
+Q\+List$<$ \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$ $>$ \mbox{\hyperlink{classContextualizationController_a97436fb5b350bcc6be500b0fe2ecc1b7}{process\+Extracted\+Strings}} (Q\+String\+List strings)
+\begin{DoxyCompactList}\small\item\em Processes received strings. \end{DoxyCompactList}\item 
+Q\+List$<$ \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$ $>$ \mbox{\hyperlink{classContextualizationController_a5f94a4894e3a3c0920dc534346527fa0}{find\+String}} (const Q\+String \&text, const \mbox{\hyperlink{classContextualizationController_a211b7dd2dba820139e8055b4f88fdced}{Match\+Type}} match\+Type=\mbox{\hyperlink{classContextualizationController_a211b7dd2dba820139e8055b4f88fdcedab921b1883492c5a7511b20ec6a5f24f3}{By\+ID}})
+\begin{DoxyCompactList}\small\item\em Find the text received by parameter in fp file. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classContextualizationController_a0d726ece69d0876729c1c801f9c25230}{is\+Valid\+State}} (Q\+String \&state)
+\begin{DoxyCompactList}\small\item\em Checks the parameter state is a valid state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classContextualizationController_acb38587f7f9e610a5950956b345d69fd}{Code\+Error}} \mbox{\hyperlink{classContextualizationController_abb80030963c4abd056a200fefbf8b4e9}{add\+String}} (\mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$fw\+String)
+\begin{DoxyCompactList}\small\item\em Adds a new string on the model. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classContextualizationController_a4af8f49a57b9d9a7daf5b51d45620ed6}{add\+Strings}} (const Q\+List$<$ \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$$>$ \&strings)
+\begin{DoxyCompactList}\small\item\em Adds new strings on the model. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classContextualizationController_adedb36b408caff11f15632998e7b9413}{remove\+String}} (Q\+String string\+Id)
+\begin{DoxyCompactList}\small\item\em Removes the string in the model with the id received by parameter. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classContextualizationController_a0fb2ae8db12aba7888504f832bb63bd5}{remove\+String}} (int row)
+\begin{DoxyCompactList}\small\item\em Removes the string in the model row number received by parameter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationController_af9eb5f70f45cd3c501a8af97a4b280d4}\label{classContextualizationController_af9eb5f70f45cd3c501a8af97a4b280d4}} 
+bool \mbox{\hyperlink{classContextualizationController_af9eb5f70f45cd3c501a8af97a4b280d4}{remove\+All\+Strings}} ()
+\begin{DoxyCompactList}\small\item\em Remove all strings in the model. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classContextualizationController_a943a8703d6e67fa5a08b4b8d73697dfc}{select\+String}} (const Q\+String id, bool state)
+\begin{DoxyCompactList}\small\item\em Select the string with the identifier received by parameter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationController_af003f565ad5d3a45fb8b7e66a52487fa}\label{classContextualizationController_af003f565ad5d3a45fb8b7e66a52487fa}} 
+void \mbox{\hyperlink{classContextualizationController_af003f565ad5d3a45fb8b7e66a52487fa}{clear\+Image}} ()
+\begin{DoxyCompactList}\small\item\em Sets a no image in the model. \end{DoxyCompactList}\item 
+virtual Q\+String \mbox{\hyperlink{classContextualizationController_a121919886590cd4955bbcc2d8b747b26}{take\+Capture\+Area}} ()=0
+\begin{DoxyCompactList}\small\item\em Starts a process that allow user capture an area of the screen. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classContextualizationController_afd1e07f8b9439ff36656bfc7163df892}{set\+Image}} (const Q\+String \&image)
+\begin{DoxyCompactList}\small\item\em set\+Image \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classContextualizationController_a7eaa7277a256b9dbf26573a651e442bf}{is\+Fw\+String\+Already\+Exists}} (\mbox{\hyperlink{classFirmwareString}{Firmware\+String}} \&fw\+String)
+\begin{DoxyCompactList}\small\item\em Checks that the \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} is not already in the model. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classContextualizationController_a43b14faa02f64178e6f18f94022447fa}{erase\+Exist\+Strings}} (Q\+List$<$ \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$$>$ $\ast$strings)
+\begin{DoxyCompactList}\small\item\em Erases, from the string list received by parameter, strings that already are in the model. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{classContextualizationController_afd648aaf148c3db3fb5e3af88e6de2e5}{get\+Image\+Of\+Model}} ()
+\begin{DoxyCompactList}\small\item\em Returns the actual image of the model. \end{DoxyCompactList}\item 
+Q\+List$<$ Q\+Object $\ast$ $>$ \mbox{\hyperlink{classContextualizationController_a6c8aba56f5b97fc3042c6e5c8e04e124}{get\+Table\+Model}} ()
+\begin{DoxyCompactList}\small\item\em Returns the model to be used by List\+View, Table\+View or similar Q\+ML object. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{classContextualizationController_ab3824ba2a20c6f4b511fb6169a4349da}{get\+Date\+Time}} (Q\+String format=\char`\"{}yyyy\+\_\+\+M\+M\+\_\+dd\+\_\+hh\+\_\+mm\+\_\+ss\char`\"{})
+\begin{DoxyCompactList}\small\item\em Returns a current date time with the format received by parameter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationController_a3b3d997f77ec6cd8cfe7569b81c31d3f}\label{classContextualizationController_a3b3d997f77ec6cd8cfe7569b81c31d3f}} 
+void \mbox{\hyperlink{classContextualizationController_a3b3d997f77ec6cd8cfe7569b81c31d3f}{load\+Config}} ()
+\begin{DoxyCompactList}\small\item\em Reads the configuration file, if it exists, and sets the class members to the values in the file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationController_a4cfa5ebd6d0e2c1843fe6073c02873f3}\label{classContextualizationController_a4cfa5ebd6d0e2c1843fe6073c02873f3}} 
+void \mbox{\hyperlink{classContextualizationController_a4cfa5ebd6d0e2c1843fe6073c02873f3}{save\+Config}} ()
+\begin{DoxyCompactList}\small\item\em Saves config in configuration file to can be recuperated in the next run of contetualization tool. \end{DoxyCompactList}\item 
+virtual int \mbox{\hyperlink{classContextualizationController_af142a8bbd561278c3423ccad3b40c910}{generate\+Done\+Fp\+File}} ()
+\begin{DoxyCompactList}\small\item\em Creates a copy of english\+Fp file in /tmp with only firmware strings with D\+O\+NE status. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classContextualizationController_a627fba866e282e4e7dff813781ed88cb}{filter\+Strings\+By\+State}} (Q\+List$<$ \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$$>$ $\ast$list, const Q\+String \&state)
+\begin{DoxyCompactList}\small\item\em Filters a list of firmware strings. Remove from the list all strings that have not the same state as the one received by parameter. \end{DoxyCompactList}\item 
+Q\+String\+List \mbox{\hyperlink{classContextualizationController_a2bef3de188caf57cad70e47bcf7495d1}{split\+Image}} (const Q\+String \&image, int chunk\+Width, int chunk\+Height, bool $\ast$some\+Error=Q\+\_\+\+N\+U\+L\+L\+P\+TR)
+\begin{DoxyCompactList}\small\item\em Splits an image in one or more chunks depending of chunk size received by argument. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{classContextualizationController_a5d60cf7ca2c78b74bb6a5ad5a5b04e9e}{get\+Parameter\+From\+Config\+File}} (const Q\+String parameter)
+\begin{DoxyCompactList}\small\item\em Returns a value of a parameter in config file. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classContextualizationController_a6e92320baf8dbbf148bd3b3e97c5d332}{set\+Parameter\+In\+Config\+File}} (const Q\+String parameter, const Q\+String value)
+\begin{DoxyCompactList}\small\item\em Sets a parameter in configuration file. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classContextualizationController_a0ec0241ee096fa917e3ab7de448e5509}{proccess\+And\+Storage}} ()
+\begin{DoxyCompactList}\small\item\em Reads all fp language files that there was congigurated in database. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classContextualizationController_a31b85e006b135987dd34ce6443cc9ad1}\label{classContextualizationController_a31b85e006b135987dd34ce6443cc9ad1}} 
+\mbox{\hyperlink{classContextualizationModel}{Contextualization\+Model}} $\ast$ \mbox{\hyperlink{classContextualizationController_a31b85e006b135987dd34ce6443cc9ad1}{model\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Pointer to the contextualization model. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationController_aaaea6627d8d88579150001d37916f618}\label{classContextualizationController_aaaea6627d8d88579150001d37916f618}} 
+Q\+String \mbox{\hyperlink{classContextualizationController_aaaea6627d8d88579150001d37916f618}{english\+Fp\+File\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Original file where be all firmware strings. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationController_a07888f57aa02355d2e0230d6a99f2251}\label{classContextualizationController_a07888f57aa02355d2e0230d6a99f2251}} 
+Q\+String \mbox{\hyperlink{classContextualizationController_a07888f57aa02355d2e0230d6a99f2251}{username\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Username who run the app. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationController_a78b977fec84729a2f9b4cc4a3a57a42e}\label{classContextualizationController_a78b977fec84729a2f9b4cc4a3a57a42e}} 
+Q\+String\+List \mbox{\hyperlink{classContextualizationController_a78b977fec84729a2f9b4cc4a3a57a42e}{valid\+States\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Valid states of firmware strings. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationController_afdc03867fd96587139618c736c350ead}\label{classContextualizationController_afdc03867fd96587139618c736c350ead}} 
+Q\+String \mbox{\hyperlink{classContextualizationController_afdc03867fd96587139618c736c350ead}{remote\+Host\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Host where the contextualization will be sent. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationController_a8313b2b6332dd76f286e5f24a6329b02}\label{classContextualizationController_a8313b2b6332dd76f286e5f24a6329b02}} 
+bool \mbox{\hyperlink{classContextualizationController_a8313b2b6332dd76f286e5f24a6329b02}{only\+Done\+Strings\+\_\+}}
+\begin{DoxyCompactList}\small\item\em If is true, only string with state D\+O\+NE will be found. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationController_a2ac26ea74b41512a52f677ac6c8fa83f}\label{classContextualizationController_a2ac26ea74b41512a52f677ac6c8fa83f}} 
+bool \mbox{\hyperlink{classContextualizationController_a2ac26ea74b41512a52f677ac6c8fa83f}{case\+Sensitive\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Indicates if searches will be case sensitive or not. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classContextualizationController_a8e94ee12efc5fb6aba91341b4cc47a26}\label{classContextualizationController_a8e94ee12efc5fb6aba91341b4cc47a26}} 
+static const int \mbox{\hyperlink{classContextualizationController_a8e94ee12efc5fb6aba91341b4cc47a26}{C\+H\+U\+N\+K\+\_\+\+W\+I\+D\+TH}} = 300
+\begin{DoxyCompactList}\small\item\em Width of each chunk when a image is splitted. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationController_ae9896f11f9e129fa4ea9d482c18d8b82}\label{classContextualizationController_ae9896f11f9e129fa4ea9d482c18d8b82}} 
+static const int \mbox{\hyperlink{classContextualizationController_ae9896f11f9e129fa4ea9d482c18d8b82}{C\+H\+U\+N\+K\+\_\+\+H\+E\+I\+G\+HT}} = 150
+\begin{DoxyCompactList}\small\item\em Height of each chunk when a image is splitted. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationController_a88ea18a10d1edd6cd15f41b6126e813e}\label{classContextualizationController_a88ea18a10d1edd6cd15f41b6126e813e}} 
+static const Q\+String \mbox{\hyperlink{classContextualizationController_a88ea18a10d1edd6cd15f41b6126e813e}{I\+M\+A\+G\+E\+S\+\_\+\+F\+O\+L\+D\+ER}} = Q\+Dir(\char`\"{}../storage/images\char`\"{}).absolute\+Path() + \textquotesingle{}/\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Directory where will save project images. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationController_a33d73ba5d5ef0e4c7a47dbb85cea7a7e}\label{classContextualizationController_a33d73ba5d5ef0e4c7a47dbb85cea7a7e}} 
+static const Q\+String \mbox{\hyperlink{classContextualizationController_a33d73ba5d5ef0e4c7a47dbb85cea7a7e}{P\+R\+O\+J\+E\+C\+T\+S\+\_\+\+F\+O\+L\+D\+ER}} = Q\+Dir(\char`\"{}../storage/projects\char`\"{}).absolute\+Path() + \textquotesingle{}/\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Directory where will save projects. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationController_ad01707b9671cf54a78960d7fdfa25463}\label{classContextualizationController_ad01707b9671cf54a78960d7fdfa25463}} 
+static const Q\+String \mbox{\hyperlink{classContextualizationController_ad01707b9671cf54a78960d7fdfa25463}{C\+O\+N\+F\+I\+G\+\_\+\+F\+O\+L\+D\+ER}} = Q\+Dir(\char`\"{}../config\char`\"{}).absolute\+Path() + \textquotesingle{}/\textquotesingle{}
+\begin{DoxyCompactList}\small\item\em Directory where will save configurations. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classContextualizationController_a3d9769435b8558c75379938e3e78ca95}\label{classContextualizationController_a3d9769435b8558c75379938e3e78ca95}} 
+static const Q\+String \mbox{\hyperlink{classContextualizationController_a3d9769435b8558c75379938e3e78ca95}{D\+O\+N\+E\+\_\+\+F\+P\+\_\+\+F\+I\+LE}} = \mbox{\hyperlink{classUtils_a85a0cb065fa4399c42ce834952420d7a}{Utils\+::get\+Tmp\+Directory}}() + \char`\"{}/done\+Fp\+File.\+fp\char`\"{}
+\begin{DoxyCompactList}\small\item\em File path where the firmware strings will be found. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the controller base class. 
+
+Definition at line 35 of file contextualizationcontroller.\+h.
+
+
+
+\subsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{classContextualizationController_acb38587f7f9e610a5950956b345d69fd}\label{classContextualizationController_acb38587f7f9e610a5950956b345d69fd}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!Code\+Error@{Code\+Error}}
+\index{Code\+Error@{Code\+Error}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{Code\+Error}{CodeError}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classContextualizationController_acb38587f7f9e610a5950956b345d69fd}{Contextualization\+Controller\+::\+Code\+Error}}}
+
+
+
+The Code\+Error enum. 
+
+Contains all general error that can happen during any process of the controller.
+
+W\+A\+R\+N\+I\+N\+G!! Don\textquotesingle{}t change the default values of enum. Binary program returns this number values. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{No\+Error@{No\+Error}!Contextualization\+Controller@{Contextualization\+Controller}}\index{Contextualization\+Controller@{Contextualization\+Controller}!No\+Error@{No\+Error}}}\mbox{\Hypertarget{classContextualizationController_acb38587f7f9e610a5950956b345d69fdac799a856f8460c5e6b100f08191b2d94}\label{classContextualizationController_acb38587f7f9e610a5950956b345d69fdac799a856f8460c5e6b100f08191b2d94}} 
+No\+Error&Indicates that there aren\textquotesingle{}t any error during the process. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Null\+Pointer@{Null\+Pointer}!Contextualization\+Controller@{Contextualization\+Controller}}\index{Contextualization\+Controller@{Contextualization\+Controller}!Null\+Pointer@{Null\+Pointer}}}\mbox{\Hypertarget{classContextualizationController_acb38587f7f9e610a5950956b345d69fda067a46ac62df6062561a10108b8e77a9}\label{classContextualizationController_acb38587f7f9e610a5950956b345d69fda067a46ac62df6062561a10108b8e77a9}} 
+Null\+Pointer&Indicates that a null pointer has been received. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{String\+Already\+Exists@{String\+Already\+Exists}!Contextualization\+Controller@{Contextualization\+Controller}}\index{Contextualization\+Controller@{Contextualization\+Controller}!String\+Already\+Exists@{String\+Already\+Exists}}}\mbox{\Hypertarget{classContextualizationController_acb38587f7f9e610a5950956b345d69fda4a6ad284235290da632cd7b621ae53be}\label{classContextualizationController_acb38587f7f9e610a5950956b345d69fda4a6ad284235290da632cd7b621ae53be}} 
+String\+Already\+Exists&Indicates that the string to process already exists in the model. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{No\+Import\+File@{No\+Import\+File}!Contextualization\+Controller@{Contextualization\+Controller}}\index{Contextualization\+Controller@{Contextualization\+Controller}!No\+Import\+File@{No\+Import\+File}}}\mbox{\Hypertarget{classContextualizationController_acb38587f7f9e610a5950956b345d69fdac9ac40727cb32c37655f627ecd1450d4}\label{classContextualizationController_acb38587f7f9e610a5950956b345d69fdac9ac40727cb32c37655f627ecd1450d4}} 
+No\+Import\+File&Indicates that file to import can\textquotesingle{}t ber readed. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Import\+File\+Format@{Import\+File\+Format}!Contextualization\+Controller@{Contextualization\+Controller}}\index{Contextualization\+Controller@{Contextualization\+Controller}!Import\+File\+Format@{Import\+File\+Format}}}\mbox{\Hypertarget{classContextualizationController_acb38587f7f9e610a5950956b345d69fda705a292a89a7c137ed934a1ede90968a}\label{classContextualizationController_acb38587f7f9e610a5950956b345d69fda705a292a89a7c137ed934a1ede90968a}} 
+Import\+File\+Format&Indicates that the file to import has not a correct format. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{File\+Not\+Exists@{File\+Not\+Exists}!Contextualization\+Controller@{Contextualization\+Controller}}\index{Contextualization\+Controller@{Contextualization\+Controller}!File\+Not\+Exists@{File\+Not\+Exists}}}\mbox{\Hypertarget{classContextualizationController_acb38587f7f9e610a5950956b345d69fdad866e236894ecf819409ebb4d44b7fd1}\label{classContextualizationController_acb38587f7f9e610a5950956b345d69fdad866e236894ecf819409ebb4d44b7fd1}} 
+File\+Not\+Exists&Indicates that the file to read doesn\textquotesingle{}t exist. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{No\+Remote\+Host@{No\+Remote\+Host}!Contextualization\+Controller@{Contextualization\+Controller}}\index{Contextualization\+Controller@{Contextualization\+Controller}!No\+Remote\+Host@{No\+Remote\+Host}}}\mbox{\Hypertarget{classContextualizationController_acb38587f7f9e610a5950956b345d69fda3da219148b52a6691d2dbcd9f40ed627}\label{classContextualizationController_acb38587f7f9e610a5950956b345d69fda3da219148b52a6691d2dbcd9f40ed627}} 
+No\+Remote\+Host&Indicates that there is no host to send the file. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{No\+Valid\+Ip@{No\+Valid\+Ip}!Contextualization\+Controller@{Contextualization\+Controller}}\index{Contextualization\+Controller@{Contextualization\+Controller}!No\+Valid\+Ip@{No\+Valid\+Ip}}}\mbox{\Hypertarget{classContextualizationController_acb38587f7f9e610a5950956b345d69fda5360679b825af2b3b97283fae1a9717a}\label{classContextualizationController_acb38587f7f9e610a5950956b345d69fda5360679b825af2b3b97283fae1a9717a}} 
+No\+Valid\+Ip&Indicates that the IP to use is not valid. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Sshpass\+Error@{Sshpass\+Error}!Contextualization\+Controller@{Contextualization\+Controller}}\index{Contextualization\+Controller@{Contextualization\+Controller}!Sshpass\+Error@{Sshpass\+Error}}}\mbox{\Hypertarget{classContextualizationController_acb38587f7f9e610a5950956b345d69fda860490b2223e4e78d29a514fb51f6fc5}\label{classContextualizationController_acb38587f7f9e610a5950956b345d69fda860490b2223e4e78d29a514fb51f6fc5}} 
+Sshpass\+Error&Indicates that an error ocurred in sshpass process. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Ssh\+Error@{Ssh\+Error}!Contextualization\+Controller@{Contextualization\+Controller}}\index{Contextualization\+Controller@{Contextualization\+Controller}!Ssh\+Error@{Ssh\+Error}}}\mbox{\Hypertarget{classContextualizationController_acb38587f7f9e610a5950956b345d69fda7447fb0b9cf45b0adc6da65c65c34253}\label{classContextualizationController_acb38587f7f9e610a5950956b345d69fda7447fb0b9cf45b0adc6da65c65c34253}} 
+Ssh\+Error&Indicates that an error ocurred in ssh process. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Write\+File@{Write\+File}!Contextualization\+Controller@{Contextualization\+Controller}}\index{Contextualization\+Controller@{Contextualization\+Controller}!Write\+File@{Write\+File}}}\mbox{\Hypertarget{classContextualizationController_acb38587f7f9e610a5950956b345d69fda841e3c0b31b4da700505de6d3b30dabe}\label{classContextualizationController_acb38587f7f9e610a5950956b345d69fda841e3c0b31b4da700505de6d3b30dabe}} 
+Write\+File&Indicates that the last try to write in disk wrong. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 60 of file contextualizationcontroller.\+h.
+
+\mbox{\Hypertarget{classContextualizationController_a211b7dd2dba820139e8055b4f88fdced}\label{classContextualizationController_a211b7dd2dba820139e8055b4f88fdced}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!Match\+Type@{Match\+Type}}
+\index{Match\+Type@{Match\+Type}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{Match\+Type}{MatchType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classContextualizationController_a211b7dd2dba820139e8055b4f88fdced}{Contextualization\+Controller\+::\+Match\+Type}}}
+
+
+
+The Match\+Type enum. 
+
+Contains all match types by which you can search a string. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{By\+ID@{By\+ID}!Contextualization\+Controller@{Contextualization\+Controller}}\index{Contextualization\+Controller@{Contextualization\+Controller}!By\+ID@{By\+ID}}}\mbox{\Hypertarget{classContextualizationController_a211b7dd2dba820139e8055b4f88fdcedab921b1883492c5a7511b20ec6a5f24f3}\label{classContextualizationController_a211b7dd2dba820139e8055b4f88fdcedab921b1883492c5a7511b20ec6a5f24f3}} 
+By\+ID&The match will be done taking strings with the same idetifier. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{By\+Value@{By\+Value}!Contextualization\+Controller@{Contextualization\+Controller}}\index{Contextualization\+Controller@{Contextualization\+Controller}!By\+Value@{By\+Value}}}\mbox{\Hypertarget{classContextualizationController_a211b7dd2dba820139e8055b4f88fdceda0e89844c93d199f9e314fc1a1ddae400}\label{classContextualizationController_a211b7dd2dba820139e8055b4f88fdceda0e89844c93d199f9e314fc1a1ddae400}} 
+By\+Value&The match will be done taking strings with the same value. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{By\+Approximate\+Value@{By\+Approximate\+Value}!Contextualization\+Controller@{Contextualization\+Controller}}\index{Contextualization\+Controller@{Contextualization\+Controller}!By\+Approximate\+Value@{By\+Approximate\+Value}}}\mbox{\Hypertarget{classContextualizationController_a211b7dd2dba820139e8055b4f88fdceda54d0f26a3c6d7f680f2bcbd383f1d9df}\label{classContextualizationController_a211b7dd2dba820139e8055b4f88fdceda54d0f26a3c6d7f680f2bcbd383f1d9df}} 
+By\+Approximate\+Value&The match will be done taking strings with similar value to the one you are looking for. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 79 of file contextualizationcontroller.\+h.
+
+\mbox{\Hypertarget{classContextualizationController_a78e15dc8f6f1e0cb4df6d86b921be8a4}\label{classContextualizationController_a78e15dc8f6f1e0cb4df6d86b921be8a4}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!Model\+Error@{Model\+Error}}
+\index{Model\+Error@{Model\+Error}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{Model\+Error}{ModelError}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{classContextualizationController_a78e15dc8f6f1e0cb4df6d86b921be8a4}{Contextualization\+Controller\+::\+Model\+Error}}}
+
+
+
+The Model\+Error enum. 
+
+Contains all errors that can has the model. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Ok\+Model@{Ok\+Model}!Contextualization\+Controller@{Contextualization\+Controller}}\index{Contextualization\+Controller@{Contextualization\+Controller}!Ok\+Model@{Ok\+Model}}}\mbox{\Hypertarget{classContextualizationController_a78e15dc8f6f1e0cb4df6d86b921be8a4a6ccff3cdedbdcfcdfc1eb59c4b088d24}\label{classContextualizationController_a78e15dc8f6f1e0cb4df6d86b921be8a4a6ccff3cdedbdcfcdfc1eb59c4b088d24}} 
+Ok\+Model&Indicates that the model has not any error. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{No\+Image@{No\+Image}!Contextualization\+Controller@{Contextualization\+Controller}}\index{Contextualization\+Controller@{Contextualization\+Controller}!No\+Image@{No\+Image}}}\mbox{\Hypertarget{classContextualizationController_a78e15dc8f6f1e0cb4df6d86b921be8a4adba539af7fd279d01da3a2a1e91e40ca}\label{classContextualizationController_a78e15dc8f6f1e0cb4df6d86b921be8a4adba539af7fd279d01da3a2a1e91e40ca}} 
+No\+Image&Indicates that the model has not setted a image. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Image\+Not\+Exist@{Image\+Not\+Exist}!Contextualization\+Controller@{Contextualization\+Controller}}\index{Contextualization\+Controller@{Contextualization\+Controller}!Image\+Not\+Exist@{Image\+Not\+Exist}}}\mbox{\Hypertarget{classContextualizationController_a78e15dc8f6f1e0cb4df6d86b921be8a4a5d1b78a6b1296da8bf43b62432d090c5}\label{classContextualizationController_a78e15dc8f6f1e0cb4df6d86b921be8a4a5d1b78a6b1296da8bf43b62432d090c5}} 
+Image\+Not\+Exist&Indicates that the image setted in the model doesn\textquotesingle{}t exist. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{No\+Strings@{No\+Strings}!Contextualization\+Controller@{Contextualization\+Controller}}\index{Contextualization\+Controller@{Contextualization\+Controller}!No\+Strings@{No\+Strings}}}\mbox{\Hypertarget{classContextualizationController_a78e15dc8f6f1e0cb4df6d86b921be8a4a2e771e637c2e37c6b410a96c9f48adfd}\label{classContextualizationController_a78e15dc8f6f1e0cb4df6d86b921be8a4a2e771e637c2e37c6b410a96c9f48adfd}} 
+No\+Strings&Indicates that the model has not any image associated. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 46 of file contextualizationcontroller.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classContextualizationController_a055cc7f78056ccc0d0a55023402a29ee}\label{classContextualizationController_a055cc7f78056ccc0d0a55023402a29ee}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!Contextualization\+Controller@{Contextualization\+Controller}}
+\index{Contextualization\+Controller@{Contextualization\+Controller}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{Contextualization\+Controller()}{ContextualizationController()}}
+{\footnotesize\ttfamily Contextualization\+Controller\+::\+Contextualization\+Controller (\begin{DoxyParamCaption}\item[{Q\+Object $\ast$}]{parent = {\ttfamily Q\+\_\+NULLPTR} }\end{DoxyParamCaption})}
+
+
+
+Constructs a controller setting his member variables. 
+
+Reads the configuration file and sets the values. If controller can\textquotesingle{}t read the configuration file or hasn\textquotesingle{}t a correct formart, controller sets a default values on member vaiables. 
+\begin{DoxyParams}{Parameters}
+{\em parent} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 20 of file contextualizationcontroller.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classContextualizationController_afea4c16fa2728506e6301e46891bf73f}\label{classContextualizationController_afea4c16fa2728506e6301e46891bf73f}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!add@{add}}
+\index{add@{add}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{add}{add}}
+{\footnotesize\ttfamily virtual void Contextualization\+Controller\+::add (\begin{DoxyParamCaption}\item[{Q\+String}]{new\+String,  }\item[{int}]{match\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}, {\ttfamily [slot]}}
+
+
+
+Tries to add a new string into the model. 
+
+This slot interacts with the user through the screen showing messages. 
+\begin{DoxyParams}{Parameters}
+{\em new\+String} & New strign to add. \\
+\hline
+{\em match\+Type} & Mode in which the string is to be searched for \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classContextualizationController_abb80030963c4abd056a200fefbf8b4e9}\label{classContextualizationController_abb80030963c4abd056a200fefbf8b4e9}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!add\+String@{add\+String}}
+\index{add\+String@{add\+String}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{add\+String()}{addString()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classContextualizationController_acb38587f7f9e610a5950956b345d69fd}{Contextualization\+Controller\+::\+Code\+Error}} Contextualization\+Controller\+::add\+String (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$}]{fw\+String }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Adds a new string on the model. 
+
+The \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} is added on the model of the tool if is not wrong or is already in the model. If the parameter fw\+String is null, nothing is done. Return true if \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} is added successfully and false if not. 
+\begin{DoxyParams}{Parameters}
+{\em fw\+String} & The string to add on the model. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Error code. 
+\end{DoxyReturn}
+
+
+Definition at line 377 of file contextualizationcontroller.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationController_a4af8f49a57b9d9a7daf5b51d45620ed6}\label{classContextualizationController_a4af8f49a57b9d9a7daf5b51d45620ed6}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!add\+Strings@{add\+Strings}}
+\index{add\+Strings@{add\+Strings}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{add\+Strings()}{addStrings()}}
+{\footnotesize\ttfamily int Contextualization\+Controller\+::add\+Strings (\begin{DoxyParamCaption}\item[{const Q\+List$<$ \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$$>$ \&}]{strings }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Adds new strings on the model. 
+
+Append all strings in the list that are not wrong or are already in the model. Returns the number of strings that have been added to the model. 
+\begin{DoxyParams}{Parameters}
+{\em strings} & Strings list to be added in the model. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 395 of file contextualizationcontroller.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationController_ad9e65625e6dc228858cf2c9606606691}\label{classContextualizationController_ad9e65625e6dc228858cf2c9606606691}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!capture@{capture}}
+\index{capture@{capture}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{capture}{capture}}
+{\footnotesize\ttfamily virtual void Contextualization\+Controller\+::capture (\begin{DoxyParamCaption}\item[{bool}]{detect\+Strings\+On\+Load }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}, {\ttfamily [slot]}}
+
+
+
+Make a screen capture. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em detect\+Strings\+On\+Load} & Flag to know if is neccesary detect strings on capture. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classContextualizationController_ae6817457c7b00d17bb676a4989d59858}\label{classContextualizationController_ae6817457c7b00d17bb676a4989d59858}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!detect\+Strings\+On\+Image@{detect\+Strings\+On\+Image}}
+\index{detect\+Strings\+On\+Image@{detect\+Strings\+On\+Image}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{detect\+Strings\+On\+Image()}{detectStringsOnImage()}}
+{\footnotesize\ttfamily Q\+List$<$ \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$ $>$ Contextualization\+Controller\+::detect\+Strings\+On\+Image (\begin{DoxyParamCaption}\item[{Q\+String}]{image }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Extracts the strings contained in the image set in the model. 
+
+Returns a Q\+List of \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} containing all of strings extracted converted in \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} objects if are in the fp file. Each firmware string on Q\+List is a \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} Object extracted from the image. 
+\begin{DoxyParams}{Parameters}
+{\em image} & Path of image where strings will be detected. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List of \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} found on image. 
+\end{DoxyReturn}
+
+
+Definition at line 237 of file contextualizationcontroller.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationController_a43b14faa02f64178e6f18f94022447fa}\label{classContextualizationController_a43b14faa02f64178e6f18f94022447fa}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!erase\+Exist\+Strings@{erase\+Exist\+Strings}}
+\index{erase\+Exist\+Strings@{erase\+Exist\+Strings}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{erase\+Exist\+Strings()}{eraseExistStrings()}}
+{\footnotesize\ttfamily int Contextualization\+Controller\+::erase\+Exist\+Strings (\begin{DoxyParamCaption}\item[{Q\+List$<$ \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$$>$ $\ast$}]{strings }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Erases, from the string list received by parameter, strings that already are in the model. 
+
+Return the number of strings erased from the strings list. 
+\begin{DoxyParams}{Parameters}
+{\em strings} & List of strings to be processed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Definition at line 477 of file contextualizationcontroller.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationController_a26fc3969db0e2217dc6994f819c78572}\label{classContextualizationController_a26fc3969db0e2217dc6994f819c78572}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!export\+To\+Json\+File@{export\+To\+Json\+File}}
+\index{export\+To\+Json\+File@{export\+To\+Json\+File}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{export\+To\+Json\+File()}{exportToJsonFile()}}
+{\footnotesize\ttfamily bool Contextualization\+Controller\+::export\+To\+Json\+File (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Exports project to json file. 
+
+Codes the actual model to J\+S\+ON format and sabe data in the file received by parameter. Returns true if project was exported succesfully, otherwise, returns false. 
+\begin{DoxyParams}{Parameters}
+{\em path} & File path where be saved data project. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line 94 of file contextualizationcontroller.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationController_a4afb43a5914ef1c7e2a6bb9357cdd822}\label{classContextualizationController_a4afb43a5914ef1c7e2a6bb9357cdd822}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!fast\+Detect\+Strings\+On\+Image@{fast\+Detect\+Strings\+On\+Image}}
+\index{fast\+Detect\+Strings\+On\+Image@{fast\+Detect\+Strings\+On\+Image}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{fast\+Detect\+Strings\+On\+Image()}{fastDetectStringsOnImage()}}
+{\footnotesize\ttfamily Q\+List$<$ \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$ $>$ Contextualization\+Controller\+::fast\+Detect\+Strings\+On\+Image (\begin{DoxyParamCaption}\item[{Q\+String}]{image }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Extracts the strings contained in the image set in the model. 
+
+Returns a Q\+List of \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} containing all of strings extracted converted in \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} objects if are in the fp file. Each firmware string on Q\+List is a \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} Object extracted from the image. This is that \#send\+Contextualization(\+Q\+String image), this is more fast but less precise. 
+\begin{DoxyParams}{Parameters}
+{\em image} & Path of image where strings will be detected. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List of \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} found on image. 
+\end{DoxyReturn}
+
+
+Definition at line 292 of file contextualizationcontroller.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationController_a627fba866e282e4e7dff813781ed88cb}\label{classContextualizationController_a627fba866e282e4e7dff813781ed88cb}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!filter\+Strings\+By\+State@{filter\+Strings\+By\+State}}
+\index{filter\+Strings\+By\+State@{filter\+Strings\+By\+State}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{filter\+Strings\+By\+State()}{filterStringsByState()}}
+{\footnotesize\ttfamily int Contextualization\+Controller\+::filter\+Strings\+By\+State (\begin{DoxyParamCaption}\item[{Q\+List$<$ \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$$>$ $\ast$}]{list,  }\item[{const Q\+String \&}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Filters a list of firmware strings. Remove from the list all strings that have not the same state as the one received by parameter. 
+
+Returns number of strings removed. 
+\begin{DoxyParams}{Parameters}
+{\em list} & Firmware strings list to be filtered. \\
+\hline
+{\em state} & State that will be filtered. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of removed strings. 
+\end{DoxyReturn}
+
+
+Definition at line 598 of file contextualizationcontroller.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationController_a5f94a4894e3a3c0920dc534346527fa0}\label{classContextualizationController_a5f94a4894e3a3c0920dc534346527fa0}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!find\+String@{find\+String}}
+\index{find\+String@{find\+String}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{find\+String()}{findString()}}
+{\footnotesize\ttfamily Q\+List$<$ \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$ $>$ Contextualization\+Controller\+::find\+String (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{text,  }\item[{const \mbox{\hyperlink{classContextualizationController_a211b7dd2dba820139e8055b4f88fdced}{Match\+Type}}}]{match\+Type = {\ttfamily \mbox{\hyperlink{classContextualizationController_a211b7dd2dba820139e8055b4f88fdcedab921b1883492c5a7511b20ec6a5f24f3}{By\+ID}}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Find the text received by parameter in fp file. 
+
+There are diferrent find types. The second parameter indicates the member class of \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} that the text received by parameter have to be compared. Returns a firmware string list containing all strings that be found. 
+\begin{DoxyParams}{Parameters}
+{\em text} & Text to be found. \\
+\hline
+{\em match\+Type} & Type of find to be done. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+If only have to find strings with D\+O\+NE state, tries to do search in D\+O\+N\+E\+\_\+\+F\+P\+\_\+\+F\+IlE, else use english\+Fp\+File\+\_\+.
+
+Tries to use D\+O\+N\+E\+\_\+\+F\+P\+\_\+\+F\+I\+LE if is possible to do searches faster.
+
+Definition at line 315 of file contextualizationcontroller.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationController_a737d2562702b3b0da946e7b2f9fa336d}\label{classContextualizationController_a737d2562702b3b0da946e7b2f9fa336d}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!generate\+Contextualization@{generate\+Contextualization}}
+\index{generate\+Contextualization@{generate\+Contextualization}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{generate\+Contextualization()}{generateContextualization()}}
+{\footnotesize\ttfamily Q\+String Contextualization\+Controller\+::generate\+Contextualization (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Generates a packet with the contextualization data. 
+
+After verifying that the model contains no errors, it packages all the information in a zip file with the data to be sent. If there aren\textquotesingle{}t errors, returns the path of the zip file, else returns an empty Q\+String. \begin{DoxyReturn}{Returns}
+Q\+String 
+\end{DoxyReturn}
+
+
+Definition at line 142 of file contextualizationcontroller.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationController_af142a8bbd561278c3423ccad3b40c910}\label{classContextualizationController_af142a8bbd561278c3423ccad3b40c910}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!generate\+Done\+Fp\+File@{generate\+Done\+Fp\+File}}
+\index{generate\+Done\+Fp\+File@{generate\+Done\+Fp\+File}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{generate\+Done\+Fp\+File()}{generateDoneFpFile()}}
+{\footnotesize\ttfamily int Contextualization\+Controller\+::generate\+Done\+Fp\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Creates a copy of english\+Fp file in /tmp with only firmware strings with D\+O\+NE status. 
+
+If copy was created succesfully returns 0, otherwise returns the code error. \begin{DoxyReturn}{Returns}
+Code error 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classWindowsConsoleController_afca6af922fe103845177580d6af4859e}{Windows\+Console\+Controller}}, and \mbox{\hyperlink{classWindowsGuiController_aa78e32ce3635fc99f846d545d4a320b3}{Windows\+Gui\+Controller}}.
+
+
+
+Definition at line 581 of file contextualizationcontroller.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationController_ab3824ba2a20c6f4b511fb6169a4349da}\label{classContextualizationController_ab3824ba2a20c6f4b511fb6169a4349da}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!get\+Date\+Time@{get\+Date\+Time}}
+\index{get\+Date\+Time@{get\+Date\+Time}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{get\+Date\+Time()}{getDateTime()}}
+{\footnotesize\ttfamily Q\+String Contextualization\+Controller\+::get\+Date\+Time (\begin{DoxyParamCaption}\item[{Q\+String}]{format = {\ttfamily \char`\"{}yyyy\+\_\+MM\+\_\+dd\+\_\+hh\+\_\+mm\+\_\+ss\char`\"{}} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Returns a current date time with the format received by parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em format} & Format to returns the date time. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Date time. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classContextualizationController_afd648aaf148c3db3fb5e3af88e6de2e5}\label{classContextualizationController_afd648aaf148c3db3fb5e3af88e6de2e5}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!get\+Image\+Of\+Model@{get\+Image\+Of\+Model}}
+\index{get\+Image\+Of\+Model@{get\+Image\+Of\+Model}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{get\+Image\+Of\+Model()}{getImageOfModel()}}
+{\footnotesize\ttfamily Q\+String Contextualization\+Controller\+::get\+Image\+Of\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Returns the actual image of the model. 
+
+\begin{DoxyReturn}{Returns}
+Absolute image path. 
+\end{DoxyReturn}
+
+
+Definition at line 496 of file contextualizationcontroller.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationController_a5d60cf7ca2c78b74bb6a5ad5a5b04e9e}\label{classContextualizationController_a5d60cf7ca2c78b74bb6a5ad5a5b04e9e}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!get\+Parameter\+From\+Config\+File@{get\+Parameter\+From\+Config\+File}}
+\index{get\+Parameter\+From\+Config\+File@{get\+Parameter\+From\+Config\+File}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{get\+Parameter\+From\+Config\+File()}{getParameterFromConfigFile()}}
+{\footnotesize\ttfamily Q\+String Contextualization\+Controller\+::get\+Parameter\+From\+Config\+File (\begin{DoxyParamCaption}\item[{const Q\+String}]{parameter }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Returns a value of a parameter in config file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parameter} & Parameter name to be returned. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Value 
+\end{DoxyReturn}
+
+
+Definition at line 669 of file contextualizationcontroller.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationController_a6c8aba56f5b97fc3042c6e5c8e04e124}\label{classContextualizationController_a6c8aba56f5b97fc3042c6e5c8e04e124}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!get\+Table\+Model@{get\+Table\+Model}}
+\index{get\+Table\+Model@{get\+Table\+Model}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{get\+Table\+Model()}{getTableModel()}}
+{\footnotesize\ttfamily Q\+List$<$ Q\+Object $\ast$ $>$ Contextualization\+Controller\+::get\+Table\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Returns the model to be used by List\+View, Table\+View or similar Q\+ML object. 
+
+\begin{DoxyReturn}{Returns}
+A model. 
+\end{DoxyReturn}
+
+
+Definition at line 501 of file contextualizationcontroller.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationController_ae2b31282f2258673757c77592f7ded00}\label{classContextualizationController_ae2b31282f2258673757c77592f7ded00}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!import\+Project\+From\+Json\+File@{import\+Project\+From\+Json\+File}}
+\index{import\+Project\+From\+Json\+File@{import\+Project\+From\+Json\+File}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{import\+Project\+From\+Json\+File()}{importProjectFromJsonFile()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classContextualizationController_acb38587f7f9e610a5950956b345d69fd}{Contextualization\+Controller\+::\+Code\+Error}} Contextualization\+Controller\+::import\+Project\+From\+Json\+File (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Imports projet from json file. 
+
+Decodes J\+S\+ON format of the file received by parameter and try to convert it in a \mbox{\hyperlink{classContextualizationModel}{Contextualization\+Model}} object. Returns a \#\+Error code. 
+\begin{DoxyParams}{Parameters}
+{\em path} & File path where be readed data project. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+
+
+Definition at line 66 of file contextualizationcontroller.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationController_a7eaa7277a256b9dbf26573a651e442bf}\label{classContextualizationController_a7eaa7277a256b9dbf26573a651e442bf}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!is\+Fw\+String\+Already\+Exists@{is\+Fw\+String\+Already\+Exists}}
+\index{is\+Fw\+String\+Already\+Exists@{is\+Fw\+String\+Already\+Exists}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{is\+Fw\+String\+Already\+Exists()}{isFwStringAlreadyExists()}}
+{\footnotesize\ttfamily bool Contextualization\+Controller\+::is\+Fw\+String\+Already\+Exists (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classFirmwareString}{Firmware\+String}} \&}]{fw\+String }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Checks that the \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} is not already in the model. 
+
+If the \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} has no empty id, checks that there is not any \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} with the same id. If the \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} id is empty, then checks that there is not any \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} with the same value. 
+\begin{DoxyParams}{Parameters}
+{\em fw\+String} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line 456 of file contextualizationcontroller.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationController_a0d726ece69d0876729c1c801f9c25230}\label{classContextualizationController_a0d726ece69d0876729c1c801f9c25230}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!is\+Valid\+State@{is\+Valid\+State}}
+\index{is\+Valid\+State@{is\+Valid\+State}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{is\+Valid\+State()}{isValidState()}}
+{\footnotesize\ttfamily bool Contextualization\+Controller\+::is\+Valid\+State (\begin{DoxyParamCaption}\item[{Q\+String \&}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Checks the parameter state is a valid state. 
+
+Valid states are stored in a private Q\+String\+List validstates. Return true if the state is a valid state and return false if not. 
+\begin{DoxyParams}{Parameters}
+{\em state} & Q\+String state to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line 369 of file contextualizationcontroller.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationController_a3b93cb8ddf7ec41936d0e3ab980644eb}\label{classContextualizationController_a3b93cb8ddf7ec41936d0e3ab980644eb}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!load@{load}}
+\index{load@{load}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{load}{load}}
+{\footnotesize\ttfamily virtual void Contextualization\+Controller\+::load (\begin{DoxyParamCaption}\item[{bool}]{detect\+Strings\+On\+Load }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}, {\ttfamily [slot]}}
+
+
+
+Loads an image in the model. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em detect\+Strings\+On\+Load} & Flag to know if is neccesary detect strings on capture. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classContextualizationController_a0ec0241ee096fa917e3ab7de448e5509}\label{classContextualizationController_a0ec0241ee096fa917e3ab7de448e5509}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!proccess\+And\+Storage@{proccess\+And\+Storage}}
+\index{proccess\+And\+Storage@{proccess\+And\+Storage}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{proccess\+And\+Storage()}{proccessAndStorage()}}
+{\footnotesize\ttfamily bool Contextualization\+Controller\+::proccess\+And\+Storage (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Reads all fp language files that there was congigurated in database. 
+
+Process all strings and storage in database strings with state V\+A\+L\+I\+D\+A\+D\+ED. \begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line 738 of file contextualizationcontroller.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationController_a97436fb5b350bcc6be500b0fe2ecc1b7}\label{classContextualizationController_a97436fb5b350bcc6be500b0fe2ecc1b7}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!process\+Extracted\+Strings@{process\+Extracted\+Strings}}
+\index{process\+Extracted\+Strings@{process\+Extracted\+Strings}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{process\+Extracted\+Strings()}{processExtractedStrings()}}
+{\footnotesize\ttfamily Q\+List$<$ \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} $\ast$ $>$ Contextualization\+Controller\+::process\+Extracted\+Strings (\begin{DoxyParamCaption}\item[{Q\+String\+List}]{strings }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Processes received strings. 
+
+Tries to find the strings value in fp file and strings that are in the file are returned converted in \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} object. Returns Q\+List of \mbox{\hyperlink{classFirmwareString}{Firmware\+String}} containing strings found in fp file.. 
+\begin{DoxyParams}{Parameters}
+{\em strings} & \mbox{\hyperlink{classString}{String}} value to be processed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List of Firmware\+Stirng found in fp file. 
+\end{DoxyReturn}
+
+
+Definition at line 300 of file contextualizationcontroller.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationController_ae06d4c794e77321439668aadc141aca5}\label{classContextualizationController_ae06d4c794e77321439668aadc141aca5}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!remove@{remove}}
+\index{remove@{remove}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{remove}{remove}}
+{\footnotesize\ttfamily virtual void Contextualization\+Controller\+::remove (\begin{DoxyParamCaption}\item[{Q\+String}]{string\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}, {\ttfamily [slot]}}
+
+
+
+Tries to remove the string in the model with the identifier receiven by parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em string\+Id} & Idetifier for string to remove. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classContextualizationController_adedb36b408caff11f15632998e7b9413}\label{classContextualizationController_adedb36b408caff11f15632998e7b9413}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!remove\+String@{remove\+String}}
+\index{remove\+String@{remove\+String}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{remove\+String()}{removeString()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool Contextualization\+Controller\+::remove\+String (\begin{DoxyParamCaption}\item[{Q\+String}]{string\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Removes the string in the model with the id received by parameter. 
+
+Returns true if the string was removed succesfully or false if the string is not in the model. 
+\begin{DoxyParams}{Parameters}
+{\em row} & Row number of the string to be removed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line 408 of file contextualizationcontroller.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationController_a0fb2ae8db12aba7888504f832bb63bd5}\label{classContextualizationController_a0fb2ae8db12aba7888504f832bb63bd5}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!remove\+String@{remove\+String}}
+\index{remove\+String@{remove\+String}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{remove\+String()}{removeString()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool Contextualization\+Controller\+::remove\+String (\begin{DoxyParamCaption}\item[{int}]{row }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Removes the string in the model row number received by parameter. 
+
+Returns true if the string was removed succesfully or false if the string is not in the model. 
+\begin{DoxyParams}{Parameters}
+{\em row} & Row number of the string to be removed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line 413 of file contextualizationcontroller.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationController_a943a8703d6e67fa5a08b4b8d73697dfc}\label{classContextualizationController_a943a8703d6e67fa5a08b4b8d73697dfc}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!select\+String@{select\+String}}
+\index{select\+String@{select\+String}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{select\+String()}{selectString()}}
+{\footnotesize\ttfamily bool Contextualization\+Controller\+::select\+String (\begin{DoxyParamCaption}\item[{const Q\+String}]{id,  }\item[{bool}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Select the string with the identifier received by parameter. 
+
+Returns true if string was selected succesfully, otherwise, returns false. 
+\begin{DoxyParams}{Parameters}
+{\em id} & Identifier of strogn to select. \\
+\hline
+{\em state} & Selection state \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line 429 of file contextualizationcontroller.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationController_a46ec193d423be47137f34d746145801f}\label{classContextualizationController_a46ec193d423be47137f34d746145801f}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!send\+Contextualization@{send\+Contextualization}}
+\index{send\+Contextualization@{send\+Contextualization}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{send\+Contextualization()}{sendContextualization()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classContextualizationController_acb38587f7f9e610a5950956b345d69fd}{Contextualization\+Controller\+::\+Code\+Error}} Contextualization\+Controller\+::send\+Contextualization (\begin{DoxyParamCaption}\item[{Q\+String const \&}]{path,  }\item[{Q\+String}]{user,  }\item[{Q\+String}]{password }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Process that is responsible for sending the file received by parameter. 
+
+Using credentials received por parameters, sends by S\+F\+TP protocol the file. Return the code error returned by S\+F\+TP process or a \mbox{\hyperlink{classContextualizationController_acb38587f7f9e610a5950956b345d69fd}{Code\+Error}} If there were any errors during the process. 
+\begin{DoxyParams}{Parameters}
+{\em path} & File path to send. \\
+\hline
+{\em user} & Username credential. \\
+\hline
+{\em password} & Password credential. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 182 of file contextualizationcontroller.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationController_afd1e07f8b9439ff36656bfc7163df892}\label{classContextualizationController_afd1e07f8b9439ff36656bfc7163df892}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!set\+Image@{set\+Image}}
+\index{set\+Image@{set\+Image}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{set\+Image()}{setImage()}}
+{\footnotesize\ttfamily bool Contextualization\+Controller\+::set\+Image (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{image }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+set\+Image 
+
+
+\begin{DoxyParams}{Parameters}
+{\em image} & Path of image that will be set to the model. Returns true if the image is setted succesfully or returns false if the image can not setted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line 439 of file contextualizationcontroller.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationController_a6e92320baf8dbbf148bd3b3e97c5d332}\label{classContextualizationController_a6e92320baf8dbbf148bd3b3e97c5d332}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!set\+Parameter\+In\+Config\+File@{set\+Parameter\+In\+Config\+File}}
+\index{set\+Parameter\+In\+Config\+File@{set\+Parameter\+In\+Config\+File}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{set\+Parameter\+In\+Config\+File()}{setParameterInConfigFile()}}
+{\footnotesize\ttfamily bool Contextualization\+Controller\+::set\+Parameter\+In\+Config\+File (\begin{DoxyParamCaption}\item[{const Q\+String}]{parameter,  }\item[{const Q\+String}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Sets a parameter in configuration file. 
+
+Returns true if parameter is saved succesfully, otherwhise returns false. 
+\begin{DoxyParams}{Parameters}
+{\em parameter} & Parameter name \\
+\hline
+{\em value} & Parameter value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line 704 of file contextualizationcontroller.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationController_a2bef3de188caf57cad70e47bcf7495d1}\label{classContextualizationController_a2bef3de188caf57cad70e47bcf7495d1}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!split\+Image@{split\+Image}}
+\index{split\+Image@{split\+Image}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{split\+Image()}{splitImage()}}
+{\footnotesize\ttfamily Q\+String\+List Contextualization\+Controller\+::split\+Image (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{image,  }\item[{int}]{chunk\+Width,  }\item[{int}]{chunk\+Height,  }\item[{bool $\ast$}]{some\+Error = {\ttfamily Q\+\_\+NULLPTR} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Splits an image in one or more chunks depending of chunk size received by argument. 
+
+If the width of the image is not divisible by the chunk\+Width respectively, the last chunk of the row will narrower than all the others. Works the same way for height of image and chunk\+Height. Chunks are saved on disk.
+
+Returns a list with path of image chunks. Only returns chunks that have been saved on disk succesfully.
+
+If ok is nonnull pointer, ok will be set to true if all chunks are saved on disk succesfully. 
+\begin{DoxyParams}{Parameters}
+{\em image} & Image to split. \\
+\hline
+{\em chunk\+Width} & Width of each part of image. \\
+\hline
+{\em chunk\+Height} & Height of each part of image. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Q\+String\+List with chunks of image. 
+\end{DoxyReturn}
+
+
+Definition at line 617 of file contextualizationcontroller.\+cpp.
+
+\mbox{\Hypertarget{classContextualizationController_a121919886590cd4955bbcc2d8b747b26}\label{classContextualizationController_a121919886590cd4955bbcc2d8b747b26}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!take\+Capture\+Area@{take\+Capture\+Area}}
+\index{take\+Capture\+Area@{take\+Capture\+Area}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{take\+Capture\+Area()}{takeCaptureArea()}}
+{\footnotesize\ttfamily virtual Q\+String Contextualization\+Controller\+::take\+Capture\+Area (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Starts a process that allow user capture an area of the screen. 
+
+The user have to select the area to capture with the mouse. Return the path where the capture is stored or an empty Q\+String if an error ocurred. \begin{DoxyReturn}{Returns}
+Q\+String 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classWindowsConsoleController_ab536d94896c62a1920a6dbfd4b83c18b}{Windows\+Console\+Controller}}, \mbox{\hyperlink{classLinuxConsoleController_ac9944bf1302b077c733802349359e777}{Linux\+Console\+Controller}}, \mbox{\hyperlink{classLinuxGuiController_a8242963a9c5f4b967902f8ee576294ec}{Linux\+Gui\+Controller}}, and \mbox{\hyperlink{classWindowsGuiController_afcda369c002842873b3fb3cc3a593c06}{Windows\+Gui\+Controller}}.
+
+\mbox{\Hypertarget{classContextualizationController_a6b806979e0b4e5a3ce3af09230f66fef}\label{classContextualizationController_a6b806979e0b4e5a3ce3af09230f66fef}} 
+\index{Contextualization\+Controller@{Contextualization\+Controller}!validate\+Model@{validate\+Model}}
+\index{validate\+Model@{validate\+Model}!Contextualization\+Controller@{Contextualization\+Controller}}
+\subsubsection{\texorpdfstring{validate\+Model()}{validateModel()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classContextualizationController_a78e15dc8f6f1e0cb4df6d86b921be8a4}{Contextualization\+Controller\+::\+Model\+Error}} Contextualization\+Controller\+::validate\+Model (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Checks the actual state of the model. 
+
+Returns the error code of the actual state of the model. \begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classContextualizationController_a78e15dc8f6f1e0cb4df6d86b921be8a4}{Model\+Error}} 
+\end{DoxyReturn}
+
+
+Definition at line 119 of file contextualizationcontroller.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/contextualization/controller/\mbox{\hyperlink{contextualizationcontroller_8h}{contextualizationcontroller.\+h}}\item 
+src/contextualization/controller/\mbox{\hyperlink{contextualizationcontroller_8cpp}{contextualizationcontroller.\+cpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,485 @@
+\hypertarget{classMySqlConnector}{}\section{My\+Sql\+Connector Class Reference}
+\label{classMySqlConnector}\index{My\+Sql\+Connector@{My\+Sql\+Connector}}
+
+
+This is a class to access a My\+S\+QL database.  
+
+
+
+
+{\ttfamily \#include $<$mysqlconnector.\+h$>$}
+
+Inheritance diagram for My\+Sql\+Connector\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classMySqlConnector}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classMySqlConnector_af17a58a3749687938d0b3b15e276dab7}\label{classMySqlConnector_af17a58a3749687938d0b3b15e276dab7}} 
+\mbox{\hyperlink{classMySqlConnector_af17a58a3749687938d0b3b15e276dab7}{My\+Sql\+Connector}} ()
+\begin{DoxyCompactList}\small\item\em Creates an empty \mbox{\hyperlink{classMySqlConnector}{My\+Sql\+Connector}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMySqlConnector_a86344c8e5fb792da1da746bdea3a2474}{My\+Sql\+Connector}} (const Q\+String host, const Q\+String user, const Q\+String password, const Q\+String database=Q\+String())
+\begin{DoxyCompactList}\small\item\em Creates a \mbox{\hyperlink{classMySqlConnector}{My\+Sql\+Connector}} setting values received by argument. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{classMySqlConnector_ae652c2a79321d979121e2347cbb25ba0}{get\+User}} ()
+\begin{DoxyCompactList}\small\item\em Returns a user name to access database. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMySqlConnector_a0cf4bedae2d4093449590aa59d200ce8}{set\+User}} (const Q\+String user)
+\begin{DoxyCompactList}\small\item\em Sets username to access database. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMySqlConnector_a92af1c28da0953a69573b21f68b8a41f}{set\+Password}} (const Q\+String password)
+\begin{DoxyCompactList}\small\item\em Sets password to access database. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{classMySqlConnector_a9bada8a552b17c5e39e7d1c903201b4b}{get\+Data\+Base}} ()
+\begin{DoxyCompactList}\small\item\em Returns a data base name to access database. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMySqlConnector_a8688bfeb3bb6ba6181f5ce90dc8066d8}{set\+Data\+Base}} (const Q\+String data\+Base)
+\begin{DoxyCompactList}\small\item\em Sets data base to access database. \end{DoxyCompactList}\item 
+Q\+List$<$ \mbox{\hyperlink{classString}{String}} $\ast$ $>$ \mbox{\hyperlink{classMySqlConnector_ad6ff79c4049e3631800da97e8d7b7704}{get\+All\+Strings}} () override
+\item 
+Q\+List$<$ \mbox{\hyperlink{classString}{String}} $\ast$ $>$ \mbox{\hyperlink{classMySqlConnector_ae7440816a5bda9e63ea526656c4001f5}{get\+Strings\+With\+Value}} (const Q\+String \&value, bool case\+Sensitive=true) override
+\begin{DoxyCompactList}\small\item\em Returns all strigns in database with the value received by argument. \end{DoxyCompactList}\item 
+Q\+List$<$ \mbox{\hyperlink{classString}{String}} $\ast$ $>$ \mbox{\hyperlink{classMySqlConnector_a8a480141c72dc8da687b15f921ab1a4e}{get\+Strings\+With\+Approximate\+Value}} (const Q\+String \&value, bool case\+Sensitive=true) override
+\begin{DoxyCompactList}\small\item\em Returns all strigns in database with a similar value received by argument. \end{DoxyCompactList}\item 
+Q\+List$<$ \mbox{\hyperlink{classString}{String}} $\ast$ $>$ \mbox{\hyperlink{classMySqlConnector_a269bbced50451ff0ce48cfc4f2bb6a3b}{get\+String\+With\+Id}} (const Q\+String \&id, bool case\+Sensitive=true) override
+\begin{DoxyCompactList}\small\item\em Returns all strigns in database with the identifier received by argument. \end{DoxyCompactList}\item 
+Q\+List$<$ \mbox{\hyperlink{classString}{String}} $\ast$ $>$ \mbox{\hyperlink{classMySqlConnector_a821c3dcebcd763df1700881cb47685d5}{get\+Strings\+With\+State}} (const Q\+String state) override
+\begin{DoxyCompactList}\small\item\em Returns strings with state received by parameter. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classMySqlConnector_a4608c0764241969454a55b42873cb86b}{insert\+String}} (const \mbox{\hyperlink{classString}{String}} \&string, const Q\+String language) override
+\begin{DoxyCompactList}\small\item\em Inserts a new string in database. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classMySqlConnector_a77a5169dd8a515b613642c88dac9798b}{insert\+Strings}} (const Q\+List$<$ \mbox{\hyperlink{classString}{String}} $\ast$$>$ \&strings, const Q\+String language) override
+\begin{DoxyCompactList}\small\item\em Inserts a set of strings into the database. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classMySqlConnector_a528aac591ea56ade27a096bb997abb2a}{remove\+Strings\+With\+Value}} (const Q\+String \&value, bool case\+Sensitive=true) override
+\begin{DoxyCompactList}\small\item\em Removes from databse all strigns with the value received by argument. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classMySqlConnector_a3c340e5310c56410d64ecd89e5cf6661}{remove\+Strings\+With\+Id}} (const Q\+String \&id, bool case\+Sensitive=true) override
+\begin{DoxyCompactList}\small\item\em Removes from databse the strign with the identifier received by argument. \end{DoxyCompactList}\item 
+Q\+String\+List \mbox{\hyperlink{classMySqlConnector_a83be1a4d67e509b6604629660eb7c4a0}{get\+Languages}} () override
+\begin{DoxyCompactList}\small\item\em Returns all languages stored in database. \end{DoxyCompactList}\item 
+Q\+String\+List \mbox{\hyperlink{classMySqlConnector_a3493828360c7edd217461e040fc1b00e}{get\+Language\+Ids}} () override
+\begin{DoxyCompactList}\small\item\em Returns all language identifiers stored in database. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{classMySqlConnector_a16a6f0883e2b384621e738f78c619af6}{get\+Key\+From\+Language}} (const Q\+String language)
+\begin{DoxyCompactList}\small\item\em Returns the key of language received by parameter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+This is a class to access a My\+S\+QL database. 
+
+Definition at line 20 of file mysqlconnector.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMySqlConnector_a86344c8e5fb792da1da746bdea3a2474}\label{classMySqlConnector_a86344c8e5fb792da1da746bdea3a2474}} 
+\index{My\+Sql\+Connector@{My\+Sql\+Connector}!My\+Sql\+Connector@{My\+Sql\+Connector}}
+\index{My\+Sql\+Connector@{My\+Sql\+Connector}!My\+Sql\+Connector@{My\+Sql\+Connector}}
+\subsubsection{\texorpdfstring{My\+Sql\+Connector()}{MySqlConnector()}}
+{\footnotesize\ttfamily My\+Sql\+Connector\+::\+My\+Sql\+Connector (\begin{DoxyParamCaption}\item[{const Q\+String}]{host,  }\item[{const Q\+String}]{user,  }\item[{const Q\+String}]{password,  }\item[{const Q\+String}]{database = {\ttfamily QString()} }\end{DoxyParamCaption})}
+
+
+
+Creates a \mbox{\hyperlink{classMySqlConnector}{My\+Sql\+Connector}} setting values received by argument. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & Username to access database. \\
+\hline
+{\em password} & Password for the username. \\
+\hline
+{\em database} & Data base name. \\
+\hline
+{\em table} & Table name. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 13 of file mysqlconnector.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classMySqlConnector_ad6ff79c4049e3631800da97e8d7b7704}\label{classMySqlConnector_ad6ff79c4049e3631800da97e8d7b7704}} 
+\index{My\+Sql\+Connector@{My\+Sql\+Connector}!get\+All\+Strings@{get\+All\+Strings}}
+\index{get\+All\+Strings@{get\+All\+Strings}!My\+Sql\+Connector@{My\+Sql\+Connector}}
+\subsubsection{\texorpdfstring{get\+All\+Strings()}{getAllStrings()}}
+{\footnotesize\ttfamily Q\+List$<$ \mbox{\hyperlink{classString}{String}} $\ast$ $>$ My\+Sql\+Connector\+::get\+All\+Strings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+
+
+
+
+Implements \mbox{\hyperlink{classDatabaseConnectorAbstract_aeb4347bc18b6bed9a9b6120f68c10e9d}{Database\+Connector\+Abstract}}.
+
+
+
+Definition at line 64 of file mysqlconnector.\+cpp.
+
+\mbox{\Hypertarget{classMySqlConnector_a9bada8a552b17c5e39e7d1c903201b4b}\label{classMySqlConnector_a9bada8a552b17c5e39e7d1c903201b4b}} 
+\index{My\+Sql\+Connector@{My\+Sql\+Connector}!get\+Data\+Base@{get\+Data\+Base}}
+\index{get\+Data\+Base@{get\+Data\+Base}!My\+Sql\+Connector@{My\+Sql\+Connector}}
+\subsubsection{\texorpdfstring{get\+Data\+Base()}{getDataBase()}}
+{\footnotesize\ttfamily Q\+String My\+Sql\+Connector\+::get\+Data\+Base (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns a data base name to access database. 
+
+\begin{DoxyReturn}{Returns}
+User name. 
+\end{DoxyReturn}
+
+
+Definition at line 54 of file mysqlconnector.\+cpp.
+
+\mbox{\Hypertarget{classMySqlConnector_a16a6f0883e2b384621e738f78c619af6}\label{classMySqlConnector_a16a6f0883e2b384621e738f78c619af6}} 
+\index{My\+Sql\+Connector@{My\+Sql\+Connector}!get\+Key\+From\+Language@{get\+Key\+From\+Language}}
+\index{get\+Key\+From\+Language@{get\+Key\+From\+Language}!My\+Sql\+Connector@{My\+Sql\+Connector}}
+\subsubsection{\texorpdfstring{get\+Key\+From\+Language()}{getKeyFromLanguage()}}
+{\footnotesize\ttfamily Q\+String My\+Sql\+Connector\+::get\+Key\+From\+Language (\begin{DoxyParamCaption}\item[{const Q\+String}]{language }\end{DoxyParamCaption})}
+
+
+
+Returns the key of language received by parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em language} & Language to match key \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Language ID 
+\end{DoxyReturn}
+
+
+Definition at line 326 of file mysqlconnector.\+cpp.
+
+\mbox{\Hypertarget{classMySqlConnector_a3493828360c7edd217461e040fc1b00e}\label{classMySqlConnector_a3493828360c7edd217461e040fc1b00e}} 
+\index{My\+Sql\+Connector@{My\+Sql\+Connector}!get\+Language\+Ids@{get\+Language\+Ids}}
+\index{get\+Language\+Ids@{get\+Language\+Ids}!My\+Sql\+Connector@{My\+Sql\+Connector}}
+\subsubsection{\texorpdfstring{get\+Language\+Ids()}{getLanguageIds()}}
+{\footnotesize\ttfamily Q\+String\+List My\+Sql\+Connector\+::get\+Language\+Ids (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns all language identifiers stored in database. 
+
+\begin{DoxyReturn}{Returns}
+Languages used. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classDatabaseConnectorAbstract_a98f5b2472bab6edc82ce2c5554319d7f}{Database\+Connector\+Abstract}}.
+
+
+
+Definition at line 308 of file mysqlconnector.\+cpp.
+
+\mbox{\Hypertarget{classMySqlConnector_a83be1a4d67e509b6604629660eb7c4a0}\label{classMySqlConnector_a83be1a4d67e509b6604629660eb7c4a0}} 
+\index{My\+Sql\+Connector@{My\+Sql\+Connector}!get\+Languages@{get\+Languages}}
+\index{get\+Languages@{get\+Languages}!My\+Sql\+Connector@{My\+Sql\+Connector}}
+\subsubsection{\texorpdfstring{get\+Languages()}{getLanguages()}}
+{\footnotesize\ttfamily Q\+String\+List My\+Sql\+Connector\+::get\+Languages (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns all languages stored in database. 
+
+\begin{DoxyReturn}{Returns}
+Languages used. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classDatabaseConnectorAbstract_a77ff263d407366e54f3e8512c575ff5e}{Database\+Connector\+Abstract}}.
+
+
+
+Definition at line 290 of file mysqlconnector.\+cpp.
+
+\mbox{\Hypertarget{classMySqlConnector_a8a480141c72dc8da687b15f921ab1a4e}\label{classMySqlConnector_a8a480141c72dc8da687b15f921ab1a4e}} 
+\index{My\+Sql\+Connector@{My\+Sql\+Connector}!get\+Strings\+With\+Approximate\+Value@{get\+Strings\+With\+Approximate\+Value}}
+\index{get\+Strings\+With\+Approximate\+Value@{get\+Strings\+With\+Approximate\+Value}!My\+Sql\+Connector@{My\+Sql\+Connector}}
+\subsubsection{\texorpdfstring{get\+Strings\+With\+Approximate\+Value()}{getStringsWithApproximateValue()}}
+{\footnotesize\ttfamily Q\+List$<$ \mbox{\hyperlink{classString}{String}} $\ast$ $>$ My\+Sql\+Connector\+::get\+Strings\+With\+Approximate\+Value (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{value,  }\item[{bool}]{case\+Sensitive = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns all strigns in database with a similar value received by argument. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \mbox{\hyperlink{classString}{String}} value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List with strings. 
+\end{DoxyReturn}
+If the value belongs to a string, the fw\+String is saved, otherwise relsease memory of fw\+String. If size of both strings is longer than M\+I\+N\+\_\+\+L\+E\+N\+G\+T\+H\+\_\+\+F\+O\+R\+\_\+\+A\+P\+P\+R\+O\+X\+I\+M\+A\+TE and their size difference is less than M\+A\+X\+\_\+\+L\+E\+N\+G\+T\+H\+\_\+\+D\+I\+F\+F\+E\+R\+E\+N\+CE, a value is considered valid if it is contained within the fw\+String value or vice versa. If size of any strings is less than M\+I\+N\+\_\+\+L\+E\+N\+G\+T\+H\+\_\+\+F\+O\+R\+\_\+\+A\+P\+P\+R\+O\+X\+I\+M\+A\+TE, a value is considered valid only if it is equals than the value of fw\+String.
+
+Implements \mbox{\hyperlink{classDatabaseConnectorAbstract_a5b0f30372ca105a94073267e969b74ee}{Database\+Connector\+Abstract}}.
+
+
+
+Definition at line 120 of file mysqlconnector.\+cpp.
+
+\mbox{\Hypertarget{classMySqlConnector_a821c3dcebcd763df1700881cb47685d5}\label{classMySqlConnector_a821c3dcebcd763df1700881cb47685d5}} 
+\index{My\+Sql\+Connector@{My\+Sql\+Connector}!get\+Strings\+With\+State@{get\+Strings\+With\+State}}
+\index{get\+Strings\+With\+State@{get\+Strings\+With\+State}!My\+Sql\+Connector@{My\+Sql\+Connector}}
+\subsubsection{\texorpdfstring{get\+Strings\+With\+State()}{getStringsWithState()}}
+{\footnotesize\ttfamily Q\+List$<$ \mbox{\hyperlink{classString}{String}} $\ast$ $>$ My\+Sql\+Connector\+::get\+Strings\+With\+State (\begin{DoxyParamCaption}\item[{const Q\+String}]{state }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns strings with state received by parameter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em state} & State to be found. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classString}{String}} list eith indicated state. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classDatabaseConnectorAbstract_a74952c7e14c891e33c84995066003c5a}{Database\+Connector\+Abstract}}.
+
+
+
+Definition at line 185 of file mysqlconnector.\+cpp.
+
+\mbox{\Hypertarget{classMySqlConnector_ae7440816a5bda9e63ea526656c4001f5}\label{classMySqlConnector_ae7440816a5bda9e63ea526656c4001f5}} 
+\index{My\+Sql\+Connector@{My\+Sql\+Connector}!get\+Strings\+With\+Value@{get\+Strings\+With\+Value}}
+\index{get\+Strings\+With\+Value@{get\+Strings\+With\+Value}!My\+Sql\+Connector@{My\+Sql\+Connector}}
+\subsubsection{\texorpdfstring{get\+Strings\+With\+Value()}{getStringsWithValue()}}
+{\footnotesize\ttfamily Q\+List$<$ \mbox{\hyperlink{classString}{String}} $\ast$ $>$ My\+Sql\+Connector\+::get\+Strings\+With\+Value (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{value,  }\item[{bool}]{case\+Sensitive = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns all strigns in database with the value received by argument. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \mbox{\hyperlink{classString}{String}} value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List with strings. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classDatabaseConnectorAbstract_a1d33547045c5f8619f44290c932edb1b}{Database\+Connector\+Abstract}}.
+
+
+
+Definition at line 88 of file mysqlconnector.\+cpp.
+
+\mbox{\Hypertarget{classMySqlConnector_a269bbced50451ff0ce48cfc4f2bb6a3b}\label{classMySqlConnector_a269bbced50451ff0ce48cfc4f2bb6a3b}} 
+\index{My\+Sql\+Connector@{My\+Sql\+Connector}!get\+String\+With\+Id@{get\+String\+With\+Id}}
+\index{get\+String\+With\+Id@{get\+String\+With\+Id}!My\+Sql\+Connector@{My\+Sql\+Connector}}
+\subsubsection{\texorpdfstring{get\+String\+With\+Id()}{getStringWithId()}}
+{\footnotesize\ttfamily Q\+List$<$ \mbox{\hyperlink{classString}{String}} $\ast$ $>$ My\+Sql\+Connector\+::get\+String\+With\+Id (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{id,  }\item[{bool}]{case\+Sensitive = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Returns all strigns in database with the identifier received by argument. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \mbox{\hyperlink{classString}{String}} identifier. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+List with strings. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classDatabaseConnectorAbstract_a757f25feaf50af012d25db8f27b1fef4}{Database\+Connector\+Abstract}}.
+
+
+
+Definition at line 153 of file mysqlconnector.\+cpp.
+
+\mbox{\Hypertarget{classMySqlConnector_ae652c2a79321d979121e2347cbb25ba0}\label{classMySqlConnector_ae652c2a79321d979121e2347cbb25ba0}} 
+\index{My\+Sql\+Connector@{My\+Sql\+Connector}!get\+User@{get\+User}}
+\index{get\+User@{get\+User}!My\+Sql\+Connector@{My\+Sql\+Connector}}
+\subsubsection{\texorpdfstring{get\+User()}{getUser()}}
+{\footnotesize\ttfamily Q\+String My\+Sql\+Connector\+::get\+User (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns a user name to access database. 
+
+\begin{DoxyReturn}{Returns}
+User name. 
+\end{DoxyReturn}
+
+
+Definition at line 39 of file mysqlconnector.\+cpp.
+
+\mbox{\Hypertarget{classMySqlConnector_a4608c0764241969454a55b42873cb86b}\label{classMySqlConnector_a4608c0764241969454a55b42873cb86b}} 
+\index{My\+Sql\+Connector@{My\+Sql\+Connector}!insert\+String@{insert\+String}}
+\index{insert\+String@{insert\+String}!My\+Sql\+Connector@{My\+Sql\+Connector}}
+\subsubsection{\texorpdfstring{insert\+String()}{insertString()}}
+{\footnotesize\ttfamily bool My\+Sql\+Connector\+::insert\+String (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classString}{String}} \&}]{string,  }\item[{const Q\+String}]{language }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Inserts a new string in database. 
+
+Returns true if the insertion was succesfull, otherwise, returns false. 
+\begin{DoxyParams}{Parameters}
+{\em string} & \mbox{\hyperlink{classString}{String}} instance to be inserted. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classDatabaseConnectorAbstract_ac7cc5cf2deace9652810001722758206}{Database\+Connector\+Abstract}}.
+
+
+
+Definition at line 212 of file mysqlconnector.\+cpp.
+
+\mbox{\Hypertarget{classMySqlConnector_a77a5169dd8a515b613642c88dac9798b}\label{classMySqlConnector_a77a5169dd8a515b613642c88dac9798b}} 
+\index{My\+Sql\+Connector@{My\+Sql\+Connector}!insert\+Strings@{insert\+Strings}}
+\index{insert\+Strings@{insert\+Strings}!My\+Sql\+Connector@{My\+Sql\+Connector}}
+\subsubsection{\texorpdfstring{insert\+Strings()}{insertStrings()}}
+{\footnotesize\ttfamily int My\+Sql\+Connector\+::insert\+Strings (\begin{DoxyParamCaption}\item[{const Q\+List$<$ \mbox{\hyperlink{classString}{String}} $\ast$$>$ \&}]{strings,  }\item[{const Q\+String}]{language }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Inserts a set of strings into the database. 
+
+Returns the number of inserted stirngs. 
+\begin{DoxyParams}{Parameters}
+{\em strings} & List with strings to be added into databse. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classDatabaseConnectorAbstract_a0e8c94cf0b38c797d6feef864a23347b}{Database\+Connector\+Abstract}}.
+
+
+
+Definition at line 233 of file mysqlconnector.\+cpp.
+
+\mbox{\Hypertarget{classMySqlConnector_a3c340e5310c56410d64ecd89e5cf6661}\label{classMySqlConnector_a3c340e5310c56410d64ecd89e5cf6661}} 
+\index{My\+Sql\+Connector@{My\+Sql\+Connector}!remove\+Strings\+With\+Id@{remove\+Strings\+With\+Id}}
+\index{remove\+Strings\+With\+Id@{remove\+Strings\+With\+Id}!My\+Sql\+Connector@{My\+Sql\+Connector}}
+\subsubsection{\texorpdfstring{remove\+Strings\+With\+Id()}{removeStringsWithId()}}
+{\footnotesize\ttfamily int My\+Sql\+Connector\+::remove\+Strings\+With\+Id (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{id,  }\item[{bool}]{case\+Sensitive = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Removes from databse the strign with the identifier received by argument. 
+
+Returns the number of removed stirngs. 
+\begin{DoxyParams}{Parameters}
+{\em value} & \mbox{\hyperlink{classString}{String}} identifier. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classDatabaseConnectorAbstract_a8c2b0fa4e37d16c1b1ea1cafec166ca0}{Database\+Connector\+Abstract}}.
+
+
+
+Definition at line 267 of file mysqlconnector.\+cpp.
+
+\mbox{\Hypertarget{classMySqlConnector_a528aac591ea56ade27a096bb997abb2a}\label{classMySqlConnector_a528aac591ea56ade27a096bb997abb2a}} 
+\index{My\+Sql\+Connector@{My\+Sql\+Connector}!remove\+Strings\+With\+Value@{remove\+Strings\+With\+Value}}
+\index{remove\+Strings\+With\+Value@{remove\+Strings\+With\+Value}!My\+Sql\+Connector@{My\+Sql\+Connector}}
+\subsubsection{\texorpdfstring{remove\+Strings\+With\+Value()}{removeStringsWithValue()}}
+{\footnotesize\ttfamily int My\+Sql\+Connector\+::remove\+Strings\+With\+Value (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{value,  }\item[{bool}]{case\+Sensitive = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Removes from databse all strigns with the value received by argument. 
+
+Returns the number of removed strings. 
+\begin{DoxyParams}{Parameters}
+{\em value} & \mbox{\hyperlink{classString}{String}} value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Number of removed strings 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classDatabaseConnectorAbstract_af482c0b4af4488c5897c04d0c4dff906}{Database\+Connector\+Abstract}}.
+
+
+
+Definition at line 244 of file mysqlconnector.\+cpp.
+
+\mbox{\Hypertarget{classMySqlConnector_a8688bfeb3bb6ba6181f5ce90dc8066d8}\label{classMySqlConnector_a8688bfeb3bb6ba6181f5ce90dc8066d8}} 
+\index{My\+Sql\+Connector@{My\+Sql\+Connector}!set\+Data\+Base@{set\+Data\+Base}}
+\index{set\+Data\+Base@{set\+Data\+Base}!My\+Sql\+Connector@{My\+Sql\+Connector}}
+\subsubsection{\texorpdfstring{set\+Data\+Base()}{setDataBase()}}
+{\footnotesize\ttfamily void My\+Sql\+Connector\+::set\+Data\+Base (\begin{DoxyParamCaption}\item[{const Q\+String}]{data\+Base }\end{DoxyParamCaption})}
+
+
+
+Sets data base to access database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & User name. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 59 of file mysqlconnector.\+cpp.
+
+\mbox{\Hypertarget{classMySqlConnector_a92af1c28da0953a69573b21f68b8a41f}\label{classMySqlConnector_a92af1c28da0953a69573b21f68b8a41f}} 
+\index{My\+Sql\+Connector@{My\+Sql\+Connector}!set\+Password@{set\+Password}}
+\index{set\+Password@{set\+Password}!My\+Sql\+Connector@{My\+Sql\+Connector}}
+\subsubsection{\texorpdfstring{set\+Password()}{setPassword()}}
+{\footnotesize\ttfamily void My\+Sql\+Connector\+::set\+Password (\begin{DoxyParamCaption}\item[{const Q\+String}]{password }\end{DoxyParamCaption})}
+
+
+
+Sets password to access database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & Passwrod. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 49 of file mysqlconnector.\+cpp.
+
+\mbox{\Hypertarget{classMySqlConnector_a0cf4bedae2d4093449590aa59d200ce8}\label{classMySqlConnector_a0cf4bedae2d4093449590aa59d200ce8}} 
+\index{My\+Sql\+Connector@{My\+Sql\+Connector}!set\+User@{set\+User}}
+\index{set\+User@{set\+User}!My\+Sql\+Connector@{My\+Sql\+Connector}}
+\subsubsection{\texorpdfstring{set\+User()}{setUser()}}
+{\footnotesize\ttfamily void My\+Sql\+Connector\+::set\+User (\begin{DoxyParamCaption}\item[{const Q\+String}]{user }\end{DoxyParamCaption})}
+
+
+
+Sets username to access database. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em user} & User name. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 44 of file mysqlconnector.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/storage/\mbox{\hyperlink{mysqlconnector_8h}{mysqlconnector.\+h}}\item 
+src/storage/\mbox{\hyperlink{mysqlconnector_8cpp}{mysqlconnector.\+cpp}}\end{DoxyCompactItemize}

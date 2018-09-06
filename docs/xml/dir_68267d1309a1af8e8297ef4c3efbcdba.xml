@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir">
+    <compoundname>src</compoundname>
+    <innerdir refid="dir_e1bc5434d70326d4ea72b85c6403df23">src/contextualization</innerdir>
+    <innerdir refid="dir_12fd111ef1c09259590433672aa92b47">src/optical_character_recognition</innerdir>
+    <innerdir refid="dir_452baf35e1d7639c9f2a5ece4ec85855">src/storage</innerdir>
+    <innerdir refid="dir_1563a38af0d3a5e4a6330d6d45e9792a">src/tools</innerdir>
+    <innerfile refid="main_8cpp">main.cpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,501 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="main_8cpp" kind="file" language="C++">
+    <compoundname>main.cpp</compoundname>
+    <includes local="no">QApplication</includes>
+    <includes local="no">QQmlApplicationEngine</includes>
+    <includes local="no">QQmlContext</includes>
+    <includes refid="hpcontextualizationfactory_8h" local="yes">tools/hpcontextualizationfactory.h</includes>
+    <includes local="no">QDebug</includes>
+    <incdepgraph>
+      <node id="879">
+        <label>contextualizationfactoryabstract.h</label>
+        <link refid="contextualizationfactoryabstract_8h"/>
+        <childnode refid="880" relation="include">
+        </childnode>
+        <childnode refid="881" relation="include">
+        </childnode>
+      </node>
+      <node id="927">
+        <label>iomanip</label>
+      </node>
+      <node id="894">
+        <label>QFuture</label>
+      </node>
+      <node id="905">
+        <label>QMessageBox</label>
+      </node>
+      <node id="909">
+        <label>QDateTime</label>
+      </node>
+      <node id="882">
+        <label>QObject</label>
+      </node>
+      <node id="896">
+        <label>contextualization/model/contextualizationmodel.h</label>
+        <link refid="contextualizationmodel_8h"/>
+        <childnode refid="882" relation="include">
+        </childnode>
+        <childnode refid="883" relation="include">
+        </childnode>
+        <childnode refid="897" relation="include">
+        </childnode>
+        <childnode refid="887" relation="include">
+        </childnode>
+        <childnode refid="888" relation="include">
+        </childnode>
+        <childnode refid="889" relation="include">
+        </childnode>
+        <childnode refid="898" relation="include">
+        </childnode>
+        <childnode refid="900" relation="include">
+        </childnode>
+      </node>
+      <node id="886">
+        <label>QStandardPaths</label>
+      </node>
+      <node id="923">
+        <label>consolecontroller.h</label>
+        <link refid="consolecontroller_8h"/>
+        <childnode refid="924" relation="include">
+        </childnode>
+        <childnode refid="925" relation="include">
+        </childnode>
+        <childnode refid="897" relation="include">
+        </childnode>
+        <childnode refid="926" relation="include">
+        </childnode>
+        <childnode refid="927" relation="include">
+        </childnode>
+        <childnode refid="899" relation="include">
+        </childnode>
+        <childnode refid="881" relation="include">
+        </childnode>
+      </node>
+      <node id="877">
+        <label>QQmlContext</label>
+      </node>
+      <node id="897">
+        <label>QList</label>
+      </node>
+      <node id="919">
+        <label>QtSql/QSqlDatabase</label>
+      </node>
+      <node id="930">
+        <label>QInputDialog</label>
+      </node>
+      <node id="908">
+        <label>QThread</label>
+      </node>
+      <node id="920">
+        <label>QtSql/QSqlQuery</label>
+      </node>
+      <node id="918">
+        <label>storage/mysqlconnector.h</label>
+        <link refid="mysqlconnector_8h"/>
+        <childnode refid="919" relation="include">
+        </childnode>
+        <childnode refid="920" relation="include">
+        </childnode>
+        <childnode refid="921" relation="include">
+        </childnode>
+        <childnode refid="898" relation="include">
+        </childnode>
+        <childnode refid="917" relation="include">
+        </childnode>
+      </node>
+      <node id="880">
+        <label>QSysInfo</label>
+      </node>
+      <node id="907">
+        <label>QProgressDialog</label>
+      </node>
+      <node id="874">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+        <childnode refid="875" relation="include">
+        </childnode>
+        <childnode refid="876" relation="include">
+        </childnode>
+        <childnode refid="877" relation="include">
+        </childnode>
+        <childnode refid="878" relation="include">
+        </childnode>
+        <childnode refid="903" relation="include">
+        </childnode>
+      </node>
+      <node id="893">
+        <label>QImage</label>
+      </node>
+      <node id="899">
+        <label>string.h</label>
+        <link refid="string_8h"/>
+        <childnode refid="883" relation="include">
+        </childnode>
+        <childnode refid="888" relation="include">
+        </childnode>
+        <childnode refid="889" relation="include">
+        </childnode>
+        <childnode refid="891" relation="include">
+        </childnode>
+        <childnode refid="900" relation="include">
+        </childnode>
+      </node>
+      <node id="928">
+        <label>contextualization/controller/linuxguicontroller.h</label>
+        <link refid="linuxguicontroller_8h"/>
+        <childnode refid="929" relation="include">
+        </childnode>
+      </node>
+      <node id="912">
+        <label>baseapi.h</label>
+      </node>
+      <node id="892">
+        <label>QRegularExpressionMatch</label>
+      </node>
+      <node id="890">
+        <label>QJsonArray</label>
+      </node>
+      <node id="904">
+        <label>tools/utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="887" relation="include">
+        </childnode>
+        <childnode refid="885" relation="include">
+        </childnode>
+        <childnode refid="905" relation="include">
+        </childnode>
+        <childnode refid="906" relation="include">
+        </childnode>
+        <childnode refid="907" relation="include">
+        </childnode>
+        <childnode refid="883" relation="include">
+        </childnode>
+        <childnode refid="908" relation="include">
+        </childnode>
+        <childnode refid="894" relation="include">
+        </childnode>
+        <childnode refid="895" relation="include">
+        </childnode>
+        <childnode refid="909" relation="include">
+        </childnode>
+      </node>
+      <node id="922">
+        <label>contextualization/controller/linuxconsolecontroller.h</label>
+        <link refid="linuxconsolecontroller_8h"/>
+        <childnode refid="923" relation="include">
+        </childnode>
+      </node>
+      <node id="878">
+        <label>tools/hpcontextualizationfactory.h</label>
+        <link refid="hpcontextualizationfactory_8h"/>
+        <childnode refid="879" relation="include">
+        </childnode>
+        <childnode refid="922" relation="include">
+        </childnode>
+        <childnode refid="928" relation="include">
+        </childnode>
+        <childnode refid="933" relation="include">
+        </childnode>
+        <childnode refid="934" relation="include">
+        </childnode>
+        <childnode refid="904" relation="include">
+        </childnode>
+      </node>
+      <node id="889">
+        <label>QJsonObject</label>
+      </node>
+      <node id="934">
+        <label>contextualization/controller/windowsguicontroller.h</label>
+        <link refid="windowsguicontroller_8h"/>
+        <childnode refid="929" relation="include">
+        </childnode>
+      </node>
+      <node id="931">
+        <label>QFileDialog</label>
+      </node>
+      <node id="932">
+        <label>QQuickWindow</label>
+      </node>
+      <node id="875">
+        <label>QApplication</label>
+      </node>
+      <node id="911">
+        <label>leptonica/allheaders.h</label>
+      </node>
+      <node id="903">
+        <label>QDebug</label>
+      </node>
+      <node id="881">
+        <label>contextualization/controller/contextualizationcontroller.h</label>
+        <link refid="contextualizationcontroller_8h"/>
+        <childnode refid="882" relation="include">
+        </childnode>
+        <childnode refid="883" relation="include">
+        </childnode>
+        <childnode refid="884" relation="include">
+        </childnode>
+        <childnode refid="885" relation="include">
+        </childnode>
+        <childnode refid="886" relation="include">
+        </childnode>
+        <childnode refid="887" relation="include">
+        </childnode>
+        <childnode refid="888" relation="include">
+        </childnode>
+        <childnode refid="889" relation="include">
+        </childnode>
+        <childnode refid="890" relation="include">
+        </childnode>
+        <childnode refid="891" relation="include">
+        </childnode>
+        <childnode refid="892" relation="include">
+        </childnode>
+        <childnode refid="893" relation="include">
+        </childnode>
+        <childnode refid="894" relation="include">
+        </childnode>
+        <childnode refid="895" relation="include">
+        </childnode>
+        <childnode refid="896" relation="include">
+        </childnode>
+        <childnode refid="904" relation="include">
+        </childnode>
+        <childnode refid="900" relation="include">
+        </childnode>
+        <childnode refid="910" relation="include">
+        </childnode>
+        <childnode refid="916" relation="include">
+        </childnode>
+        <childnode refid="918" relation="include">
+        </childnode>
+      </node>
+      <node id="929">
+        <label>guicontroller.h</label>
+        <link refid="guicontroller_8h"/>
+        <childnode refid="930" relation="include">
+        </childnode>
+        <childnode refid="931" relation="include">
+        </childnode>
+        <childnode refid="875" relation="include">
+        </childnode>
+        <childnode refid="932" relation="include">
+        </childnode>
+        <childnode refid="881" relation="include">
+        </childnode>
+      </node>
+      <node id="895">
+        <label>QtConcurrent/QtConcurrent</label>
+      </node>
+      <node id="891">
+        <label>QRegularExpression</label>
+      </node>
+      <node id="902">
+        <label>QDate</label>
+      </node>
+      <node id="883">
+        <label>QString</label>
+      </node>
+      <node id="885">
+        <label>QFile</label>
+      </node>
+      <node id="917">
+        <label>databaseconnectorabstract.h</label>
+        <link refid="databaseconnectorabstract_8h"/>
+        <childnode refid="899" relation="include">
+        </childnode>
+        <childnode refid="900" relation="include">
+        </childnode>
+        <childnode refid="904" relation="include">
+        </childnode>
+      </node>
+      <node id="913">
+        <label>genericvector.h</label>
+      </node>
+      <node id="921">
+        <label>QtSql/QSqlError</label>
+      </node>
+      <node id="914">
+        <label>ocr.h</label>
+        <link refid="ocr_8h"/>
+        <childnode refid="883" relation="include">
+        </childnode>
+        <childnode refid="884" relation="include">
+        </childnode>
+        <childnode refid="887" relation="include">
+        </childnode>
+        <childnode refid="885" relation="include">
+        </childnode>
+        <childnode refid="915" relation="include">
+        </childnode>
+        <childnode refid="893" relation="include">
+        </childnode>
+        <childnode refid="891" relation="include">
+        </childnode>
+        <childnode refid="900" relation="include">
+        </childnode>
+      </node>
+      <node id="888">
+        <label>QJsonDocument</label>
+      </node>
+      <node id="924">
+        <label>iostream</label>
+      </node>
+      <node id="906">
+        <label>QProcess</label>
+      </node>
+      <node id="910">
+        <label>optical_character_recognition/tesseractocr.h</label>
+        <link refid="tesseractocr_8h"/>
+        <childnode refid="911" relation="include">
+        </childnode>
+        <childnode refid="912" relation="include">
+        </childnode>
+        <childnode refid="913" relation="include">
+        </childnode>
+        <childnode refid="914" relation="include">
+        </childnode>
+        <childnode refid="904" relation="include">
+        </childnode>
+        <childnode refid="900" relation="include">
+        </childnode>
+      </node>
+      <node id="933">
+        <label>contextualization/controller/windowsconsolecontroller.h</label>
+        <link refid="windowsconsolecontroller_8h"/>
+        <childnode refid="923" relation="include">
+        </childnode>
+      </node>
+      <node id="887">
+        <label>QDir</label>
+      </node>
+      <node id="901">
+        <label>QTextStream</label>
+      </node>
+      <node id="916">
+        <label>storage/fpfileconnector.h</label>
+        <link refid="fpfileconnector_8h"/>
+        <childnode refid="885" relation="include">
+        </childnode>
+        <childnode refid="915" relation="include">
+        </childnode>
+        <childnode refid="887" relation="include">
+        </childnode>
+        <childnode refid="917" relation="include">
+        </childnode>
+        <childnode refid="898" relation="include">
+        </childnode>
+        <childnode refid="904" relation="include">
+        </childnode>
+      </node>
+      <node id="925">
+        <label>QVariant</label>
+      </node>
+      <node id="884">
+        <label>QStringList</label>
+      </node>
+      <node id="926">
+        <label>stdio.h</label>
+      </node>
+      <node id="915">
+        <label>QFileInfo</label>
+      </node>
+      <node id="876">
+        <label>QQmlApplicationEngine</label>
+      </node>
+      <node id="898">
+        <label>firmwarestring.h</label>
+        <link refid="firmwarestring_8h"/>
+        <childnode refid="899" relation="include">
+        </childnode>
+      </node>
+      <node id="900">
+        <label>tools/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="883" relation="include">
+        </childnode>
+        <childnode refid="885" relation="include">
+        </childnode>
+        <childnode refid="901" relation="include">
+        </childnode>
+        <childnode refid="902" relation="include">
+        </childnode>
+        <childnode refid="886" relation="include">
+        </childnode>
+        <childnode refid="903" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="main_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int main</definition>
+        <argsstring>(int argc, char *argv[])</argsstring>
+        <name>main</name>
+        <param>
+          <type>int</type>
+          <declname>argc</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>argv</declname>
+          <array>[]</array>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para>The GuiContextualizationController class is registered as a type, which is accessible from QML by importing the URL, &quot;io.controllers.guicontroller 1.0&quot;.</para>        </inbodydescription>
+        <location file="src/main.cpp" line="16" column="1" bodyfile="src/main.cpp" bodystart="16" bodyend="49"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This main file to exec program. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Jorge Herrero Tardón (<ulink url="mailto:jorgeht@usal.es">jorgeht@usal.es</ulink>) </para></simplesect>
+<simplesect kind="date"><para>20/02/2018 </para></simplesect>
+<simplesect kind="version"><para>1.0 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="10"><highlight class="preprocessor">#include<sp/>&lt;QApplication&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QQmlApplicationEngine&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QQmlContext&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="hpcontextualizationfactory_8h" kindref="compound">tools/hpcontextualizationfactory.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QDebug&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="main_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="main_8cpp_1a0ddf1224851353fc92bfbff6f499fa97" kindref="member">main</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>argc,<sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>*argv[])</highlight></codeline>
+<codeline lineno="17"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classContextualizationController" kindref="compound">ContextualizationController</ref><sp/>*controller<sp/>=<sp/><ref refid="classHpContextualizationFactory" kindref="compound">HpContextualizationFactory</ref>().<ref refid="classHpContextualizationFactory_1ad9d9c11a2827c8854c4cadbf38b4e7ca" kindref="member">createController</ref>(argv,<sp/>argc);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Console<sp/>mode.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dynamic_cast&lt;ConsoleController<sp/>*&gt;(controller))<sp/>{</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">dynamic_cast&lt;</highlight><highlight class="normal"><ref refid="classConsoleController" kindref="compound">ConsoleController</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(controller)-&gt;exec();</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal"><sp/>controller;</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>GUI<sp/>Mode.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>QApplication<sp/>app(argc,<sp/>argv);<sp/></highlight><highlight class="comment">//<sp/>QApplication<sp/>to<sp/>use<sp/>QWidgets<sp/>like<sp/>QMessageBox.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>QQmlApplicationEngine<sp/>engine;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dynamic_cast&lt;LinuxGuiController<sp/>*&gt;(controller))<sp/>{</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>qmlRegisterType&lt;LinuxGuiController&gt;(</highlight><highlight class="stringliteral">&quot;io.controllers.guicontroller&quot;</highlight><highlight class="normal">,<sp/>1,<sp/>0,<sp/></highlight><highlight class="stringliteral">&quot;Controller&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dynamic_cast&lt;WindowsGuiController<sp/>*&gt;(controller))<sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>qmlRegisterType&lt;WindowsGuiController&gt;(</highlight><highlight class="stringliteral">&quot;io.controllers.guicontroller&quot;</highlight><highlight class="normal">,<sp/>1,<sp/>0,<sp/></highlight><highlight class="stringliteral">&quot;Controller&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>engine.load(QUrl(QStringLiteral(</highlight><highlight class="stringliteral">&quot;qrc:/views/ContextualizationGUI.qml&quot;</highlight><highlight class="normal">)));</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(engine.rootObjects().isEmpty())</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1;</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>app.exec();</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/main.cpp"/>
+  </compounddef>
+</doxygen>

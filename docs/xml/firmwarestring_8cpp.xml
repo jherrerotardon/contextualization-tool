@@ -1,0 +1,210 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="firmwarestring_8cpp" kind="file" language="C++">
+    <compoundname>firmwarestring.cpp</compoundname>
+    <includes refid="firmwarestring_8h" local="yes">firmwarestring.h</includes>
+    <incdepgraph>
+      <node id="779">
+        <label>QStandardPaths</label>
+      </node>
+      <node id="768">
+        <label>src/contextualization/model/firmwarestring.cpp</label>
+        <link refid="firmwarestring_8cpp"/>
+        <childnode refid="769" relation="include">
+        </childnode>
+      </node>
+      <node id="770">
+        <label>string.h</label>
+        <link refid="string_8h"/>
+        <childnode refid="771" relation="include">
+        </childnode>
+        <childnode refid="772" relation="include">
+        </childnode>
+        <childnode refid="773" relation="include">
+        </childnode>
+        <childnode refid="774" relation="include">
+        </childnode>
+        <childnode refid="775" relation="include">
+        </childnode>
+      </node>
+      <node id="773">
+        <label>QJsonObject</label>
+      </node>
+      <node id="780">
+        <label>QDebug</label>
+      </node>
+      <node id="774">
+        <label>QRegularExpression</label>
+      </node>
+      <node id="778">
+        <label>QDate</label>
+      </node>
+      <node id="771">
+        <label>QString</label>
+      </node>
+      <node id="776">
+        <label>QFile</label>
+      </node>
+      <node id="772">
+        <label>QJsonDocument</label>
+      </node>
+      <node id="777">
+        <label>QTextStream</label>
+      </node>
+      <node id="769">
+        <label>firmwarestring.h</label>
+        <link refid="firmwarestring_8h"/>
+        <childnode refid="770" relation="include">
+        </childnode>
+      </node>
+      <node id="775">
+        <label>tools/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="771" relation="include">
+        </childnode>
+        <childnode refid="776" relation="include">
+        </childnode>
+        <childnode refid="777" relation="include">
+        </childnode>
+        <childnode refid="778" relation="include">
+        </childnode>
+        <childnode refid="779" relation="include">
+        </childnode>
+        <childnode refid="780" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Jorge Herrero Tardón (<ulink url="mailto:jorgeht@usal.es">jorgeht@usal.es</ulink>) </para></simplesect>
+<simplesect kind="date"><para>20/02/2018 </para></simplesect>
+<simplesect kind="version"><para>1.0 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="11"><highlight class="preprocessor">#include<sp/>&quot;<ref refid="firmwarestring_8h" kindref="compound">firmwarestring.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="classFirmwareString_1a624ab9d3c534ffd9c99665d2462e73ac" refkind="member"><highlight class="normal"><ref refid="classFirmwareString_1a624ab9d3c534ffd9c99665d2462e73ac" kindref="member">FirmwareString::FirmwareString</ref>()<sp/>:<sp/><ref refid="classString" kindref="compound">String</ref>()</highlight></codeline>
+<codeline lineno="14"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="classFirmwareString_1a3439d83bad2ac371123d26560f4f3716" refkind="member"><highlight class="normal"><ref refid="classFirmwareString_1a624ab9d3c534ffd9c99665d2462e73ac" kindref="member">FirmwareString::FirmwareString</ref>(<ref refid="classFirmwareString" kindref="compound">FirmwareString</ref><sp/>&amp;other)<sp/>:<sp/><ref refid="classString" kindref="compound">String</ref>()</highlight></codeline>
+<codeline lineno="19"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>id_<sp/>=<sp/>other.<ref refid="classString_1ab32615121278a445dba468c7ef18ee7a" kindref="member">getId</ref>();</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>value_<sp/>=<sp/>other.<ref refid="classString_1a926f7c30cfca26009604d0c765950c4b" kindref="member">getValue</ref>();</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>description_<sp/>=<sp/>other.<ref refid="classString_1ae604e3af13ef6ba3113a7484edfc3c55" kindref="member">getDescription</ref>();</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>maxLength_<sp/>=<sp/>other.<ref refid="classString_1af95fe7d7e2a8b604d7af3b7f0476ec0e" kindref="member">getMaxLength</ref>();</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>state_<sp/>=<sp/>other.<ref refid="classString_1ae5ee38919f5a360e0283baedb11c48e0" kindref="member">getState</ref>();</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>selected_<sp/>=<sp/>other.<ref refid="classString_1a3f5ffd092dd9870ae281b2e08d3b69dd" kindref="member">isSelected</ref>();</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/>editable_<sp/>=<sp/>other.<ref refid="classString_1a64c436144f008a40743c64b5094700bb" kindref="member">isEditable</ref>();</highlight></codeline>
+<codeline lineno="27"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classFirmwareString_1a29f14882ef2a8274cebb7d153f0ea85b" refkind="member"><highlight class="normal"><ref refid="classFirmwareString_1a624ab9d3c534ffd9c99665d2462e73ac" kindref="member">FirmwareString::FirmwareString</ref>(</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;value,</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;description,</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;maxLength,</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;state,</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>selected,</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>editable</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">)<sp/>:<sp/><ref refid="classString" kindref="compound">String</ref>(id,<sp/>value,<sp/>description,<sp/>maxLength,<sp/>state,<sp/>selected,<sp/>editable)<sp/>{</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classFirmwareString_1a94293dec7077d625c6b977f1f15bfd2d" refkind="member"><highlight class="normal"><ref refid="classFirmwareString" kindref="compound">FirmwareString</ref><sp/>*<sp/><ref refid="classFirmwareString_1a94293dec7077d625c6b977f1f15bfd2d" kindref="member">FirmwareString::fromJson</ref>(QString<sp/>&amp;json)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classFirmwareString" kindref="compound">FirmwareString</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classString_1af406afb78e8dae5e7d2deef41d1f9ed7" kindref="member">String::fromJson</ref>(json));</highlight></codeline>
+<codeline lineno="44"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46" refid="classFirmwareString_1a90a6e343748d41c0a0ab9eb7e4fccaee" refkind="member"><highlight class="normal"><ref refid="classFirmwareString" kindref="compound">FirmwareString</ref><sp/>*<sp/><ref refid="classFirmwareString_1a94293dec7077d625c6b977f1f15bfd2d" kindref="member">FirmwareString::fromJson</ref>(QByteArray<sp/>&amp;json)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="normal"><ref refid="classFirmwareString" kindref="compound">FirmwareString</ref><sp/>*</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classString_1af406afb78e8dae5e7d2deef41d1f9ed7" kindref="member">String::fromJson</ref>(json));</highlight></codeline>
+<codeline lineno="49"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classFirmwareString_1a0fcfdf14bbecd7c2c4464574b9ce9d91" refkind="member"><highlight class="normal"><ref refid="classFirmwareString" kindref="compound">FirmwareString</ref><sp/>*<sp/><ref refid="classFirmwareString_1a0fcfdf14bbecd7c2c4464574b9ce9d91" kindref="member">FirmwareString::fromFpLine</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;fpLine)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>id;</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>value;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>description;</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>maxLength;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>state;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>selected;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>hasError<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(fpLine.isEmpty())<sp/>{</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Q_NULLPTR;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Amazing<sp/>regular<sp/>expresion<sp/>to<sp/>fragment<sp/>fp<sp/>line.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/>QRegularExpression<sp/>regex(</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QString(</highlight><highlight class="stringliteral">&quot;MESSAGE_ID<sp/><sp/>(?&lt;id&gt;\\w+)<sp/><sp/>\&quot;(?&lt;value&gt;.+)\&quot;&quot;</highlight><highlight class="normal">)<sp/>+</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QString(</highlight><highlight class="stringliteral">&quot;<sp/>\\|\\|<sp/>&quot;</highlight><highlight class="normal">)<sp/>+</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QString(</highlight><highlight class="stringliteral">&quot;TEXT_DESCRIPTION<sp/><sp/>\&quot;(?&lt;description&gt;.*)\&quot;&quot;</highlight><highlight class="normal">)<sp/>+</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QString(</highlight><highlight class="stringliteral">&quot;<sp/>\\|\\|<sp/>&quot;</highlight><highlight class="normal">)<sp/>+</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QString(</highlight><highlight class="stringliteral">&quot;MAX_FIELD_WIDTH<sp/><sp/>(?&lt;maxLength&gt;\\d+(<sp/>\\+<sp/>\\d+)*)&quot;</highlight><highlight class="normal">)<sp/>+</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QString(</highlight><highlight class="stringliteral">&quot;<sp/>\\|\\|<sp/>&quot;</highlight><highlight class="normal">)<sp/>+</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QString(</highlight><highlight class="stringliteral">&quot;LOCALIZATION<sp/><sp/>(?&lt;state&gt;\\w+)&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/>QRegularExpressionMatch<sp/>match<sp/>=<sp/>regex.match(fpLine);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(match.hasMatch())<sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal"><sp/>=<sp/>match.captured(</highlight><highlight class="stringliteral">&quot;id&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>value<sp/>=<sp/>match.captured(</highlight><highlight class="stringliteral">&quot;value&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>description<sp/>=<sp/>match.captured(</highlight><highlight class="stringliteral">&quot;description&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>maxLength<sp/>=<sp/>match.captured(</highlight><highlight class="stringliteral">&quot;maxLength&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state<sp/>=<sp/>match.captured(</highlight><highlight class="stringliteral">&quot;state&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>If<sp/>any<sp/>attribute<sp/>was<sp/>not<sp/>taken,<sp/>an<sp/>error<sp/>is<sp/>indicated.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">.isNull())<sp/>{</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hasError<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLog_1ae35819424f49efa88b29a0bccc962f93" kindref="member">Log::writeError</ref>(QString(Q_FUNC_INFO)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Error<sp/>format<sp/>in<sp/>MESSAGE_ID<sp/>column.<sp/>Cannot<sp/>extract<sp/>the<sp/>id:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>fpLine);</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(value.isNull())<sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hasError<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLog_1ae35819424f49efa88b29a0bccc962f93" kindref="member">Log::writeError</ref>(QString(Q_FUNC_INFO)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Error<sp/>format<sp/>in<sp/>MESSAGE_ID<sp/>column.<sp/>Cannot<sp/>extract<sp/>the<sp/>value:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>fpLine);</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(maxLength.isNull())<sp/>{</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hasError<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLog_1ae35819424f49efa88b29a0bccc962f93" kindref="member">Log::writeError</ref>(QString(Q_FUNC_INFO)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Error<sp/>format<sp/>in<sp/>MAX_FIELD_WIDTH<sp/>column.<sp/>Cannot<sp/>extract<sp/>the<sp/>max<sp/>width:<sp/>&quot;</highlight><highlight class="normal"><sp/>+<sp/>fpLine);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(state.isNull())<sp/>{</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>hasError<sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classLog_1ae35819424f49efa88b29a0bccc962f93" kindref="member">Log::writeError</ref>(QString(Q_FUNC_INFO)<sp/>+<sp/></highlight><highlight class="stringliteral">&quot;<sp/>Error<sp/>format<sp/>in<sp/>LOCALIZATION<sp/>column.<sp/>Cannot<sp/>extract<sp/>state<sp/>or<sp/>isn&apos;t<sp/>a<sp/>valid<sp/>state:<sp/>&quot;</highlight><highlight class="normal">+<sp/>fpLine);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(hasError)<sp/>{</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>Q_NULLPTR;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>selected<sp/>=<sp/>state<sp/>==<sp/></highlight><highlight class="stringliteral">&quot;DONE&quot;</highlight><highlight class="normal"><sp/>?<sp/>true<sp/>:<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="classFirmwareString_1a624ab9d3c534ffd9c99665d2462e73ac" kindref="member">FirmwareString</ref>(</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,<sp/>value,<sp/>description,<sp/>maxLength,<sp/>state,<sp/>selected,<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119" refid="classFirmwareString_1aa2fe115e019e6362ca1fb151097ffe88" refkind="member"><highlight class="normal"><ref refid="classFirmwareString" kindref="compound">FirmwareString</ref><sp/>&amp;<sp/><ref refid="classFirmwareString_1aa2fe115e019e6362ca1fb151097ffe88" kindref="member">FirmwareString::operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classFirmwareString" kindref="compound">FirmwareString</ref><sp/>&amp;other)</highlight></codeline>
+<codeline lineno="120"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>!=<sp/>&amp;other)<sp/>{</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>id_<sp/>=<sp/>other.<ref refid="classString_1ab32615121278a445dba468c7ef18ee7a" kindref="member">getId</ref>();</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>value_<sp/>=<sp/>other.<ref refid="classString_1a926f7c30cfca26009604d0c765950c4b" kindref="member">getValue</ref>();</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>description_<sp/>=<sp/>other.<ref refid="classString_1ae604e3af13ef6ba3113a7484edfc3c55" kindref="member">getDescription</ref>();</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>maxLength_<sp/>=<sp/>other.<ref refid="classString_1af95fe7d7e2a8b604d7af3b7f0476ec0e" kindref="member">getMaxLength</ref>();</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>state_<sp/>=<sp/>other.<ref refid="classString_1ae5ee38919f5a360e0283baedb11c48e0" kindref="member">getState</ref>();</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>selected_<sp/>=<sp/>other.<ref refid="classString_1a3f5ffd092dd9870ae281b2e08d3b69dd" kindref="member">isSelected</ref>();</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*</highlight><highlight class="keyword">this</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="src/contextualization/model/firmwarestring.cpp"/>
+  </compounddef>
+</doxygen>

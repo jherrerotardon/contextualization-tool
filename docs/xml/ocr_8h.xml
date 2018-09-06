@@ -1,0 +1,294 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="ocr_8h" kind="file" language="C++">
+    <compoundname>ocr.h</compoundname>
+    <includes local="no">QString</includes>
+    <includes local="no">QStringList</includes>
+    <includes local="no">QDir</includes>
+    <includes local="no">QFile</includes>
+    <includes local="no">QFileInfo</includes>
+    <includes local="no">QImage</includes>
+    <includes local="no">QRegularExpression</includes>
+    <includes refid="log_8h" local="yes">tools/log.h</includes>
+    <includedby refid="ocr_8cpp" local="yes">src/optical_character_recognition/ocr.cpp</includedby>
+    <includedby refid="tesseractocr_8h" local="yes">src/optical_character_recognition/tesseractocr.h</includedby>
+    <incdepgraph>
+      <node id="962">
+        <label>QStandardPaths</label>
+      </node>
+      <node id="957">
+        <label>QImage</label>
+      </node>
+      <node id="963">
+        <label>QDebug</label>
+      </node>
+      <node id="958">
+        <label>QRegularExpression</label>
+      </node>
+      <node id="961">
+        <label>QDate</label>
+      </node>
+      <node id="952">
+        <label>QString</label>
+      </node>
+      <node id="955">
+        <label>QFile</label>
+      </node>
+      <node id="951">
+        <label>src/optical_character_recognition/ocr.h</label>
+        <link refid="ocr_8h"/>
+        <childnode refid="952" relation="include">
+        </childnode>
+        <childnode refid="953" relation="include">
+        </childnode>
+        <childnode refid="954" relation="include">
+        </childnode>
+        <childnode refid="955" relation="include">
+        </childnode>
+        <childnode refid="956" relation="include">
+        </childnode>
+        <childnode refid="957" relation="include">
+        </childnode>
+        <childnode refid="958" relation="include">
+        </childnode>
+        <childnode refid="959" relation="include">
+        </childnode>
+      </node>
+      <node id="954">
+        <label>QDir</label>
+      </node>
+      <node id="960">
+        <label>QTextStream</label>
+      </node>
+      <node id="953">
+        <label>QStringList</label>
+      </node>
+      <node id="956">
+        <label>QFileInfo</label>
+      </node>
+      <node id="959">
+        <label>tools/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="952" relation="include">
+        </childnode>
+        <childnode refid="955" relation="include">
+        </childnode>
+        <childnode refid="960" relation="include">
+        </childnode>
+        <childnode refid="961" relation="include">
+        </childnode>
+        <childnode refid="962" relation="include">
+        </childnode>
+        <childnode refid="963" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="968">
+        <label>src/tools/contextualizationfactoryabstract.h</label>
+        <link refid="contextualizationfactoryabstract_8h"/>
+        <childnode refid="969" relation="include">
+        </childnode>
+        <childnode refid="972" relation="include">
+        </childnode>
+      </node>
+      <node id="983">
+        <label>src/contextualization/controller/linuxguicontroller.cpp</label>
+        <link refid="linuxguicontroller_8cpp"/>
+      </node>
+      <node id="972">
+        <label>src/tools/contextualizationfactoryabstract.cpp</label>
+        <link refid="contextualizationfactoryabstract_8cpp"/>
+      </node>
+      <node id="981">
+        <label>src/contextualization/controller/guicontroller.cpp</label>
+        <link refid="guicontroller_8cpp"/>
+      </node>
+      <node id="973">
+        <label>src/contextualization/controller/consolecontroller.h</label>
+        <link refid="consolecontroller_8h"/>
+        <childnode refid="974" relation="include">
+        </childnode>
+        <childnode refid="975" relation="include">
+        </childnode>
+        <childnode refid="977" relation="include">
+        </childnode>
+      </node>
+      <node id="978">
+        <label>src/contextualization/controller/windowsconsolecontroller.cpp</label>
+        <link refid="windowsconsolecontroller_8cpp"/>
+      </node>
+      <node id="986">
+        <label>src/optical_character_recognition/tesseractocr.cpp</label>
+        <link refid="tesseractocr_8cpp"/>
+      </node>
+      <node id="976">
+        <label>src/contextualization/controller/linuxconsolecontroller.cpp</label>
+        <link refid="linuxconsolecontroller_8cpp"/>
+      </node>
+      <node id="979">
+        <label>src/contextualization/controller/contextualizationcontroller.cpp</label>
+        <link refid="contextualizationcontroller_8cpp"/>
+      </node>
+      <node id="965">
+        <label>src/optical_character_recognition/ocr.cpp</label>
+        <link refid="ocr_8cpp"/>
+      </node>
+      <node id="970">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="982">
+        <label>src/contextualization/controller/linuxguicontroller.h</label>
+        <link refid="linuxguicontroller_8h"/>
+        <childnode refid="969" relation="include">
+        </childnode>
+        <childnode refid="983" relation="include">
+        </childnode>
+      </node>
+      <node id="974">
+        <label>src/contextualization/controller/consolecontroller.cpp</label>
+        <link refid="consolecontroller_8cpp"/>
+      </node>
+      <node id="975">
+        <label>src/contextualization/controller/linuxconsolecontroller.h</label>
+        <link refid="linuxconsolecontroller_8h"/>
+        <childnode refid="969" relation="include">
+        </childnode>
+        <childnode refid="976" relation="include">
+        </childnode>
+      </node>
+      <node id="969">
+        <label>src/tools/hpcontextualizationfactory.h</label>
+        <link refid="hpcontextualizationfactory_8h"/>
+        <childnode refid="970" relation="include">
+        </childnode>
+        <childnode refid="971" relation="include">
+        </childnode>
+      </node>
+      <node id="984">
+        <label>src/contextualization/controller/windowsguicontroller.h</label>
+        <link refid="windowsguicontroller_8h"/>
+        <childnode refid="969" relation="include">
+        </childnode>
+        <childnode refid="985" relation="include">
+        </childnode>
+      </node>
+      <node id="985">
+        <label>src/contextualization/controller/windowsguicontroller.cpp</label>
+        <link refid="windowsguicontroller_8cpp"/>
+      </node>
+      <node id="967">
+        <label>src/contextualization/controller/contextualizationcontroller.h</label>
+        <link refid="contextualizationcontroller_8h"/>
+        <childnode refid="968" relation="include">
+        </childnode>
+        <childnode refid="973" relation="include">
+        </childnode>
+        <childnode refid="979" relation="include">
+        </childnode>
+        <childnode refid="980" relation="include">
+        </childnode>
+      </node>
+      <node id="980">
+        <label>src/contextualization/controller/guicontroller.h</label>
+        <link refid="guicontroller_8h"/>
+        <childnode refid="981" relation="include">
+        </childnode>
+        <childnode refid="982" relation="include">
+        </childnode>
+        <childnode refid="984" relation="include">
+        </childnode>
+      </node>
+      <node id="971">
+        <label>src/tools/hpcontextualizationfactory.cpp</label>
+        <link refid="hpcontextualizationfactory_8cpp"/>
+      </node>
+      <node id="964">
+        <label>src/optical_character_recognition/ocr.h</label>
+        <link refid="ocr_8h"/>
+        <childnode refid="965" relation="include">
+        </childnode>
+        <childnode refid="966" relation="include">
+        </childnode>
+      </node>
+      <node id="966">
+        <label>src/optical_character_recognition/tesseractocr.h</label>
+        <link refid="tesseractocr_8h"/>
+        <childnode refid="967" relation="include">
+        </childnode>
+        <childnode refid="986" relation="include">
+        </childnode>
+      </node>
+      <node id="977">
+        <label>src/contextualization/controller/windowsconsolecontroller.h</label>
+        <link refid="windowsconsolecontroller_8h"/>
+        <childnode refid="969" relation="include">
+        </childnode>
+        <childnode refid="978" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classOcr" prot="public">Ocr</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Jorge Herrero Tardón (<ulink url="mailto:jorgeht@usal.es">jorgeht@usal.es</ulink>) </para></simplesect>
+<simplesect kind="date"><para>20/02/2018 </para></simplesect>
+<simplesect kind="version"><para>1.0 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="11"><highlight class="preprocessor">#ifndef<sp/>OCR_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>OCR_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QString&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QStringList&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QDir&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QFile&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QFileInfo&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QImage&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QRegularExpression&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="log_8h" kindref="compound">tools/log.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classOcr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classOcr" kindref="compound">Ocr</ref></highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOcr_1a285da90c44b929a9883a461de3e6578d" kindref="member">Ocr</ref>();</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classOcr_1a93ead91f7b64663ce6ed71ca4542d2f7" kindref="member">~Ocr</ref>();</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>QStringList<sp/><ref refid="classOcr_1a09a27b3a1f579c41ebda05f2a2cf4fed" kindref="member">extract</ref>()<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>QStringList<sp/><ref refid="classOcr_1a1b0eed20f8e7f553401834849d044bd2" kindref="member">getAvailableLanguages</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>QStringList<sp/><ref refid="classOcr_1abf98eb2648c41446700515c3e6ed3a24" kindref="member">getLanguages</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classOcr_1ad2fb764c1c6766233ebbb53e62064bb8" kindref="member">addLanguage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;language);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classOcr_1a76001048da750374c987bef8171f1977" kindref="member">removeLanguage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;language);</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classOcr_1a0c9ebb9b531bdcd6789d4bf9cffb1d42" kindref="member">isAvailableLanguage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;language);</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/><ref refid="classOcr_1a4bd4275b9b0503dd23dd553b4c0ef54c" kindref="member">getImage</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOcr_1acdc41b9a0663c194d0fbede8c26ea319" kindref="member">setImage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;image);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/><ref refid="classOcr_1a44f623335f8c26cc956b549a7bbf75fe" kindref="member">getDataPath</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classOcr_1a0ec269340072accaa9d0932699b2a8ef" kindref="member">setDataPath</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;datapath);</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="112" refid="classOcr_1a731be039b828dfb1c1f3d5efdeaea9aa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>QFile<sp/><ref refid="classOcr_1a731be039b828dfb1c1f3d5efdeaea9aa" kindref="member">image_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="113" refid="classOcr_1ad5f11045f50c9d8a23d2cea235c509ad" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/><ref refid="classOcr_1ad5f11045f50c9d8a23d2cea235c509ad" kindref="member">language_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="114" refid="classOcr_1a5c13f164c431cb4bc5a487eba75be7b4" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/><ref refid="classOcr_1a5c13f164c431cb4bc5a487eba75be7b4" kindref="member">datapath_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/>QStringList<sp/><ref refid="classOcr_1ac6f28693948e68e8958f1a27c73c79d1" kindref="member">processExtration</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;source)<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="124"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>OCR_H</highlight></codeline>
+    </programlisting>
+    <location file="src/optical_character_recognition/ocr.h"/>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_12fd111ef1c09259590433672aa92b47" kind="dir">
+    <compoundname>src/optical_character_recognition</compoundname>
+    <innerfile refid="ocr_8cpp">ocr.cpp</innerfile>
+    <innerfile refid="ocr_8h">ocr.h</innerfile>
+    <innerfile refid="tesseractocr_8cpp">tesseractocr.cpp</innerfile>
+    <innerfile refid="tesseractocr_8h">tesseractocr.h</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/optical_character_recognition/"/>
+  </compounddef>
+</doxygen>

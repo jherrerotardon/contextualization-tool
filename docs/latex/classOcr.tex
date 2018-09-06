@@ -1,0 +1,312 @@
+\hypertarget{classOcr}{}\section{Ocr Class Reference}
+\label{classOcr}\index{Ocr@{Ocr}}
+
+
+This is an interface for a optical character recognition api.  
+
+
+
+
+{\ttfamily \#include $<$ocr.\+h$>$}
+
+Inheritance diagram for Ocr\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classOcr}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classOcr_a285da90c44b929a9883a461de3e6578d}{Ocr}} ()
+\begin{DoxyCompactList}\small\item\em Creates an empty \mbox{\hyperlink{classOcr}{Ocr}} object. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classOcr_a93ead91f7b64663ce6ed71ca4542d2f7}\label{classOcr_a93ead91f7b64663ce6ed71ca4542d2f7}} 
+\mbox{\hyperlink{classOcr_a93ead91f7b64663ce6ed71ca4542d2f7}{$\sim$\+Ocr}} ()
+\begin{DoxyCompactList}\small\item\em Destroys the ocr instance. \end{DoxyCompactList}\item 
+virtual Q\+String\+List \mbox{\hyperlink{classOcr_a09a27b3a1f579c41ebda05f2a2cf4fed}{extract}} ()=0
+\begin{DoxyCompactList}\small\item\em Extracts strings contained in the image. \end{DoxyCompactList}\item 
+virtual Q\+String\+List \mbox{\hyperlink{classOcr_a1b0eed20f8e7f553401834849d044bd2}{get\+Available\+Languages}} () const =0
+\begin{DoxyCompactList}\small\item\em Returns all available languages that can be used to extract strings from image. \end{DoxyCompactList}\item 
+virtual Q\+String\+List \mbox{\hyperlink{classOcr_abf98eb2648c41446700515c3e6ed3a24}{get\+Languages}} () const
+\begin{DoxyCompactList}\small\item\em Returns set languages to extract strings from image. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classOcr_ad2fb764c1c6766233ebbb53e62064bb8}{add\+Language}} (const Q\+String \&language)
+\begin{DoxyCompactList}\small\item\em Add a language to try recognize characters in the image. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classOcr_a76001048da750374c987bef8171f1977}{remove\+Language}} (const Q\+String \&language)
+\begin{DoxyCompactList}\small\item\em Remove a language to try recognize characters in the image. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classOcr_a0c9ebb9b531bdcd6789d4bf9cffb1d42}{is\+Available\+Language}} (const Q\+String \&language)
+\begin{DoxyCompactList}\small\item\em Returns true if the language received by parameter is available to be used in the recognition, otherwise, returns false. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{classOcr_a4bd4275b9b0503dd23dd553b4c0ef54c}{get\+Image}} () const
+\begin{DoxyCompactList}\small\item\em Returns the path of image configured to recognize characters in. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classOcr_acdc41b9a0663c194d0fbede8c26ea319}{set\+Image}} (const Q\+String \&image)
+\begin{DoxyCompactList}\small\item\em Sets the image path where try to recognize characters. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{classOcr_a44f623335f8c26cc956b549a7bbf75fe}{get\+Data\+Path}} () const
+\begin{DoxyCompactList}\small\item\em Returns folder path where are languages files. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classOcr_a0ec269340072accaa9d0932699b2a8ef}{set\+Data\+Path}} (const Q\+String \&datapath)
+\begin{DoxyCompactList}\small\item\em Sets folder path where are languages files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual Q\+String\+List \mbox{\hyperlink{classOcr_ac6f28693948e68e8958f1a27c73c79d1}{process\+Extration}} (const Q\+String \&source)=0
+\begin{DoxyCompactList}\small\item\em Processes the text received by parameted. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classOcr_a731be039b828dfb1c1f3d5efdeaea9aa}\label{classOcr_a731be039b828dfb1c1f3d5efdeaea9aa}} 
+Q\+File \mbox{\hyperlink{classOcr_a731be039b828dfb1c1f3d5efdeaea9aa}{image\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Image where will try to detect strings. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classOcr_ad5f11045f50c9d8a23d2cea235c509ad}\label{classOcr_ad5f11045f50c9d8a23d2cea235c509ad}} 
+Q\+String \mbox{\hyperlink{classOcr_ad5f11045f50c9d8a23d2cea235c509ad}{language\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Languagues used to detect. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classOcr_a5c13f164c431cb4bc5a487eba75be7b4}\label{classOcr_a5c13f164c431cb4bc5a487eba75be7b4}} 
+Q\+String \mbox{\hyperlink{classOcr_a5c13f164c431cb4bc5a487eba75be7b4}{datapath\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Path where are languages files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is an interface for a optical character recognition api. 
+
+Definition at line 23 of file ocr.\+h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classOcr_a285da90c44b929a9883a461de3e6578d}\label{classOcr_a285da90c44b929a9883a461de3e6578d}} 
+\index{Ocr@{Ocr}!Ocr@{Ocr}}
+\index{Ocr@{Ocr}!Ocr@{Ocr}}
+\subsubsection{\texorpdfstring{Ocr()}{Ocr()}}
+{\footnotesize\ttfamily Ocr\+::\+Ocr (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates an empty \mbox{\hyperlink{classOcr}{Ocr}} object. 
+
+Sets default values. $<$ Default language always \char`\"{}eng\char`\"{}. 
+
+Definition at line 13 of file ocr.\+cpp.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classOcr_ad2fb764c1c6766233ebbb53e62064bb8}\label{classOcr_ad2fb764c1c6766233ebbb53e62064bb8}} 
+\index{Ocr@{Ocr}!add\+Language@{add\+Language}}
+\index{add\+Language@{add\+Language}!Ocr@{Ocr}}
+\subsubsection{\texorpdfstring{add\+Language()}{addLanguage()}}
+{\footnotesize\ttfamily bool Ocr\+::add\+Language (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{language }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Add a language to try recognize characters in the image. 
+
+Check if the string recieved is an available language. Return true if the lenguage is added, if not return false.
+
+
+\begin{DoxyParams}{Parameters}
+{\em lang} & Q\+String that contains the language to add. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true$\vert$false 
+\end{DoxyReturn}
+
+
+Definition at line 28 of file ocr.\+cpp.
+
+\mbox{\Hypertarget{classOcr_a09a27b3a1f579c41ebda05f2a2cf4fed}\label{classOcr_a09a27b3a1f579c41ebda05f2a2cf4fed}} 
+\index{Ocr@{Ocr}!extract@{extract}}
+\index{extract@{extract}!Ocr@{Ocr}}
+\subsubsection{\texorpdfstring{extract()}{extract()}}
+{\footnotesize\ttfamily virtual Q\+String\+List Ocr\+::extract (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Extracts strings contained in the image. 
+
+Returns a Q\+Strings\+List containing the strings detected in the image. \begin{DoxyReturn}{Returns}
+Strings list with strings extracted. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classTesseractOcr_a7e5a1d3e275f710ce187bc1c0b080327}{Tesseract\+Ocr}}.
+
+\mbox{\Hypertarget{classOcr_a1b0eed20f8e7f553401834849d044bd2}\label{classOcr_a1b0eed20f8e7f553401834849d044bd2}} 
+\index{Ocr@{Ocr}!get\+Available\+Languages@{get\+Available\+Languages}}
+\index{get\+Available\+Languages@{get\+Available\+Languages}!Ocr@{Ocr}}
+\subsubsection{\texorpdfstring{get\+Available\+Languages()}{getAvailableLanguages()}}
+{\footnotesize\ttfamily virtual Q\+String\+List Ocr\+::get\+Available\+Languages (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Returns all available languages that can be used to extract strings from image. 
+
+\begin{DoxyReturn}{Returns}
+List with all available languages. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classTesseractOcr_ad3486dcaa8a478c72ebaf76c43671326}{Tesseract\+Ocr}}.
+
+\mbox{\Hypertarget{classOcr_a44f623335f8c26cc956b549a7bbf75fe}\label{classOcr_a44f623335f8c26cc956b549a7bbf75fe}} 
+\index{Ocr@{Ocr}!get\+Data\+Path@{get\+Data\+Path}}
+\index{get\+Data\+Path@{get\+Data\+Path}!Ocr@{Ocr}}
+\subsubsection{\texorpdfstring{get\+Data\+Path()}{getDataPath()}}
+{\footnotesize\ttfamily Q\+String Ocr\+::get\+Data\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns folder path where are languages files. 
+
+\begin{DoxyReturn}{Returns}
+Folder path. 
+\end{DoxyReturn}
+
+
+Definition at line 74 of file ocr.\+cpp.
+
+\mbox{\Hypertarget{classOcr_a4bd4275b9b0503dd23dd553b4c0ef54c}\label{classOcr_a4bd4275b9b0503dd23dd553b4c0ef54c}} 
+\index{Ocr@{Ocr}!get\+Image@{get\+Image}}
+\index{get\+Image@{get\+Image}!Ocr@{Ocr}}
+\subsubsection{\texorpdfstring{get\+Image()}{getImage()}}
+{\footnotesize\ttfamily Q\+String Ocr\+::get\+Image (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the path of image configured to recognize characters in. 
+
+\begin{DoxyReturn}{Returns}
+Image path. 
+\end{DoxyReturn}
+
+
+Definition at line 64 of file ocr.\+cpp.
+
+\mbox{\Hypertarget{classOcr_abf98eb2648c41446700515c3e6ed3a24}\label{classOcr_abf98eb2648c41446700515c3e6ed3a24}} 
+\index{Ocr@{Ocr}!get\+Languages@{get\+Languages}}
+\index{get\+Languages@{get\+Languages}!Ocr@{Ocr}}
+\subsubsection{\texorpdfstring{get\+Languages()}{getLanguages()}}
+{\footnotesize\ttfamily Q\+String\+List Ocr\+::get\+Languages (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns set languages to extract strings from image. 
+
+\begin{DoxyReturn}{Returns}
+List with set languages. 
+\end{DoxyReturn}
+
+
+Definition at line 23 of file ocr.\+cpp.
+
+\mbox{\Hypertarget{classOcr_a0c9ebb9b531bdcd6789d4bf9cffb1d42}\label{classOcr_a0c9ebb9b531bdcd6789d4bf9cffb1d42}} 
+\index{Ocr@{Ocr}!is\+Available\+Language@{is\+Available\+Language}}
+\index{is\+Available\+Language@{is\+Available\+Language}!Ocr@{Ocr}}
+\subsubsection{\texorpdfstring{is\+Available\+Language()}{isAvailableLanguage()}}
+{\footnotesize\ttfamily bool Ocr\+::is\+Available\+Language (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{language }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Returns true if the language received by parameter is available to be used in the recognition, otherwise, returns false. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em language} & \mbox{\hyperlink{classString}{String}} language to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{classTesseractOcr_aefe201ace3b144cb8834931b57f79bfd}{Tesseract\+Ocr}}.
+
+
+
+Definition at line 57 of file ocr.\+cpp.
+
+\mbox{\Hypertarget{classOcr_ac6f28693948e68e8958f1a27c73c79d1}\label{classOcr_ac6f28693948e68e8958f1a27c73c79d1}} 
+\index{Ocr@{Ocr}!process\+Extration@{process\+Extration}}
+\index{process\+Extration@{process\+Extration}!Ocr@{Ocr}}
+\subsubsection{\texorpdfstring{process\+Extration()}{processExtration()}}
+{\footnotesize\ttfamily Q\+String\+List Ocr\+::process\+Extration (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{source }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}
+
+
+
+Processes the text received by parameted. 
+
+Split the string in phrases and returns a list with phrases contained in source. 
+\begin{DoxyParams}{Parameters}
+{\em source} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+
+
+Definition at line 84 of file ocr.\+cpp.
+
+\mbox{\Hypertarget{classOcr_a76001048da750374c987bef8171f1977}\label{classOcr_a76001048da750374c987bef8171f1977}} 
+\index{Ocr@{Ocr}!remove\+Language@{remove\+Language}}
+\index{remove\+Language@{remove\+Language}!Ocr@{Ocr}}
+\subsubsection{\texorpdfstring{remove\+Language()}{removeLanguage()}}
+{\footnotesize\ttfamily bool Ocr\+::remove\+Language (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{language }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Remove a language to try recognize characters in the image. 
+
+Returns true if the language was removed succesfully, otherwise, returns false. 
+\begin{DoxyParams}{Parameters}
+{\em language} & \mbox{\hyperlink{classString}{String}} language to be removed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+
+
+Definition at line 43 of file ocr.\+cpp.
+
+\mbox{\Hypertarget{classOcr_a0ec269340072accaa9d0932699b2a8ef}\label{classOcr_a0ec269340072accaa9d0932699b2a8ef}} 
+\index{Ocr@{Ocr}!set\+Data\+Path@{set\+Data\+Path}}
+\index{set\+Data\+Path@{set\+Data\+Path}!Ocr@{Ocr}}
+\subsubsection{\texorpdfstring{set\+Data\+Path()}{setDataPath()}}
+{\footnotesize\ttfamily void Ocr\+::set\+Data\+Path (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{datapath }\end{DoxyParamCaption})}
+
+
+
+Sets folder path where are languages files. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em datapath} & Folder path. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 79 of file ocr.\+cpp.
+
+\mbox{\Hypertarget{classOcr_acdc41b9a0663c194d0fbede8c26ea319}\label{classOcr_acdc41b9a0663c194d0fbede8c26ea319}} 
+\index{Ocr@{Ocr}!set\+Image@{set\+Image}}
+\index{set\+Image@{set\+Image}!Ocr@{Ocr}}
+\subsubsection{\texorpdfstring{set\+Image()}{setImage()}}
+{\footnotesize\ttfamily void Ocr\+::set\+Image (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{image }\end{DoxyParamCaption})}
+
+
+
+Sets the image path where try to recognize characters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em image} & Path of image. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 69 of file ocr.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/optical\+\_\+character\+\_\+recognition/\mbox{\hyperlink{ocr_8h}{ocr.\+h}}\item 
+src/optical\+\_\+character\+\_\+recognition/\mbox{\hyperlink{ocr_8cpp}{ocr.\+cpp}}\end{DoxyCompactItemize}

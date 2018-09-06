@@ -1,0 +1,796 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classGuiController" kind="class" language="C++" prot="public">
+    <compoundname>GuiController</compoundname>
+    <basecompoundref refid="classContextualizationController" prot="public" virt="non-virtual">ContextualizationController</basecompoundref>
+    <derivedcompoundref refid="classLinuxGuiController" prot="public" virt="non-virtual">LinuxGuiController</derivedcompoundref>
+    <derivedcompoundref refid="classWindowsGuiController" prot="public" virt="non-virtual">WindowsGuiController</derivedcompoundref>
+    <includes refid="guicontroller_8h" local="no">guicontroller.h</includes>
+      <sectiondef kind="property">
+      <memberdef kind="property" id="classGuiController_1a10a671bf27008ab3e60e62b2106f8275" prot="public" static="no" readable="yes" writable="no" gettable="no" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>QString</type>
+        <definition>QString GuiController::image</definition>
+        <argsstring></argsstring>
+        <name>image</name>
+        <read>getImageOfModel</read>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="493" column="1" bodyfile="src/contextualization/controller/guicontroller.h" bodystart="24" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="classGuiController_1a2ce97d522206f2adf3d38eb534f76d16" prot="public" static="no" readable="yes" writable="no" gettable="no" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>QList&lt; QObject * &gt;</type>
+        <definition>QList&lt;QObject *&gt; GuiController::tableModel</definition>
+        <argsstring></argsstring>
+        <name>tableModel</name>
+        <read>getTableModel</read>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="493" column="1" bodyfile="src/contextualization/controller/guicontroller.h" bodystart="25" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="classGuiController_1ad588a1633d6df3e17673232bc8a548dd" prot="public" static="no" readable="yes" writable="yes" gettable="no" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>QQuickWindow</type>
+        <definition>QQuickWindow GuiController::view</definition>
+        <argsstring></argsstring>
+        <name>view</name>
+        <read>getView</read>
+        <write>setView</write>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="493" column="1" bodyfile="src/contextualization/controller/guicontroller.h" bodystart="26" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="classGuiController_1a9130c47e3ab1205ed9c5a12a8afa9ec3" prot="public" static="no" readable="no" writable="no" gettable="no" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool GuiController::onlyDoneStrings</definition>
+        <argsstring></argsstring>
+        <name>onlyDoneStrings</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="493" column="1" bodyfile="src/contextualization/controller/guicontroller.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="property" id="classGuiController_1acf4e341b4f9b6c3c383c58531c494ecf" prot="public" static="no" readable="no" writable="no" gettable="no" privategettable="no" protectedgettable="no" settable="no" privatesettable="no" protectedsettable="no">
+        <type>bool</type>
+        <definition>bool GuiController::caseSensitive</definition>
+        <argsstring></argsstring>
+        <name>caseSensitive</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="493" column="1" bodyfile="src/contextualization/controller/guicontroller.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classGuiController_1ae3c45dd471a5fead2859e073dee9c22b" prot="private" static="no" mutable="no">
+        <type>QQuickWindow *</type>
+        <definition>QQuickWindow* GuiController::view_</definition>
+        <argsstring></argsstring>
+        <name>view_</name>
+        <briefdescription>
+<para>Pointer to view part of the MVC. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="144" column="1" bodyfile="src/contextualization/controller/guicontroller.h" bodystart="144" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classGuiController_1a318108e0adc535fdff307b332ba31cbf" prot="private" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString GuiController::currentProjectPath_</definition>
+        <argsstring></argsstring>
+        <name>currentProjectPath_</name>
+        <briefdescription>
+<para>Path of the active project in disk. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="145" column="1" bodyfile="src/contextualization/controller/guicontroller.h" bodystart="145" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classGuiController_1ac2bdb09c739be3d64c1361cdd2d3fb40" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool GuiController::projectHasChanges_</definition>
+        <argsstring></argsstring>
+        <name>projectHasChanges_</name>
+        <briefdescription>
+<para>Flag to know if current project has changes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="146" column="1" bodyfile="src/contextualization/controller/guicontroller.h" bodystart="146" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classGuiController_1a853ee45214496ae1e59cd0139ecd1552" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>GuiController::GuiController</definition>
+        <argsstring>(QQuickWindow *view=Q_NULLPTR, QObject *parent=Q_NULLPTR)</argsstring>
+        <name>GuiController</name>
+        <param>
+          <type>QQuickWindow *</type>
+          <declname>view</declname>
+          <defval>Q_NULLPTR</defval>
+        </param>
+        <param>
+          <type>QObject *</type>
+          <declname>parent</declname>
+          <defval>Q_NULLPTR</defval>
+        </param>
+        <briefdescription>
+<para>Creates an instance of a <ref refid="classGuiController" kindref="compound">GuiController</ref>. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>view</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Visual part of MVC. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>parent</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Parent object. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="37" column="1" bodyfile="src/contextualization/controller/guicontroller.cpp" bodystart="13" bodyend="22"/>
+      </memberdef>
+      <memberdef kind="function" id="classGuiController_1a5b3332300c60a28c1f97a28ef51bac43" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>GuiController::~GuiController</definition>
+        <argsstring>()</argsstring>
+        <name>~GuiController</name>
+        <briefdescription>
+<para>Destroys the <ref refid="classGuiController" kindref="compound">GuiController</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="42" column="1" bodyfile="src/contextualization/controller/guicontroller.cpp" bodystart="24" bodyend="27"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-slot">
+      <memberdef kind="slot" id="classGuiController_1aaa62e4444878e5debfb143c7cc5fcf24" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GuiController::add</definition>
+        <argsstring>(QString newString, int findType) override</argsstring>
+        <name>add</name>
+        <param>
+          <type>QString</type>
+          <declname>newString</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>findType</declname>
+        </param>
+        <briefdescription>
+<para>Tries to add a new string into the model. </para>        </briefdescription>
+        <detaileddescription>
+<para>This slot interacts with the user through the screen showing messages. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>newString</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>New strign to add. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>matchType</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Mode in which the string is to be searched for </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="49" column="1" bodyfile="src/contextualization/controller/guicontroller.cpp" bodystart="29" bodyend="138"/>
+      </memberdef>
+      <memberdef kind="slot" id="classGuiController_1adc896e8a62c256e73c7015e6acc91ea5" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GuiController::remove</definition>
+        <argsstring>(QString stringId) override</argsstring>
+        <name>remove</name>
+        <param>
+          <type>QString</type>
+          <declname>stringId</declname>
+        </param>
+        <briefdescription>
+<para>Tries to remove the string in the model with the identifier receiven by parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>stringId</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Idetifier for string to remove. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="54" column="1" bodyfile="src/contextualization/controller/guicontroller.cpp" bodystart="140" bodyend="143"/>
+      </memberdef>
+      <memberdef kind="slot" id="classGuiController_1a2ecb5b6f3b1ab6f9477b92f959884281" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GuiController::clear</definition>
+        <argsstring>() override</argsstring>
+        <name>clear</name>
+        <briefdescription>
+<para>Removes all strings in the model. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="59" column="1" bodyfile="src/contextualization/controller/guicontroller.cpp" bodystart="145" bodyend="148"/>
+      </memberdef>
+      <memberdef kind="slot" id="classGuiController_1a4d7dd074d188e0e7e631c7aa21d29792" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GuiController::capture</definition>
+        <argsstring>(bool detectStringsOnLoad) override</argsstring>
+        <name>capture</name>
+        <param>
+          <type>bool</type>
+          <declname>detectStringsOnLoad</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="64" column="1" bodyfile="src/contextualization/controller/guicontroller.cpp" bodystart="150" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="slot" id="classGuiController_1a58d647ed044e3ade14234029a879d4eb" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GuiController::load</definition>
+        <argsstring>(bool detectStringsOnLoad) override</argsstring>
+        <name>load</name>
+        <param>
+          <type>bool</type>
+          <declname>detectStringsOnLoad</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="69" column="1" bodyfile="src/contextualization/controller/guicontroller.cpp" bodystart="170" bodyend="199"/>
+      </memberdef>
+      <memberdef kind="slot" id="classGuiController_1aaa89ff4e7227ff4da8f74b856a7331e2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GuiController::detect</definition>
+        <argsstring>() override</argsstring>
+        <name>detect</name>
+        <briefdescription>
+<para>Detects strings in the current image of the model and tries to add them into. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="74" column="1" bodyfile="src/contextualization/controller/guicontroller.cpp" bodystart="201" bodyend="234"/>
+      </memberdef>
+      <memberdef kind="slot" id="classGuiController_1a12166e0f976a2f7dbc6eab96e8d66a5f" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GuiController::send</definition>
+        <argsstring>() override</argsstring>
+        <name>send</name>
+        <briefdescription>
+<para>Tries to send the active contextualization to a remote host. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="79" column="1" bodyfile="src/contextualization/controller/guicontroller.cpp" bodystart="236" bodyend="307"/>
+      </memberdef>
+      <memberdef kind="slot" id="classGuiController_1ad4e64ce2ed310c475da6a4e1e68340c9" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GuiController::cancel</definition>
+        <argsstring>() override</argsstring>
+        <name>cancel</name>
+        <briefdescription>
+<para>Ensures that the user wants to cancel the project and closes the application in an orderly manner. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="84" column="1" bodyfile="src/contextualization/controller/guicontroller.cpp" bodystart="309" bodyend="328"/>
+      </memberdef>
+      <memberdef kind="slot" id="classGuiController_1a86c6358a98e8b88198278967bdda29f9" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool GuiController::save</definition>
+        <argsstring>() override</argsstring>
+        <name>save</name>
+        <briefdescription>
+<para>Saves current project. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="89" column="1" bodyfile="src/contextualization/controller/guicontroller.cpp" bodystart="330" bodyend="345"/>
+      </memberdef>
+      <memberdef kind="slot" id="classGuiController_1a3a68aaf27475fdd15b12ac2d4c03c1f3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool GuiController::saveAs</definition>
+        <argsstring>() override</argsstring>
+        <name>saveAs</name>
+        <briefdescription>
+<para>Opens a dialog and saves current project in the path specied for the user. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="94" column="1" bodyfile="src/contextualization/controller/guicontroller.cpp" bodystart="347" bodyend="379"/>
+      </memberdef>
+      <memberdef kind="slot" id="classGuiController_1a4becaf327fedcee2da7c2362d502791d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GuiController::open</definition>
+        <argsstring>() override</argsstring>
+        <name>open</name>
+        <briefdescription>
+<para>Opens a project saves on disk. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="99" column="1" bodyfile="src/contextualization/controller/guicontroller.cpp" bodystart="381" bodyend="411"/>
+      </memberdef>
+      <memberdef kind="slot" id="classGuiController_1a2d76ebccf2522585145d0fdcf073597a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GuiController::newProject</definition>
+        <argsstring>() override</argsstring>
+        <name>newProject</name>
+        <briefdescription>
+<para>Creates a new empty project. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="104" column="1" bodyfile="src/contextualization/controller/guicontroller.cpp" bodystart="413" bodyend="431"/>
+      </memberdef>
+      <memberdef kind="slot" id="classGuiController_1ae7a067a06ed185e840482f84b16ad7f6" prot="private" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void GuiController::processFiles</definition>
+        <argsstring>() override</argsstring>
+        <name>processFiles</name>
+        <briefdescription>
+<para>Process VALIDATED strings in fp files and storage it in database. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="109" column="1" bodyfile="src/contextualization/controller/guicontroller.cpp" bodystart="433" bodyend="444"/>
+      </memberdef>
+      <memberdef kind="slot" id="classGuiController_1a43a13880969fb7f614bcc06084a6e8d3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GuiController::detectsStringOnInterestingArea</definition>
+        <argsstring>(int startX, int startY, int endX, int endY, int paintedWidth, int paintedHeight)</argsstring>
+        <name>detectsStringOnInterestingArea</name>
+        <param>
+          <type>int</type>
+          <declname>startX</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>startY</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>endX</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>endY</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>paintedWidth</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>paintedHeight</declname>
+        </param>
+        <briefdescription>
+<para>Allows user select an area of image loaded where strings will be detected. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="114" column="1" bodyfile="src/contextualization/controller/guicontroller.cpp" bodystart="446" bodyend="505"/>
+      </memberdef>
+      <memberdef kind="slot" id="classGuiController_1a8992072983a5daeb134b1315f3c7c926" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GuiController::indicateProjectChanges</definition>
+        <argsstring>()</argsstring>
+        <name>indicateProjectChanges</name>
+        <briefdescription>
+<para>Change a flag to indicate that the model has changed. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="126" column="1" bodyfile="src/contextualization/controller/guicontroller.cpp" bodystart="507" bodyend="510"/>
+      </memberdef>
+      <memberdef kind="slot" id="classGuiController_1adb53e45b755b5ecc63b756f4207a0bca" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GuiController::indicateProjectSaved</definition>
+        <argsstring>()</argsstring>
+        <name>indicateProjectSaved</name>
+        <briefdescription>
+<para>Change a flag to indicate that the model has not changes. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="131" column="1" bodyfile="src/contextualization/controller/guicontroller.cpp" bodystart="512" bodyend="515"/>
+      </memberdef>
+      <memberdef kind="slot" id="classGuiController_1a867563c42c572b3f2171663a2d17bcf4" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GuiController::configFpFile</definition>
+        <argsstring>()</argsstring>
+        <name>configFpFile</name>
+        <briefdescription>
+<para>Opens a dialog where the user can configure the path of fp file. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="136" column="1" bodyfile="src/contextualization/controller/guicontroller.cpp" bodystart="517" bodyend="527"/>
+      </memberdef>
+      <memberdef kind="slot" id="classGuiController_1a122e2f31647c10b3ab64e8dd9ed9eca9" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GuiController::configRemoteHost</definition>
+        <argsstring>()</argsstring>
+        <name>configRemoteHost</name>
+        <briefdescription>
+<para>Opens a dialog where the user can configure the host where the contextualization will be sent. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="141" column="1" bodyfile="src/contextualization/controller/guicontroller.cpp" bodystart="529" bodyend="547"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classGuiController_1a713d58859076eb840c1b42b25300d756" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GuiController::connectGuiSignalsAndSlots</definition>
+        <argsstring>()</argsstring>
+        <name>connectGuiSignalsAndSlots</name>
+        <briefdescription>
+<para>Connects signals emited in the view with the slots in the controller. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="151" column="1" bodyfile="src/contextualization/controller/guicontroller.cpp" bodystart="602" bodyend="726"/>
+      </memberdef>
+      <memberdef kind="function" id="classGuiController_1a94adc92d11fbb9b9d01d6a8df925e082" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GuiController::connectModelSignalsAndSlots</definition>
+        <argsstring>()</argsstring>
+        <name>connectModelSignalsAndSlots</name>
+        <briefdescription>
+<para>Connects signals emited in the model with the slots in the controller. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="156" column="1" bodyfile="src/contextualization/controller/guicontroller.cpp" bodystart="728" bodyend="767"/>
+      </memberdef>
+      <memberdef kind="function" id="classGuiController_1ad52ae6c9b19d645b3441c53c41e56e59" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QQuickWindow *</type>
+        <definition>QQuickWindow * GuiController::getView</definition>
+        <argsstring>()</argsstring>
+        <name>getView</name>
+        <briefdescription>
+<para>Returns a pointer to the view object. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Pointer. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="162" column="1" bodyfile="src/contextualization/controller/guicontroller.cpp" bodystart="549" bodyend="552"/>
+      </memberdef>
+      <memberdef kind="function" id="classGuiController_1a04549e60a653402f6aa64380c3d8864d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GuiController::setView</definition>
+        <argsstring>(QQuickWindow *view)</argsstring>
+        <name>setView</name>
+        <param>
+          <type>QQuickWindow *</type>
+          <declname>view</declname>
+        </param>
+        <briefdescription>
+<para>Sets the ponter to the view. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>view</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Pointer to the view. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="168" column="1" bodyfile="src/contextualization/controller/guicontroller.cpp" bodystart="554" bodyend="560"/>
+      </memberdef>
+      <memberdef kind="function" id="classGuiController_1ad6ecb3a36250f465611f14736f316f04" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString GuiController::requestUsername</definition>
+        <argsstring>()</argsstring>
+        <name>requestUsername</name>
+        <briefdescription>
+<para>Opens a dialog where the user can be introduce an usename. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>User input. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="174" column="1" bodyfile="src/contextualization/controller/guicontroller.cpp" bodystart="562" bodyend="580"/>
+      </memberdef>
+      <memberdef kind="function" id="classGuiController_1af56cb14e8af54fa3889916bda29fe9a5" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString GuiController::requestPassword</definition>
+        <argsstring>()</argsstring>
+        <name>requestPassword</name>
+        <briefdescription>
+<para>Opens a dialog where the user can be introduce a password without the characters being seen on the screen. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>User input. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="180" column="1" bodyfile="src/contextualization/controller/guicontroller.cpp" bodystart="582" bodyend="600"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="signal">
+      <memberdef kind="signal" id="classGuiController_1a3bcaea6fb5694216afc69c4eca13b711" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GuiController::viewChanged</definition>
+        <argsstring>()</argsstring>
+        <name>viewChanged</name>
+        <briefdescription>
+<para>The singal is emitted when the pointer to the view changed. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="187" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classGuiController_1a916ef2ef2d8d7b9ac4e63ee746dcdaaa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GuiController::unchangedProject</definition>
+        <argsstring>()</argsstring>
+        <name>unchangedProject</name>
+        <briefdescription>
+<para>The signal is emitted when a current project is saved. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="192" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classGuiController_1a20613f0b5eb1d49e4006a82ca80f17c5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GuiController::stringsListChanged</definition>
+        <argsstring>()</argsstring>
+        <name>stringsListChanged</name>
+        <briefdescription>
+<para>The signal is emitted when a new string is added to the model or a string is removed from the model. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="197" column="1"/>
+      </memberdef>
+      <memberdef kind="signal" id="classGuiController_1a8e5b5cd2b34a4c86d2b95acd1359b86a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void GuiController::imageChanged</definition>
+        <argsstring>()</argsstring>
+        <name>imageChanged</name>
+        <briefdescription>
+<para>The signal is emitted when a image is setted on the model. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/contextualization/controller/guicontroller.h" line="202" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This is the controller class that works a GUI environment. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="41">
+        <label>GuiController</label>
+        <link refid="classGuiController"/>
+        <childnode refid="42" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="43">
+        <label>QObject</label>
+      </node>
+      <node id="42">
+        <label>ContextualizationController</label>
+        <link refid="classContextualizationController"/>
+        <childnode refid="43" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="44">
+        <label>LinuxGuiController</label>
+        <link refid="classLinuxGuiController"/>
+        <childnode refid="41" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="45">
+        <label>WindowsGuiController</label>
+        <link refid="classWindowsGuiController"/>
+        <childnode refid="41" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="46">
+        <label>GuiController</label>
+        <link refid="classGuiController"/>
+        <childnode refid="47" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="48">
+        <label>QObject</label>
+      </node>
+      <node id="47">
+        <label>ContextualizationController</label>
+        <link refid="classContextualizationController"/>
+        <childnode refid="48" relation="public-inheritance">
+        </childnode>
+        <childnode refid="49" relation="usage">
+          <edgelabel>model_</edgelabel>
+        </childnode>
+      </node>
+      <node id="49">
+        <label>ContextualizationModel</label>
+        <link refid="classContextualizationModel"/>
+        <childnode refid="48" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/contextualization/controller/guicontroller.h" line="21" column="1" bodyfile="src/contextualization/controller/guicontroller.h" bodystart="20" bodyend="203"/>
+    <listofallmembers>
+      <member refid="classGuiController_1aaa62e4444878e5debfb143c7cc5fcf24" prot="private" virt="non-virtual"><scope>GuiController</scope><name>add</name></member>
+      <member refid="classContextualizationController_1abb80030963c4abd056a200fefbf8b4e9" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>addString</name></member>
+      <member refid="classContextualizationController_1a4af8f49a57b9d9a7daf5b51d45620ed6" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>addStrings</name></member>
+      <member refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdceda54d0f26a3c6d7f680f2bcbd383f1d9df" prot="public" virt="non-virtual"><scope>GuiController</scope><name>ByApproximateValue</name></member>
+      <member refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdcedab921b1883492c5a7511b20ec6a5f24f3" prot="public" virt="non-virtual"><scope>GuiController</scope><name>ByID</name></member>
+      <member refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdceda0e89844c93d199f9e314fc1a1ddae400" prot="public" virt="non-virtual"><scope>GuiController</scope><name>ByValue</name></member>
+      <member refid="classGuiController_1ad4e64ce2ed310c475da6a4e1e68340c9" prot="private" virt="non-virtual"><scope>GuiController</scope><name>cancel</name></member>
+      <member refid="classGuiController_1a4d7dd074d188e0e7e631c7aa21d29792" prot="private" virt="non-virtual"><scope>GuiController</scope><name>capture</name></member>
+      <member refid="classGuiController_1acf4e341b4f9b6c3c383c58531c494ecf" prot="public" virt="non-virtual"><scope>GuiController</scope><name>caseSensitive</name></member>
+      <member refid="classContextualizationController_1a2ac26ea74b41512a52f677ac6c8fa83f" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>caseSensitive_</name></member>
+      <member refid="classContextualizationController_1ae9896f11f9e129fa4ea9d482c18d8b82" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>CHUNK_HEIGHT</name></member>
+      <member refid="classContextualizationController_1a8e94ee12efc5fb6aba91341b4cc47a26" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>CHUNK_WIDTH</name></member>
+      <member refid="classGuiController_1a2ecb5b6f3b1ab6f9477b92f959884281" prot="private" virt="non-virtual"><scope>GuiController</scope><name>clear</name></member>
+      <member refid="classContextualizationController_1af003f565ad5d3a45fb8b7e66a52487fa" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>clearImage</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fd" prot="public" virt="non-virtual"><scope>GuiController</scope><name>CodeError</name></member>
+      <member refid="classContextualizationController_1ad01707b9671cf54a78960d7fdfa25463" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>CONFIG_FOLDER</name></member>
+      <member refid="classGuiController_1a867563c42c572b3f2171663a2d17bcf4" prot="private" virt="non-virtual"><scope>GuiController</scope><name>configFpFile</name></member>
+      <member refid="classGuiController_1a122e2f31647c10b3ab64e8dd9ed9eca9" prot="private" virt="non-virtual"><scope>GuiController</scope><name>configRemoteHost</name></member>
+      <member refid="classGuiController_1a713d58859076eb840c1b42b25300d756" prot="private" virt="non-virtual"><scope>GuiController</scope><name>connectGuiSignalsAndSlots</name></member>
+      <member refid="classGuiController_1a94adc92d11fbb9b9d01d6a8df925e082" prot="private" virt="non-virtual"><scope>GuiController</scope><name>connectModelSignalsAndSlots</name></member>
+      <member refid="classContextualizationController_1a055cc7f78056ccc0d0a55023402a29ee" prot="public" virt="non-virtual"><scope>GuiController</scope><name>ContextualizationController</name></member>
+      <member refid="classGuiController_1a318108e0adc535fdff307b332ba31cbf" prot="private" virt="non-virtual"><scope>GuiController</scope><name>currentProjectPath_</name></member>
+      <member refid="classGuiController_1aaa89ff4e7227ff4da8f74b856a7331e2" prot="private" virt="non-virtual"><scope>GuiController</scope><name>detect</name></member>
+      <member refid="classGuiController_1a43a13880969fb7f614bcc06084a6e8d3" prot="private" virt="non-virtual"><scope>GuiController</scope><name>detectsStringOnInterestingArea</name></member>
+      <member refid="classContextualizationController_1ae6817457c7b00d17bb676a4989d59858" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>detectStringsOnImage</name></member>
+      <member refid="classContextualizationController_1a3d9769435b8558c75379938e3e78ca95" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>DONE_FP_FILE</name></member>
+      <member refid="classContextualizationController_1aaaea6627d8d88579150001d37916f618" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>englishFpFile_</name></member>
+      <member refid="classContextualizationController_1a43b14faa02f64178e6f18f94022447fa" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>eraseExistStrings</name></member>
+      <member refid="classContextualizationController_1a26fc3969db0e2217dc6994f819c78572" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>exportToJsonFile</name></member>
+      <member refid="classContextualizationController_1a4afb43a5914ef1c7e2a6bb9357cdd822" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>fastDetectStringsOnImage</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fdad866e236894ecf819409ebb4d44b7fd1" prot="public" virt="non-virtual"><scope>GuiController</scope><name>FileNotExists</name></member>
+      <member refid="classContextualizationController_1a627fba866e282e4e7dff813781ed88cb" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>filterStringsByState</name></member>
+      <member refid="classContextualizationController_1a5f94a4894e3a3c0920dc534346527fa0" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>findString</name></member>
+      <member refid="classContextualizationController_1a737d2562702b3b0da946e7b2f9fa336d" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>generateContextualization</name></member>
+      <member refid="classContextualizationController_1af142a8bbd561278c3423ccad3b40c910" prot="protected" virt="virtual"><scope>GuiController</scope><name>generateDoneFpFile</name></member>
+      <member refid="classContextualizationController_1ab3824ba2a20c6f4b511fb6169a4349da" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>getDateTime</name></member>
+      <member refid="classContextualizationController_1afd648aaf148c3db3fb5e3af88e6de2e5" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>getImageOfModel</name></member>
+      <member refid="classContextualizationController_1a5d60cf7ca2c78b74bb6a5ad5a5b04e9e" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>getParameterFromConfigFile</name></member>
+      <member refid="classContextualizationController_1a6c8aba56f5b97fc3042c6e5c8e04e124" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>getTableModel</name></member>
+      <member refid="classGuiController_1ad52ae6c9b19d645b3441c53c41e56e59" prot="private" virt="non-virtual"><scope>GuiController</scope><name>getView</name></member>
+      <member refid="classGuiController_1a853ee45214496ae1e59cd0139ecd1552" prot="public" virt="non-virtual"><scope>GuiController</scope><name>GuiController</name></member>
+      <member refid="classGuiController_1a10a671bf27008ab3e60e62b2106f8275" prot="public" virt="non-virtual"><scope>GuiController</scope><name>image</name></member>
+      <member refid="classGuiController_1a8e5b5cd2b34a4c86d2b95acd1359b86a" prot="public" virt="non-virtual"><scope>GuiController</scope><name>imageChanged</name></member>
+      <member refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4a5d1b78a6b1296da8bf43b62432d090c5" prot="public" virt="non-virtual"><scope>GuiController</scope><name>ImageNotExist</name></member>
+      <member refid="classContextualizationController_1a88ea18a10d1edd6cd15f41b6126e813e" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>IMAGES_FOLDER</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda705a292a89a7c137ed934a1ede90968a" prot="public" virt="non-virtual"><scope>GuiController</scope><name>ImportFileFormat</name></member>
+      <member refid="classContextualizationController_1ae2b31282f2258673757c77592f7ded00" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>importProjectFromJsonFile</name></member>
+      <member refid="classGuiController_1a8992072983a5daeb134b1315f3c7c926" prot="private" virt="non-virtual"><scope>GuiController</scope><name>indicateProjectChanges</name></member>
+      <member refid="classGuiController_1adb53e45b755b5ecc63b756f4207a0bca" prot="private" virt="non-virtual"><scope>GuiController</scope><name>indicateProjectSaved</name></member>
+      <member refid="classContextualizationController_1a7eaa7277a256b9dbf26573a651e442bf" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>isFwStringAlreadyExists</name></member>
+      <member refid="classContextualizationController_1a0d726ece69d0876729c1c801f9c25230" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>isValidState</name></member>
+      <member refid="classGuiController_1a58d647ed044e3ade14234029a879d4eb" prot="private" virt="non-virtual"><scope>GuiController</scope><name>load</name></member>
+      <member refid="classContextualizationController_1a3b3d997f77ec6cd8cfe7569b81c31d3f" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>loadConfig</name></member>
+      <member refid="classContextualizationController_1a211b7dd2dba820139e8055b4f88fdced" prot="public" virt="non-virtual"><scope>GuiController</scope><name>MatchType</name></member>
+      <member refid="classContextualizationController_1a31b85e006b135987dd34ce6443cc9ad1" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>model_</name></member>
+      <member refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4" prot="public" virt="non-virtual"><scope>GuiController</scope><name>ModelError</name></member>
+      <member refid="classGuiController_1a2d76ebccf2522585145d0fdcf073597a" prot="private" virt="non-virtual"><scope>GuiController</scope><name>newProject</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fdac799a856f8460c5e6b100f08191b2d94" prot="public" virt="non-virtual"><scope>GuiController</scope><name>NoError</name></member>
+      <member refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4adba539af7fd279d01da3a2a1e91e40ca" prot="public" virt="non-virtual"><scope>GuiController</scope><name>NoImage</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fdac9ac40727cb32c37655f627ecd1450d4" prot="public" virt="non-virtual"><scope>GuiController</scope><name>NoImportFile</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda3da219148b52a6691d2dbcd9f40ed627" prot="public" virt="non-virtual"><scope>GuiController</scope><name>NoRemoteHost</name></member>
+      <member refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4a2e771e637c2e37c6b410a96c9f48adfd" prot="public" virt="non-virtual"><scope>GuiController</scope><name>NoStrings</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda5360679b825af2b3b97283fae1a9717a" prot="public" virt="non-virtual"><scope>GuiController</scope><name>NoValidIp</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda067a46ac62df6062561a10108b8e77a9" prot="public" virt="non-virtual"><scope>GuiController</scope><name>NullPointer</name></member>
+      <member refid="classContextualizationController_1a78e15dc8f6f1e0cb4df6d86b921be8a4a6ccff3cdedbdcfcdfc1eb59c4b088d24" prot="public" virt="non-virtual"><scope>GuiController</scope><name>OkModel</name></member>
+      <member refid="classGuiController_1a9130c47e3ab1205ed9c5a12a8afa9ec3" prot="public" virt="non-virtual"><scope>GuiController</scope><name>onlyDoneStrings</name></member>
+      <member refid="classContextualizationController_1a8313b2b6332dd76f286e5f24a6329b02" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>onlyDoneStrings_</name></member>
+      <member refid="classGuiController_1a4becaf327fedcee2da7c2362d502791d" prot="private" virt="non-virtual"><scope>GuiController</scope><name>open</name></member>
+      <member refid="classContextualizationController_1a0ec0241ee096fa917e3ab7de448e5509" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>proccessAndStorage</name></member>
+      <member refid="classContextualizationController_1a97436fb5b350bcc6be500b0fe2ecc1b7" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>processExtractedStrings</name></member>
+      <member refid="classGuiController_1ae7a067a06ed185e840482f84b16ad7f6" prot="private" virt="virtual"><scope>GuiController</scope><name>processFiles</name></member>
+      <member refid="classGuiController_1ac2bdb09c739be3d64c1361cdd2d3fb40" prot="private" virt="non-virtual"><scope>GuiController</scope><name>projectHasChanges_</name></member>
+      <member refid="classContextualizationController_1a33d73ba5d5ef0e4c7a47dbb85cea7a7e" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>PROJECTS_FOLDER</name></member>
+      <member refid="classContextualizationController_1ab0cd81ecd067cc0c6c475ce597d0f414" prot="protected" virt="virtual"><scope>GuiController</scope><name>refresh</name></member>
+      <member refid="classContextualizationController_1afdc03867fd96587139618c736c350ead" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>remoteHost_</name></member>
+      <member refid="classGuiController_1adc896e8a62c256e73c7015e6acc91ea5" prot="private" virt="non-virtual"><scope>GuiController</scope><name>remove</name></member>
+      <member refid="classContextualizationController_1af9eb5f70f45cd3c501a8af97a4b280d4" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>removeAllStrings</name></member>
+      <member refid="classContextualizationController_1adedb36b408caff11f15632998e7b9413" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>removeString</name></member>
+      <member refid="classContextualizationController_1a0fb2ae8db12aba7888504f832bb63bd5" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>removeString</name></member>
+      <member refid="classGuiController_1af56cb14e8af54fa3889916bda29fe9a5" prot="private" virt="non-virtual"><scope>GuiController</scope><name>requestPassword</name></member>
+      <member refid="classGuiController_1ad6ecb3a36250f465611f14736f316f04" prot="private" virt="non-virtual"><scope>GuiController</scope><name>requestUsername</name></member>
+      <member refid="classGuiController_1a86c6358a98e8b88198278967bdda29f9" prot="private" virt="non-virtual"><scope>GuiController</scope><name>save</name></member>
+      <member refid="classGuiController_1a3a68aaf27475fdd15b12ac2d4c03c1f3" prot="private" virt="non-virtual"><scope>GuiController</scope><name>saveAs</name></member>
+      <member refid="classContextualizationController_1a4cfa5ebd6d0e2c1843fe6073c02873f3" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>saveConfig</name></member>
+      <member refid="classContextualizationController_1a943a8703d6e67fa5a08b4b8d73697dfc" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>selectString</name></member>
+      <member refid="classGuiController_1a12166e0f976a2f7dbc6eab96e8d66a5f" prot="private" virt="non-virtual"><scope>GuiController</scope><name>send</name></member>
+      <member refid="classContextualizationController_1a46ec193d423be47137f34d746145801f" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>sendContextualization</name></member>
+      <member refid="classContextualizationController_1afd1e07f8b9439ff36656bfc7163df892" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>setImage</name></member>
+      <member refid="classContextualizationController_1a6e92320baf8dbbf148bd3b3e97c5d332" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>setParameterInConfigFile</name></member>
+      <member refid="classGuiController_1a04549e60a653402f6aa64380c3d8864d" prot="private" virt="non-virtual"><scope>GuiController</scope><name>setView</name></member>
+      <member refid="classContextualizationController_1a2bef3de188caf57cad70e47bcf7495d1" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>splitImage</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda7447fb0b9cf45b0adc6da65c65c34253" prot="public" virt="non-virtual"><scope>GuiController</scope><name>SshError</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda860490b2223e4e78d29a514fb51f6fc5" prot="public" virt="non-virtual"><scope>GuiController</scope><name>SshpassError</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda4a6ad284235290da632cd7b621ae53be" prot="public" virt="non-virtual"><scope>GuiController</scope><name>StringAlreadyExists</name></member>
+      <member refid="classGuiController_1a20613f0b5eb1d49e4006a82ca80f17c5" prot="public" virt="non-virtual"><scope>GuiController</scope><name>stringsListChanged</name></member>
+      <member refid="classGuiController_1a2ce97d522206f2adf3d38eb534f76d16" prot="public" virt="non-virtual"><scope>GuiController</scope><name>tableModel</name></member>
+      <member refid="classContextualizationController_1a121919886590cd4955bbcc2d8b747b26" prot="protected" virt="pure-virtual"><scope>GuiController</scope><name>takeCaptureArea</name></member>
+      <member refid="classGuiController_1a916ef2ef2d8d7b9ac4e63ee746dcdaaa" prot="public" virt="non-virtual"><scope>GuiController</scope><name>unchangedProject</name></member>
+      <member refid="classContextualizationController_1a07888f57aa02355d2e0230d6a99f2251" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>username_</name></member>
+      <member refid="classContextualizationController_1a6b806979e0b4e5a3ce3af09230f66fef" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>validateModel</name></member>
+      <member refid="classContextualizationController_1a78b977fec84729a2f9b4cc4a3a57a42e" prot="protected" virt="non-virtual"><scope>GuiController</scope><name>validStates_</name></member>
+      <member refid="classGuiController_1ad588a1633d6df3e17673232bc8a548dd" prot="public" virt="non-virtual"><scope>GuiController</scope><name>view</name></member>
+      <member refid="classGuiController_1ae3c45dd471a5fead2859e073dee9c22b" prot="private" virt="non-virtual"><scope>GuiController</scope><name>view_</name></member>
+      <member refid="classGuiController_1a3bcaea6fb5694216afc69c4eca13b711" prot="public" virt="non-virtual"><scope>GuiController</scope><name>viewChanged</name></member>
+      <member refid="classContextualizationController_1acb38587f7f9e610a5950956b345d69fda841e3c0b31b4da700505de6d3b30dabe" prot="public" virt="non-virtual"><scope>GuiController</scope><name>WriteFile</name></member>
+      <member refid="classContextualizationController_1ae5b1fa3bf3a7b92c8454e8cd98558989" prot="public" virt="non-virtual"><scope>GuiController</scope><name>~ContextualizationController</name></member>
+      <member refid="classGuiController_1a5b3332300c60a28c1f97a28ef51bac43" prot="public" virt="non-virtual"><scope>GuiController</scope><name>~GuiController</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

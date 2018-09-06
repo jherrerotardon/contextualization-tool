@@ -1,0 +1,439 @@
+.TH "ContextualizationModel" 3 "Thu Sep 6 2018" "Version 1.0" "Contextualization Tool" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+ContextualizationModel \- This is the model class of a MVC architecture on Contextualization Tool app\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <contextualizationmodel\&.h>\fP
+.PP
+Inherits QObject\&.
+.SS "Signals"
+
+.in +1c
+.ti -1c
+.RI "void \fBstringsListChanged\fP ()"
+.br
+.RI "This signal is emited when a string is modified on model\&. "
+.ti -1c
+.RI "void \fBimageChanged\fP ()"
+.br
+.RI "This signal is emited when the image of model is changed\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBContextualizationModel\fP (QString image='', QList< \fBFirmwareString\fP *> list=QList< \fBFirmwareString\fP *>())"
+.br
+.RI "Constructs a model\&. "
+.ti -1c
+.RI "\fB~ContextualizationModel\fP ()"
+.br
+.RI "Destroys the model\&. "
+.ti -1c
+.RI "void \fBaddString\fP (const QString &id, const QString &value, const QString &description, const QString &maxLength, const QString &state, const bool selected)"
+.br
+.RI "Adds new string to the model\&. "
+.ti -1c
+.RI "void \fBaddString\fP (\fBFirmwareString\fP *newString)"
+.br
+.RI "Adds new string to the model\&. "
+.ti -1c
+.RI "void \fBaddStrings\fP (QList< \fBFirmwareString\fP *> &strings)"
+.br
+.RI "Adds new string to the model\&. "
+.ti -1c
+.RI "bool \fBremoveString\fP (QString &id)"
+.br
+.RI "Removes string with the identifier received by parameter\&. "
+.ti -1c
+.RI "bool \fBremoveString\fP (int pos)"
+.br
+.RI "Removes string that are in position received by parameter\&. "
+.ti -1c
+.RI "void \fBremoveAllStrings\fP ()"
+.br
+.RI "Removes all items from the firmware strings list\&. "
+.ti -1c
+.RI "bool \fBselectString\fP (const QString id)"
+.br
+.RI "Selects string with the identifier received by parameter\&. "
+.ti -1c
+.RI "bool \fBunselectString\fP (const QString id)"
+.br
+.RI "Unselects string with the identifier received by parameter\&. "
+.ti -1c
+.RI "QList< QObject * > & \fBgetStringsList\fP ()"
+.br
+.RI "Returns the firmware strings list\&. "
+.ti -1c
+.RI "void \fBsetImage\fP (QString path)"
+.br
+.RI "Sets the image of the model\&. "
+.ti -1c
+.RI "QString \fBgetImage\fP ()"
+.br
+.RI "Returns the image associated to the model\&. "
+.ti -1c
+.RI "bool \fBisEmpty\fP ()"
+.br
+.RI "Checks if the model is empty\&. "
+.ti -1c
+.RI "bool \fBhasImage\fP ()"
+.br
+.RI "Returns true if the model has a valid image associated\&. "
+.ti -1c
+.RI "bool \fBhasStrings\fP ()"
+.br
+.RI "Returns true if the model has any string\&. "
+.ti -1c
+.RI "void \fBclear\fP ()"
+.br
+.RI "Empty the model\&. "
+.ti -1c
+.RI "QString \fBtoJson\fP (QJsonDocument::JsonFormat format=QJsonDocument::Compact)"
+.br
+.RI "Returns the model converted to a JSON QString\&. "
+.ti -1c
+.RI "QJsonObject \fBtoJsonObject\fP ()"
+.br
+.RI "Returns the model converted to a #QJsonObject\&. "
+.ti -1c
+.RI "\fBContextualizationModel\fP & \fBoperator=\fP (\fBContextualizationModel\fP &other)"
+.br
+.RI "Assigns other to this model and returns a reference to this model\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBContextualizationModel\fP * \fBfromJson\fP (QString &json)"
+.br
+.RI "Returns a \fBContextualizationModel\fP initializated with the JSON string json\&. "
+.ti -1c
+.RI "static \fBContextualizationModel\fP * \fBfromJson\fP (QByteArray &json)"
+.br
+.RI "Returns a \fBContextualizationModel\fP initializated with the #QByteArray data json\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+This is the model class of a MVC architecture on Contextualization Tool app\&. 
+.PP
+Definition at line 23 of file contextualizationmodel\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "ContextualizationModel::ContextualizationModel (QString image = \fC''\fP, QList< \fBFirmwareString\fP *> list = \fCQList<\fBFirmwareString\fP *>()\fP)"
+
+.PP
+Constructs a model\&. Creates a model setting the image as the image received by parameter\&. Also adds to the model strings received in the list of the second parameter\&. If no parameters are received, create an empty model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIimage\fP File path of image to associate to the model\&. 
+.br
+\fIlist\fP List of strings to add on the model\&. 
+.RE
+.PP
+
+.PP
+Definition at line 13 of file contextualizationmodel\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void ContextualizationModel::addString (const QString & id, const QString & value, const QString & description, const QString & maxLength, const QString & state, const bool selected)"
+
+.PP
+Adds new string to the model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP \fBString\fP ID\&. 
+.br
+\fIvalue\fP \fBString\fP value\&. 
+.br
+\fIdescription\fP \fBString\fP description\&. 
+.br
+\fImaxLength\fP \fBString\fP max length\&. 
+.br
+\fIstate\fP \fBString\fP state\&. 
+.br
+\fIselected\fP Indicates if the string is selected\&. 
+.RE
+.PP
+
+.PP
+Definition at line 30 of file contextualizationmodel\&.cpp\&.
+.SS "void ContextualizationModel::addString (\fBFirmwareString\fP * newString)"
+
+.PP
+Adds new string to the model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fInewString\fP 
+.RE
+.PP
+
+.PP
+Definition at line 42 of file contextualizationmodel\&.cpp\&.
+.SS "void ContextualizationModel::addStrings (QList< \fBFirmwareString\fP *> & strings)"
+
+.PP
+Adds new string to the model\&. Adds all strings in the list received by parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstrings\fP List of strings to add\&. 
+.RE
+.PP
+
+.PP
+Definition at line 49 of file contextualizationmodel\&.cpp\&.
+.SS "void ContextualizationModel::clear ()"
+
+.PP
+Empty the model\&. Unsets the path of image and removes all items from the firmware strings list\&. 
+.PP
+Definition at line 179 of file contextualizationmodel\&.cpp\&.
+.SS "\fBContextualizationModel\fP * ContextualizationModel::fromJson (QString & json)\fC [static]\fP"
+
+.PP
+Returns a \fBContextualizationModel\fP initializated with the JSON string json\&. If the JSON data received is not valid, return an empty model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIjson\fP \fBString\fP in JSON format to be converted\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBContextualizationModel\fP 
+.RE
+.PP
+
+.PP
+Definition at line 207 of file contextualizationmodel\&.cpp\&.
+.SS "\fBContextualizationModel\fP * ContextualizationModel::fromJson (QByteArray & json)\fC [static]\fP"
+
+.PP
+Returns a \fBContextualizationModel\fP initializated with the #QByteArray data json\&. If the JSON data received is not valid, return an empty model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIjson\fP QByteArray in JSON format to be converted\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBContextualizationModel\fP 
+.RE
+.PP
+< Release memory because of an error on json decode process\&. 
+.PP
+Definition at line 214 of file contextualizationmodel\&.cpp\&.
+.SS "QString ContextualizationModel::getImage ()"
+
+.PP
+Returns the image associated to the model\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+QString 
+.RE
+.PP
+
+.PP
+Definition at line 155 of file contextualizationmodel\&.cpp\&.
+.SS "QList< QObject * > & ContextualizationModel::getStringsList ()"
+
+.PP
+Returns the firmware strings list\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+QList<FirmwareString *> & 
+.RE
+.PP
+
+.PP
+Definition at line 141 of file contextualizationmodel\&.cpp\&.
+.SS "bool ContextualizationModel::hasImage ()"
+
+.PP
+Returns true if the model has a valid image associated\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Definition at line 169 of file contextualizationmodel\&.cpp\&.
+.SS "bool ContextualizationModel::hasStrings ()"
+
+.PP
+Returns true if the model has any string\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+bool\&. 
+.RE
+.PP
+
+.PP
+Definition at line 174 of file contextualizationmodel\&.cpp\&.
+.SS "bool ContextualizationModel::isEmpty ()"
+
+.PP
+Checks if the model is empty\&. The model is empty when there aren't any image in the model and the firmware strings list is empty\&. Return true if model is empty\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+
+.RE
+.PP
+
+.PP
+Definition at line 160 of file contextualizationmodel\&.cpp\&.
+.SS "\fBContextualizationModel\fP & ContextualizationModel::operator= (\fBContextualizationModel\fP & other)"
+
+.PP
+Assigns other to this model and returns a reference to this model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIother\fP Model to be copied\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Reference to this model\&. 
+.RE
+.PP
+
+.PP
+Definition at line 269 of file contextualizationmodel\&.cpp\&.
+.SS "bool ContextualizationModel::removeString (QString & id)"
+
+.PP
+Removes string with the identifier received by parameter\&. Returns true if the string removed succesfuly\&. Returns false if there are not any string with this identifer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP Identifier of firmware string to remove\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Definition at line 56 of file contextualizationmodel\&.cpp\&.
+.SS "bool ContextualizationModel::removeString (int pos)"
+
+.PP
+Removes string that are in position received by parameter\&. Returns true if the string removed succesfuly\&. Returns false if is not a valid position\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpos\fP Position of the string in list\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Definition at line 75 of file contextualizationmodel\&.cpp\&.
+.SS "bool ContextualizationModel::selectString (const QString id)"
+
+.PP
+Selects string with the identifier received by parameter\&. Returns true if the string selected succesfuly\&. Returns false if there are not any string with this identifer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP Identifier of firmware string to remove\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Definition at line 105 of file contextualizationmodel\&.cpp\&.
+.SS "void ContextualizationModel::setImage (QString path)"
+
+.PP
+Sets the image of the model\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIpath\fP File path of the image\&. 
+.RE
+.PP
+
+.PP
+Definition at line 146 of file contextualizationmodel\&.cpp\&.
+.SS "QString ContextualizationModel::toJson (QJsonDocument::JsonFormat format = \fCQJsonDocument::Compact\fP)"
+
+.PP
+Returns the model converted to a JSON QString\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIformat\fP Exit format of JSON\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+QString 
+.RE
+.PP
+
+.PP
+Definition at line 185 of file contextualizationmodel\&.cpp\&.
+.SS "QJsonObject ContextualizationModel::toJsonObject ()"
+
+.PP
+Returns the model converted to a #QJsonObject\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+QJsonObject 
+.RE
+.PP
+
+.PP
+Definition at line 190 of file contextualizationmodel\&.cpp\&.
+.SS "bool ContextualizationModel::unselectString (const QString id)"
+
+.PP
+Unselects string with the identifier received by parameter\&. Returns true if the string selected succesfuly\&. Returns false if there are not any string with this identifer\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIid\fP Identifier of firmware string to remove\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Definition at line 123 of file contextualizationmodel\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Contextualization Tool from the source code\&.

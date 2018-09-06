@@ -1,0 +1,342 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classOcr" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>Ocr</compoundname>
+    <derivedcompoundref refid="classTesseractOcr" prot="public" virt="non-virtual">TesseractOcr</derivedcompoundref>
+    <includes refid="ocr_8h" local="no">ocr.h</includes>
+      <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classOcr_1a731be039b828dfb1c1f3d5efdeaea9aa" prot="protected" static="no" mutable="no">
+        <type>QFile</type>
+        <definition>QFile Ocr::image_</definition>
+        <argsstring></argsstring>
+        <name>image_</name>
+        <briefdescription>
+<para>Image where will try to detect strings. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/ocr.h" line="112" column="1" bodyfile="src/optical_character_recognition/ocr.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classOcr_1ad5f11045f50c9d8a23d2cea235c509ad" prot="protected" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString Ocr::language_</definition>
+        <argsstring></argsstring>
+        <name>language_</name>
+        <briefdescription>
+<para>Languagues used to detect. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/ocr.h" line="113" column="1" bodyfile="src/optical_character_recognition/ocr.h" bodystart="113" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classOcr_1a5c13f164c431cb4bc5a487eba75be7b4" prot="protected" static="no" mutable="no">
+        <type>QString</type>
+        <definition>QString Ocr::datapath_</definition>
+        <argsstring></argsstring>
+        <name>datapath_</name>
+        <briefdescription>
+<para>Path where are languages files. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/ocr.h" line="114" column="1" bodyfile="src/optical_character_recognition/ocr.h" bodystart="114" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classOcr_1a285da90c44b929a9883a461de3e6578d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Ocr::Ocr</definition>
+        <argsstring>()</argsstring>
+        <name>Ocr</name>
+        <briefdescription>
+<para>Creates an empty <ref refid="classOcr" kindref="compound">Ocr</ref> object. </para>        </briefdescription>
+        <detaileddescription>
+<para>Sets default values. </para>        </detaileddescription>
+        <inbodydescription>
+<para>&lt; Default language always &quot;eng&quot;. </para>        </inbodydescription>
+        <location file="src/optical_character_recognition/ocr.h" line="32" column="1" bodyfile="src/optical_character_recognition/ocr.cpp" bodystart="13" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classOcr_1a93ead91f7b64663ce6ed71ca4542d2f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>Ocr::~Ocr</definition>
+        <argsstring>()</argsstring>
+        <name>~Ocr</name>
+        <briefdescription>
+<para>Destroys the ocr instance. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/ocr.h" line="37" column="1" bodyfile="src/optical_character_recognition/ocr.cpp" bodystart="18" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classOcr_1a09a27b3a1f579c41ebda05f2a2cf4fed" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>QStringList</type>
+        <definition>virtual QStringList Ocr::extract</definition>
+        <argsstring>()=0</argsstring>
+        <name>extract</name>
+        <reimplementedby refid="classTesseractOcr_1a7e5a1d3e275f710ce187bc1c0b080327">extract</reimplementedby>
+        <briefdescription>
+<para>Extracts strings contained in the image. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns a QStringsList containing the strings detected in the image. <simplesect kind="return"><para>Strings list with strings extracted. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/ocr.h" line="45" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classOcr_1a1b0eed20f8e7f553401834849d044bd2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>QStringList</type>
+        <definition>virtual QStringList Ocr::getAvailableLanguages</definition>
+        <argsstring>() const =0</argsstring>
+        <name>getAvailableLanguages</name>
+        <reimplementedby refid="classTesseractOcr_1ad3486dcaa8a478c72ebaf76c43671326">getAvailableLanguages</reimplementedby>
+        <briefdescription>
+<para>Returns all available languages that can be used to extract strings from image. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>List with all available languages. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/ocr.h" line="51" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classOcr_1abf98eb2648c41446700515c3e6ed3a24" prot="public" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>QStringList</type>
+        <definition>QStringList Ocr::getLanguages</definition>
+        <argsstring>() const</argsstring>
+        <name>getLanguages</name>
+        <briefdescription>
+<para>Returns set languages to extract strings from image. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>List with set languages. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/ocr.h" line="57" column="1" bodyfile="src/optical_character_recognition/ocr.cpp" bodystart="23" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classOcr_1ad2fb764c1c6766233ebbb53e62064bb8" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool Ocr::addLanguage</definition>
+        <argsstring>(const QString &amp;language)</argsstring>
+        <name>addLanguage</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>language</declname>
+        </param>
+        <briefdescription>
+<para>Add a language to try recognize characters in the image. </para>        </briefdescription>
+        <detaileddescription>
+<para>Check if the string recieved is an available language. Return true if the lenguage is added, if not return false.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>lang</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>QString that contains the language to add. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true|false </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/ocr.h" line="68" column="1" bodyfile="src/optical_character_recognition/ocr.cpp" bodystart="28" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classOcr_1a76001048da750374c987bef8171f1977" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool Ocr::removeLanguage</definition>
+        <argsstring>(const QString &amp;language)</argsstring>
+        <name>removeLanguage</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>language</declname>
+        </param>
+        <briefdescription>
+<para>Remove a language to try recognize characters in the image. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns true if the language was removed succesfully, otherwise, returns false. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>language</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> language to be removed. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/ocr.h" line="77" column="1" bodyfile="src/optical_character_recognition/ocr.cpp" bodystart="43" bodyend="55"/>
+      </memberdef>
+      <memberdef kind="function" id="classOcr_1a0c9ebb9b531bdcd6789d4bf9cffb1d42" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool Ocr::isAvailableLanguage</definition>
+        <argsstring>(const QString &amp;language)</argsstring>
+        <name>isAvailableLanguage</name>
+        <reimplementedby refid="classTesseractOcr_1aefe201ace3b144cb8834931b57f79bfd">isAvailableLanguage</reimplementedby>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>language</declname>
+        </param>
+        <briefdescription>
+<para>Returns true if the language received by parameter is available to be used in the recognition, otherwise, returns false. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>language</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> language to check. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/ocr.h" line="85" column="1" bodyfile="src/optical_character_recognition/ocr.cpp" bodystart="57" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classOcr_1a4bd4275b9b0503dd23dd553b4c0ef54c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString Ocr::getImage</definition>
+        <argsstring>() const</argsstring>
+        <name>getImage</name>
+        <briefdescription>
+<para>Returns the path of image configured to recognize characters in. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Image path. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/ocr.h" line="91" column="1" bodyfile="src/optical_character_recognition/ocr.cpp" bodystart="64" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classOcr_1acdc41b9a0663c194d0fbede8c26ea319" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Ocr::setImage</definition>
+        <argsstring>(const QString &amp;image)</argsstring>
+        <name>setImage</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>image</declname>
+        </param>
+        <briefdescription>
+<para>Sets the image path where try to recognize characters. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>image</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Path of image. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/ocr.h" line="97" column="1" bodyfile="src/optical_character_recognition/ocr.cpp" bodystart="69" bodyend="72"/>
+      </memberdef>
+      <memberdef kind="function" id="classOcr_1a44f623335f8c26cc956b549a7bbf75fe" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString Ocr::getDataPath</definition>
+        <argsstring>() const</argsstring>
+        <name>getDataPath</name>
+        <briefdescription>
+<para>Returns folder path where are languages files. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Folder path. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/ocr.h" line="103" column="1" bodyfile="src/optical_character_recognition/ocr.cpp" bodystart="74" bodyend="77"/>
+      </memberdef>
+      <memberdef kind="function" id="classOcr_1a0ec269340072accaa9d0932699b2a8ef" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void Ocr::setDataPath</definition>
+        <argsstring>(const QString &amp;datapath)</argsstring>
+        <name>setDataPath</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>datapath</declname>
+        </param>
+        <briefdescription>
+<para>Sets folder path where are languages files. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>datapath</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Folder path. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/ocr.h" line="109" column="1" bodyfile="src/optical_character_recognition/ocr.cpp" bodystart="79" bodyend="82"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classOcr_1ac6f28693948e68e8958f1a27c73c79d1" prot="protected" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>QStringList</type>
+        <definition>QStringList Ocr::processExtration</definition>
+        <argsstring>(const QString &amp;source)=0</argsstring>
+        <name>processExtration</name>
+        <reimplementedby refid="classTesseractOcr_1af105e2b000fe647c9f3a7a33b92c7073">processExtration</reimplementedby>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>source</declname>
+        </param>
+        <briefdescription>
+<para>Processes the text received by parameted. </para>        </briefdescription>
+        <detaileddescription>
+<para>Split the string in phrases and returns a list with phrases contained in source. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>source</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para></para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/optical_character_recognition/ocr.h" line="123" column="1" bodyfile="src/optical_character_recognition/ocr.cpp" bodystart="84" bodyend="105"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This is an interface for a optical character recognition api. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="79">
+        <label>TesseractOcr</label>
+        <link refid="classTesseractOcr"/>
+        <childnode refid="78" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="78">
+        <label>Ocr</label>
+        <link refid="classOcr"/>
+      </node>
+    </inheritancegraph>
+    <location file="src/optical_character_recognition/ocr.h" line="24" column="1" bodyfile="src/optical_character_recognition/ocr.h" bodystart="23" bodyend="124"/>
+    <listofallmembers>
+      <member refid="classOcr_1ad2fb764c1c6766233ebbb53e62064bb8" prot="public" virt="virtual"><scope>Ocr</scope><name>addLanguage</name></member>
+      <member refid="classOcr_1a5c13f164c431cb4bc5a487eba75be7b4" prot="protected" virt="non-virtual"><scope>Ocr</scope><name>datapath_</name></member>
+      <member refid="classOcr_1a09a27b3a1f579c41ebda05f2a2cf4fed" prot="public" virt="pure-virtual"><scope>Ocr</scope><name>extract</name></member>
+      <member refid="classOcr_1a1b0eed20f8e7f553401834849d044bd2" prot="public" virt="pure-virtual"><scope>Ocr</scope><name>getAvailableLanguages</name></member>
+      <member refid="classOcr_1a44f623335f8c26cc956b549a7bbf75fe" prot="public" virt="non-virtual"><scope>Ocr</scope><name>getDataPath</name></member>
+      <member refid="classOcr_1a4bd4275b9b0503dd23dd553b4c0ef54c" prot="public" virt="non-virtual"><scope>Ocr</scope><name>getImage</name></member>
+      <member refid="classOcr_1abf98eb2648c41446700515c3e6ed3a24" prot="public" virt="virtual"><scope>Ocr</scope><name>getLanguages</name></member>
+      <member refid="classOcr_1a731be039b828dfb1c1f3d5efdeaea9aa" prot="protected" virt="non-virtual"><scope>Ocr</scope><name>image_</name></member>
+      <member refid="classOcr_1a0c9ebb9b531bdcd6789d4bf9cffb1d42" prot="public" virt="virtual"><scope>Ocr</scope><name>isAvailableLanguage</name></member>
+      <member refid="classOcr_1ad5f11045f50c9d8a23d2cea235c509ad" prot="protected" virt="non-virtual"><scope>Ocr</scope><name>language_</name></member>
+      <member refid="classOcr_1a285da90c44b929a9883a461de3e6578d" prot="public" virt="non-virtual"><scope>Ocr</scope><name>Ocr</name></member>
+      <member refid="classOcr_1ac6f28693948e68e8958f1a27c73c79d1" prot="protected" virt="pure-virtual"><scope>Ocr</scope><name>processExtration</name></member>
+      <member refid="classOcr_1a76001048da750374c987bef8171f1977" prot="public" virt="virtual"><scope>Ocr</scope><name>removeLanguage</name></member>
+      <member refid="classOcr_1a0ec269340072accaa9d0932699b2a8ef" prot="public" virt="non-virtual"><scope>Ocr</scope><name>setDataPath</name></member>
+      <member refid="classOcr_1acdc41b9a0663c194d0fbede8c26ea319" prot="public" virt="non-virtual"><scope>Ocr</scope><name>setImage</name></member>
+      <member refid="classOcr_1a93ead91f7b64663ce6ed71ca4542d2f7" prot="public" virt="non-virtual"><scope>Ocr</scope><name>~Ocr</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

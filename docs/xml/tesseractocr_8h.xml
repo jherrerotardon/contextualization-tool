@@ -1,0 +1,356 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="tesseractocr_8h" kind="file" language="C++">
+    <compoundname>tesseractocr.h</compoundname>
+    <includes local="no">leptonica/allheaders.h</includes>
+    <includes local="yes">baseapi.h</includes>
+    <includes local="yes">genericvector.h</includes>
+    <includes refid="ocr_8h" local="yes">ocr.h</includes>
+    <includes refid="utils_8h" local="yes">tools/utils.h</includes>
+    <includes refid="log_8h" local="yes">tools/log.h</includes>
+    <includedby refid="contextualizationcontroller_8h" local="yes">src/contextualization/controller/contextualizationcontroller.h</includedby>
+    <includedby refid="tesseractocr_8cpp" local="yes">src/optical_character_recognition/tesseractocr.cpp</includedby>
+    <incdepgraph>
+      <node id="1036">
+        <label>QFuture</label>
+      </node>
+      <node id="1032">
+        <label>QMessageBox</label>
+      </node>
+      <node id="1038">
+        <label>QDateTime</label>
+      </node>
+      <node id="1029">
+        <label>QStandardPaths</label>
+      </node>
+      <node id="1035">
+        <label>QThread</label>
+      </node>
+      <node id="1034">
+        <label>QProgressDialog</label>
+      </node>
+      <node id="1024">
+        <label>QImage</label>
+      </node>
+      <node id="1016">
+        <label>baseapi.h</label>
+      </node>
+      <node id="1031">
+        <label>tools/utils.h</label>
+        <link refid="utils_8h"/>
+        <childnode refid="1021" relation="include">
+        </childnode>
+        <childnode refid="1022" relation="include">
+        </childnode>
+        <childnode refid="1032" relation="include">
+        </childnode>
+        <childnode refid="1033" relation="include">
+        </childnode>
+        <childnode refid="1034" relation="include">
+        </childnode>
+        <childnode refid="1019" relation="include">
+        </childnode>
+        <childnode refid="1035" relation="include">
+        </childnode>
+        <childnode refid="1036" relation="include">
+        </childnode>
+        <childnode refid="1037" relation="include">
+        </childnode>
+        <childnode refid="1038" relation="include">
+        </childnode>
+      </node>
+      <node id="1015">
+        <label>leptonica/allheaders.h</label>
+      </node>
+      <node id="1030">
+        <label>QDebug</label>
+      </node>
+      <node id="1037">
+        <label>QtConcurrent/QtConcurrent</label>
+      </node>
+      <node id="1025">
+        <label>QRegularExpression</label>
+      </node>
+      <node id="1028">
+        <label>QDate</label>
+      </node>
+      <node id="1019">
+        <label>QString</label>
+      </node>
+      <node id="1022">
+        <label>QFile</label>
+      </node>
+      <node id="1017">
+        <label>genericvector.h</label>
+      </node>
+      <node id="1018">
+        <label>ocr.h</label>
+        <link refid="ocr_8h"/>
+        <childnode refid="1019" relation="include">
+        </childnode>
+        <childnode refid="1020" relation="include">
+        </childnode>
+        <childnode refid="1021" relation="include">
+        </childnode>
+        <childnode refid="1022" relation="include">
+        </childnode>
+        <childnode refid="1023" relation="include">
+        </childnode>
+        <childnode refid="1024" relation="include">
+        </childnode>
+        <childnode refid="1025" relation="include">
+        </childnode>
+        <childnode refid="1026" relation="include">
+        </childnode>
+      </node>
+      <node id="1033">
+        <label>QProcess</label>
+      </node>
+      <node id="1014">
+        <label>src/optical_character_recognition/tesseractocr.h</label>
+        <link refid="tesseractocr_8h"/>
+        <childnode refid="1015" relation="include">
+        </childnode>
+        <childnode refid="1016" relation="include">
+        </childnode>
+        <childnode refid="1017" relation="include">
+        </childnode>
+        <childnode refid="1018" relation="include">
+        </childnode>
+        <childnode refid="1031" relation="include">
+        </childnode>
+        <childnode refid="1026" relation="include">
+        </childnode>
+      </node>
+      <node id="1021">
+        <label>QDir</label>
+      </node>
+      <node id="1027">
+        <label>QTextStream</label>
+      </node>
+      <node id="1020">
+        <label>QStringList</label>
+      </node>
+      <node id="1023">
+        <label>QFileInfo</label>
+      </node>
+      <node id="1026">
+        <label>tools/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="1019" relation="include">
+        </childnode>
+        <childnode refid="1022" relation="include">
+        </childnode>
+        <childnode refid="1027" relation="include">
+        </childnode>
+        <childnode refid="1028" relation="include">
+        </childnode>
+        <childnode refid="1029" relation="include">
+        </childnode>
+        <childnode refid="1030" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1041">
+        <label>src/tools/contextualizationfactoryabstract.h</label>
+        <link refid="contextualizationfactoryabstract_8h"/>
+        <childnode refid="1042" relation="include">
+        </childnode>
+        <childnode refid="1045" relation="include">
+        </childnode>
+      </node>
+      <node id="1056">
+        <label>src/contextualization/controller/linuxguicontroller.cpp</label>
+        <link refid="linuxguicontroller_8cpp"/>
+      </node>
+      <node id="1045">
+        <label>src/tools/contextualizationfactoryabstract.cpp</label>
+        <link refid="contextualizationfactoryabstract_8cpp"/>
+      </node>
+      <node id="1054">
+        <label>src/contextualization/controller/guicontroller.cpp</label>
+        <link refid="guicontroller_8cpp"/>
+      </node>
+      <node id="1046">
+        <label>src/contextualization/controller/consolecontroller.h</label>
+        <link refid="consolecontroller_8h"/>
+        <childnode refid="1047" relation="include">
+        </childnode>
+        <childnode refid="1048" relation="include">
+        </childnode>
+        <childnode refid="1050" relation="include">
+        </childnode>
+      </node>
+      <node id="1051">
+        <label>src/contextualization/controller/windowsconsolecontroller.cpp</label>
+        <link refid="windowsconsolecontroller_8cpp"/>
+      </node>
+      <node id="1059">
+        <label>src/optical_character_recognition/tesseractocr.cpp</label>
+        <link refid="tesseractocr_8cpp"/>
+      </node>
+      <node id="1049">
+        <label>src/contextualization/controller/linuxconsolecontroller.cpp</label>
+        <link refid="linuxconsolecontroller_8cpp"/>
+      </node>
+      <node id="1052">
+        <label>src/contextualization/controller/contextualizationcontroller.cpp</label>
+        <link refid="contextualizationcontroller_8cpp"/>
+      </node>
+      <node id="1043">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="1055">
+        <label>src/contextualization/controller/linuxguicontroller.h</label>
+        <link refid="linuxguicontroller_8h"/>
+        <childnode refid="1042" relation="include">
+        </childnode>
+        <childnode refid="1056" relation="include">
+        </childnode>
+      </node>
+      <node id="1047">
+        <label>src/contextualization/controller/consolecontroller.cpp</label>
+        <link refid="consolecontroller_8cpp"/>
+      </node>
+      <node id="1048">
+        <label>src/contextualization/controller/linuxconsolecontroller.h</label>
+        <link refid="linuxconsolecontroller_8h"/>
+        <childnode refid="1042" relation="include">
+        </childnode>
+        <childnode refid="1049" relation="include">
+        </childnode>
+      </node>
+      <node id="1042">
+        <label>src/tools/hpcontextualizationfactory.h</label>
+        <link refid="hpcontextualizationfactory_8h"/>
+        <childnode refid="1043" relation="include">
+        </childnode>
+        <childnode refid="1044" relation="include">
+        </childnode>
+      </node>
+      <node id="1057">
+        <label>src/contextualization/controller/windowsguicontroller.h</label>
+        <link refid="windowsguicontroller_8h"/>
+        <childnode refid="1042" relation="include">
+        </childnode>
+        <childnode refid="1058" relation="include">
+        </childnode>
+      </node>
+      <node id="1058">
+        <label>src/contextualization/controller/windowsguicontroller.cpp</label>
+        <link refid="windowsguicontroller_8cpp"/>
+      </node>
+      <node id="1040">
+        <label>src/contextualization/controller/contextualizationcontroller.h</label>
+        <link refid="contextualizationcontroller_8h"/>
+        <childnode refid="1041" relation="include">
+        </childnode>
+        <childnode refid="1046" relation="include">
+        </childnode>
+        <childnode refid="1052" relation="include">
+        </childnode>
+        <childnode refid="1053" relation="include">
+        </childnode>
+      </node>
+      <node id="1053">
+        <label>src/contextualization/controller/guicontroller.h</label>
+        <link refid="guicontroller_8h"/>
+        <childnode refid="1054" relation="include">
+        </childnode>
+        <childnode refid="1055" relation="include">
+        </childnode>
+        <childnode refid="1057" relation="include">
+        </childnode>
+      </node>
+      <node id="1044">
+        <label>src/tools/hpcontextualizationfactory.cpp</label>
+        <link refid="hpcontextualizationfactory_8cpp"/>
+      </node>
+      <node id="1039">
+        <label>src/optical_character_recognition/tesseractocr.h</label>
+        <link refid="tesseractocr_8h"/>
+        <childnode refid="1040" relation="include">
+        </childnode>
+        <childnode refid="1059" relation="include">
+        </childnode>
+      </node>
+      <node id="1050">
+        <label>src/contextualization/controller/windowsconsolecontroller.h</label>
+        <link refid="windowsconsolecontroller_8h"/>
+        <childnode refid="1042" relation="include">
+        </childnode>
+        <childnode refid="1051" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classTesseractOcr" prot="public">TesseractOcr</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Jorge Herrero Tardón (<ulink url="mailto:jorgeht@usal.es">jorgeht@usal.es</ulink>) </para></simplesect>
+<simplesect kind="date"><para>20/02/2018 </para></simplesect>
+<simplesect kind="version"><para>1.0 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="11"><highlight class="preprocessor">#ifndef<sp/>TESSERACTOCR_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>TESSERACTOCR_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;leptonica/allheaders.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;baseapi.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;genericvector.h&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="ocr_8h" kindref="compound">ocr.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="utils_8h" kindref="compound">tools/utils.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="log_8h" kindref="compound">tools/log.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classTesseractOcr" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classTesseractOcr" kindref="compound">TesseractOcr</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classOcr" kindref="compound">Ocr</ref></highlight></codeline>
+<codeline lineno="22"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classTesseractOcr_1a9e62c15a4f8e4c8a0a614cf04ec8dea6" kindref="member">TesseractOcr</ref>();</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classTesseractOcr_1a9e62c15a4f8e4c8a0a614cf04ec8dea6" kindref="member">TesseractOcr</ref>(</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QString<sp/>image,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QString<sp/>datapath<sp/>=<sp/>QDir(</highlight><highlight class="stringliteral">&quot;../tesseract/tessdata&quot;</highlight><highlight class="normal">).absolutePath()<sp/>+<sp/></highlight><highlight class="charliteral">&apos;/&apos;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tesseract::OcrEngineMode<sp/>engineMode<sp/>=<sp/>tesseract::OEM_TESSERACT_LSTM_COMBINED,</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>tesseract::PageSegMode<sp/>pageSegMode<sp/>=<sp/>tesseract::PSM_AUTO</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classTesseractOcr_1a9e62c15a4f8e4c8a0a614cf04ec8dea6" kindref="member">TesseractOcr</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTesseractOcr" kindref="compound">TesseractOcr</ref><sp/>&amp;other);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classTesseractOcr_1ad7d20b699dec0f1939c58eb0cc952406" kindref="member">~TesseractOcr</ref>();</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>QStringList<sp/><ref refid="classTesseractOcr_1a7e5a1d3e275f710ce187bc1c0b080327" kindref="member">extract</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/>QStringList<sp/><ref refid="classTesseractOcr_1ad3486dcaa8a478c72ebaf76c43671326" kindref="member">getAvailableLanguages</ref>()<sp/></highlight><highlight class="keyword">const<sp/>override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classTesseractOcr_1aefe201ace3b144cb8834931b57f79bfd" kindref="member">isAvailableLanguage</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;language)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/>tesseract::PageSegMode<sp/><ref refid="classTesseractOcr_1afd6329838570d29a97834f3c91f0bb2c" kindref="member">getPageSegMode</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTesseractOcr_1a16b1a94b0829a668e2f3ebc48c6e9e37" kindref="member">setPageSegMode</ref>(tesseract::PageSegMode<sp/>pageSegMode);</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/>tesseract::OcrEngineMode<sp/><ref refid="classTesseractOcr_1a911234ba57781e4e33515e2f0eab4320" kindref="member">getEngineMode</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classTesseractOcr_1acd714224045f4808b732f865164e1e1a" kindref="member">setEngineMode</ref>(tesseract::OcrEngineMode<sp/>engineMode);</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classTesseractOcr" kindref="compound">TesseractOcr</ref><sp/>&amp;<sp/><ref refid="classTesseractOcr_1ae1327017072b55801ce9ebdbab956b6a" kindref="member">operator=</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classTesseractOcr" kindref="compound">TesseractOcr</ref><sp/>&amp;other);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/>tesseract::TessBaseAPI<sp/>*api_;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/>tesseract::PageSegMode<sp/>pageSegMode_;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>tesseract::OcrEngineMode<sp/>engineMode_;<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>initApi()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>QStringList<sp/>processExtration(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;source)<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>TESSERACTOCR_H</highlight></codeline>
+    </programlisting>
+    <location file="src/optical_character_recognition/tesseractocr.h"/>
+  </compounddef>
+</doxygen>

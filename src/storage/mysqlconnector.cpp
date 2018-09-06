@@ -14,17 +14,15 @@ MySqlConnector::MySqlConnector(
     const QString host,
     const QString user,
     const QString password,
-    const QString database,
-    const QString tableName
+    const QString database
 ) : DatabaseConnectorAbstract() {
-    QSqlDatabase db = QSqlDatabase::addDatabase("default");
+    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
     bool ok;
 
     host_ = host;
     user_ = user;
     password_ = password;
     dataBase_ = database;
-    tableName_ = tableName;
 
     db.setHostName(host_);
     db.setDatabaseName(dataBase_);
@@ -33,8 +31,8 @@ MySqlConnector::MySqlConnector(
 
     ok = db.open();
     if (!ok) {
+        Log::writeError(QString(Q_FUNC_INFO) + " MySQL connection failed");
         Log::writeError(QString(Q_FUNC_INFO) + " " + db.lastError().databaseText());
-        throw "MySQL connection failed";
     }
 }
 
@@ -61,16 +59,6 @@ QString MySqlConnector::getDataBase()
 void MySqlConnector::setDataBase(const QString dataBase)
 {
     dataBase_ = dataBase;
-}
-
-QString MySqlConnector::getTableName()
-{
-    return tableName_;
-}
-
-void MySqlConnector::setTableName(const QString tableName)
-{
-    tableName_ = tableName;
 }
 
 QList<String *> MySqlConnector::getAllStrings()
@@ -194,17 +182,45 @@ QList<String *> MySqlConnector::getStringWithId(const QString &id, bool caseSens
     return out;
 }
 
-bool MySqlConnector::insertString(const String &string)
+QList<String *> MySqlConnector::getStringsWithState(const QString state)
+{
+    QSqlQuery query;
+    QList<String *> out;
+    bool ok;
+
+    query.prepare("SELECT * FROM String WHERE State = :state");
+    query.bindValue(":value", state);
+
+    ok = query.exec();
+    if (!ok) {
+        Log::writeError(QString(Q_FUNC_INFO) + " " + query.lastError().databaseText());
+    }
+
+    while (query.next()) {
+        out << new FirmwareString(
+            query.value(0).toString(),
+            query.value(1).toString(),
+            query.value(2).toString(),
+            query.value(3).toString(),
+            query.value(4).toString()
+        );
+    }
+
+    return out;
+}
+
+bool MySqlConnector::insertString(const String &string, const QString language)
 {
     QSqlQuery query;
 
-    query.prepare("INSERT INTO employee (id, name, salary) "
-                  "VALUES (:id, :value, :description, :maxLength, :state)");
+    query.prepare("INSERT INTO String (ID, Value, Description, MaxLenght, State, LanguageID) "
+                  "VALUES (:id, :value, :description, :maxLength, :state, :languageId)");
     query.bindValue(":id", string.getId());
     query.bindValue(":value", string.getValue());
     query.bindValue(":description", string.getDescription());
     query.bindValue(":maxLength", string.getMaxLength());
     query.bindValue(":state", string.getState());
+    query.bindValue(":languageId", getKeyFromLanguage(language));
 
     if (query.exec()) {
         Log::writeError(QString(Q_FUNC_INFO) + " " + query.lastError().databaseText());
@@ -214,12 +230,12 @@ bool MySqlConnector::insertString(const String &string)
     return false;
 }
 
-int MySqlConnector::insertStrings(const QList<String *> &strings)
+int MySqlConnector::insertStrings(const QList<String *> &strings, const QString language)
 {
     int count = 0;
 
     foreach (String *string, strings) {
-        count = insertString(*string) == true ? count+1 : count;
+        count = insertString(*string, language) == true ? count+1 : count;
     }
 
     return count;
@@ -307,8 +323,29 @@ QStringList MySqlConnector::getLanguageIds()
     return out;
 }
 
+QString MySqlConnector::getKeyFromLanguage(const QString language)
+{
+    QSqlQuery query;
+    QStringList out;
+    bool ok;
+
+    query.prepare("SELECT ID FROM Language where Name = :language");
+    query.bindValue(":language", language);
+
+    ok = query.exec();
+    if (!ok) {
+        Log::writeError(QString(Q_FUNC_INFO) + " " + query.lastError().databaseText());
+    }
+
+    while (query.next()) {
+        out << query.value(0).toString();
+    }
+
+    return out.isEmpty() ? QString() : out.first();
+}
+
 bool MySqlConnector::isAnyImportantFieldEmpty() {
-    if (user_.isEmpty() || password_.isEmpty() || dataBase_.isEmpty() || tableName_.isEmpty()) {
+    if (user_.isEmpty() || password_.isEmpty() || dataBase_.isEmpty()) {
         return true;
     }
 

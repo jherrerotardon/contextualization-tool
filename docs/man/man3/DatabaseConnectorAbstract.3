@@ -1,0 +1,271 @@
+.TH "DatabaseConnectorAbstract" 3 "Thu Sep 6 2018" "Version 1.0" "Contextualization Tool" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+DatabaseConnectorAbstract \- This is an interface to access a different data bases\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <databaseconnectorabstract\&.h>\fP
+.PP
+Inherited by \fBFpFileConnector\fP, and \fBMySqlConnector\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDatabaseConnectorAbstract\fP ()"
+.br
+.RI "Creates an empty \fBDatabaseConnectorAbstract\fP\&. "
+.ti -1c
+.RI "virtual QList< \fBString\fP * > \fBgetAllStrings\fP ()=0"
+.br
+.RI "Returns a list containing all strings in the dababase\&. "
+.ti -1c
+.RI "virtual QList< \fBString\fP * > \fBgetStringsWithValue\fP (const QString &value, bool caseSensitive=true)=0"
+.br
+.RI "Returns all strigns in database with the value received by argument\&. "
+.ti -1c
+.RI "virtual QList< \fBString\fP * > \fBgetStringsWithApproximateValue\fP (const QString &value, bool caseSensitive=true)=0"
+.br
+.RI "Returns all strigns in database with a similar value received by argument\&. "
+.ti -1c
+.RI "virtual QList< \fBString\fP * > \fBgetStringWithId\fP (const QString &id, bool caseSensitive=true)=0"
+.br
+.RI "Returns all strigns in database with the identifier received by argument\&. "
+.ti -1c
+.RI "virtual QList< \fBString\fP * > \fBgetStringsWithState\fP (const QString state)=0"
+.br
+.RI "Returns strings with state received by parameter\&. "
+.ti -1c
+.RI "virtual bool \fBinsertString\fP (const \fBString\fP &string, const QString language)=0"
+.br
+.RI "Inserts a new string in database\&. "
+.ti -1c
+.RI "virtual int \fBinsertStrings\fP (const QList< \fBString\fP *> &strings, const QString language)=0"
+.br
+.RI "Inserts a set of strings into the database\&. "
+.ti -1c
+.RI "virtual int \fBremoveStringsWithValue\fP (const QString &value, bool caseSensitive=true)=0"
+.br
+.RI "Removes from databse all strigns with the value received by argument\&. "
+.ti -1c
+.RI "virtual int \fBremoveStringsWithId\fP (const QString &id, bool caseSensitive=true)=0"
+.br
+.RI "Removes from databse the strign with the identifier received by argument\&. "
+.ti -1c
+.RI "virtual QStringList \fBgetLanguages\fP ()=0"
+.br
+.RI "Returns all languages stored in database\&. "
+.ti -1c
+.RI "virtual QStringList \fBgetLanguageIds\fP ()=0"
+.br
+.RI "Returns all language identifiers stored in database\&. "
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "const int \fBMIN_LENGTH_FOR_APPROXIMATE\fP"
+.br
+.RI "Minimun length for string to do an approximate find\&. "
+.ti -1c
+.RI "const int \fBMAX_LENGTH_DIFFERENCE\fP"
+.br
+.RI "Greatest difference between value and string values found\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+This is an interface to access a different data bases\&. 
+.PP
+Definition at line 18 of file databaseconnectorabstract\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual QList<\fBString\fP *> DatabaseConnectorAbstract::getAllStrings ()\fC [pure virtual]\fP"
+
+.PP
+Returns a list containing all strings in the dababase\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+List with strings\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBMySqlConnector\fP, and \fBFpFileConnector\fP\&.
+.SS "virtual QStringList DatabaseConnectorAbstract::getLanguageIds ()\fC [pure virtual]\fP"
+
+.PP
+Returns all language identifiers stored in database\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Languages used\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBMySqlConnector\fP, and \fBFpFileConnector\fP\&.
+.SS "virtual QStringList DatabaseConnectorAbstract::getLanguages ()\fC [pure virtual]\fP"
+
+.PP
+Returns all languages stored in database\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Languages used\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBMySqlConnector\fP, and \fBFpFileConnector\fP\&.
+.SS "virtual QList<\fBString\fP *> DatabaseConnectorAbstract::getStringsWithApproximateValue (const QString & value, bool caseSensitive = \fCtrue\fP)\fC [pure virtual]\fP"
+
+.PP
+Returns all strigns in database with a similar value received by argument\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP \fBString\fP value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+List with strings\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBMySqlConnector\fP, and \fBFpFileConnector\fP\&.
+.SS "virtual QList<\fBString\fP *> DatabaseConnectorAbstract::getStringsWithState (const QString state)\fC [pure virtual]\fP"
+
+.PP
+Returns strings with state received by parameter\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstate\fP State to be found\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBString\fP list eith indicated state\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBMySqlConnector\fP, and \fBFpFileConnector\fP\&.
+.SS "virtual QList<\fBString\fP *> DatabaseConnectorAbstract::getStringsWithValue (const QString & value, bool caseSensitive = \fCtrue\fP)\fC [pure virtual]\fP"
+
+.PP
+Returns all strigns in database with the value received by argument\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP \fBString\fP value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+List with strings\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBMySqlConnector\fP, and \fBFpFileConnector\fP\&.
+.SS "virtual QList<\fBString\fP *> DatabaseConnectorAbstract::getStringWithId (const QString & id, bool caseSensitive = \fCtrue\fP)\fC [pure virtual]\fP"
+
+.PP
+Returns all strigns in database with the identifier received by argument\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP \fBString\fP identifier\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+List with strings\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBMySqlConnector\fP, and \fBFpFileConnector\fP\&.
+.SS "virtual bool DatabaseConnectorAbstract::insertString (const \fBString\fP & string, const QString language)\fC [pure virtual]\fP"
+
+.PP
+Inserts a new string in database\&. Returns true if the insertion was succesfull, otherwise, returns false\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstring\fP \fBString\fP instance to be inserted\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Implemented in \fBMySqlConnector\fP, and \fBFpFileConnector\fP\&.
+.SS "virtual int DatabaseConnectorAbstract::insertStrings (const QList< \fBString\fP *> & strings, const QString language)\fC [pure virtual]\fP"
+
+.PP
+Inserts a set of strings into the database\&. Returns the number of inserted stirngs\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstrings\fP List with strings to be added into databse\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Implemented in \fBMySqlConnector\fP, and \fBFpFileConnector\fP\&.
+.SS "virtual int DatabaseConnectorAbstract::removeStringsWithId (const QString & id, bool caseSensitive = \fCtrue\fP)\fC [pure virtual]\fP"
+
+.PP
+Removes from databse the strign with the identifier received by argument\&. Returns the number of removed stirngs\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP \fBString\fP identifier\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+bool 
+.RE
+.PP
+
+.PP
+Implemented in \fBMySqlConnector\fP, and \fBFpFileConnector\fP\&.
+.SS "virtual int DatabaseConnectorAbstract::removeStringsWithValue (const QString & value, bool caseSensitive = \fCtrue\fP)\fC [pure virtual]\fP"
+
+.PP
+Removes from databse all strigns with the value received by argument\&. Returns the number of removed strings\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIvalue\fP \fBString\fP value\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of removed strings 
+.RE
+.PP
+
+.PP
+Implemented in \fBMySqlConnector\fP, and \fBFpFileConnector\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Contextualization Tool from the source code\&.

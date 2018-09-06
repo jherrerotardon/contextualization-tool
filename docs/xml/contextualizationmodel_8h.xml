@@ -1,0 +1,341 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="contextualizationmodel_8h" kind="file" language="C++">
+    <compoundname>contextualizationmodel.h</compoundname>
+    <includes local="no">QObject</includes>
+    <includes local="no">QString</includes>
+    <includes local="no">QList</includes>
+    <includes local="no">QDir</includes>
+    <includes local="no">QJsonDocument</includes>
+    <includes local="no">QJsonObject</includes>
+    <includes refid="firmwarestring_8h" local="yes">firmwarestring.h</includes>
+    <includes refid="log_8h" local="yes">src/tools/log.h</includes>
+    <includedby refid="contextualizationmodel_8cpp" local="yes">src/contextualization/model/contextualizationmodel.cpp</includedby>
+    <includedby refid="contextualizationcontroller_8h" local="yes">src/contextualization/controller/contextualizationcontroller.h</includedby>
+    <incdepgraph>
+      <node id="732">
+        <label>QObject</label>
+      </node>
+      <node id="731">
+        <label>src/contextualization/model/contextualizationmodel.h</label>
+        <link refid="contextualizationmodel_8h"/>
+        <childnode refid="732" relation="include">
+        </childnode>
+        <childnode refid="733" relation="include">
+        </childnode>
+        <childnode refid="734" relation="include">
+        </childnode>
+        <childnode refid="735" relation="include">
+        </childnode>
+        <childnode refid="736" relation="include">
+        </childnode>
+        <childnode refid="737" relation="include">
+        </childnode>
+        <childnode refid="738" relation="include">
+        </childnode>
+        <childnode refid="741" relation="include">
+        </childnode>
+      </node>
+      <node id="745">
+        <label>QStandardPaths</label>
+      </node>
+      <node id="734">
+        <label>QList</label>
+      </node>
+      <node id="739">
+        <label>string.h</label>
+        <link refid="string_8h"/>
+        <childnode refid="733" relation="include">
+        </childnode>
+        <childnode refid="736" relation="include">
+        </childnode>
+        <childnode refid="737" relation="include">
+        </childnode>
+        <childnode refid="740" relation="include">
+        </childnode>
+        <childnode refid="741" relation="include">
+        </childnode>
+      </node>
+      <node id="737">
+        <label>QJsonObject</label>
+      </node>
+      <node id="746">
+        <label>QDebug</label>
+      </node>
+      <node id="740">
+        <label>QRegularExpression</label>
+      </node>
+      <node id="744">
+        <label>QDate</label>
+      </node>
+      <node id="733">
+        <label>QString</label>
+      </node>
+      <node id="742">
+        <label>QFile</label>
+      </node>
+      <node id="736">
+        <label>QJsonDocument</label>
+      </node>
+      <node id="735">
+        <label>QDir</label>
+      </node>
+      <node id="743">
+        <label>QTextStream</label>
+      </node>
+      <node id="738">
+        <label>firmwarestring.h</label>
+        <link refid="firmwarestring_8h"/>
+        <childnode refid="739" relation="include">
+        </childnode>
+      </node>
+      <node id="741">
+        <label>tools/log.h</label>
+        <link refid="log_8h"/>
+        <childnode refid="733" relation="include">
+        </childnode>
+        <childnode refid="742" relation="include">
+        </childnode>
+        <childnode refid="743" relation="include">
+        </childnode>
+        <childnode refid="744" relation="include">
+        </childnode>
+        <childnode refid="745" relation="include">
+        </childnode>
+        <childnode refid="746" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="750">
+        <label>src/tools/contextualizationfactoryabstract.h</label>
+        <link refid="contextualizationfactoryabstract_8h"/>
+        <childnode refid="751" relation="include">
+        </childnode>
+        <childnode refid="754" relation="include">
+        </childnode>
+      </node>
+      <node id="765">
+        <label>src/contextualization/controller/linuxguicontroller.cpp</label>
+        <link refid="linuxguicontroller_8cpp"/>
+      </node>
+      <node id="754">
+        <label>src/tools/contextualizationfactoryabstract.cpp</label>
+        <link refid="contextualizationfactoryabstract_8cpp"/>
+      </node>
+      <node id="763">
+        <label>src/contextualization/controller/guicontroller.cpp</label>
+        <link refid="guicontroller_8cpp"/>
+      </node>
+      <node id="747">
+        <label>src/contextualization/model/contextualizationmodel.h</label>
+        <link refid="contextualizationmodel_8h"/>
+        <childnode refid="748" relation="include">
+        </childnode>
+        <childnode refid="749" relation="include">
+        </childnode>
+      </node>
+      <node id="755">
+        <label>src/contextualization/controller/consolecontroller.h</label>
+        <link refid="consolecontroller_8h"/>
+        <childnode refid="756" relation="include">
+        </childnode>
+        <childnode refid="757" relation="include">
+        </childnode>
+        <childnode refid="759" relation="include">
+        </childnode>
+      </node>
+      <node id="760">
+        <label>src/contextualization/controller/windowsconsolecontroller.cpp</label>
+        <link refid="windowsconsolecontroller_8cpp"/>
+      </node>
+      <node id="758">
+        <label>src/contextualization/controller/linuxconsolecontroller.cpp</label>
+        <link refid="linuxconsolecontroller_8cpp"/>
+      </node>
+      <node id="761">
+        <label>src/contextualization/controller/contextualizationcontroller.cpp</label>
+        <link refid="contextualizationcontroller_8cpp"/>
+      </node>
+      <node id="752">
+        <label>src/main.cpp</label>
+        <link refid="main_8cpp"/>
+      </node>
+      <node id="748">
+        <label>src/contextualization/model/contextualizationmodel.cpp</label>
+        <link refid="contextualizationmodel_8cpp"/>
+      </node>
+      <node id="764">
+        <label>src/contextualization/controller/linuxguicontroller.h</label>
+        <link refid="linuxguicontroller_8h"/>
+        <childnode refid="751" relation="include">
+        </childnode>
+        <childnode refid="765" relation="include">
+        </childnode>
+      </node>
+      <node id="756">
+        <label>src/contextualization/controller/consolecontroller.cpp</label>
+        <link refid="consolecontroller_8cpp"/>
+      </node>
+      <node id="757">
+        <label>src/contextualization/controller/linuxconsolecontroller.h</label>
+        <link refid="linuxconsolecontroller_8h"/>
+        <childnode refid="751" relation="include">
+        </childnode>
+        <childnode refid="758" relation="include">
+        </childnode>
+      </node>
+      <node id="751">
+        <label>src/tools/hpcontextualizationfactory.h</label>
+        <link refid="hpcontextualizationfactory_8h"/>
+        <childnode refid="752" relation="include">
+        </childnode>
+        <childnode refid="753" relation="include">
+        </childnode>
+      </node>
+      <node id="766">
+        <label>src/contextualization/controller/windowsguicontroller.h</label>
+        <link refid="windowsguicontroller_8h"/>
+        <childnode refid="751" relation="include">
+        </childnode>
+        <childnode refid="767" relation="include">
+        </childnode>
+      </node>
+      <node id="767">
+        <label>src/contextualization/controller/windowsguicontroller.cpp</label>
+        <link refid="windowsguicontroller_8cpp"/>
+      </node>
+      <node id="749">
+        <label>src/contextualization/controller/contextualizationcontroller.h</label>
+        <link refid="contextualizationcontroller_8h"/>
+        <childnode refid="750" relation="include">
+        </childnode>
+        <childnode refid="755" relation="include">
+        </childnode>
+        <childnode refid="761" relation="include">
+        </childnode>
+        <childnode refid="762" relation="include">
+        </childnode>
+      </node>
+      <node id="762">
+        <label>src/contextualization/controller/guicontroller.h</label>
+        <link refid="guicontroller_8h"/>
+        <childnode refid="763" relation="include">
+        </childnode>
+        <childnode refid="764" relation="include">
+        </childnode>
+        <childnode refid="766" relation="include">
+        </childnode>
+      </node>
+      <node id="753">
+        <label>src/tools/hpcontextualizationfactory.cpp</label>
+        <link refid="hpcontextualizationfactory_8cpp"/>
+      </node>
+      <node id="759">
+        <label>src/contextualization/controller/windowsconsolecontroller.h</label>
+        <link refid="windowsconsolecontroller_8h"/>
+        <childnode refid="751" relation="include">
+        </childnode>
+        <childnode refid="760" relation="include">
+        </childnode>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classContextualizationModel" prot="public">ContextualizationModel</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>Jorge Herrero Tardón (<ulink url="mailto:jorgeht@usal.es">jorgeht@usal.es</ulink>) </para></simplesect>
+<simplesect kind="date"><para>20/02/2018 </para></simplesect>
+<simplesect kind="version"><para>1.0 </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="11"><highlight class="preprocessor">#ifndef<sp/>CONTEXTUALIZATIONMODEL_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>CONTEXTUALIZATIONMODEL_H</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QObject&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QString&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QList&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QDir&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QJsonDocument&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;QJsonObject&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="firmwarestring_8h" kindref="compound">firmwarestring.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="log_8h" kindref="compound">src/tools/log.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classContextualizationModel" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classContextualizationModel" kindref="compound">ContextualizationModel</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>QObject</highlight></codeline>
+<codeline lineno="24"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>Q_OBJECT</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classContextualizationModel_1a109126afb677af159e77adecf36fb6f2" kindref="member">ContextualizationModel</ref>(</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QString<sp/>image<sp/>=<sp/></highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>QList&lt;FirmwareString<sp/>*&gt;<sp/>list<sp/>=<sp/>QList&lt;FirmwareString<sp/>*&gt;()</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classContextualizationModel_1a232b273faa1bdb051c7a7f61d6601370" kindref="member">~ContextualizationModel</ref>();</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classContextualizationModel_1aa87bafc64440304e8d9efd7f23f9b897" kindref="member">addString</ref>(</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">,</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;value,</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;description,</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;maxLength,</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/>&amp;state,</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>selected</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>);</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classContextualizationModel_1aa87bafc64440304e8d9efd7f23f9b897" kindref="member">addString</ref>(<ref refid="classFirmwareString" kindref="compound">FirmwareString</ref><sp/>*<sp/>newString);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classContextualizationModel_1a24021cc16a5215c9765602b311fe9f77" kindref="member">addStrings</ref>(QList&lt;FirmwareString<sp/>*&gt;<sp/>&amp;strings);</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classContextualizationModel_1a65def773aab689eb131482834d711a22" kindref="member">removeString</ref>(QString<sp/>&amp;</highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classContextualizationModel_1a65def773aab689eb131482834d711a22" kindref="member">removeString</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>pos);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classContextualizationModel_1a09f646708d9dfaa87d064622a4776194" kindref="member">removeAllStrings</ref>();</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classContextualizationModel_1a4aafa9c9e08d2b7a52b17871f755f34b" kindref="member">selectString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classContextualizationModel_1a7690c31f0c498607a8137d9d5acb3b32" kindref="member">unselectString</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>QString<sp/></highlight><highlight class="keywordtype">id</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/>QList&lt;QObject<sp/>*&gt;<sp/>&amp;<ref refid="classContextualizationModel_1ac098ebbf5cce5aac14182adddf7610e4" kindref="member">getStringsList</ref>();</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classContextualizationModel_1a0d3ac87546d9b527c23cc69d0e4e0954" kindref="member">setImage</ref>(QString<sp/>path);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/><ref refid="classContextualizationModel_1a930b89fa044d406be44836cde09be11c" kindref="member">getImage</ref>();</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classContextualizationModel_1a0d5c107172b0d2e4026cae63d3193f4e" kindref="member">isEmpty</ref>();</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classContextualizationModel_1a47cf0c1ba3e6a86f264c501c9fb7e4e5" kindref="member">hasImage</ref>();</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classContextualizationModel_1a369461aa31404ea4ff1c04fc2bd21f92" kindref="member">hasStrings</ref>();</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classContextualizationModel_1a17eeedb3696fd1d759761c0184d3dedc" kindref="member">clear</ref>();</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/><ref refid="classContextualizationModel_1aeaea29193156f1c1d2a38a24de6ebbd5" kindref="member">toJson</ref>(QJsonDocument::JsonFormat<sp/>format<sp/>=<sp/>QJsonDocument::Compact);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/>QJsonObject<sp/><ref refid="classContextualizationModel_1ac68d84aa77be188dfe51c850c0d5fd4e" kindref="member">toJsonObject</ref>();</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classContextualizationModel" kindref="compound">ContextualizationModel</ref><sp/>*<sp/><ref refid="classContextualizationModel_1aa334a054aa36564d56e812a1a9e6de30" kindref="member">fromJson</ref>(QString<sp/>&amp;json);</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classContextualizationModel" kindref="compound">ContextualizationModel</ref><sp/>*<sp/><ref refid="classContextualizationModel_1aa334a054aa36564d56e812a1a9e6de30" kindref="member">fromJson</ref>(QByteArray<sp/>&amp;json);</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classContextualizationModel" kindref="compound">ContextualizationModel</ref><sp/>&amp;<sp/><ref refid="classContextualizationModel_1a7c8d0dea4d32c2b573f1f58b0c01b81b" kindref="member">operator=</ref>(<ref refid="classContextualizationModel" kindref="compound">ContextualizationModel</ref><sp/>&amp;other);</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal">signals:</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classContextualizationModel_1a7b2878843e87cff00f5bce5bcb2d4949" kindref="member">stringsListChanged</ref>();</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"></highlight></codeline>
+<codeline lineno="216"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classContextualizationModel_1abc9b77f8362faea337fbd18fb25ee93a" kindref="member">imageChanged</ref>();</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><sp/><sp/>QString<sp/>image_;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>QList&lt;QObject<sp/>*&gt;<sp/>stringsList_;<sp/><sp/></highlight></codeline>
+<codeline lineno="221"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/>//<sp/>CONTEXTUALIZATIONMODEL_H</highlight></codeline>
+    </programlisting>
+    <location file="src/contextualization/model/contextualizationmodel.h"/>
+  </compounddef>
+</doxygen>

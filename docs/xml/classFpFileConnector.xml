@@ -1,0 +1,440 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="classFpFileConnector" kind="class" language="C++" prot="public">
+    <compoundname>FpFileConnector</compoundname>
+    <basecompoundref refid="classDatabaseConnectorAbstract" prot="public" virt="non-virtual">DatabaseConnectorAbstract</basecompoundref>
+    <includes refid="fpfileconnector_8h" local="no">fpfileconnector.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classFpFileConnector_1af6a2d03a526f1df7adcf60390fff0ed8" prot="private" static="no" mutable="no">
+        <type>QFile</type>
+        <definition>QFile FpFileConnector::file_</definition>
+        <argsstring></argsstring>
+        <name>file_</name>
+        <briefdescription>
+<para>File where strings is stored. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/fpfileconnector.h" line="106" column="1" bodyfile="src/storage/fpfileconnector.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classFpFileConnector_1a2e474f8746dd54729fe68c224ff24275" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FpFileConnector::FpFileConnector</definition>
+        <argsstring>()</argsstring>
+        <name>FpFileConnector</name>
+        <briefdescription>
+<para>Creates an empty <ref refid="classFpFileConnector" kindref="compound">FpFileConnector</ref>. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/fpfileconnector.h" line="28" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classFpFileConnector_1a51b38b735ab4728601aef295d7b4c21f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>FpFileConnector::FpFileConnector</definition>
+        <argsstring>(const QString &amp;path)</argsstring>
+        <name>FpFileConnector</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+<para>Creates a <ref refid="classFpFileConnector" kindref="compound">FpFileConnector</ref> and sets the path of file. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>path</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Database file path </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/fpfileconnector.h" line="34" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classFpFileConnector_1af1a00dabd759abd0b59bf9e26edc73cf" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>QString</type>
+        <definition>QString FpFileConnector::getPath</definition>
+        <argsstring>()</argsstring>
+        <name>getPath</name>
+        <briefdescription>
+<para>Returns a path of database file. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>File path </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/fpfileconnector.h" line="40" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classFpFileConnector_1a7a5c2987feae762ce359de702f5702e3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool FpFileConnector::setPath</definition>
+        <argsstring>(const QString &amp;path)</argsstring>
+        <name>setPath</name>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>path</declname>
+        </param>
+        <briefdescription>
+<para>Sets the path of database file. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns true if the file exists and sets path succesfully, otherwise, returns false. <simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/fpfileconnector.h" line="48" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classFpFileConnector_1ad392db922a5e04a670b84fc616192eea" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QList&lt; <ref refid="classString" kindref="compound">String</ref> * &gt;</type>
+        <definition>QList&lt;String *&gt; FpFileConnector::getAllStrings</definition>
+        <argsstring>() override</argsstring>
+        <name>getAllStrings</name>
+        <reimplements refid="classDatabaseConnectorAbstract_1aeb4347bc18b6bed9a9b6120f68c10e9d">getAllStrings</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/fpfileconnector.h" line="53" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classFpFileConnector_1a72a6ca5a5b8a44783d2ed990b111675b" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QList&lt; <ref refid="classString" kindref="compound">String</ref> * &gt;</type>
+        <definition>QList&lt;String *&gt; FpFileConnector::getStringsWithValue</definition>
+        <argsstring>(const QString &amp;value, bool caseSensitive=true) override</argsstring>
+        <name>getStringsWithValue</name>
+        <reimplements refid="classDatabaseConnectorAbstract_1a1d33547045c5f8619f44290c932edb1b">getStringsWithValue</reimplements>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>caseSensitive</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Returns all strigns in database with the value received by argument. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> value. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>List with strings. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/fpfileconnector.h" line="58" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classFpFileConnector_1adc85e526e1dab9f3de03cb8a2f33f7d1" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QList&lt; <ref refid="classString" kindref="compound">String</ref> * &gt;</type>
+        <definition>QList&lt;String *&gt; FpFileConnector::getStringsWithApproximateValue</definition>
+        <argsstring>(const QString &amp;value, bool caseSensitive=true) override</argsstring>
+        <name>getStringsWithApproximateValue</name>
+        <reimplements refid="classDatabaseConnectorAbstract_1a5b0f30372ca105a94073267e969b74ee">getStringsWithApproximateValue</reimplements>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>caseSensitive</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Returns all strigns in database with a similar value received by argument. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> value. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>List with strings. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/fpfileconnector.h" line="63" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classFpFileConnector_1a29a6df6ea88a1e44f6b04c600b45925c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QList&lt; <ref refid="classString" kindref="compound">String</ref> * &gt;</type>
+        <definition>QList&lt;String *&gt; FpFileConnector::getStringWithId</definition>
+        <argsstring>(const QString &amp;id, bool caseSensitive=true) override</argsstring>
+        <name>getStringWithId</name>
+        <reimplements refid="classDatabaseConnectorAbstract_1a757f25feaf50af012d25db8f27b1fef4">getStringWithId</reimplements>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>caseSensitive</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Returns all strigns in database with the identifier received by argument. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> identifier. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>List with strings. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/fpfileconnector.h" line="68" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classFpFileConnector_1a4c671329fd2fd1b9c3a7d72de1028afd" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QList&lt; <ref refid="classString" kindref="compound">String</ref> * &gt;</type>
+        <definition>QList&lt;String *&gt; FpFileConnector::getStringsWithState</definition>
+        <argsstring>(const QString state) override</argsstring>
+        <name>getStringsWithState</name>
+        <reimplements refid="classDatabaseConnectorAbstract_1a74952c7e14c891e33c84995066003c5a">getStringsWithState</reimplements>
+        <param>
+          <type>const QString</type>
+          <declname>state</declname>
+        </param>
+        <briefdescription>
+<para>Returns strings with state received by parameter. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>state</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>State to be found. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para><ref refid="classString" kindref="compound">String</ref> list eith indicated state. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/fpfileconnector.h" line="73" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classFpFileConnector_1ae4f79d6a1281a20702b0257de56822b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool FpFileConnector::insertString</definition>
+        <argsstring>(const String &amp;string, const QString language=QString()) override</argsstring>
+        <name>insertString</name>
+        <reimplements refid="classDatabaseConnectorAbstract_1ac7cc5cf2deace9652810001722758206">insertString</reimplements>
+        <param>
+          <type>const <ref refid="classString" kindref="compound">String</ref> &amp;</type>
+          <declname>string</declname>
+        </param>
+        <param>
+          <type>const QString</type>
+          <declname>language</declname>
+          <defval>QString()</defval>
+        </param>
+        <briefdescription>
+<para>Inserts a new string in database. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns true if the insertion was succesfull, otherwise, returns false. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> instance to be inserted. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/fpfileconnector.h" line="78" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classFpFileConnector_1a7f31d3e699ce4c489c2303370d032a7e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int FpFileConnector::insertStrings</definition>
+        <argsstring>(const QList&lt; String *&gt; &amp;strings, const QString language=QString()) override</argsstring>
+        <name>insertStrings</name>
+        <reimplements refid="classDatabaseConnectorAbstract_1a0e8c94cf0b38c797d6feef864a23347b">insertStrings</reimplements>
+        <param>
+          <type>const QList&lt; <ref refid="classString" kindref="compound">String</ref> *&gt; &amp;</type>
+          <declname>strings</declname>
+        </param>
+        <param>
+          <type>const QString</type>
+          <declname>language</declname>
+          <defval>QString()</defval>
+        </param>
+        <briefdescription>
+<para>Inserts a set of strings into the database. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns the number of inserted stirngs. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>strings</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>List with strings to be added into databse. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/fpfileconnector.h" line="83" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classFpFileConnector_1a57c6eafd6b4c7dfbd927f6d4cb63d25c" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int FpFileConnector::removeStringsWithValue</definition>
+        <argsstring>(const QString &amp;value, bool caseSensitive=true) override</argsstring>
+        <name>removeStringsWithValue</name>
+        <reimplements refid="classDatabaseConnectorAbstract_1af482c0b4af4488c5897c04d0c4dff906">removeStringsWithValue</reimplements>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>value</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>caseSensitive</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Removes from databse all strigns with the value received by argument. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns the number of removed strings. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> value. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Number of removed strings </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/fpfileconnector.h" line="88" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classFpFileConnector_1a8e09804b3c21f6b56dcc70659bbf105f" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>int</type>
+        <definition>int FpFileConnector::removeStringsWithId</definition>
+        <argsstring>(const QString &amp;id, bool caseSensitive=true) override</argsstring>
+        <name>removeStringsWithId</name>
+        <reimplements refid="classDatabaseConnectorAbstract_1a8c2b0fa4e37d16c1b1ea1cafec166ca0">removeStringsWithId</reimplements>
+        <param>
+          <type>const QString &amp;</type>
+          <declname>id</declname>
+        </param>
+        <param>
+          <type>bool</type>
+          <declname>caseSensitive</declname>
+          <defval>true</defval>
+        </param>
+        <briefdescription>
+<para>Removes from databse the strign with the identifier received by argument. </para>        </briefdescription>
+        <detaileddescription>
+<para>Returns the number of removed stirngs. <parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><ref refid="classString" kindref="compound">String</ref> identifier. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>bool </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/fpfileconnector.h" line="93" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classFpFileConnector_1a82b6ae6887737cfea3b982cb0874424e" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QStringList</type>
+        <definition>QStringList FpFileConnector::getLanguages</definition>
+        <argsstring>() override</argsstring>
+        <name>getLanguages</name>
+        <reimplements refid="classDatabaseConnectorAbstract_1a77ff263d407366e54f3e8512c575ff5e">getLanguages</reimplements>
+        <briefdescription>
+<para>Returns all languages stored in database. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Languages used. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/fpfileconnector.h" line="98" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classFpFileConnector_1a290016844ec3093b1c58db33fc86cd0a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>QStringList</type>
+        <definition>QStringList FpFileConnector::getLanguageIds</definition>
+        <argsstring>() override</argsstring>
+        <name>getLanguageIds</name>
+        <reimplements refid="classDatabaseConnectorAbstract_1a98f5b2472bab6edc82ce2c5554319d7f">getLanguageIds</reimplements>
+        <briefdescription>
+<para>Returns all language identifiers stored in database. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Languages used. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/storage/fpfileconnector.h" line="103" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>This is a class to access a database saved as fp file by HP company. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="38">
+        <label>DatabaseConnectorAbstract</label>
+        <link refid="classDatabaseConnectorAbstract"/>
+      </node>
+      <node id="37">
+        <label>FpFileConnector</label>
+        <link refid="classFpFileConnector"/>
+        <childnode refid="38" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="40">
+        <label>DatabaseConnectorAbstract</label>
+        <link refid="classDatabaseConnectorAbstract"/>
+      </node>
+      <node id="39">
+        <label>FpFileConnector</label>
+        <link refid="classFpFileConnector"/>
+        <childnode refid="40" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/storage/fpfileconnector.h" line="22" column="1" bodyfile="src/storage/fpfileconnector.h" bodystart="21" bodyend="107"/>
+    <listofallmembers>
+      <member refid="classDatabaseConnectorAbstract_1a0a5f40156183723e5e01d5ab50418118" prot="public" virt="non-virtual"><scope>FpFileConnector</scope><name>DatabaseConnectorAbstract</name></member>
+      <member refid="classFpFileConnector_1af6a2d03a526f1df7adcf60390fff0ed8" prot="private" virt="non-virtual"><scope>FpFileConnector</scope><name>file_</name></member>
+      <member refid="classFpFileConnector_1a2e474f8746dd54729fe68c224ff24275" prot="public" virt="non-virtual"><scope>FpFileConnector</scope><name>FpFileConnector</name></member>
+      <member refid="classFpFileConnector_1a51b38b735ab4728601aef295d7b4c21f" prot="public" virt="non-virtual"><scope>FpFileConnector</scope><name>FpFileConnector</name></member>
+      <member refid="classFpFileConnector_1ad392db922a5e04a670b84fc616192eea" prot="public" virt="virtual"><scope>FpFileConnector</scope><name>getAllStrings</name></member>
+      <member refid="classFpFileConnector_1a290016844ec3093b1c58db33fc86cd0a" prot="public" virt="virtual"><scope>FpFileConnector</scope><name>getLanguageIds</name></member>
+      <member refid="classFpFileConnector_1a82b6ae6887737cfea3b982cb0874424e" prot="public" virt="virtual"><scope>FpFileConnector</scope><name>getLanguages</name></member>
+      <member refid="classFpFileConnector_1af1a00dabd759abd0b59bf9e26edc73cf" prot="public" virt="non-virtual"><scope>FpFileConnector</scope><name>getPath</name></member>
+      <member refid="classFpFileConnector_1adc85e526e1dab9f3de03cb8a2f33f7d1" prot="public" virt="virtual"><scope>FpFileConnector</scope><name>getStringsWithApproximateValue</name></member>
+      <member refid="classFpFileConnector_1a4c671329fd2fd1b9c3a7d72de1028afd" prot="public" virt="virtual"><scope>FpFileConnector</scope><name>getStringsWithState</name></member>
+      <member refid="classFpFileConnector_1a72a6ca5a5b8a44783d2ed990b111675b" prot="public" virt="virtual"><scope>FpFileConnector</scope><name>getStringsWithValue</name></member>
+      <member refid="classFpFileConnector_1a29a6df6ea88a1e44f6b04c600b45925c" prot="public" virt="virtual"><scope>FpFileConnector</scope><name>getStringWithId</name></member>
+      <member refid="classFpFileConnector_1ae4f79d6a1281a20702b0257de56822b2" prot="public" virt="virtual"><scope>FpFileConnector</scope><name>insertString</name></member>
+      <member refid="classFpFileConnector_1a7f31d3e699ce4c489c2303370d032a7e" prot="public" virt="virtual"><scope>FpFileConnector</scope><name>insertStrings</name></member>
+      <member refid="classDatabaseConnectorAbstract_1acb4ab89c1daae4bd7a252677fb87f66e" prot="protected" virt="non-virtual"><scope>FpFileConnector</scope><name>MAX_LENGTH_DIFFERENCE</name></member>
+      <member refid="classDatabaseConnectorAbstract_1a1ab06cd87949b36d40d4a26d0fc22ff3" prot="protected" virt="non-virtual"><scope>FpFileConnector</scope><name>MIN_LENGTH_FOR_APPROXIMATE</name></member>
+      <member refid="classFpFileConnector_1a8e09804b3c21f6b56dcc70659bbf105f" prot="public" virt="virtual"><scope>FpFileConnector</scope><name>removeStringsWithId</name></member>
+      <member refid="classFpFileConnector_1a57c6eafd6b4c7dfbd927f6d4cb63d25c" prot="public" virt="virtual"><scope>FpFileConnector</scope><name>removeStringsWithValue</name></member>
+      <member refid="classFpFileConnector_1a7a5c2987feae762ce359de702f5702e3" prot="public" virt="non-virtual"><scope>FpFileConnector</scope><name>setPath</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

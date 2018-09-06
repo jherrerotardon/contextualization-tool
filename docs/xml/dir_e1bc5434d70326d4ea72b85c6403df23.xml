@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.15">
+  <compounddef id="dir_e1bc5434d70326d4ea72b85c6403df23" kind="dir">
+    <compoundname>src/contextualization</compoundname>
+    <innerdir refid="dir_3f7bbb91da281e69976e7e9225881d04">src/contextualization/controller</innerdir>
+    <innerdir refid="dir_50236542e182d049de6eb2202b6e7493">src/contextualization/model</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/contextualization/"/>
+  </compounddef>
+</doxygen>
