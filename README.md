@@ -2,8 +2,7 @@
 
 ## About
 
-This project was developed by **Jorge Herrero Tard�n** as **
-Final Degree Project** in 2018.
+This project was developed by **Jorge Herrero Tardón** as **Final Degree Project** in 2018.
 
 It's a tool designed to contextualize strings with a capture to be sent to the translators. It also has an internal tool to recognize strings on a image using Optical Character Recognition (**OCR**) technology.
 
